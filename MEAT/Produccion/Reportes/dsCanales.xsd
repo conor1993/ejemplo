@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCanales" targetNamespace="http://tempuri.org/dsCanales.xsd" xmlns:mstns="http://tempuri.org/dsCanales.xsd" xmlns="http://tempuri.org/dsCanales.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCanales" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsCanales" msprop:Generator_DataSetName="dsCanales">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_TablePropName="DataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoteSacrificio" msprop:Generator_UserColumnName="LoteSacrificio" msprop:Generator_ColumnVarNameInTable="columnLoteSacrificio" msprop:Generator_ColumnPropNameInRow="LoteSacrificio" msprop:Generator_ColumnPropNameInTable="LoteSacrificioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Productor" msprop:Generator_UserColumnName="Productor" msprop:Generator_ColumnVarNameInTable="columnProductor" msprop:Generator_ColumnPropNameInRow="Productor" msprop:Generator_ColumnPropNameInTable="ProductorColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FolioCanal" msprop:Generator_UserColumnName="FolioCanal" msprop:Generator_ColumnVarNameInTable="columnFolioCanal" msprop:Generator_ColumnPropNameInRow="FolioCanal" msprop:Generator_ColumnPropNameInTable="FolioCanalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="KilosCalientes" msprop:Generator_UserColumnName="KilosCalientes" msprop:Generator_ColumnVarNameInTable="columnKilosCalientes" msprop:Generator_ColumnPropNameInRow="KilosCalientes" msprop:Generator_ColumnPropNameInTable="KilosCalientesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="KilosFrios" msprop:Generator_UserColumnName="KilosFrios" msprop:Generator_ColumnVarNameInTable="columnKilosFrios" msprop:Generator_ColumnPropNameInRow="KilosFrios" msprop:Generator_ColumnPropNameInTable="KilosFriosColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Rendimiento" msprop:Generator_UserColumnName="Rendimiento" msprop:Generator_ColumnVarNameInTable="columnRendimiento" msprop:Generator_ColumnPropNameInRow="Rendimiento" msprop:Generator_ColumnPropNameInTable="RendimientoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LoteCorte" msprop:Generator_UserColumnName="LoteCorte" msprop:Generator_ColumnVarNameInTable="columnLoteCorte" msprop:Generator_ColumnPropNameInRow="LoteCorte" msprop:Generator_ColumnPropNameInTable="LoteCorteColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

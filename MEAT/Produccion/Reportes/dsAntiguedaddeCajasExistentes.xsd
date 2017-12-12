@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAntiguedaddeCajasExistentes" targetNamespace="http://tempuri.org/dsAntiguedaddeCajasExistentes.xsd" xmlns:mstns="http://tempuri.org/dsAntiguedaddeCajasExistentes.xsd" xmlns="http://tempuri.org/dsAntiguedaddeCajasExistentes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAntiguedaddeCajasExistentes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsAntiguedaddeCajasExistentes" msprop:Generator_DataSetName="dsAntiguedaddeCajasExistentes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TablePropName="DataTable1" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CajasPC" msprop:Generator_UserColumnName="CajasPC" msprop:Generator_ColumnPropNameInRow="CajasPC" msprop:Generator_ColumnVarNameInTable="columnCajasPC" msprop:Generator_ColumnPropNameInTable="CajasPCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KilosPC" msprop:Generator_UserColumnName="KilosPC" msprop:Generator_ColumnPropNameInRow="KilosPC" msprop:Generator_ColumnVarNameInTable="columnKilosPC" msprop:Generator_ColumnPropNameInTable="KilosPCColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="PiezasPC" msprop:Generator_UserColumnName="PiezasPC" msprop:Generator_ColumnPropNameInRow="PiezasPC" msprop:Generator_ColumnVarNameInTable="columnPiezasPC" msprop:Generator_ColumnPropNameInTable="PiezasPCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CajasSC" msprop:Generator_UserColumnName="CajasSC" msprop:Generator_ColumnPropNameInRow="CajasSC" msprop:Generator_ColumnVarNameInTable="columnCajasSC" msprop:Generator_ColumnPropNameInTable="CajasSCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KilosSC" msprop:Generator_UserColumnName="KilosSC" msprop:Generator_ColumnPropNameInRow="KilosSC" msprop:Generator_ColumnVarNameInTable="columnKilosSC" msprop:Generator_ColumnPropNameInTable="KilosSCColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="PiezasSC" msprop:Generator_UserColumnName="PiezasSC" msprop:Generator_ColumnPropNameInRow="PiezasSC" msprop:Generator_ColumnVarNameInTable="columnPiezasSC" msprop:Generator_ColumnPropNameInTable="PiezasSCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CajasTC" msprop:Generator_UserColumnName="CajasTC" msprop:Generator_ColumnPropNameInRow="CajasTC" msprop:Generator_ColumnVarNameInTable="columnCajasTC" msprop:Generator_ColumnPropNameInTable="CajasTCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KilosTC" msprop:Generator_UserColumnName="KilosTC" msprop:Generator_ColumnPropNameInRow="KilosTC" msprop:Generator_ColumnVarNameInTable="columnKilosTC" msprop:Generator_ColumnPropNameInTable="KilosTCColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="PiezasTC" msprop:Generator_UserColumnName="PiezasTC" msprop:Generator_ColumnPropNameInRow="PiezasTC" msprop:Generator_ColumnVarNameInTable="columnPiezasTC" msprop:Generator_ColumnPropNameInTable="PiezasTCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CajasCC" msprop:Generator_UserColumnName="CajasCC" msprop:Generator_ColumnPropNameInRow="CajasCC" msprop:Generator_ColumnVarNameInTable="columnCajasCC" msprop:Generator_ColumnPropNameInTable="CajasCCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KilosCC" msprop:Generator_UserColumnName="KilosCC" msprop:Generator_ColumnPropNameInRow="KilosCC" msprop:Generator_ColumnVarNameInTable="columnKilosCC" msprop:Generator_ColumnPropNameInTable="KilosCCColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="PiezasCC" msprop:Generator_UserColumnName="PiezasCC" msprop:Generator_ColumnPropNameInRow="PiezasCC" msprop:Generator_ColumnVarNameInTable="columnPiezasCC" msprop:Generator_ColumnPropNameInTable="PiezasCCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CajasQC" msprop:Generator_UserColumnName="CajasQC" msprop:Generator_ColumnPropNameInRow="CajasQC" msprop:Generator_ColumnVarNameInTable="columnCajasQC" msprop:Generator_ColumnPropNameInTable="CajasQCColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KilosQC" msprop:Generator_UserColumnName="KilosQC" msprop:Generator_ColumnPropNameInRow="KilosQC" msprop:Generator_ColumnVarNameInTable="columnKilosQC" msprop:Generator_ColumnPropNameInTable="KilosQCColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="PiezasQC" msprop:Generator_UserColumnName="PiezasQC" msprop:Generator_ColumnPropNameInRow="PiezasQC" msprop:Generator_ColumnVarNameInTable="columnPiezasQC" msprop:Generator_ColumnPropNameInTable="PiezasQCColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

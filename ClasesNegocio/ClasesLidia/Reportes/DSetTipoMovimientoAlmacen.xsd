@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetTipoMovimientoAlmacen" targetNamespace="http://tempuri.org/DSetTipoMovimientoAlmacen.xsd" xmlns:mstns="http://tempuri.org/DSetTipoMovimientoAlmacen.xsd" xmlns="http://tempuri.org/DSetTipoMovimientoAlmacen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetTipoMovimientoAlmacen" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetTipoMovimientoAlmacen" msprop:Generator_DataSetName="DSetTipoMovimientoAlmacen">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TipoMovimiento" msprop:Generator_UserTableName="TipoMovimiento" msprop:Generator_RowDeletedName="TipoMovimientoRowDeleted" msprop:Generator_TableClassName="TipoMovimientoDataTable" msprop:Generator_RowChangedName="TipoMovimientoRowChanged" msprop:Generator_RowClassName="TipoMovimientoRow" msprop:Generator_RowChangingName="TipoMovimientoRowChanging" msprop:Generator_RowEvArgName="TipoMovimientoRowChangeEvent" msprop:Generator_RowEvHandlerName="TipoMovimientoRowChangeEventHandler" msprop:Generator_TablePropName="TipoMovimiento" msprop:Generator_TableVarName="tableTipoMovimiento" msprop:Generator_RowDeletingName="TipoMovimientoRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Código" msprop:Generator_UserColumnName="Código" msprop:Generator_ColumnPropNameInRow="Código" msprop:Generator_ColumnVarNameInTable="columnCódigo" msprop:Generator_ColumnPropNameInTable="CódigoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripción" msprop:Generator_UserColumnName="Descripción" msprop:Generator_ColumnPropNameInRow="Descripción" msprop:Generator_ColumnVarNameInTable="columnDescripción" msprop:Generator_ColumnPropNameInTable="DescripciónColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripción_x0020_Corta" msprop:Generator_UserColumnName="Descripción Corta" msprop:Generator_ColumnPropNameInRow="Descripción_Corta" msprop:Generator_ColumnVarNameInTable="columnDescripción_Corta" msprop:Generator_ColumnPropNameInTable="Descripción_CortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Afecta_x0020_Costo" msprop:Generator_UserColumnName="Afecta Costo" msprop:Generator_ColumnPropNameInRow="Afecta_Costo" msprop:Generator_ColumnVarNameInTable="columnAfecta_Costo" msprop:Generator_ColumnPropNameInTable="Afecta_CostoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Dirección" msprop:Generator_UserColumnName="Dirección" msprop:Generator_ColumnPropNameInRow="Dirección" msprop:Generator_ColumnVarNameInTable="columnDirección" msprop:Generator_ColumnPropNameInTable="DirecciónColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha_x0020_de_x0020_Alta" msprop:Generator_UserColumnName="Fecha de Alta" msprop:Generator_ColumnPropNameInRow="Fecha_de_Alta" msprop:Generator_ColumnVarNameInTable="columnFecha_de_Alta" msprop:Generator_ColumnPropNameInTable="Fecha_de_AltaColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="TipoMovimientoKey1">
+      <xs:selector xpath=".//mstns:TipoMovimiento" />
+      <xs:field xpath="mstns:Código" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

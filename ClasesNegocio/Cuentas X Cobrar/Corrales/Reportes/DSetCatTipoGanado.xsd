@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetCatTipoGanado" targetNamespace="http://tempuri.org/DSetCatTipoGanado.xsd" xmlns:mstns="http://tempuri.org/DSetCatTipoGanado.xsd" xmlns="http://tempuri.org/DSetCatTipoGanado.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetCatTipoGanado" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetCatTipoGanado" msprop:Generator_DataSetName="DSetCatTipoGanado">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtTipoGanado" msprop:Generator_UserTableName="dtTipoGanado" msprop:Generator_RowDeletedName="dtTipoGanadoRowDeleted" msprop:Generator_TableClassName="dtTipoGanadoDataTable" msprop:Generator_RowChangedName="dtTipoGanadoRowChanged" msprop:Generator_RowClassName="dtTipoGanadoRow" msprop:Generator_RowChangingName="dtTipoGanadoRowChanging" msprop:Generator_RowEvArgName="dtTipoGanadoRowChangeEvent" msprop:Generator_RowEvHandlerName="dtTipoGanadoRowChangeEventHandler" msprop:Generator_TablePropName="dtTipoGanado" msprop:Generator_TableVarName="tabledtTipoGanado" msprop:Generator_RowDeletingName="dtTipoGanadoRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idTipoGanado" msprop:Generator_UserColumnName="idTipoGanado" msprop:Generator_ColumnPropNameInRow="idTipoGanado" msprop:Generator_ColumnVarNameInTable="columnidTipoGanado" msprop:Generator_ColumnPropNameInTable="idTipoGanadoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DescCorta" msprop:Generator_UserColumnName="DescCorta" msprop:Generator_ColumnPropNameInRow="DescCorta" msprop:Generator_ColumnVarNameInTable="columnDescCorta" msprop:Generator_ColumnPropNameInTable="DescCortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Lados" msprop:Generator_UserColumnName="Lados" msprop:Generator_ColumnPropNameInRow="Lados" msprop:Generator_ColumnVarNameInTable="columnLados" msprop:Generator_ColumnPropNameInTable="LadosColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

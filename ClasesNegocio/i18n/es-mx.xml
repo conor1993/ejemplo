@@ -1,0 +1,142 @@
+<NewDataSet>
+  <LENGUAJE Descripcion="Español Mexico" Abbr="es-mx">
+    <VALIDACION>
+	    <ModuloValidacion Nombre="NOTAS_DE_CREDITO" SubModulo="0">
+		    <MensajeValidacion Code="1">Debe especificar los siguientes datos:
+      Cliente
+      Concepto
+      Autorizó
+      Seleccion de Facturas</MensajeValidacion>
+		    <MensajeValidacion Code="2">La nota ya se ha aplicado, no es posible cancelarla.</MensajeValidacion>
+		    <MensajeValidacion Code="3">La nota ya se ha cancelado.</MensajeValidacion>
+	    </ModuloValidacion>
+	    <ModuloValidacion Nombre="BALANCE_GENERAL" SubModulo="1">
+		    <MensajeValidacion Code="0">Seleccione el Mes</MensajeValidacion>
+	    </ModuloValidacion>
+	    <ModuloValidacion Nombre="AUXILIAR_CONTABLE" SubModulo="2">
+		    <MensajeValidacion Code="0">Por favor especifique las fechas de inicio y final</MensajeValidacion>
+		    <MensajeValidacion Code="1">No existe ninguna cuenta contable en el criterio especificado</MensajeValidacion>
+	    </ModuloValidacion>
+	    <ModuloValidacion Nombre="MAYOR_GENERAL" SubModulo="3">
+		    <MensajeValidacion Code="0">No existe información para el mes solicitado</MensajeValidacion>
+	    </ModuloValidacion>
+	    <ModuloValidacion Nombre="SALIDA_RECIBA_RASTRO" SubModulo="4">
+		    <MensajeValidacion Code="0">Por favor evite la duplicidad de tipos de ganado</MensajeValidacion>
+		    <MensajeValidacion Code="1">Debe especificar una cantidad de cabezas mayor a 0</MensajeValidacion>
+		    <MensajeValidacion Code="2">Debe especificar una cantidad de kilos mayor a 0</MensajeValidacion>
+		    <MensajeValidacion Code="3">Debe seleccionar el Rastro</MensajeValidacion>
+		    <MensajeValidacion Code="4">Debe seleccionar el Corral</MensajeValidacion>
+		    <MensajeValidacion Code="5">Debe proporcionar la informacion del ganado</MensajeValidacion>
+		    <MensajeValidacion Code="6">La cantidad de cabezas es mayor a la existente</MensajeValidacion>
+		    <MensajeValidacion Code="7">Debe seleccionar el tipo de ganado</MensajeValidacion>
+	    </ModuloValidacion>
+	    <ModuloValidacion Nombre="GENERAL" SubModulo="5">
+		    <MensajeValidacion Code="0">Ya ha sido cancelado anteriormente</MensajeValidacion>
+		    <MensajeValidacion Code="1">No existe un movimiento para cancelar</MensajeValidacion>
+		    <MensajeValidacion Code="2">No existe informacion de salidas de ganado en el criterio de busqueda especificado</MensajeValidacion>
+		    <MensajeValidacion Code="3">No se encontro ningun registro</MensajeValidacion>
+        <MensajeValidacion Code="4">Debe seleccionar el Lote</MensajeValidacion>
+        <MensajeValidacion Code="5">Debe seleccionar el Corral</MensajeValidacion>
+        <MensajeValidacion Code="6">El sistema no puede continuar</MensajeValidacion>
+        <MensajeValidacion Code="7">Debe seleccionar el Banco</MensajeValidacion>
+        <MensajeValidacion Code="8">Debe seleccionar el Cliente</MensajeValidacion>
+        <MensajeValidacion Code="9">No hay informacion</MensajeValidacion>
+        <MensajeValidacion Code="10">La Fecha Inicial debe ser menor a la Fecha Final</MensajeValidacion>
+        <MensajeValidacion Code="11">Debe seleccionar la Sucursal</MensajeValidacion>
+        <MensajeValidacion Code="12">Debe seleccionar la Plaza</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="SALIDA_RECIBA_CORRAL" SubModulo="6">
+        <MensajeValidacion Code="0">Debe seleccionar el Lote Destino</MensajeValidacion>
+        <MensajeValidacion Code="1">Ya existe ese arete, no se permiten los aretes duplicados</MensajeValidacion>
+        <MensajeValidacion Code="2">Debe proporcionar el Arete Propio</MensajeValidacion>
+		  <MensajeValidacion Code="3">Debe proporcionar el Arete Propio, o el Arete SINIIGA o el Arete de Transporte</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="CATALOGO_DE_PRECIOS_X_CLIENTE" SubModulo="7">
+        <MensajeValidacion Code="0">No hay cambios para aplicar</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="SALIDA_RECIBA_MUERTE" SubModulo="8">
+        <MensajeValidacion Code="0">Debe seleccionar la causa de muerte</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="REINICIO_CORRAL" SubModulo="9">
+        <MensajeValidacion Code="0">No hay movimientos para el prorrateo, no se llevo a cabo el proceso de reinicio de reciba</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="SALIDA_CORRAL_RASTRO" SubModulo="10">
+        <MensajeValidacion Code="0">Debe seleccionar el Lote</MensajeValidacion>
+        <MensajeValidacion Code="1">Debe seleccionar el Tipo de Ganado</MensajeValidacion>
+        <MensajeValidacion Code="2">No se permiten los Lotes duplicados</MensajeValidacion>
+        <MensajeValidacion Code="3">Ya se han seleccionado todos los tipos de ganado del lote([?])</MensajeValidacion>
+        <MensajeValidacion Code="3">La cantidad de cabezas proporcionada supera el total de cabezas del lote
+        Por proporcione un cantidad valida</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="SALIDA_CORRAL_TRANSFERENCIA" SubModulo="11">
+        <MensajeValidacion Code="0">Debe seleccionar el Lote de Salida</MensajeValidacion>
+        <MensajeValidacion Code="1">Debe seleccionar los aretes a Transferir</MensajeValidacion>
+	    </ModuloValidacion>
+      <ModuloValidacion Nombre="CATALOGO_CLIENTES" SubModulo="12">
+        <MensajeValidacion Code="0">Debe definir el Domicilio Fiscal Principal</MensajeValidacion>
+        <MensajeValidacion Code="1">Debe especificar los siguientes datos correctamente: [?]</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="CAMBIO_DE_CORRAL" SubModulo="13">
+        <MensajeValidacion Code="0">El corral actual y el nuevo corral, no pueden ser el mismo</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="CIERRE_DIARIO_ENGORDA" SubModulo="14">
+        <MensajeValidacion Code="0">Ya se realizó el Proceso de Cierre de Engorda...!</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="CONFIGURACION_ENGORDA" SubModulo="15">
+        <MensajeValidacion Code="0">Debe porporcionar el Costo Indirecto Mensual</MensajeValidacion>
+        <MensajeValidacion Code="1">Debe porporcionar el Mes del Costo Indirecto</MensajeValidacion>
+        <MensajeValidacion Code="2">Debe porporcionar Inicialmente la Fecha de Cierre Diario</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="CHEQUES_DEVUELTOS" SubModulo="16">
+        <MensajeValidacion Code="0">Debe introducir el Numero de Cheque</MensajeValidacion>
+        <MensajeValidacion Code="1">Debe introducir un Importe valido, valor positivo mayor a 0</MensajeValidacion>
+        <MensajeValidacion Code="2">Este Cheque Devuelto tiene pagos registrados, Ya no podra editarlo.</MensajeValidacion>
+        <MensajeValidacion Code="3">Este Cheque Devuelto tiene pagos registrados
+Debera cancelar los pagos vigentes para cancelarlo.</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="PAGOS_CHEQUES_DEVUELTOS" SubModulo="17">
+        <MensajeValidacion Code="0">Debe seleccionar los Cheques Devueltos para realizar un Pago</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="PROGRAMACION_FORMULAS" SubModulo="18">
+        <MensajeValidacion Code="0">Debe seleccionar la Formula</MensajeValidacion>
+        <MensajeValidacion Code="1">Debe establecer la fecha de inicio</MensajeValidacion>
+        <MensajeValidacion Code="2">Debe establecer la fecha de fin</MensajeValidacion>
+        <MensajeValidacion Code="3">La fecha de inicio debe ser menor a la fecha de fin</MensajeValidacion>
+        <MensajeValidacion Code="4">Debe establecer el consumo/cabeza en Kgs</MensajeValidacion>
+        <MensajeValidacion Code="5">El porcentaje de las servidas debe cubrir el 100%</MensajeValidacion>
+        <MensajeValidacion Code="6">No ha establecido ninguna programacion</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="SOLICITUD_PRODUCTOS" SubModulo="19">
+        <MensajeValidacion Code="0">Debe cancelar las cotizaciones asociadas[?] para cancelar la solicitud</MensajeValidacion>
+        <MensajeValidacion Code="1">Debe ingresar datos en el campo Para</MensajeValidacion>
+        <MensajeValidacion Code="3">Debe ingresar productos</MensajeValidacion>
+        <MensajeValidacion Code="4">Ingrese la cantidad de productos a solicitar</MensajeValidacion>
+        <MensajeValidacion Code="5">La solicitud ya ha sido cancelada</MensajeValidacion>
+        <MensajeValidacion Code="6">Especifique el Producto</MensajeValidacion>
+        <MensajeValidacion Code="7">Debe cancelar las ordenes asociadas[?] para cancelar la solicitud</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="CATALOGO_LOTES" SubModulo="20">
+        <MensajeValidacion Code="0">El Corral([?]) asignado ya esta referenciado a otro Lote</MensajeValidacion>
+      </ModuloValidacion>
+      <ModuloValidacion Nombre="FACTURACION_FOLIOS" SubModulo="21">
+        <MensajeValidacion Code="0">Debe establecer el Folio Inicial</MensajeValidacion>
+      </ModuloValidacion>
+		<ModuloValidacion Nombre="ORDEN_COMPRA" SubModulo="22">
+			<MensajeValidacion Code="0">No se enconto ninguna Orden de Compra</MensajeValidacion>
+		</ModuloValidacion>
+    </VALIDACION>
+    <CONFIGURACION>
+      <ModuloConfiguracion Nombre="" SubModulo="">
+      </ModuloConfiguracion>
+    </CONFIGURACION>
+    <DATOS_NO_ENCONTRADOS>
+      <ModuloDatosNoEncontrados Nombre="" SubModulo="">
+      </ModuloDatosNoEncontrados>
+    </DATOS_NO_ENCONTRADOS>
+    <INCOSISTENCIA_DE_DATOS>
+      <ModuloInconsistenciaDatos Nombre="SALIDA_CORRAL_TRANSFERENCIA" SubModulo="11">
+        <Mensaje Code="0">No existe el arete: [?]</Mensaje>
+      </ModuloInconsistenciaDatos>
+    </INCOSISTENCIA_DE_DATOS>
+  </LENGUAJE>
+</NewDataSet>

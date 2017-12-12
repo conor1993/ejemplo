@@ -1,0 +1,3 @@
+Public Class ComReimpRecepcionOrdenComp
+
+End Class

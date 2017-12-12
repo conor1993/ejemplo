@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsCuentaFisc" targetNamespace="http://tempuri.org/DsCuentaFisc.xsd" xmlns:mstns="http://tempuri.org/DsCuentaFisc.xsd" xmlns="http://tempuri.org/DsCuentaFisc.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="PrimosERPConnectionString" IsAppSettingsProperty="True" Modifier="Assembly" Name="PrimosERPConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MySettings.GlobalReference.Default.PrimosERPConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GANADERAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="GANADERAConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.My.MySettings.GlobalReference.Default.GANADERAConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VwCuentasFiscTableAdapter" GeneratorDataComponentClassName="VwCuentasFiscTableAdapter" Name="VwCuentasFisc" UserDataComponentName="VwCuentasFiscTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GANADERAConnectionString (MySettings)" DbObjectName="GANADERA.dbo.VwCuentasFisc" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     VwCuentasFisc.*
+FROM         VwCuentasFisc</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CuentaContable" DataSetColumn="CuentaContable" />
+              <Mapping SourceColumn="NombreCuenta" DataSetColumn="NombreCuenta" />
+              <Mapping SourceColumn="Naturaleza" DataSetColumn="Naturaleza" />
+              <Mapping SourceColumn="SaldoAñoAnterior" DataSetColumn="SaldoAñoAnterior" />
+              <Mapping SourceColumn="SaldoInicioEjercicio" DataSetColumn="SaldoInicioEjercicio" />
+              <Mapping SourceColumn="Afectable" DataSetColumn="Afectable" />
+              <Mapping SourceColumn="Inactiva" DataSetColumn="Inactiva" />
+              <Mapping SourceColumn="codigo" DataSetColumn="codigo" />
+              <Mapping SourceColumn="NaturalezaCad" DataSetColumn="NaturalezaCad" />
+              <Mapping SourceColumn="Bancos" DataSetColumn="Bancos" />
+              <Mapping SourceColumn="Departamentalizable" DataSetColumn="Departamentalizable" />
+              <Mapping SourceColumn="Presupuesto" DataSetColumn="Presupuesto" />
+              <Mapping SourceColumn="Resultados" DataSetColumn="Resultados" />
+              <Mapping SourceColumn="Cta" DataSetColumn="Cta" />
+              <Mapping SourceColumn="SubCta" DataSetColumn="SubCta" />
+              <Mapping SourceColumn="SSubCta" DataSetColumn="SSubCta" />
+              <Mapping SourceColumn="SSSubCta" DataSetColumn="SSSubCta" />
+              <Mapping SourceColumn="BancosCad" DataSetColumn="BancosCad" />
+              <Mapping SourceColumn="PresupuestoCad" DataSetColumn="PresupuestoCad" />
+              <Mapping SourceColumn="DepartamentalizableCad" DataSetColumn="DepartamentalizableCad" />
+              <Mapping SourceColumn="ResultadosCad" DataSetColumn="ResultadosCad" />
+              <Mapping SourceColumn="AfectableCad" DataSetColumn="AfectableCad" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsCuentaFisc" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsCuentaFisc" msprop:Generator_DataSetName="DsCuentaFisc">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VwCuentasFisc" msprop:Generator_UserTableName="VwCuentasFisc" msprop:Generator_RowDeletedName="VwCuentasFiscRowDeleted" msprop:Generator_RowChangedName="VwCuentasFiscRowChanged" msprop:Generator_RowClassName="VwCuentasFiscRow" msprop:Generator_RowChangingName="VwCuentasFiscRowChanging" msprop:Generator_RowEvArgName="VwCuentasFiscRowChangeEvent" msprop:Generator_RowEvHandlerName="VwCuentasFiscRowChangeEventHandler" msprop:Generator_TableClassName="VwCuentasFiscDataTable" msprop:Generator_TableVarName="tableVwCuentasFisc" msprop:Generator_RowDeletingName="VwCuentasFiscRowDeleting" msprop:Generator_TablePropName="VwCuentasFisc">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CuentaContable" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CuentaContable" msprop:Generator_ColumnVarNameInTable="columnCuentaContable" msprop:Generator_ColumnPropNameInRow="CuentaContable" msprop:Generator_ColumnPropNameInTable="CuentaContableColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="203" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NombreCuenta" msprop:Generator_UserColumnName="NombreCuenta" msprop:Generator_ColumnVarNameInTable="columnNombreCuenta" msprop:Generator_ColumnPropNameInRow="NombreCuenta" msprop:Generator_ColumnPropNameInTable="NombreCuentaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Naturaleza" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Naturaleza" msprop:Generator_ColumnVarNameInTable="columnNaturaleza" msprop:Generator_ColumnPropNameInRow="Naturaleza" msprop:Generator_ColumnPropNameInTable="NaturalezaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SaldoAñoAnterior" msprop:Generator_UserColumnName="SaldoAñoAnterior" msprop:Generator_ColumnVarNameInTable="columnSaldoAñoAnterior" msprop:Generator_ColumnPropNameInRow="SaldoAñoAnterior" msprop:Generator_ColumnPropNameInTable="SaldoAñoAnteriorColumn" type="xs:decimal" />
+              <xs:element name="SaldoInicioEjercicio" msprop:Generator_UserColumnName="SaldoInicioEjercicio" msprop:Generator_ColumnVarNameInTable="columnSaldoInicioEjercicio" msprop:Generator_ColumnPropNameInRow="SaldoInicioEjercicio" msprop:Generator_ColumnPropNameInTable="SaldoInicioEjercicioColumn" type="xs:decimal" />
+              <xs:element name="Afectable" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Afectable" msprop:Generator_ColumnVarNameInTable="columnAfectable" msprop:Generator_ColumnPropNameInRow="Afectable" msprop:Generator_ColumnPropNameInTable="AfectableColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Inactiva" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Inactiva" msprop:Generator_ColumnVarNameInTable="columnInactiva" msprop:Generator_ColumnPropNameInRow="Inactiva" msprop:Generator_ColumnPropNameInTable="InactivaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="codigo" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" type="xs:int" />
+              <xs:element name="NaturalezaCad" msprop:Generator_UserColumnName="NaturalezaCad" msprop:Generator_ColumnVarNameInTable="columnNaturalezaCad" msprop:Generator_ColumnPropNameInRow="NaturalezaCad" msprop:Generator_ColumnPropNameInTable="NaturalezaCadColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bancos" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Bancos" msprop:Generator_ColumnVarNameInTable="columnBancos" msprop:Generator_ColumnPropNameInRow="Bancos" msprop:Generator_ColumnPropNameInTable="BancosColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Departamentalizable" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Departamentalizable" msprop:Generator_ColumnVarNameInTable="columnDepartamentalizable" msprop:Generator_ColumnPropNameInRow="Departamentalizable" msprop:Generator_ColumnPropNameInTable="DepartamentalizableColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Presupuesto" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Presupuesto" msprop:Generator_ColumnVarNameInTable="columnPresupuesto" msprop:Generator_ColumnPropNameInRow="Presupuesto" msprop:Generator_ColumnPropNameInTable="PresupuestoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Resultados" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Resultados" msprop:Generator_ColumnVarNameInTable="columnResultados" msprop:Generator_ColumnPropNameInRow="Resultados" msprop:Generator_ColumnPropNameInTable="ResultadosColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cta" msprop:Generator_UserColumnName="Cta" msprop:Generator_ColumnVarNameInTable="columnCta" msprop:Generator_ColumnPropNameInRow="Cta" msprop:Generator_ColumnPropNameInTable="CtaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SubCta" msprop:Generator_UserColumnName="SubCta" msprop:Generator_ColumnVarNameInTable="columnSubCta" msprop:Generator_ColumnPropNameInRow="SubCta" msprop:Generator_ColumnPropNameInTable="SubCtaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SSubCta" msprop:Generator_UserColumnName="SSubCta" msprop:Generator_ColumnVarNameInTable="columnSSubCta" msprop:Generator_ColumnPropNameInRow="SSubCta" msprop:Generator_ColumnPropNameInTable="SSubCtaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SSSubCta" msprop:Generator_UserColumnName="SSSubCta" msprop:Generator_ColumnVarNameInTable="columnSSSubCta" msprop:Generator_ColumnPropNameInRow="SSSubCta" msprop:Generator_ColumnPropNameInTable="SSSubCtaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BancosCad" msprop:Generator_UserColumnName="BancosCad" msprop:Generator_ColumnVarNameInTable="columnBancosCad" msprop:Generator_ColumnPropNameInRow="BancosCad" msprop:Generator_ColumnPropNameInTable="BancosCadColumn" type="xs:boolean" />
+              <xs:element name="PresupuestoCad" msprop:Generator_UserColumnName="PresupuestoCad" msprop:Generator_ColumnVarNameInTable="columnPresupuestoCad" msprop:Generator_ColumnPropNameInRow="PresupuestoCad" msprop:Generator_ColumnPropNameInTable="PresupuestoCadColumn" type="xs:boolean" />
+              <xs:element name="DepartamentalizableCad" msprop:Generator_UserColumnName="DepartamentalizableCad" msprop:Generator_ColumnVarNameInTable="columnDepartamentalizableCad" msprop:Generator_ColumnPropNameInRow="DepartamentalizableCad" msprop:Generator_ColumnPropNameInTable="DepartamentalizableCadColumn" type="xs:boolean" />
+              <xs:element name="ResultadosCad" msprop:Generator_UserColumnName="ResultadosCad" msprop:Generator_ColumnVarNameInTable="columnResultadosCad" msprop:Generator_ColumnPropNameInRow="ResultadosCad" msprop:Generator_ColumnPropNameInTable="ResultadosCadColumn" type="xs:boolean" />
+              <xs:element name="AfectableCad" msprop:Generator_UserColumnName="AfectableCad" msprop:Generator_ColumnVarNameInTable="columnAfectableCad" msprop:Generator_ColumnPropNameInRow="AfectableCad" msprop:Generator_ColumnPropNameInTable="AfectableCadColumn" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VwCuentasFisc" />
+      <xs:field xpath="mstns:codigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

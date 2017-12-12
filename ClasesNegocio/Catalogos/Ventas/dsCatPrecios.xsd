@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCatPrecios" targetNamespace="http://tempuri.org/dsCatPrecios.xsd" xmlns:mstns="http://tempuri.org/dsCatPrecios.xsd" xmlns="http://tempuri.org/dsCatPrecios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCatPrecios" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsCatPrecios" msprop:Generator_DataSetName="dsCatPrecios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CatPrexCort" msprop:Generator_UserTableName="CatPrexCort" msprop:Generator_RowDeletedName="CatPrexCortRowDeleted" msprop:Generator_TableClassName="CatPrexCortDataTable" msprop:Generator_RowChangedName="CatPrexCortRowChanged" msprop:Generator_RowClassName="CatPrexCortRow" msprop:Generator_RowChangingName="CatPrexCortRowChanging" msprop:Generator_RowEvArgName="CatPrexCortRowChangeEvent" msprop:Generator_RowEvHandlerName="CatPrexCortRowChangeEventHandler" msprop:Generator_TablePropName="CatPrexCort" msprop:Generator_TableVarName="tableCatPrexCort" msprop:Generator_RowDeletingName="CatPrexCortRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCliente" msprop:Generator_UserColumnName="IdCliente" msprop:Generator_ColumnPropNameInRow="IdCliente" msprop:Generator_ColumnVarNameInTable="columnIdCliente" msprop:Generator_ColumnPropNameInTable="IdClienteColumn" type="xs:short" />
+              <xs:element name="IdPuntoEntrega" msprop:Generator_UserColumnName="IdPuntoEntrega" msprop:Generator_ColumnPropNameInRow="IdPuntoEntrega" msprop:Generator_ColumnVarNameInTable="columnIdPuntoEntrega" msprop:Generator_ColumnPropNameInTable="IdPuntoEntregaColumn" type="xs:short" />
+              <xs:element name="IdPreCorte" msprop:Generator_UserColumnName="IdPreCorte" msprop:Generator_ColumnPropNameInRow="IdPreCorte" msprop:Generator_ColumnVarNameInTable="columnIdPreCorte" msprop:Generator_ColumnPropNameInTable="IdPreCorteColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:short" />
+              <xs:element name="PrecioxKgr" msprop:Generator_UserColumnName="PrecioxKgr" msprop:Generator_ColumnPropNameInRow="PrecioxKgr" msprop:Generator_ColumnVarNameInTable="columnPrecioxKgr" msprop:Generator_ColumnPropNameInTable="PrecioxKgrColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CatPrexProd" msprop:Generator_UserTableName="CatPrexProd" msprop:Generator_RowDeletedName="CatPrexProdRowDeleted" msprop:Generator_TableClassName="CatPrexProdDataTable" msprop:Generator_RowChangedName="CatPrexProdRowChanged" msprop:Generator_RowClassName="CatPrexProdRow" msprop:Generator_RowChangingName="CatPrexProdRowChanging" msprop:Generator_RowEvArgName="CatPrexProdRowChangeEvent" msprop:Generator_RowEvHandlerName="CatPrexProdRowChangeEventHandler" msprop:Generator_TablePropName="CatPrexProd" msprop:Generator_TableVarName="tableCatPrexProd" msprop:Generator_RowDeletingName="CatPrexProdRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCliente" msprop:Generator_UserColumnName="IdCliente" msprop:Generator_ColumnPropNameInRow="IdCliente" msprop:Generator_ColumnVarNameInTable="columnIdCliente" msprop:Generator_ColumnPropNameInTable="IdClienteColumn" type="xs:short" />
+              <xs:element name="IdPuntoEntrega" msprop:Generator_UserColumnName="IdPuntoEntrega" msprop:Generator_ColumnPropNameInRow="IdPuntoEntrega" msprop:Generator_ColumnVarNameInTable="columnIdPuntoEntrega" msprop:Generator_ColumnPropNameInTable="IdPuntoEntregaColumn" type="xs:short" />
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:short" />
+              <xs:element name="PrecioxKgr" msprop:Generator_UserColumnName="PrecioxKgr" msprop:Generator_ColumnPropNameInRow="PrecioxKgr" msprop:Generator_ColumnVarNameInTable="columnPrecioxKgr" msprop:Generator_ColumnPropNameInTable="PrecioxKgrColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CatPrexCort" />
+      <xs:field xpath="mstns:IdProducto" />
+      <xs:field xpath="mstns:IdPuntoEntrega" />
+      <xs:field xpath="mstns:IdCliente" />
+    </xs:unique>
+    <xs:unique name="CatPrexProd_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CatPrexProd" />
+      <xs:field xpath="mstns:IdProducto" />
+      <xs:field xpath="mstns:IdPuntoEntrega" />
+      <xs:field xpath="mstns:IdCliente" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

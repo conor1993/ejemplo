@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetZona" targetNamespace="http://tempuri.org/DSetZona.xsd" xmlns:mstns="http://tempuri.org/DSetZona.xsd" xmlns="http://tempuri.org/DSetZona.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetZona" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetZona" msprop:Generator_DataSetName="DSetZona">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Zona" msprop:Generator_UserTableName="Zona" msprop:Generator_RowDeletedName="ZonaRowDeleted" msprop:Generator_RowChangedName="ZonaRowChanged" msprop:Generator_RowClassName="ZonaRow" msprop:Generator_RowChangingName="ZonaRowChanging" msprop:Generator_RowEvArgName="ZonaRowChangeEvent" msprop:Generator_RowEvHandlerName="ZonaRowChangeEventHandler" msprop:Generator_TableClassName="ZonaDataTable" msprop:Generator_TableVarName="tableZona" msprop:Generator_RowDeletingName="ZonaRowDeleting" msprop:Generator_TablePropName="Zona">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="codigo" msprop:Generator_UserColumnName="codigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" type="xs:string" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DescripcionCorta" msprop:Generator_UserColumnName="DescripcionCorta" msprop:Generator_ColumnPropNameInRow="DescripcionCorta" msprop:Generator_ColumnVarNameInTable="columnDescripcionCorta" msprop:Generator_ColumnPropNameInTable="DescripcionCortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Observacion" msprop:Generator_UserColumnName="Observacion" msprop:Generator_ColumnPropNameInRow="Observacion" msprop:Generator_ColumnVarNameInTable="columnObservacion" msprop:Generator_ColumnPropNameInTable="ObservacionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ZonaDetalle" msprop:Generator_UserTableName="ZonaDetalle" msprop:Generator_RowDeletedName="ZonaDetalleRowDeleted" msprop:Generator_RowChangedName="ZonaDetalleRowChanged" msprop:Generator_RowClassName="ZonaDetalleRow" msprop:Generator_RowChangingName="ZonaDetalleRowChanging" msprop:Generator_RowEvArgName="ZonaDetalleRowChangeEvent" msprop:Generator_RowEvHandlerName="ZonaDetalleRowChangeEventHandler" msprop:Generator_TableClassName="ZonaDetalleDataTable" msprop:Generator_TableVarName="tableZonaDetalle" msprop:Generator_RowDeletingName="ZonaDetalleRowDeleting" msprop:Generator_TablePropName="ZonaDetalle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Estado" msprop:Generator_UserColumnName="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Ciudad" msprop:Generator_UserColumnName="Ciudad" msprop:Generator_ColumnVarNameInTable="columnCiudad" msprop:Generator_ColumnPropNameInRow="Ciudad" msprop:Generator_ColumnPropNameInTable="CiudadColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Poblacion" msprop:Generator_UserColumnName="Poblacion" msprop:Generator_ColumnVarNameInTable="columnPoblacion" msprop:Generator_ColumnPropNameInRow="Poblacion" msprop:Generator_ColumnPropNameInTable="PoblacionColumn" type="xs:string" />
+              <xs:element name="Zona" msprop:Generator_UserColumnName="Zona" msprop:Generator_ColumnVarNameInTable="columnZona" msprop:Generator_ColumnPropNameInRow="Zona" msprop:Generator_ColumnPropNameInTable="ZonaColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Zona" />
+      <xs:field xpath="mstns:codigo" />
+    </xs:unique>
+    <xs:unique name="ZonaDetalle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ZonaDetalle" />
+      <xs:field xpath="mstns:Poblacion" />
+      <xs:field xpath="mstns:Zona" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Zona_ZonaDetalle" msdata:parent="Zona" msdata:child="ZonaDetalle" msdata:parentkey="codigo" msdata:childkey="Zona" msprop:Generator_UserRelationName="Zona_ZonaDetalle" msprop:Generator_RelationVarName="relationZona_ZonaDetalle" msprop:Generator_UserChildTable="ZonaDetalle" msprop:Generator_UserParentTable="Zona" msprop:Generator_ParentPropName="ZonaRow" msprop:Generator_ChildPropName="GetZonaDetalleRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

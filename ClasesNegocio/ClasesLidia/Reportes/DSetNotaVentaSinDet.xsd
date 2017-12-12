@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetNotaVentaSinDet" targetNamespace="http://tempuri.org/DSetNotaVentaSinDet.xsd" xmlns:mstns="http://tempuri.org/DSetNotaVentaSinDet.xsd" xmlns="http://tempuri.org/DSetNotaVentaSinDet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetNotaVentaSinDet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetNotaVentaSinDet" msprop:Generator_DataSetName="DSetNotaVentaSinDet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="NotaVenta" msprop:Generator_UserTableName="NotaVenta" msprop:Generator_RowDeletedName="NotaVentaRowDeleted" msprop:Generator_TableClassName="NotaVentaDataTable" msprop:Generator_RowChangedName="NotaVentaRowChanged" msprop:Generator_RowClassName="NotaVentaRow" msprop:Generator_RowChangingName="NotaVentaRowChanging" msprop:Generator_RowEvArgName="NotaVentaRowChangeEvent" msprop:Generator_RowEvHandlerName="NotaVentaRowChangeEventHandler" msprop:Generator_TablePropName="NotaVenta" msprop:Generator_TableVarName="tableNotaVenta" msprop:Generator_RowDeletingName="NotaVentaRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sucursal" msprop:Generator_UserColumnName="Sucursal" msprop:Generator_ColumnPropNameInRow="Sucursal" msprop:Generator_ColumnVarNameInTable="columnSucursal" msprop:Generator_ColumnPropNameInTable="SucursalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cliente" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Comicionista" msprop:Generator_UserColumnName="Comicionista" msprop:Generator_ColumnPropNameInRow="Comicionista" msprop:Generator_ColumnVarNameInTable="columnComicionista" msprop:Generator_ColumnPropNameInTable="ComicionistaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Tipo_x0020_Venta" msprop:Generator_UserColumnName="Tipo Venta" msprop:Generator_ColumnPropNameInRow="Tipo_Venta" msprop:Generator_ColumnVarNameInTable="columnTipo_Venta" msprop:Generator_ColumnPropNameInTable="Tipo_VentaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sub_x0020_Total" msprop:Generator_UserColumnName="Sub Total" msprop:Generator_ColumnPropNameInRow="Sub_Total" msprop:Generator_ColumnVarNameInTable="columnSub_Total" msprop:Generator_ColumnPropNameInTable="Sub_TotalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descuento" msprop:Generator_UserColumnName="Descuento" msprop:Generator_ColumnPropNameInRow="Descuento" msprop:Generator_ColumnVarNameInTable="columnDescuento" msprop:Generator_ColumnPropNameInTable="DescuentoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="I.V.A." msprop:Generator_UserColumnName="I.V.A." msprop:Generator_ColumnPropNameInRow="_I_V_A_" msprop:Generator_ColumnVarNameInTable="_columnI_V_A_" msprop:Generator_ColumnPropNameInTable="_I_V_A_Column" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInTable="TotalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Facturada" msprop:Generator_UserColumnName="Facturada" msprop:Generator_ColumnPropNameInRow="Facturada" msprop:Generator_ColumnVarNameInTable="columnFacturada" msprop:Generator_ColumnPropNameInTable="FacturadaColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="NotaVentaKey1">
+      <xs:selector xpath=".//mstns:NotaVenta" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

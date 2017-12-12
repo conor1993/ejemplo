@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptDiarioDeCorrales" targetNamespace="http://tempuri.org/dsRptDiarioDeCorrales.xsd" xmlns:mstns="http://tempuri.org/dsRptDiarioDeCorrales.xsd" xmlns="http://tempuri.org/dsRptDiarioDeCorrales.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptDiarioDeCorrales" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptDiarioDeCorrales" msprop:Generator_DataSetName="dsRptDiarioDeCorrales">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_TablePropName="DataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCorral" msprop:Generator_UserColumnName="IdCorral" msprop:Generator_ColumnVarNameInTable="columnIdCorral" msprop:Generator_ColumnPropNameInRow="IdCorral" msprop:Generator_ColumnPropNameInTable="IdCorralColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DescripcionCorral" msprop:Generator_UserColumnName="DescripcionCorral" msprop:Generator_ColumnVarNameInTable="columnDescripcionCorral" msprop:Generator_ColumnPropNameInRow="DescripcionCorral" msprop:Generator_ColumnPropNameInTable="DescripcionCorralColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdLote" msprop:Generator_UserColumnName="IdLote" msprop:Generator_ColumnVarNameInTable="columnIdLote" msprop:Generator_ColumnPropNameInRow="IdLote" msprop:Generator_ColumnPropNameInTable="IdLoteColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="DescripcionLote" msprop:Generator_UserColumnName="DescripcionLote" msprop:Generator_ColumnVarNameInTable="columnDescripcionLote" msprop:Generator_ColumnPropNameInRow="DescripcionLote" msprop:Generator_ColumnPropNameInTable="DescripcionLoteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaInicio" msprop:Generator_UserColumnName="FechaInicio" msprop:Generator_ColumnVarNameInTable="columnFechaInicio" msprop:Generator_ColumnPropNameInRow="FechaInicio" msprop:Generator_ColumnPropNameInTable="FechaInicioColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DiasProgEngorda" msprop:Generator_UserColumnName="DiasProgEngorda" msprop:Generator_ColumnVarNameInTable="columnDiasProgEngorda" msprop:Generator_ColumnPropNameInRow="DiasProgEngorda" msprop:Generator_ColumnPropNameInTable="DiasProgEngordaColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="FecEstSalida" msprop:Generator_UserColumnName="FecEstSalida" msprop:Generator_ColumnVarNameInTable="columnFecEstSalida" msprop:Generator_ColumnPropNameInRow="FecEstSalida" msprop:Generator_ColumnPropNameInTable="FecEstSalidaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DiasEng" msprop:Generator_UserColumnName="DiasEng" msprop:Generator_ColumnVarNameInTable="columnDiasEng" msprop:Generator_ColumnPropNameInRow="DiasEng" msprop:Generator_ColumnPropNameInTable="DiasEngColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="DiasxTransc" msprop:Generator_UserColumnName="DiasxTransc" msprop:Generator_ColumnVarNameInTable="columnDiasxTransc" msprop:Generator_ColumnPropNameInRow="DiasxTransc" msprop:Generator_ColumnPropNameInTable="DiasxTranscColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Inventario" msprop:Generator_UserColumnName="Inventario" msprop:Generator_ColumnVarNameInTable="columnInventario" msprop:Generator_ColumnPropNameInRow="Inventario" msprop:Generator_ColumnPropNameInTable="InventarioColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="PesoActxCabeza" msprop:Generator_UserColumnName="PesoActxCabeza" msprop:Generator_ColumnVarNameInTable="columnPesoActxCabeza" msprop:Generator_ColumnPropNameInRow="PesoActxCabeza" msprop:Generator_ColumnPropNameInTable="PesoActxCabezaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FormulaActual" msprop:Generator_UserColumnName="FormulaActual" msprop:Generator_ColumnVarNameInTable="columnFormulaActual" msprop:Generator_ColumnPropNameInRow="FormulaActual" msprop:Generator_ColumnPropNameInTable="FormulaActualColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DiasFormula" msprop:Generator_UserColumnName="DiasFormula" msprop:Generator_ColumnVarNameInTable="columnDiasFormula" msprop:Generator_ColumnPropNameInRow="DiasFormula" msprop:Generator_ColumnPropNameInTable="DiasFormulaColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="EtiquetaSemanal" msprop:Generator_UserColumnName="EtiquetaSemanal" msprop:Generator_ColumnPropNameInRow="EtiquetaSemanal" msprop:Generator_ColumnVarNameInTable="columnEtiquetaSemanal" msprop:Generator_ColumnPropNameInTable="EtiquetaSemanalColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsetTAlmacen" targetNamespace="http://tempuri.org/DsetTAlmacen.xsd" xmlns:mstns="http://tempuri.org/DsetTAlmacen.xsd" xmlns="http://tempuri.org/DsetTAlmacen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsetTAlmacen" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsetTAlmacen" msprop:Generator_DataSetName="DsetTAlmacen">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtTAlmacen" msprop:Generator_UserTableName="DtTAlmacen" msprop:Generator_RowDeletedName="DtTAlmacenRowDeleted" msprop:Generator_RowChangedName="DtTAlmacenRowChanged" msprop:Generator_RowClassName="DtTAlmacenRow" msprop:Generator_RowChangingName="DtTAlmacenRowChanging" msprop:Generator_RowEvArgName="DtTAlmacenRowChangeEvent" msprop:Generator_RowEvHandlerName="DtTAlmacenRowChangeEventHandler" msprop:Generator_TableClassName="DtTAlmacenDataTable" msprop:Generator_TableVarName="tableDtTAlmacen" msprop:Generator_RowDeletingName="DtTAlmacenRowDeleting" msprop:Generator_TablePropName="DtTAlmacen">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripción" msprop:Generator_UserColumnName="Descripción" msprop:Generator_ColumnPropNameInRow="Descripción" msprop:Generator_ColumnVarNameInTable="columnDescripción" msprop:Generator_ColumnPropNameInTable="DescripciónColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripción_x0020_Corta" msprop:Generator_UserColumnName="Descripción Corta" msprop:Generator_ColumnPropNameInRow="Descripción_Corta" msprop:Generator_ColumnVarNameInTable="columnDescripción_Corta" msprop:Generator_ColumnPropNameInTable="Descripción_CortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Es_x0020_Sub_x0020_Almacen" msprop:Generator_UserColumnName="Es Sub Almacen" msprop:Generator_ColumnPropNameInRow="Es_Sub_Almacen" msprop:Generator_ColumnVarNameInTable="columnEs_Sub_Almacen" msprop:Generator_ColumnPropNameInTable="Es_Sub_AlmacenColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

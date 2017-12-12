@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dstComparativoMedicamentos" targetNamespace="http://tempuri.org/dstComparativoMedicamentos.xsd" xmlns:mstns="http://tempuri.org/dstComparativoMedicamentos.xsd" xmlns="http://tempuri.org/dstComparativoMedicamentos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dstComparativoMedicamentos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dstComparativoMedicamentos" msprop:Generator_DataSetName="dstComparativoMedicamentos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Medicamentos" msprop:Generator_UserTableName="Medicamentos" msprop:Generator_RowDeletedName="MedicamentosRowDeleted" msprop:Generator_RowChangedName="MedicamentosRowChanged" msprop:Generator_RowClassName="MedicamentosRow" msprop:Generator_RowChangingName="MedicamentosRowChanging" msprop:Generator_RowEvArgName="MedicamentosRowChangeEvent" msprop:Generator_RowEvHandlerName="MedicamentosRowChangeEventHandler" msprop:Generator_TableClassName="MedicamentosDataTable" msprop:Generator_TableVarName="tableMedicamentos" msprop:Generator_RowDeletingName="MedicamentosRowDeleting" msprop:Generator_TablePropName="Medicamentos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioAplicacionMedicamento" msprop:Generator_UserColumnName="FolioAplicacionMedicamento" msprop:Generator_ColumnVarNameInTable="columnFolioAplicacionMedicamento" msprop:Generator_ColumnPropNameInRow="FolioAplicacionMedicamento" msprop:Generator_ColumnPropNameInTable="FolioAplicacionMedicamentoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaAplicacionMedicamento" msprop:Generator_UserColumnName="FechaAplicacionMedicamento" msprop:Generator_ColumnVarNameInTable="columnFechaAplicacionMedicamento" msprop:Generator_ColumnPropNameInRow="FechaAplicacionMedicamento" msprop:Generator_ColumnPropNameInTable="FechaAplicacionMedicamentoColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Medicamento" msprop:Generator_UserColumnName="Medicamento" msprop:Generator_ColumnVarNameInTable="columnMedicamento" msprop:Generator_ColumnPropNameInRow="Medicamento" msprop:Generator_ColumnPropNameInTable="MedicamentoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UnidadMedida" msprop:Generator_UserColumnName="UnidadMedida" msprop:Generator_ColumnVarNameInTable="columnUnidadMedida" msprop:Generator_ColumnPropNameInRow="UnidadMedida" msprop:Generator_ColumnPropNameInTable="UnidadMedidaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Lote" msprop:Generator_UserColumnName="Lote" msprop:Generator_ColumnVarNameInTable="columnLote" msprop:Generator_ColumnPropNameInRow="Lote" msprop:Generator_ColumnPropNameInTable="LoteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Corral" msprop:Generator_UserColumnName="Corral" msprop:Generator_ColumnVarNameInTable="columnCorral" msprop:Generator_ColumnPropNameInRow="Corral" msprop:Generator_ColumnPropNameInTable="CorralColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CosProm" msprop:Generator_UserColumnName="CosProm" msprop:Generator_ColumnVarNameInTable="columnCosProm" msprop:Generator_ColumnPropNameInRow="CosProm" msprop:Generator_ColumnPropNameInTable="CosPromColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ImporteReal" msprop:Generator_UserColumnName="ImporteReal" msprop:Generator_ColumnVarNameInTable="columnImporteReal" msprop:Generator_ColumnPropNameInRow="ImporteReal" msprop:Generator_ColumnPropNameInTable="ImporteRealColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantidadTeorica" msprop:Generator_UserColumnName="CantidadTeorica" msprop:Generator_ColumnVarNameInTable="columnCantidadTeorica" msprop:Generator_ColumnPropNameInRow="CantidadTeorica" msprop:Generator_ColumnPropNameInTable="CantidadTeoricaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DifPorc" msprop:Generator_UserColumnName="DifPorc" msprop:Generator_ColumnVarNameInTable="columnDifPorc" msprop:Generator_ColumnPropNameInRow="DifPorc" msprop:Generator_ColumnPropNameInTable="DifPorcColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cabezas" msprop:Generator_UserColumnName="Cabezas" msprop:Generator_ColumnPropNameInRow="Cabezas" msprop:Generator_ColumnVarNameInTable="columnCabezas" msprop:Generator_ColumnPropNameInTable="CabezasColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

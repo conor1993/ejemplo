@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReporteEmbarques" targetNamespace="http://tempuri.org/dsReporteEmbarques.xsd" xmlns:mstns="http://tempuri.org/dsReporteEmbarques.xsd" xmlns="http://tempuri.org/dsReporteEmbarques.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReporteEmbarques" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsReporteEmbarques" msprop:Generator_DataSetName="dsReporteEmbarques">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Embarques" msprop:Generator_UserTableName="Embarques" msprop:Generator_RowDeletedName="EmbarquesRowDeleted" msprop:Generator_TableClassName="EmbarquesDataTable" msprop:Generator_RowChangedName="EmbarquesRowChanged" msprop:Generator_RowClassName="EmbarquesRow" msprop:Generator_RowChangingName="EmbarquesRowChanging" msprop:Generator_RowEvArgName="EmbarquesRowChangeEvent" msprop:Generator_RowEvHandlerName="EmbarquesRowChangeEventHandler" msprop:Generator_TablePropName="Embarques" msprop:Generator_TableVarName="tableEmbarques" msprop:Generator_RowDeletingName="EmbarquesRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdFolioEmbarque" msprop:Generator_UserColumnName="IdFolioEmbarque" msprop:Generator_ColumnPropNameInRow="IdFolioEmbarque" msprop:Generator_ColumnVarNameInTable="columnIdFolioEmbarque" msprop:Generator_ColumnPropNameInTable="IdFolioEmbarqueColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaEmbarque" msprop:Generator_UserColumnName="FechaEmbarque" msprop:Generator_ColumnPropNameInRow="FechaEmbarque" msprop:Generator_ColumnVarNameInTable="columnFechaEmbarque" msprop:Generator_ColumnPropNameInTable="FechaEmbarqueColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Cliente" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CantPzas" msprop:Generator_UserColumnName="CantPzas" msprop:Generator_ColumnPropNameInRow="CantPzas" msprop:Generator_ColumnVarNameInTable="columnCantPzas" msprop:Generator_ColumnPropNameInTable="CantPzasColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantKgrs" msprop:Generator_UserColumnName="CantKgrs" msprop:Generator_ColumnPropNameInRow="CantKgrs" msprop:Generator_ColumnVarNameInTable="columnCantKgrs" msprop:Generator_ColumnPropNameInTable="CantKgrsColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

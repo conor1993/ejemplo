@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptCorrales" targetNamespace="http://tempuri.org/dsRptCorralesRecepcion.xsd" xmlns:mstns="http://tempuri.org/dsRptCorralesRecepcion.xsd" xmlns="http://tempuri.org/dsRptCorralesRecepcion.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GANADERAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="GANADERAConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.My.MySettings.GlobalReference.Default.GANADERAConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptCorrales" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptCorrales" msprop:Generator_DataSetName="dsRptCorrales">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MCECatCorralesCab" msprop:Generator_UserTableName="MCECatCorralesCab" msprop:Generator_RowDeletedName="MCECatCorralesCabRowDeleted" msprop:Generator_RowChangedName="MCECatCorralesCabRowChanged" msprop:Generator_RowClassName="MCECatCorralesCabRow" msprop:Generator_RowChangingName="MCECatCorralesCabRowChanging" msprop:Generator_RowEvArgName="MCECatCorralesCabRowChangeEvent" msprop:Generator_RowEvHandlerName="MCECatCorralesCabRowChangeEventHandler" msprop:Generator_TableClassName="MCECatCorralesCabDataTable" msprop:Generator_TableVarName="tableMCECatCorralesCab" msprop:Generator_RowDeletingName="MCECatCorralesCabRowDeleting" msprop:Generator_TablePropName="MCECatCorralesCab">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCorral" msprop:Generator_UserColumnName="IdCorral" msprop:Generator_ColumnPropNameInRow="IdCorral" msprop:Generator_ColumnVarNameInTable="columnIdCorral" msprop:Generator_ColumnPropNameInTable="IdCorralColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NombreCorral" msprop:Generator_UserColumnName="NombreCorral" msprop:Generator_ColumnPropNameInRow="NombreCorral" msprop:Generator_ColumnVarNameInTable="columnNombreCorral" msprop:Generator_ColumnPropNameInTable="NombreCorralColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NomCorCorral" msprop:Generator_UserColumnName="NomCorCorral" msprop:Generator_ColumnPropNameInRow="NomCorCorral" msprop:Generator_ColumnVarNameInTable="columnNomCorCorral" msprop:Generator_ColumnPropNameInTable="NomCorCorralColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdTipoCorral" msprop:Generator_UserColumnName="IdTipoCorral" msprop:Generator_ColumnPropNameInRow="IdTipoCorral" msprop:Generator_ColumnVarNameInTable="columnIdTipoCorral" msprop:Generator_ColumnPropNameInTable="IdTipoCorralColumn" type="xs:int" />
+              <xs:element name="Capacidad" msprop:Generator_UserColumnName="Capacidad" msprop:Generator_ColumnPropNameInRow="Capacidad" msprop:Generator_ColumnVarNameInTable="columnCapacidad" msprop:Generator_ColumnPropNameInTable="CapacidadColumn" type="xs:decimal" />
+              <xs:element name="Superficie" msprop:Generator_UserColumnName="Superficie" msprop:Generator_ColumnPropNameInRow="Superficie" msprop:Generator_ColumnVarNameInTable="columnSuperficie" msprop:Generator_ColumnPropNameInTable="SuperficieColumn" type="xs:decimal" />
+              <xs:element name="Observaciones" msprop:Generator_UserColumnName="Observaciones" msprop:Generator_ColumnPropNameInRow="Observaciones" msprop:Generator_ColumnVarNameInTable="columnObservaciones" msprop:Generator_ColumnPropNameInTable="ObservacionesColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:short" />
+              <xs:element name="EstatusDescripcion" msdata:ReadOnly="true" msdata:Expression="IIF(Estatus=1,'VIGENTE', 'CANCELADO')" msprop:Generator_UserColumnName="EstatusDescripcion" msprop:Generator_ColumnVarNameInTable="columnEstatusDescripcion" msprop:Generator_ColumnPropNameInRow="EstatusDescripcion" msprop:Generator_ColumnPropNameInTable="EstatusDescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaBaja" msprop:Generator_UserColumnName="FechaBaja" msprop:Generator_ColumnPropNameInRow="FechaBaja" msprop:Generator_ColumnVarNameInTable="columnFechaBaja" msprop:Generator_ColumnPropNameInTable="FechaBajaColumn" type="xs:dateTime" />
+              <xs:element name="MotivoBaja" msprop:Generator_UserColumnName="MotivoBaja" msprop:Generator_ColumnPropNameInRow="MotivoBaja" msprop:Generator_ColumnVarNameInTable="columnMotivoBaja" msprop:Generator_ColumnPropNameInTable="MotivoBajaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QuiendioBaja" msprop:Generator_UserColumnName="QuiendioBaja" msprop:Generator_ColumnPropNameInRow="QuiendioBaja" msprop:Generator_ColumnVarNameInTable="columnQuiendioBaja" msprop:Generator_ColumnPropNameInTable="QuiendioBajaColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Cabezas" msdata:ReadOnly="true" msdata:Expression="IIF(Sum(Child(Cab_Det).ExistCabezas)&lt;0,0,Sum(Child(Cab_Det).ExistCabezas))" msprop:Generator_UserColumnName="Cabezas" msprop:Generator_ColumnPropNameInRow="Cabezas" msprop:Generator_ColumnVarNameInTable="columnCabezas" msprop:Generator_ColumnPropNameInTable="CabezasColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="Kilos" msdata:ReadOnly="true" msdata:Expression="IIF(Sum(Child(Cab_Det).ExistKilos)&lt;0,0,Sum(Child(Cab_Det).ExistKilos))" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TipoCorral" msprop:Generator_UserColumnName="TipoCorral" msprop:Generator_ColumnPropNameInRow="TipoCorral" msprop:Generator_ColumnVarNameInTable="columnTipoCorral" msprop:Generator_ColumnPropNameInTable="TipoCorralColumn" type="xs:short" />
+              <xs:element name="CostoEntrada" msdata:ReadOnly="true" msdata:Expression="Sum(Child(Cab_Det).CostoEnt)" msprop:Generator_UserColumnName="CostoEntrada" msprop:Generator_ColumnPropNameInRow="CostoEntrada" msprop:Generator_ColumnVarNameInTable="columnCostoEntrada" msprop:Generator_ColumnPropNameInTable="CostoEntradaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoMedicamento" msdata:ReadOnly="true" msdata:Expression="Sum(Child(Cab_Det).ImpteMedicamento)" msprop:Generator_UserColumnName="CostoMedicamento" msprop:Generator_ColumnPropNameInRow="CostoMedicamento" msprop:Generator_ColumnVarNameInTable="columnCostoMedicamento" msprop:Generator_ColumnPropNameInTable="CostoMedicamentoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoAlimento" msdata:ReadOnly="true" msdata:Expression="Sum(Child(Cab_Det).ImpteAlimento)" msprop:Generator_UserColumnName="CostoAlimento" msprop:Generator_ColumnPropNameInRow="CostoAlimento" msprop:Generator_ColumnVarNameInTable="columnCostoAlimento" msprop:Generator_ColumnPropNameInTable="CostoAlimentoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoxKilo" msdata:ReadOnly="true" msdata:Expression="IIF(Kilos=0,0,(CostoEntrada+CostoMedicamento+CostoAlimento)/IIF(Kilos=0,1,Kilos))" msprop:Generator_UserColumnName="CostoxKilo" msprop:Generator_ColumnPropNameInRow="CostoxKilo" msprop:Generator_ColumnVarNameInTable="columnCostoxKilo" msprop:Generator_ColumnPropNameInTable="CostoxKiloColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoxCabeza" msdata:ReadOnly="true" msdata:Expression="IIF(Cabezas=0,0,(CostoEntrada+CostoMedicamento+CostoAlimento)/IIF(Cabezas=0,1,Cabezas))" msprop:Generator_UserColumnName="CostoxCabeza" msprop:Generator_ColumnPropNameInRow="CostoxCabeza" msprop:Generator_ColumnVarNameInTable="columnCostoxCabeza" msprop:Generator_ColumnPropNameInTable="CostoxCabezaColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MCECatCorralesDet" msprop:Generator_UserTableName="MCECatCorralesDet" msprop:Generator_RowDeletedName="MCECatCorralesDetRowDeleted" msprop:Generator_RowChangedName="MCECatCorralesDetRowChanged" msprop:Generator_RowClassName="MCECatCorralesDetRow" msprop:Generator_RowChangingName="MCECatCorralesDetRowChanging" msprop:Generator_RowEvArgName="MCECatCorralesDetRowChangeEvent" msprop:Generator_RowEvHandlerName="MCECatCorralesDetRowChangeEventHandler" msprop:Generator_TableClassName="MCECatCorralesDetDataTable" msprop:Generator_TableVarName="tableMCECatCorralesDet" msprop:Generator_RowDeletingName="MCECatCorralesDetRowDeleting" msprop:Generator_TablePropName="MCECatCorralesDet">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCorral" msprop:Generator_UserColumnName="IdCorral" msprop:Generator_ColumnPropNameInRow="IdCorral" msprop:Generator_ColumnVarNameInTable="columnIdCorral" msprop:Generator_ColumnPropNameInTable="IdCorralColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdTipoGanado" msprop:Generator_UserColumnName="IdTipoGanado" msprop:Generator_ColumnPropNameInRow="IdTipoGanado" msprop:Generator_ColumnVarNameInTable="columnIdTipoGanado" msprop:Generator_ColumnPropNameInTable="IdTipoGanadoColumn" type="xs:int" />
+              <xs:element name="ExistCabezas" msprop:Generator_UserColumnName="ExistCabezas" msprop:Generator_ColumnPropNameInRow="ExistCabezas" msprop:Generator_ColumnVarNameInTable="columnExistCabezas" msprop:Generator_ColumnPropNameInTable="ExistCabezasColumn" type="xs:decimal" />
+              <xs:element name="ExistKilos" msprop:Generator_UserColumnName="ExistKilos" msprop:Generator_ColumnPropNameInRow="ExistKilos" msprop:Generator_ColumnVarNameInTable="columnExistKilos" msprop:Generator_ColumnPropNameInTable="ExistKilosColumn" type="xs:decimal" />
+              <xs:element name="CostoEnt" msprop:Generator_UserColumnName="CostoEnt" msprop:Generator_ColumnPropNameInRow="CostoEnt" msprop:Generator_ColumnVarNameInTable="columnCostoEnt" msprop:Generator_ColumnPropNameInTable="CostoEntColumn" type="xs:decimal" />
+              <xs:element name="ImpteMedicamento" msprop:Generator_UserColumnName="ImpteMedicamento" msprop:Generator_ColumnPropNameInRow="ImpteMedicamento" msprop:Generator_ColumnVarNameInTable="columnImpteMedicamento" msprop:Generator_ColumnPropNameInTable="ImpteMedicamentoColumn" type="xs:decimal" />
+              <xs:element name="ImpteAlimento" msprop:Generator_UserColumnName="ImpteAlimento" msprop:Generator_ColumnPropNameInRow="ImpteAlimento" msprop:Generator_ColumnVarNameInTable="columnImpteAlimento" msprop:Generator_ColumnPropNameInTable="ImpteAlimentoColumn" type="xs:decimal" />
+              <xs:element name="KilosAlimento" msprop:Generator_UserColumnName="KilosAlimento" msprop:Generator_ColumnPropNameInRow="KilosAlimento" msprop:Generator_ColumnVarNameInTable="columnKilosAlimento" msprop:Generator_ColumnPropNameInTable="KilosAlimentoColumn" type="xs:decimal" />
+              <xs:element name="FechaUltEnt" msprop:Generator_UserColumnName="FechaUltEnt" msprop:Generator_ColumnPropNameInRow="FechaUltEnt" msprop:Generator_ColumnVarNameInTable="columnFechaUltEnt" msprop:Generator_ColumnPropNameInTable="FechaUltEntColumn" type="xs:dateTime" />
+              <xs:element name="FechaUltSal" msprop:Generator_UserColumnName="FechaUltSal" msprop:Generator_ColumnPropNameInRow="FechaUltSal" msprop:Generator_ColumnVarNameInTable="columnFechaUltSal" msprop:Generator_ColumnPropNameInTable="FechaUltSalColumn" type="xs:dateTime" />
+              <xs:element name="FechaUltReinicio" msprop:Generator_UserColumnName="FechaUltReinicio" msprop:Generator_ColumnPropNameInRow="FechaUltReinicio" msprop:Generator_ColumnVarNameInTable="columnFechaUltReinicio" msprop:Generator_ColumnPropNameInTable="FechaUltReinicioColumn" type="xs:dateTime" />
+              <xs:element name="SaldoCostoInd" msprop:Generator_UserColumnName="SaldoCostoInd" msprop:Generator_ColumnPropNameInRow="SaldoCostoInd" msprop:Generator_ColumnVarNameInTable="columnSaldoCostoInd" msprop:Generator_ColumnPropNameInTable="SaldoCostoIndColumn" type="xs:decimal" />
+              <xs:element name="CostoxKilo" msdata:ReadOnly="true" msdata:Expression="IIF(ExistKilos=0,0,(CostoEnt+ImpteMedicamento+ImpteAlimento)/IIF(ExistKilos=0,1,ExistKilos))" msprop:Generator_UserColumnName="CostoxKilo" msprop:Generator_ColumnPropNameInRow="CostoxKilo" msprop:Generator_ColumnVarNameInTable="columnCostoxKilo" msprop:Generator_ColumnPropNameInTable="CostoxKiloColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoxCabeza" msdata:ReadOnly="true" msdata:Expression="IIF(ExistCabezas=0,0,(CostoEnt+ImpteMedicamento+ImpteAlimento)/IIF(ExistCabezas=0,1,ExistCabezas))" msprop:Generator_UserColumnName="CostoxCabeza" msprop:Generator_ColumnPropNameInRow="CostoxCabeza" msprop:Generator_ColumnVarNameInTable="columnCostoxCabeza" msprop:Generator_ColumnPropNameInTable="CostoxCabezaColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MCECatTiposCorral" msprop:Generator_UserTableName="MCECatTiposCorral" msprop:Generator_RowDeletedName="MCECatTiposCorralRowDeleted" msprop:Generator_RowChangedName="MCECatTiposCorralRowChanged" msprop:Generator_RowClassName="MCECatTiposCorralRow" msprop:Generator_RowChangingName="MCECatTiposCorralRowChanging" msprop:Generator_RowEvArgName="MCECatTiposCorralRowChangeEvent" msprop:Generator_RowEvHandlerName="MCECatTiposCorralRowChangeEventHandler" msprop:Generator_TableClassName="MCECatTiposCorralDataTable" msprop:Generator_TableVarName="tableMCECatTiposCorral" msprop:Generator_RowDeletingName="MCECatTiposCorralRowDeleting" msprop:Generator_TablePropName="MCECatTiposCorral">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DescTipoCorral" msprop:Generator_UserColumnName="DescTipoCorral" msprop:Generator_ColumnPropNameInRow="DescTipoCorral" msprop:Generator_ColumnVarNameInTable="columnDescTipoCorral" msprop:Generator_ColumnPropNameInTable="DescTipoCorralColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdTipoCorral" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="IdTipoCorral" msprop:Generator_ColumnPropNameInRow="IdTipoCorral" msprop:Generator_ColumnVarNameInTable="columnIdTipoCorral" msprop:Generator_ColumnPropNameInTable="IdTipoCorralColumn" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MCECatCorralesCab" />
+      <xs:field xpath="mstns:IdCorral" />
+    </xs:unique>
+    <xs:unique name="MCECatCorralesDet_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MCECatCorralesDet" />
+      <xs:field xpath="mstns:IdCorral" />
+      <xs:field xpath="mstns:IdTipoGanado" />
+    </xs:unique>
+    <xs:unique name="MCECatTiposCorral_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MCECatTiposCorral" />
+      <xs:field xpath="mstns:IdTipoCorral" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Cab_Det" msdata:parent="MCECatCorralesCab" msdata:child="MCECatCorralesDet" msdata:parentkey="IdCorral" msdata:childkey="IdCorral" msprop:Generator_UserRelationName="Cab_Det" msprop:Generator_RelationVarName="relationCab_Det" msprop:Generator_UserChildTable="MCECatCorralesDet" msprop:Generator_UserParentTable="MCECatCorralesCab" msprop:Generator_ParentPropName="MCECatCorralesCabRow" msprop:Generator_ChildPropName="GetMCECatCorralesDetRows" />
+      <msdata:Relationship name="Tipos_Cab" msdata:parent="MCECatTiposCorral" msdata:child="MCECatCorralesCab" msdata:parentkey="IdTipoCorral" msdata:childkey="IdTipoCorral" msprop:Generator_UserRelationName="Tipos_Cab" msprop:Generator_RelationVarName="relationTipos_Cab" msprop:Generator_UserChildTable="MCECatCorralesCab" msprop:Generator_UserParentTable="MCECatTiposCorral" msprop:Generator_ParentPropName="MCECatTiposCorralRow" msprop:Generator_ChildPropName="GetMCECatCorralesCabRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

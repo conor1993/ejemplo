@@ -1,0 +1,126 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LLBLGen", "LLBLGen", "{F30C5823-9791-48FD-9F82-DE5693F33E59}"
+	ProjectSection(SolutionItems) = preProject
+		LLBLGen\ORM.lgp = LLBLGen\ORM.lgp
+		LLBLGen\ORMSeguridad.lgp = LLBLGen\ORMSeguridad.lgp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Script", "Script", "{7F57DA37-9868-438F-87FC-D39B3AF7EFCE}"
+	ProjectSection(SolutionItems) = preProject
+		Script\0001 CabMovGan.sql = Script\0001 CabMovGan.sql
+		Script\0002 DetMovGan.sql = Script\0002 DetMovGan.sql
+		Script\0003 MCECatCorralesCab.sql = Script\0003 MCECatCorralesCab.sql
+		Script\0004 CabGasTrans.sql = Script\0004 CabGasTrans.sql
+		Script\0005 DetGasTrans.sql = Script\0005 DetGasTrans.sql
+		Script\0006 CabRegCom.sql = Script\0006 CabRegCom.sql
+		Script\0007 DetRegCom.sql = Script\0007 DetRegCom.sql
+		Script\0008 ConfigGan.sql = Script\0008 ConfigGan.sql
+		Script\0009 MCGCatConcepGastos.sql = Script\0009 MCGCatConcepGastos.sql
+		Script\0010 MCGCatCompradoresdeGanado.sql = Script\0010 MCGCatCompradoresdeGanado.sql
+		Script\0011 MCECatCorralesCab.sql = Script\0011 MCECatCorralesCab.sql
+		Script\0012 MCECatCorralesCab.sql = Script\0012 MCECatCorralesCab.sql
+		Script\0013 MCGCatTiposdeGanado.sql = Script\0013 MCGCatTiposdeGanado.sql
+		Script\0014 FacturasGenerales.sql = Script\0014 FacturasGenerales.sql
+		Script\0015 VwPagoClientesCabecero.sql = Script\0015 VwPagoClientesCabecero.sql
+		Script\0016 MGCnfFoliadores.sql = Script\0016 MGCnfFoliadores.sql
+		Script\0017 MGCnfFoliadores.sql = Script\0017 MGCnfFoliadores.sql
+		Script\Jado 0001 CabAplFor.sql = Script\Jado 0001 CabAplFor.sql
+		Script\Jado 0002 DetAplFor.sql = Script\Jado 0002 DetAplFor.sql
+		Script\Jado 0003 Creacion de Relacion y Modificacion a tablas de Aplicacion Formula.sql = Script\Jado 0003 Creacion de Relacion y Modificacion a tablas de Aplicacion Formula.sql
+		Script\Jado 0004 Aplicacion de Formulas.sql = Script\Jado 0004 Aplicacion de Formulas.sql
+		Script\Jado 0005 CabAplFor.sql = Script\Jado 0005 CabAplFor.sql
+		Script\Jado 0006 DetAplFor.sql = Script\Jado 0006 DetAplFor.sql
+		Script\Jado 0007 MCECatLotesDet.sql = Script\Jado 0007 MCECatLotesDet.sql
+		Script\Jado 0008 MCatCompProductosMezclas.sql = Script\Jado 0008 MCatCompProductosMezclas.sql
+		Script\Jado 0009 CabPrepForm.sql = Script\Jado 0009 CabPrepForm.sql
+		Script\Jado 0010 CabPrepForm.sql = Script\Jado 0010 CabPrepForm.sql
+		Script\jado 0011 CabAplFor.sql = Script\jado 0011 CabAplFor.sql
+		Script\Jado 0012 CabAplFor.sql = Script\Jado 0012 CabAplFor.sql
+		Script\jado 0013 MCECatLotesCab.sql = Script\jado 0013 MCECatLotesCab.sql
+		Script\jado 0014 CabAplFor.sql = Script\jado 0014 CabAplFor.sql
+		Script\jado 0015 MInvConfiguracion.sql = Script\jado 0015 MInvConfiguracion.sql
+		Script\Jado 0016 DetAplFor.sql = Script\Jado 0016 DetAplFor.sql
+		Script\Jado 0017 DetAplFor.sql = Script\Jado 0017 DetAplFor.sql
+		Script\JADO 0018 MCGConfiguracionMovimientoGanado.sql = Script\JADO 0018 MCGConfiguracionMovimientoGanado.sql
+		Script\Jado 0019 CabMediReim.sql = Script\Jado 0019 CabMediReim.sql
+		Script\Jado 0020 CabMediTrab.sql = Script\Jado 0020 CabMediTrab.sql
+		Script\jado 0021 MInvAlmacenMovimiento.sql = Script\jado 0021 MInvAlmacenMovimiento.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clases", "Clases", "{B2EC3FF0-053E-4FC9-AA3F-BE314FDD67F3}"
+	ProjectSection(SolutionItems) = preProject
+		Clases\AxInterop.TALBarCode.dll = Clases\AxInterop.TALBarCode.dll
+		Clases\ClaseSeguridad.dll = Clases\ClaseSeguridad.dll
+		Clases\Integra-Lab.Encryptacion.dll = Clases\Integra-Lab.Encryptacion.dll
+		Clases\Integra.Controles.dll = Clases\Integra.Controles.dll
+		Clases\IntegraClases.dll = Clases\IntegraClases.dll
+		Clases\IntegraLab.Controles.dll = Clases\IntegraLab.Controles.dll
+		Clases\IntegraLab.Formas.dll = Clases\IntegraLab.Formas.dll
+		Clases\Interop.TALBarCode.dll = Clases\Interop.TALBarCode.dll
+		Clases\SD.LLBLGen.Pro.DQE.SqlServer.NET20.dll = Clases\SD.LLBLGen.Pro.DQE.SqlServer.NET20.dll
+		Clases\SD.LLBLGen.Pro.ORMSupportClasses.NET20.dll = Clases\SD.LLBLGen.Pro.ORMSupportClasses.NET20.dll
+		Clases\wcltextboxserial.dll = Clases\wcltextboxserial.dll
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Ganadero", "MEAT\Ganadero.vbproj", "{F95A9202-ED3F-412A-8367-B5DD583F16E9}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupMEAT", "SetupMEAT\SetupMEAT.vdproj", "{EA4A83C0-48A2-4903-BF85-128C923C8C2F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClasesNegocio", "ClasesNegocio\ClasesNegocio.vbproj", "{F5B516EB-5C36-4EAC-A28E-AAF06675840C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Integralab.ORM", "Integralab.ORM\Integralab.ORM.vbproj", "{DD9B650E-E2CA-4405-B598-C26B0770F6F4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClasesComunes", "ClasesComunes\ClasesComunes.vbproj", "{3C5D1831-9217-4117-B1BC-5F6F80DB985B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+		Description = MANEJO DE ENGORDA Y ADMINISTRACION TOTAL
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F95A9202-ED3F-412A-8367-B5DD583F16E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F95A9202-ED3F-412A-8367-B5DD583F16E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F95A9202-ED3F-412A-8367-B5DD583F16E9}.Debug|x86.ActiveCfg = Debug|x86
+		{F95A9202-ED3F-412A-8367-B5DD583F16E9}.Debug|x86.Build.0 = Debug|x86
+		{F95A9202-ED3F-412A-8367-B5DD583F16E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F95A9202-ED3F-412A-8367-B5DD583F16E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F95A9202-ED3F-412A-8367-B5DD583F16E9}.Release|x86.ActiveCfg = Release|x86
+		{F95A9202-ED3F-412A-8367-B5DD583F16E9}.Release|x86.Build.0 = Release|x86
+		{EA4A83C0-48A2-4903-BF85-128C923C8C2F}.Debug|Any CPU.ActiveCfg = Debug
+		{EA4A83C0-48A2-4903-BF85-128C923C8C2F}.Debug|x86.ActiveCfg = Debug
+		{EA4A83C0-48A2-4903-BF85-128C923C8C2F}.Release|Any CPU.ActiveCfg = Release
+		{EA4A83C0-48A2-4903-BF85-128C923C8C2F}.Release|x86.ActiveCfg = Release
+		{F5B516EB-5C36-4EAC-A28E-AAF06675840C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B516EB-5C36-4EAC-A28E-AAF06675840C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B516EB-5C36-4EAC-A28E-AAF06675840C}.Debug|x86.ActiveCfg = Debug|x86
+		{F5B516EB-5C36-4EAC-A28E-AAF06675840C}.Debug|x86.Build.0 = Debug|x86
+		{F5B516EB-5C36-4EAC-A28E-AAF06675840C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B516EB-5C36-4EAC-A28E-AAF06675840C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B516EB-5C36-4EAC-A28E-AAF06675840C}.Release|x86.ActiveCfg = Release|x86
+		{F5B516EB-5C36-4EAC-A28E-AAF06675840C}.Release|x86.Build.0 = Release|x86
+		{DD9B650E-E2CA-4405-B598-C26B0770F6F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD9B650E-E2CA-4405-B598-C26B0770F6F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD9B650E-E2CA-4405-B598-C26B0770F6F4}.Debug|x86.ActiveCfg = Debug|x86
+		{DD9B650E-E2CA-4405-B598-C26B0770F6F4}.Debug|x86.Build.0 = Debug|x86
+		{DD9B650E-E2CA-4405-B598-C26B0770F6F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD9B650E-E2CA-4405-B598-C26B0770F6F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD9B650E-E2CA-4405-B598-C26B0770F6F4}.Release|x86.ActiveCfg = Release|x86
+		{DD9B650E-E2CA-4405-B598-C26B0770F6F4}.Release|x86.Build.0 = Release|x86
+		{3C5D1831-9217-4117-B1BC-5F6F80DB985B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5D1831-9217-4117-B1BC-5F6F80DB985B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5D1831-9217-4117-B1BC-5F6F80DB985B}.Debug|x86.ActiveCfg = Debug|x86
+		{3C5D1831-9217-4117-B1BC-5F6F80DB985B}.Debug|x86.Build.0 = Debug|x86
+		{3C5D1831-9217-4117-B1BC-5F6F80DB985B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5D1831-9217-4117-B1BC-5F6F80DB985B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5D1831-9217-4117-B1BC-5F6F80DB985B}.Release|x86.ActiveCfg = Release|x86
+		{3C5D1831-9217-4117-B1BC-5F6F80DB985B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

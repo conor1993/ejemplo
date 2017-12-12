@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRendimientosSacrificios" targetNamespace="http://tempuri.org/dsRendimientosSacrificios.xsd" xmlns:mstns="http://tempuri.org/dsRendimientosSacrificios.xsd" xmlns="http://tempuri.org/dsRendimientosSacrificios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GanaderaConnectionString2" IsAppSettingsProperty="True" Modifier="Assembly" Name="GanaderaConnectionString2 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MySettings.GlobalReference.Default.GanaderaConnectionString2" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwProdRendimientosSacrificiosTableAdapter" GeneratorDataComponentClassName="vwProdRendimientosSacrificiosTableAdapter" Name="vwProdRendimientosSacrificios" UserDataComponentName="vwProdRendimientosSacrificiosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GanaderaConnectionString2 (MySettings)" DbObjectName="Ganadera.dbo.vwProdRendimientosSacrificios" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     vwProdRendimientosSacrificios.*
+FROM         vwProdRendimientosSacrificios</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="FolioSacrificio" DataSetColumn="FolioSacrificio" />
+              <Mapping SourceColumn="FechaSacrificio" DataSetColumn="FechaSacrificio" />
+              <Mapping SourceColumn="CantCabSacrificio" DataSetColumn="CantCabSacrificio" />
+              <Mapping SourceColumn="KgsEnPie" DataSetColumn="KgsEnPie" />
+              <Mapping SourceColumn="IdCodCliente" DataSetColumn="IdCodCliente" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Canales" DataSetColumn="Canales" />
+              <Mapping SourceColumn="KilosCalientes" DataSetColumn="KilosCalientes" />
+              <Mapping SourceColumn="KilosBasculas" DataSetColumn="KilosBasculas" />
+              <Mapping SourceColumn="RendimientoPorSacrificio" DataSetColumn="RendimientoPorSacrificio" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRendimientosSacrificios" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRendimientosSacrificios" msprop:Generator_DataSetName="dsRendimientosSacrificios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwProdRendimientosSacrificios" msprop:Generator_UserTableName="vwProdRendimientosSacrificios" msprop:Generator_RowDeletedName="vwProdRendimientosSacrificiosRowDeleted" msprop:Generator_RowChangedName="vwProdRendimientosSacrificiosRowChanged" msprop:Generator_RowClassName="vwProdRendimientosSacrificiosRow" msprop:Generator_RowChangingName="vwProdRendimientosSacrificiosRowChanging" msprop:Generator_RowEvArgName="vwProdRendimientosSacrificiosRowChangeEvent" msprop:Generator_RowEvHandlerName="vwProdRendimientosSacrificiosRowChangeEventHandler" msprop:Generator_TableClassName="vwProdRendimientosSacrificiosDataTable" msprop:Generator_TableVarName="tablevwProdRendimientosSacrificios" msprop:Generator_RowDeletingName="vwProdRendimientosSacrificiosRowDeleting" msprop:Generator_TablePropName="vwProdRendimientosSacrificios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioSacrificio" msprop:Generator_UserColumnName="FolioSacrificio" msprop:Generator_ColumnVarNameInTable="columnFolioSacrificio" msprop:Generator_ColumnPropNameInRow="FolioSacrificio" msprop:Generator_ColumnPropNameInTable="FolioSacrificioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaSacrificio" msprop:Generator_UserColumnName="FechaSacrificio" msprop:Generator_ColumnVarNameInTable="columnFechaSacrificio" msprop:Generator_ColumnPropNameInRow="FechaSacrificio" msprop:Generator_ColumnPropNameInTable="FechaSacrificioColumn" type="xs:dateTime" />
+              <xs:element name="CantCabSacrificio" msprop:Generator_UserColumnName="CantCabSacrificio" msprop:Generator_ColumnVarNameInTable="columnCantCabSacrificio" msprop:Generator_ColumnPropNameInRow="CantCabSacrificio" msprop:Generator_ColumnPropNameInTable="CantCabSacrificioColumn" type="xs:int" />
+              <xs:element name="KgsEnPie" msprop:Generator_UserColumnName="KgsEnPie" msprop:Generator_ColumnVarNameInTable="columnKgsEnPie" msprop:Generator_ColumnPropNameInRow="KgsEnPie" msprop:Generator_ColumnPropNameInTable="KgsEnPieColumn" type="xs:decimal" />
+              <xs:element name="IdCodCliente" msprop:Generator_UserColumnName="IdCodCliente" msprop:Generator_ColumnVarNameInTable="columnIdCodCliente" msprop:Generator_ColumnPropNameInRow="IdCodCliente" msprop:Generator_ColumnPropNameInTable="IdCodClienteColumn" type="xs:int" />
+              <xs:element name="Nombre" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Canales" msprop:Generator_UserColumnName="Canales" msprop:Generator_ColumnVarNameInTable="columnCanales" msprop:Generator_ColumnPropNameInRow="Canales" msprop:Generator_ColumnPropNameInTable="CanalesColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KilosCalientes" msprop:Generator_UserColumnName="KilosCalientes" msprop:Generator_ColumnVarNameInTable="columnKilosCalientes" msprop:Generator_ColumnPropNameInRow="KilosCalientes" msprop:Generator_ColumnPropNameInTable="KilosCalientesColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosBasculas" msprop:Generator_UserColumnName="KilosBasculas" msprop:Generator_ColumnVarNameInTable="columnKilosBasculas" msprop:Generator_ColumnPropNameInRow="KilosBasculas" msprop:Generator_ColumnPropNameInTable="KilosBasculasColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RendimientoPorSacrificio" msprop:Generator_UserColumnName="RendimientoPorSacrificio" msprop:Generator_ColumnVarNameInTable="columnRendimientoPorSacrificio" msprop:Generator_ColumnPropNameInRow="RendimientoPorSacrificio" msprop:Generator_ColumnPropNameInTable="RendimientoPorSacrificioColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

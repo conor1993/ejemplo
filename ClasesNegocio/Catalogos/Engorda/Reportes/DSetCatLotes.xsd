@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetCatLotes" targetNamespace="http://tempuri.org/DSetCatLotes.xsd" xmlns:mstns="http://tempuri.org/DSetCatLotes.xsd" xmlns="http://tempuri.org/DSetCatLotes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetCatLotes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetCatLotes" msprop:Generator_DataSetName="DSetCatLotes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtLotes" msprop:Generator_UserTableName="dtLotes" msprop:Generator_RowDeletedName="dtLotesRowDeleted" msprop:Generator_TableClassName="dtLotesDataTable" msprop:Generator_RowChangedName="dtLotesRowChanged" msprop:Generator_RowClassName="dtLotesRow" msprop:Generator_RowChangingName="dtLotesRowChanging" msprop:Generator_RowEvArgName="dtLotesRowChangeEvent" msprop:Generator_RowEvHandlerName="dtLotesRowChangeEventHandler" msprop:Generator_TablePropName="dtLotes" msprop:Generator_TableVarName="tabledtLotes" msprop:Generator_RowDeletingName="dtLotesRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idLote" msprop:Generator_UserColumnName="idLote" msprop:Generator_ColumnPropNameInRow="idLote" msprop:Generator_ColumnVarNameInTable="columnidLote" msprop:Generator_ColumnPropNameInTable="idLoteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DescCorta" msprop:Generator_UserColumnName="DescCorta" msprop:Generator_ColumnPropNameInRow="DescCorta" msprop:Generator_ColumnVarNameInTable="columnDescCorta" msprop:Generator_ColumnPropNameInTable="DescCortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Corral" msprop:Generator_UserColumnName="Corral" msprop:Generator_ColumnPropNameInRow="Corral" msprop:Generator_ColumnVarNameInTable="columnCorral" msprop:Generator_ColumnPropNameInTable="CorralColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GDP" msprop:Generator_UserColumnName="GDP" msprop:Generator_ColumnPropNameInRow="GDP" msprop:Generator_ColumnVarNameInTable="columnGDP" msprop:Generator_ColumnPropNameInTable="GDPColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PesoProyectadoxCbz" msprop:Generator_UserColumnName="PesoProyectadoxCbz" msprop:Generator_ColumnPropNameInRow="PesoProyectadoxCbz" msprop:Generator_ColumnVarNameInTable="columnPesoProyectadoxCbz" msprop:Generator_ColumnPropNameInTable="PesoProyectadoxCbzColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaInicio" msprop:Generator_UserColumnName="FechaInicio" msprop:Generator_ColumnPropNameInRow="FechaInicio" msprop:Generator_ColumnVarNameInTable="columnFechaInicio" msprop:Generator_ColumnPropNameInTable="FechaInicioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaCierre" msprop:Generator_UserColumnName="FechaCierre" msprop:Generator_ColumnPropNameInRow="FechaCierre" msprop:Generator_ColumnVarNameInTable="columnFechaCierre" msprop:Generator_ColumnPropNameInTable="FechaCierreColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

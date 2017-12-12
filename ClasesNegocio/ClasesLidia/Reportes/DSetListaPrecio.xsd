@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetListaPrecio" targetNamespace="http://tempuri.org/DSetListaPrecio.xsd" xmlns:mstns="http://tempuri.org/DSetListaPrecio.xsd" xmlns="http://tempuri.org/DSetListaPrecio.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetListaPrecio" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetListaPrecio" msprop:Generator_DataSetName="DSetListaPrecio">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtListaPrecio" msprop:Generator_UserTableName="DtListaPrecio" msprop:Generator_RowDeletedName="DtListaPrecioRowDeleted" msprop:Generator_RowChangedName="DtListaPrecioRowChanged" msprop:Generator_RowClassName="DtListaPrecioRow" msprop:Generator_RowChangingName="DtListaPrecioRowChanging" msprop:Generator_RowEvArgName="DtListaPrecioRowChangeEvent" msprop:Generator_RowEvHandlerName="DtListaPrecioRowChangeEventHandler" msprop:Generator_TableClassName="DtListaPrecioDataTable" msprop:Generator_TableVarName="tableDtListaPrecio" msprop:Generator_RowDeletingName="DtListaPrecioRowDeleting" msprop:Generator_TablePropName="DtListaPrecio">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Código" msprop:Generator_UserColumnName="Código" msprop:Generator_ColumnPropNameInRow="Código" msprop:Generator_ColumnVarNameInTable="columnCódigo" msprop:Generator_ColumnPropNameInTable="CódigoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripción" msprop:Generator_UserColumnName="Descripción" msprop:Generator_ColumnPropNameInRow="Descripción" msprop:Generator_ColumnVarNameInTable="columnDescripción" msprop:Generator_ColumnPropNameInTable="DescripciónColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Es_x0020_Lista_x0020_Base" msprop:Generator_UserColumnName="Es Lista Base" msprop:Generator_ColumnPropNameInRow="Es_Lista_Base" msprop:Generator_ColumnVarNameInTable="columnEs_Lista_Base" msprop:Generator_ColumnPropNameInTable="Es_Lista_BaseColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Vigencia" msprop:Generator_UserColumnName="Vigencia" msprop:Generator_ColumnPropNameInRow="Vigencia" msprop:Generator_ColumnVarNameInTable="columnVigencia" msprop:Generator_ColumnPropNameInTable="VigenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaAlta" msprop:Generator_UserColumnName="FechaAlta" msprop:Generator_ColumnPropNameInRow="FechaAlta" msprop:Generator_ColumnVarNameInTable="columnFechaAlta" msprop:Generator_ColumnPropNameInTable="FechaAltaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha_x0020_Vigencia" msprop:Generator_UserColumnName="Fecha Vigencia" msprop:Generator_ColumnVarNameInTable="columnFecha_Vigencia" msprop:Generator_ColumnPropNameInRow="Fecha_Vigencia" msprop:Generator_ColumnPropNameInTable="Fecha_VigenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Tipo_x0020_de_x0020_Venta" msprop:Generator_UserColumnName="Tipo de Venta" msprop:Generator_ColumnPropNameInRow="Tipo_de_Venta" msprop:Generator_ColumnVarNameInTable="columnTipo_de_Venta" msprop:Generator_ColumnPropNameInTable="Tipo_de_VentaColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtListaPrecDetalle" msprop:Generator_UserTableName="DtListaPrecDetalle" msprop:Generator_RowDeletedName="DtListaPrecDetalleRowDeleted" msprop:Generator_RowChangedName="DtListaPrecDetalleRowChanged" msprop:Generator_RowClassName="DtListaPrecDetalleRow" msprop:Generator_RowChangingName="DtListaPrecDetalleRowChanging" msprop:Generator_RowEvArgName="DtListaPrecDetalleRowChangeEvent" msprop:Generator_RowEvHandlerName="DtListaPrecDetalleRowChangeEventHandler" msprop:Generator_TableClassName="DtListaPrecDetalleDataTable" msprop:Generator_TableVarName="tableDtListaPrecDetalle" msprop:Generator_RowDeletingName="DtListaPrecDetalleRowDeleting" msprop:Generator_TablePropName="DtListaPrecDetalle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Utilidad" msprop:Generator_UserColumnName="Utilidad" msprop:Generator_ColumnPropNameInRow="Utilidad" msprop:Generator_ColumnVarNameInTable="columnUtilidad" msprop:Generator_ColumnPropNameInTable="UtilidadColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Precio_x0020_de_x0020_Venta" msprop:Generator_UserColumnName="Precio de Venta" msprop:Generator_ColumnPropNameInRow="Precio_de_Venta" msprop:Generator_ColumnVarNameInTable="columnPrecio_de_Venta" msprop:Generator_ColumnPropNameInTable="Precio_de_VentaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Comisión" msprop:Generator_UserColumnName="Comisión" msprop:Generator_ColumnPropNameInRow="Comisión" msprop:Generator_ColumnVarNameInTable="columnComisión" msprop:Generator_ColumnPropNameInTable="ComisiónColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Lista_x0020_de_x0020_Precios" msprop:Generator_UserColumnName="Lista de Precios" msprop:Generator_ColumnPropNameInRow="Lista_de_Precios" msprop:Generator_ColumnVarNameInTable="columnLista_de_Precios" msprop:Generator_ColumnPropNameInTable="Lista_de_PreciosColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="DtListaPrecio_DtListaPrecDetalle" msdata:parent="DtListaPrecio" msdata:child="DtListaPrecDetalle" msdata:parentkey="Código" msdata:childkey="Lista_x0020_de_x0020_Precios" msprop:Generator_UserRelationName="DtListaPrecio_DtListaPrecDetalle" msprop:Generator_RelationVarName="relationDtListaPrecio_DtListaPrecDetalle" msprop:Generator_UserChildTable="DtListaPrecDetalle" msprop:Generator_UserParentTable="DtListaPrecio" msprop:Generator_ParentPropName="DtListaPrecioRow" msprop:Generator_ChildPropName="GetDtListaPrecDetalleRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

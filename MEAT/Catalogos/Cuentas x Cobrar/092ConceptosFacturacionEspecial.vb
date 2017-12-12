@@ -1,0 +1,3 @@
+Public Class _092ConceptosFacturacionEspecial
+
+End Class

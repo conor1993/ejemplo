@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptPackingList" targetNamespace="http://tempuri.org/dsRptPackingList.xsd" xmlns:mstns="http://tempuri.org/dsRptPackingList.xsd" xmlns="http://tempuri.org/dsRptPackingList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GanaderaFlexiConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="GanaderaFlexiConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.FLEXI.My.MySettings.GlobalReference.Default.GanaderaFlexiConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwConsultaPakingListDetalleTableAdapter" GeneratorDataComponentClassName="vwConsultaPakingListDetalleTableAdapter" Name="vwConsultaPakingListDetalle" UserDataComponentName="vwConsultaPakingListDetalleTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GanaderaFlexiConnectionString (MySettings)" DbObjectName="GanaderaFlexi.dbo.vwConsultaPakingListDetalle" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>SELECT LoteCorte, IdFolioEtiqueta, IdCorte, IdProducto, CantPzas, CantKgrs, Estatus, IdFolioEmbarque, IdFolioMovimiento, CodigoBarra, IdFolioEtiquetaReferencia, Grados, IdCliente, FechaCaptura, LoteCorteReproceso, IdFolioMovimientoAlmacenReproceso, IdFolioMovimientoAlmacenAjuste, FechaCaducidad, FechaCaducidadAnterior, IdFolioMovimientoAlmacenCongelado, GradosAnterior, TipoProducto, IdAlmacenActual, IdAlmacenOrigen, TipoProductoAnterior, CantLibras, MasDe30Meses, Farenheit, ProductoIngles, Producto, PreCorte, PreCorteIngles FROM dbo.vwConsultaPakingListDetalle</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="LoteCorte" DataSetColumn="LoteCorte" />
+              <Mapping SourceColumn="IdFolioEtiqueta" DataSetColumn="IdFolioEtiqueta" />
+              <Mapping SourceColumn="IdCorte" DataSetColumn="IdCorte" />
+              <Mapping SourceColumn="IdProducto" DataSetColumn="IdProducto" />
+              <Mapping SourceColumn="CantPzas" DataSetColumn="CantPzas" />
+              <Mapping SourceColumn="CantKgrs" DataSetColumn="CantKgrs" />
+              <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
+              <Mapping SourceColumn="IdFolioEmbarque" DataSetColumn="IdFolioEmbarque" />
+              <Mapping SourceColumn="IdFolioMovimiento" DataSetColumn="IdFolioMovimiento" />
+              <Mapping SourceColumn="CodigoBarra" DataSetColumn="CodigoBarra" />
+              <Mapping SourceColumn="IdFolioEtiquetaReferencia" DataSetColumn="IdFolioEtiquetaReferencia" />
+              <Mapping SourceColumn="Grados" DataSetColumn="Grados" />
+              <Mapping SourceColumn="IdCliente" DataSetColumn="IdCliente" />
+              <Mapping SourceColumn="FechaCaptura" DataSetColumn="FechaCaptura" />
+              <Mapping SourceColumn="LoteCorteReproceso" DataSetColumn="LoteCorteReproceso" />
+              <Mapping SourceColumn="IdFolioMovimientoAlmacenReproceso" DataSetColumn="IdFolioMovimientoAlmacenReproceso" />
+              <Mapping SourceColumn="IdFolioMovimientoAlmacenAjuste" DataSetColumn="IdFolioMovimientoAlmacenAjuste" />
+              <Mapping SourceColumn="FechaCaducidad" DataSetColumn="FechaCaducidad" />
+              <Mapping SourceColumn="FechaCaducidadAnterior" DataSetColumn="FechaCaducidadAnterior" />
+              <Mapping SourceColumn="IdFolioMovimientoAlmacenCongelado" DataSetColumn="IdFolioMovimientoAlmacenCongelado" />
+              <Mapping SourceColumn="GradosAnterior" DataSetColumn="GradosAnterior" />
+              <Mapping SourceColumn="TipoProducto" DataSetColumn="TipoProducto" />
+              <Mapping SourceColumn="IdAlmacenActual" DataSetColumn="IdAlmacenActual" />
+              <Mapping SourceColumn="IdAlmacenOrigen" DataSetColumn="IdAlmacenOrigen" />
+              <Mapping SourceColumn="TipoProductoAnterior" DataSetColumn="TipoProductoAnterior" />
+              <Mapping SourceColumn="CantLibras" DataSetColumn="CantLibras" />
+              <Mapping SourceColumn="MasDe30Meses" DataSetColumn="MasDe30Meses" />
+              <Mapping SourceColumn="Farenheit" DataSetColumn="Farenheit" />
+              <Mapping SourceColumn="ProductoIngles" DataSetColumn="ProductoIngles" />
+              <Mapping SourceColumn="Producto" DataSetColumn="Producto" />
+              <Mapping SourceColumn="PreCorte" DataSetColumn="PreCorte" />
+              <Mapping SourceColumn="PreCorteIngles" DataSetColumn="PreCorteIngles" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptPackingList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptPackingList" msprop:Generator_DataSetName="dsRptPackingList">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwConsultaPakingListDetalle" msprop:Generator_UserTableName="vwConsultaPakingListDetalle" msprop:Generator_RowDeletedName="vwConsultaPakingListDetalleRowDeleted" msprop:Generator_RowChangedName="vwConsultaPakingListDetalleRowChanged" msprop:Generator_RowClassName="vwConsultaPakingListDetalleRow" msprop:Generator_RowChangingName="vwConsultaPakingListDetalleRowChanging" msprop:Generator_RowEvArgName="vwConsultaPakingListDetalleRowChangeEvent" msprop:Generator_RowEvHandlerName="vwConsultaPakingListDetalleRowChangeEventHandler" msprop:Generator_TableClassName="vwConsultaPakingListDetalleDataTable" msprop:Generator_TableVarName="tablevwConsultaPakingListDetalle" msprop:Generator_RowDeletingName="vwConsultaPakingListDetalleRowDeleting" msprop:Generator_TablePropName="vwConsultaPakingListDetalle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoteCorte" msprop:Generator_UserColumnName="LoteCorte" msprop:Generator_ColumnPropNameInRow="LoteCorte" msprop:Generator_ColumnVarNameInTable="columnLoteCorte" msprop:Generator_ColumnPropNameInTable="LoteCorteColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdFolioEtiqueta" msprop:Generator_UserColumnName="IdFolioEtiqueta" msprop:Generator_ColumnPropNameInRow="IdFolioEtiqueta" msprop:Generator_ColumnVarNameInTable="columnIdFolioEtiqueta" msprop:Generator_ColumnPropNameInTable="IdFolioEtiquetaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdCorte" msprop:Generator_UserColumnName="IdCorte" msprop:Generator_ColumnPropNameInRow="IdCorte" msprop:Generator_ColumnVarNameInTable="columnIdCorte" msprop:Generator_ColumnPropNameInTable="IdCorteColumn" type="xs:int" />
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:int" />
+              <xs:element name="CantPzas" msprop:Generator_UserColumnName="CantPzas" msprop:Generator_ColumnPropNameInRow="CantPzas" msprop:Generator_ColumnVarNameInTable="columnCantPzas" msprop:Generator_ColumnPropNameInTable="CantPzasColumn" type="xs:decimal" />
+              <xs:element name="CantKgrs" msprop:Generator_UserColumnName="CantKgrs" msprop:Generator_ColumnPropNameInRow="CantKgrs" msprop:Generator_ColumnVarNameInTable="columnCantKgrs" msprop:Generator_ColumnPropNameInTable="CantKgrsColumn" type="xs:decimal" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:short" />
+              <xs:element name="IdFolioEmbarque" msprop:Generator_UserColumnName="IdFolioEmbarque" msprop:Generator_ColumnPropNameInRow="IdFolioEmbarque" msprop:Generator_ColumnVarNameInTable="columnIdFolioEmbarque" msprop:Generator_ColumnPropNameInTable="IdFolioEmbarqueColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdFolioMovimiento" msprop:Generator_UserColumnName="IdFolioMovimiento" msprop:Generator_ColumnPropNameInRow="IdFolioMovimiento" msprop:Generator_ColumnVarNameInTable="columnIdFolioMovimiento" msprop:Generator_ColumnPropNameInTable="IdFolioMovimientoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodigoBarra" msprop:Generator_UserColumnName="CodigoBarra" msprop:Generator_ColumnPropNameInRow="CodigoBarra" msprop:Generator_ColumnVarNameInTable="columnCodigoBarra" msprop:Generator_ColumnPropNameInTable="CodigoBarraColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdFolioEtiquetaReferencia" msprop:Generator_UserColumnName="IdFolioEtiquetaReferencia" msprop:Generator_ColumnPropNameInRow="IdFolioEtiquetaReferencia" msprop:Generator_ColumnVarNameInTable="columnIdFolioEtiquetaReferencia" msprop:Generator_ColumnPropNameInTable="IdFolioEtiquetaReferenciaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Grados" msprop:Generator_UserColumnName="Grados" msprop:Generator_ColumnPropNameInRow="Grados" msprop:Generator_ColumnVarNameInTable="columnGrados" msprop:Generator_ColumnPropNameInTable="GradosColumn" type="xs:int" />
+              <xs:element name="IdCliente" msprop:Generator_UserColumnName="IdCliente" msprop:Generator_ColumnPropNameInRow="IdCliente" msprop:Generator_ColumnVarNameInTable="columnIdCliente" msprop:Generator_ColumnPropNameInTable="IdClienteColumn" type="xs:int" />
+              <xs:element name="FechaCaptura" msprop:Generator_UserColumnName="FechaCaptura" msprop:Generator_ColumnPropNameInRow="FechaCaptura" msprop:Generator_ColumnVarNameInTable="columnFechaCaptura" msprop:Generator_ColumnPropNameInTable="FechaCapturaColumn" type="xs:dateTime" />
+              <xs:element name="LoteCorteReproceso" msprop:Generator_UserColumnName="LoteCorteReproceso" msprop:Generator_ColumnPropNameInRow="LoteCorteReproceso" msprop:Generator_ColumnVarNameInTable="columnLoteCorteReproceso" msprop:Generator_ColumnPropNameInTable="LoteCorteReprocesoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdFolioMovimientoAlmacenReproceso" msprop:Generator_UserColumnName="IdFolioMovimientoAlmacenReproceso" msprop:Generator_ColumnPropNameInRow="IdFolioMovimientoAlmacenReproceso" msprop:Generator_ColumnVarNameInTable="columnIdFolioMovimientoAlmacenReproceso" msprop:Generator_ColumnPropNameInTable="IdFolioMovimientoAlmacenReprocesoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdFolioMovimientoAlmacenAjuste" msprop:Generator_UserColumnName="IdFolioMovimientoAlmacenAjuste" msprop:Generator_ColumnPropNameInRow="IdFolioMovimientoAlmacenAjuste" msprop:Generator_ColumnVarNameInTable="columnIdFolioMovimientoAlmacenAjuste" msprop:Generator_ColumnPropNameInTable="IdFolioMovimientoAlmacenAjusteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaCaducidad" msprop:Generator_UserColumnName="FechaCaducidad" msprop:Generator_ColumnPropNameInRow="FechaCaducidad" msprop:Generator_ColumnVarNameInTable="columnFechaCaducidad" msprop:Generator_ColumnPropNameInTable="FechaCaducidadColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaCaducidadAnterior" msprop:Generator_UserColumnName="FechaCaducidadAnterior" msprop:Generator_ColumnPropNameInRow="FechaCaducidadAnterior" msprop:Generator_ColumnVarNameInTable="columnFechaCaducidadAnterior" msprop:Generator_ColumnPropNameInTable="FechaCaducidadAnteriorColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IdFolioMovimientoAlmacenCongelado" msprop:Generator_UserColumnName="IdFolioMovimientoAlmacenCongelado" msprop:Generator_ColumnPropNameInRow="IdFolioMovimientoAlmacenCongelado" msprop:Generator_ColumnVarNameInTable="columnIdFolioMovimientoAlmacenCongelado" msprop:Generator_ColumnPropNameInTable="IdFolioMovimientoAlmacenCongeladoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GradosAnterior" msprop:Generator_UserColumnName="GradosAnterior" msprop:Generator_ColumnPropNameInRow="GradosAnterior" msprop:Generator_ColumnVarNameInTable="columnGradosAnterior" msprop:Generator_ColumnPropNameInTable="GradosAnteriorColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TipoProducto" msprop:Generator_UserColumnName="TipoProducto" msprop:Generator_ColumnPropNameInRow="TipoProducto" msprop:Generator_ColumnVarNameInTable="columnTipoProducto" msprop:Generator_ColumnPropNameInTable="TipoProductoColumn" type="xs:short" />
+              <xs:element name="IdAlmacenActual" msprop:Generator_UserColumnName="IdAlmacenActual" msprop:Generator_ColumnPropNameInRow="IdAlmacenActual" msprop:Generator_ColumnVarNameInTable="columnIdAlmacenActual" msprop:Generator_ColumnPropNameInTable="IdAlmacenActualColumn" type="xs:int" />
+              <xs:element name="IdAlmacenOrigen" msprop:Generator_UserColumnName="IdAlmacenOrigen" msprop:Generator_ColumnPropNameInRow="IdAlmacenOrigen" msprop:Generator_ColumnVarNameInTable="columnIdAlmacenOrigen" msprop:Generator_ColumnPropNameInTable="IdAlmacenOrigenColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TipoProductoAnterior" msprop:Generator_UserColumnName="TipoProductoAnterior" msprop:Generator_ColumnPropNameInRow="TipoProductoAnterior" msprop:Generator_ColumnVarNameInTable="columnTipoProductoAnterior" msprop:Generator_ColumnPropNameInTable="TipoProductoAnteriorColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="CantLibras" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CantLibras" msprop:Generator_ColumnPropNameInRow="CantLibras" msprop:Generator_ColumnVarNameInTable="columnCantLibras" msprop:Generator_ColumnPropNameInTable="CantLibrasColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MasDe30Meses" msprop:Generator_UserColumnName="MasDe30Meses" msprop:Generator_ColumnPropNameInRow="MasDe30Meses" msprop:Generator_ColumnVarNameInTable="columnMasDe30Meses" msprop:Generator_ColumnPropNameInTable="MasDe30MesesColumn" type="xs:boolean" />
+              <xs:element name="Farenheit" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Farenheit" msprop:Generator_ColumnPropNameInRow="Farenheit" msprop:Generator_ColumnVarNameInTable="columnFarenheit" msprop:Generator_ColumnPropNameInTable="FarenheitColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ProductoIngles" msprop:Generator_UserColumnName="ProductoIngles" msprop:Generator_ColumnPropNameInRow="ProductoIngles" msprop:Generator_ColumnVarNameInTable="columnProductoIngles" msprop:Generator_ColumnPropNameInTable="ProductoInglesColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInTable="ProductoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PreCorte" msprop:Generator_UserColumnName="PreCorte" msprop:Generator_ColumnPropNameInRow="PreCorte" msprop:Generator_ColumnVarNameInTable="columnPreCorte" msprop:Generator_ColumnPropNameInTable="PreCorteColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PreCorteIngles" msprop:Generator_UserColumnName="PreCorteIngles" msprop:Generator_ColumnPropNameInRow="PreCorteIngles" msprop:Generator_ColumnVarNameInTable="columnPreCorteIngles" msprop:Generator_ColumnPropNameInTable="PreCorteInglesColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwConsultaPakingListDetalle" />
+      <xs:field xpath="mstns:LoteCorte" />
+      <xs:field xpath="mstns:IdFolioEtiqueta" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

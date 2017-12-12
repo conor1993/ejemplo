@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSolicitudes" targetNamespace="http://tempuri.org/dsSolicitudes.xsd" xmlns:mstns="http://tempuri.org/dsSolicitudes.xsd" xmlns="http://tempuri.org/dsSolicitudes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSolicitudes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsSolicitudes" msprop:Generator_DataSetName="dsSolicitudes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Solicitudes" msprop:Generator_UserTableName="Solicitudes" msprop:Generator_RowDeletedName="SolicitudesRowDeleted" msprop:Generator_TableClassName="SolicitudesDataTable" msprop:Generator_RowChangedName="SolicitudesRowChanged" msprop:Generator_RowClassName="SolicitudesRow" msprop:Generator_RowChangingName="SolicitudesRowChanging" msprop:Generator_RowEvArgName="SolicitudesRowChangeEvent" msprop:Generator_RowEvHandlerName="SolicitudesRowChangeEventHandler" msprop:Generator_TablePropName="Solicitudes" msprop:Generator_TableVarName="tableSolicitudes" msprop:Generator_RowDeletingName="SolicitudesRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInTable="FolioColumn" type="xs:string" />
+              <xs:element name="Plaza" msprop:Generator_UserColumnName="Plaza" msprop:Generator_ColumnPropNameInRow="Plaza" msprop:Generator_ColumnVarNameInTable="columnPlaza" msprop:Generator_ColumnPropNameInTable="PlazaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sucursal" msprop:Generator_UserColumnName="Sucursal" msprop:Generator_ColumnPropNameInRow="Sucursal" msprop:Generator_ColumnVarNameInTable="columnSucursal" msprop:Generator_ColumnPropNameInTable="SucursalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Solicitudes" />
+      <xs:field xpath="mstns:Folio" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

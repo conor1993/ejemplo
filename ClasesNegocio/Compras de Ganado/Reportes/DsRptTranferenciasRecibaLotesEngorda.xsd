@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsRptTranferenciasRecibaLotesEngorda" targetNamespace="http://tempuri.org/DsRptTranferenciasRecibaLotesEngorda.xsd" xmlns:mstns="http://tempuri.org/DsRptTranferenciasRecibaLotesEngorda.xsd" xmlns="http://tempuri.org/DsRptTranferenciasRecibaLotesEngorda.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsRptTranferenciasRecibaLotesEngorda" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsRptTranferenciasRecibaLotesEngorda" msprop:Generator_DataSetName="DsRptTranferenciasRecibaLotesEngorda">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TranferenciasRecepcionLotesEngorda" msprop:Generator_UserTableName="TranferenciasRecepcionLotesEngorda" msprop:Generator_RowDeletedName="TranferenciasRecepcionLotesEngordaRowDeleted" msprop:Generator_RowChangedName="TranferenciasRecepcionLotesEngordaRowChanged" msprop:Generator_RowClassName="TranferenciasRecepcionLotesEngordaRow" msprop:Generator_RowChangingName="TranferenciasRecepcionLotesEngordaRowChanging" msprop:Generator_RowEvArgName="TranferenciasRecepcionLotesEngordaRowChangeEvent" msprop:Generator_RowEvHandlerName="TranferenciasRecepcionLotesEngordaRowChangeEventHandler" msprop:Generator_TableClassName="TranferenciasRecepcionLotesEngordaDataTable" msprop:Generator_TableVarName="tableTranferenciasRecepcionLotesEngorda" msprop:Generator_RowDeletingName="TranferenciasRecepcionLotesEngordaRowDeleting" msprop:Generator_TablePropName="TranferenciasRecepcionLotesEngorda">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CorralRecepcion" msprop:Generator_UserColumnName="CorralRecepcion" msprop:Generator_ColumnPropNameInRow="CorralRecepcion" msprop:Generator_ColumnVarNameInTable="columnCorralRecepcion" msprop:Generator_ColumnPropNameInTable="CorralRecepcionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInTable="FolioColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LoteDestino" msprop:Generator_UserColumnName="LoteDestino" msprop:Generator_ColumnPropNameInRow="LoteDestino" msprop:Generator_ColumnVarNameInTable="columnLoteDestino" msprop:Generator_ColumnPropNameInTable="LoteDestinoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CorralDestino" msprop:Generator_UserColumnName="CorralDestino" msprop:Generator_ColumnPropNameInRow="CorralDestino" msprop:Generator_ColumnVarNameInTable="columnCorralDestino" msprop:Generator_ColumnPropNameInTable="CorralDestinoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cabezas" msprop:Generator_UserColumnName="Cabezas" msprop:Generator_ColumnPropNameInRow="Cabezas" msprop:Generator_ColumnVarNameInTable="columnCabezas" msprop:Generator_ColumnPropNameInTable="CabezasColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="TipoGanado" msprop:Generator_UserColumnName="TipoGanado" msprop:Generator_ColumnPropNameInRow="TipoGanado" msprop:Generator_ColumnVarNameInTable="columnTipoGanado" msprop:Generator_ColumnPropNameInTable="TipoGanadoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CostoxKilo" msprop:Generator_UserColumnName="CostoxKilo" msprop:Generator_ColumnPropNameInRow="CostoxKilo" msprop:Generator_ColumnVarNameInTable="columnCostoxKilo" msprop:Generator_ColumnPropNameInTable="CostoxKiloColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosPromxCabeza" msdata:ReadOnly="true" msdata:Expression="Kilos/Cabezas" msprop:Generator_UserColumnName="KilosPromxCabeza" msprop:Generator_ColumnPropNameInRow="KilosPromxCabeza" msprop:Generator_ColumnVarNameInTable="columnKilosPromxCabeza" msprop:Generator_ColumnPropNameInTable="KilosPromxCabezaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoxCabeza" msdata:ReadOnly="true" msdata:Expression="KilosPromxCabeza * CostoxKilo" msprop:Generator_UserColumnName="CostoxCabeza" msprop:Generator_ColumnPropNameInRow="CostoxCabeza" msprop:Generator_ColumnVarNameInTable="columnCostoxCabeza" msprop:Generator_ColumnPropNameInTable="CostoxCabezaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ImporteTotal" msdata:ReadOnly="true" msdata:Expression="Kilos * CostoxKilo" msprop:Generator_UserColumnName="ImporteTotal" msprop:Generator_ColumnPropNameInRow="ImporteTotal" msprop:Generator_ColumnVarNameInTable="columnImporteTotal" msprop:Generator_ColumnPropNameInTable="ImporteTotalColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Arete" msprop:Generator_UserColumnName="Arete" msprop:Generator_ColumnPropNameInRow="Arete" msprop:Generator_ColumnVarNameInTable="columnArete" msprop:Generator_ColumnPropNameInTable="AreteColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

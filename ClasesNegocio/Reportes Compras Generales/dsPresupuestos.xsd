@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPresupuestos" targetNamespace="http://tempuri.org/dsPresupuestos.xsd" xmlns:mstns="http://tempuri.org/dsPresupuestos.xsd" xmlns="http://tempuri.org/dsPresupuestos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GanaderaConnectionString" IsAppSettingsProperty="True" Modifier="Assembly" Name="GanaderaConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MySettings.GlobalReference.Default.GanaderaConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwCompReportePresupuestosTableAdapter" GeneratorDataComponentClassName="vwCompReportePresupuestosTableAdapter" Name="vwCompReportePresupuestos" UserDataComponentName="vwCompReportePresupuestosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GanaderaConnectionString (MySettings)" DbObjectName="Ganadera.dbo.vwCompReportePresupuestos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     *
+FROM         vwCompReportePresupuestos</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Folio" DataSetColumn="Folio" />
+              <Mapping SourceColumn="SucursalId" DataSetColumn="SucursalId" />
+              <Mapping SourceColumn="SCDescripcion" DataSetColumn="SCDescripcion" />
+              <Mapping SourceColumn="SCIdPlaza" DataSetColumn="SCIdPlaza" />
+              <Mapping SourceColumn="PLDescripcion" DataSetColumn="PLDescripcion" />
+              <Mapping SourceColumn="TipoPresupuestoId" DataSetColumn="TipoPresupuestoId" />
+              <Mapping SourceColumn="FechaAlta" DataSetColumn="FechaAlta" />
+              <Mapping SourceColumn="Presupuesto" DataSetColumn="Presupuesto" />
+              <Mapping SourceColumn="Obserbaciones" DataSetColumn="Obserbaciones" />
+              <Mapping SourceColumn="ProductoId" DataSetColumn="ProductoId" />
+              <Mapping SourceColumn="PdDescripcion" DataSetColumn="PdDescripcion" />
+              <Mapping SourceColumn="Cantidad" DataSetColumn="Cantidad" />
+              <Mapping SourceColumn="UMDescripcion" DataSetColumn="UMDescripcion" />
+              <Mapping SourceColumn="TipoPresupuesto" DataSetColumn="TipoPresupuesto" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPresupuestos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPresupuestos" msprop:Generator_DataSetName="dsPresupuestos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwCompReportePresupuestos" msprop:Generator_UserTableName="vwCompReportePresupuestos" msprop:Generator_RowDeletedName="vwCompReportePresupuestosRowDeleted" msprop:Generator_RowChangedName="vwCompReportePresupuestosRowChanged" msprop:Generator_RowClassName="vwCompReportePresupuestosRow" msprop:Generator_RowChangingName="vwCompReportePresupuestosRowChanging" msprop:Generator_RowEvArgName="vwCompReportePresupuestosRowChangeEvent" msprop:Generator_RowEvHandlerName="vwCompReportePresupuestosRowChangeEventHandler" msprop:Generator_TableClassName="vwCompReportePresupuestosDataTable" msprop:Generator_TableVarName="tablevwCompReportePresupuestos" msprop:Generator_RowDeletingName="vwCompReportePresupuestosRowDeleting" msprop:Generator_TablePropName="vwCompReportePresupuestos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnPropNameInTable="FolioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SucursalId" msprop:Generator_UserColumnName="SucursalId" msprop:Generator_ColumnVarNameInTable="columnSucursalId" msprop:Generator_ColumnPropNameInRow="SucursalId" msprop:Generator_ColumnPropNameInTable="SucursalIdColumn" type="xs:int" />
+              <xs:element name="SCDescripcion" msprop:Generator_UserColumnName="SCDescripcion" msprop:Generator_ColumnVarNameInTable="columnSCDescripcion" msprop:Generator_ColumnPropNameInRow="SCDescripcion" msprop:Generator_ColumnPropNameInTable="SCDescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SCIdPlaza" msprop:Generator_UserColumnName="SCIdPlaza" msprop:Generator_ColumnVarNameInTable="columnSCIdPlaza" msprop:Generator_ColumnPropNameInRow="SCIdPlaza" msprop:Generator_ColumnPropNameInTable="SCIdPlazaColumn" type="xs:int" />
+              <xs:element name="PLDescripcion" msprop:Generator_UserColumnName="PLDescripcion" msprop:Generator_ColumnVarNameInTable="columnPLDescripcion" msprop:Generator_ColumnPropNameInRow="PLDescripcion" msprop:Generator_ColumnPropNameInTable="PLDescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TipoPresupuestoId" msprop:Generator_UserColumnName="TipoPresupuestoId" msprop:Generator_ColumnVarNameInTable="columnTipoPresupuestoId" msprop:Generator_ColumnPropNameInRow="TipoPresupuestoId" msprop:Generator_ColumnPropNameInTable="TipoPresupuestoIdColumn" type="xs:int" />
+              <xs:element name="FechaAlta" msprop:Generator_UserColumnName="FechaAlta" msprop:Generator_ColumnVarNameInTable="columnFechaAlta" msprop:Generator_ColumnPropNameInRow="FechaAlta" msprop:Generator_ColumnPropNameInTable="FechaAltaColumn" type="xs:dateTime" />
+              <xs:element name="Presupuesto" msprop:Generator_UserColumnName="Presupuesto" msprop:Generator_ColumnVarNameInTable="columnPresupuesto" msprop:Generator_ColumnPropNameInRow="Presupuesto" msprop:Generator_ColumnPropNameInTable="PresupuestoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Obserbaciones" msprop:Generator_UserColumnName="Obserbaciones" msprop:Generator_ColumnVarNameInTable="columnObserbaciones" msprop:Generator_ColumnPropNameInRow="Obserbaciones" msprop:Generator_ColumnPropNameInTable="ObserbacionesColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductoId" msprop:Generator_UserColumnName="ProductoId" msprop:Generator_ColumnVarNameInTable="columnProductoId" msprop:Generator_ColumnPropNameInRow="ProductoId" msprop:Generator_ColumnPropNameInTable="ProductoIdColumn" type="xs:int" />
+              <xs:element name="PdDescripcion" msprop:Generator_UserColumnName="PdDescripcion" msprop:Generator_ColumnVarNameInTable="columnPdDescripcion" msprop:Generator_ColumnPropNameInRow="PdDescripcion" msprop:Generator_ColumnPropNameInTable="PdDescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" type="xs:decimal" />
+              <xs:element name="UMDescripcion" msprop:Generator_UserColumnName="UMDescripcion" msprop:Generator_ColumnVarNameInTable="columnUMDescripcion" msprop:Generator_ColumnPropNameInRow="UMDescripcion" msprop:Generator_ColumnPropNameInTable="UMDescripcionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TipoPresupuesto" msprop:Generator_UserColumnName="TipoPresupuesto" msprop:Generator_ColumnVarNameInTable="columnTipoPresupuesto" msprop:Generator_ColumnPropNameInRow="TipoPresupuesto" msprop:Generator_ColumnPropNameInTable="TipoPresupuestoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

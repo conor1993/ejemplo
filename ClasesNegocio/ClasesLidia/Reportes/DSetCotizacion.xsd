@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetCotizacion" targetNamespace="http://tempuri.org/DSetCotizacion.xsd" xmlns:mstns="http://tempuri.org/DSetCotizacion.xsd" xmlns="http://tempuri.org/DSetCotizacion.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetCotizacion" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetCotizacion" msprop:Generator_DataSetName="DSetCotizacion">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtCotizacion" msprop:Generator_UserTableName="DtCotizacion" msprop:Generator_RowDeletedName="DtCotizacionRowDeleted" msprop:Generator_RowChangedName="DtCotizacionRowChanged" msprop:Generator_RowClassName="DtCotizacionRow" msprop:Generator_RowChangingName="DtCotizacionRowChanging" msprop:Generator_RowEvArgName="DtCotizacionRowChangeEvent" msprop:Generator_RowEvHandlerName="DtCotizacionRowChangeEventHandler" msprop:Generator_TableClassName="DtCotizacionDataTable" msprop:Generator_TableVarName="tableDtCotizacion" msprop:Generator_RowDeletingName="DtCotizacionRowDeleting" msprop:Generator_TablePropName="DtCotizacion">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnPropNameInTable="FolioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Plaza" msprop:Generator_UserColumnName="Plaza" msprop:Generator_ColumnVarNameInTable="columnPlaza" msprop:Generator_ColumnPropNameInRow="Plaza" msprop:Generator_ColumnPropNameInTable="PlazaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cliente" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Comisionista" msprop:Generator_UserColumnName="Comisionista" msprop:Generator_ColumnVarNameInTable="columnComisionista" msprop:Generator_ColumnPropNameInRow="Comisionista" msprop:Generator_ColumnPropNameInTable="ComisionistaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sub-Total" msprop:Generator_UserColumnName="Sub-Total" msprop:Generator_ColumnVarNameInTable="_columnSub_Total" msprop:Generator_ColumnPropNameInRow="_Sub_Total" msprop:Generator_ColumnPropNameInTable="_Sub_TotalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IVA" msprop:Generator_UserColumnName="IVA" msprop:Generator_ColumnVarNameInTable="columnIVA" msprop:Generator_ColumnPropNameInRow="IVA" msprop:Generator_ColumnPropNameInTable="IVAColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtDetalleCotizacion" msprop:Generator_UserTableName="DtDetalleCotizacion" msprop:Generator_RowDeletedName="DtDetalleCotizacionRowDeleted" msprop:Generator_RowChangedName="DtDetalleCotizacionRowChanged" msprop:Generator_RowClassName="DtDetalleCotizacionRow" msprop:Generator_RowChangingName="DtDetalleCotizacionRowChanging" msprop:Generator_RowEvArgName="DtDetalleCotizacionRowChangeEvent" msprop:Generator_RowEvHandlerName="DtDetalleCotizacionRowChangeEventHandler" msprop:Generator_TableClassName="DtDetalleCotizacionDataTable" msprop:Generator_TableVarName="tableDtDetalleCotizacion" msprop:Generator_RowDeletingName="DtDetalleCotizacionRowDeleting" msprop:Generator_TablePropName="DtDetalleCotizacion">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Precio_x0020_Venta" msprop:Generator_UserColumnName="Precio Venta" msprop:Generator_ColumnVarNameInTable="columnPrecio_Venta" msprop:Generator_ColumnPropNameInRow="Precio_Venta" msprop:Generator_ColumnPropNameInTable="Precio_VentaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cotizacion" msprop:Generator_UserColumnName="Cotizacion" msprop:Generator_ColumnVarNameInTable="columnCotizacion" msprop:Generator_ColumnPropNameInRow="Cotizacion" msprop:Generator_ColumnPropNameInTable="CotizacionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="DtCotizacionKey1">
+      <xs:selector xpath=".//mstns:DtCotizacion" />
+      <xs:field xpath="mstns:Folio" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DtDetalleCotizacion" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="DtCotizacion_DtDetalleCotizacion" msdata:parent="DtCotizacion" msdata:child="DtDetalleCotizacion" msdata:parentkey="Folio" msdata:childkey="Cotizacion" msprop:Generator_UserRelationName="DtCotizacion_DtDetalleCotizacion" msprop:Generator_RelationVarName="relationDtCotizacion_DtDetalleCotizacion" msprop:Generator_UserChildTable="DtDetalleCotizacion" msprop:Generator_UserParentTable="DtCotizacion" msprop:Generator_ParentPropName="DtCotizacionRow" msprop:Generator_ChildPropName="GetDtDetalleCotizacionRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

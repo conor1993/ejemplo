@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dstPreparacionMezcla" targetNamespace="http://tempuri.org/dstPreparacionMezcla.xsd" xmlns:mstns="http://tempuri.org/dstPreparacionMezcla.xsd" xmlns="http://tempuri.org/dstPreparacionMezcla.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dstPreparacionMezcla" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dstPreparacionMezcla" msprop:Generator_DataSetName="dstPreparacionMezcla">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Mezclas" msprop:Generator_UserTableName="Mezclas" msprop:Generator_RowDeletedName="MezclasRowDeleted" msprop:Generator_RowChangedName="MezclasRowChanged" msprop:Generator_RowClassName="MezclasRow" msprop:Generator_RowChangingName="MezclasRowChanging" msprop:Generator_RowEvArgName="MezclasRowChangeEvent" msprop:Generator_RowEvHandlerName="MezclasRowChangeEventHandler" msprop:Generator_TableClassName="MezclasDataTable" msprop:Generator_TableVarName="tableMezclas" msprop:Generator_RowDeletingName="MezclasRowDeleting" msprop:Generator_TablePropName="Mezclas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioPreparacionMezcla" msprop:Generator_UserColumnName="FolioPreparacionMezcla" msprop:Generator_ColumnVarNameInTable="columnFolioPreparacionMezcla" msprop:Generator_ColumnPropNameInRow="FolioPreparacionMezcla" msprop:Generator_ColumnPropNameInTable="FolioPreparacionMezclaColumn" type="xs:string" />
+              <xs:element name="Plaza" msprop:Generator_UserColumnName="Plaza" msprop:Generator_ColumnVarNameInTable="columnPlaza" msprop:Generator_ColumnPropNameInRow="Plaza" msprop:Generator_ColumnPropNameInTable="PlazaColumn" type="xs:string" />
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Almacen" msprop:Generator_UserColumnName="Almacen" msprop:Generator_ColumnVarNameInTable="columnAlmacen" msprop:Generator_ColumnPropNameInRow="Almacen" msprop:Generator_ColumnPropNameInTable="AlmacenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Envase" msprop:Generator_UserColumnName="Envase" msprop:Generator_ColumnVarNameInTable="columnEnvase" msprop:Generator_ColumnPropNameInRow="Envase" msprop:Generator_ColumnPropNameInTable="EnvaseColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CostoTotal" msprop:Generator_UserColumnName="CostoTotal" msprop:Generator_ColumnVarNameInTable="columnCostoTotal" msprop:Generator_ColumnPropNameInRow="CostoTotal" msprop:Generator_ColumnPropNameInTable="CostoTotalColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantidadPreparada" msprop:Generator_UserColumnName="CantidadPreparada" msprop:Generator_ColumnVarNameInTable="columnCantidadPreparada" msprop:Generator_ColumnPropNameInRow="CantidadPreparada" msprop:Generator_ColumnPropNameInTable="CantidadPreparadaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantidadRealPreparada" msprop:Generator_UserColumnName="CantidadRealPreparada" msprop:Generator_ColumnVarNameInTable="columnCantidadRealPreparada" msprop:Generator_ColumnPropNameInRow="CantidadRealPreparada" msprop:Generator_ColumnPropNameInTable="CantidadRealPreparadaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Mezcla" msprop:Generator_UserColumnName="Mezcla" msprop:Generator_ColumnVarNameInTable="columnMezcla" msprop:Generator_ColumnPropNameInRow="Mezcla" msprop:Generator_ColumnPropNameInTable="MezclaColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ingredientes" msprop:Generator_UserTableName="Ingredientes" msprop:Generator_RowDeletedName="IngredientesRowDeleted" msprop:Generator_RowChangedName="IngredientesRowChanged" msprop:Generator_RowClassName="IngredientesRow" msprop:Generator_RowChangingName="IngredientesRowChanging" msprop:Generator_RowEvArgName="IngredientesRowChangeEvent" msprop:Generator_RowEvHandlerName="IngredientesRowChangeEventHandler" msprop:Generator_TableClassName="IngredientesDataTable" msprop:Generator_TableVarName="tableIngredientes" msprop:Generator_RowDeletingName="IngredientesRowDeleting" msprop:Generator_TablePropName="Ingredientes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioPreparacionMezcla" msprop:Generator_UserColumnName="FolioPreparacionMezcla" msprop:Generator_ColumnVarNameInTable="columnFolioPreparacionMezcla" msprop:Generator_ColumnPropNameInRow="FolioPreparacionMezcla" msprop:Generator_ColumnPropNameInTable="FolioPreparacionMezclaColumn" type="xs:string" />
+              <xs:element name="Plaza" msprop:Generator_UserColumnName="Plaza" msprop:Generator_ColumnVarNameInTable="columnPlaza" msprop:Generator_ColumnPropNameInRow="Plaza" msprop:Generator_ColumnPropNameInTable="PlazaColumn" type="xs:string" />
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" />
+              <xs:element name="CantidadParaMezcla" msprop:Generator_UserColumnName="CantidadParaMezcla" msprop:Generator_ColumnVarNameInTable="columnCantidadParaMezcla" msprop:Generator_ColumnPropNameInRow="CantidadParaMezcla" msprop:Generator_ColumnPropNameInTable="CantidadParaMezclaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantidadSalida" msprop:Generator_UserColumnName="CantidadSalida" msprop:Generator_ColumnVarNameInTable="columnCantidadSalida" msprop:Generator_ColumnPropNameInRow="CantidadSalida" msprop:Generator_ColumnPropNameInTable="CantidadSalidaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoUnitario" msprop:Generator_UserColumnName="CostoUnitario" msprop:Generator_ColumnVarNameInTable="columnCostoUnitario" msprop:Generator_ColumnPropNameInRow="CostoUnitario" msprop:Generator_ColumnPropNameInTable="CostoUnitarioColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LotesIngredientes" msprop:Generator_UserTableName="LotesIngredientes" msprop:Generator_RowDeletedName="LotesIngredientesRowDeleted" msprop:Generator_RowChangedName="LotesIngredientesRowChanged" msprop:Generator_RowClassName="LotesIngredientesRow" msprop:Generator_RowChangingName="LotesIngredientesRowChanging" msprop:Generator_RowEvArgName="LotesIngredientesRowChangeEvent" msprop:Generator_RowEvHandlerName="LotesIngredientesRowChangeEventHandler" msprop:Generator_TableClassName="LotesIngredientesDataTable" msprop:Generator_TableVarName="tableLotesIngredientes" msprop:Generator_RowDeletingName="LotesIngredientesRowDeleting" msprop:Generator_TablePropName="LotesIngredientes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioPreparacionMezcla" msprop:Generator_UserColumnName="FolioPreparacionMezcla" msprop:Generator_ColumnVarNameInTable="columnFolioPreparacionMezcla" msprop:Generator_ColumnPropNameInRow="FolioPreparacionMezcla" msprop:Generator_ColumnPropNameInTable="FolioPreparacionMezclaColumn" type="xs:string" />
+              <xs:element name="Plaza" msprop:Generator_UserColumnName="Plaza" msprop:Generator_ColumnVarNameInTable="columnPlaza" msprop:Generator_ColumnPropNameInRow="Plaza" msprop:Generator_ColumnPropNameInTable="PlazaColumn" type="xs:string" />
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" />
+              <xs:element name="Lote" msprop:Generator_UserColumnName="Lote" msprop:Generator_ColumnVarNameInTable="columnLote" msprop:Generator_ColumnPropNameInRow="Lote" msprop:Generator_ColumnPropNameInTable="LoteColumn" type="xs:string" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoUnitario" msprop:Generator_UserColumnName="CostoUnitario" msprop:Generator_ColumnVarNameInTable="columnCostoUnitario" msprop:Generator_ColumnPropNameInRow="CostoUnitario" msprop:Generator_ColumnPropNameInTable="CostoUnitarioColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="MezclasKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Mezclas" />
+      <xs:field xpath="mstns:FolioPreparacionMezcla" />
+      <xs:field xpath="mstns:Plaza" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Ingredientes" />
+      <xs:field xpath="mstns:FolioPreparacionMezcla" />
+      <xs:field xpath="mstns:Producto" />
+      <xs:field xpath="mstns:Plaza" />
+    </xs:unique>
+    <xs:unique name="LotesIngredientes_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LotesIngredientes" />
+      <xs:field xpath="mstns:FolioPreparacionMezcla" />
+      <xs:field xpath="mstns:Lote" />
+      <xs:field xpath="mstns:Producto" />
+      <xs:field xpath="mstns:Plaza" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Mezclas_Ingredientes" msdata:parent="Mezclas" msdata:child="Ingredientes" msdata:parentkey="FolioPreparacionMezcla Plaza" msdata:childkey="FolioPreparacionMezcla Plaza" msprop:Generator_UserRelationName="Mezclas_Ingredientes" msprop:Generator_RelationVarName="relationMezclas_Ingredientes" msprop:Generator_UserChildTable="Ingredientes" msprop:Generator_UserParentTable="Mezclas" msprop:Generator_ParentPropName="MezclasRowParent" msprop:Generator_ChildPropName="GetIngredientesRows" />
+      <msdata:Relationship name="Ingredientes_LotesIngredientes" msdata:parent="Ingredientes" msdata:child="LotesIngredientes" msdata:parentkey="FolioPreparacionMezcla Plaza Producto" msdata:childkey="FolioPreparacionMezcla Plaza Producto" msprop:Generator_UserRelationName="Ingredientes_LotesIngredientes" msprop:Generator_RelationVarName="relationIngredientes_LotesIngredientes" msprop:Generator_UserChildTable="LotesIngredientes" msprop:Generator_UserParentTable="Ingredientes" msprop:Generator_ParentPropName="IngredientesRowParent" msprop:Generator_ChildPropName="GetLotesIngredientesRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

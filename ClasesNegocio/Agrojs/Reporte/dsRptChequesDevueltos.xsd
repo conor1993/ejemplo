@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptChequesDevueltos" targetNamespace="http://tempuri.org/dsRptChequesDevueltos.xsd" xmlns:mstns="http://tempuri.org/dsRptChequesDevueltos.xsd" xmlns="http://tempuri.org/dsRptChequesDevueltos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptChequesDevueltos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptChequesDevueltos" msprop:Generator_DataSetName="dsRptChequesDevueltos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_TablePropName="DataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdChequeDevuelto" msprop:Generator_UserColumnName="IdChequeDevuelto" msprop:Generator_ColumnPropNameInRow="IdChequeDevuelto" msprop:Generator_ColumnVarNameInTable="columnIdChequeDevuelto" msprop:Generator_ColumnPropNameInTable="IdChequeDevueltoColumn" type="xs:int" />
+              <xs:element name="NoCheque" msprop:Generator_UserColumnName="NoCheque" msprop:Generator_ColumnPropNameInRow="NoCheque" msprop:Generator_ColumnVarNameInTable="columnNoCheque" msprop:Generator_ColumnPropNameInTable="NoChequeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DescripcionBanco" msprop:Generator_UserColumnName="DescripcionBanco" msprop:Generator_ColumnPropNameInRow="DescripcionBanco" msprop:Generator_ColumnVarNameInTable="columnDescripcionBanco" msprop:Generator_ColumnPropNameInTable="DescripcionBancoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DescripcionEstatus" msprop:Generator_UserColumnName="DescripcionEstatus" msprop:Generator_ColumnPropNameInRow="DescripcionEstatus" msprop:Generator_ColumnVarNameInTable="columnDescripcionEstatus" msprop:Generator_ColumnPropNameInTable="DescripcionEstatusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="NombreCliente" msprop:Generator_UserColumnName="NombreCliente" msprop:Generator_ColumnPropNameInRow="NombreCliente" msprop:Generator_ColumnVarNameInTable="columnNombreCliente" msprop:Generator_ColumnPropNameInTable="NombreClienteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Recibio" msprop:Generator_UserColumnName="Recibio" msprop:Generator_ColumnPropNameInRow="Recibio" msprop:Generator_ColumnVarNameInTable="columnRecibio" msprop:Generator_ColumnPropNameInTable="RecibioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Observaciones" msprop:Generator_UserColumnName="Observaciones" msprop:Generator_ColumnPropNameInRow="Observaciones" msprop:Generator_ColumnVarNameInTable="columnObservaciones" msprop:Generator_ColumnPropNameInTable="ObservacionesColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Saldo" msprop:Generator_UserColumnName="Saldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FechaDevolucion" msprop:Generator_UserColumnName="FechaDevolucion" msprop:Generator_ColumnVarNameInTable="columnFechaDevolucion" msprop:Generator_ColumnPropNameInRow="FechaDevolucion" msprop:Generator_ColumnPropNameInTable="FechaDevolucionColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable1" />
+      <xs:field xpath="mstns:IdChequeDevuelto" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

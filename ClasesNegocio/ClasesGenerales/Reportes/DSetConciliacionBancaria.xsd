@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetConciliacionBancaria" targetNamespace="http://tempuri.org/DSetConciliacionBancaria.xsd" xmlns:mstns="http://tempuri.org/DSetConciliacionBancaria.xsd" xmlns="http://tempuri.org/DSetConciliacionBancaria.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetConciliacionBancaria" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetConciliacionBancaria" msprop:Generator_DataSetName="DSetConciliacionBancaria">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtConciliacionBancaria" msprop:Generator_UserTableName="dtConciliacionBancaria" msprop:Generator_RowDeletedName="dtConciliacionBancariaRowDeleted" msprop:Generator_RowChangedName="dtConciliacionBancariaRowChanged" msprop:Generator_RowClassName="dtConciliacionBancariaRow" msprop:Generator_RowChangingName="dtConciliacionBancariaRowChanging" msprop:Generator_RowEvArgName="dtConciliacionBancariaRowChangeEvent" msprop:Generator_RowEvHandlerName="dtConciliacionBancariaRowChangeEventHandler" msprop:Generator_TableClassName="dtConciliacionBancariaDataTable" msprop:Generator_TableVarName="tabledtConciliacionBancaria" msprop:Generator_RowDeletingName="dtConciliacionBancariaRowDeleting" msprop:Generator_TablePropName="dtConciliacionBancaria">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Concepto" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaMov" msprop:Generator_UserColumnName="FechaMov" msprop:Generator_ColumnVarNameInTable="columnFechaMov" msprop:Generator_ColumnPropNameInRow="FechaMov" msprop:Generator_ColumnPropNameInTable="FechaMovColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NumPoliza" msprop:Generator_UserColumnName="NumPoliza" msprop:Generator_ColumnVarNameInTable="columnNumPoliza" msprop:Generator_ColumnPropNameInRow="NumPoliza" msprop:Generator_ColumnPropNameInTable="NumPolizaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Origen" msprop:Generator_UserColumnName="Origen" msprop:Generator_ColumnVarNameInTable="columnOrigen" msprop:Generator_ColumnPropNameInRow="Origen" msprop:Generator_ColumnPropNameInTable="OrigenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Referencia" msprop:Generator_UserColumnName="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoMov" msprop:Generator_UserColumnName="TipoMov" msprop:Generator_ColumnVarNameInTable="columnTipoMov" msprop:Generator_ColumnPropNameInRow="TipoMov" msprop:Generator_ColumnPropNameInTable="TipoMovColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cuenta" msprop:Generator_UserColumnName="Cuenta" msprop:Generator_ColumnPropNameInRow="Cuenta" msprop:Generator_ColumnVarNameInTable="columnCuenta" msprop:Generator_ColumnPropNameInTable="CuentaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Banco" msprop:Generator_UserColumnName="Banco" msprop:Generator_ColumnPropNameInRow="Banco" msprop:Generator_ColumnVarNameInTable="columnBanco" msprop:Generator_ColumnPropNameInTable="BancoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Depositos" msprop:Generator_UserColumnName="Depositos" msprop:Generator_ColumnPropNameInRow="Depositos" msprop:Generator_ColumnVarNameInTable="columnDepositos" msprop:Generator_ColumnPropNameInTable="DepositosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Retiros" msprop:Generator_UserColumnName="Retiros" msprop:Generator_ColumnPropNameInRow="Retiros" msprop:Generator_ColumnVarNameInTable="columnRetiros" msprop:Generator_ColumnPropNameInTable="RetirosColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

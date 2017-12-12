@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsReporteCanalCorte" targetNamespace="http://tempuri.org/DsReporteCanalCorte.xsd" xmlns:mstns="http://tempuri.org/DsReporteCanalCorte.xsd" xmlns="http://tempuri.org/DsReporteCanalCorte.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsReporteCanalCorte" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsReporteCanalCorte" msprop:Generator_DataSetName="DsReporteCanalCorte">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CanalCorte" msprop:Generator_UserTableName="CanalCorte" msprop:Generator_RowDeletedName="CanalCorteRowDeleted" msprop:Generator_TableClassName="CanalCorteDataTable" msprop:Generator_RowChangedName="CanalCorteRowChanged" msprop:Generator_RowClassName="CanalCorteRow" msprop:Generator_RowChangingName="CanalCorteRowChanging" msprop:Generator_RowEvArgName="CanalCorteRowChangeEvent" msprop:Generator_RowEvHandlerName="CanalCorteRowChangeEventHandler" msprop:Generator_TablePropName="CanalCorte" msprop:Generator_TableVarName="tableCanalCorte" msprop:Generator_RowDeletingName="CanalCorteRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoteCorte" msprop:Generator_UserColumnName="LoteCorte" msprop:Generator_ColumnPropNameInRow="LoteCorte" msprop:Generator_ColumnVarNameInTable="columnLoteCorte" msprop:Generator_ColumnPropNameInTable="LoteCorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaCorte" msprop:Generator_UserColumnName="FechaCorte" msprop:Generator_ColumnPropNameInRow="FechaCorte" msprop:Generator_ColumnVarNameInTable="columnFechaCorte" msprop:Generator_ColumnPropNameInTable="FechaCorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Piezas" msprop:Generator_UserColumnName="Piezas" msprop:Generator_ColumnPropNameInRow="Piezas" msprop:Generator_ColumnVarNameInTable="columnPiezas" msprop:Generator_ColumnPropNameInTable="PiezasColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Canales" msprop:Generator_UserColumnName="Canales" msprop:Generator_ColumnPropNameInRow="Canales" msprop:Generator_ColumnVarNameInTable="columnCanales" msprop:Generator_ColumnPropNameInTable="CanalesColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosCorte" msprop:Generator_UserColumnName="KilosCorte" msprop:Generator_ColumnPropNameInRow="KilosCorte" msprop:Generator_ColumnVarNameInTable="columnKilosCorte" msprop:Generator_ColumnPropNameInTable="KilosCorteColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

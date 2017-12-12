@@ -1,0 +1,3 @@
+Public Class FrmAlmTarjetaAuxiliarGral
+
+End Class

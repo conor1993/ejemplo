@@ -1,0 +1,3 @@
+﻿1>------ Operación Recompilar todo iniciada: proyecto: Integralab.ORM, configuración: Debug Any CPU ------
+1>  Integralab.ORM -> D:\MEATVTA\Integralab.ORM\bin\Integralab.ORM.dll
+========== Recompilar todo: 1 correctos, 0 incorrectos, 0 omitidos ==========

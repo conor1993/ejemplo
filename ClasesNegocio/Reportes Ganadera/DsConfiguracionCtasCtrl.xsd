@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsConfiguracionCtasCtrl" targetNamespace="http://tempuri.org/DsConfiguracionCtasCtrl.xsd" xmlns:mstns="http://tempuri.org/DsConfiguracionCtasCtrl.xsd" xmlns="http://tempuri.org/DsConfiguracionCtasCtrl.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsConfiguracionCtasCtrl" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsConfiguracionCtasCtrl" msprop:Generator_DataSetName="DsConfiguracionCtasCtrl">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtConfiguracionCtasCtrl" msprop:Generator_UserTableName="DtConfiguracionCtasCtrl" msprop:Generator_RowDeletedName="DtConfiguracionCtasCtrlRowDeleted" msprop:Generator_TableClassName="DtConfiguracionCtasCtrlDataTable" msprop:Generator_RowChangedName="DtConfiguracionCtasCtrlRowChanged" msprop:Generator_RowClassName="DtConfiguracionCtasCtrlRow" msprop:Generator_RowChangingName="DtConfiguracionCtasCtrlRowChanging" msprop:Generator_RowEvArgName="DtConfiguracionCtasCtrlRowChangeEvent" msprop:Generator_RowEvHandlerName="DtConfiguracionCtasCtrlRowChangeEventHandler" msprop:Generator_TablePropName="DtConfiguracionCtasCtrl" msprop:Generator_TableVarName="tableDtConfiguracionCtasCtrl" msprop:Generator_RowDeletingName="DtConfiguracionCtasCtrlRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInTable="FolioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cta" msprop:Generator_UserColumnName="Cta" msprop:Generator_ColumnPropNameInRow="Cta" msprop:Generator_ColumnVarNameInTable="columnCta" msprop:Generator_ColumnPropNameInTable="CtaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SubCta" msprop:Generator_UserColumnName="SubCta" msprop:Generator_ColumnPropNameInRow="SubCta" msprop:Generator_ColumnVarNameInTable="columnSubCta" msprop:Generator_ColumnPropNameInTable="SubCtaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SsubCta" msprop:Generator_UserColumnName="SsubCta" msprop:Generator_ColumnPropNameInRow="SsubCta" msprop:Generator_ColumnVarNameInTable="columnSsubCta" msprop:Generator_ColumnPropNameInTable="SsubCtaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SssubCta" msprop:Generator_UserColumnName="SssubCta" msprop:Generator_ColumnPropNameInRow="SssubCta" msprop:Generator_ColumnVarNameInTable="columnSssubCta" msprop:Generator_ColumnPropNameInTable="SssubCtaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="NombreCuenta" msprop:Generator_UserColumnName="NombreCuenta" msprop:Generator_ColumnPropNameInRow="NombreCuenta" msprop:Generator_ColumnVarNameInTable="columnNombreCuenta" msprop:Generator_ColumnPropNameInTable="NombreCuentaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoCuenta" msprop:Generator_UserColumnName="TipoCuenta" msprop:Generator_ColumnPropNameInRow="TipoCuenta" msprop:Generator_ColumnVarNameInTable="columnTipoCuenta" msprop:Generator_ColumnPropNameInTable="TipoCuentaColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

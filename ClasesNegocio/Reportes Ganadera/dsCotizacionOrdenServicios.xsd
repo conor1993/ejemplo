@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCotizacionOrdenServicios" targetNamespace="http://tempuri.org/dsCotizacionOrdenServicios.xsd" xmlns:mstns="http://tempuri.org/dsCotizacionOrdenServicios.xsd" xmlns="http://tempuri.org/dsCotizacionOrdenServicios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCotizacionOrdenServicios" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsCotizacionOrdenServicios" msprop:Generator_DataSetName="dsCotizacionOrdenServicios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Cabecero" msprop:Generator_UserTableName="Cabecero" msprop:Generator_RowDeletedName="CabeceroRowDeleted" msprop:Generator_RowChangedName="CabeceroRowChanged" msprop:Generator_RowClassName="CabeceroRow" msprop:Generator_RowChangingName="CabeceroRowChanging" msprop:Generator_RowEvArgName="CabeceroRowChangeEvent" msprop:Generator_RowEvHandlerName="CabeceroRowChangeEventHandler" msprop:Generator_TableClassName="CabeceroDataTable" msprop:Generator_TableVarName="tableCabecero" msprop:Generator_RowDeletingName="CabeceroRowDeleting" msprop:Generator_TablePropName="Cabecero">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioCotizacion" msprop:Generator_UserColumnName="FolioCotizacion" msprop:Generator_ColumnVarNameInTable="columnFolioCotizacion" msprop:Generator_ColumnPropNameInRow="FolioCotizacion" msprop:Generator_ColumnPropNameInTable="FolioCotizacionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Plaza" msprop:Generator_UserColumnName="Plaza" msprop:Generator_ColumnVarNameInTable="columnPlaza" msprop:Generator_ColumnPropNameInRow="Plaza" msprop:Generator_ColumnPropNameInTable="PlazaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sucursal" msprop:Generator_UserColumnName="Sucursal" msprop:Generator_ColumnVarNameInTable="columnSucursal" msprop:Generator_ColumnPropNameInRow="Sucursal" msprop:Generator_ColumnPropNameInTable="SucursalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Subtotal" msprop:Generator_UserColumnName="Subtotal" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IVA" msprop:Generator_UserColumnName="IVA" msprop:Generator_ColumnVarNameInTable="columnIVA" msprop:Generator_ColumnPropNameInRow="IVA" msprop:Generator_ColumnPropNameInTable="IVAColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descuento" msprop:Generator_UserColumnName="Descuento" msprop:Generator_ColumnVarNameInTable="columnDescuento" msprop:Generator_ColumnPropNameInRow="Descuento" msprop:Generator_ColumnPropNameInTable="DescuentoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Observaciones" msprop:Generator_UserColumnName="Observaciones" msprop:Generator_ColumnVarNameInTable="columnObservaciones" msprop:Generator_ColumnPropNameInRow="Observaciones" msprop:Generator_ColumnPropNameInTable="ObservacionesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Proveedor" msprop:Generator_UserColumnName="Proveedor" msprop:Generator_ColumnPropNameInRow="Proveedor" msprop:Generator_ColumnVarNameInTable="columnProveedor" msprop:Generator_ColumnPropNameInTable="ProveedorColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Detalle" msprop:Generator_UserTableName="Detalle" msprop:Generator_RowDeletedName="DetalleRowDeleted" msprop:Generator_RowChangedName="DetalleRowChanged" msprop:Generator_RowClassName="DetalleRow" msprop:Generator_RowChangingName="DetalleRowChanging" msprop:Generator_RowEvArgName="DetalleRowChangeEvent" msprop:Generator_RowEvHandlerName="DetalleRowChangeEventHandler" msprop:Generator_TableClassName="DetalleDataTable" msprop:Generator_TableVarName="tableDetalle" msprop:Generator_RowDeletingName="DetalleRowDeleting" msprop:Generator_TablePropName="Detalle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioCotizacion" msprop:Generator_UserColumnName="FolioCotizacion" msprop:Generator_ColumnVarNameInTable="columnFolioCotizacion" msprop:Generator_ColumnPropNameInRow="FolioCotizacion" msprop:Generator_ColumnPropNameInTable="FolioCotizacionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FolioServicio" msprop:Generator_UserColumnName="FolioServicio" msprop:Generator_ColumnVarNameInTable="columnFolioServicio" msprop:Generator_ColumnPropNameInRow="FolioServicio" msprop:Generator_ColumnPropNameInTable="FolioServicioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Servicio" msprop:Generator_UserColumnName="Servicio" msprop:Generator_ColumnVarNameInTable="columnServicio" msprop:Generator_ColumnPropNameInRow="Servicio" msprop:Generator_ColumnPropNameInTable="ServicioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnVarNameInTable="columncantidad" msprop:Generator_ColumnPropNameInRow="cantidad" msprop:Generator_ColumnPropNameInTable="cantidadColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Costo" msprop:Generator_UserColumnName="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descuento" msprop:Generator_UserColumnName="Descuento" msprop:Generator_ColumnVarNameInTable="columnDescuento" msprop:Generator_ColumnPropNameInRow="Descuento" msprop:Generator_ColumnPropNameInTable="DescuentoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IVA" msprop:Generator_UserColumnName="IVA" msprop:Generator_ColumnVarNameInTable="columnIVA" msprop:Generator_ColumnPropNameInRow="IVA" msprop:Generator_ColumnPropNameInTable="IVAColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Cabecero_Detalle" msdata:parent="Cabecero" msdata:child="Detalle" msdata:parentkey="FolioCotizacion" msdata:childkey="FolioCotizacion" msprop:Generator_UserRelationName="Cabecero_Detalle" msprop:Generator_RelationVarName="relationCabecero_Detalle" msprop:Generator_UserChildTable="Detalle" msprop:Generator_UserParentTable="Cabecero" msprop:Generator_ParentPropName="CabeceroRow" msprop:Generator_ChildPropName="GetDetalleRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

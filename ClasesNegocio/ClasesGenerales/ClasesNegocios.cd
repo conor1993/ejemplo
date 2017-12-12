@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="PoblacionCollectionClass" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\PoblacionClass.vb</FileName>
+      <HashCode>AACQAAAAAAAAAEAACAAAAQAAAAAAIAAAAAAIBAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlazaCollectionClass" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ClasesNegociosColecciones.vb</FileName>
+      <HashCode>EACQAAUAACAAkEAACAAAAAQAAACAIJQAAABABwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SucursalCollectionClass" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ClasesNegociosColecciones.vb</FileName>
+      <HashCode>EACQAAUAACCAkEAACAAAAAQAAACAIIQAAABABwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MotivoBajaCollectionClass" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ClasesNegociosColecciones.vb</FileName>
+      <HashCode>EASQAAUAACAAkEAACAAAAAQAAACAIIQAAABABwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlazaClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ClasesNegociosCS.vb</FileName>
+      <HashCode>EAAQEAAAwQAAEEEECAAAAAAFAKAA4BAAAgAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SucursalClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ClasesNegociosCS.vb</FileName>
+      <HashCode>EACYAAAQwQAAEEEACAAAAAAFgOAAIAAAAgAABQAABAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MotivoBajaClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ClasesNegociosCS.vb</FileName>
+      <HashCode>EAAYAAAAQQAAEEEACAAAAAAFACAAYAgAAAAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MotivoCancelacionClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ClasesNegociosCS.vb</FileName>
+      <HashCode>EAAQAAAgQQAAEEEACAAAAAAFACAAYAAAAAAABAABBAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CiudadClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\CiudadClass.vb</FileName>
+      <NewMemberFileName>ClasesNegociosVB.vb</NewMemberFileName>
+      <HashCode>EAAQAAAAQRAAEEAECAAAAAAFACAAIACAACAABAgABEA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PoblacionClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\PoblacionClass.vb</FileName>
+      <HashCode>EAAQAAAAQQAAEEAACAAAhQAFACAAIAAAACIABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BusquedaClass(Of TipoEntidad)" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Metodos.vb</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PruebaForm" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>PruebaForm.vb</FileName>
+      <HashCode>AACAABAgECAAEAAAAACAAAgCAAEIQAAEABAAAAAAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="My.MySettings" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClienteClass" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\ClienteClass.vb</FileName>
+      <HashCode>EQAQAJQCxSAACEEAGACBiQAAgKSA6gOMghJAhokEhJQ=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ZonaClass" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ZonaClass.vb</FileName>
+      <HashCode>EAAUAAAAQQAAEEAACAABBAEFACAAIAABAAAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ZonaDetalleClass" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ZonaClass.vb</FileName>
+      <HashCode>EAAQAAAAQAAAAEAACAAFBAgAACAAIAABAAAAFAAABAg=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ListaPreciosClass" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ListaPreciosClass.vb</FileName>
+      <HashCode>EAAwgAQQQQAAEEEECAAEAAAFgCAQYAAAACIABAAYBAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ListaPrecioDetalleClass" Collapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ListaPreciosClass.vb</FileName>
+      <HashCode>EAAQBAAkQAAAAGAASIAAAAAEgCAAIgAAAAAABAAAhAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ZonaCollectionClass" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ZonaClass.vb</FileName>
+      <HashCode>AACQAAAAAAAAAEAACAAAAAAAAAAAIAAAAAAABAAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TipoMonedaClass" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>TipoMonedaClass.vb</FileName>
+      <HashCode>MAAQAAAAQQAAEEEECAAAAgABADAAIAAAAAAABAAABAI=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LineaClass" Collapsed="true">
+    <Position X="7.25" Y="6" Width="1.25" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\LineaClass.vb</FileName>
+      <HashCode>EAAYAAAgwQAAEEEECAABAAAFAOAAIAAAAgAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LineaCollectionClass" Collapsed="true">
+    <Position X="7.25" Y="7" Width="2" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\LineaClass.vb</FileName>
+      <HashCode>EACQAIUAACAAkEAACAAAAAQABACAIIQAAABBBwACAFE=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SubLineaClass" Collapsed="true">
+    <Position X="10.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\SubLineaClass.vb</FileName>
+      <HashCode>EAAQEAAgwRAAAEEACAAAAAAFAKAAoAAAAgAABAAAhAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ClienteFacturaClass" Collapsed="true">
+    <Position X="1.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClienteFacturaClass.vb</FileName>
+      <HashCode>EIARAAAAQAAAAEAQGAIACECAACAAIAAAAAAADAAABBA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ClienteCuentasClass" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClienteCuentasClass.vb</FileName>
+      <HashCode>EAAQAAAAAAAAAEAACAAAAAAAAAAAAAAAAAAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="12.75" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SubLineaCollectionClass" Collapsed="true">
+    <Position X="13.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\SubLineaClass.vb</FileName>
+      <HashCode>EBCQAAUAACAAkEAACAAAAAQAAACAAIQAACBIBwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarcaClass">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>MarcaClass.vb</FileName>
+      <HashCode>EAAQABAAQQAAAEAECAAAgAAAAKAAIAAAAAQABAAABAI=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarcaCollectionClass" Collapsed="true">
+    <Position X="7.75" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>MarcaClass.vb</FileName>
+      <HashCode>EACQAMUAACAAkEAACAAAAAQABICAIIQAAABABwACAFE=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UnidadesMedidaClass" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\UnidadesMedidaClass.vb</FileName>
+      <HashCode>EAAQEAAAwQACAEEACAAAAgAFAKAAoAAAAgAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="presentacionClass" Collapsed="true">
+    <Position X="3" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>PresentacionClass.vb</FileName>
+      <HashCode>EAAQAAAAQQAAAEAECAAAAgAFACCAIAEAAAAABAAAhIA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PresentacionCollectionClass" Collapsed="true">
+    <Position X="4.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>PresentacionClass.vb</FileName>
+      <NewMemberFileName>PresentacionCollectionClass.vb</NewMemberFileName>
+      <HashCode>EACQAMUAACAAkEAACAAAAAQABACAIIQAAABABwACgFE=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PresupuestoClass" Collapsed="true">
+    <Position X="4.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>PresupuestoClass.vb</FileName>
+      <HashCode>EAAQAAAQQQAAAEEECAAAAAAFACAAIAAAAAAABAAABIA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PresupuestoCollectionClass" Collapsed="true">
+    <Position X="6" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>PresupuestoClass.vb</FileName>
+      <HashCode>EACQAMUQACAAkEAACAAAAAQABACAIIQAAABABwACAFE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EstadoCollectionClass" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\EstadoClass.vb</FileName>
+      <HashCode>EACQAIUAACQAkEAACAAAAAQABACAIIQAAABABwACAFE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EstadoClass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\EstadoClass.vb</FileName>
+      <HashCode>EAAQAAAAQQAAEUAECAAAAAAFACAAKACQAAAABAACBQA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CiudadCollectionClass" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\CiudadClass.vb</FileName>
+      <HashCode>EACQAcUAACAAkEAACAAAAAQAAACAIAQAAABIBwgCAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProveedorClass" Collapsed="true">
+    <Position X="2" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\ProveedorClass.vb</FileName>
+      <HashCode>FYAQAAAC4SYAwFEEGAAAAAiAACjAMAIAAEUA1kAlJBg=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProveedorCollectionClass" Collapsed="true">
+    <Position X="4.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\ProveedorClass.vb</FileName>
+      <HashCode>EACQAAUAACAAkEAACAAAAAQAAACAIIQAAAFABwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProvAvanzadoClass" Collapsed="true">
+    <Position X="3.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\ProvAvanzadoClass.vb</FileName>
+      <HashCode>EAAQAAACwSAAQFAACAAAAAABACjAMAIAAAAChgAENAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProvDtosContablesClass" Collapsed="true">
+    <Position X="6.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\ProvDtosContablesClass.vb</FileName>
+      <HashCode>EAAQAAAAAAEAAEAACAAAAAAAACAAAAAAAAAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProvAvanzadoCollectionClass" Collapsed="true">
+    <Position X="3.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\ProvAvanzadoClass.vb</FileName>
+      <NewMemberFileName>ProvAvanzadoCollectionClass.vb</NewMemberFileName>
+      <HashCode>AAAQAAAAAAAAEEAACAAAAAAAAAAAIAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProvDtosContablesCollectionClass" Collapsed="true">
+    <Position X="6.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\ProvDtosContablesClass.vb</FileName>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BancosClass" Collapsed="true">
+    <Position X="1.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\BancosClass.vb</FileName>
+      <HashCode>GAAQAAAAQQAAAEAECAAAEAQFACAAIAAAAAAABAAABYA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancosCollectionClass" Collapsed="true">
+    <Position X="3.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesLidia\BancosClass.vb</FileName>
+      <NewMemberFileName>BancosCollectionClass.vb</NewMemberFileName>
+      <HashCode>EACQAMUAACAAkEAACAAAAAQABACAIIQAAABABwACAFE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TiposProveedoresClass" Collapsed="true">
+    <Position X="6.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\TiposPreveedoresClass.vb</FileName>
+      <HashCode>EAAQBAQAQQAAEFEECAAIABAFAKAAIAAAAgAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TiposProveedorCollectionClass" Collapsed="true">
+    <Position X="8" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\TiposPreveedoresClass.vb</FileName>
+      <HashCode>EACQAAUAACAAkEAACAAIAAQAAACAAIQAACBABwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CostosIndirectosProdClass">
+    <Position X="2.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\CostosIndirectosProdClass.vb</FileName>
+      <HashCode>EAAQBAQAQQAAAEUkCAAABBABAKAAIARAAgIABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CostosIndirectosProdCollection">
+    <Position X="4.25" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\CostosIndirectosProdClass.vb</FileName>
+      <HashCode>EACQAAUAACAAkEAACAAABAQAAACAIIQAAABABwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProductoClass">
+    <Position X="9.5" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\ProductoClass.vb</FileName>
+      <HashCode>EAAQUhACwQBAAEEEaAAACgQDAKKEogEAAAAABAAAhAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProductosCollectionClass">
+    <Position X="11.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesRosalba\Productos.vb</FileName>
+      <HashCode>EAAQAIUAACAAkEAACAAAAAQBRACAAAQAAABABwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProductosMezclaClass">
+    <Position X="7.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ProductosMezclaClass.vb</FileName>
+      <HashCode>EAAQAABAQAAAAEBACAAACAAiACIAIAAAAAAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProductosMezclaCollection">
+    <Position X="9.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ProductosMezclaClass.vb</FileName>
+      <HashCode>EAAQAAUAACAAkEAACgAAAAQABACABAUAAABABwACAFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProdCostosIndirectosClass">
+    <Position X="0.5" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ProdCostosIndirectosClass.vb</FileName>
+      <HashCode>FAAQAABAQAEAIEAACJEAAAAAACAAIAAAAAAABAAABAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProdCostoIndirectoCollection">
+    <Position X="0.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ProdCostosIndirectosClass.vb</FileName>
+      <HashCode>AAAQAAQAACCAgEAACAAAAAQABAAAAAAAAABABwACAEA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="IEntidad">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesNegocios.vb</FileName>
+      <HashCode>EAAQAAAAAAAAAEAACAAAAAAAAAAAAAAAAAAABAAABAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="EstatusEnum" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesNegocios.vb</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAACAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="MensajeErrorHandler" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ClasesNegocios.vb</FileName>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+    </TypeIdentifier>
+  </Delegate>
+</ClassDiagram>

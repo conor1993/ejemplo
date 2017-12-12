@@ -1,0 +1,184 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ClasesComunes
+</name>
+</assembly>
+<members>
+<member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.Limpiar">
+	<summary>
+ Inicializa los controles de la ventana con lso valores por default
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.Escritura">
+	<summary>
+ Habilita los controles dodne el usuario capturara los datos
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.Lectura">
+	<summary>
+ Deshabilita los controles donde el suaurio captura los datos
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.ObtenerProductos">
+	<summary>
+ Obtiene los productos registrados que se encuentran activos y enlaza el resultado a la columna
+ que muestra el listado de productos en el grid clmDescripcion
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.ColumnaIntegerKeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Metodo para redireccionar el evento KeyPress de los TextBox cuando se este editando
+ una celda del grid validando que solo ingresen numeros Enteros
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Valores del evento</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.ColumnaTextChanged(System.Object,System.EventArgs)">
+	<summary>
+ Metodo que se utiliza para redireccionar el evento TextChanged
+ de los controles en edición del grid
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Valores del evento ejecutado</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.ColumnaDecimalKeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Metodo que se utiliza para redireccionar el evento KeyPress de los controles TextBox 
+ que están en edición en el grid para validar que solo se ingresen numeros decimales
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Parametro con los valores del evento ejecutado</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.ColumnaSelectedIndexChanged(System.Object,System.EventArgs)">
+	<summary>
+ Metodo que se utiliza para redireccionar el evento SelectedIndexChanged del control ComboBox en edicion
+ de un grid
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Valores generados en el evento</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.ColumnaLostFocus(System.Object,System.EventArgs)">
+	<summary>
+ Metodo para redireccionar el evento LostFocus de los controles editores de una columna en el grid
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Valores del evento generado</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmSalidaTranferenciaPV.ObtenerDatos">
+	<summary>
+ tiene los datos capturados en la ventana y los almacena
+ en la variable transferencia
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.Limpiar">
+	<summary>
+ Inicializa los controles de la ventana con lso valores por default
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.Escritura">
+	<summary>
+ Habilita los controles dodne el usuario capturara los datos
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.Lectura">
+	<summary>
+ Deshabilita los controles donde el suaurio captura los datos
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.ObtenerProductos">
+	<summary>
+ Obtiene los productos registrados que se encuentran activos y enlaza el resultado a la columna
+ que muestra el listado de productos en el grid clmDescripcion
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.ColumnaIntegerKeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Metodo para redireccionar el evento KeyPress de los TextBox cuando se este editando
+ una celda del grid validando que solo ingresen numeros Enteros
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Valores del evento</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.ColumnaTextChanged(System.Object,System.EventArgs)">
+	<summary>
+ Metodo que se utiliza para redireccionar el evento TextChanged
+ de los controles en edición del grid
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Valores del evento ejecutado</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.ColumnaDecimalKeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Metodo que se utiliza para redireccionar el evento KeyPress de los controles TextBox 
+ que están en edición en el grid para validar que solo se ingresen numeros decimales
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Parametro con los valores del evento ejecutado</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.ColumnaSelectedIndexChanged(System.Object,System.EventArgs)">
+	<summary>
+ Metodo que se utiliza para redireccionar el evento SelectedIndexChanged del control ComboBox en edicion
+ de un grid
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Valores generados en el evento</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.ColumnaLostFocus(System.Object,System.EventArgs)">
+	<summary>
+ Metodo para redireccionar el evento LostFocus de los controles editores de una columna en el grid
+ </summary>
+	<param name="sender">Objeto que ejecuta el evento</param>
+	<param name="e">Valores del evento generado</param>
+	<remarks></remarks>
+</member><member name="M:ClasesComunes.CatAlmEntradaTranferenciaPV.ObtenerDatos">
+	<summary>
+ tiene los datos capturados en la ventana y los almacena
+ en la variable transferencia
+ </summary>
+	<remarks></remarks>
+</member><member name="P:ClasesComunes.My.Resources.Resources.ResourceManager">
+	<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member><member name="P:ClasesComunes.My.Resources.Resources.Culture">
+	<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso con establecimiento inflexible de tipos.
+</summary>
+</member><member name="T:ClasesComunes.My.Resources.Resources">
+	<summary>
+  Clase de recurso con establecimiento inflexible de tipos, para buscar cadenas traducidas, etc.
+</summary>
+</member><member name="T:ClasesComunes.dsNotaVenta.NotaVentaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ClasesComunes.dsNotaVenta.NotaVentaDetalleDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ClasesComunes.dsNotaVenta.NotaVentaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ClasesComunes.dsNotaVenta.NotaVentaDetalleRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ClasesComunes.dsNotaVenta.NotaVentaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ClasesComunes.dsNotaVenta.NotaVentaDetalleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ClasesComunes.dsNotaVenta">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+</members>
+</doc>

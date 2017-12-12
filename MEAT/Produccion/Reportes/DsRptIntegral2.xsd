@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsRptIntegral2" targetNamespace="http://tempuri.org/DsRptIntegral2.xsd" xmlns:mstns="http://tempuri.org/DsRptIntegral2.xsd" xmlns="http://tempuri.org/DsRptIntegral2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsRptIntegral2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsRptIntegral2" msprop:Generator_DataSetName="DsRptIntegral2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable2" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_RowClassName="DataTable2Row" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_TablePropName="DataTable2" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KilosEnCorte" msprop:Generator_UserColumnName="KilosEnCorte" msprop:Generator_ColumnPropNameInRow="KilosEnCorte" msprop:Generator_ColumnVarNameInTable="columnKilosEnCorte" msprop:Generator_ColumnPropNameInTable="KilosEnCorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdFolioLoteCorte" msprop:Generator_UserColumnName="IdFolioLoteCorte" msprop:Generator_ColumnPropNameInRow="IdFolioLoteCorte" msprop:Generator_ColumnVarNameInTable="columnIdFolioLoteCorte" msprop:Generator_ColumnPropNameInTable="IdFolioLoteCorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalPzas" msprop:Generator_UserColumnName="TotalPzas" msprop:Generator_ColumnPropNameInRow="TotalPzas" msprop:Generator_ColumnVarNameInTable="columnTotalPzas" msprop:Generator_ColumnPropNameInTable="TotalPzasColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalKgs" msprop:Generator_UserColumnName="TotalKgs" msprop:Generator_ColumnPropNameInRow="TotalKgs" msprop:Generator_ColumnVarNameInTable="columnTotalKgs" msprop:Generator_ColumnPropNameInTable="TotalKgsColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FolioSacrificio" msprop:Generator_UserColumnName="FolioSacrificio" msprop:Generator_ColumnPropNameInRow="FolioSacrificio" msprop:Generator_ColumnVarNameInTable="columnFolioSacrificio" msprop:Generator_ColumnPropNameInTable="FolioSacrificioColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

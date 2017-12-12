@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReporteChequesBeneficiarios" targetNamespace="http://tempuri.org/dsReporteChequesBeneficiarios.xsd" xmlns:mstns="http://tempuri.org/dsReporteChequesBeneficiarios.xsd" xmlns="http://tempuri.org/dsReporteChequesBeneficiarios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReporteChequesBeneficiarios" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsReporteChequesBeneficiarios" msprop:Generator_DataSetName="dsReporteChequesBeneficiarios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Cheques_x0020_por_x0020_Beneficiarios" msprop:Generator_UserTableName="Cheques por Beneficiarios" msprop:Generator_RowDeletedName="Cheques_por_BeneficiariosRowDeleted" msprop:Generator_RowChangedName="Cheques_por_BeneficiariosRowChanged" msprop:Generator_RowClassName="Cheques_por_BeneficiariosRow" msprop:Generator_RowChangingName="Cheques_por_BeneficiariosRowChanging" msprop:Generator_RowEvArgName="Cheques_por_BeneficiariosRowChangeEvent" msprop:Generator_RowEvHandlerName="Cheques_por_BeneficiariosRowChangeEventHandler" msprop:Generator_TableClassName="Cheques_por_BeneficiariosDataTable" msprop:Generator_TableVarName="tableCheques_por_Beneficiarios" msprop:Generator_RowDeletingName="Cheques_por_BeneficiariosRowDeleting" msprop:Generator_TablePropName="Cheques_por_Beneficiarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fec_Mov" msprop:Generator_UserColumnName="Fec_Mov" msprop:Generator_ColumnVarNameInTable="columnFec_Mov" msprop:Generator_ColumnPropNameInRow="Fec_Mov" msprop:Generator_ColumnPropNameInTable="Fec_MovColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Fecha_Cap" msprop:Generator_UserColumnName="Fecha_Cap" msprop:Generator_ColumnVarNameInTable="columnFecha_Cap" msprop:Generator_ColumnPropNameInRow="Fecha_Cap" msprop:Generator_ColumnPropNameInTable="Fecha_CapColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Numero_Pol" msprop:Generator_UserColumnName="Numero_Pol" msprop:Generator_ColumnVarNameInTable="columnNumero_Pol" msprop:Generator_ColumnPropNameInRow="Numero_Pol" msprop:Generator_ColumnPropNameInTable="Numero_PolColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Poliza" msprop:Generator_UserColumnName="Poliza" msprop:Generator_ColumnVarNameInTable="columnPoliza" msprop:Generator_ColumnPropNameInRow="Poliza" msprop:Generator_ColumnPropNameInTable="PolizaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Referencia" msprop:Generator_UserColumnName="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Concepto" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cuenta" msprop:Generator_UserColumnName="Cuenta" msprop:Generator_ColumnVarNameInTable="columnCuenta" msprop:Generator_ColumnPropNameInRow="Cuenta" msprop:Generator_ColumnPropNameInTable="CuentaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Banco" msprop:Generator_UserColumnName="Banco" msprop:Generator_ColumnVarNameInTable="columnBanco" msprop:Generator_ColumnPropNameInRow="Banco" msprop:Generator_ColumnPropNameInTable="BancoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Benefic" msprop:Generator_UserColumnName="Benefic" msprop:Generator_ColumnVarNameInTable="columnBenefic" msprop:Generator_ColumnPropNameInRow="Benefic" msprop:Generator_ColumnPropNameInTable="BeneficColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Tipo_Mov" msprop:Generator_UserColumnName="Tipo_Mov" msprop:Generator_ColumnVarNameInTable="columnTipo_Mov" msprop:Generator_ColumnPropNameInRow="Tipo_Mov" msprop:Generator_ColumnPropNameInTable="Tipo_MovColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

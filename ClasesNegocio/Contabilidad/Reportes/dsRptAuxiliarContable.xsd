@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptAuxiliarContable" targetNamespace="http://tempuri.org/dsRptAuxiliarContable.xsd" xmlns:mstns="http://tempuri.org/dsRptAuxiliarContable.xsd" xmlns="http://tempuri.org/dsRptAuxiliarContable.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptAuxiliarContable" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptAuxiliarContable" msprop:Generator_DataSetName="dsRptAuxiliarContable">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AuxiliarContable" msprop:Generator_UserTableName="AuxiliarContable" msprop:Generator_RowDeletedName="AuxiliarContableRowDeleted" msprop:Generator_RowChangedName="AuxiliarContableRowChanged" msprop:Generator_RowClassName="AuxiliarContableRow" msprop:Generator_RowChangingName="AuxiliarContableRowChanging" msprop:Generator_RowEvArgName="AuxiliarContableRowChangeEvent" msprop:Generator_RowEvHandlerName="AuxiliarContableRowChangeEventHandler" msprop:Generator_TableClassName="AuxiliarContableDataTable" msprop:Generator_TableVarName="tableAuxiliarContable" msprop:Generator_RowDeletingName="AuxiliarContableRowDeleting" msprop:Generator_TablePropName="AuxiliarContable">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdPoliza" msprop:Generator_UserColumnName="IdPoliza" msprop:Generator_ColumnPropNameInRow="IdPoliza" msprop:Generator_ColumnVarNameInTable="columnIdPoliza" msprop:Generator_ColumnPropNameInTable="IdPolizaColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="Origen" msprop:Generator_UserColumnName="Origen" msprop:Generator_ColumnPropNameInRow="Origen" msprop:Generator_ColumnVarNameInTable="columnOrigen" msprop:Generator_ColumnPropNameInTable="OrigenColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Concepto" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdCuentaContable" msprop:Generator_UserColumnName="IdCuentaContable" msprop:Generator_ColumnPropNameInRow="IdCuentaContable" msprop:Generator_ColumnVarNameInTable="columnIdCuentaContable" msprop:Generator_ColumnPropNameInTable="IdCuentaContableColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="DescripcionCuentaContable" msprop:Generator_UserColumnName="DescripcionCuentaContable" msprop:Generator_ColumnPropNameInRow="DescripcionCuentaContable" msprop:Generator_ColumnVarNameInTable="columnDescripcionCuentaContable" msprop:Generator_ColumnPropNameInTable="DescripcionCuentaContableColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Referencia" msprop:Generator_UserColumnName="Referencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cargo" msprop:Generator_UserColumnName="Cargo" msprop:Generator_ColumnPropNameInRow="Cargo" msprop:Generator_ColumnVarNameInTable="columnCargo" msprop:Generator_ColumnPropNameInTable="CargoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Abono" msprop:Generator_UserColumnName="Abono" msprop:Generator_ColumnPropNameInRow="Abono" msprop:Generator_ColumnVarNameInTable="columnAbono" msprop:Generator_ColumnPropNameInTable="AbonoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Saldo" msprop:Generator_UserColumnName="Saldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CuentaContable" msprop:Generator_UserColumnName="CuentaContable" msprop:Generator_ColumnPropNameInRow="CuentaContable" msprop:Generator_ColumnVarNameInTable="columnCuentaContable" msprop:Generator_ColumnPropNameInTable="CuentaContableColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SaldoInicial" msprop:Generator_UserColumnName="SaldoInicial" msprop:Generator_ColumnVarNameInTable="columnSaldoInicial" msprop:Generator_ColumnPropNameInRow="SaldoInicial" msprop:Generator_ColumnPropNameInTable="SaldoInicialColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NumeroPoliza" msprop:Generator_UserColumnName="NumeroPoliza" msprop:Generator_ColumnPropNameInRow="NumeroPoliza" msprop:Generator_ColumnVarNameInTable="columnNumeroPoliza" msprop:Generator_ColumnPropNameInTable="NumeroPolizaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

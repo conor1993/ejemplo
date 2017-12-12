@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dstEtiqueta" targetNamespace="http://tempuri.org/dstEtiqueta.xsd" xmlns:mstns="http://tempuri.org/dstEtiqueta.xsd" xmlns="http://tempuri.org/dstEtiqueta.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dstEtiqueta" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dstEtiqueta" msprop:Generator_DataSetName="dstEtiqueta">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtbEtiqueta" msprop:Generator_UserTableName="dtbEtiqueta" msprop:Generator_RowDeletedName="dtbEtiquetaRowDeleted" msprop:Generator_RowChangedName="dtbEtiquetaRowChanged" msprop:Generator_RowClassName="dtbEtiquetaRow" msprop:Generator_RowChangingName="dtbEtiquetaRowChanging" msprop:Generator_RowEvArgName="dtbEtiquetaRowChangeEvent" msprop:Generator_RowEvHandlerName="dtbEtiquetaRowChangeEventHandler" msprop:Generator_TableClassName="dtbEtiquetaDataTable" msprop:Generator_TableVarName="tabledtbEtiqueta" msprop:Generator_RowDeletingName="dtbEtiquetaRowDeleting" msprop:Generator_TablePropName="dtbEtiqueta">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioEtiqueta" msprop:Generator_UserColumnName="FolioEtiqueta" msprop:Generator_ColumnPropNameInRow="FolioEtiqueta" msprop:Generator_ColumnVarNameInTable="columnFolioEtiqueta" msprop:Generator_ColumnPropNameInTable="FolioEtiquetaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Peso" msprop:Generator_UserColumnName="Peso" msprop:Generator_ColumnPropNameInRow="Peso" msprop:Generator_ColumnVarNameInTable="columnPeso" msprop:Generator_ColumnPropNameInTable="PesoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Piezas" msprop:Generator_UserColumnName="Piezas" msprop:Generator_ColumnPropNameInRow="Piezas" msprop:Generator_ColumnVarNameInTable="columnPiezas" msprop:Generator_ColumnPropNameInTable="PiezasColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="LoteCorte" msprop:Generator_UserColumnName="LoteCorte" msprop:Generator_ColumnVarNameInTable="columnLoteCorte" msprop:Generator_ColumnPropNameInRow="LoteCorte" msprop:Generator_ColumnPropNameInTable="LoteCorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FehcaEmpaque" msprop:Generator_UserColumnName="FehcaEmpaque" msprop:Generator_ColumnVarNameInTable="columnFehcaEmpaque" msprop:Generator_ColumnPropNameInRow="FehcaEmpaque" msprop:Generator_ColumnPropNameInTable="FehcaEmpaqueColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaCaducidad" msprop:Generator_UserColumnName="FechaCaducidad" msprop:Generator_ColumnVarNameInTable="columnFechaCaducidad" msprop:Generator_ColumnPropNameInRow="FechaCaducidad" msprop:Generator_ColumnPropNameInTable="FechaCaducidadColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CodigoBarras" msprop:Generator_UserColumnName="CodigoBarras" msprop:Generator_ColumnVarNameInTable="columnCodigoBarras" msprop:Generator_ColumnPropNameInRow="CodigoBarras" msprop:Generator_ColumnPropNameInTable="CodigoBarrasColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CodProv" msprop:Generator_UserColumnName="CodProv" msprop:Generator_ColumnVarNameInTable="columnCodProv" msprop:Generator_ColumnPropNameInRow="CodProv" msprop:Generator_ColumnPropNameInTable="CodProvColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PaisOrigen" msprop:Generator_UserColumnName="PaisOrigen" msprop:Generator_ColumnVarNameInTable="columnPaisOrigen" msprop:Generator_ColumnPropNameInRow="PaisOrigen" msprop:Generator_ColumnPropNameInTable="PaisOrigenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ElaboradoPor" msprop:Generator_UserColumnName="ElaboradoPor" msprop:Generator_ColumnVarNameInTable="columnElaboradoPor" msprop:Generator_ColumnPropNameInRow="ElaboradoPor" msprop:Generator_ColumnPropNameInTable="ElaboradoPorColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DireccionElabo" msprop:Generator_UserColumnName="DireccionElabo" msprop:Generator_ColumnVarNameInTable="columnDireccionElabo" msprop:Generator_ColumnPropNameInRow="DireccionElabo" msprop:Generator_ColumnPropNameInTable="DireccionElaboColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ProductoIngles" msprop:Generator_UserColumnName="ProductoIngles" msprop:Generator_ColumnPropNameInRow="ProductoIngles" msprop:Generator_ColumnVarNameInTable="columnProductoIngles" msprop:Generator_ColumnPropNameInTable="ProductoInglesColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

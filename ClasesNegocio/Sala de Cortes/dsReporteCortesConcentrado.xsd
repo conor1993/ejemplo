@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReporteCortesConcentrado" targetNamespace="http://tempuri.org/dsReporteCortesConcentrado.xsd" xmlns:mstns="http://tempuri.org/dsReporteCortesConcentrado.xsd" xmlns="http://tempuri.org/dsReporteCortesConcentrado.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GanaderaConnectionString1" IsAppSettingsProperty="True" Modifier="Assembly" Name="GanaderaConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MySettings.GlobalReference.Default.GanaderaConnectionString1" Provider="System.Data.SqlClient">
+          </Connection>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GanaderaConnectionString2" IsAppSettingsProperty="True" Modifier="Assembly" Name="GanaderaConnectionString2 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.My.MySettings.GlobalReference.Default.GanaderaConnectionString2" Provider="System.Data.SqlClient">
+          </Connection>
+          <Connection ConnectionStringObject="Data Source=INTEGRA05\SQLEXPRESS;Initial Catalog=GanaderaFlexi;User ID=sa;Password=1nt3gr@2006" IsAppSettingsProperty="False" Modifier="Assembly" Name="integra05\sqlexpress.GanaderaFlexi.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwProdCortesAgrupadosTableAdapter" GeneratorDataComponentClassName="vwProdCortesAgrupadosTableAdapter" Name="vwProdCortesAgrupados" UserDataComponentName="vwProdCortesAgrupadosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="integra05\sqlexpress.GanaderaFlexi.dbo" DbObjectName="GanaderaFlexi.dbo.vwProdCortesAgrupados" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     vwProdCortesAgrupados.*
+FROM         vwProdCortesAgrupados</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="LoteCorte" DataSetColumn="LoteCorte" />
+              <Mapping SourceColumn="LoteSacrificio" DataSetColumn="LoteSacrificio" />
+              <Mapping SourceColumn="FechaCorte" DataSetColumn="FechaCorte" />
+              <Mapping SourceColumn="FechaCad" DataSetColumn="FechaCad" />
+              <Mapping SourceColumn="IdCliente" DataSetColumn="IdCliente" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
+              <Mapping SourceColumn="TotalPiezas" DataSetColumn="TotalPiezas" />
+              <Mapping SourceColumn="PiezasExistentes" DataSetColumn="PiezasExistentes" />
+              <Mapping SourceColumn="PiezasEmbarcadas" DataSetColumn="PiezasEmbarcadas" />
+              <Mapping SourceColumn="TotalKilos" DataSetColumn="TotalKilos" />
+              <Mapping SourceColumn="KilosExistentes" DataSetColumn="KilosExistentes" />
+              <Mapping SourceColumn="KilosEmbarcados" DataSetColumn="KilosEmbarcados" />
+              <Mapping SourceColumn="TotalCajas" DataSetColumn="TotalCajas" />
+              <Mapping SourceColumn="CajasExistentes" DataSetColumn="CajasExistentes" />
+              <Mapping SourceColumn="CajasEmbarcadas" DataSetColumn="CajasEmbarcadas" />
+              <Mapping SourceColumn="CajasCanceladas" DataSetColumn="CajasCanceladas" />
+              <Mapping SourceColumn="CanalesACorte" DataSetColumn="CanalesACorte" />
+              <Mapping SourceColumn="KilosACorte" DataSetColumn="KilosACorte" />
+              <Mapping SourceColumn="PiezasCanceladas" DataSetColumn="PiezasCanceladas" />
+              <Mapping SourceColumn="KilosCancelados" DataSetColumn="KilosCancelados" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReporteCortesConcentrado" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsReporteCortesConcentrado" msprop:Generator_DataSetName="dsReporteCortesConcentrado">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwProdCortesAgrupados" msprop:Generator_UserTableName="vwProdCortesAgrupados" msprop:Generator_RowDeletedName="vwProdCortesAgrupadosRowDeleted" msprop:Generator_TableClassName="vwProdCortesAgrupadosDataTable" msprop:Generator_RowChangedName="vwProdCortesAgrupadosRowChanged" msprop:Generator_RowClassName="vwProdCortesAgrupadosRow" msprop:Generator_RowChangingName="vwProdCortesAgrupadosRowChanging" msprop:Generator_RowEvArgName="vwProdCortesAgrupadosRowChangeEvent" msprop:Generator_RowEvHandlerName="vwProdCortesAgrupadosRowChangeEventHandler" msprop:Generator_TablePropName="vwProdCortesAgrupados" msprop:Generator_TableVarName="tablevwProdCortesAgrupados" msprop:Generator_RowDeletingName="vwProdCortesAgrupadosRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoteCorte" msprop:Generator_UserColumnName="LoteCorte" msprop:Generator_ColumnPropNameInRow="LoteCorte" msprop:Generator_ColumnVarNameInTable="columnLoteCorte" msprop:Generator_ColumnPropNameInTable="LoteCorteColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LoteSacrificio" msprop:Generator_UserColumnName="LoteSacrificio" msprop:Generator_ColumnPropNameInRow="LoteSacrificio" msprop:Generator_ColumnVarNameInTable="columnLoteSacrificio" msprop:Generator_ColumnPropNameInTable="LoteSacrificioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaCorte" msprop:Generator_UserColumnName="FechaCorte" msprop:Generator_ColumnPropNameInRow="FechaCorte" msprop:Generator_ColumnVarNameInTable="columnFechaCorte" msprop:Generator_ColumnPropNameInTable="FechaCorteColumn" type="xs:dateTime" />
+              <xs:element name="FechaCad" msprop:Generator_UserColumnName="FechaCad" msprop:Generator_ColumnPropNameInRow="FechaCad" msprop:Generator_ColumnVarNameInTable="columnFechaCad" msprop:Generator_ColumnPropNameInTable="FechaCadColumn" type="xs:dateTime" />
+              <xs:element name="IdCliente" msdata:ReadOnly="true" msprop:Generator_UserColumnName="IdCliente" msprop:Generator_ColumnPropNameInRow="IdCliente" msprop:Generator_ColumnVarNameInTable="columnIdCliente" msprop:Generator_ColumnPropNameInTable="IdClienteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Estatus" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalPiezas" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TotalPiezas" msprop:Generator_ColumnPropNameInRow="TotalPiezas" msprop:Generator_ColumnVarNameInTable="columnTotalPiezas" msprop:Generator_ColumnPropNameInTable="TotalPiezasColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PiezasExistentes" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PiezasExistentes" msprop:Generator_ColumnPropNameInRow="PiezasExistentes" msprop:Generator_ColumnVarNameInTable="columnPiezasExistentes" msprop:Generator_ColumnPropNameInTable="PiezasExistentesColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PiezasEmbarcadas" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PiezasEmbarcadas" msprop:Generator_ColumnPropNameInRow="PiezasEmbarcadas" msprop:Generator_ColumnVarNameInTable="columnPiezasEmbarcadas" msprop:Generator_ColumnPropNameInTable="PiezasEmbarcadasColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalKilos" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TotalKilos" msprop:Generator_ColumnPropNameInRow="TotalKilos" msprop:Generator_ColumnVarNameInTable="columnTotalKilos" msprop:Generator_ColumnPropNameInTable="TotalKilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosExistentes" msdata:ReadOnly="true" msprop:Generator_UserColumnName="KilosExistentes" msprop:Generator_ColumnPropNameInRow="KilosExistentes" msprop:Generator_ColumnVarNameInTable="columnKilosExistentes" msprop:Generator_ColumnPropNameInTable="KilosExistentesColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosEmbarcados" msdata:ReadOnly="true" msprop:Generator_UserColumnName="KilosEmbarcados" msprop:Generator_ColumnPropNameInRow="KilosEmbarcados" msprop:Generator_ColumnVarNameInTable="columnKilosEmbarcados" msprop:Generator_ColumnPropNameInTable="KilosEmbarcadosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalCajas" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TotalCajas" msprop:Generator_ColumnPropNameInRow="TotalCajas" msprop:Generator_ColumnVarNameInTable="columnTotalCajas" msprop:Generator_ColumnPropNameInTable="TotalCajasColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CajasExistentes" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CajasExistentes" msprop:Generator_ColumnPropNameInRow="CajasExistentes" msprop:Generator_ColumnVarNameInTable="columnCajasExistentes" msprop:Generator_ColumnPropNameInTable="CajasExistentesColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CajasEmbarcadas" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CajasEmbarcadas" msprop:Generator_ColumnPropNameInRow="CajasEmbarcadas" msprop:Generator_ColumnVarNameInTable="columnCajasEmbarcadas" msprop:Generator_ColumnPropNameInTable="CajasEmbarcadasColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CajasCanceladas" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CajasCanceladas" msprop:Generator_ColumnPropNameInRow="CajasCanceladas" msprop:Generator_ColumnVarNameInTable="columnCajasCanceladas" msprop:Generator_ColumnPropNameInTable="CajasCanceladasColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CanalesACorte" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CanalesACorte" msprop:Generator_ColumnPropNameInRow="CanalesACorte" msprop:Generator_ColumnVarNameInTable="columnCanalesACorte" msprop:Generator_ColumnPropNameInTable="CanalesACorteColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KilosACorte" msdata:ReadOnly="true" msprop:Generator_UserColumnName="KilosACorte" msprop:Generator_ColumnPropNameInRow="KilosACorte" msprop:Generator_ColumnVarNameInTable="columnKilosACorte" msprop:Generator_ColumnPropNameInTable="KilosACorteColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PiezasCanceladas" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PiezasCanceladas" msprop:Generator_ColumnPropNameInRow="PiezasCanceladas" msprop:Generator_ColumnVarNameInTable="columnPiezasCanceladas" msprop:Generator_ColumnPropNameInTable="PiezasCanceladasColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosCancelados" msdata:ReadOnly="true" msprop:Generator_UserColumnName="KilosCancelados" msprop:Generator_ColumnPropNameInRow="KilosCancelados" msprop:Generator_ColumnVarNameInTable="columnKilosCancelados" msprop:Generator_ColumnPropNameInTable="KilosCanceladosColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwProdCortesAgrupados" />
+      <xs:field xpath="mstns:LoteCorte" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

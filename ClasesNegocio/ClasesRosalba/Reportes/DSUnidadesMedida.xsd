@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSUnidadesMedida" targetNamespace="http://tempuri.org/DSUnidadesMedida.xsd" xmlns:mstns="http://tempuri.org/DSUnidadesMedida.xsd" xmlns="http://tempuri.org/DSUnidadesMedida.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSUnidadesMedida" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSUnidadesMedida" msprop:Generator_DataSetName="DSUnidadesMedida">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtUnidadesMedida" msprop:Generator_UserTableName="dtUnidadesMedida" msprop:Generator_RowDeletedName="dtUnidadesMedidaRowDeleted" msprop:Generator_RowChangedName="dtUnidadesMedidaRowChanged" msprop:Generator_RowClassName="dtUnidadesMedidaRow" msprop:Generator_RowChangingName="dtUnidadesMedidaRowChanging" msprop:Generator_RowEvArgName="dtUnidadesMedidaRowChangeEvent" msprop:Generator_RowEvHandlerName="dtUnidadesMedidaRowChangeEventHandler" msprop:Generator_TableClassName="dtUnidadesMedidaDataTable" msprop:Generator_TableVarName="tabledtUnidadesMedida" msprop:Generator_RowDeletingName="dtUnidadesMedidaRowDeleting" msprop:Generator_TablePropName="dtUnidadesMedida">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DescCorta" msprop:Generator_UserColumnName="DescCorta" msprop:Generator_ColumnVarNameInTable="columnDescCorta" msprop:Generator_ColumnPropNameInRow="DescCorta" msprop:Generator_ColumnPropNameInTable="DescCortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Observaciones" msprop:Generator_UserColumnName="Observaciones" msprop:Generator_ColumnVarNameInTable="columnObservaciones" msprop:Generator_ColumnPropNameInRow="Observaciones" msprop:Generator_ColumnPropNameInTable="ObservacionesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EstatusDescripcion" msprop:Generator_UserColumnName="EstatusDescripcion" msprop:Generator_ColumnVarNameInTable="columnEstatusDescripcion" msprop:Generator_ColumnPropNameInRow="EstatusDescripcion" msprop:Generator_ColumnPropNameInTable="EstatusDescripcionColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

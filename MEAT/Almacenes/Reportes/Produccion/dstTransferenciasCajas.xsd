@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dstTransferenciasCajas" targetNamespace="http://tempuri.org/dstTransferenciasCajas.xsd" xmlns:mstns="http://tempuri.org/dstTransferenciasCajas.xsd" xmlns="http://tempuri.org/dstTransferenciasCajas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dstTransferenciasCajas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dstTransferenciasCajas" msprop:Generator_DataSetName="dstTransferenciasCajas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TransferenciaCab" msprop:Generator_UserTableName="TransferenciaCab" msprop:Generator_RowDeletedName="TransferenciaCabRowDeleted" msprop:Generator_RowChangedName="TransferenciaCabRowChanged" msprop:Generator_RowClassName="TransferenciaCabRow" msprop:Generator_RowChangingName="TransferenciaCabRowChanging" msprop:Generator_RowEvArgName="TransferenciaCabRowChangeEvent" msprop:Generator_RowEvHandlerName="TransferenciaCabRowChangeEventHandler" msprop:Generator_TableClassName="TransferenciaCabDataTable" msprop:Generator_TableVarName="tableTransferenciaCab" msprop:Generator_RowDeletingName="TransferenciaCabRowDeleting" msprop:Generator_TablePropName="TransferenciaCab">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioTransferencia" msprop:Generator_UserColumnName="FolioTransferencia" msprop:Generator_ColumnVarNameInTable="columnFolioTransferencia" msprop:Generator_ColumnPropNameInRow="FolioTransferencia" msprop:Generator_ColumnPropNameInTable="FolioTransferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdAlmacen" msprop:Generator_UserColumnName="IdAlmacen" msprop:Generator_ColumnVarNameInTable="columnIdAlmacen" msprop:Generator_ColumnPropNameInRow="IdAlmacen" msprop:Generator_ColumnPropNameInTable="IdAlmacenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Almacen" msprop:Generator_UserColumnName="Almacen" msprop:Generator_ColumnVarNameInTable="columnAlmacen" msprop:Generator_ColumnPropNameInRow="Almacen" msprop:Generator_ColumnPropNameInTable="AlmacenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Piezas" msprop:Generator_UserColumnName="Piezas" msprop:Generator_ColumnVarNameInTable="columnPiezas" msprop:Generator_ColumnPropNameInRow="Piezas" msprop:Generator_ColumnPropNameInTable="PiezasColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Cajas" msprop:Generator_UserColumnName="Cajas" msprop:Generator_ColumnPropNameInRow="Cajas" msprop:Generator_ColumnVarNameInTable="columnCajas" msprop:Generator_ColumnPropNameInTable="CajasColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TransferenciaDet" msprop:Generator_UserTableName="TransferenciaDet" msprop:Generator_RowDeletedName="TransferenciaDetRowDeleted" msprop:Generator_RowChangedName="TransferenciaDetRowChanged" msprop:Generator_RowClassName="TransferenciaDetRow" msprop:Generator_RowChangingName="TransferenciaDetRowChanging" msprop:Generator_RowEvArgName="TransferenciaDetRowChangeEvent" msprop:Generator_RowEvHandlerName="TransferenciaDetRowChangeEventHandler" msprop:Generator_TableClassName="TransferenciaDetDataTable" msprop:Generator_TableVarName="tableTransferenciaDet" msprop:Generator_RowDeletingName="TransferenciaDetRowDeleting" msprop:Generator_TablePropName="TransferenciaDet">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioTransferencia" msprop:Generator_UserColumnName="FolioTransferencia" msprop:Generator_ColumnVarNameInTable="columnFolioTransferencia" msprop:Generator_ColumnPropNameInRow="FolioTransferencia" msprop:Generator_ColumnPropNameInTable="FolioTransferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FolioEtiqueta" msprop:Generator_UserColumnName="FolioEtiqueta" msprop:Generator_ColumnVarNameInTable="columnFolioEtiqueta" msprop:Generator_ColumnPropNameInRow="FolioEtiqueta" msprop:Generator_ColumnPropNameInTable="FolioEtiquetaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CodigoBarra" msprop:Generator_UserColumnName="CodigoBarra" msprop:Generator_ColumnVarNameInTable="columnCodigoBarra" msprop:Generator_ColumnPropNameInRow="CodigoBarra" msprop:Generator_ColumnPropNameInTable="CodigoBarraColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdCorte" msprop:Generator_UserColumnName="IdCorte" msprop:Generator_ColumnVarNameInTable="columnIdCorte" msprop:Generator_ColumnPropNameInRow="IdCorte" msprop:Generator_ColumnPropNameInTable="IdCorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Corte" msprop:Generator_UserColumnName="Corte" msprop:Generator_ColumnVarNameInTable="columnCorte" msprop:Generator_ColumnPropNameInRow="Corte" msprop:Generator_ColumnPropNameInTable="CorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaCorte" msprop:Generator_UserColumnName="FechaCorte" msprop:Generator_ColumnVarNameInTable="columnFechaCorte" msprop:Generator_ColumnPropNameInRow="FechaCorte" msprop:Generator_ColumnPropNameInTable="FechaCorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaCaducidad" msprop:Generator_UserColumnName="FechaCaducidad" msprop:Generator_ColumnVarNameInTable="columnFechaCaducidad" msprop:Generator_ColumnPropNameInRow="FechaCaducidad" msprop:Generator_ColumnPropNameInTable="FechaCaducidadColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Piezas" msprop:Generator_UserColumnName="Piezas" msprop:Generator_ColumnVarNameInTable="columnPiezas" msprop:Generator_ColumnPropNameInRow="Piezas" msprop:Generator_ColumnPropNameInTable="PiezasColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AlmacenOrigen" msprop:Generator_UserColumnName="AlmacenOrigen" msprop:Generator_ColumnVarNameInTable="columnAlmacenOrigen" msprop:Generator_ColumnPropNameInRow="AlmacenOrigen" msprop:Generator_ColumnPropNameInTable="AlmacenOrigenColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="TransferenciaCabKey1">
+      <xs:selector xpath=".//mstns:TransferenciaCab" />
+      <xs:field xpath="mstns:FolioTransferencia" />
+    </xs:unique>
+    <xs:unique name="TransferenciaDetKey2">
+      <xs:selector xpath=".//mstns:TransferenciaDet" />
+      <xs:field xpath="mstns:FolioTransferencia" />
+      <xs:field xpath="mstns:FolioEtiqueta" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="TransferenciaCab_TransferenciaDet" msdata:parent="TransferenciaCab" msdata:child="TransferenciaDet" msdata:parentkey="FolioTransferencia" msdata:childkey="FolioTransferencia" msprop:Generator_UserRelationName="TransferenciaCab_TransferenciaDet" msprop:Generator_RelationVarName="relationTransferenciaCab_TransferenciaDet" msprop:Generator_UserChildTable="TransferenciaDet" msprop:Generator_UserParentTable="TransferenciaCab" msprop:Generator_ParentPropName="TransferenciaCabRow" msprop:Generator_ChildPropName="GetTransferenciaDetRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

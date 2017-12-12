@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dstMovimientosAlmacenGeneral" targetNamespace="http://tempuri.org/dstMovimientosAlmacenGeneral.xsd" xmlns:mstns="http://tempuri.org/dstMovimientosAlmacenGeneral.xsd" xmlns="http://tempuri.org/dstMovimientosAlmacenGeneral.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dstMovimientosAlmacenGeneral" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dstMovimientosAlmacenGeneral" msprop:Generator_DataSetName="dstMovimientosAlmacenGeneral">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MovimientoAlmacen" msprop:Generator_UserTableName="MovimientoAlmacen" msprop:Generator_RowDeletedName="MovimientoAlmacenRowDeleted" msprop:Generator_RowChangedName="MovimientoAlmacenRowChanged" msprop:Generator_RowClassName="MovimientoAlmacenRow" msprop:Generator_RowChangingName="MovimientoAlmacenRowChanging" msprop:Generator_RowEvArgName="MovimientoAlmacenRowChangeEvent" msprop:Generator_RowEvHandlerName="MovimientoAlmacenRowChangeEventHandler" msprop:Generator_TableClassName="MovimientoAlmacenDataTable" msprop:Generator_TableVarName="tableMovimientoAlmacen" msprop:Generator_RowDeletingName="MovimientoAlmacenRowDeleting" msprop:Generator_TablePropName="MovimientoAlmacen">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioMovimientoAlmacen" msprop:Generator_UserColumnName="FolioMovimientoAlmacen" msprop:Generator_ColumnVarNameInTable="columnFolioMovimientoAlmacen" msprop:Generator_ColumnPropNameInRow="FolioMovimientoAlmacen" msprop:Generator_ColumnPropNameInTable="FolioMovimientoAlmacenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Almacen" msprop:Generator_UserColumnName="Almacen" msprop:Generator_ColumnVarNameInTable="columnAlmacen" msprop:Generator_ColumnPropNameInRow="Almacen" msprop:Generator_ColumnPropNameInTable="AlmacenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdAlmacen" msprop:Generator_UserColumnName="IdAlmacen" msprop:Generator_ColumnVarNameInTable="columnIdAlmacen" msprop:Generator_ColumnPropNameInRow="IdAlmacen" msprop:Generator_ColumnPropNameInTable="IdAlmacenColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TipoMovimiento" msprop:Generator_UserColumnName="TipoMovimiento" msprop:Generator_ColumnVarNameInTable="columnTipoMovimiento" msprop:Generator_ColumnPropNameInRow="TipoMovimiento" msprop:Generator_ColumnPropNameInTable="TipoMovimientoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdTipoMovimeinto" msprop:Generator_UserColumnName="IdTipoMovimeinto" msprop:Generator_ColumnVarNameInTable="columnIdTipoMovimeinto" msprop:Generator_ColumnPropNameInRow="IdTipoMovimeinto" msprop:Generator_ColumnPropNameInTable="IdTipoMovimeintoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Costo" msprop:Generator_UserColumnName="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Lote" msprop:Generator_UserColumnName="Lote" msprop:Generator_ColumnVarNameInTable="columnLote" msprop:Generator_ColumnPropNameInRow="Lote" msprop:Generator_ColumnPropNameInTable="LoteColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

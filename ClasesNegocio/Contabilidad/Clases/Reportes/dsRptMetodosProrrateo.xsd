@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptMetodosProrrateo" targetNamespace="http://tempuri.org/dsRptMetodosProrrateo.xsd" xmlns:mstns="http://tempuri.org/dsRptMetodosProrrateo.xsd" xmlns="http://tempuri.org/dsRptMetodosProrrateo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptMetodosProrrateo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptMetodosProrrateo" msprop:Generator_DataSetName="dsRptMetodosProrrateo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MetodosProrrateo" msprop:Generator_UserTableName="MetodosProrrateo" msprop:Generator_RowDeletedName="MetodosProrrateoRowDeleted" msprop:Generator_RowChangedName="MetodosProrrateoRowChanged" msprop:Generator_RowClassName="MetodosProrrateoRow" msprop:Generator_RowChangingName="MetodosProrrateoRowChanging" msprop:Generator_RowEvArgName="MetodosProrrateoRowChangeEvent" msprop:Generator_RowEvHandlerName="MetodosProrrateoRowChangeEventHandler" msprop:Generator_TableClassName="MetodosProrrateoDataTable" msprop:Generator_TableVarName="tableMetodosProrrateo" msprop:Generator_RowDeletingName="MetodosProrrateoRowDeleting" msprop:Generator_TablePropName="MetodosProrrateo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdMetodo" msprop:Generator_UserColumnName="IdMetodo" msprop:Generator_ColumnVarNameInTable="columnIdMetodo" msprop:Generator_ColumnPropNameInRow="IdMetodo" msprop:Generator_ColumnPropNameInTable="IdMetodoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdDepartamento" msprop:Generator_UserColumnName="IdDepartamento" msprop:Generator_ColumnVarNameInTable="columnIdDepartamento" msprop:Generator_ColumnPropNameInRow="IdDepartamento" msprop:Generator_ColumnPropNameInTable="IdDepartamentoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Metodo" msprop:Generator_UserColumnName="Metodo" msprop:Generator_ColumnVarNameInTable="columnMetodo" msprop:Generator_ColumnPropNameInRow="Metodo" msprop:Generator_ColumnPropNameInTable="MetodoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Departamento" msprop:Generator_UserColumnName="Departamento" msprop:Generator_ColumnVarNameInTable="columnDepartamento" msprop:Generator_ColumnPropNameInRow="Departamento" msprop:Generator_ColumnPropNameInTable="DepartamentoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Porcentaje" msprop:Generator_UserColumnName="Porcentaje" msprop:Generator_ColumnVarNameInTable="columnPorcentaje" msprop:Generator_ColumnPropNameInRow="Porcentaje" msprop:Generator_ColumnPropNameInTable="PorcentajeColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetCatVehiculos" targetNamespace="http://tempuri.org/DSetCatVehiculos.xsd" xmlns:mstns="http://tempuri.org/DSetCatVehiculos.xsd" xmlns="http://tempuri.org/DSetCatVehiculos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetCatVehiculos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetCatVehiculos" msprop:Generator_DataSetName="DSetCatVehiculos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtVehiculos" msprop:Generator_UserTableName="dtVehiculos" msprop:Generator_RowDeletedName="dtVehiculosRowDeleted" msprop:Generator_TableClassName="dtVehiculosDataTable" msprop:Generator_RowChangedName="dtVehiculosRowChanged" msprop:Generator_RowClassName="dtVehiculosRow" msprop:Generator_RowChangingName="dtVehiculosRowChanging" msprop:Generator_RowEvArgName="dtVehiculosRowChangeEvent" msprop:Generator_RowEvHandlerName="dtVehiculosRowChangeEventHandler" msprop:Generator_TablePropName="dtVehiculos" msprop:Generator_TableVarName="tabledtVehiculos" msprop:Generator_RowDeletingName="dtVehiculosRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DesCorta" msprop:Generator_UserColumnName="DesCorta" msprop:Generator_ColumnPropNameInRow="DesCorta" msprop:Generator_ColumnVarNameInTable="columnDesCorta" msprop:Generator_ColumnPropNameInTable="DesCortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Marca" msprop:Generator_UserColumnName="Marca" msprop:Generator_ColumnPropNameInRow="Marca" msprop:Generator_ColumnVarNameInTable="columnMarca" msprop:Generator_ColumnPropNameInTable="MarcaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Modelo" msprop:Generator_UserColumnName="Modelo" msprop:Generator_ColumnPropNameInRow="Modelo" msprop:Generator_ColumnVarNameInTable="columnModelo" msprop:Generator_ColumnPropNameInTable="ModeloColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Placas" msprop:Generator_UserColumnName="Placas" msprop:Generator_ColumnPropNameInRow="Placas" msprop:Generator_ColumnVarNameInTable="columnPlacas" msprop:Generator_ColumnPropNameInTable="PlacasColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="NoSerie" msprop:Generator_UserColumnName="NoSerie" msprop:Generator_ColumnPropNameInRow="NoSerie" msprop:Generator_ColumnVarNameInTable="columnNoSerie" msprop:Generator_ColumnPropNameInTable="NoSerieColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

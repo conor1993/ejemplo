@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptProCostosCierresReciba" targetNamespace="http://tempuri.org/dsRptProCostosCierresReciba.xsd" xmlns:mstns="http://tempuri.org/dsRptProCostosCierresReciba.xsd" xmlns="http://tempuri.org/dsRptProCostosCierresReciba.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptProCostosCierresReciba" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptProCostosCierresReciba" msprop:Generator_DataSetName="dsRptProCostosCierresReciba">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ProrraRec" msprop:Generator_UserTableName="ProrraRec" msprop:Generator_RowDeletedName="ProrraRecRowDeleted" msprop:Generator_RowChangedName="ProrraRecRowChanged" msprop:Generator_RowClassName="ProrraRecRow" msprop:Generator_RowChangingName="ProrraRecRowChanging" msprop:Generator_RowEvArgName="ProrraRecRowChangeEvent" msprop:Generator_RowEvHandlerName="ProrraRecRowChangeEventHandler" msprop:Generator_TableClassName="ProrraRecDataTable" msprop:Generator_TableVarName="tableProrraRec" msprop:Generator_RowDeletingName="ProrraRecRowDeleting" msprop:Generator_TablePropName="ProrraRec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdProrraRec" msprop:Generator_UserColumnName="IdProrraRec" msprop:Generator_ColumnVarNameInTable="columnIdProrraRec" msprop:Generator_ColumnPropNameInRow="IdProrraRec" msprop:Generator_ColumnPropNameInTable="IdProrraRecColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnPropNameInTable="FolioColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IdLote" msprop:Generator_UserColumnName="IdLote" msprop:Generator_ColumnVarNameInTable="columnIdLote" msprop:Generator_ColumnPropNameInRow="IdLote" msprop:Generator_ColumnPropNameInTable="IdLoteColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="LoteDestino" msprop:Generator_UserColumnName="LoteDestino" msprop:Generator_ColumnPropNameInRow="LoteDestino" msprop:Generator_ColumnVarNameInTable="columnLoteDestino" msprop:Generator_ColumnPropNameInTable="LoteDestinoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdCorralReciba" msprop:Generator_UserColumnName="IdCorralReciba" msprop:Generator_ColumnVarNameInTable="columnIdCorralReciba" msprop:Generator_ColumnPropNameInRow="IdCorralReciba" msprop:Generator_ColumnPropNameInTable="IdCorralRecibaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CorralReciba" msprop:Generator_UserColumnName="CorralReciba" msprop:Generator_ColumnVarNameInTable="columnCorralReciba" msprop:Generator_ColumnPropNameInRow="CorralReciba" msprop:Generator_ColumnPropNameInTable="CorralRecibaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CostoxKilo" msprop:Generator_UserColumnName="CostoxKilo" msprop:Generator_ColumnVarNameInTable="columnCostoxKilo" msprop:Generator_ColumnPropNameInRow="CostoxKilo" msprop:Generator_ColumnPropNameInTable="CostoxKiloColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

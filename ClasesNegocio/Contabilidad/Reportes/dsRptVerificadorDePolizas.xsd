@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptVerificadorDePolizas" targetNamespace="http://tempuri.org/dsRptVerificadorDePolizas.xsd" xmlns:mstns="http://tempuri.org/dsRptVerificadorDePolizas.xsd" xmlns="http://tempuri.org/dsRptVerificadorDePolizas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GANADERAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="GANADERAConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.My.MySettings.GlobalReference.Default.GANADERAConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptVerificadorDePolizas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptVerificadorDePolizas" msprop:Generator_DataSetName="dsRptVerificadorDePolizas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PolizasErrores" msprop:Generator_UserTableName="PolizasErrores" msprop:Generator_RowDeletedName="PolizasErroresRowDeleted" msprop:Generator_TableClassName="PolizasErroresDataTable" msprop:Generator_RowChangedName="PolizasErroresRowChanged" msprop:Generator_RowClassName="PolizasErroresRow" msprop:Generator_RowChangingName="PolizasErroresRowChanging" msprop:Generator_RowEvArgName="PolizasErroresRowChangeEvent" msprop:Generator_RowEvHandlerName="PolizasErroresRowChangeEventHandler" msprop:Generator_TablePropName="PolizasErrores" msprop:Generator_TableVarName="tablePolizasErrores" msprop:Generator_RowDeletingName="PolizasErroresRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NumeroPoliza" msprop:Generator_UserColumnName="NumeroPoliza" msprop:Generator_ColumnPropNameInRow="NumeroPoliza" msprop:Generator_ColumnVarNameInTable="columnNumeroPoliza" msprop:Generator_ColumnPropNameInTable="NumeroPolizaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Origen" msprop:Generator_UserColumnName="Origen" msprop:Generator_ColumnPropNameInRow="Origen" msprop:Generator_ColumnVarNameInTable="columnOrigen" msprop:Generator_ColumnPropNameInTable="OrigenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Concepto" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Er1" msprop:Generator_UserColumnName="Er1" msprop:Generator_ColumnPropNameInRow="Er1" msprop:Generator_ColumnVarNameInTable="columnEr1" msprop:Generator_ColumnPropNameInTable="Er1Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Er2" msprop:Generator_UserColumnName="Er2" msprop:Generator_ColumnPropNameInRow="Er2" msprop:Generator_ColumnVarNameInTable="columnEr2" msprop:Generator_ColumnPropNameInTable="Er2Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Er3" msprop:Generator_UserColumnName="Er3" msprop:Generator_ColumnPropNameInRow="Er3" msprop:Generator_ColumnVarNameInTable="columnEr3" msprop:Generator_ColumnPropNameInTable="Er3Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Er4" msprop:Generator_UserColumnName="Er4" msprop:Generator_ColumnPropNameInRow="Er4" msprop:Generator_ColumnVarNameInTable="columnEr4" msprop:Generator_ColumnPropNameInTable="Er4Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Er5" msprop:Generator_UserColumnName="Er5" msprop:Generator_ColumnPropNameInRow="Er5" msprop:Generator_ColumnVarNameInTable="columnEr5" msprop:Generator_ColumnPropNameInTable="Er5Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Er6" msprop:Generator_UserColumnName="Er6" msprop:Generator_ColumnPropNameInRow="Er6" msprop:Generator_ColumnVarNameInTable="columnEr6" msprop:Generator_ColumnPropNameInTable="Er6Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

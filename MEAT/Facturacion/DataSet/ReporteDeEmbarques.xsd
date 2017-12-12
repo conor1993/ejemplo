@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReporteDeEmbarques" targetNamespace="http://tempuri.org/ReporteDeEmbarques.xsd" xmlns:mstns="http://tempuri.org/ReporteDeEmbarques.xsd" xmlns="http://tempuri.org/ReporteDeEmbarques.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GanaderaConnectionString1" IsAppSettingsProperty="True" Modifier="Assembly" Name="GanaderaConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.FLEXI.MySettings.GlobalReference.Default.GanaderaConnectionString1" Provider="System.Data.SqlClient">
+          </Connection>
+          <Connection ConnectionStringObject="Data Source=INTEGRA05\SQLEXPRESS;Initial Catalog=GanaderaFlexi;User ID=sa;Password=1nt3gr@2006" IsAppSettingsProperty="False" Modifier="Assembly" Name="integra05\sqlexpress.GanaderaFlexi.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReporteDeEmbarques" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ReporteDeEmbarques" msprop:Generator_DataSetName="ReporteDeEmbarques">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VwReporteDeEmbarquesConcentrado" msprop:Generator_UserTableName="VwReporteDeEmbarquesConcentrado" msprop:Generator_RowDeletedName="VwReporteDeEmbarquesConcentradoRowDeleted" msprop:Generator_RowChangedName="VwReporteDeEmbarquesConcentradoRowChanged" msprop:Generator_RowClassName="VwReporteDeEmbarquesConcentradoRow" msprop:Generator_RowChangingName="VwReporteDeEmbarquesConcentradoRowChanging" msprop:Generator_RowEvArgName="VwReporteDeEmbarquesConcentradoRowChangeEvent" msprop:Generator_RowEvHandlerName="VwReporteDeEmbarquesConcentradoRowChangeEventHandler" msprop:Generator_TableClassName="VwReporteDeEmbarquesConcentradoDataTable" msprop:Generator_TableVarName="tableVwReporteDeEmbarquesConcentrado" msprop:Generator_RowDeletingName="VwReporteDeEmbarquesConcentradoRowDeleting" msprop:Generator_TablePropName="VwReporteDeEmbarquesConcentrado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nombre" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaEmbarque" msprop:Generator_UserColumnName="FechaEmbarque" msprop:Generator_ColumnVarNameInTable="columnFechaEmbarque" msprop:Generator_ColumnPropNameInRow="FechaEmbarque" msprop:Generator_ColumnPropNameInTable="FechaEmbarqueColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IdFolioEmbarque" msprop:Generator_UserColumnName="IdFolioEmbarque" msprop:Generator_ColumnVarNameInTable="columnIdFolioEmbarque" msprop:Generator_ColumnPropNameInRow="IdFolioEmbarque" msprop:Generator_ColumnPropNameInTable="IdFolioEmbarqueColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FolioEmbarqueEmp" msprop:Generator_UserColumnName="FolioEmbarqueEmp" msprop:Generator_ColumnVarNameInTable="columnFolioEmbarqueEmp" msprop:Generator_ColumnPropNameInRow="FolioEmbarqueEmp" msprop:Generator_ColumnPropNameInTable="FolioEmbarqueEmpColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoFactura" msprop:Generator_UserColumnName="NoFactura" msprop:Generator_ColumnVarNameInTable="columnNoFactura" msprop:Generator_ColumnPropNameInRow="NoFactura" msprop:Generator_ColumnPropNameInTable="NoFacturaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Estatus" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ImporteFactura" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ImporteFactura" msprop:Generator_ColumnVarNameInTable="columnImporteFactura" msprop:Generator_ColumnPropNameInRow="ImporteFactura" msprop:Generator_ColumnPropNameInTable="ImporteFacturaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VwReporteDeEmbarquesConcentrado" />
+      <xs:field xpath="mstns:IdFolioEmbarque" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

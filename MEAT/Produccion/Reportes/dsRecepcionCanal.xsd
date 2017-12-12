@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRecepcionCanal" targetNamespace="http://tempuri.org/dsRecepcionCanal.xsd" xmlns:mstns="http://tempuri.org/dsRecepcionCanal.xsd" xmlns="http://tempuri.org/dsRecepcionCanal.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GANADERAConnectionString1" IsAppSettingsProperty="True" Modifier="Assembly" Name="GANADERAConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.FLEXI.My.MySettings.GlobalReference.Default.GANADERAConnectionString1" Provider="System.Data.SqlClient">
+          </Connection>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GANADERA1" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="GANADERA1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.FLEXI.My.MySettings.GlobalReference.Default.GANADERA1" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRecepcionCanal" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRecepcionCanal" msprop:Generator_DataSetName="dsRecepcionCanal">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RecepcionCanal" msprop:Generator_UserTableName="RecepcionCanal" msprop:Generator_RowDeletedName="RecepcionCanalRowDeleted" msprop:Generator_RowChangedName="RecepcionCanalRowChanged" msprop:Generator_RowClassName="RecepcionCanalRow" msprop:Generator_RowChangingName="RecepcionCanalRowChanging" msprop:Generator_RowEvArgName="RecepcionCanalRowChangeEvent" msprop:Generator_RowEvHandlerName="RecepcionCanalRowChangeEventHandler" msprop:Generator_TableClassName="RecepcionCanalDataTable" msprop:Generator_TableVarName="tableRecepcionCanal" msprop:Generator_RowDeletingName="RecepcionCanalRowDeleting" msprop:Generator_TablePropName="RecepcionCanal">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioSacrificio" msprop:Generator_UserColumnName="FolioSacrificio" msprop:Generator_ColumnPropNameInRow="FolioSacrificio" msprop:Generator_ColumnVarNameInTable="columnFolioSacrificio" msprop:Generator_ColumnPropNameInTable="FolioSacrificioColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NumRes" msprop:Generator_UserColumnName="NumRes" msprop:Generator_ColumnPropNameInRow="NumRes" msprop:Generator_ColumnVarNameInTable="columnNumRes" msprop:Generator_ColumnPropNameInTable="NumResColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Canal" msprop:Generator_UserColumnName="Canal" msprop:Generator_ColumnPropNameInRow="Canal" msprop:Generator_ColumnVarNameInTable="columnCanal" msprop:Generator_ColumnPropNameInTable="CanalColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Kilogramos" msprop:Generator_UserColumnName="Kilogramos" msprop:Generator_ColumnPropNameInRow="Kilogramos" msprop:Generator_ColumnVarNameInTable="columnKilogramos" msprop:Generator_ColumnPropNameInTable="KilogramosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="EstatusCadena" msprop:Generator_UserColumnName="EstatusCadena" msprop:Generator_ColumnPropNameInRow="EstatusCadena" msprop:Generator_ColumnVarNameInTable="columnEstatusCadena" msprop:Generator_ColumnPropNameInTable="EstatusCadenaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LoteCorte" msprop:Generator_UserColumnName="LoteCorte" msprop:Generator_ColumnPropNameInRow="LoteCorte" msprop:Generator_ColumnVarNameInTable="columnLoteCorte" msprop:Generator_ColumnPropNameInTable="LoteCorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FolioEmbarque" msprop:Generator_UserColumnName="FolioEmbarque" msprop:Generator_ColumnPropNameInRow="FolioEmbarque" msprop:Generator_ColumnVarNameInTable="columnFolioEmbarque" msprop:Generator_ColumnPropNameInTable="FolioEmbarqueColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="RecepcionCanalKey1">
+      <xs:selector xpath=".//mstns:RecepcionCanal" />
+      <xs:field xpath="mstns:FolioSacrificio" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

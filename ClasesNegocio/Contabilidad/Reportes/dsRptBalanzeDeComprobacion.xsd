@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptBalanzeDeComprobacion" targetNamespace="http://tempuri.org/dsRptAuxiliarContable.xsd" xmlns:mstns="http://tempuri.org/dsRptAuxiliarContable.xsd" xmlns="http://tempuri.org/dsRptAuxiliarContable.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptBalanzeDeComprobacion" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptBalanzeDeComprobacion" msprop:Generator_DataSetName="dsRptBalanzeDeComprobacion">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BalanzaDeComprobacion" msprop:Generator_UserTableName="BalanzaDeComprobacion" msprop:Generator_RowDeletedName="BalanzaDeComprobacionRowDeleted" msprop:Generator_RowChangedName="BalanzaDeComprobacionRowChanged" msprop:Generator_RowClassName="BalanzaDeComprobacionRow" msprop:Generator_RowChangingName="BalanzaDeComprobacionRowChanging" msprop:Generator_RowEvArgName="BalanzaDeComprobacionRowChangeEvent" msprop:Generator_RowEvHandlerName="BalanzaDeComprobacionRowChangeEventHandler" msprop:Generator_TableClassName="BalanzaDeComprobacionDataTable" msprop:Generator_TableVarName="tableBalanzaDeComprobacion" msprop:Generator_RowDeletingName="BalanzaDeComprobacionRowDeleting" msprop:Generator_TablePropName="BalanzaDeComprobacion">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCuentaContable" msprop:Generator_UserColumnName="IdCuentaContable" msprop:Generator_ColumnPropNameInRow="IdCuentaContable" msprop:Generator_ColumnVarNameInTable="columnIdCuentaContable" msprop:Generator_ColumnPropNameInTable="IdCuentaContableColumn" type="xs:long" />
+              <xs:element name="Naturaleza" msprop:Generator_UserColumnName="Naturaleza" msprop:Generator_ColumnPropNameInRow="Naturaleza" msprop:Generator_ColumnVarNameInTable="columnNaturaleza" msprop:Generator_ColumnPropNameInTable="NaturalezaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DescripcionCuentaContable" msdata:Caption="Descripción Cuenta" msprop:Generator_UserColumnName="DescripcionCuentaContable" msprop:Generator_ColumnPropNameInRow="DescripcionCuentaContable" msprop:Generator_ColumnVarNameInTable="columnDescripcionCuentaContable" msprop:Generator_ColumnPropNameInTable="DescripcionCuentaContableColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cta" msprop:Generator_UserColumnName="Cta" msprop:Generator_ColumnVarNameInTable="columnCta" msprop:Generator_ColumnPropNameInRow="Cta" msprop:Generator_ColumnPropNameInTable="CtaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SubCta" msdata:Caption="SCta" msprop:Generator_UserColumnName="SubCta" msprop:Generator_ColumnVarNameInTable="columnSubCta" msprop:Generator_ColumnPropNameInRow="SubCta" msprop:Generator_ColumnPropNameInTable="SubCtaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SsubCta" msdata:Caption="SsCta" msprop:Generator_UserColumnName="SsubCta" msprop:Generator_ColumnVarNameInTable="columnSsubCta" msprop:Generator_ColumnPropNameInRow="SsubCta" msprop:Generator_ColumnPropNameInTable="SsubCtaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SssubCta" msdata:Caption="SssCta" msprop:Generator_UserColumnName="SssubCta" msprop:Generator_ColumnVarNameInTable="columnSssubCta" msprop:Generator_ColumnPropNameInRow="SssubCta" msprop:Generator_ColumnPropNameInTable="SssubCtaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SaldoAnterior" msdata:Caption="Saldo Anterior" msprop:Generator_UserColumnName="SaldoAnterior" msprop:Generator_ColumnVarNameInTable="columnSaldoAnterior" msprop:Generator_ColumnPropNameInRow="SaldoAnterior" msprop:Generator_ColumnPropNameInTable="SaldoAnteriorColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cargo" msdata:Caption="Cargos" msprop:Generator_UserColumnName="Cargo" msprop:Generator_ColumnPropNameInRow="Cargo" msprop:Generator_ColumnVarNameInTable="columnCargo" msprop:Generator_ColumnPropNameInTable="CargoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Abono" msdata:Caption="Abonos" msprop:Generator_UserColumnName="Abono" msprop:Generator_ColumnPropNameInRow="Abono" msprop:Generator_ColumnVarNameInTable="columnAbono" msprop:Generator_ColumnPropNameInTable="AbonoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SaldoActual" msdata:Caption="Saldo Actual" msprop:Generator_UserColumnName="SaldoActual" msprop:Generator_ColumnPropNameInRow="SaldoActual" msprop:Generator_ColumnVarNameInTable="columnSaldoActual" msprop:Generator_ColumnPropNameInTable="SaldoActualColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:BalanzaDeComprobacion" />
+      <xs:field xpath="mstns:IdCuentaContable" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

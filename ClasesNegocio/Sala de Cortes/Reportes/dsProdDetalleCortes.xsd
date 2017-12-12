@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsProdDetalleCortes" targetNamespace="http://tempuri.org/dsProdDetalleCortes.xsd" xmlns:mstns="http://tempuri.org/dsProdDetalleCortes.xsd" xmlns="http://tempuri.org/dsProdDetalleCortes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GanaderaConnectionString2" IsAppSettingsProperty="True" Modifier="Assembly" Name="GanaderaConnectionString2 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MySettings.GlobalReference.Default.GanaderaConnectionString2" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwProdCortesTableAdapter" GeneratorDataComponentClassName="vwProdCortesTableAdapter" Name="vwProdCortes" UserDataComponentName="vwProdCortesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GanaderaConnectionString2 (MySettings)" DbObjectName="Ganadera.dbo.vwProdCortes" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     vwProdCortes.*
+FROM         vwProdCortes</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="LoteCorte" DataSetColumn="LoteCorte" />
+              <Mapping SourceColumn="CodPreCorte" DataSetColumn="CodPreCorte" />
+              <Mapping SourceColumn="PreCorte" DataSetColumn="PreCorte" />
+              <Mapping SourceColumn="CodCorte" DataSetColumn="CodCorte" />
+              <Mapping SourceColumn="Corte" DataSetColumn="Corte" />
+              <Mapping SourceColumn="CantPzas" DataSetColumn="CantPzas" />
+              <Mapping SourceColumn="CantKgrs" DataSetColumn="CantKgrs" />
+              <Mapping SourceColumn="idFolioEtiqueta" DataSetColumn="idFolioEtiqueta" />
+              <Mapping SourceColumn="IdCliente" DataSetColumn="IdCliente" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
+              <Mapping SourceColumn="IdFolioEmbarque" DataSetColumn="IdFolioEmbarque" />
+              <Mapping SourceColumn="LoteSacrificio" DataSetColumn="LoteSacrificio" />
+              <Mapping SourceColumn="FechaCorte" DataSetColumn="FechaCorte" />
+              <Mapping SourceColumn="FechaCad" DataSetColumn="FechaCad" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsProdDetalleCortes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsProdDetalleCortes" msprop:Generator_DataSetName="dsProdDetalleCortes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwProdCortes" msprop:Generator_UserTableName="vwProdCortes" msprop:Generator_RowDeletedName="vwProdCortesRowDeleted" msprop:Generator_RowChangedName="vwProdCortesRowChanged" msprop:Generator_RowClassName="vwProdCortesRow" msprop:Generator_RowChangingName="vwProdCortesRowChanging" msprop:Generator_RowEvArgName="vwProdCortesRowChangeEvent" msprop:Generator_RowEvHandlerName="vwProdCortesRowChangeEventHandler" msprop:Generator_TableClassName="vwProdCortesDataTable" msprop:Generator_TableVarName="tablevwProdCortes" msprop:Generator_RowDeletingName="vwProdCortesRowDeleting" msprop:Generator_TablePropName="vwProdCortes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoteCorte" msprop:Generator_UserColumnName="LoteCorte" msprop:Generator_ColumnVarNameInTable="columnLoteCorte" msprop:Generator_ColumnPropNameInRow="LoteCorte" msprop:Generator_ColumnPropNameInTable="LoteCorteColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodPreCorte" msprop:Generator_UserColumnName="CodPreCorte" msprop:Generator_ColumnVarNameInTable="columnCodPreCorte" msprop:Generator_ColumnPropNameInRow="CodPreCorte" msprop:Generator_ColumnPropNameInTable="CodPreCorteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PreCorte" msprop:Generator_UserColumnName="PreCorte" msprop:Generator_ColumnVarNameInTable="columnPreCorte" msprop:Generator_ColumnPropNameInRow="PreCorte" msprop:Generator_ColumnPropNameInTable="PreCorteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodCorte" msprop:Generator_UserColumnName="CodCorte" msprop:Generator_ColumnVarNameInTable="columnCodCorte" msprop:Generator_ColumnPropNameInRow="CodCorte" msprop:Generator_ColumnPropNameInTable="CodCorteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Corte" msprop:Generator_UserColumnName="Corte" msprop:Generator_ColumnVarNameInTable="columnCorte" msprop:Generator_ColumnPropNameInRow="Corte" msprop:Generator_ColumnPropNameInTable="CorteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CantPzas" msprop:Generator_UserColumnName="CantPzas" msprop:Generator_ColumnVarNameInTable="columnCantPzas" msprop:Generator_ColumnPropNameInRow="CantPzas" msprop:Generator_ColumnPropNameInTable="CantPzasColumn" type="xs:decimal" />
+              <xs:element name="CantKgrs" msprop:Generator_UserColumnName="CantKgrs" msprop:Generator_ColumnVarNameInTable="columnCantKgrs" msprop:Generator_ColumnPropNameInRow="CantKgrs" msprop:Generator_ColumnPropNameInTable="CantKgrsColumn" type="xs:decimal" />
+              <xs:element name="idFolioEtiqueta" msprop:Generator_UserColumnName="idFolioEtiqueta" msprop:Generator_ColumnVarNameInTable="columnidFolioEtiqueta" msprop:Generator_ColumnPropNameInRow="idFolioEtiqueta" msprop:Generator_ColumnPropNameInTable="idFolioEtiquetaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdCliente" msprop:Generator_UserColumnName="IdCliente" msprop:Generator_ColumnVarNameInTable="columnIdCliente" msprop:Generator_ColumnPropNameInRow="IdCliente" msprop:Generator_ColumnPropNameInTable="IdClienteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdFolioEmbarque" msprop:Generator_UserColumnName="IdFolioEmbarque" msprop:Generator_ColumnVarNameInTable="columnIdFolioEmbarque" msprop:Generator_ColumnPropNameInRow="IdFolioEmbarque" msprop:Generator_ColumnPropNameInTable="IdFolioEmbarqueColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LoteSacrificio" msprop:Generator_UserColumnName="LoteSacrificio" msprop:Generator_ColumnVarNameInTable="columnLoteSacrificio" msprop:Generator_ColumnPropNameInRow="LoteSacrificio" msprop:Generator_ColumnPropNameInTable="LoteSacrificioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaCorte" msprop:Generator_UserColumnName="FechaCorte" msprop:Generator_ColumnVarNameInTable="columnFechaCorte" msprop:Generator_ColumnPropNameInRow="FechaCorte" msprop:Generator_ColumnPropNameInTable="FechaCorteColumn" type="xs:dateTime" />
+              <xs:element name="FechaCad" msprop:Generator_UserColumnName="FechaCad" msprop:Generator_ColumnVarNameInTable="columnFechaCad" msprop:Generator_ColumnPropNameInRow="FechaCad" msprop:Generator_ColumnPropNameInTable="FechaCadColumn" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

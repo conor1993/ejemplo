@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dstTransferenciasSalidas" targetNamespace="http://tempuri.org/dstTransferenciasSalidas.xsd" xmlns:mstns="http://tempuri.org/dstTransferenciasSalidas.xsd" xmlns="http://tempuri.org/dstTransferenciasSalidas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dstTransferenciasSalidas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dstTransferenciasSalidas" msprop:Generator_DataSetName="dstTransferenciasSalidas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TransferenciaSalida" msprop:Generator_UserTableName="TransferenciaSalida" msprop:Generator_RowDeletedName="TransferenciaSalidaRowDeleted" msprop:Generator_TableClassName="TransferenciaSalidaDataTable" msprop:Generator_RowChangedName="TransferenciaSalidaRowChanged" msprop:Generator_RowClassName="TransferenciaSalidaRow" msprop:Generator_RowChangingName="TransferenciaSalidaRowChanging" msprop:Generator_RowEvArgName="TransferenciaSalidaRowChangeEvent" msprop:Generator_RowEvHandlerName="TransferenciaSalidaRowChangeEventHandler" msprop:Generator_TablePropName="TransferenciaSalida" msprop:Generator_TableVarName="tableTransferenciaSalida" msprop:Generator_RowDeletingName="TransferenciaSalidaRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioTransferencia" msprop:Generator_UserColumnName="FolioTransferencia" msprop:Generator_ColumnPropNameInRow="FolioTransferencia" msprop:Generator_ColumnVarNameInTable="columnFolioTransferencia" msprop:Generator_ColumnPropNameInTable="FolioTransferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AlmacenDestino" msprop:Generator_UserColumnName="AlmacenDestino" msprop:Generator_ColumnPropNameInRow="AlmacenDestino" msprop:Generator_ColumnVarNameInTable="columnAlmacenDestino" msprop:Generator_ColumnPropNameInTable="AlmacenDestinoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AlmacenOrigen" msprop:Generator_UserColumnName="AlmacenOrigen" msprop:Generator_ColumnPropNameInRow="AlmacenOrigen" msprop:Generator_ColumnVarNameInTable="columnAlmacenOrigen" msprop:Generator_ColumnPropNameInTable="AlmacenOrigenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaMovimiento" msprop:Generator_UserColumnName="FechaMovimiento" msprop:Generator_ColumnPropNameInRow="FechaMovimiento" msprop:Generator_ColumnVarNameInTable="columnFechaMovimiento" msprop:Generator_ColumnPropNameInTable="FechaMovimientoColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NoProductos" msprop:Generator_UserColumnName="NoProductos" msprop:Generator_ColumnPropNameInRow="NoProductos" msprop:Generator_ColumnVarNameInTable="columnNoProductos" msprop:Generator_ColumnPropNameInTable="NoProductosColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TransferenciaSalidaDetalle" msprop:Generator_UserTableName="TransferenciaSalidaDetalle" msprop:Generator_RowDeletedName="TransferenciaSalidaDetalleRowDeleted" msprop:Generator_TableClassName="TransferenciaSalidaDetalleDataTable" msprop:Generator_RowChangedName="TransferenciaSalidaDetalleRowChanged" msprop:Generator_RowClassName="TransferenciaSalidaDetalleRow" msprop:Generator_RowChangingName="TransferenciaSalidaDetalleRowChanging" msprop:Generator_RowEvArgName="TransferenciaSalidaDetalleRowChangeEvent" msprop:Generator_RowEvHandlerName="TransferenciaSalidaDetalleRowChangeEventHandler" msprop:Generator_TablePropName="TransferenciaSalidaDetalle" msprop:Generator_TableVarName="tableTransferenciaSalidaDetalle" msprop:Generator_RowDeletingName="TransferenciaSalidaDetalleRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioTransferencia" msprop:Generator_UserColumnName="FolioTransferencia" msprop:Generator_ColumnPropNameInRow="FolioTransferencia" msprop:Generator_ColumnVarNameInTable="columnFolioTransferencia" msprop:Generator_ColumnPropNameInTable="FolioTransferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Lote" msprop:Generator_UserColumnName="Lote" msprop:Generator_ColumnPropNameInRow="Lote" msprop:Generator_ColumnVarNameInTable="columnLote" msprop:Generator_ColumnPropNameInTable="LoteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoUnitario" msprop:Generator_UserColumnName="CostoUnitario" msprop:Generator_ColumnPropNameInRow="CostoUnitario" msprop:Generator_ColumnVarNameInTable="columnCostoUnitario" msprop:Generator_ColumnPropNameInTable="CostoUnitarioColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Iva" msprop:Generator_UserColumnName="Iva" msprop:Generator_ColumnPropNameInRow="Iva" msprop:Generator_ColumnVarNameInTable="columnIva" msprop:Generator_ColumnPropNameInTable="IvaColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="TransferenciaSalidaKey1">
+      <xs:selector xpath=".//mstns:TransferenciaSalida" />
+      <xs:field xpath="mstns:FolioTransferencia" />
+    </xs:unique>
+    <xs:unique name="TransferenciaSalidaDetalleKey1">
+      <xs:selector xpath=".//mstns:TransferenciaSalidaDetalle" />
+      <xs:field xpath="mstns:FolioTransferencia" />
+      <xs:field xpath="mstns:Producto" />
+      <xs:field xpath="mstns:Lote" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="TransferenciaSalida_TransferenciaSalidaDetalle" msdata:parent="TransferenciaSalida" msdata:child="TransferenciaSalidaDetalle" msdata:parentkey="FolioTransferencia" msdata:childkey="FolioTransferencia" msprop:Generator_UserRelationName="TransferenciaSalida_TransferenciaSalidaDetalle" msprop:Generator_RelationVarName="relationTransferenciaSalida_TransferenciaSalidaDetalle" msprop:Generator_UserChildTable="TransferenciaSalidaDetalle" msprop:Generator_UserParentTable="TransferenciaSalida" msprop:Generator_ParentPropName="TransferenciaSalidaRow" msprop:Generator_ChildPropName="GetTransferenciaSalidaDetalleRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

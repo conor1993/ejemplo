@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCotizaciones" targetNamespace="http://tempuri.org/dsCotizaciones.xsd" xmlns:mstns="http://tempuri.org/dsCotizaciones.xsd" xmlns="http://tempuri.org/dsCotizaciones.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GanaderaConnectionString" IsAppSettingsProperty="True" Modifier="Assembly" Name="GanaderaConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MySettings.GlobalReference.Default.GanaderaConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwCompReporteCotizacionesTableAdapter" GeneratorDataComponentClassName="vwCompReporteCotizacionesTableAdapter" Name="vwCompReporteCotizaciones" UserDataComponentName="vwCompReporteCotizacionesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GanaderaConnectionString (MySettings)" DbObjectName="Ganadera.dbo.vwCompReporteCotizaciones" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     Folio, PresupuestoId, SucursalId, SCDescripcion, SCIdPlaza, PLDescripcion, FechaAlta, Observaciones, ProductoId, PdDescripcion, Cantidad, 
+                      UMDescripcion, ProveedorId, PrRazSocial, Precio, Descuento, Importe
+FROM         vwCompReporteCotizaciones</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Folio" DataSetColumn="Folio" />
+              <Mapping SourceColumn="PresupuestoId" DataSetColumn="PresupuestoId" />
+              <Mapping SourceColumn="SucursalId" DataSetColumn="SucursalId" />
+              <Mapping SourceColumn="SCDescripcion" DataSetColumn="SCDescripcion" />
+              <Mapping SourceColumn="SCIdPlaza" DataSetColumn="SCIdPlaza" />
+              <Mapping SourceColumn="PLDescripcion" DataSetColumn="PLDescripcion" />
+              <Mapping SourceColumn="FechaAlta" DataSetColumn="FechaAlta" />
+              <Mapping SourceColumn="Observaciones" DataSetColumn="Observaciones" />
+              <Mapping SourceColumn="ProductoId" DataSetColumn="ProductoId" />
+              <Mapping SourceColumn="PdDescripcion" DataSetColumn="PdDescripcion" />
+              <Mapping SourceColumn="Cantidad" DataSetColumn="Cantidad" />
+              <Mapping SourceColumn="UMDescripcion" DataSetColumn="UMDescripcion" />
+              <Mapping SourceColumn="ProveedorId" DataSetColumn="ProveedorId" />
+              <Mapping SourceColumn="PrRazSocial" DataSetColumn="PrRazSocial" />
+              <Mapping SourceColumn="Precio" DataSetColumn="Precio" />
+              <Mapping SourceColumn="Descuento" DataSetColumn="Descuento" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCotizaciones" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsCotizaciones" msprop:Generator_DataSetName="dsCotizaciones">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwCompReporteCotizaciones" msprop:Generator_UserTableName="vwCompReporteCotizaciones" msprop:Generator_RowDeletedName="vwCompReporteCotizacionesRowDeleted" msprop:Generator_RowChangedName="vwCompReporteCotizacionesRowChanged" msprop:Generator_RowClassName="vwCompReporteCotizacionesRow" msprop:Generator_RowChangingName="vwCompReporteCotizacionesRowChanging" msprop:Generator_RowEvArgName="vwCompReporteCotizacionesRowChangeEvent" msprop:Generator_RowEvHandlerName="vwCompReporteCotizacionesRowChangeEventHandler" msprop:Generator_TableClassName="vwCompReporteCotizacionesDataTable" msprop:Generator_TableVarName="tablevwCompReporteCotizaciones" msprop:Generator_RowDeletingName="vwCompReporteCotizacionesRowDeleting" msprop:Generator_TablePropName="vwCompReporteCotizaciones">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnPropNameInTable="FolioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PresupuestoId" msprop:Generator_UserColumnName="PresupuestoId" msprop:Generator_ColumnVarNameInTable="columnPresupuestoId" msprop:Generator_ColumnPropNameInRow="PresupuestoId" msprop:Generator_ColumnPropNameInTable="PresupuestoIdColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SucursalId" msprop:Generator_UserColumnName="SucursalId" msprop:Generator_ColumnVarNameInTable="columnSucursalId" msprop:Generator_ColumnPropNameInRow="SucursalId" msprop:Generator_ColumnPropNameInTable="SucursalIdColumn" type="xs:int" />
+              <xs:element name="SCDescripcion" msprop:Generator_UserColumnName="SCDescripcion" msprop:Generator_ColumnVarNameInTable="columnSCDescripcion" msprop:Generator_ColumnPropNameInRow="SCDescripcion" msprop:Generator_ColumnPropNameInTable="SCDescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SCIdPlaza" msprop:Generator_UserColumnName="SCIdPlaza" msprop:Generator_ColumnVarNameInTable="columnSCIdPlaza" msprop:Generator_ColumnPropNameInRow="SCIdPlaza" msprop:Generator_ColumnPropNameInTable="SCIdPlazaColumn" type="xs:int" />
+              <xs:element name="PLDescripcion" msprop:Generator_UserColumnName="PLDescripcion" msprop:Generator_ColumnVarNameInTable="columnPLDescripcion" msprop:Generator_ColumnPropNameInRow="PLDescripcion" msprop:Generator_ColumnPropNameInTable="PLDescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaAlta" msprop:Generator_UserColumnName="FechaAlta" msprop:Generator_ColumnVarNameInTable="columnFechaAlta" msprop:Generator_ColumnPropNameInRow="FechaAlta" msprop:Generator_ColumnPropNameInTable="FechaAltaColumn" type="xs:dateTime" />
+              <xs:element name="Observaciones" msprop:Generator_UserColumnName="Observaciones" msprop:Generator_ColumnVarNameInTable="columnObservaciones" msprop:Generator_ColumnPropNameInRow="Observaciones" msprop:Generator_ColumnPropNameInTable="ObservacionesColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductoId" msprop:Generator_UserColumnName="ProductoId" msprop:Generator_ColumnVarNameInTable="columnProductoId" msprop:Generator_ColumnPropNameInRow="ProductoId" msprop:Generator_ColumnPropNameInTable="ProductoIdColumn" type="xs:int" />
+              <xs:element name="PdDescripcion" msprop:Generator_UserColumnName="PdDescripcion" msprop:Generator_ColumnVarNameInTable="columnPdDescripcion" msprop:Generator_ColumnPropNameInRow="PdDescripcion" msprop:Generator_ColumnPropNameInTable="PdDescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" type="xs:decimal" />
+              <xs:element name="UMDescripcion" msprop:Generator_UserColumnName="UMDescripcion" msprop:Generator_ColumnVarNameInTable="columnUMDescripcion" msprop:Generator_ColumnPropNameInRow="UMDescripcion" msprop:Generator_ColumnPropNameInTable="UMDescripcionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProveedorId" msprop:Generator_UserColumnName="ProveedorId" msprop:Generator_ColumnVarNameInTable="columnProveedorId" msprop:Generator_ColumnPropNameInRow="ProveedorId" msprop:Generator_ColumnPropNameInTable="ProveedorIdColumn" type="xs:int" />
+              <xs:element name="PrRazSocial" msprop:Generator_UserColumnName="PrRazSocial" msprop:Generator_ColumnVarNameInTable="columnPrRazSocial" msprop:Generator_ColumnPropNameInRow="PrRazSocial" msprop:Generator_ColumnPropNameInTable="PrRazSocialColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Precio" msprop:Generator_UserColumnName="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" type="xs:decimal" />
+              <xs:element name="Descuento" msprop:Generator_UserColumnName="Descuento" msprop:Generator_ColumnVarNameInTable="columnDescuento" msprop:Generator_ColumnPropNameInRow="Descuento" msprop:Generator_ColumnPropNameInTable="DescuentoColumn" type="xs:decimal" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

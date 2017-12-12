@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsDetalleTiposGanado" targetNamespace="http://tempuri.org/dsDetalleTiposGanado.xsd" xmlns:mstns="http://tempuri.org/dsDetalleTiposGanado.xsd" xmlns="http://tempuri.org/dsDetalleTiposGanado.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDetalleTiposGanado" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsDetalleTiposGanado" msprop:Generator_DataSetName="dsDetalleTiposGanado">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_TablePropName="DataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdTipoGanado" msprop:Generator_UserColumnName="IdTipoGanado" msprop:Generator_ColumnVarNameInTable="columnIdTipoGanado" msprop:Generator_ColumnPropNameInRow="IdTipoGanado" msprop:Generator_ColumnPropNameInTable="IdTipoGanadoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="DescripcionTipoGanado" msprop:Generator_UserColumnName="DescripcionTipoGanado" msprop:Generator_ColumnVarNameInTable="columnDescripcionTipoGanado" msprop:Generator_ColumnPropNameInRow="DescripcionTipoGanado" msprop:Generator_ColumnPropNameInTable="DescripcionTipoGanadoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cabezas" msprop:Generator_UserColumnName="Cabezas" msprop:Generator_ColumnVarNameInTable="columnCabezas" msprop:Generator_ColumnPropNameInRow="Cabezas" msprop:Generator_ColumnPropNameInTable="CabezasColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KilosEntrada" msprop:Generator_UserColumnName="KilosEntrada" msprop:Generator_ColumnVarNameInTable="columnKilosEntrada" msprop:Generator_ColumnPropNameInRow="KilosEntrada" msprop:Generator_ColumnPropNameInTable="KilosEntradaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosSalida" msprop:Generator_UserColumnName="KilosSalida" msprop:Generator_ColumnVarNameInTable="columnKilosSalida" msprop:Generator_ColumnPropNameInRow="KilosSalida" msprop:Generator_ColumnPropNameInTable="KilosSalidaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GananciaKilos" msprop:Generator_UserColumnName="GananciaKilos" msprop:Generator_ColumnVarNameInTable="columnGananciaKilos" msprop:Generator_ColumnPropNameInRow="GananciaKilos" msprop:Generator_ColumnPropNameInTable="GananciaKilosColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

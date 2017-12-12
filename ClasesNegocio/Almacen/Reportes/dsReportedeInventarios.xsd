@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReportedeInventarios" targetNamespace="http://tempuri.org/dsReportedeInventarios.xsd" xmlns:mstns="http://tempuri.org/dsReportedeInventarios.xsd" xmlns="http://tempuri.org/dsReportedeInventarios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=INTEGRALAP01\SQLEXPRESS;Initial Catalog=AGROPECUARIAJS;User ID=sa;Password=1nt3gr@2006" IsAppSettingsProperty="False" Modifier="Assembly" Name="integralap01\sqlexpress.AGROPECUARIAJS.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VwReportedeInventarioTableAdapter" GeneratorDataComponentClassName="VwReportedeInventarioTableAdapter" Name="VwReportedeInventario" UserDataComponentName="VwReportedeInventarioTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="integralap01\sqlexpress.AGROPECUARIAJS.dbo" DbObjectName="AGROPECUARIAJS.dbo.VwReportedeInventario" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     VwReportedeInventario.*
+FROM         VwReportedeInventario</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CodigoBarra" DataSetColumn="CodigoBarra" />
+              <Mapping SourceColumn="IdFolioEtiqueta" DataSetColumn="IdFolioEtiqueta" />
+              <Mapping SourceColumn="IdProducto" DataSetColumn="IdProducto" />
+              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
+              <Mapping SourceColumn="CantPzas" DataSetColumn="CantPzas" />
+              <Mapping SourceColumn="CantKgrs" DataSetColumn="CantKgrs" />
+              <Mapping SourceColumn="LoteCorte" DataSetColumn="LoteCorte" />
+              <Mapping SourceColumn="FechaCorte" DataSetColumn="FechaCorte" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReportedeInventarios" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsReportedeInventarios" msprop:Generator_DataSetName="dsReportedeInventarios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VwReportedeInventario" msprop:Generator_UserTableName="VwReportedeInventario" msprop:Generator_RowDeletedName="VwReportedeInventarioRowDeleted" msprop:Generator_TableClassName="VwReportedeInventarioDataTable" msprop:Generator_RowChangedName="VwReportedeInventarioRowChanged" msprop:Generator_RowClassName="VwReportedeInventarioRow" msprop:Generator_RowChangingName="VwReportedeInventarioRowChanging" msprop:Generator_RowEvArgName="VwReportedeInventarioRowChangeEvent" msprop:Generator_RowEvHandlerName="VwReportedeInventarioRowChangeEventHandler" msprop:Generator_TablePropName="VwReportedeInventario" msprop:Generator_TableVarName="tableVwReportedeInventario" msprop:Generator_RowDeletingName="VwReportedeInventarioRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoBarra" msprop:Generator_UserColumnName="CodigoBarra" msprop:Generator_ColumnPropNameInRow="CodigoBarra" msprop:Generator_ColumnVarNameInTable="columnCodigoBarra" msprop:Generator_ColumnPropNameInTable="CodigoBarraColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdFolioEtiqueta" msdata:ReadOnly="true" msprop:Generator_UserColumnName="IdFolioEtiqueta" msprop:Generator_ColumnPropNameInRow="IdFolioEtiqueta" msprop:Generator_ColumnVarNameInTable="columnIdFolioEtiqueta" msprop:Generator_ColumnPropNameInTable="IdFolioEtiquetaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:int" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CantPzas" msprop:Generator_UserColumnName="CantPzas" msprop:Generator_ColumnPropNameInRow="CantPzas" msprop:Generator_ColumnVarNameInTable="columnCantPzas" msprop:Generator_ColumnPropNameInTable="CantPzasColumn" type="xs:decimal" />
+              <xs:element name="CantKgrs" msprop:Generator_UserColumnName="CantKgrs" msprop:Generator_ColumnPropNameInRow="CantKgrs" msprop:Generator_ColumnVarNameInTable="columnCantKgrs" msprop:Generator_ColumnPropNameInTable="CantKgrsColumn" type="xs:decimal" />
+              <xs:element name="LoteCorte" msdata:ReadOnly="true" msprop:Generator_UserColumnName="LoteCorte" msprop:Generator_ColumnPropNameInRow="LoteCorte" msprop:Generator_ColumnVarNameInTable="columnLoteCorte" msprop:Generator_ColumnPropNameInTable="LoteCorteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaCorte" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FechaCorte" msprop:Generator_ColumnPropNameInRow="FechaCorte" msprop:Generator_ColumnVarNameInTable="columnFechaCorte" msprop:Generator_ColumnPropNameInTable="FechaCorteColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsReporteAntiguedadSaldos" targetNamespace="http://tempuri.org/DsReporteAntiguedadSaldos.xsd" xmlns:mstns="http://tempuri.org/DsReporteAntiguedadSaldos.xsd" xmlns="http://tempuri.org/DsReporteAntiguedadSaldos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsReporteAntiguedadSaldos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsReporteAntiguedadSaldos" msprop:Generator_DataSetName="DsReporteAntiguedadSaldos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtAntiguedadSaldos" msprop:Generator_UserTableName="DtAntiguedadSaldos" msprop:Generator_RowDeletedName="DtAntiguedadSaldosRowDeleted" msprop:Generator_RowChangedName="DtAntiguedadSaldosRowChanged" msprop:Generator_RowClassName="DtAntiguedadSaldosRow" msprop:Generator_RowChangingName="DtAntiguedadSaldosRowChanging" msprop:Generator_RowEvArgName="DtAntiguedadSaldosRowChangeEvent" msprop:Generator_RowEvHandlerName="DtAntiguedadSaldosRowChangeEventHandler" msprop:Generator_TableClassName="DtAntiguedadSaldosDataTable" msprop:Generator_TableVarName="tableDtAntiguedadSaldos" msprop:Generator_RowDeletingName="DtAntiguedadSaldosRowDeleting" msprop:Generator_TablePropName="DtAntiguedadSaldos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdProveedor" msprop:Generator_UserColumnName="IdProveedor" msprop:Generator_ColumnPropNameInRow="IdProveedor" msprop:Generator_ColumnVarNameInTable="columnIdProveedor" msprop:Generator_ColumnPropNameInTable="IdProveedorColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PrRazSocial" msprop:Generator_UserColumnName="PrRazSocial" msprop:Generator_ColumnPropNameInRow="PrRazSocial" msprop:Generator_ColumnVarNameInTable="columnPrRazSocial" msprop:Generator_ColumnPropNameInTable="PrRazSocialColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="NoFactura" msprop:Generator_UserColumnName="NoFactura" msprop:Generator_ColumnPropNameInRow="NoFactura" msprop:Generator_ColumnVarNameInTable="columnNoFactura" msprop:Generator_ColumnPropNameInTable="NoFacturaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaVencimiento" msprop:Generator_UserColumnName="FechaVencimiento" msprop:Generator_ColumnPropNameInRow="FechaVencimiento" msprop:Generator_ColumnVarNameInTable="columnFechaVencimiento" msprop:Generator_ColumnPropNameInTable="FechaVencimientoColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaFactura" msprop:Generator_UserColumnName="FechaFactura" msprop:Generator_ColumnPropNameInRow="FechaFactura" msprop:Generator_ColumnVarNameInTable="columnFechaFactura" msprop:Generator_ColumnPropNameInTable="FechaFacturaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInTable="TotalColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Saldo" msprop:Generator_UserColumnName="Saldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Diferencia" msprop:Generator_UserColumnName="Diferencia" msprop:Generator_ColumnPropNameInRow="Diferencia" msprop:Generator_ColumnVarNameInTable="columnDiferencia" msprop:Generator_ColumnPropNameInTable="DiferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PorVencer" msprop:Generator_UserColumnName="PorVencer" msprop:Generator_ColumnPropNameInRow="PorVencer" msprop:Generator_ColumnVarNameInTable="columnPorVencer" msprop:Generator_ColumnPropNameInTable="PorVencerColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="De1a7" msprop:Generator_UserColumnName="De1a7" msprop:Generator_ColumnPropNameInRow="De1a7" msprop:Generator_ColumnVarNameInTable="columnDe1a7" msprop:Generator_ColumnPropNameInTable="De1a7Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="De8a14" msprop:Generator_UserColumnName="De8a14" msprop:Generator_ColumnPropNameInRow="De8a14" msprop:Generator_ColumnVarNameInTable="columnDe8a14" msprop:Generator_ColumnPropNameInTable="De8a14Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="De15a21" msprop:Generator_UserColumnName="De15a21" msprop:Generator_ColumnPropNameInRow="De15a21" msprop:Generator_ColumnVarNameInTable="columnDe15a21" msprop:Generator_ColumnPropNameInTable="De15a21Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="De22a28" msprop:Generator_UserColumnName="De22a28" msprop:Generator_ColumnPropNameInRow="De22a28" msprop:Generator_ColumnVarNameInTable="columnDe22a28" msprop:Generator_ColumnPropNameInTable="De22a28Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Masde28" msprop:Generator_UserColumnName="Masde28" msprop:Generator_ColumnPropNameInRow="Masde28" msprop:Generator_ColumnVarNameInTable="columnMasde28" msprop:Generator_ColumnPropNameInTable="Masde28Column" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

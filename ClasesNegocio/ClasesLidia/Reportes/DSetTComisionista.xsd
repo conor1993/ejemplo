@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetTComisionista" targetNamespace="http://tempuri.org/DSetTComisionista.xsd" xmlns:mstns="http://tempuri.org/DSetTComisionista.xsd" xmlns="http://tempuri.org/DSetTComisionista.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetTComisionista" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetTComisionista" msprop:Generator_DataSetName="DSetTComisionista">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtTipoComisionista" msprop:Generator_UserTableName="DtTipoComisionista" msprop:Generator_RowDeletedName="DtTipoComisionistaRowDeleted" msprop:Generator_TableClassName="DtTipoComisionistaDataTable" msprop:Generator_RowChangedName="DtTipoComisionistaRowChanged" msprop:Generator_RowClassName="DtTipoComisionistaRow" msprop:Generator_RowChangingName="DtTipoComisionistaRowChanging" msprop:Generator_RowEvArgName="DtTipoComisionistaRowChangeEvent" msprop:Generator_RowEvHandlerName="DtTipoComisionistaRowChangeEventHandler" msprop:Generator_TablePropName="DtTipoComisionista" msprop:Generator_TableVarName="tableDtTipoComisionista" msprop:Generator_RowDeletingName="DtTipoComisionistaRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Código" msprop:Generator_UserColumnName="Código" msprop:Generator_ColumnPropNameInRow="Código" msprop:Generator_ColumnVarNameInTable="columnCódigo" msprop:Generator_ColumnPropNameInTable="CódigoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripción" msprop:Generator_UserColumnName="Descripción" msprop:Generator_ColumnPropNameInRow="Descripción" msprop:Generator_ColumnVarNameInTable="columnDescripción" msprop:Generator_ColumnPropNameInTable="DescripciónColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripción_x0020_Corta" msprop:Generator_UserColumnName="Descripción Corta" msprop:Generator_ColumnPropNameInRow="Descripción_Corta" msprop:Generator_ColumnVarNameInTable="columnDescripción_Corta" msprop:Generator_ColumnPropNameInTable="Descripción_CortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Observaciones" msprop:Generator_UserColumnName="Observaciones" msprop:Generator_ColumnPropNameInRow="Observaciones" msprop:Generator_ColumnVarNameInTable="columnObservaciones" msprop:Generator_ColumnPropNameInTable="ObservacionesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

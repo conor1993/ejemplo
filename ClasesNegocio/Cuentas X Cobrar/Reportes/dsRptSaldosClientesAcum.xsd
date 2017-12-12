@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptSaldosClientesAcum" targetNamespace="http://tempuri.org/dsRptSaldosClientesAcum.xsd" xmlns:mstns="http://tempuri.org/dsRptSaldosClientesAcum.xsd" xmlns="http://tempuri.org/dsRptSaldosClientesAcum.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptSaldosClientesAcum" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptSaldosClientesAcum" msprop:Generator_DataSetName="dsRptSaldosClientesAcum">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_TablePropName="DataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCliente" msprop:Generator_UserColumnName="IdCliente" msprop:Generator_ColumnPropNameInRow="IdCliente" msprop:Generator_ColumnVarNameInTable="columnIdCliente" msprop:Generator_ColumnPropNameInTable="IdClienteColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="NombreCliente" msprop:Generator_UserColumnName="NombreCliente" msprop:Generator_ColumnPropNameInRow="NombreCliente" msprop:Generator_ColumnVarNameInTable="columnNombreCliente" msprop:Generator_ColumnPropNameInTable="NombreClienteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SaldoAnterior" msprop:Generator_UserColumnName="SaldoAnterior" msprop:Generator_ColumnPropNameInRow="SaldoAnterior" msprop:Generator_ColumnVarNameInTable="columnSaldoAnterior" msprop:Generator_ColumnPropNameInTable="SaldoAnteriorColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cargos" msprop:Generator_UserColumnName="Cargos" msprop:Generator_ColumnPropNameInRow="Cargos" msprop:Generator_ColumnVarNameInTable="columnCargos" msprop:Generator_ColumnPropNameInTable="CargosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Abonos" msprop:Generator_UserColumnName="Abonos" msprop:Generator_ColumnPropNameInRow="Abonos" msprop:Generator_ColumnVarNameInTable="columnAbonos" msprop:Generator_ColumnPropNameInTable="AbonosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SaldoActual" msdata:ReadOnly="true" msdata:Expression="SaldoAnterior + Cargos - Abonos" msprop:Generator_UserColumnName="SaldoActual" msprop:Generator_ColumnPropNameInRow="SaldoActual" msprop:Generator_ColumnVarNameInTable="columnSaldoActual" msprop:Generator_ColumnPropNameInTable="SaldoActualColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

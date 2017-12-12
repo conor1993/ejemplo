@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReporteNomina" targetNamespace="http://tempuri.org/dsReporteNomina.xsd" xmlns:mstns="http://tempuri.org/dsReporteNomina.xsd" xmlns="http://tempuri.org/dsReporteNomina.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GANADERAConnectionString2" IsAppSettingsProperty="True" Modifier="Assembly" Name="GANADERAConnectionString2 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MySettings.GlobalReference.Default.GANADERAConnectionString2" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwReporteNominaTableAdapter" GeneratorDataComponentClassName="vwReporteNominaTableAdapter" Name="vwReporteNomina" UserDataComponentName="vwReporteNominaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GANADERAConnectionString2 (MySettings)" DbObjectName="GANADERA.dbo.vwReporteNomina" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     vwReporteNomina.*
+FROM         vwReporteNomina</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Quincena" DataSetColumn="Quincena" />
+              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
+              <Mapping SourceColumn="ImporteSueldo" DataSetColumn="ImporteSueldo" />
+              <Mapping SourceColumn="Comisiones" DataSetColumn="Comisiones" />
+              <Mapping SourceColumn="ImporteHorasExtras" DataSetColumn="ImporteHorasExtras" />
+              <Mapping SourceColumn="ImporteTotalCuotaMensual" DataSetColumn="ImporteTotalCuotaMensual" />
+              <Mapping SourceColumn="ImporteISRSegunTarifa" DataSetColumn="ImporteISRSegunTarifa" />
+              <Mapping SourceColumn="ImporteSubsidioalEmpleo" DataSetColumn="ImporteSubsidioalEmpleo" />
+              <Mapping SourceColumn="Pretamos" DataSetColumn="Pretamos" />
+              <Mapping SourceColumn="INFONAVIT" DataSetColumn="INFONAVIT" />
+              <Mapping SourceColumn="ImportePensionAlimenticia" DataSetColumn="ImportePensionAlimenticia" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReporteNomina" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsReporteNomina" msprop:Generator_DataSetName="dsReporteNomina">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwReporteNomina" msprop:Generator_UserTableName="vwReporteNomina" msprop:Generator_RowDeletedName="vwReporteNominaRowDeleted" msprop:Generator_RowChangedName="vwReporteNominaRowChanged" msprop:Generator_RowClassName="vwReporteNominaRow" msprop:Generator_RowChangingName="vwReporteNominaRowChanging" msprop:Generator_RowEvArgName="vwReporteNominaRowChangeEvent" msprop:Generator_RowEvHandlerName="vwReporteNominaRowChangeEventHandler" msprop:Generator_TableClassName="vwReporteNominaDataTable" msprop:Generator_TableVarName="tablevwReporteNomina" msprop:Generator_RowDeletingName="vwReporteNominaRowDeleting" msprop:Generator_TablePropName="vwReporteNomina">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nombre" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="122" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Quincena" msprop:Generator_UserColumnName="Quincena" msprop:Generator_ColumnVarNameInTable="columnQuincena" msprop:Generator_ColumnPropNameInRow="Quincena" msprop:Generator_ColumnPropNameInTable="QuincenaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" />
+              <xs:element name="ImporteSueldo" msprop:Generator_UserColumnName="ImporteSueldo" msprop:Generator_ColumnVarNameInTable="columnImporteSueldo" msprop:Generator_ColumnPropNameInRow="ImporteSueldo" msprop:Generator_ColumnPropNameInTable="ImporteSueldoColumn" type="xs:decimal" />
+              <xs:element name="Comisiones" msprop:Generator_UserColumnName="Comisiones" msprop:Generator_ColumnVarNameInTable="columnComisiones" msprop:Generator_ColumnPropNameInRow="Comisiones" msprop:Generator_ColumnPropNameInTable="ComisionesColumn" type="xs:decimal" />
+              <xs:element name="ImporteHorasExtras" msprop:Generator_UserColumnName="ImporteHorasExtras" msprop:Generator_ColumnVarNameInTable="columnImporteHorasExtras" msprop:Generator_ColumnPropNameInRow="ImporteHorasExtras" msprop:Generator_ColumnPropNameInTable="ImporteHorasExtrasColumn" type="xs:decimal" />
+              <xs:element name="ImporteTotalCuotaMensual" msprop:Generator_UserColumnName="ImporteTotalCuotaMensual" msprop:Generator_ColumnVarNameInTable="columnImporteTotalCuotaMensual" msprop:Generator_ColumnPropNameInRow="ImporteTotalCuotaMensual" msprop:Generator_ColumnPropNameInTable="ImporteTotalCuotaMensualColumn" type="xs:decimal" />
+              <xs:element name="ImporteISRSegunTarifa" msprop:Generator_UserColumnName="ImporteISRSegunTarifa" msprop:Generator_ColumnVarNameInTable="columnImporteISRSegunTarifa" msprop:Generator_ColumnPropNameInRow="ImporteISRSegunTarifa" msprop:Generator_ColumnPropNameInTable="ImporteISRSegunTarifaColumn" type="xs:decimal" />
+              <xs:element name="ImporteSubsidioalEmpleo" msprop:Generator_UserColumnName="ImporteSubsidioalEmpleo" msprop:Generator_ColumnVarNameInTable="columnImporteSubsidioalEmpleo" msprop:Generator_ColumnPropNameInRow="ImporteSubsidioalEmpleo" msprop:Generator_ColumnPropNameInTable="ImporteSubsidioalEmpleoColumn" type="xs:decimal" />
+              <xs:element name="Pretamos" msprop:Generator_UserColumnName="Pretamos" msprop:Generator_ColumnVarNameInTable="columnPretamos" msprop:Generator_ColumnPropNameInRow="Pretamos" msprop:Generator_ColumnPropNameInTable="PretamosColumn" type="xs:decimal" />
+              <xs:element name="INFONAVIT" msprop:Generator_UserColumnName="INFONAVIT" msprop:Generator_ColumnVarNameInTable="columnINFONAVIT" msprop:Generator_ColumnPropNameInRow="INFONAVIT" msprop:Generator_ColumnPropNameInTable="INFONAVITColumn" type="xs:decimal" />
+              <xs:element name="ImportePensionAlimenticia" msprop:Generator_UserColumnName="ImportePensionAlimenticia" msprop:Generator_ColumnVarNameInTable="columnImportePensionAlimenticia" msprop:Generator_ColumnPropNameInRow="ImportePensionAlimenticia" msprop:Generator_ColumnPropNameInTable="ImportePensionAlimenticiaColumn" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

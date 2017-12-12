@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRptMermas" targetNamespace="http://tempuri.org/dsRptMermas.xsd" xmlns:mstns="http://tempuri.org/dsRptMermas.xsd" xmlns="http://tempuri.org/dsRptMermas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRptMermas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRptMermas" msprop:Generator_DataSetName="dsRptMermas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtComprasGanado" msprop:Generator_UserTableName="dtComprasGanado" msprop:Generator_RowDeletedName="dtComprasGanadoRowDeleted" msprop:Generator_RowChangedName="dtComprasGanadoRowChanged" msprop:Generator_RowClassName="dtComprasGanadoRow" msprop:Generator_RowChangingName="dtComprasGanadoRowChanging" msprop:Generator_RowEvArgName="dtComprasGanadoRowChangeEvent" msprop:Generator_RowEvHandlerName="dtComprasGanadoRowChangeEventHandler" msprop:Generator_TableClassName="dtComprasGanadoDataTable" msprop:Generator_TableVarName="tabledtComprasGanado" msprop:Generator_RowDeletingName="dtComprasGanadoRowDeleting" msprop:Generator_TablePropName="dtComprasGanado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInTable="FolioColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Agrupador" msdata:Caption="Column1" msprop:Generator_UserColumnName="Agrupador" msprop:Generator_ColumnPropNameInRow="Agrupador" msprop:Generator_ColumnVarNameInTable="columnAgrupador" msprop:Generator_ColumnPropNameInTable="AgrupadorColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cabezas" msprop:Generator_UserColumnName="Cabezas" msprop:Generator_ColumnPropNameInRow="Cabezas" msprop:Generator_ColumnVarNameInTable="columnCabezas" msprop:Generator_ColumnPropNameInTable="CabezasColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PesoEntReal" msprop:Generator_UserColumnName="PesoEntReal" msprop:Generator_ColumnPropNameInRow="PesoEntReal" msprop:Generator_ColumnVarNameInTable="columnPesoEntReal" msprop:Generator_ColumnPropNameInTable="PesoEntRealColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosMerma" msdata:ReadOnly="true" msdata:Expression="Kilos - PesoEntReal" msprop:Generator_UserColumnName="KilosMerma" msprop:Generator_ColumnPropNameInRow="KilosMerma" msprop:Generator_ColumnVarNameInTable="columnKilosMerma" msprop:Generator_ColumnPropNameInTable="KilosMermaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PorcentajeMerma" msdata:ReadOnly="true" msdata:Expression="KilosMerma/Kilos*100" msprop:Generator_UserColumnName="PorcentajeMerma" msprop:Generator_ColumnPropNameInRow="PorcentajeMerma" msprop:Generator_ColumnVarNameInTable="columnPorcentajeMerma" msprop:Generator_ColumnPropNameInTable="PorcentajeMermaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KilosMermaxCabeza" msdata:ReadOnly="true" msdata:Expression="KilosMerma/Cabezas" msprop:Generator_UserColumnName="KilosMermaxCabeza" msprop:Generator_ColumnPropNameInRow="KilosMermaxCabeza" msprop:Generator_ColumnVarNameInTable="columnKilosMermaxCabeza" msprop:Generator_ColumnPropNameInTable="KilosMermaxCabezaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoxKilo" msdata:ReadOnly="true" msdata:Expression="Importe / Kilos" msprop:Generator_UserColumnName="CostoxKilo" msprop:Generator_ColumnPropNameInRow="CostoxKilo" msprop:Generator_ColumnVarNameInTable="columnCostoxKilo" msprop:Generator_ColumnPropNameInTable="CostoxKiloColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRegistroSacrificios" targetNamespace="http://tempuri.org/dsRegistroSacrificios.xsd" xmlns:mstns="http://tempuri.org/dsRegistroSacrificios.xsd" xmlns="http://tempuri.org/dsRegistroSacrificios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRegistroSacrificios" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRegistroSacrificios" msprop:Generator_DataSetName="dsRegistroSacrificios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TablePropName="DataTable1" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoteSacrificio" msprop:Generator_UserColumnName="LoteSacrificio" msprop:Generator_ColumnPropNameInRow="LoteSacrificio" msprop:Generator_ColumnVarNameInTable="columnLoteSacrificio" msprop:Generator_ColumnPropNameInTable="LoteSacrificioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaSacrificio" msprop:Generator_UserColumnName="FechaSacrificio" msprop:Generator_ColumnPropNameInRow="FechaSacrificio" msprop:Generator_ColumnVarNameInTable="columnFechaSacrificio" msprop:Generator_ColumnPropNameInTable="FechaSacrificioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Productor" msprop:Generator_UserColumnName="Productor" msprop:Generator_ColumnPropNameInRow="Productor" msprop:Generator_ColumnVarNameInTable="columnProductor" msprop:Generator_ColumnPropNameInTable="ProductorColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sacrificadas" msprop:Generator_UserColumnName="Sacrificadas" msprop:Generator_ColumnPropNameInRow="Sacrificadas" msprop:Generator_ColumnVarNameInTable="columnSacrificadas" msprop:Generator_ColumnPropNameInTable="SacrificadasColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="KilosEnPie" msprop:Generator_UserColumnName="KilosEnPie" msprop:Generator_ColumnPropNameInRow="KilosEnPie" msprop:Generator_ColumnVarNameInTable="columnKilosEnPie" msprop:Generator_ColumnPropNameInTable="KilosEnPieColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SinSacrificar" msprop:Generator_UserColumnName="SinSacrificar" msprop:Generator_ColumnPropNameInRow="SinSacrificar" msprop:Generator_ColumnVarNameInTable="columnSinSacrificar" msprop:Generator_ColumnPropNameInTable="SinSacrificarColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="KilosSacrificio" msprop:Generator_UserColumnName="KilosSacrificio" msprop:Generator_ColumnPropNameInRow="KilosSacrificio" msprop:Generator_ColumnVarNameInTable="columnKilosSacrificio" msprop:Generator_ColumnPropNameInTable="KilosSacrificioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Rendimiento" msprop:Generator_UserColumnName="Rendimiento" msprop:Generator_ColumnPropNameInRow="Rendimiento" msprop:Generator_ColumnVarNameInTable="columnRendimiento" msprop:Generator_ColumnPropNameInTable="RendimientoColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

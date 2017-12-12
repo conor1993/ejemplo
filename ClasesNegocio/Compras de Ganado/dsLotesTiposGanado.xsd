@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsLotesTiposGanado" targetNamespace="http://tempuri.org/dsLotesTiposGanado.xsd" xmlns:mstns="http://tempuri.org/dsLotesTiposGanado.xsd" xmlns="http://tempuri.org/dsLotesTiposGanado.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsLotesTiposGanado" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsLotesTiposGanado" msprop:Generator_DataSetName="dsLotesTiposGanado">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LoteTipoGanado" msprop:Generator_UserTableName="LoteTipoGanado" msprop:Generator_RowDeletedName="LoteTipoGanadoRowDeleted" msprop:Generator_RowChangedName="LoteTipoGanadoRowChanged" msprop:Generator_RowClassName="LoteTipoGanadoRow" msprop:Generator_RowChangingName="LoteTipoGanadoRowChanging" msprop:Generator_RowEvArgName="LoteTipoGanadoRowChangeEvent" msprop:Generator_RowEvHandlerName="LoteTipoGanadoRowChangeEventHandler" msprop:Generator_TableClassName="LoteTipoGanadoDataTable" msprop:Generator_TableVarName="tableLoteTipoGanado" msprop:Generator_RowDeletingName="LoteTipoGanadoRowDeleting" msprop:Generator_TablePropName="LoteTipoGanado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdLote" msprop:Generator_UserColumnName="IdLote" msprop:Generator_ColumnVarNameInTable="columnIdLote" msprop:Generator_ColumnPropNameInRow="IdLote" msprop:Generator_ColumnPropNameInTable="IdLoteColumn" type="xs:long" />
+              <xs:element name="IdTipoGanado" msprop:Generator_UserColumnName="IdTipoGanado" msprop:Generator_ColumnVarNameInTable="columnIdTipoGanado" msprop:Generator_ColumnPropNameInRow="IdTipoGanado" msprop:Generator_ColumnPropNameInTable="IdTipoGanadoColumn" type="xs:long" />
+              <xs:element name="CorralDescripcion" msprop:Generator_UserColumnName="CorralDescripcion" msprop:Generator_ColumnPropNameInRow="CorralDescripcion" msprop:Generator_ColumnVarNameInTable="columnCorralDescripcion" msprop:Generator_ColumnPropNameInTable="CorralDescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LoteDescripcion" msprop:Generator_UserColumnName="LoteDescripcion" msprop:Generator_ColumnPropNameInRow="LoteDescripcion" msprop:Generator_ColumnVarNameInTable="columnLoteDescripcion" msprop:Generator_ColumnPropNameInTable="LoteDescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoGanadoDescripcion" msprop:Generator_UserColumnName="TipoGanadoDescripcion" msprop:Generator_ColumnPropNameInRow="TipoGanadoDescripcion" msprop:Generator_ColumnVarNameInTable="columnTipoGanadoDescripcion" msprop:Generator_ColumnPropNameInTable="TipoGanadoDescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cabezas" msprop:Generator_UserColumnName="Cabezas" msprop:Generator_ColumnPropNameInRow="Cabezas" msprop:Generator_ColumnVarNameInTable="columnCabezas" msprop:Generator_ColumnPropNameInTable="CabezasColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" default="0" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" default="0" minOccurs="0" />
+              <xs:element name="ImporteVenta" msprop:Generator_UserColumnName="ImporteVenta" msprop:Generator_ColumnPropNameInRow="ImporteVenta" msprop:Generator_ColumnVarNameInTable="columnImporteVenta" msprop:Generator_ColumnPropNameInTable="ImporteVentaColumn" type="xs:decimal" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LoteTipoGanado" />
+      <xs:field xpath="mstns:IdLote" />
+      <xs:field xpath="mstns:IdTipoGanado" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

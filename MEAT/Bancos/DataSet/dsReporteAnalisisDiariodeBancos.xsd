@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReporteAnalisisDiariodeBancos" targetNamespace="http://tempuri.org/dsReporteAnalisisDiariodeBancos.xsd" xmlns:mstns="http://tempuri.org/dsReporteAnalisisDiariodeBancos.xsd" xmlns="http://tempuri.org/dsReporteAnalisisDiariodeBancos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReporteAnalisisDiariodeBancos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsReporteAnalisisDiariodeBancos" msprop:Generator_DataSetName="dsReporteAnalisisDiariodeBancos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Analisis_x0020_Diario_x0020_de_x0020_Bancos" msprop:Generator_UserTableName="Analisis Diario de Bancos" msprop:Generator_RowDeletedName="Analisis_Diario_de_BancosRowDeleted" msprop:Generator_TableClassName="Analisis_Diario_de_BancosDataTable" msprop:Generator_RowChangedName="Analisis_Diario_de_BancosRowChanged" msprop:Generator_RowClassName="Analisis_Diario_de_BancosRow" msprop:Generator_RowChangingName="Analisis_Diario_de_BancosRowChanging" msprop:Generator_RowEvArgName="Analisis_Diario_de_BancosRowChangeEvent" msprop:Generator_RowEvHandlerName="Analisis_Diario_de_BancosRowChangeEventHandler" msprop:Generator_TablePropName="Analisis_Diario_de_Bancos" msprop:Generator_TableVarName="tableAnalisis_Diario_de_Bancos" msprop:Generator_RowDeletingName="Analisis_Diario_de_BancosRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fec_Mov" msprop:Generator_UserColumnName="Fec_Mov" msprop:Generator_ColumnPropNameInRow="Fec_Mov" msprop:Generator_ColumnVarNameInTable="columnFec_Mov" msprop:Generator_ColumnPropNameInTable="Fec_MovColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Fecha_Cap" msprop:Generator_UserColumnName="Fecha_Cap" msprop:Generator_ColumnPropNameInRow="Fecha_Cap" msprop:Generator_ColumnVarNameInTable="columnFecha_Cap" msprop:Generator_ColumnPropNameInTable="Fecha_CapColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Numero_Pol" msprop:Generator_UserColumnName="Numero_Pol" msprop:Generator_ColumnPropNameInRow="Numero_Pol" msprop:Generator_ColumnVarNameInTable="columnNumero_Pol" msprop:Generator_ColumnPropNameInTable="Numero_PolColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Poliza" msprop:Generator_UserColumnName="Poliza" msprop:Generator_ColumnPropNameInRow="Poliza" msprop:Generator_ColumnVarNameInTable="columnPoliza" msprop:Generator_ColumnPropNameInTable="PolizaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Referencia" msprop:Generator_UserColumnName="Referencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Benefic" msprop:Generator_UserColumnName="Benefic" msprop:Generator_ColumnPropNameInRow="Benefic" msprop:Generator_ColumnVarNameInTable="columnBenefic" msprop:Generator_ColumnPropNameInTable="BeneficColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Concepto" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cargo" msprop:Generator_UserColumnName="Cargo" msprop:Generator_ColumnPropNameInRow="Cargo" msprop:Generator_ColumnVarNameInTable="columnCargo" msprop:Generator_ColumnPropNameInTable="CargoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Abono" msprop:Generator_UserColumnName="Abono" msprop:Generator_ColumnPropNameInRow="Abono" msprop:Generator_ColumnVarNameInTable="columnAbono" msprop:Generator_ColumnPropNameInTable="AbonoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Banco" msprop:Generator_UserColumnName="Banco" msprop:Generator_ColumnPropNameInRow="Banco" msprop:Generator_ColumnVarNameInTable="columnBanco" msprop:Generator_ColumnPropNameInTable="BancoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cuenta" msdata:Caption="Benefic" msprop:Generator_UserColumnName="Cuenta" msprop:Generator_ColumnPropNameInRow="Cuenta" msprop:Generator_ColumnVarNameInTable="columnCuenta" msprop:Generator_ColumnPropNameInTable="CuentaColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

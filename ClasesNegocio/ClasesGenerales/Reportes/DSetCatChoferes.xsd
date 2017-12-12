@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetCatChoferes" targetNamespace="http://tempuri.org/DSetCatChoferes.xsd" xmlns:mstns="http://tempuri.org/DSetCatChoferes.xsd" xmlns="http://tempuri.org/DSetCatChoferes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetCatChoferes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetCatChoferes" msprop:Generator_DataSetName="DSetCatChoferes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtChoferes" msprop:Generator_UserTableName="dtChoferes" msprop:Generator_RowDeletedName="dtChoferesRowDeleted" msprop:Generator_TableClassName="dtChoferesDataTable" msprop:Generator_RowChangedName="dtChoferesRowChanged" msprop:Generator_RowClassName="dtChoferesRow" msprop:Generator_RowChangingName="dtChoferesRowChanging" msprop:Generator_RowEvArgName="dtChoferesRowChangeEvent" msprop:Generator_RowEvHandlerName="dtChoferesRowChangeEventHandler" msprop:Generator_TablePropName="dtChoferes" msprop:Generator_TableVarName="tabledtChoferes" msprop:Generator_RowDeletingName="dtChoferesRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idChofer" msprop:Generator_UserColumnName="idChofer" msprop:Generator_ColumnPropNameInRow="idChofer" msprop:Generator_ColumnVarNameInTable="columnidChofer" msprop:Generator_ColumnPropNameInTable="idChoferColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="NombreCompleto" msprop:Generator_UserColumnName="NombreCompleto" msprop:Generator_ColumnPropNameInRow="NombreCompleto" msprop:Generator_ColumnVarNameInTable="columnNombreCompleto" msprop:Generator_ColumnPropNameInTable="NombreCompletoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estado" msprop:Generator_UserColumnName="Estado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Ciudad" msprop:Generator_UserColumnName="Ciudad" msprop:Generator_ColumnPropNameInRow="Ciudad" msprop:Generator_ColumnVarNameInTable="columnCiudad" msprop:Generator_ColumnPropNameInTable="CiudadColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Poblacion" msprop:Generator_UserColumnName="Poblacion" msprop:Generator_ColumnPropNameInRow="Poblacion" msprop:Generator_ColumnVarNameInTable="columnPoblacion" msprop:Generator_ColumnPropNameInTable="PoblacionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

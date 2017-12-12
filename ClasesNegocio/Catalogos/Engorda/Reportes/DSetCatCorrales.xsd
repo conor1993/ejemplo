@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSetCatCorrales" targetNamespace="http://tempuri.org/DSetCatCorrales.xsd" xmlns:mstns="http://tempuri.org/DSetCatCorrales.xsd" xmlns="http://tempuri.org/DSetCatCorrales.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSetCatCorrales" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSetCatCorrales" msprop:Generator_DataSetName="DSetCatCorrales">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtCatCorrales" msprop:Generator_UserTableName="dtCatCorrales" msprop:Generator_RowDeletedName="dtCatCorralesRowDeleted" msprop:Generator_RowChangedName="dtCatCorralesRowChanged" msprop:Generator_RowClassName="dtCatCorralesRow" msprop:Generator_RowChangingName="dtCatCorralesRowChanging" msprop:Generator_RowEvArgName="dtCatCorralesRowChangeEvent" msprop:Generator_RowEvHandlerName="dtCatCorralesRowChangeEventHandler" msprop:Generator_TableClassName="dtCatCorralesDataTable" msprop:Generator_TableVarName="tabledtCatCorrales" msprop:Generator_RowDeletingName="dtCatCorralesRowDeleting" msprop:Generator_TablePropName="dtCatCorrales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idCorral" msprop:Generator_UserColumnName="idCorral" msprop:Generator_ColumnVarNameInTable="columnidCorral" msprop:Generator_ColumnPropNameInRow="idCorral" msprop:Generator_ColumnPropNameInTable="idCorralColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DescCorta" msprop:Generator_UserColumnName="DescCorta" msprop:Generator_ColumnVarNameInTable="columnDescCorta" msprop:Generator_ColumnPropNameInRow="DescCorta" msprop:Generator_ColumnPropNameInTable="DescCortaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Capacidad" msprop:Generator_UserColumnName="Capacidad" msprop:Generator_ColumnVarNameInTable="columnCapacidad" msprop:Generator_ColumnPropNameInRow="Capacidad" msprop:Generator_ColumnPropNameInTable="CapacidadColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Superficie" msprop:Generator_UserColumnName="Superficie" msprop:Generator_ColumnVarNameInTable="columnSuperficie" msprop:Generator_ColumnPropNameInRow="Superficie" msprop:Generator_ColumnPropNameInTable="SuperficieColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoCorral" msprop:Generator_UserColumnName="TipoCorral" msprop:Generator_ColumnPropNameInRow="TipoCorral" msprop:Generator_ColumnVarNameInTable="columnTipoCorral" msprop:Generator_ColumnPropNameInTable="TipoCorralColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

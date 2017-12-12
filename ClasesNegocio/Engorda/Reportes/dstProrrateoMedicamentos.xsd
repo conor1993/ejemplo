@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dstProrrateoMedicamentos" targetNamespace="http://tempuri.org/dstProrrateoMedicamentos.xsd" xmlns:mstns="http://tempuri.org/dstProrrateoMedicamentos.xsd" xmlns="http://tempuri.org/dstProrrateoMedicamentos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dstProrrateoMedicamentos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dstProrrateoMedicamentos" msprop:Generator_DataSetName="dstProrrateoMedicamentos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Medicamento" msprop:Generator_UserTableName="Medicamento" msprop:Generator_RowDeletedName="MedicamentoRowDeleted" msprop:Generator_TableClassName="MedicamentoDataTable" msprop:Generator_RowChangedName="MedicamentoRowChanged" msprop:Generator_RowClassName="MedicamentoRow" msprop:Generator_RowChangingName="MedicamentoRowChanging" msprop:Generator_RowEvArgName="MedicamentoRowChangeEvent" msprop:Generator_RowEvHandlerName="MedicamentoRowChangeEventHandler" msprop:Generator_TablePropName="Medicamento" msprop:Generator_TableVarName="tableMedicamento" msprop:Generator_RowDeletingName="MedicamentoRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Prorrateo" msprop:Generator_UserColumnName="Prorrateo" msprop:Generator_ColumnPropNameInRow="Prorrateo" msprop:Generator_ColumnVarNameInTable="columnProrrateo" msprop:Generator_ColumnPropNameInTable="ProrrateoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Lote" msprop:Generator_UserColumnName="Lote" msprop:Generator_ColumnPropNameInRow="Lote" msprop:Generator_ColumnVarNameInTable="columnLote" msprop:Generator_ColumnPropNameInTable="LoteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Corral" msprop:Generator_UserColumnName="Corral" msprop:Generator_ColumnPropNameInRow="Corral" msprop:Generator_ColumnVarNameInTable="columnCorral" msprop:Generator_ColumnPropNameInTable="CorralColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Medicamento" msprop:Generator_UserColumnName="Medicamento" msprop:Generator_ColumnPropNameInRow="Medicamento" msprop:Generator_ColumnVarNameInTable="columnMedicamento" msprop:Generator_ColumnPropNameInTable="MedicamentoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsOrdenesServicios" targetNamespace="http://tempuri.org/DsOrdenesServicios.xsd" xmlns:mstns="http://tempuri.org/DsOrdenesServicios.xsd" xmlns="http://tempuri.org/DsOrdenesServicios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GANADERAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="GANADERAConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.My.MySettings.GlobalReference.Default.GANADERAConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwCompReporteOrdenesServiciosTableAdapter" GeneratorDataComponentClassName="vwCompReporteOrdenesServiciosTableAdapter" Name="vwCompReporteOrdenesServicios" UserDataComponentName="vwCompReporteOrdenesServiciosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GANADERAConnectionString (MySettings)" DbObjectName="GANADERA.dbo.vwCompReporteOrdenesServicios" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     vwCompReporteOrdenesServicios.*
+FROM         vwCompReporteOrdenesServicios</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Servicio" DataSetColumn="Servicio" />
+              <Mapping SourceColumn="FolioDetalleSolicitud" DataSetColumn="FolioDetalleSolicitud" />
+              <Mapping SourceColumn="Indice" DataSetColumn="Indice" />
+              <Mapping SourceColumn="CantidadSolicitada" DataSetColumn="CantidadSolicitada" />
+              <Mapping SourceColumn="CantidadOrdenar" DataSetColumn="CantidadOrdenar" />
+              <Mapping SourceColumn="Precio" DataSetColumn="Precio" />
+              <Mapping SourceColumn="Descuento" DataSetColumn="Descuento" />
+              <Mapping SourceColumn="IVA" DataSetColumn="IVA" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
+              <Mapping SourceColumn="Folio" DataSetColumn="Folio" />
+              <Mapping SourceColumn="SucursalId" DataSetColumn="SucursalId" />
+              <Mapping SourceColumn="ProveedorId" DataSetColumn="ProveedorId" />
+              <Mapping SourceColumn="FechaAlta" DataSetColumn="FechaAlta" />
+              <Mapping SourceColumn="SCDescripcion" DataSetColumn="SCDescripcion" />
+              <Mapping SourceColumn="SCIdPlaza" DataSetColumn="SCIdPlaza" />
+              <Mapping SourceColumn="PLDescripcion" DataSetColumn="PLDescripcion" />
+              <Mapping SourceColumn="PrRazSocial" DataSetColumn="PrRazSocial" />
+              <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsOrdenesServicios" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsOrdenesServicios" msprop:Generator_DataSetName="DsOrdenesServicios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwCompReporteOrdenesServicios" msprop:Generator_UserTableName="vwCompReporteOrdenesServicios" msprop:Generator_RowDeletedName="vwCompReporteOrdenesServiciosRowDeleted" msprop:Generator_TableClassName="vwCompReporteOrdenesServiciosDataTable" msprop:Generator_RowChangedName="vwCompReporteOrdenesServiciosRowChanged" msprop:Generator_RowClassName="vwCompReporteOrdenesServiciosRow" msprop:Generator_RowChangingName="vwCompReporteOrdenesServiciosRowChanging" msprop:Generator_RowEvArgName="vwCompReporteOrdenesServiciosRowChangeEvent" msprop:Generator_RowEvHandlerName="vwCompReporteOrdenesServiciosRowChangeEventHandler" msprop:Generator_TablePropName="vwCompReporteOrdenesServicios" msprop:Generator_TableVarName="tablevwCompReporteOrdenesServicios" msprop:Generator_RowDeletingName="vwCompReporteOrdenesServiciosRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Servicio" msprop:Generator_UserColumnName="Servicio" msprop:Generator_ColumnPropNameInRow="Servicio" msprop:Generator_ColumnVarNameInTable="columnServicio" msprop:Generator_ColumnPropNameInTable="ServicioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FolioDetalleSolicitud" msprop:Generator_UserColumnName="FolioDetalleSolicitud" msprop:Generator_ColumnPropNameInRow="FolioDetalleSolicitud" msprop:Generator_ColumnVarNameInTable="columnFolioDetalleSolicitud" msprop:Generator_ColumnPropNameInTable="FolioDetalleSolicitudColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Indice" msprop:Generator_UserColumnName="Indice" msprop:Generator_ColumnPropNameInRow="Indice" msprop:Generator_ColumnVarNameInTable="columnIndice" msprop:Generator_ColumnPropNameInTable="IndiceColumn" type="xs:int" />
+              <xs:element name="CantidadSolicitada" msprop:Generator_UserColumnName="CantidadSolicitada" msprop:Generator_ColumnPropNameInRow="CantidadSolicitada" msprop:Generator_ColumnVarNameInTable="columnCantidadSolicitada" msprop:Generator_ColumnPropNameInTable="CantidadSolicitadaColumn" type="xs:decimal" />
+              <xs:element name="CantidadOrdenar" msprop:Generator_UserColumnName="CantidadOrdenar" msprop:Generator_ColumnPropNameInRow="CantidadOrdenar" msprop:Generator_ColumnVarNameInTable="columnCantidadOrdenar" msprop:Generator_ColumnPropNameInTable="CantidadOrdenarColumn" type="xs:decimal" />
+              <xs:element name="Precio" msprop:Generator_UserColumnName="Precio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" type="xs:decimal" />
+              <xs:element name="Descuento" msprop:Generator_UserColumnName="Descuento" msprop:Generator_ColumnPropNameInRow="Descuento" msprop:Generator_ColumnVarNameInTable="columnDescuento" msprop:Generator_ColumnPropNameInTable="DescuentoColumn" type="xs:decimal" />
+              <xs:element name="IVA" msprop:Generator_UserColumnName="IVA" msprop:Generator_ColumnPropNameInRow="IVA" msprop:Generator_ColumnVarNameInTable="columnIVA" msprop:Generator_ColumnPropNameInTable="IVAColumn" type="xs:decimal" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" />
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInTable="FolioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SucursalId" msprop:Generator_UserColumnName="SucursalId" msprop:Generator_ColumnPropNameInRow="SucursalId" msprop:Generator_ColumnVarNameInTable="columnSucursalId" msprop:Generator_ColumnPropNameInTable="SucursalIdColumn" type="xs:int" />
+              <xs:element name="ProveedorId" msprop:Generator_UserColumnName="ProveedorId" msprop:Generator_ColumnPropNameInRow="ProveedorId" msprop:Generator_ColumnVarNameInTable="columnProveedorId" msprop:Generator_ColumnPropNameInTable="ProveedorIdColumn" type="xs:int" />
+              <xs:element name="FechaAlta" msprop:Generator_UserColumnName="FechaAlta" msprop:Generator_ColumnPropNameInRow="FechaAlta" msprop:Generator_ColumnVarNameInTable="columnFechaAlta" msprop:Generator_ColumnPropNameInTable="FechaAltaColumn" type="xs:dateTime" />
+              <xs:element name="SCDescripcion" msprop:Generator_UserColumnName="SCDescripcion" msprop:Generator_ColumnPropNameInRow="SCDescripcion" msprop:Generator_ColumnVarNameInTable="columnSCDescripcion" msprop:Generator_ColumnPropNameInTable="SCDescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SCIdPlaza" msprop:Generator_UserColumnName="SCIdPlaza" msprop:Generator_ColumnPropNameInRow="SCIdPlaza" msprop:Generator_ColumnVarNameInTable="columnSCIdPlaza" msprop:Generator_ColumnPropNameInTable="SCIdPlazaColumn" type="xs:int" />
+              <xs:element name="PLDescripcion" msprop:Generator_UserColumnName="PLDescripcion" msprop:Generator_ColumnPropNameInRow="PLDescripcion" msprop:Generator_ColumnVarNameInTable="columnPLDescripcion" msprop:Generator_ColumnPropNameInTable="PLDescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PrRazSocial" msprop:Generator_UserColumnName="PrRazSocial" msprop:Generator_ColumnPropNameInRow="PrRazSocial" msprop:Generator_ColumnVarNameInTable="columnPrRazSocial" msprop:Generator_ColumnPropNameInTable="PrRazSocialColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Estatus" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwCompReporteOrdenesServicios" />
+      <xs:field xpath="mstns:FolioDetalleSolicitud" />
+      <xs:field xpath="mstns:Indice" />
+      <xs:field xpath="mstns:Folio" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSalidaAlmacenPorConsumo" targetNamespace="http://tempuri.org/dsSalidaAlmacenPorConsumo.xsd" xmlns:mstns="http://tempuri.org/dsSalidaAlmacenPorConsumo.xsd" xmlns="http://tempuri.org/dsSalidaAlmacenPorConsumo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSalidaAlmacenPorConsumo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsSalidaAlmacenPorConsumo" msprop:Generator_DataSetName="dsSalidaAlmacenPorConsumo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MovimientoAlmacen" msprop:Generator_UserTableName="MovimientoAlmacen" msprop:Generator_RowDeletedName="MovimientoAlmacenRowDeleted" msprop:Generator_RowChangedName="MovimientoAlmacenRowChanged" msprop:Generator_RowClassName="MovimientoAlmacenRow" msprop:Generator_RowChangingName="MovimientoAlmacenRowChanging" msprop:Generator_RowEvArgName="MovimientoAlmacenRowChangeEvent" msprop:Generator_RowEvHandlerName="MovimientoAlmacenRowChangeEventHandler" msprop:Generator_TableClassName="MovimientoAlmacenDataTable" msprop:Generator_TableVarName="tableMovimientoAlmacen" msprop:Generator_RowDeletingName="MovimientoAlmacenRowDeleting" msprop:Generator_TablePropName="MovimientoAlmacen">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioMovimiento" msprop:Generator_UserColumnName="FolioMovimiento" msprop:Generator_ColumnVarNameInTable="columnFolioMovimiento" msprop:Generator_ColumnPropNameInRow="FolioMovimiento" msprop:Generator_ColumnPropNameInTable="FolioMovimientoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Almacen" msprop:Generator_UserColumnName="Almacen" msprop:Generator_ColumnVarNameInTable="columnAlmacen" msprop:Generator_ColumnPropNameInRow="Almacen" msprop:Generator_ColumnPropNameInTable="AlmacenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaMovimiento" msprop:Generator_UserColumnName="FechaMovimiento" msprop:Generator_ColumnVarNameInTable="columnFechaMovimiento" msprop:Generator_ColumnPropNameInRow="FechaMovimiento" msprop:Generator_ColumnPropNameInTable="FechaMovimientoColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_UserColumnName="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Entrega" msprop:Generator_UserColumnName="Entrega" msprop:Generator_ColumnVarNameInTable="columnEntrega" msprop:Generator_ColumnPropNameInRow="Entrega" msprop:Generator_ColumnPropNameInTable="EntregaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Recibe" msprop:Generator_UserColumnName="Recibe" msprop:Generator_ColumnVarNameInTable="columnRecibe" msprop:Generator_ColumnPropNameInRow="Recibe" msprop:Generator_ColumnPropNameInTable="RecibeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdAlmacen" msprop:Generator_UserColumnName="IdAlmacen" msprop:Generator_ColumnVarNameInTable="columnIdAlmacen" msprop:Generator_ColumnPropNameInRow="IdAlmacen" msprop:Generator_ColumnPropNameInTable="IdAlmacenColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Observaciones" msprop:Generator_UserColumnName="Observaciones" msprop:Generator_ColumnPropNameInRow="Observaciones" msprop:Generator_ColumnVarNameInTable="columnObservaciones" msprop:Generator_ColumnPropNameInTable="ObservacionesColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MovimientoAlmacenDetalle" msprop:Generator_UserTableName="MovimientoAlmacenDetalle" msprop:Generator_RowDeletedName="MovimientoAlmacenDetalleRowDeleted" msprop:Generator_RowChangedName="MovimientoAlmacenDetalleRowChanged" msprop:Generator_RowClassName="MovimientoAlmacenDetalleRow" msprop:Generator_RowChangingName="MovimientoAlmacenDetalleRowChanging" msprop:Generator_RowEvArgName="MovimientoAlmacenDetalleRowChangeEvent" msprop:Generator_RowEvHandlerName="MovimientoAlmacenDetalleRowChangeEventHandler" msprop:Generator_TableClassName="MovimientoAlmacenDetalleDataTable" msprop:Generator_TableVarName="tableMovimientoAlmacenDetalle" msprop:Generator_RowDeletingName="MovimientoAlmacenDetalleRowDeleting" msprop:Generator_TablePropName="MovimientoAlmacenDetalle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioMovimiento" msprop:Generator_UserColumnName="FolioMovimiento" msprop:Generator_ColumnVarNameInTable="columnFolioMovimiento" msprop:Generator_ColumnPropNameInRow="FolioMovimiento" msprop:Generator_ColumnPropNameInTable="FolioMovimientoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdProducto" msprop:Generator_UserColumnName="IdProducto" msprop:Generator_ColumnVarNameInTable="columnIdProducto" msprop:Generator_ColumnPropNameInRow="IdProducto" msprop:Generator_ColumnPropNameInTable="IdProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Costo" msprop:Generator_UserColumnName="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Lote" msprop:Generator_UserColumnName="Lote" msprop:Generator_ColumnVarNameInTable="columnLote" msprop:Generator_ColumnPropNameInRow="Lote" msprop:Generator_ColumnPropNameInTable="LoteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdAlmacen" msprop:Generator_UserColumnName="IdAlmacen" msprop:Generator_ColumnVarNameInTable="columnIdAlmacen" msprop:Generator_ColumnPropNameInRow="IdAlmacen" msprop:Generator_ColumnPropNameInTable="IdAlmacenColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AplicacionDeGasto" msprop:Generator_UserColumnName="AplicacionDeGasto" msprop:Generator_ColumnVarNameInTable="columnAplicacionDeGasto" msprop:Generator_ColumnPropNameInRow="AplicacionDeGasto" msprop:Generator_ColumnPropNameInTable="AplicacionDeGastoColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="MovimientoAlmacenKey1">
+      <xs:selector xpath=".//mstns:MovimientoAlmacen" />
+      <xs:field xpath="mstns:FolioMovimiento" />
+    </xs:unique>
+    <xs:unique name="MovimientoAlmacenDetalleKey1">
+      <xs:selector xpath=".//mstns:MovimientoAlmacenDetalle" />
+      <xs:field xpath="mstns:FolioMovimiento" />
+      <xs:field xpath="mstns:IdProducto" />
+      <xs:field xpath="mstns:Lote" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="MovimientoAlmacen_MovimientoAlmacenDetalle" msdata:parent="MovimientoAlmacen" msdata:child="MovimientoAlmacenDetalle" msdata:parentkey="FolioMovimiento" msdata:childkey="FolioMovimiento" msprop:Generator_UserRelationName="MovimientoAlmacen_MovimientoAlmacenDetalle" msprop:Generator_RelationVarName="relationMovimientoAlmacen_MovimientoAlmacenDetalle" msprop:Generator_UserChildTable="MovimientoAlmacenDetalle" msprop:Generator_UserParentTable="MovimientoAlmacen" msprop:Generator_ParentPropName="MovimientoAlmacenRow" msprop:Generator_ChildPropName="GetMovimientoAlmacenDetalleRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

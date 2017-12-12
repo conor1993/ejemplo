@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSeleccionDetalleLote" targetNamespace="http://tempuri.org/dsSeleccionDetalleLote.xsd" xmlns:mstns="http://tempuri.org/dsSeleccionDetalleLote.xsd" xmlns="http://tempuri.org/dsSeleccionDetalleLote.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSeleccionDetalleLote" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsSeleccionDetalleLote" msprop:Generator_DataSetName="dsSeleccionDetalleLote">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SelDetalleLote" msprop:Generator_UserTableName="SelDetalleLote" msprop:Generator_RowDeletedName="SelDetalleLoteRowDeleted" msprop:Generator_RowChangedName="SelDetalleLoteRowChanged" msprop:Generator_RowClassName="SelDetalleLoteRow" msprop:Generator_RowChangingName="SelDetalleLoteRowChanging" msprop:Generator_RowEvArgName="SelDetalleLoteRowChangeEvent" msprop:Generator_RowEvHandlerName="SelDetalleLoteRowChangeEventHandler" msprop:Generator_TableClassName="SelDetalleLoteDataTable" msprop:Generator_TableVarName="tableSelDetalleLote" msprop:Generator_RowDeletingName="SelDetalleLoteRowDeleting" msprop:Generator_TablePropName="SelDetalleLote">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdMceCatLotesDet" msprop:Generator_UserColumnName="IdMceCatLotesDet" msprop:Generator_ColumnPropNameInRow="IdMceCatLotesDet" msprop:Generator_ColumnVarNameInTable="columnIdMceCatLotesDet" msprop:Generator_ColumnPropNameInTable="IdMceCatLotesDetColumn" type="xs:string" />
+              <xs:element name="AreteTransporte" msprop:Generator_UserColumnName="AreteTransporte" msprop:Generator_ColumnVarNameInTable="columnAreteTransporte" msprop:Generator_ColumnPropNameInRow="AreteTransporte" msprop:Generator_ColumnPropNameInTable="AreteTransporteColumn" type="xs:string" />
+              <xs:element name="AreteSiniiga" msprop:Generator_UserColumnName="AreteSiniiga" msprop:Generator_ColumnVarNameInTable="columnAreteSiniiga" msprop:Generator_ColumnPropNameInRow="AreteSiniiga" msprop:Generator_ColumnPropNameInTable="AreteSiniigaColumn" type="xs:string" />
+              <xs:element name="AretePropio" msprop:Generator_UserColumnName="AretePropio" msprop:Generator_ColumnPropNameInRow="AretePropio" msprop:Generator_ColumnVarNameInTable="columnAretePropio" msprop:Generator_ColumnPropNameInTable="AretePropioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Kilos" msprop:Generator_UserColumnName="Kilos" msprop:Generator_ColumnPropNameInRow="Kilos" msprop:Generator_ColumnVarNameInTable="columnKilos" msprop:Generator_ColumnPropNameInTable="KilosColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoxKilo" msprop:Generator_UserColumnName="CostoxKilo" msprop:Generator_ColumnPropNameInRow="CostoxKilo" msprop:Generator_ColumnVarNameInTable="columnCostoxKilo" msprop:Generator_ColumnPropNameInTable="CostoxKiloColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IdTipoGanado" msprop:Generator_UserColumnName="IdTipoGanado" msprop:Generator_ColumnPropNameInRow="IdTipoGanado" msprop:Generator_ColumnVarNameInTable="columnIdTipoGanado" msprop:Generator_ColumnPropNameInTable="IdTipoGanadoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TipoGanadoDescripcion" msprop:Generator_UserColumnName="TipoGanadoDescripcion" msprop:Generator_ColumnVarNameInTable="columnTipoGanadoDescripcion" msprop:Generator_ColumnPropNameInRow="TipoGanadoDescripcion" msprop:Generator_ColumnPropNameInTable="TipoGanadoDescripcionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PrecioxKilo" msprop:Generator_UserColumnName="PrecioxKilo" msprop:Generator_ColumnPropNameInRow="PrecioxKilo" msprop:Generator_ColumnVarNameInTable="columnPrecioxKilo" msprop:Generator_ColumnPropNameInTable="PrecioxKiloColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SelDetalleLote" />
+      <xs:field xpath="mstns:IdMceCatLotesDet" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

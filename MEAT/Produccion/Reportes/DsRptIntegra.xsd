@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsRptIntegra" targetNamespace="http://tempuri.org/DsRptIntegra.xsd" xmlns:mstns="http://tempuri.org/DsRptIntegra.xsd" xmlns="http://tempuri.org/DsRptIntegra.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsRptIntegra" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsRptIntegra" msprop:Generator_DataSetName="DsRptIntegra">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_TablePropName="DataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolioSacrificio" msprop:Generator_UserColumnName="FolioSacrificio" msprop:Generator_ColumnVarNameInTable="columnFolioSacrificio" msprop:Generator_ColumnPropNameInRow="FolioSacrificio" msprop:Generator_ColumnPropNameInTable="FolioSacrificioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaSacrificio" msprop:Generator_UserColumnName="FechaSacrificio" msprop:Generator_ColumnVarNameInTable="columnFechaSacrificio" msprop:Generator_ColumnPropNameInRow="FechaSacrificio" msprop:Generator_ColumnPropNameInTable="FechaSacrificioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CantCabSacrificio" msprop:Generator_UserColumnName="CantCabSacrificio" msprop:Generator_ColumnVarNameInTable="columnCantCabSacrificio" msprop:Generator_ColumnPropNameInRow="CantCabSacrificio" msprop:Generator_ColumnPropNameInTable="CantCabSacrificioColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="KgsEnPie" msprop:Generator_UserColumnName="KgsEnPie" msprop:Generator_ColumnVarNameInTable="columnKgsEnPie" msprop:Generator_ColumnPropNameInRow="KgsEnPie" msprop:Generator_ColumnPropNameInTable="KgsEnPieColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="KgsCanal" msprop:Generator_UserColumnName="KgsCanal" msprop:Generator_ColumnVarNameInTable="columnKgsCanal" msprop:Generator_ColumnPropNameInRow="KgsCanal" msprop:Generator_ColumnPropNameInTable="KgsCanalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CantCanales" msprop:Generator_UserColumnName="CantCanales" msprop:Generator_ColumnVarNameInTable="columnCantCanales" msprop:Generator_ColumnPropNameInRow="CantCanales" msprop:Generator_ColumnPropNameInTable="CantCanalesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="KgrsRastro" msprop:Generator_UserColumnName="KgrsRastro" msprop:Generator_ColumnVarNameInTable="columnKgrsRastro" msprop:Generator_ColumnPropNameInRow="KgrsRastro" msprop:Generator_ColumnPropNameInTable="KgrsRastroColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FolioMovimiento" msprop:Generator_UserColumnName="FolioMovimiento" msprop:Generator_ColumnVarNameInTable="columnFolioMovimiento" msprop:Generator_ColumnPropNameInRow="FolioMovimiento" msprop:Generator_ColumnPropNameInTable="FolioMovimientoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdCodCliente" msprop:Generator_UserColumnName="IdCodCliente" msprop:Generator_ColumnVarNameInTable="columnIdCodCliente" msprop:Generator_ColumnPropNameInRow="IdCodCliente" msprop:Generator_ColumnPropNameInTable="IdCodClienteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Nombre" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CanalesAcorte" msprop:Generator_UserColumnName="CanalesAcorte" msprop:Generator_ColumnVarNameInTable="columnCanalesAcorte" msprop:Generator_ColumnPropNameInRow="CanalesAcorte" msprop:Generator_ColumnPropNameInTable="CanalesAcorteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CanalesEmbarcados" msprop:Generator_UserColumnName="CanalesEmbarcados" msprop:Generator_ColumnVarNameInTable="columnCanalesEmbarcados" msprop:Generator_ColumnPropNameInRow="CanalesEmbarcados" msprop:Generator_ColumnPropNameInTable="CanalesEmbarcadosColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Rendimiento" msprop:Generator_UserColumnName="Rendimiento" msprop:Generator_ColumnPropNameInRow="Rendimiento" msprop:Generator_ColumnVarNameInTable="columnRendimiento" msprop:Generator_ColumnPropNameInTable="RendimientoColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

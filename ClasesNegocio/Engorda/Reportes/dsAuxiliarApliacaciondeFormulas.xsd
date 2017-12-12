@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAuxiliarApliacaciondeFormulas" targetNamespace="http://tempuri.org/dsAuxiliarApliacaciondeFormulas.xsd" xmlns:mstns="http://tempuri.org/dsAuxiliarApliacaciondeFormulas.xsd" xmlns="http://tempuri.org/dsAuxiliarApliacaciondeFormulas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAuxiliarApliacaciondeFormulas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsAuxiliarApliacaciondeFormulas" msprop:Generator_DataSetName="dsAuxiliarApliacaciondeFormulas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AuxiliarApliFormulas" msprop:Generator_UserTableName="AuxiliarApliFormulas" msprop:Generator_RowDeletedName="AuxiliarApliFormulasRowDeleted" msprop:Generator_RowChangedName="AuxiliarApliFormulasRowChanged" msprop:Generator_RowClassName="AuxiliarApliFormulasRow" msprop:Generator_RowChangingName="AuxiliarApliFormulasRowChanging" msprop:Generator_RowEvArgName="AuxiliarApliFormulasRowChangeEvent" msprop:Generator_RowEvHandlerName="AuxiliarApliFormulasRowChangeEventHandler" msprop:Generator_TableClassName="AuxiliarApliFormulasDataTable" msprop:Generator_TableVarName="tableAuxiliarApliFormulas" msprop:Generator_RowDeletingName="AuxiliarApliFormulasRowDeleting" msprop:Generator_TablePropName="AuxiliarApliFormulas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Folio" msprop:Generator_UserColumnName="Folio" msprop:Generator_ColumnVarNameInTable="columnFolio" msprop:Generator_ColumnPropNameInRow="Folio" msprop:Generator_ColumnPropNameInTable="FolioColumn" type="xs:string" />
+              <xs:element name="IdCorral" msprop:Generator_UserColumnName="IdCorral" msprop:Generator_ColumnVarNameInTable="columnIdCorral" msprop:Generator_ColumnPropNameInRow="IdCorral" msprop:Generator_ColumnPropNameInTable="IdCorralColumn" type="xs:string" />
+              <xs:element name="NombreCorral" msprop:Generator_UserColumnName="NombreCorral" msprop:Generator_ColumnVarNameInTable="columnNombreCorral" msprop:Generator_ColumnPropNameInRow="NombreCorral" msprop:Generator_ColumnPropNameInTable="NombreCorralColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdLote" msprop:Generator_UserColumnName="IdLote" msprop:Generator_ColumnVarNameInTable="columnIdLote" msprop:Generator_ColumnPropNameInRow="IdLote" msprop:Generator_ColumnPropNameInTable="IdLoteColumn" type="xs:int" />
+              <xs:element name="NombreLote" msprop:Generator_UserColumnName="NombreLote" msprop:Generator_ColumnVarNameInTable="columnNombreLote" msprop:Generator_ColumnPropNameInRow="NombreLote" msprop:Generator_ColumnPropNameInTable="NombreLoteColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IdFormula" msprop:Generator_UserColumnName="IdFormula" msprop:Generator_ColumnVarNameInTable="columnIdFormula" msprop:Generator_ColumnPropNameInRow="IdFormula" msprop:Generator_ColumnPropNameInTable="IdFormulaColumn" type="xs:long" />
+              <xs:element name="Formula" msprop:Generator_UserColumnName="Formula" msprop:Generator_ColumnVarNameInTable="columnFormula" msprop:Generator_ColumnPropNameInRow="Formula" msprop:Generator_ColumnPropNameInTable="FormulaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CantServ1" msprop:Generator_UserColumnName="CantServ1" msprop:Generator_ColumnVarNameInTable="columnCantServ1" msprop:Generator_ColumnPropNameInRow="CantServ1" msprop:Generator_ColumnPropNameInTable="CantServ1Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantServ2" msprop:Generator_UserColumnName="CantServ2" msprop:Generator_ColumnVarNameInTable="columnCantServ2" msprop:Generator_ColumnPropNameInRow="CantServ2" msprop:Generator_ColumnPropNameInTable="CantServ2Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantServ3" msprop:Generator_UserColumnName="CantServ3" msprop:Generator_ColumnVarNameInTable="columnCantServ3" msprop:Generator_ColumnPropNameInRow="CantServ3" msprop:Generator_ColumnPropNameInTable="CantServ3Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantServ4" msprop:Generator_UserColumnName="CantServ4" msprop:Generator_ColumnVarNameInTable="columnCantServ4" msprop:Generator_ColumnPropNameInRow="CantServ4" msprop:Generator_ColumnPropNameInTable="CantServ4Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Costo" msprop:Generator_UserColumnName="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AuxiliarApliFormulas" />
+      <xs:field xpath="mstns:IdFormula" />
+      <xs:field xpath="mstns:IdLote" />
+      <xs:field xpath="mstns:IdCorral" />
+      <xs:field xpath="mstns:Folio" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

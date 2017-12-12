@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsConsultaKardex" targetNamespace="http://tempuri.org/dsConsultaKardex.xsd" xmlns:mstns="http://tempuri.org/dsConsultaKardex.xsd" xmlns="http://tempuri.org/dsConsultaKardex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsConsultaKardex" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsConsultaKardex" msprop:Generator_DataSetName="dsConsultaKardex">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DetalleKardex" msprop:Generator_UserTableName="DetalleKardex" msprop:Generator_RowDeletedName="DetalleKardexRowDeleted" msprop:Generator_RowChangedName="DetalleKardexRowChanged" msprop:Generator_RowClassName="DetalleKardexRow" msprop:Generator_RowChangingName="DetalleKardexRowChanging" msprop:Generator_RowEvArgName="DetalleKardexRowChangeEvent" msprop:Generator_RowEvHandlerName="DetalleKardexRowChangeEventHandler" msprop:Generator_TableClassName="DetalleKardexDataTable" msprop:Generator_TableVarName="tableDetalleKardex" msprop:Generator_RowDeletingName="DetalleKardexRowDeleting" msprop:Generator_TablePropName="DetalleKardex">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fechamovimiento" msprop:Generator_UserColumnName="fechamovimiento" msprop:Generator_ColumnVarNameInTable="columnfechamovimiento" msprop:Generator_ColumnPropNameInRow="fechamovimiento" msprop:Generator_ColumnPropNameInTable="fechamovimientoColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FolioMovimiento" msprop:Generator_UserColumnName="FolioMovimiento" msprop:Generator_ColumnVarNameInTable="columnFolioMovimiento" msprop:Generator_ColumnPropNameInRow="FolioMovimiento" msprop:Generator_ColumnPropNameInTable="FolioMovimientoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Movimiento" msprop:Generator_UserColumnName="Movimiento" msprop:Generator_ColumnVarNameInTable="columnMovimiento" msprop:Generator_ColumnPropNameInRow="Movimiento" msprop:Generator_ColumnPropNameInTable="MovimientoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Entrada" msprop:Generator_UserColumnName="Entrada" msprop:Generator_ColumnVarNameInTable="columnEntrada" msprop:Generator_ColumnPropNameInRow="Entrada" msprop:Generator_ColumnPropNameInTable="EntradaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Salida" msprop:Generator_UserColumnName="Salida" msprop:Generator_ColumnVarNameInTable="columnSalida" msprop:Generator_ColumnPropNameInRow="Salida" msprop:Generator_ColumnPropNameInTable="SalidaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CantidadExistencia" msprop:Generator_UserColumnName="CantidadExistencia" msprop:Generator_ColumnVarNameInTable="columnCantidadExistencia" msprop:Generator_ColumnPropNameInRow="CantidadExistencia" msprop:Generator_ColumnPropNameInTable="CantidadExistenciaColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Costo" msprop:Generator_UserColumnName="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoPromedio" msprop:Generator_UserColumnName="CostoPromedio" msprop:Generator_ColumnVarNameInTable="columnCostoPromedio" msprop:Generator_ColumnPropNameInRow="CostoPromedio" msprop:Generator_ColumnPropNameInTable="CostoPromedioColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
