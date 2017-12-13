@@ -649,8 +649,17 @@ Public Class CatCuentaContableForm
 
             If Not Me.txtCtaBusq.Text = "0000" Then
                 Filtro.Add(HC.VwContCuentasFields.Cta = Me.txtCtaBusq.Text)
+            End If
+
+            If Not Me.txtSCtaBusq.Text = "0000" Then
                 Filtro.Add(HC.VwContCuentasFields.SubCta = Me.txtSCtaBusq.Text)
+            End If
+
+            If Not Me.txtSSCtaBusq.Text = "0000" Then
                 Filtro.Add(HC.VwContCuentasFields.SsubCta = Me.txtSSCtaBusq.Text)
+            End If
+
+            If Not Me.txtSSSCtaBusq.Text = "0000" Then
                 Filtro.Add(HC.VwContCuentasFields.SssubCta = Me.txtSSSCtaBusq.Text)
             End If
 
@@ -824,7 +833,7 @@ Public Class CatCuentaContableForm
 
     Private Sub txtCtaBusq_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCtaBusq.KeyPress
         If e.KeyChar = Chr(Keys.Enter) Then
-            Me.MostrarCuentas()
+            'Me.MostrarCuentas()
             Me.txtSCtaBusq.Focus()
         End If
     End Sub
@@ -835,6 +844,7 @@ Public Class CatCuentaContableForm
         Else
             Me.txtCtaBusq.Text = "0000"
         End If
+        Me.MostrarCuentas()
     End Sub
 
     Private Sub txtSCtaBusq_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSCtaBusq.GotFocus
@@ -846,7 +856,7 @@ Public Class CatCuentaContableForm
 
     Private Sub txtSCtaBusq_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSCtaBusq.KeyPress
         If e.KeyChar = Chr(Keys.Enter) Then
-            Me.MostrarCuentas()
+            ' Me.MostrarCuentas()
             Me.txtSSCtaBusq.Focus()
         End If
     End Sub
@@ -857,6 +867,7 @@ Public Class CatCuentaContableForm
         Else
             Me.txtSCtaBusq.Text = "0000"
         End If
+        Me.MostrarCuentas()
     End Sub
 
     Private Sub txtSSCtaBusq_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSSCtaBusq.GotFocus
@@ -868,8 +879,8 @@ Public Class CatCuentaContableForm
 
     Private Sub txtSSCtaBusq_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSSCtaBusq.KeyPress
         If e.KeyChar = Chr(Keys.Enter) Then
-            MostrarCuentas()
-            Me.txtSSCtaBusq.Focus()
+            ' MostrarCuentas()
+            Me.txtSSSCtaBusq.Focus()
         End If
     End Sub
 
@@ -879,6 +890,7 @@ Public Class CatCuentaContableForm
         Else
             Me.txtSSCtaBusq.Text = "0000"
         End If
+        Me.MostrarCuentas()
     End Sub
 
     Private Sub txtSSSCtaBusq_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSSSCtaBusq.GotFocus
@@ -890,7 +902,7 @@ Public Class CatCuentaContableForm
 
     Private Sub txtSSSCtaBusq_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSSSCtaBusq.KeyPress
         If e.KeyChar = Chr(Keys.Enter) Then
-            MostrarCuentas()
+            'MostrarCuentas()
             Me.txtCtaBusq.Focus()
         End If
     End Sub
@@ -901,6 +913,7 @@ Public Class CatCuentaContableForm
         Else
             Me.txtSSSCtaBusq.Text = "0000"
         End If
+        MostrarCuentas()
     End Sub
 
     Private Sub cmbTitulo_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbTitulo.SelectedValueChanged
