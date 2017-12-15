@@ -17,6 +17,7 @@ Public Class CatCuentaContableForm
     Private seleccion As New Integra.Clases.BusquedaClass(Of CN.CuentaContableClass)
     Private dtCuentas As DataTable
 
+
 #End Region
 
 #Region " Forma "

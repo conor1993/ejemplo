@@ -5528,7 +5528,7 @@ Namespace Integralab.ORM.EntityClasses
 		''' same scope.</remarks>
 		Public Overridable ReadOnly Property [CuentasHijas]() As Integralab.ORM.CollectionClasses.CuentaContableCollection
 			Get
-				Return GetMultiCuentasHijas(False)
+                Return GetMultiCuentasHijas(True)
 			End Get
 		End Property
 
@@ -6189,7 +6189,7 @@ Namespace Integralab.ORM.EntityClasses
 		<Browsable(False)> _
 		Public Overridable Property [CuentaPadre]() As CuentaContableEntity
 			Get
-				Return GetSingleCuentaPadre(False)
+                Return GetSingleCuentaPadre(False)
 			End Get
 			Set
 				If MyBase.IsDeserializing Then

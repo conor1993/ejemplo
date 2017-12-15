@@ -17,7 +17,7 @@ Public Class frmOtrasEntradasProduccion
             Dim consulta As String = "SELECT [IdProducto],[Descripcion],Canal,Corte,SubProducto,PreCorte FROM [dbo].[MSCCatProductos] WHERE IdProducto=1"
 
             Using ad As New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand(consulta, _
-                        New SqlClient.SqlConnection(IntegraLab.ORM.HelperClasses.DbUtils.ActualConnectionString)))
+                        New SqlClient.SqlConnection(Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)))
                 ad.SelectCommand.Connection.Open()
                 ad.Fill(productos)
                 ad.SelectCommand.Connection.Close()
