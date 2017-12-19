@@ -101,6 +101,7 @@
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>Sistema MEAT.xml</DocumentationFile>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DefineTrace>true</DefineTrace>
@@ -222,6 +223,9 @@
     <Reference Include="Seguridad, Version=0.7.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Seguridad.dll</HintPath>
+    </Reference>
+    <Reference Include="Sistema MEAT">
+      <HintPath>obj\x86\Debug\Sistema MEAT.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -5740,5 +5744,9 @@
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>taskkill /IM vshost32-clr2.exe /F 2&gt;nul 1&gt;nul
+Exit 0</PreBuildEvent>
   </PropertyGroup>
 </Project>

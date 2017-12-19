@@ -112,6 +112,7 @@ Public Class frmFacturacionEspecial
         Me.txtTotal.Text = "0.00"
         Me.OptProductos.Checked = True
         txtNumCta.Text = ""
+        OptExternos.Checked = True
 
     End Function
 
@@ -160,7 +161,9 @@ Public Class frmFacturacionEspecial
     Public Function ObtenerComprobante(ByVal Comprobante As CFDI.Comprobante, ByVal Folio As String, ByVal Serie As String, Optional ByVal EsParaPDF As Boolean = False)
 
         Dim ComprobanteImpuestos As New CFDI.ComprobanteImpuestos
-        Dim Emisor As New CFDI.ComprobanteEmisor(Controlador.Sesion.MiEmpresa.EmpRfc, CFDI.c_RegimenFiscal._601)
+        Dim RegimenFis As CFDI.c_RegimenFiscal
+        RegimenFis = DirectCast([Enum].Parse(GetType(CFDI.c_RegimenFiscal), "_" + Controlador.Sesion.MiEmpresa.EmpRegimenFiscal.Trim()), CFDI.c_RegimenFiscal)
+        Dim Emisor As New CFDI.ComprobanteEmisor(Controlador.Sesion.MiEmpresa.EmpRfc, RegimenFis)
         Dim Cliente As ClientesIntroductoresClass
         Dim DomFiscalCte As DomicilioClienteClass
         DomFiscalCte = DirectCast(DirectCast(ultcmbDomiciliosFiscales.SelectedRow.ListObject, Object), DomicilioClienteClass)
@@ -230,7 +233,7 @@ Public Class frmFacturacionEspecial
                     Dim Concepto As CFDI.ComprobanteConcepto
 
                     With row
-                        Concepto = New CFDI.ComprobanteConcepto(.Cells(clmProductoServicio.Index).Value.ToString(), .Cells(clmUnidadSat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), TruncateDecimal(CDec(.Cells(clmImporteDecimales.Index).Value), 2))
+                        Concepto = New CFDI.ComprobanteConcepto(.Cells(clmProductoServicio.Index).Value.ToString(), .Cells(clmUnidadSat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
                         Dim ComprobanteImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
                         If CDec(.Cells(clmIVA.Index).Value) > 0 Then
                             Dim PorcIva As Decimal
@@ -283,7 +286,7 @@ Public Class frmFacturacionEspecial
             Dim formaPago = DirectCast([Enum].Parse(GetType(CFDI.c_FormaPago), cmbformadepago.SelectedValue.ToString()), CFDI.c_FormaPago)
             Dim metodoPago = DirectCast([Enum].Parse(GetType(CFDI.c_MetodoPago), cmbmetododepago.SelectedValue.ToString()), CFDI.c_MetodoPago)
             Comprobante = New CFDI.Comprobante(Emisor, Receptor, Conceptos, ComprobanteImpuestos, dtFechaFactura.Value, "", formaPago, "", "", _
-                      Math.Round(CDec(txtSubTotal.Text.Trim()), 2, MidpointRounding.AwayFromZero), Math.Round(CDec(txtTotal.Text.Trim()), 2, MidpointRounding.AwayFromZero), CFDI.c_TipoDeComprobante.I, metodoPago, txtlugarexpedicion.Text.Trim())
+                      Math.Round(CDec(txtSubTotal.Text.Trim()), 2, MidpointRounding.AwayFromZero), Math.Round(CDec(txtTotal.Text.Trim()), 2, MidpointRounding.AwayFromZero), CFDI.c_TipoDeComprobante.I, metodoPago, txtlugarexpedicion.Tag.ToString())
 
             With Comprobante
                 .Folio = Folio
@@ -1226,6 +1229,8 @@ Public Class frmFacturacionEspecial
         Me.GroupBox1.Enabled = True
         Me.rdContado.Checked = True
         FacturaCabecero = New FacturasClass
+        Me.txtlugarexpedicion.Text = Controlador.Sesion.MiEmpresa.EmpMunicipio + ", " + Controlador.Sesion.MiEmpresa.EmpEstado + ", MEXICO"
+        Me.txtlugarexpedicion.Tag = Controlador.Sesion.MiEmpresa.EmpCodigoPostal.Trim()
         'FacturasDetalle = New CN.FacturasDetalleClass
         'Me.dgvDetalle.DataSource = FacturaCabecero.Detalles
     End Sub
@@ -1284,7 +1289,7 @@ Public Class frmFacturacionEspecial
 
 
 
-                Me.txtlugarexpedicion.Text = Controlador.Sesion.MiEmpresa.EmpCodigoPostal
+
                 'Dim CtasConts As New CuentaContableCollectionClass
                 If ClientesClas.CuentaContableId > 0 Then
                     Me.RellenarGridCuentas(ClientesClas.CuentaContable)
@@ -1873,4 +1878,28 @@ Public Class frmFacturacionEspecial
     End Sub
 
     
+
+    'Private Sub frmFacturacionEspecial_KeyDown(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+    '    If e.KeyCode = Keys.Enter Then
+    '        e.SuppressKeyPress = True
+    '        SendKeys.Send("{ENTER}")
+    '    End If
+
+    'End Sub
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
+        Dim keyCode As Keys = CType(msg.WParam, IntPtr).ToInt32
+        Const WM_KEYDOWN As Integer = &H100
+        'Const WM_KEYUP As Integer = &H101   in case people need this
+
+        If msg.Msg = WM_KEYDOWN AndAlso keyCode = Keys.Enter Then
+            'AndAlso (Me.ActiveControl.GetType.Name = "TextBox" Or Me.ActiveControl.GetType.Name = "ComboBox" Or Me.ActiveControl.GetType.Name = "UltraCombo" Or Me.ActiveControl.GetType.Name = "RadioButton") Then
+            SendKeys.Send("{TAB}")
+            Return True
+
+        End If
+        Return MyBase.ProcessCmdKey(msg, keyData)
+
+
+    End Function
 End Class
