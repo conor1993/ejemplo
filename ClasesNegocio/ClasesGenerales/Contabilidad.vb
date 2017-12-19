@@ -7,6 +7,8 @@ Imports SC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports CM = System.ComponentModel
 Imports System.Windows.Forms
 Imports Integra.Clases
+Imports System.Data.SqlClient
+
 
 Public Enum CuentaContableNaturalezaEnum
     DEUDORA = Asc("D")
@@ -105,7 +107,7 @@ Public Class CuentaContableClass
 
 #Region "Propiedades"
     <CM.DisplayName("Código")> _
-        ReadOnly Property Codigo() As Integer
+    ReadOnly Property Codigo() As Integer
         Get
             Return Entity.Codigo
         End Get
@@ -850,8 +852,10 @@ Public Class CuentaContableClass
                     Else
 
                         If Entity.CtaPadre.GetValueOrDefault(0) > 0 Then
-                            Entity.CuentaPadre.NumeroHijos = CType(Entity.CuentaPadre.CuentasHijas.Count, Short)
                             Entity.CuentaPadre.BooAfectable = False
+                            'Entity.CuentaPadre.NumeroHijos = CType(Entity.CuentaPadre.CuentasHijas.Count, Short)
+                            Entity.CuentaPadre.NumeroHijos = CType(determinarconsulta(Entity.CuentaPadre.Cta, Entity.CuentaPadre.SubCta, Entity.CuentaPadre.SsubCta, Entity.CuentaPadre.SssubCta), Short)
+
 
                             If Not Entity.CuentaEntrada Is Nothing And Not Entity.CuentaEntrada.Codigo = 0 Then 'Entity.CuentaSalida.Codigo = 0 Or Entity.CuentaEntrada Is Nothing Or Entity.CuentaSalida Is Nothing Then
                                 If Not Entity.CuentaPadre.CuentaEntrada Is Nothing And Not Entity.CuentaPadre.CuentaEntrada.Codigo = 0 Then
@@ -922,6 +926,35 @@ Public Class CuentaContableClass
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+
+    Private Function determinarconsulta(cta As String, subcta As String, ssubcta As String, sssubcta As String)
+        Dim valor As Integer = 0
+        Dim ctapadre As New DataTable
+
+        Dim consulta As String = ""
+
+        If subcta = "0000" Then
+            consulta = "select count(*)-1 from usrcontcuentas where cta = '" + cta + "' and SsubCta = '0000' and SSSubCta = '0000'"
+        ElseIf ssubcta = "0000" Then
+            consulta = "select count(*)-1 from usrcontcuentas where cta = '" + cta + "'  and subcta = '" + subcta + "' and SSSubCta = '0000'"
+        ElseIf sssubcta = "0000" Then
+            consulta = "select count(*)-1 from usrcontcuentas where cta = '" + cta + "'  and subcta = '" + subcta + "' and SSubCta = '" + ssubcta + "'"
+        End If
+
+
+
+
+        Using ad As New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand(consulta, _
+                    New SqlClient.SqlConnection(Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)))
+            ad.SelectCommand.Connection.Open()
+            ad.Fill(ctapadre)
+            ad.SelectCommand.Connection.Close()
+        End Using
+
+        valor = ctapadre.Rows(0)(0)
+
+        Return valor + 1
+    End Function
 
     Public Overrides Function ToString() As String
         Return String.Format("{0}:{1}", Me.NombreCuenta, Me.CuentaContable)
@@ -1028,6 +1061,8 @@ Public Class CuentaContableClass
         Return PolizasDetalle
     End Function
 #End Region
+
+
 
 End Class
 
@@ -2133,7 +2168,7 @@ Public Class PolizaCollectionClass
     Enum TipoReporte As Byte
         Diarios_de_Polizas
         Emision_de_Polizas
-        Emision_de_Polizas_por_Pagina        
+        Emision_de_Polizas_por_Pagina
     End Enum
 
     Public Shared Function Imprimir(ByVal Sesion As ECS.SesionesEntity, ByVal Tipo As TipoReporte, Optional ByVal Filtro As SC.IPredicate = Nothing) As Boolean
@@ -2236,7 +2271,7 @@ Public Class PolizaCollectionClass
         Next
         Return dtPolizas
     End Function
-    
+
     Public Shared Function ImprimirPolizaFacturasdeVentas(ByVal Sesion As ECS.SesionesEntity, ByVal Tipo As TipoFacturaEnum, Optional ByVal Filtro As SC.IPredicate = Nothing) As Boolean
         Dim FechaInicio As DateTime
         Dim FechaFinal As DateTime
@@ -2560,7 +2595,7 @@ Public Class PolizaDetalleClass
 
     Public Function ObtenerEntidad() As EC.PolizaDetalleEntity
         Return e
-    End Function 
+    End Function
 
 #Region "Metodos"
     Public Function Guardar() As Boolean
