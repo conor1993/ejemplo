@@ -23,9 +23,9 @@ Partial Class FrmABCClientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -121,6 +121,7 @@ Partial Class FrmABCClientes
         Me.pktxtCodigo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TbpDatosGen.SuspendLayout()
@@ -128,6 +129,7 @@ Partial Class FrmABCClientes
         Me.TbpDatosCred.SuspendLayout()
         Me.TbpDatosFiscales.SuspendLayout()
         CType(Me.dgvDomicilios, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'mtb
@@ -202,9 +204,8 @@ Partial Class FrmABCClientes
         '
         'TbpDatosGen
         '
+        Me.TbpDatosGen.Controls.Add(Me.GroupBox2)
         Me.TbpDatosGen.Controls.Add(Me.Label35)
-        Me.TbpDatosGen.Controls.Add(Me.rdtcanaldis2)
-        Me.TbpDatosGen.Controls.Add(Me.rdtcanaldis)
         Me.TbpDatosGen.Controls.Add(Me.lblBorrar)
         Me.TbpDatosGen.Controls.Add(Me.pbLogo)
         Me.TbpDatosGen.Controls.Add(Me.Label34)
@@ -260,7 +261,7 @@ Partial Class FrmABCClientes
         'rdtcanaldis2
         '
         Me.rdtcanaldis2.AutoSize = True
-        Me.rdtcanaldis2.Location = New System.Drawing.Point(217, 298)
+        Me.rdtcanaldis2.Location = New System.Drawing.Point(120, 14)
         Me.rdtcanaldis2.Name = "rdtcanaldis2"
         Me.rdtcanaldis2.Size = New System.Drawing.Size(58, 17)
         Me.rdtcanaldis2.TabIndex = 43
@@ -271,7 +272,7 @@ Partial Class FrmABCClientes
         '
         Me.rdtcanaldis.AutoSize = True
         Me.rdtcanaldis.Checked = True
-        Me.rdtcanaldis.Location = New System.Drawing.Point(120, 298)
+        Me.rdtcanaldis.Location = New System.Drawing.Point(6, 14)
         Me.rdtcanaldis.Name = "rdtcanaldis"
         Me.rdtcanaldis.Size = New System.Drawing.Size(66, 17)
         Me.rdtcanaldis.TabIndex = 42
@@ -799,36 +800,36 @@ Partial Class FrmABCClientes
         '
         Me.dgvDomicilios.AllowUserToAddRows = False
         Me.dgvDomicilios.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDomicilios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDomicilios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvDomicilios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDomicilios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmEstado, Me.clmCiudad, Me.clmPoblacion, Me.clmColonia, Me.clmBtnEliminar})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDomicilios.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDomicilios.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgvDomicilios.Location = New System.Drawing.Point(9, 200)
         Me.dgvDomicilios.MultiSelect = False
         Me.dgvDomicilios.Name = "dgvDomicilios"
         Me.dgvDomicilios.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDomicilios.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDomicilios.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.dgvDomicilios.RowHeadersVisible = False
         Me.dgvDomicilios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvDomicilios.Size = New System.Drawing.Size(549, 126)
@@ -1120,6 +1121,16 @@ Partial Class FrmABCClientes
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Codigo:"
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.rdtcanaldis2)
+        Me.GroupBox2.Controls.Add(Me.rdtcanaldis)
+        Me.GroupBox2.Location = New System.Drawing.Point(112, 286)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(196, 37)
+        Me.GroupBox2.TabIndex = 45
+        Me.GroupBox2.TabStop = False
+        '
         'FrmABCClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1143,6 +1154,8 @@ Partial Class FrmABCClientes
         Me.TbpDatosFiscales.ResumeLayout(False)
         Me.TbpDatosFiscales.PerformLayout()
         CType(Me.dgvDomicilios, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1242,4 +1255,5 @@ Partial Class FrmABCClientes
     Friend WithEvents rdtcanaldis2 As System.Windows.Forms.RadioButton
     Friend WithEvents rdtcanaldis As System.Windows.Forms.RadioButton
     Friend WithEvents Label35 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
 End Class

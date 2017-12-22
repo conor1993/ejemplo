@@ -398,6 +398,16 @@ Public Class FrmABCClientes
             Me.cmbTipoFacturacion.SelectedIndex = Me.Cliente.TipoFacturacion
             Me.cmbDiasPago.Text = Me.Cliente.DiasPago
             Me.cmbDiasRevision.Text = Me.Cliente.DiasRevision
+            Me.cmbtipocliente.SelectedValue = Me.Cliente.Idtipocliente
+
+
+            If Cliente.canaldistribucion = "MAYOREO" Then
+                rdtcanaldis.Checked = True
+            Else
+                rdtcanaldis2.Checked = True
+            End If
+
+     
 
             If Me.Cliente.EsPersonaFisica Then
                 Me.RbtnPersonaFisica.Checked = True
@@ -1445,7 +1455,7 @@ Public Class FrmABCClientes
             txtCPfiscal.Text = txtCodigoPostal.Text
             cmbEstadoFisc.SelectedValue = IIf(CmbEstado.SelectedValue Is Nothing, 0, CmbEstado.SelectedValue)
             cmbCiudadFisc.SelectedValue = IIf(CmbCiudades.SelectedValue Is Nothing, 0, CmbCiudades.SelectedValue)
-            cmbPoblacionFisc.SelectedValue = IIf(CmbPoblaciones.SelectedValue, 0, CmbPoblaciones.SelectedValue)
+            cmbPoblacionFisc.SelectedValue = IIf(CmbPoblaciones.SelectedValue Is Nothing, 0, CmbPoblaciones.SelectedValue)
         Catch ex As Exception
             MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
