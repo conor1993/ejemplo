@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 1 de diciembre de 2017 15:44:28
+' // Code is generated on: martes, 26 de diciembre de 2017 16:41:37
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -726,6 +726,10 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("CabFacturasEntity", "NumCta"), persistenceProvider.GetFieldPersistenceInfo("CabFacturasEntity", "NumCta"))
 				Case CabFacturasFieldIndex.UsoCfdi
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("CabFacturasEntity", "UsoCfdi"), persistenceProvider.GetFieldPersistenceInfo("CabFacturasEntity", "UsoCfdi"))
+				Case CabFacturasFieldIndex.Direccion
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("CabFacturasEntity", "Direccion"), persistenceProvider.GetFieldPersistenceInfo("CabFacturasEntity", "Direccion"))
+				Case CabFacturasFieldIndex.Observaciones
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("CabFacturasEntity", "Observaciones"), persistenceProvider.GetFieldPersistenceInfo("CabFacturasEntity", "Observaciones"))
 
 			End Select
 			Return fieldToReturn

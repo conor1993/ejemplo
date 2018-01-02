@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 1 de diciembre de 2017 15:44:17
+' // Code is generated on: martes, 26 de diciembre de 2017 16:41:32
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -5528,7 +5528,7 @@ Namespace Integralab.ORM.EntityClasses
 		''' same scope.</remarks>
 		Public Overridable ReadOnly Property [CuentasHijas]() As Integralab.ORM.CollectionClasses.CuentaContableCollection
 			Get
-                Return GetMultiCuentasHijas(True)
+				Return GetMultiCuentasHijas(False)
 			End Get
 		End Property
 
@@ -6189,7 +6189,7 @@ Namespace Integralab.ORM.EntityClasses
 		<Browsable(False)> _
 		Public Overridable Property [CuentaPadre]() As CuentaContableEntity
 			Get
-                Return GetSingleCuentaPadre(False)
+				Return GetSingleCuentaPadre(False)
 			End Get
 			Set
 				If MyBase.IsDeserializing Then

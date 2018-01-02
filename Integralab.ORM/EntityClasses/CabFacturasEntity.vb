@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 1 de diciembre de 2017 15:44:24
+' // Code is generated on: martes, 26 de diciembre de 2017 16:41:35
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -692,6 +692,8 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -902,6 +904,12 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("UsoCfdi", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Direccion", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Observaciones", fieldHashtable)
 		End Sub
 
 
@@ -1577,7 +1585,7 @@ Namespace Integralab.ORM.EntityClasses
 		''' </summary>
 		''' <remarks>
 		''' Mapped on table field: "CabFacturas"."LugarExpedicion"<br/>
-		''' Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 10<br/>
+		''' Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 100<br/>
 		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
 		''' </remarks>
 		Public Overridable Property [LugarExpedicion]() As System.String
@@ -1670,6 +1678,46 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(CabFacturasFieldIndex.UsoCfdi, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Direccion property of the Entity CabFacturas<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "CabFacturas"."Direccion"<br/>
+		''' Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 200<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [Direccion]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(CabFacturasFieldIndex.Direccion, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(CabFacturasFieldIndex.Direccion, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Observaciones property of the Entity CabFacturas<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "CabFacturas"."Observaciones"<br/>
+		''' Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 500<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [Observaciones]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(CabFacturasFieldIndex.Observaciones, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(CabFacturasFieldIndex.Observaciones, Integer), value)
 			End Set
 		End Property
 	

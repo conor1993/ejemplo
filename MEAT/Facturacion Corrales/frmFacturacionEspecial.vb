@@ -23,7 +23,7 @@ Public Class frmFacturacionEspecial
     Dim PolizaACancelar As String
     Dim dtProdServ As New DataTable
     Dim dtUnidades As New DataTable
-
+    Dim Buscarr As Boolean
 #End Region
 
 #Region "Metodos"
@@ -46,6 +46,8 @@ Public Class frmFacturacionEspecial
         Me.txtDescuento.Enabled = True
         cmbUsoCFDI.Enabled = True
         gbFacturar.Enabled = True
+        txtUUID.Enabled = True
+        dgvCuentasContables.Enabled = True
     End Sub
 
     Private Sub Deshabilitar()
@@ -68,6 +70,8 @@ Public Class frmFacturacionEspecial
         Me.txtDescuento.Enabled = False
         cmbUsoCFDI.Enabled = False
         gbFacturar.Enabled = False
+        txtUUID.Enabled = False
+        dgvCuentasContables.Enabled = False
     End Sub
 
     Private Function Limpiar() As Boolean
@@ -113,6 +117,12 @@ Public Class frmFacturacionEspecial
         Me.OptProductos.Checked = True
         txtNumCta.Text = ""
         OptExternos.Checked = True
+        txtUUID.Text = ""
+        Buscarr = False
+        Band = False
+        CmbCliente.SelectedIndex = -1
+        Band = True
+        ultcmbDomiciliosFiscales.Value = Nothing
 
     End Function
 
@@ -150,6 +160,12 @@ Public Class frmFacturacionEspecial
                 MessageBox.Show("Falta lugar de expedición (Cod. Postal) para guardar Facturar Especial", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Return False
             End If
+
+            If ultcmbDomiciliosFiscales.Value Is Nothing Then
+                MessageBox.Show("Falta seleccionar el domicilio fiscal.", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return False
+            End If
+
 
 
             Return True
@@ -224,7 +240,8 @@ Public Class frmFacturacionEspecial
             usoCFDI = [Enum].Parse(GetType(CFDI.c_UsoCFDI), cmbUsoCFDI.SelectedValue)
             Receptor.UsoCFDI = usoCFDI
 
-
+            Dim IvaAL0 As Boolean
+            IvaAL0 = False
             Dim Conceptos As New List(Of CFDI.ComprobanteConcepto)()
             For Each row As DataGridViewRow In dgvDetalle.Rows
                 If Not row.IsNewRow Then
@@ -235,17 +252,27 @@ Public Class frmFacturacionEspecial
                     With row
                         Concepto = New CFDI.ComprobanteConcepto(.Cells(clmProductoServicio.Index).Value.ToString(), .Cells(clmUnidadSat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
                         Dim ComprobanteImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
+                        'If CDec(.Cells(clmIVA.Index).Value) > 0 Then
+                        Dim PorcIva As Decimal
+                        PorcIva = Math.Round(Controlador.ObtenerIVA() / 100, 6, MidpointRounding.AwayFromZero)
+                        Dim ComprobanteImpuestoTraslado As New CFDI.ComprobanteConceptoImpuestosTraslado
+                        ComprobanteImpuestoTraslado.Base = Math.Round(CDec(.Cells(clmPrecio.Index).Value) * CDec(.Cells(clmCantidad.Index).Value), 2, MidpointRounding.AwayFromZero)
+                        ComprobanteImpuestoTraslado.Impuesto = CFDI.c_Impuesto._002
+                        ComprobanteImpuestoTraslado.TipoFactor = CFDI.c_TipoFactor.Tasa
                         If CDec(.Cells(clmIVA.Index).Value) > 0 Then
-                            Dim PorcIva As Decimal
-                            PorcIva = Math.Round(Controlador.ObtenerIVA() / 100, 6, MidpointRounding.AwayFromZero)
-                            Dim ComprobanteImpuestoTraslado As New CFDI.ComprobanteConceptoImpuestosTraslado
-                            ComprobanteImpuestoTraslado.Base = Math.Round(CDec(.Cells(clmPrecio.Index).Value) * CDec(.Cells(clmCantidad.Index).Value), 2, MidpointRounding.AwayFromZero)
-                            ComprobanteImpuestoTraslado.Impuesto = "002"
-                            ComprobanteImpuestoTraslado.TipoFactor = CFDI.c_TipoFactor.Tasa
                             ComprobanteImpuestoTraslado.TasaOCuota = PorcIva.ToString("N6")
                             ComprobanteImpuestoTraslado.Importe = Math.Round(CDec(.Cells(clmIVA.Index).Value), 2, MidpointRounding.AwayFromZero)
-                            ComprobanteImpuestosTraslados.Add(ComprobanteImpuestoTraslado)
+                            IvaAL0 = False
+                        Else
+                            ComprobanteImpuestoTraslado.TasaOCuota = 0.ToString("N6")
+                            ComprobanteImpuestoTraslado.Importe = Math.Round(CDec(.Cells(clmIVA.Index).Value), 2, MidpointRounding.AwayFromZero)
+                            IvaAL0 = True
                         End If
+                        ComprobanteImpuestoTraslado.TasaOCuotaSpecified = True
+                        ComprobanteImpuestoTraslado.ImporteSpecified = True
+                        
+                        ComprobanteImpuestosTraslados.Add(ComprobanteImpuestoTraslado)
+                        'End If
 
                         If ComprobanteImpuestosTraslados.Count > 0 Then
                             ConceptosImpuestos.Traslados = ComprobanteImpuestosTraslados
@@ -261,25 +288,47 @@ Public Class frmFacturacionEspecial
                 End If
             Next
             'Comprobante.Conceptos = Conceptos
+            Dim ComprobanteImpuestoTraslados As New List(Of CFDI.ComprobanteImpuestosTraslado)
+            If IvaAL0 Then
+
+                Dim ComprobanteImpuestoTraslado As New CFDI.ComprobanteImpuestosTraslado
+                ComprobanteImpuestoTraslado.Impuesto = CFDI.c_Impuesto._002
+                ComprobanteImpuestoTraslado.TipoFactor = CFDI.c_TipoFactor.Tasa
+                ComprobanteImpuestoTraslado.TasaOCuota = 0.ToString("N6")
+                ComprobanteImpuestoTraslado.Importe = Math.Round(0D, 2, MidpointRounding.AwayFromZero)
+
+                ComprobanteImpuestoTraslados.Add(ComprobanteImpuestoTraslado)
+                'If CDec(txtIVA.Text.Trim()) <= 0 Then
+                '    ComprobanteImpuestos.Traslados = ComprobanteImpuestoTraslados
+                'End If
+
+            End If
+
 
             If Not txtIVA.Text.Trim().Equals("") Then
                 If CDec(txtIVA.Text.Trim()) > 0 Then
                     Dim PorcIva As Decimal
                     PorcIva = Math.Round(Controlador.ObtenerIVA() / 100, 6, MidpointRounding.AwayFromZero)
 
-                    Dim ComprobanteImpuestoTraslados As New List(Of CFDI.ComprobanteImpuestosTraslado)
+                    'Dim ComprobanteImpuestoTraslados As New List(Of CFDI.ComprobanteImpuestosTraslado)
                     Dim ComprobanteImpuestoTraslado As New CFDI.ComprobanteImpuestosTraslado
-                    ComprobanteImpuestoTraslado.Impuesto = "002"
+                    ComprobanteImpuestoTraslado.Impuesto = CFDI.c_Impuesto._002
                     ComprobanteImpuestoTraslado.TipoFactor = CFDI.c_TipoFactor.Tasa
                     ComprobanteImpuestoTraslado.TasaOCuota = PorcIva.ToString("N6")
                     ComprobanteImpuestoTraslado.Importe = Math.Round(CDec(txtIVA.Text.Trim()), 2, MidpointRounding.AwayFromZero)
+
                     ComprobanteImpuestoTraslados.Add(ComprobanteImpuestoTraslado)
 
-                    ComprobanteImpuestos.Traslados = ComprobanteImpuestoTraslados
-                    ComprobanteImpuestos.TotalImpuestosTrasladados = Math.Round(CDec(txtIVA.Text.Trim()), 2, MidpointRounding.AwayFromZero)
+                    'ComprobanteImpuestos.Traslados = ComprobanteImpuestoTraslados
+                    'ComprobanteImpuestos.TotalImpuestosTrasladados = Math.Round(CDec(txtIVA.Text.Trim()), 2, MidpointRounding.AwayFromZero)
                     'Comprobante.Impuestos = ComprobanteImpuestos
 
                 End If
+            End If
+            If ComprobanteImpuestoTraslados.Count > 0 Then
+                ComprobanteImpuestos.Traslados = ComprobanteImpuestoTraslados
+                ComprobanteImpuestos.CalcularTotalImpuestosTrasladados()
+                ComprobanteImpuestos.TotalImpuestosTrasladadosSpecified = True
             End If
 
 
@@ -296,6 +345,12 @@ Public Class frmFacturacionEspecial
                 Else
                     .Descuento = 0
                 End If
+                If EsParaPDF Then
+                    If Not txtNumCta.Text.Trim().Equals("") Then
+                        .NumCtaPago = txtNumCta.Text.Trim()
+                    End If
+                End If
+                .CondicionesDePago = IIf(Me.rdContado.Checked, "CONTADO", "CREDITO")
 
 
                 .TipoCambio = 1.0
@@ -342,6 +397,11 @@ Public Class frmFacturacionEspecial
             Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
         End If
         ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
+
+        Cursor = Cursors.WaitCursor
+        MEAToolBar1.Enabled = False
+        Application.DoEvents()
+
         Dim TransG As New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
         Try
 
@@ -351,8 +411,8 @@ Public Class frmFacturacionEspecial
             End If
 
 
-            'Cursor = Cursors.WaitCursor
-            'Application.DoEvents()
+            
+
             'System.Threading.Thread.Sleep(6000)
             'Application.DoEvents()
             'Cursor = Cursors.Default
@@ -373,6 +433,8 @@ Public Class frmFacturacionEspecial
                
                 If Not Folio.Guardar(Trans) Then
                     Trans.Rollback()
+                    Cursor = Cursors.Default
+                    MEAToolBar1.Enabled = True
                     MessageBox.Show("Error al generar folio de Factura", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Return False
                 End If
@@ -391,6 +453,8 @@ Public Class frmFacturacionEspecial
 #End If
                 If File.Exists(Application.StartupPath + "\\" + "Error.txt") Then
                     TransG.Rollback()
+                    Cursor = Cursors.Default
+                    MEAToolBar1.Enabled = True
                     File.ReadAllText(Application.StartupPath + "\\" + "Error.txt")
                     MsgBox("Error al generar el CFDI." & vbCrLf & File.ReadAllText(Application.StartupPath + "\\" + "Error.txt"), MsgBoxStyle.Critical, "Facturación")
                     Return False
@@ -446,11 +510,15 @@ Public Class frmFacturacionEspecial
                 If Not Poliza.Detalles2.Count > 0 Then
                     MsgBox("Se cancelara la instrucción debido a que no se encuentra el detalle de la poliza", MsgBoxStyle.Exclamation, "Aviso")
                     Trans.Rollback()
+                    Cursor = Cursors.Default
+                    MEAToolBar1.Enabled = True
                     Exit Function
                 End If
 
                 If Not Poliza.Guardar2(Trans) Then
                     Trans.Rollback()
+                    Cursor = Cursors.Default
+                    MEAToolBar1.Enabled = True
                     MessageBox.Show("No se Guardo la poliza", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Function
                 End If
@@ -467,7 +535,7 @@ Public Class frmFacturacionEspecial
                 FacturaCabecero.Cliente = CType(Me.CmbCliente.SelectedValue, Integer)
                 FacturaCabecero.ClaveUsuario = Controlador.Sesion.MiUsuario.Usrndx
                 FacturaCabecero.DiasCredito = Integer.Parse(Me.txtDiasCredito.Text)
-                'FacturaCabecero.Referencia = 0
+                'FacturaCabecero.Referencia = 0f
                 FacturaCabecero.FolPoliza = Poliza.Codigo
                 FacturaCabecero.Estatus = "V"
                 FacturaCabecero.StaFacturacion = "S"
@@ -476,7 +544,10 @@ Public Class frmFacturacionEspecial
                 FacturaCabecero.MetodoPago = CStr(cmbmetododepago.SelectedValue)
                 FacturaCabecero.NumCta = CStr(txtNumCta.Text.Trim())
                 FacturaCabecero.UUID = cfdi.UUID.ToString()
-                FacturaCabecero.UsoCFDI = CStr(cmbUsoCFDI.SelectedValue)
+                FacturaCabecero.UsoCfdi = CStr(cmbUsoCFDI.SelectedValue)
+                FacturaCabecero.Observaciones = txtObservaciones.Text
+                FacturaCabecero.Direccion = txtDireccion.Text
+
                 'guardar cabecero
                 Controlador.RealizarFacturasdeVenta(FacturaCabecero, Now, ClasesNegocio.TipoFacturaEnum.FACTURACION_ESPECIAL, Trans)
 
@@ -519,15 +590,19 @@ Public Class frmFacturacionEspecial
                 Procesar.Start()
                 Trans.Commit()
                 Cursor.Current = Cursors.Default
-                MessageBox.Show("La Factura de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura)
+                MessageBox.Show("La Factura de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 FacturaCabecero.Estatus = "C"
                 Controlador.RealizarFacturasdeVenta(FacturaCabecero, Now, ClasesNegocio.TipoFacturaEnum.FACTURACION_DE_VENTA_DE_CORRAL, Trans)
             End If
+            Cursor = Cursors.Default
+            MEAToolBar1.Enabled = True
+            Application.DoEvents()
             Return True
 
         Catch ex As Exception
-
+            Cursor = Cursors.Default
+            MEAToolBar1.Enabled = True
             If ex.Message = "No hay ninguna aplicación asociada con el archivo especificado para esta operación" Then
                 Cursor.Current = Cursors.Default
                 MessageBox.Show("Debe instalar Adobe Reader para abrir los archivos pdf", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -843,8 +918,7 @@ Public Class frmFacturacionEspecial
 
 #End Region
 
-#Region "Eventos"
-
+#Region "MetodosForma"
     Private Sub frmFacturacionEspecial_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             Band = False
@@ -924,6 +998,7 @@ Public Class frmFacturacionEspecial
             'verifica si la factura esta pagada
             If FacturaCabecero.Estatus = "P" Then
                 Trans.Rollback()
+                Cancelar = True
                 MessageBox.Show("No se puede cancelar la factura: " & Me.txtFolioFactura.Text & " por que se encuentra pagada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
@@ -931,16 +1006,53 @@ Public Class frmFacturacionEspecial
             'verifica si la factura esta abonada
             If FacturaCabecero.Estatus = "A" Then
                 Trans.Rollback()
+                Cancelar = True
                 MessageBox.Show("No se puede cancelar la factura: " & Me.txtFolioFactura.Text & " por que se encuentra abonada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
 
             'verifica si la factura esta cancelada
-            If FacturaCabecero.Estatus = "A" Then
+            If FacturaCabecero.Estatus = "C" Then
                 Trans.Rollback()
+                Cancelar = True
                 MessageBox.Show("No se puede cancelar la factura: " & Me.txtFolioFactura.Text & " por que se encuentra cancelada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
+
+
+            Dim result As Integer = MessageBox.Show("¿Desea cancelar la factura?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+
+            If result = DialogResult.No Then
+                Trans.Rollback()
+                Cancelar = True
+                Exit Sub
+                'ElseIf result = DialogResult.Yes Then
+                '    MessageBox.Show("Yes pressed")
+            End If
+
+            Cursor = Cursors.WaitCursor 'and some various me.Cursor / current.cursor 
+            MEAToolBar1.Enabled = False
+            Application.DoEvents()
+
+
+            ''Componente de facturacion 3.3
+            Dim TransG As Gentle.Framework.Transaction
+            Dim ControlFD As Integralab.FactDigital.ControladorFactDigital
+            Dim ConStr As String
+            If File.Exists(Application.StartupPath + "\\cx.dat") Then
+                ConStr = Integralab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
+            Else
+                Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
+            End If
+            'Dim TransG As New Gentle.Framework.Transaction(IntegraLab.FactDigital.ControladorFactDigital.Conexion)
+            ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
+            TransG = New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
+
+            ControlFD.CancelarCFDI(txtUUID.Text, DateTime.Now, TransG)
+
+
+
+
             'generar poliza de cancelacion
             Dim PolizaCan As New PolizaClass
             PolizaCan.Concepto = "Cancelacion de Cargo por Factura Especial a: " & Trim(Me.CmbCliente.Text) & " # Factura : " & FacturaCabecero.NoFactura
@@ -994,10 +1106,16 @@ Public Class frmFacturacionEspecial
 
             Guardar(Trans, "C")
             Trans.Commit()
+            TransG.Commit()
+            Cursor = Cursors.Default
             Me.Limpiar()
+            MEAToolBar1.Enabled = True
             MessageBox.Show("Se ha cancelado la Factura:" & Me.txtFolioFactura.Text, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
+            Cursor = Cursors.Default
+            MEAToolBar1.Enabled = True
             Trans.Rollback()
+            Cancelar = True
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
@@ -1024,7 +1142,7 @@ Public Class frmFacturacionEspecial
                 Me.txtCodigoCliente.Text = FacturaCabecero.CveCliente
                 Me.CmbCliente.Text = Clientes.Nombre
                 Me.txtlugarexpedicion.Text = FacturaCabecero.LugarExpedicion
-                cmbUsoCFDI.SelectedValue = FacturaCabecero.UsoCFDI
+                cmbUsoCFDI.SelectedValue = FacturaCabecero.UsoCfdi
                 txtRFC.Text = Clientes.RFC
                 'txtObservaciones.Text = Me.FacturaCabecero.ob
                 Me.cmbformadepago.SelectedValue = Me.FacturaCabecero.FormaPago
@@ -1034,10 +1152,18 @@ Public Class frmFacturacionEspecial
                 Me.txtDescuento.Text = Me.FacturaCabecero.ImporteDescuento.ToString("N2")
                 Me.txtIVA.Text = Me.FacturaCabecero.ImporteIVA.ToString("N2")
                 Me.txtTotal.Text = (Me.FacturaCabecero.ImporteSubTotal + Me.FacturaCabecero.ImporteIVA).ToString("N2")
-
+                Me.txtUUID.Text = Me.FacturaCabecero.Uuid
+                Me.txtObservaciones.Text = Me.FacturaCabecero.Observaciones
+                Me.txtDireccion.Text = Me.FacturaCabecero.Direccion
+                If Me.FacturaCabecero.DiasCredito > 0 Then
+                    rdCredito.Checked = True
+                Else
+                    rdContado.Checked = True
+                End If
+                Me.txtDiasCredito.Text = Me.FacturaCabecero.DiasCredito.ToString()
                 Me.lblEstatus.Visible = True
 
-
+                Buscarr = True
 
                 'If FacturaCabecero.Estatus = EstatusFacturasEnum.ABONADA Then
                 '    Me.lblEstatus.Text = "ABONADA"
@@ -1095,7 +1221,7 @@ Public Class frmFacturacionEspecial
                     Me.dgvDetalle.Rows(i).Cells(Me.clmIVAdecimales.Index).Value = Detalle.IVA
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = Detalle.Total
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporteDecimales.Index).Value = Detalle.Total
-                    
+
 
                     Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value = Detalle.CantidadxProducto
                     Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value = Detalle.PrecioUnitario
@@ -1145,9 +1271,12 @@ Public Class frmFacturacionEspecial
                 If Clientes.DomiciliosFiscales.Count = 1 Then
                     ultcmbDomiciliosFiscales.Rows(0).Selected = True
                 End If
+            Else
+                Cancelar = True
             End If
 
         Catch ex As Exception
+            Cancelar = True
             MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -1186,35 +1315,56 @@ Public Class frmFacturacionEspecial
 
     Private Sub MEAToolBar1_ClickImprimir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickImprimir
         Try
-            Dim conRFC As Boolean = True
+            'Dim conRFC As Boolean = True
 
-            If Me.ultcmbDomiciliosFiscales.SelectedRow Is Nothing Then
-                MsgBox("Debe seleccionar el domicilio fiscal", MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom)
-                Cancelar = True
-                Exit Sub
+            'If Me.ultcmbDomiciliosFiscales.SelectedRow Is Nothing Then
+            '    MsgBox("Debe seleccionar el domicilio fiscal", MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom)
+            '    Cancelar = True
+            '    Exit Sub
+            'End If
+
+            'If Me.configurarImprecion Then
+            '    Dim seleccionarCOnfiguracion As New frmSeleccionConfiguracionFactura
+
+            '    If seleccionarCOnfiguracion.ShowDialog = Windows.Forms.DialogResult.OK Then
+            '        ConF.Add(seleccionarCOnfiguracion.ConfiguracionSeleccionada.Entidad)
+            '    Else
+            '        MsgBox("Debe seleccionar una configuración", MsgBoxStyle.Exclamation, "Seleccione una Configuración")
+            '        Exit Sub
+            '    End If
+            'End If
+
+            ''buscar el numero de renglones por factura para dividir las facturas en mas
+            ''de una factura                 
+            'NumRenglones = ConF(0).RenglonesEnDetalle
+
+            'If MessageBox.Show("¿Desea imprimirlo con RFC?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.No Then
+            '    conRFC = False
+            'End If
+
+            'Me.Imprimir(CType(ultcmbDomiciliosFiscales.SelectedRow.ListObject, DomicilioClienteClass), conRFC)
+            If Buscarr = True Then
+                Try
+                    Dim ControlFD As Integralab.FactDigital.ControladorFactDigital
+                    Dim ConStr As String
+                    If File.Exists(Application.StartupPath + "\\cx.dat") Then
+                        ConStr = Integralab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
+                    Else
+                        Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
+                    End If
+                    ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
+
+                    ControlFD.GeneraCFDI_PDF(txtUUID.Text, True)
+
+                Catch ex As Exception
+                    Cancelar = True
+                    MessageBox.Show(ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+
+
             End If
-
-            If Me.configurarImprecion Then
-                Dim seleccionarCOnfiguracion As New frmSeleccionConfiguracionFactura
-
-                If seleccionarCOnfiguracion.ShowDialog = Windows.Forms.DialogResult.OK Then
-                    ConF.Add(seleccionarCOnfiguracion.ConfiguracionSeleccionada.Entidad)
-                Else
-                    MsgBox("Debe seleccionar una configuración", MsgBoxStyle.Exclamation, "Seleccione una Configuración")
-                    Exit Sub
-                End If
-            End If
-
-            'buscar el numero de renglones por factura para dividir las facturas en mas
-            'de una factura                 
-            NumRenglones = ConF(0).RenglonesEnDetalle
-
-            If MessageBox.Show("¿Desea imprimirlo con RFC?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.No Then
-                conRFC = False
-            End If
-
-            Me.Imprimir(CType(ultcmbDomiciliosFiscales.SelectedRow.ListObject, DomicilioClienteClass), conRFC)
         Catch ex As Exception
+            Cancelar = True
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -1229,8 +1379,11 @@ Public Class frmFacturacionEspecial
         Me.GroupBox1.Enabled = True
         Me.rdContado.Checked = True
         FacturaCabecero = New FacturasClass
-        Me.txtlugarexpedicion.Text = Controlador.Sesion.MiEmpresa.EmpMunicipio + ", " + Controlador.Sesion.MiEmpresa.EmpEstado + ", MEXICO"
+        Me.txtlugarexpedicion.Text = Controlador.Sesion.MiEmpresa.EmpCodigoPostal.Trim() + "-" + Controlador.Sesion.MiEmpresa.EmpMunicipio + ", " + Controlador.Sesion.MiEmpresa.EmpEstado + ", MEXICO"
         Me.txtlugarexpedicion.Tag = Controlador.Sesion.MiEmpresa.EmpCodigoPostal.Trim()
+        cmbUsoCFDI.SelectedValue = "P01"
+        cmbmetododepago.SelectedValue = "PUE"
+        cmbformadepago.SelectedValue = "99"
         'FacturasDetalle = New CN.FacturasDetalleClass
         'Me.dgvDetalle.DataSource = FacturaCabecero.Detalles
     End Sub
@@ -1252,6 +1405,16 @@ Public Class frmFacturacionEspecial
                 ClientesClas.Obtener(Me.CmbCliente.SelectedValue)
                 Me.txtRFC.Text = ClientesClas.RFC
                 Me.txtDiasCredito.Text = ClientesClas.DiasCredito
+                If ClientesClas.DiasCredito > 0 Then
+                    Me.rdCredito.Checked = True
+                    Dim Fecha As DateTime
+                    Fecha = dtFechaFactura.Value
+                    Fecha = Fecha.AddDays(CDbl(ClientesClas.DiasCredito))
+                    dtpFechaVencimiento.Value = Fecha
+                Else
+                    Me.rdContado.Checked = True
+                End If
+
                 Me.txtDireccion.Text = ClientesClas.Domicilio
                 Me.ultcmbDomiciliosFiscales.DataSource = ClientesClas.DomiciliosFiscales
 

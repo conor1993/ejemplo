@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 1 de diciembre de 2017 15:44:30
+' Code is generated on: martes, 26 de diciembre de 2017 16:41:38
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -1292,6 +1292,18 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [UsoCfdi] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(CabFacturasFieldIndex.UsoCfdi), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new CabFacturasEntity.Direccion field instance</summary>
+		Public Shared ReadOnly Property [Direccion] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(CabFacturasFieldIndex.Direccion), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new CabFacturasEntity.Observaciones field instance</summary>
+		Public Shared ReadOnly Property [Observaciones] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(CabFacturasFieldIndex.Observaciones), EntityField)
 			End Get
 		End Property
 	End Class

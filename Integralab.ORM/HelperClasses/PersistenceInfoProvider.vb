@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 1 de diciembre de 2017 15:44:29
+' // Code is generated on: martes, 26 de diciembre de 2017 16:41:37
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -673,7 +673,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits CabFacturasEntity's mappings</summary>
         Private Sub InitCabFacturasEntityMappings()
-            MyBase.AddElementMapping("CabFacturasEntity", "", "dbo", "CabFacturas", 29)
+            MyBase.AddElementMapping("CabFacturasEntity", "", "dbo", "CabFacturas", 31)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FolFactura", "Fol_Factura", False, CInt(SqlDbType.Char), 8, 0, 0, False, "", Nothing, GetType(System.String), 0)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FecFactura", "Fec_Factura", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 1)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FecCaptura", "Fec_Captura", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 2)
@@ -698,11 +698,13 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("CabFacturasEntity", "Kilos", "Kilos", True, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 21)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "PtjIva", "Ptj_IVA", True, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 22)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "Uuid", "UUID", False, CInt(SqlDbType.NVarChar), 100, 0, 0, False, "", Nothing, GetType(System.String), 23)
-            MyBase.AddElementFieldMapping("CabFacturasEntity", "LugarExpedicion", "LugarExpedicion", False, CInt(SqlDbType.NVarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 24)
+            MyBase.AddElementFieldMapping("CabFacturasEntity", "LugarExpedicion", "LugarExpedicion", False, CInt(SqlDbType.NVarChar), 100, 0, 0, False, "", Nothing, GetType(System.String), 24)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FormaPago", "FormaPago", False, CInt(SqlDbType.NVarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 25)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "MetodoPago", "MetodoPago", False, CInt(SqlDbType.NVarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 26)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "NumCta", "NumCta", False, CInt(SqlDbType.NVarChar), 20, 0, 0, False, "", Nothing, GetType(System.String), 27)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "UsoCfdi", "UsoCFDI", False, CInt(SqlDbType.NChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 28)
+            MyBase.AddElementFieldMapping("CabFacturasEntity", "Direccion", "Direccion", False, CInt(SqlDbType.NVarChar), 200, 0, 0, False, "", Nothing, GetType(System.String), 29)
+            MyBase.AddElementFieldMapping("CabFacturasEntity", "Observaciones", "Observaciones", False, CInt(SqlDbType.NVarChar), 500, 0, 0, False, "", Nothing, GetType(System.String), 30)
         End Sub
         ''' <summary>Inits CabGasTransEntity's mappings</summary>
         Private Sub InitCabGasTransEntityMappings()

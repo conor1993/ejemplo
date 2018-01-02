@@ -23,12 +23,12 @@ Partial Class frmFacturacionEspecial
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -42,6 +42,8 @@ Partial Class frmFacturacionEspecial
         Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cmbUsoCFDI = New System.Windows.Forms.ComboBox()
         Me.gbFormaPago = New System.Windows.Forms.GroupBox()
@@ -91,7 +93,6 @@ Partial Class frmFacturacionEspecial
         Me.clmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmCodigoCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CmbCliente = New System.Windows.Forms.ComboBox()
-        Me.lblEstatus = New System.Windows.Forms.Label()
         Me.ultcmbDomiciliosFiscales = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -115,6 +116,7 @@ Partial Class frmFacturacionEspecial
         Me.dtFechaFactura = New System.Windows.Forms.DateTimePicker()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtUUID = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
         Me.DataGridViewComboBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -132,6 +134,8 @@ Partial Class frmFacturacionEspecial
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblEstatus)
+        Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.cmbUsoCFDI)
         Me.GroupBox1.Controls.Add(Me.gbFormaPago)
@@ -144,7 +148,6 @@ Partial Class frmFacturacionEspecial
         Me.GroupBox1.Controls.Add(Me.dgvDetalle)
         Me.GroupBox1.Controls.Add(Me.dgvCuentasContables)
         Me.GroupBox1.Controls.Add(Me.CmbCliente)
-        Me.GroupBox1.Controls.Add(Me.lblEstatus)
         Me.GroupBox1.Controls.Add(Me.ultcmbDomiciliosFiscales)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label3)
@@ -166,16 +169,38 @@ Partial Class frmFacturacionEspecial
         Me.GroupBox1.Controls.Add(Me.dtFechaFactura)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.txtUUID)
         Me.GroupBox1.Location = New System.Drawing.Point(54, 35)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(975, 551)
+        Me.GroupBox1.Size = New System.Drawing.Size(975, 565)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'lblEstatus
+        '
+        Me.lblEstatus.AutoSize = True
+        Me.lblEstatus.BackColor = System.Drawing.Color.Navy
+        Me.lblEstatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEstatus.ForeColor = System.Drawing.Color.White
+        Me.lblEstatus.Location = New System.Drawing.Point(799, 9)
+        Me.lblEstatus.Name = "lblEstatus"
+        Me.lblEstatus.Size = New System.Drawing.Size(158, 24)
+        Me.lblEstatus.TabIndex = 65
+        Me.lblEstatus.Text = "ESTATUS         "
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(217, 40)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(37, 13)
+        Me.Label21.TabIndex = 164
+        Me.Label21.Text = "UUID:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 151)
+        Me.Label2.Location = New System.Drawing.Point(8, 172)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(56, 13)
         Me.Label2.TabIndex = 163
@@ -184,7 +209,7 @@ Partial Class frmFacturacionEspecial
         'cmbUsoCFDI
         '
         Me.cmbUsoCFDI.FormattingEnabled = True
-        Me.cmbUsoCFDI.Location = New System.Drawing.Point(118, 148)
+        Me.cmbUsoCFDI.Location = New System.Drawing.Point(118, 169)
         Me.cmbUsoCFDI.Name = "cmbUsoCFDI"
         Me.cmbUsoCFDI.Size = New System.Drawing.Size(483, 21)
         Me.cmbUsoCFDI.TabIndex = 8
@@ -199,7 +224,7 @@ Partial Class frmFacturacionEspecial
         Me.gbFormaPago.Controls.Add(Me.cmbformadepago)
         Me.gbFormaPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbFormaPago.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.gbFormaPago.Location = New System.Drawing.Point(619, 15)
+        Me.gbFormaPago.Location = New System.Drawing.Point(619, 36)
         Me.gbFormaPago.Name = "gbFormaPago"
         Me.gbFormaPago.Size = New System.Drawing.Size(338, 135)
         Me.gbFormaPago.TabIndex = 11
@@ -269,7 +294,7 @@ Partial Class frmFacturacionEspecial
         '
         'txtlugarexpedicion
         '
-        Me.txtlugarexpedicion.Location = New System.Drawing.Point(346, 121)
+        Me.txtlugarexpedicion.Location = New System.Drawing.Point(346, 142)
         Me.txtlugarexpedicion.MaxLength = 200
         Me.txtlugarexpedicion.Name = "txtlugarexpedicion"
         Me.txtlugarexpedicion.Size = New System.Drawing.Size(255, 20)
@@ -280,7 +305,7 @@ Partial Class frmFacturacionEspecial
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Label19.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label19.Location = New System.Drawing.Point(239, 124)
+        Me.Label19.Location = New System.Drawing.Point(239, 145)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(109, 13)
         Me.Label19.TabIndex = 159
@@ -298,7 +323,7 @@ Partial Class frmFacturacionEspecial
         Me.GroupBox3.Controls.Add(Me.Label16)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.GroupBox3.Location = New System.Drawing.Point(775, 156)
+        Me.GroupBox3.Location = New System.Drawing.Point(775, 177)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(182, 119)
         Me.GroupBox3.TabIndex = 152
@@ -391,7 +416,7 @@ Partial Class frmFacturacionEspecial
         Me.gbFacturar.Controls.Add(Me.OptProductos)
         Me.gbFacturar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbFacturar.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.gbFacturar.Location = New System.Drawing.Point(619, 156)
+        Me.gbFacturar.Location = New System.Drawing.Point(619, 177)
         Me.gbFacturar.Name = "gbFacturar"
         Me.gbFacturar.Size = New System.Drawing.Size(150, 55)
         Me.gbFacturar.TabIndex = 15
@@ -428,7 +453,7 @@ Partial Class frmFacturacionEspecial
         'txtSumaAbono
         '
         Me.txtSumaAbono.Enabled = False
-        Me.txtSumaAbono.Location = New System.Drawing.Point(857, 520)
+        Me.txtSumaAbono.Location = New System.Drawing.Point(857, 541)
         Me.txtSumaAbono.Name = "txtSumaAbono"
         Me.txtSumaAbono.Size = New System.Drawing.Size(110, 20)
         Me.txtSumaAbono.TabIndex = 0
@@ -437,7 +462,7 @@ Partial Class frmFacturacionEspecial
         'txtSumaCargo
         '
         Me.txtSumaCargo.Enabled = False
-        Me.txtSumaCargo.Location = New System.Drawing.Point(732, 520)
+        Me.txtSumaCargo.Location = New System.Drawing.Point(732, 541)
         Me.txtSumaCargo.Name = "txtSumaCargo"
         Me.txtSumaCargo.Size = New System.Drawing.Size(110, 20)
         Me.txtSumaCargo.TabIndex = 0
@@ -450,7 +475,7 @@ Partial Class frmFacturacionEspecial
         Me.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetalle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigo, Me.clmProductoServicio, Me.clmDescripcionEspecial, Me.clmProductoDes, Me.clmUnidadSat, Me.clmUnidad, Me.clmCantidad, Me.clmPrecio, Me.clmIVA, Me.clmIVAdecimales, Me.clmImporte, Me.clmImporteDecimales, Me.clmConIVA})
         Me.dgvDetalle.Enabled = False
-        Me.dgvDetalle.Location = New System.Drawing.Point(11, 281)
+        Me.dgvDetalle.Location = New System.Drawing.Point(11, 302)
         Me.dgvDetalle.Name = "dgvDetalle"
         Me.dgvDetalle.RowHeadersVisible = False
         Me.dgvDetalle.Size = New System.Drawing.Size(960, 133)
@@ -503,27 +528,27 @@ Partial Class frmFacturacionEspecial
         '
         'clmCantidad
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N2"
-        Me.clmCantidad.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N2"
+        Me.clmCantidad.DefaultCellStyle = DataGridViewCellStyle1
         Me.clmCantidad.FillWeight = 6.0!
         Me.clmCantidad.HeaderText = "Cantidad"
         Me.clmCantidad.Name = "clmCantidad"
         '
         'clmPrecio
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N2"
-        Me.clmPrecio.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        Me.clmPrecio.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmPrecio.FillWeight = 9.0!
         Me.clmPrecio.HeaderText = "Precio"
         Me.clmPrecio.Name = "clmPrecio"
         '
         'clmIVA
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "N2"
-        Me.clmIVA.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        Me.clmIVA.DefaultCellStyle = DataGridViewCellStyle3
         Me.clmIVA.FillWeight = 8.0!
         Me.clmIVA.HeaderText = "IVA"
         Me.clmIVA.Name = "clmIVA"
@@ -536,9 +561,9 @@ Partial Class frmFacturacionEspecial
         '
         'clmImporte
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "N2"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N2"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle4
         Me.clmImporte.FillWeight = 12.0!
         Me.clmImporte.HeaderText = "Importe"
         Me.clmImporte.Name = "clmImporte"
@@ -562,7 +587,7 @@ Partial Class frmFacturacionEspecial
         Me.dgvCuentasContables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvCuentasContables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCuentasContables.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCtaMayor, Me.clmSubCta, Me.clmSSubCta, Me.clmSSSubCta, Me.clmDescripcion, Me.clmCargo, Me.clmAbono, Me.clmCodigoCuenta})
-        Me.dgvCuentasContables.Location = New System.Drawing.Point(11, 422)
+        Me.dgvCuentasContables.Location = New System.Drawing.Point(11, 443)
         Me.dgvCuentasContables.Name = "dgvCuentasContables"
         Me.dgvCuentasContables.Size = New System.Drawing.Size(958, 92)
         Me.dgvCuentasContables.TabIndex = 22
@@ -604,18 +629,18 @@ Partial Class frmFacturacionEspecial
         '
         'clmCargo
         '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "N2"
-        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle5
         Me.clmCargo.FillWeight = 13.0!
         Me.clmCargo.HeaderText = "Cargo"
         Me.clmCargo.Name = "clmCargo"
         '
         'clmAbono
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "N2"
-        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle6
         Me.clmAbono.FillWeight = 13.0!
         Me.clmAbono.HeaderText = "Abono"
         Me.clmAbono.Name = "clmAbono"
@@ -631,23 +656,11 @@ Partial Class frmFacturacionEspecial
         Me.CmbCliente.DisplayMember = "Nombre"
         Me.CmbCliente.FormattingEnabled = True
         Me.CmbCliente.ItemHeight = 13
-        Me.CmbCliente.Location = New System.Drawing.Point(189, 67)
+        Me.CmbCliente.Location = New System.Drawing.Point(189, 88)
         Me.CmbCliente.Name = "CmbCliente"
         Me.CmbCliente.Size = New System.Drawing.Size(412, 21)
         Me.CmbCliente.TabIndex = 5
         Me.CmbCliente.ValueMember = "IdCliente"
-        '
-        'lblEstatus
-        '
-        Me.lblEstatus.AutoSize = True
-        Me.lblEstatus.BackColor = System.Drawing.Color.Navy
-        Me.lblEstatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEstatus.ForeColor = System.Drawing.Color.White
-        Me.lblEstatus.Location = New System.Drawing.Point(454, 15)
-        Me.lblEstatus.Name = "lblEstatus"
-        Me.lblEstatus.Size = New System.Drawing.Size(158, 24)
-        Me.lblEstatus.TabIndex = 65
-        Me.lblEstatus.Text = "ESTATUS         "
         '
         'ultcmbDomiciliosFiscales
         '
@@ -707,7 +720,7 @@ Partial Class frmFacturacionEspecial
         Me.ultcmbDomiciliosFiscales.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.ultcmbDomiciliosFiscales.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.ultcmbDomiciliosFiscales.DisplayMember = "Domicilio"
-        Me.ultcmbDomiciliosFiscales.Location = New System.Drawing.Point(118, 92)
+        Me.ultcmbDomiciliosFiscales.Location = New System.Drawing.Point(118, 113)
         Me.ultcmbDomiciliosFiscales.Name = "ultcmbDomiciliosFiscales"
         Me.ultcmbDomiciliosFiscales.Size = New System.Drawing.Size(483, 22)
         Me.ultcmbDomiciliosFiscales.TabIndex = 6
@@ -717,7 +730,7 @@ Partial Class frmFacturacionEspecial
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(8, 95)
+        Me.Label7.Location = New System.Drawing.Point(8, 116)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(82, 13)
         Me.Label7.TabIndex = 61
@@ -726,7 +739,7 @@ Partial Class frmFacturacionEspecial
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 180)
+        Me.Label3.Location = New System.Drawing.Point(8, 201)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(51, 13)
         Me.Label3.TabIndex = 60
@@ -735,7 +748,7 @@ Partial Class frmFacturacionEspecial
         'CmbClientesVarios
         '
         Me.CmbClientesVarios.FormattingEnabled = True
-        Me.CmbClientesVarios.Location = New System.Drawing.Point(118, 177)
+        Me.CmbClientesVarios.Location = New System.Drawing.Point(118, 198)
         Me.CmbClientesVarios.Name = "CmbClientesVarios"
         Me.CmbClientesVarios.Size = New System.Drawing.Size(291, 21)
         Me.CmbClientesVarios.TabIndex = 0
@@ -743,7 +756,7 @@ Partial Class frmFacturacionEspecial
         '
         'txtCodigoCliente
         '
-        Me.txtCodigoCliente.Location = New System.Drawing.Point(118, 68)
+        Me.txtCodigoCliente.Location = New System.Drawing.Point(118, 89)
         Me.txtCodigoCliente.Name = "txtCodigoCliente"
         Me.txtCodigoCliente.Size = New System.Drawing.Size(65, 20)
         Me.txtCodigoCliente.TabIndex = 4
@@ -752,7 +765,7 @@ Partial Class frmFacturacionEspecial
         '
         Me.dtpFechaVencimiento.Enabled = False
         Me.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaVencimiento.Location = New System.Drawing.Point(321, 41)
+        Me.dtpFechaVencimiento.Location = New System.Drawing.Point(321, 62)
         Me.dtpFechaVencimiento.Name = "dtpFechaVencimiento"
         Me.dtpFechaVencimiento.Size = New System.Drawing.Size(88, 20)
         Me.dtpFechaVencimiento.TabIndex = 3
@@ -761,7 +774,7 @@ Partial Class frmFacturacionEspecial
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(212, 44)
+        Me.Label18.Location = New System.Drawing.Point(212, 65)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(104, 13)
         Me.Label18.TabIndex = 56
@@ -773,7 +786,7 @@ Partial Class frmFacturacionEspecial
         Me.GroupBox4.Controls.Add(Me.rdContado)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.GroupBox4.Location = New System.Drawing.Point(619, 215)
+        Me.GroupBox4.Location = New System.Drawing.Point(619, 236)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(150, 60)
         Me.GroupBox4.TabIndex = 18
@@ -809,7 +822,7 @@ Partial Class frmFacturacionEspecial
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(8, 231)
+        Me.Label9.Location = New System.Drawing.Point(8, 252)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(76, 13)
         Me.Label9.TabIndex = 54
@@ -817,7 +830,7 @@ Partial Class frmFacturacionEspecial
         '
         'txtObservaciones
         '
-        Me.txtObservaciones.Location = New System.Drawing.Point(119, 232)
+        Me.txtObservaciones.Location = New System.Drawing.Point(119, 253)
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -827,7 +840,7 @@ Partial Class frmFacturacionEspecial
         'txtDiasCredito
         '
         Me.txtDiasCredito.Enabled = False
-        Me.txtDiasCredito.Location = New System.Drawing.Point(540, 177)
+        Me.txtDiasCredito.Location = New System.Drawing.Point(540, 198)
         Me.txtDiasCredito.Name = "txtDiasCredito"
         Me.txtDiasCredito.ReadOnly = True
         Me.txtDiasCredito.Size = New System.Drawing.Size(59, 20)
@@ -836,7 +849,7 @@ Partial Class frmFacturacionEspecial
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(463, 180)
+        Me.Label14.Location = New System.Drawing.Point(463, 201)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(72, 13)
         Me.Label14.TabIndex = 51
@@ -845,7 +858,7 @@ Partial Class frmFacturacionEspecial
         'txtRFC
         '
         Me.txtRFC.Enabled = False
-        Me.txtRFC.Location = New System.Drawing.Point(119, 121)
+        Me.txtRFC.Location = New System.Drawing.Point(119, 142)
         Me.txtRFC.Name = "txtRFC"
         Me.txtRFC.Size = New System.Drawing.Size(115, 20)
         Me.txtRFC.TabIndex = 0
@@ -853,7 +866,7 @@ Partial Class frmFacturacionEspecial
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(8, 124)
+        Me.Label12.Location = New System.Drawing.Point(8, 145)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(43, 13)
         Me.Label12.TabIndex = 49
@@ -862,7 +875,7 @@ Partial Class frmFacturacionEspecial
         'txtDireccion
         '
         Me.txtDireccion.Enabled = False
-        Me.txtDireccion.Location = New System.Drawing.Point(118, 206)
+        Me.txtDireccion.Location = New System.Drawing.Point(118, 227)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(483, 20)
         Me.txtDireccion.TabIndex = 9
@@ -870,7 +883,7 @@ Partial Class frmFacturacionEspecial
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(8, 204)
+        Me.Label6.Location = New System.Drawing.Point(8, 225)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(58, 13)
         Me.Label6.TabIndex = 46
@@ -878,7 +891,7 @@ Partial Class frmFacturacionEspecial
         '
         'txtFolioFactura
         '
-        Me.txtFolioFactura.Location = New System.Drawing.Point(118, 15)
+        Me.txtFolioFactura.Location = New System.Drawing.Point(118, 36)
         Me.txtFolioFactura.Name = "txtFolioFactura"
         Me.txtFolioFactura.Size = New System.Drawing.Size(91, 20)
         Me.txtFolioFactura.TabIndex = 1
@@ -886,7 +899,7 @@ Partial Class frmFacturacionEspecial
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(8, 69)
+        Me.Label5.Location = New System.Drawing.Point(8, 90)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(45, 13)
         Me.Label5.TabIndex = 43
@@ -895,7 +908,7 @@ Partial Class frmFacturacionEspecial
         'dtFechaFactura
         '
         Me.dtFechaFactura.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtFechaFactura.Location = New System.Drawing.Point(118, 43)
+        Me.dtFechaFactura.Location = New System.Drawing.Point(118, 64)
         Me.dtFechaFactura.Name = "dtFechaFactura"
         Me.dtFechaFactura.Size = New System.Drawing.Size(88, 20)
         Me.dtFechaFactura.TabIndex = 2
@@ -904,7 +917,7 @@ Partial Class frmFacturacionEspecial
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(8, 43)
+        Me.Label4.Location = New System.Drawing.Point(8, 64)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(82, 13)
         Me.Label4.TabIndex = 41
@@ -913,11 +926,20 @@ Partial Class frmFacturacionEspecial
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(8, 18)
+        Me.Label1.Location = New System.Drawing.Point(8, 39)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(74, 13)
         Me.Label1.TabIndex = 40
         Me.Label1.Text = "Folio Factura :"
+        '
+        'txtUUID
+        '
+        Me.txtUUID.BackColor = System.Drawing.SystemColors.Window
+        Me.txtUUID.Location = New System.Drawing.Point(254, 36)
+        Me.txtUUID.Name = "txtUUID"
+        Me.txtUUID.ReadOnly = True
+        Me.txtUUID.Size = New System.Drawing.Size(345, 20)
+        Me.txtUUID.TabIndex = 165
         '
         'Label17
         '
@@ -951,7 +973,7 @@ Partial Class frmFacturacionEspecial
         Me.MEAToolBar1.MostrarBorrar = True
         Me.MEAToolBar1.MostrarBuscar = True
         Me.MEAToolBar1.MostrarCancelar = True
-        Me.MEAToolBar1.MostrarEditar = True
+        Me.MEAToolBar1.MostrarEditar = False
         Me.MEAToolBar1.MostrarGuardar = True
         Me.MEAToolBar1.MostrarImprimir = True
         Me.MEAToolBar1.MostrarLimpiar = True
@@ -959,7 +981,7 @@ Partial Class frmFacturacionEspecial
         Me.MEAToolBar1.MostrarSalir = True
         Me.MEAToolBar1.Name = "MEAToolBar1"
         Me.MEAToolBar1.ShowToolTips = True
-        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 594)
+        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 613)
         Me.MEAToolBar1.TabIndex = 0
         '
         'DataGridViewComboBoxColumn1
@@ -992,7 +1014,7 @@ Partial Class frmFacturacionEspecial
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1041, 594)
+        Me.ClientSize = New System.Drawing.Size(1041, 613)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.MEAToolBar1)
@@ -1094,4 +1116,6 @@ Partial Class frmFacturacionEspecial
     Friend WithEvents clmConIVA As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents cmbUsoCFDI As System.Windows.Forms.ComboBox
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents txtUUID As System.Windows.Forms.TextBox
 End Class

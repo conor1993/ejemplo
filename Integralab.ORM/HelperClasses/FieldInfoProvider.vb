@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 1 de diciembre de 2017 15:43:55
+' Code is generated on: martes, 26 de diciembre de 2017 16:41:23
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -684,11 +684,13 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "Kilos", GetType(System.Decimal), False, False, False, True, CInt(CabFacturasFieldIndex.Kilos), 0, 4, 19)
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "PtjIva", GetType(System.Decimal), False, False, False, True, CInt(CabFacturasFieldIndex.PtjIva), 0, 4, 19)
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "Uuid", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.Uuid), 100, 0, 0)
-			MyBase.AddElementFieldInfo("CabFacturasEntity", "LugarExpedicion", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.LugarExpedicion), 10, 0, 0)
+			MyBase.AddElementFieldInfo("CabFacturasEntity", "LugarExpedicion", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.LugarExpedicion), 100, 0, 0)
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "FormaPago", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.FormaPago), 10, 0, 0)
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "MetodoPago", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.MetodoPago), 10, 0, 0)
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "NumCta", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.NumCta), 20, 0, 0)
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "UsoCfdi", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.UsoCfdi), 10, 0, 0)
+			MyBase.AddElementFieldInfo("CabFacturasEntity", "Direccion", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.Direccion), 200, 0, 0)
+			MyBase.AddElementFieldInfo("CabFacturasEntity", "Observaciones", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.Observaciones), 500, 0, 0)
 		End Sub
 		''' <summary>Inits CabGasTransEntity's FieldInfo objects</summary>
 		Private Sub InitCabGasTransEntityInfos()

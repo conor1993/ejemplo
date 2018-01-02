@@ -2217,13 +2217,13 @@ Partial Public Class ControladorGanadera
 
 
             If Estatus = EstatusChar.VIGENTE Then
-                Filtro.Add(HC.CabFacturasFields.Status = 1)
+                Filtro.Add(HC.CabFacturasFields.Status = "V")
             ElseIf Estatus = EstatusChar.CANCELADO Then
-                Filtro.Add(HC.CabFacturasFields.Status = 0)
+                Filtro.Add(HC.CabFacturasFields.Status = "C")
             ElseIf Estatus = EstatusChar.PAGADO Then
-                Filtro.Add(HC.CabFacturasFields.Status = 2)
+                Filtro.Add(HC.CabFacturasFields.Status = "P")
             ElseIf Estatus = EstatusChar.ABONADO Then
-                Filtro.Add(HC.CabFacturasFields.Status = 3)
+                Filtro.Add(HC.CabFacturasFields.Status = "A")
             End If
 
 

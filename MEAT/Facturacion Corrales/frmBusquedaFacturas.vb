@@ -35,19 +35,27 @@ Public Class frmBusquedaFacturas
             Dim RangodeFechas As New RangoFechas(ultdtpFechaInicial.Value, ultdtpFechaFinal.Value)
             Dim Estatus As EstatusChar
 
+            
+
+
             If chkVigentes.Checked And Not chkCancelados.Checked Then
                 Estatus = EstatusChar.VIGENTE
             ElseIf chkCancelados.Checked And Not chkVigentes.Checked Then
                 Estatus = EstatusChar.CANCELADO
+            Else
+                Estatus = EstatusChar.TODOS
             End If
 
 
             Me.dgvFacturasCabecero.DataSource = Nothing
             Me.dgvFacturasDetalle.DataSource = Nothing
-            Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, Me.cmbClientes.SelectedValue, EstatusChar.TODOS, TipoFactura)
+            Dim cliente As ClasesNegocio.ClientesIntroductoresClass
+            cliente = Me.cmbClientes.SelectedValue
+            Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura)
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            dgvFacturasDetalle.DataSource = Nothing
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
     End Sub
 
@@ -71,6 +79,10 @@ Public Class frmBusquedaFacturas
 #Region "Eventos"
     Private Sub frmBusquedaFacturas_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Utilerias.RunControlException(Me, "Inicializar_Forma")
+        Dim clientes As New ClientesIntroductoresColeccion
+        clientes.Obtener(ClasesNegocio.CondicionEstatusEnum.ACTIVO)
+        cmbClientes.DataSource = clientes
+        cmbClientes.SelectedIndex = -1
     End Sub
     Private Sub Acciones_Menu(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar, mtb.ClickBuscar, mtb.ClickCancelar, mtb.ClickEditar, mtb.ClickGuardar, mtb.ClickImprimir, mtb.ClickLimpiar, mtb.ClickNuevo, mtb.ClickSalir
         Utilerias.RunControlException(Me, e.Button.Text)
