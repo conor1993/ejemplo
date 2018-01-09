@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:25
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:18
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -71,21 +71,6 @@ Namespace Integralab.ORM.RelationClasses
 				relation.StartEntityIsPkSide = False
 				relation.AddEntityFieldPair(EntityFieldFactory.Create(MfacCatClientesFieldIndex.IdCliente), EntityFieldFactory.Create(RecepcionGanadoFieldIndex.IdCliente))
 				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacCatClientesEntity", False)
-				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("RecepcionGanadoEntity", True)
-				Return relation
-			End Get
-		End Property
-	
-		''' <summary>Returns a new IEntityRelation Object, between RecepcionGanadoEntity and ProveedorEntity over the m:1 relation they have, using the relation between the fields:
-		''' RecepcionGanado.IdProveedor - Proveedor.Codigo
-		''' </summary>
-		Public Overridable  ReadOnly Property ProveedorEntityUsingIdProveedor() As IEntityRelation
-			Get
-
-				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
-				relation.StartEntityIsPkSide = False
-				relation.AddEntityFieldPair(EntityFieldFactory.Create(ProveedorFieldIndex.Codigo), EntityFieldFactory.Create(RecepcionGanadoFieldIndex.IdProveedor))
-				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ProveedorEntity", False)
 				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("RecepcionGanadoEntity", True)
 				Return relation
 			End Get

@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:31
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:20
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -742,7 +742,7 @@ Namespace Integralab.ORM.EntityClasses
 				If Not entityFactoryToUse Is Nothing Then
 					_recepcionGanado.EntityFactoryToUse = entityFactoryToUse
 				End If
-				_recepcionGanado.GetMultiManyToOne(Me, Nothing, Nothing, Filter)
+				_recepcionGanado.GetMultiManyToOne(Me, Nothing, Filter)
 				_recepcionGanado.SuppressClearInGetMulti = False
 				_alreadyFetchedRecepcionGanado = True
 			End If
@@ -1614,6 +1614,8 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -1893,6 +1895,12 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("Canaldistribucion", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("UsoCfdi", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("FormaPago", fieldHashtable)
 		End Sub
 
 
@@ -2884,6 +2892,46 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(MfacCatClientesFieldIndex.Canaldistribucion, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The UsoCfdi property of the Entity MfacCatClientes<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MFacCatClientes"."UsoCFDI"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 10<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [UsoCfdi]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MfacCatClientesFieldIndex.UsoCfdi, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(MfacCatClientesFieldIndex.UsoCfdi, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The FormaPago property of the Entity MfacCatClientes<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MFacCatClientes"."FormaPago"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 10<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [FormaPago]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MfacCatClientesFieldIndex.FormaPago, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(MfacCatClientesFieldIndex.FormaPago, Integer), value)
 			End Set
 		End Property
 	

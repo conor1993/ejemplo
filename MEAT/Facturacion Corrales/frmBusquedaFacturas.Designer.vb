@@ -23,24 +23,16 @@ Partial Class frmBusquedaFacturas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvFacturasDetalle = New System.Windows.Forms.DataGridView()
-        Me.clmTipoGanado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCabezas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmKilos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmPrecioxKilo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmPrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmImporteDetalle = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.ultdtpFechaFinal = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
         Me.ultdtpFechaInicial = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
@@ -54,14 +46,22 @@ Partial Class frmBusquedaFacturas
         Me.txtFolio = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvFacturasCabecero = New System.Windows.Forms.DataGridView()
-        Me.clmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbClientes = New System.Windows.Forms.ComboBox()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.clmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmTipoGanado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCabezas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmKilos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmPrecioxKilo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmPrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmImporteDetalle = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox3.SuspendLayout()
         CType(Me.dgvFacturasDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -127,6 +127,7 @@ Partial Class frmBusquedaFacturas
         'dgvFacturasDetalle
         '
         Me.dgvFacturasDetalle.AllowUserToAddRows = False
+        Me.dgvFacturasDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvFacturasDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvFacturasDetalle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmTipoGanado, Me.clmCabezas, Me.clmKilos, Me.clmPrecioxKilo, Me.clmDescripcion, Me.clmCantidad, Me.clmPrecioUnitario, Me.clmImporteDetalle})
         Me.dgvFacturasDetalle.Location = New System.Drawing.Point(7, 19)
@@ -137,69 +138,6 @@ Partial Class frmBusquedaFacturas
         Me.dgvFacturasDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvFacturasDetalle.Size = New System.Drawing.Size(789, 138)
         Me.dgvFacturasDetalle.TabIndex = 53
-        '
-        'clmTipoGanado
-        '
-        Me.clmTipoGanado.DataPropertyName = "TipoGanado"
-        Me.clmTipoGanado.HeaderText = "Tipo de Ganado"
-        Me.clmTipoGanado.Name = "clmTipoGanado"
-        Me.clmTipoGanado.ReadOnly = True
-        Me.clmTipoGanado.Width = 180
-        '
-        'clmCabezas
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N0"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.clmCabezas.DefaultCellStyle = DataGridViewCellStyle1
-        Me.clmCabezas.HeaderText = "Cabezas"
-        Me.clmCabezas.Name = "clmCabezas"
-        Me.clmCabezas.ReadOnly = True
-        Me.clmCabezas.Width = 55
-        '
-        'clmKilos
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.clmKilos.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clmKilos.HeaderText = "Kilos"
-        Me.clmKilos.Name = "clmKilos"
-        Me.clmKilos.ReadOnly = True
-        '
-        'clmPrecioxKilo
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.clmPrecioxKilo.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clmPrecioxKilo.HeaderText = "Precio x Kilo"
-        Me.clmPrecioxKilo.Name = "clmPrecioxKilo"
-        Me.clmPrecioxKilo.ReadOnly = True
-        '
-        'clmDescripcion
-        '
-        Me.clmDescripcion.HeaderText = "Descripcion"
-        Me.clmDescripcion.Name = "clmDescripcion"
-        Me.clmDescripcion.ReadOnly = True
-        '
-        'clmCantidad
-        '
-        Me.clmCantidad.HeaderText = "Cantidad"
-        Me.clmCantidad.Name = "clmCantidad"
-        Me.clmCantidad.ReadOnly = True
-        '
-        'clmPrecioUnitario
-        '
-        Me.clmPrecioUnitario.HeaderText = "Precio"
-        Me.clmPrecioUnitario.Name = "clmPrecioUnitario"
-        Me.clmPrecioUnitario.ReadOnly = True
-        '
-        'clmImporteDetalle
-        '
-        Me.clmImporteDetalle.HeaderText = "Importe"
-        Me.clmImporteDetalle.Name = "clmImporteDetalle"
-        Me.clmImporteDetalle.ReadOnly = True
         '
         'GroupBox2
         '
@@ -333,43 +271,6 @@ Partial Class frmBusquedaFacturas
         Me.dgvFacturasCabecero.Size = New System.Drawing.Size(789, 170)
         Me.dgvFacturasCabecero.TabIndex = 55
         '
-        'clmNoFactura
-        '
-        Me.clmNoFactura.DataPropertyName = "FolFactura"
-        Me.clmNoFactura.FillWeight = 15.0!
-        Me.clmNoFactura.HeaderText = "Factura"
-        Me.clmNoFactura.Name = "clmNoFactura"
-        Me.clmNoFactura.ReadOnly = True
-        '
-        'clmFecha
-        '
-        Me.clmFecha.DataPropertyName = "FecFactura"
-        DataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm"
-        Me.clmFecha.DefaultCellStyle = DataGridViewCellStyle4
-        Me.clmFecha.FillWeight = 20.0!
-        Me.clmFecha.HeaderText = "Fecha "
-        Me.clmFecha.Name = "clmFecha"
-        Me.clmFecha.ReadOnly = True
-        '
-        'clmImporte
-        '
-        Me.clmImporte.DataPropertyName = "SubTotal"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle5
-        Me.clmImporte.FillWeight = 20.0!
-        Me.clmImporte.HeaderText = "Importe"
-        Me.clmImporte.Name = "clmImporte"
-        Me.clmImporte.ReadOnly = True
-        '
-        'clmCliente
-        '
-        Me.clmCliente.DataPropertyName = "IdCliente"
-        Me.clmCliente.FillWeight = 45.0!
-        Me.clmCliente.HeaderText = "cliente"
-        Me.clmCliente.Name = "clmCliente"
-        Me.clmCliente.ReadOnly = True
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -406,6 +307,108 @@ Partial Class frmBusquedaFacturas
         Me.btnAceptar.TabIndex = 65
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'clmNoFactura
+        '
+        Me.clmNoFactura.DataPropertyName = "FolFactura"
+        Me.clmNoFactura.FillWeight = 15.0!
+        Me.clmNoFactura.HeaderText = "Factura"
+        Me.clmNoFactura.Name = "clmNoFactura"
+        Me.clmNoFactura.ReadOnly = True
+        '
+        'clmFecha
+        '
+        Me.clmFecha.DataPropertyName = "FecFactura"
+        DataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm"
+        Me.clmFecha.DefaultCellStyle = DataGridViewCellStyle4
+        Me.clmFecha.FillWeight = 20.0!
+        Me.clmFecha.HeaderText = "Fecha "
+        Me.clmFecha.Name = "clmFecha"
+        Me.clmFecha.ReadOnly = True
+        '
+        'clmImporte
+        '
+        Me.clmImporte.DataPropertyName = "SubTotal"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle5
+        Me.clmImporte.FillWeight = 20.0!
+        Me.clmImporte.HeaderText = "Importe"
+        Me.clmImporte.Name = "clmImporte"
+        Me.clmImporte.ReadOnly = True
+        '
+        'clmCliente
+        '
+        Me.clmCliente.DataPropertyName = "NomCliente"
+        Me.clmCliente.FillWeight = 45.0!
+        Me.clmCliente.HeaderText = "cliente"
+        Me.clmCliente.Name = "clmCliente"
+        Me.clmCliente.ReadOnly = True
+        '
+        'clmTipoGanado
+        '
+        Me.clmTipoGanado.DataPropertyName = "TipoGanado"
+        Me.clmTipoGanado.HeaderText = "Tipo de Ganado"
+        Me.clmTipoGanado.Name = "clmTipoGanado"
+        Me.clmTipoGanado.ReadOnly = True
+        '
+        'clmCabezas
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N0"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.clmCabezas.DefaultCellStyle = DataGridViewCellStyle1
+        Me.clmCabezas.HeaderText = "Cabezas"
+        Me.clmCabezas.Name = "clmCabezas"
+        Me.clmCabezas.ReadOnly = True
+        '
+        'clmKilos
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.clmKilos.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clmKilos.HeaderText = "Kilos"
+        Me.clmKilos.Name = "clmKilos"
+        Me.clmKilos.ReadOnly = True
+        '
+        'clmPrecioxKilo
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.clmPrecioxKilo.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clmPrecioxKilo.HeaderText = "Precio x Kilo"
+        Me.clmPrecioxKilo.Name = "clmPrecioxKilo"
+        Me.clmPrecioxKilo.ReadOnly = True
+        '
+        'clmDescripcion
+        '
+        Me.clmDescripcion.FillWeight = 61.0!
+        Me.clmDescripcion.HeaderText = "Descripcion"
+        Me.clmDescripcion.Name = "clmDescripcion"
+        Me.clmDescripcion.ReadOnly = True
+        '
+        'clmCantidad
+        '
+        Me.clmCantidad.FillWeight = 12.0!
+        Me.clmCantidad.HeaderText = "Cantidad"
+        Me.clmCantidad.Name = "clmCantidad"
+        Me.clmCantidad.ReadOnly = True
+        '
+        'clmPrecioUnitario
+        '
+        Me.clmPrecioUnitario.FillWeight = 12.0!
+        Me.clmPrecioUnitario.HeaderText = "Precio"
+        Me.clmPrecioUnitario.Name = "clmPrecioUnitario"
+        Me.clmPrecioUnitario.ReadOnly = True
+        '
+        'clmImporteDetalle
+        '
+        Me.clmImporteDetalle.FillWeight = 15.0!
+        Me.clmImporteDetalle.HeaderText = "Importe"
+        Me.clmImporteDetalle.Name = "clmImporteDetalle"
+        Me.clmImporteDetalle.ReadOnly = True
         '
         'frmBusquedaFacturas
         '
@@ -460,6 +463,10 @@ Partial Class frmBusquedaFacturas
     Friend WithEvents cmbClientes As System.Windows.Forms.ComboBox
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents btnAceptar As System.Windows.Forms.Button
+    Friend WithEvents clmNoFactura As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmFecha As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmCliente As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmTipoGanado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmCabezas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmKilos As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -468,8 +475,4 @@ Partial Class frmBusquedaFacturas
     Friend WithEvents clmCantidad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmPrecioUnitario As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmImporteDetalle As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmNoFactura As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmFecha As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmCliente As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:37
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:23
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -5588,6 +5588,10 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "Idtipocliente"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "Idtipocliente"))
 				Case MfacCatClientesFieldIndex.Canaldistribucion
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "Canaldistribucion"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "Canaldistribucion"))
+				Case MfacCatClientesFieldIndex.UsoCfdi
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "UsoCfdi"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "UsoCfdi"))
+				Case MfacCatClientesFieldIndex.FormaPago
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "FormaPago"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "FormaPago"))
 
 			End Select
 			Return fieldToReturn
@@ -9512,6 +9516,26 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "FechaSalida"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "FechaSalida"))
 				Case RecepcionGanadoFieldIndex.Maquila
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "Maquila"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "Maquila"))
+				Case RecepcionGanadoFieldIndex.CveLugCom
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "CveLugCom"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "CveLugCom"))
+				Case RecepcionGanadoFieldIndex.CveComiGan
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "CveComiGan"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "CveComiGan"))
+				Case RecepcionGanadoFieldIndex.HorasViaje
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "HorasViaje"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "HorasViaje"))
+				Case RecepcionGanadoFieldIndex.KilosComp
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "KilosComp"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "KilosComp"))
+				Case RecepcionGanadoFieldIndex.ImpteComp
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "ImpteComp"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "ImpteComp"))
+				Case RecepcionGanadoFieldIndex.DiasCredito
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "DiasCredito"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "DiasCredito"))
+				Case RecepcionGanadoFieldIndex.FecPago
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "FecPago"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "FecPago"))
+				Case RecepcionGanadoFieldIndex.NumFactura
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "NumFactura"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "NumFactura"))
+				Case RecepcionGanadoFieldIndex.FecConta
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "FecConta"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "FecConta"))
+				Case RecepcionGanadoFieldIndex.NumPoliza
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("RecepcionGanadoEntity", "NumPoliza"), persistenceProvider.GetFieldPersistenceInfo("RecepcionGanadoEntity", "NumPoliza"))
 
 			End Select
 			Return fieldToReturn

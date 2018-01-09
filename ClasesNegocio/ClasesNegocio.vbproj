@@ -142,6 +142,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\IntegraClases.dll</HintPath>
     </Reference>
+    <Reference Include="Integralab.ORM, Version=1.0.6576.19552, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Integralab.ORM.dll</HintPath>
+    </Reference>
     <Reference Include="Integralab.ORMSeguridad, Version=1.0.0.27333, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Integralab.ORMSeguridad.dll</HintPath>
@@ -5489,12 +5493,6 @@
   <ItemGroup>
     <Folder Include="Catalogos\Compras de Ganado\Enumeradores\" />
     <Folder Include="Engorda\Enumeradores\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Integralab.ORM\Integralab.ORM.vbproj">
-      <Project>{DD9B650E-E2CA-4405-B598-C26B0770F6F4}</Project>
-      <Name>Integralab.ORM</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

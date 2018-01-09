@@ -23,17 +23,20 @@ Partial Class FrmABCClientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TbpDatosGen = New System.Windows.Forms.TabPage()
-        Me.Label35 = New System.Windows.Forms.Label()
+        Me.cmbUsoCFDI = New System.Windows.Forms.ComboBox()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.rdtcanaldis2 = New System.Windows.Forms.RadioButton()
         Me.rdtcanaldis = New System.Windows.Forms.RadioButton()
+        Me.Label35 = New System.Windows.Forms.Label()
         Me.lblBorrar = New System.Windows.Forms.Label()
         Me.pbLogo = New System.Windows.Forms.PictureBox()
         Me.Label34 = New System.Windows.Forms.Label()
@@ -121,15 +124,16 @@ Partial Class FrmABCClientes
         Me.pktxtCodigo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.cmbFormaPago = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TbpDatosGen.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TbpDatosCred.SuspendLayout()
         Me.TbpDatosFiscales.SuspendLayout()
         CType(Me.dgvDomicilios, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'mtb
@@ -159,7 +163,7 @@ Partial Class FrmABCClientes
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 509)
+        Me.mtb.Size = New System.Drawing.Size(50, 531)
         Me.mtb.TabIndex = 5
         '
         'Label17
@@ -170,7 +174,7 @@ Partial Class FrmABCClientes
         Me.Label17.ForeColor = System.Drawing.Color.White
         Me.Label17.Location = New System.Drawing.Point(50, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(695, 29)
+        Me.Label17.Size = New System.Drawing.Size(741, 29)
         Me.Label17.TabIndex = 6
         Me.Label17.Text = "CATÁLOGO DE CLIENTES"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -187,7 +191,7 @@ Partial Class FrmABCClientes
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(55, 32)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(683, 467)
+        Me.GroupBox1.Size = New System.Drawing.Size(724, 487)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         '
@@ -199,11 +203,15 @@ Partial Class FrmABCClientes
         Me.TabControl1.Location = New System.Drawing.Point(6, 85)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(668, 358)
+        Me.TabControl1.Size = New System.Drawing.Size(706, 396)
         Me.TabControl1.TabIndex = 4
         '
         'TbpDatosGen
         '
+        Me.TbpDatosGen.Controls.Add(Me.cmbFormaPago)
+        Me.TbpDatosGen.Controls.Add(Me.Label37)
+        Me.TbpDatosGen.Controls.Add(Me.cmbUsoCFDI)
+        Me.TbpDatosGen.Controls.Add(Me.Label36)
         Me.TbpDatosGen.Controls.Add(Me.GroupBox2)
         Me.TbpDatosGen.Controls.Add(Me.Label35)
         Me.TbpDatosGen.Controls.Add(Me.lblBorrar)
@@ -244,24 +252,42 @@ Partial Class FrmABCClientes
         Me.TbpDatosGen.Location = New System.Drawing.Point(4, 22)
         Me.TbpDatosGen.Name = "TbpDatosGen"
         Me.TbpDatosGen.Padding = New System.Windows.Forms.Padding(3)
-        Me.TbpDatosGen.Size = New System.Drawing.Size(660, 332)
+        Me.TbpDatosGen.Size = New System.Drawing.Size(698, 370)
         Me.TbpDatosGen.TabIndex = 0
         Me.TbpDatosGen.Text = "Datos Generales"
         Me.TbpDatosGen.UseVisualStyleBackColor = True
         '
-        'Label35
+        'cmbUsoCFDI
         '
-        Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(6, 300)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(108, 13)
-        Me.Label35.TabIndex = 44
-        Me.Label35.Text = "Canal de distribucion:"
+        Me.cmbUsoCFDI.FormattingEnabled = True
+        Me.cmbUsoCFDI.Location = New System.Drawing.Point(118, 306)
+        Me.cmbUsoCFDI.Name = "cmbUsoCFDI"
+        Me.cmbUsoCFDI.Size = New System.Drawing.Size(402, 21)
+        Me.cmbUsoCFDI.TabIndex = 47
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(6, 309)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(71, 13)
+        Me.Label36.TabIndex = 46
+        Me.Label36.Text = "Uso de CFDI:"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.rdtcanaldis2)
+        Me.GroupBox2.Controls.Add(Me.rdtcanaldis)
+        Me.GroupBox2.Location = New System.Drawing.Point(118, 269)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(196, 33)
+        Me.GroupBox2.TabIndex = 45
+        Me.GroupBox2.TabStop = False
         '
         'rdtcanaldis2
         '
         Me.rdtcanaldis2.AutoSize = True
-        Me.rdtcanaldis2.Location = New System.Drawing.Point(120, 14)
+        Me.rdtcanaldis2.Location = New System.Drawing.Point(120, 11)
         Me.rdtcanaldis2.Name = "rdtcanaldis2"
         Me.rdtcanaldis2.Size = New System.Drawing.Size(58, 17)
         Me.rdtcanaldis2.TabIndex = 43
@@ -272,7 +298,7 @@ Partial Class FrmABCClientes
         '
         Me.rdtcanaldis.AutoSize = True
         Me.rdtcanaldis.Checked = True
-        Me.rdtcanaldis.Location = New System.Drawing.Point(6, 14)
+        Me.rdtcanaldis.Location = New System.Drawing.Point(6, 11)
         Me.rdtcanaldis.Name = "rdtcanaldis"
         Me.rdtcanaldis.Size = New System.Drawing.Size(66, 17)
         Me.rdtcanaldis.TabIndex = 42
@@ -280,11 +306,20 @@ Partial Class FrmABCClientes
         Me.rdtcanaldis.Text = "Mayoreo"
         Me.rdtcanaldis.UseVisualStyleBackColor = True
         '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(6, 282)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(108, 13)
+        Me.Label35.TabIndex = 44
+        Me.Label35.Text = "Canal de distribucion:"
+        '
         'lblBorrar
         '
         Me.lblBorrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBorrar.ForeColor = System.Drawing.Color.Firebrick
-        Me.lblBorrar.Location = New System.Drawing.Point(644, 11)
+        Me.lblBorrar.Location = New System.Drawing.Point(681, 11)
         Me.lblBorrar.Margin = New System.Windows.Forms.Padding(0)
         Me.lblBorrar.Name = "lblBorrar"
         Me.lblBorrar.Size = New System.Drawing.Size(12, 12)
@@ -294,7 +329,7 @@ Partial Class FrmABCClientes
         '
         'pbLogo
         '
-        Me.pbLogo.Location = New System.Drawing.Point(522, 17)
+        Me.pbLogo.Location = New System.Drawing.Point(559, 17)
         Me.pbLogo.Name = "pbLogo"
         Me.pbLogo.Size = New System.Drawing.Size(130, 130)
         Me.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -304,7 +339,7 @@ Partial Class FrmABCClientes
         'Label34
         '
         Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(519, 1)
+        Me.Label34.Location = New System.Drawing.Point(556, 1)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(31, 13)
         Me.Label34.TabIndex = 39
@@ -313,7 +348,7 @@ Partial Class FrmABCClientes
         'cmbtipocliente
         '
         Me.cmbtipocliente.FormattingEnabled = True
-        Me.cmbtipocliente.Location = New System.Drawing.Point(112, 259)
+        Me.cmbtipocliente.Location = New System.Drawing.Point(118, 248)
         Me.cmbtipocliente.Name = "cmbtipocliente"
         Me.cmbtipocliente.Size = New System.Drawing.Size(196, 21)
         Me.cmbtipocliente.TabIndex = 36
@@ -321,7 +356,7 @@ Partial Class FrmABCClientes
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(6, 262)
+        Me.Label31.Location = New System.Drawing.Point(6, 251)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(81, 13)
         Me.Label31.TabIndex = 35
@@ -330,7 +365,7 @@ Partial Class FrmABCClientes
         'RbtnPersonaMoral
         '
         Me.RbtnPersonaMoral.AutoSize = True
-        Me.RbtnPersonaMoral.Location = New System.Drawing.Point(424, 117)
+        Me.RbtnPersonaMoral.Location = New System.Drawing.Point(460, 117)
         Me.RbtnPersonaMoral.Name = "RbtnPersonaMoral"
         Me.RbtnPersonaMoral.Size = New System.Drawing.Size(93, 17)
         Me.RbtnPersonaMoral.TabIndex = 10
@@ -340,7 +375,7 @@ Partial Class FrmABCClientes
         'RbtnPersonaFisica
         '
         Me.RbtnPersonaFisica.AutoSize = True
-        Me.RbtnPersonaFisica.Location = New System.Drawing.Point(324, 117)
+        Me.RbtnPersonaFisica.Location = New System.Drawing.Point(360, 117)
         Me.RbtnPersonaFisica.Name = "RbtnPersonaFisica"
         Me.RbtnPersonaFisica.Size = New System.Drawing.Size(94, 17)
         Me.RbtnPersonaFisica.TabIndex = 9
@@ -351,7 +386,7 @@ Partial Class FrmABCClientes
         '
         Me.txtRazonSocial.AcceptsReturn = True
         Me.txtRazonSocial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtRazonSocial.Location = New System.Drawing.Point(85, 10)
+        Me.txtRazonSocial.Location = New System.Drawing.Point(118, 10)
         Me.txtRazonSocial.Name = "txtRazonSocial"
         Me.txtRazonSocial.Size = New System.Drawing.Size(223, 20)
         Me.txtRazonSocial.TabIndex = 0
@@ -368,7 +403,7 @@ Partial Class FrmABCClientes
         'txtRfc
         '
         Me.txtRfc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtRfc.Location = New System.Drawing.Point(379, 10)
+        Me.txtRfc.Location = New System.Drawing.Point(415, 10)
         Me.txtRfc.Name = "txtRfc"
         Me.txtRfc.Size = New System.Drawing.Size(100, 20)
         Me.txtRfc.TabIndex = 1
@@ -376,7 +411,7 @@ Partial Class FrmABCClientes
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(316, 13)
+        Me.Label19.Location = New System.Drawing.Point(352, 13)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(40, 13)
         Me.Label19.TabIndex = 32
@@ -385,7 +420,7 @@ Partial Class FrmABCClientes
         'cmbVendedor
         '
         Me.cmbVendedor.FormattingEnabled = True
-        Me.cmbVendedor.Location = New System.Drawing.Point(85, 169)
+        Me.cmbVendedor.Location = New System.Drawing.Point(118, 169)
         Me.cmbVendedor.Name = "cmbVendedor"
         Me.cmbVendedor.Size = New System.Drawing.Size(223, 21)
         Me.cmbVendedor.TabIndex = 12
@@ -401,7 +436,7 @@ Partial Class FrmABCClientes
         '
         'cmbPasarInformacion
         '
-        Me.cmbPasarInformacion.Location = New System.Drawing.Point(318, 141)
+        Me.cmbPasarInformacion.Location = New System.Drawing.Point(354, 141)
         Me.cmbPasarInformacion.Name = "cmbPasarInformacion"
         Me.cmbPasarInformacion.Size = New System.Drawing.Size(200, 23)
         Me.cmbPasarInformacion.TabIndex = 13
@@ -411,7 +446,7 @@ Partial Class FrmABCClientes
         'chkIntroductor
         '
         Me.chkIntroductor.AutoSize = True
-        Me.chkIntroductor.Location = New System.Drawing.Point(380, 92)
+        Me.chkIntroductor.Location = New System.Drawing.Point(416, 92)
         Me.chkIntroductor.Name = "chkIntroductor"
         Me.chkIntroductor.Size = New System.Drawing.Size(77, 17)
         Me.chkIntroductor.TabIndex = 7
@@ -420,7 +455,7 @@ Partial Class FrmABCClientes
         '
         'txtTelefono
         '
-        Me.txtTelefono.Location = New System.Drawing.Point(379, 62)
+        Me.txtTelefono.Location = New System.Drawing.Point(415, 62)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(114, 20)
         Me.txtTelefono.TabIndex = 5
@@ -429,7 +464,7 @@ Partial Class FrmABCClientes
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(316, 65)
+        Me.Label12.Location = New System.Drawing.Point(352, 65)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(52, 13)
         Me.Label12.TabIndex = 26
@@ -437,7 +472,7 @@ Partial Class FrmABCClientes
         '
         'btnCtaAnticipo
         '
-        Me.btnCtaAnticipo.Location = New System.Drawing.Point(520, 231)
+        Me.btnCtaAnticipo.Location = New System.Drawing.Point(524, 222)
         Me.btnCtaAnticipo.Name = "btnCtaAnticipo"
         Me.btnCtaAnticipo.Size = New System.Drawing.Size(26, 22)
         Me.btnCtaAnticipo.TabIndex = 25
@@ -449,7 +484,7 @@ Partial Class FrmABCClientes
         Me.txtCtaAnticipo.BackColor = System.Drawing.Color.LemonChiffon
         Me.txtCtaAnticipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCtaAnticipo.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.txtCtaAnticipo.Location = New System.Drawing.Point(112, 231)
+        Me.txtCtaAnticipo.Location = New System.Drawing.Point(118, 222)
         Me.txtCtaAnticipo.Name = "txtCtaAnticipo"
         Me.txtCtaAnticipo.ReadOnly = True
         Me.txtCtaAnticipo.Size = New System.Drawing.Size(402, 22)
@@ -459,7 +494,7 @@ Partial Class FrmABCClientes
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(6, 236)
+        Me.Label11.Location = New System.Drawing.Point(6, 227)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(100, 13)
         Me.Label11.TabIndex = 23
@@ -468,7 +503,7 @@ Partial Class FrmABCClientes
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(6, 208)
+        Me.Label10.Location = New System.Drawing.Point(6, 201)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(89, 13)
         Me.Label10.TabIndex = 22
@@ -476,7 +511,7 @@ Partial Class FrmABCClientes
         '
         'btnCtaContable
         '
-        Me.btnCtaContable.Location = New System.Drawing.Point(520, 203)
+        Me.btnCtaContable.Location = New System.Drawing.Point(524, 196)
         Me.btnCtaContable.Name = "btnCtaContable"
         Me.btnCtaContable.Size = New System.Drawing.Size(26, 22)
         Me.btnCtaContable.TabIndex = 21
@@ -488,7 +523,7 @@ Partial Class FrmABCClientes
         Me.txtCtaContable.BackColor = System.Drawing.Color.LemonChiffon
         Me.txtCtaContable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCtaContable.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.txtCtaContable.Location = New System.Drawing.Point(112, 203)
+        Me.txtCtaContable.Location = New System.Drawing.Point(118, 196)
         Me.txtCtaContable.Name = "txtCtaContable"
         Me.txtCtaContable.ReadOnly = True
         Me.txtCtaContable.Size = New System.Drawing.Size(402, 22)
@@ -498,7 +533,7 @@ Partial Class FrmABCClientes
         'CmbPoblaciones
         '
         Me.CmbPoblaciones.FormattingEnabled = True
-        Me.CmbPoblaciones.Location = New System.Drawing.Point(85, 142)
+        Me.CmbPoblaciones.Location = New System.Drawing.Point(118, 142)
         Me.CmbPoblaciones.Name = "CmbPoblaciones"
         Me.CmbPoblaciones.Size = New System.Drawing.Size(223, 21)
         Me.CmbPoblaciones.TabIndex = 11
@@ -506,7 +541,7 @@ Partial Class FrmABCClientes
         'CmbCiudades
         '
         Me.CmbCiudades.FormattingEnabled = True
-        Me.CmbCiudades.Location = New System.Drawing.Point(85, 115)
+        Me.CmbCiudades.Location = New System.Drawing.Point(118, 115)
         Me.CmbCiudades.Name = "CmbCiudades"
         Me.CmbCiudades.Size = New System.Drawing.Size(223, 21)
         Me.CmbCiudades.TabIndex = 8
@@ -514,7 +549,7 @@ Partial Class FrmABCClientes
         'CmbEstado
         '
         Me.CmbEstado.FormattingEnabled = True
-        Me.CmbEstado.Location = New System.Drawing.Point(85, 88)
+        Me.CmbEstado.Location = New System.Drawing.Point(118, 88)
         Me.CmbEstado.Name = "CmbEstado"
         Me.CmbEstado.Size = New System.Drawing.Size(223, 21)
         Me.CmbEstado.TabIndex = 6
@@ -548,7 +583,7 @@ Partial Class FrmABCClientes
         '
         'txtCodigoPostal
         '
-        Me.txtCodigoPostal.Location = New System.Drawing.Point(379, 36)
+        Me.txtCodigoPostal.Location = New System.Drawing.Point(415, 36)
         Me.txtCodigoPostal.MaxLength = 5
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
         Me.txtCodigoPostal.Size = New System.Drawing.Size(78, 20)
@@ -558,7 +593,7 @@ Partial Class FrmABCClientes
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(316, 39)
+        Me.Label6.Location = New System.Drawing.Point(352, 39)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(30, 13)
         Me.Label6.TabIndex = 4
@@ -567,7 +602,7 @@ Partial Class FrmABCClientes
         'txtColonia
         '
         Me.txtColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtColonia.Location = New System.Drawing.Point(85, 62)
+        Me.txtColonia.Location = New System.Drawing.Point(118, 62)
         Me.txtColonia.Name = "txtColonia"
         Me.txtColonia.Size = New System.Drawing.Size(223, 20)
         Me.txtColonia.TabIndex = 4
@@ -584,7 +619,7 @@ Partial Class FrmABCClientes
         'txtDomicilio
         '
         Me.txtDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtDomicilio.Location = New System.Drawing.Point(85, 36)
+        Me.txtDomicilio.Location = New System.Drawing.Point(118, 36)
         Me.txtDomicilio.Name = "txtDomicilio"
         Me.txtDomicilio.Size = New System.Drawing.Size(223, 20)
         Me.txtDomicilio.TabIndex = 2
@@ -613,7 +648,7 @@ Partial Class FrmABCClientes
         Me.TbpDatosCred.Location = New System.Drawing.Point(4, 22)
         Me.TbpDatosCred.Name = "TbpDatosCred"
         Me.TbpDatosCred.Padding = New System.Windows.Forms.Padding(3)
-        Me.TbpDatosCred.Size = New System.Drawing.Size(660, 332)
+        Me.TbpDatosCred.Size = New System.Drawing.Size(698, 332)
         Me.TbpDatosCred.TabIndex = 1
         Me.TbpDatosCred.Text = "Datos Para Crédito"
         Me.TbpDatosCred.UseVisualStyleBackColor = True
@@ -637,7 +672,7 @@ Partial Class FrmABCClientes
         'cmbTipoFacturacion
         '
         Me.cmbTipoFacturacion.FormattingEnabled = True
-        Me.cmbTipoFacturacion.Location = New System.Drawing.Point(123, 148)
+        Me.cmbTipoFacturacion.Location = New System.Drawing.Point(123, 106)
         Me.cmbTipoFacturacion.Name = "cmbTipoFacturacion"
         Me.cmbTipoFacturacion.Size = New System.Drawing.Size(284, 21)
         Me.cmbTipoFacturacion.TabIndex = 2
@@ -664,7 +699,7 @@ Partial Class FrmABCClientes
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(7, 151)
+        Me.Label15.Location = New System.Drawing.Point(7, 109)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(105, 13)
         Me.Label15.TabIndex = 4
@@ -738,7 +773,7 @@ Partial Class FrmABCClientes
         Me.TbpDatosFiscales.Location = New System.Drawing.Point(4, 22)
         Me.TbpDatosFiscales.Name = "TbpDatosFiscales"
         Me.TbpDatosFiscales.Padding = New System.Windows.Forms.Padding(3)
-        Me.TbpDatosFiscales.Size = New System.Drawing.Size(660, 332)
+        Me.TbpDatosFiscales.Size = New System.Drawing.Size(698, 332)
         Me.TbpDatosFiscales.TabIndex = 2
         Me.TbpDatosFiscales.Text = "Datos Fiscales"
         Me.TbpDatosFiscales.UseVisualStyleBackColor = True
@@ -800,81 +835,82 @@ Partial Class FrmABCClientes
         '
         Me.dgvDomicilios.AllowUserToAddRows = False
         Me.dgvDomicilios.AllowUserToDeleteRows = False
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDomicilios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.dgvDomicilios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDomicilios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvDomicilios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDomicilios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmEstado, Me.clmCiudad, Me.clmPoblacion, Me.clmColonia, Me.clmBtnEliminar})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDomicilios.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDomicilios.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvDomicilios.Location = New System.Drawing.Point(9, 200)
         Me.dgvDomicilios.MultiSelect = False
         Me.dgvDomicilios.Name = "dgvDomicilios"
         Me.dgvDomicilios.ReadOnly = True
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDomicilios.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDomicilios.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvDomicilios.RowHeadersVisible = False
         Me.dgvDomicilios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDomicilios.Size = New System.Drawing.Size(549, 126)
+        Me.dgvDomicilios.Size = New System.Drawing.Size(683, 126)
         Me.dgvDomicilios.TabIndex = 14
         '
         'clmEstado
         '
         Me.clmEstado.DataPropertyName = "Estado"
+        Me.clmEstado.FillWeight = 23.0!
         Me.clmEstado.HeaderText = "Estado"
         Me.clmEstado.Name = "clmEstado"
         Me.clmEstado.ReadOnly = True
-        Me.clmEstado.Width = 120
         '
         'clmCiudad
         '
         Me.clmCiudad.DataPropertyName = "Ciudad"
+        Me.clmCiudad.FillWeight = 23.0!
         Me.clmCiudad.HeaderText = "Ciudad"
         Me.clmCiudad.Name = "clmCiudad"
         Me.clmCiudad.ReadOnly = True
-        Me.clmCiudad.Width = 120
         '
         'clmPoblacion
         '
         Me.clmPoblacion.DataPropertyName = "Poblacion"
+        Me.clmPoblacion.FillWeight = 23.0!
         Me.clmPoblacion.HeaderText = "Poblacion"
         Me.clmPoblacion.Name = "clmPoblacion"
         Me.clmPoblacion.ReadOnly = True
-        Me.clmPoblacion.Width = 120
         '
         'clmColonia
         '
         Me.clmColonia.DataPropertyName = "Colonia"
+        Me.clmColonia.FillWeight = 23.0!
         Me.clmColonia.HeaderText = "Colonia"
         Me.clmColonia.Name = "clmColonia"
         Me.clmColonia.ReadOnly = True
-        Me.clmColonia.Width = 120
         '
         'clmBtnEliminar
         '
+        Me.clmBtnEliminar.FillWeight = 8.0!
         Me.clmBtnEliminar.HeaderText = ""
         Me.clmBtnEliminar.Name = "clmBtnEliminar"
         Me.clmBtnEliminar.ReadOnly = True
         Me.clmBtnEliminar.Text = "Eliminar"
         Me.clmBtnEliminar.UseColumnTextForButtonValue = True
-        Me.clmBtnEliminar.Width = 50
         '
         'btnCrearDomicilio
         '
@@ -1062,7 +1098,7 @@ Partial Class FrmABCClientes
         Me.lblEstatus.BackColor = System.Drawing.Color.Navy
         Me.lblEstatus.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblEstatus.ForeColor = System.Drawing.Color.White
-        Me.lblEstatus.Location = New System.Drawing.Point(578, 22)
+        Me.lblEstatus.Location = New System.Drawing.Point(619, 32)
         Me.lblEstatus.Name = "lblEstatus"
         Me.lblEstatus.Size = New System.Drawing.Size(99, 21)
         Me.lblEstatus.TabIndex = 60
@@ -1121,21 +1157,28 @@ Partial Class FrmABCClientes
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Codigo:"
         '
-        'GroupBox2
+        'Label37
         '
-        Me.GroupBox2.Controls.Add(Me.rdtcanaldis2)
-        Me.GroupBox2.Controls.Add(Me.rdtcanaldis)
-        Me.GroupBox2.Location = New System.Drawing.Point(112, 286)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(196, 37)
-        Me.GroupBox2.TabIndex = 45
-        Me.GroupBox2.TabStop = False
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(6, 338)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(82, 13)
+        Me.Label37.TabIndex = 48
+        Me.Label37.Text = "Forma de Pago:"
+        '
+        'cmbFormaPago
+        '
+        Me.cmbFormaPago.FormattingEnabled = True
+        Me.cmbFormaPago.Location = New System.Drawing.Point(118, 333)
+        Me.cmbFormaPago.Name = "cmbFormaPago"
+        Me.cmbFormaPago.Size = New System.Drawing.Size(402, 21)
+        Me.cmbFormaPago.TabIndex = 49
         '
         'FrmABCClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(745, 509)
+        Me.ClientSize = New System.Drawing.Size(791, 531)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.mtb)
@@ -1148,14 +1191,14 @@ Partial Class FrmABCClientes
         Me.TabControl1.ResumeLayout(False)
         Me.TbpDatosGen.ResumeLayout(False)
         Me.TbpDatosGen.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TbpDatosCred.ResumeLayout(False)
         Me.TbpDatosCred.PerformLayout()
         Me.TbpDatosFiscales.ResumeLayout(False)
         Me.TbpDatosFiscales.PerformLayout()
         CType(Me.dgvDomicilios, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1238,11 +1281,6 @@ Partial Class FrmABCClientes
     Friend WithEvents dgvDomicilios As System.Windows.Forms.DataGridView
     Friend WithEvents btnEditarDomicilio As System.Windows.Forms.Button
     Friend WithEvents chkPrincipal As System.Windows.Forms.CheckBox
-    Friend WithEvents clmEstado As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmCiudad As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmPoblacion As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmColonia As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmBtnEliminar As System.Windows.Forms.DataGridViewButtonColumn
     Friend WithEvents cmbtipocliente As System.Windows.Forms.ComboBox
     Friend WithEvents Label31 As System.Windows.Forms.Label
     Friend WithEvents txtNoIntFisc As System.Windows.Forms.TextBox
@@ -1256,4 +1294,13 @@ Partial Class FrmABCClientes
     Friend WithEvents rdtcanaldis As System.Windows.Forms.RadioButton
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents cmbUsoCFDI As System.Windows.Forms.ComboBox
+    Friend WithEvents Label36 As System.Windows.Forms.Label
+    Friend WithEvents clmEstado As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmCiudad As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmPoblacion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmColonia As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmBtnEliminar As System.Windows.Forms.DataGridViewButtonColumn
+    Friend WithEvents cmbFormaPago As System.Windows.Forms.ComboBox
+    Friend WithEvents Label37 As System.Windows.Forms.Label
 End Class

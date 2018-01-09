@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:37
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:23
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -2598,7 +2598,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits MfacCatClientesEntity's mappings</summary>
         Private Sub InitMfacCatClientesEntityMappings()
-            MyBase.AddElementMapping("MfacCatClientesEntity", "", "dbo", "MFacCatClientes", 31)
+            MyBase.AddElementMapping("MfacCatClientesEntity", "", "dbo", "MFacCatClientes", 33)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "IdCliente", "IdCliente", False, CInt(SqlDbType.Int), 0, 0, 10, True, "SCOPE_IDENTITY()", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Nombre", "Nombre", False, CInt(SqlDbType.VarChar), 120, 0, 0, False, "", Nothing, GetType(System.String), 1)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "RazonSocial", "RazonSocial", False, CInt(SqlDbType.VarChar), 160, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -2630,6 +2630,8 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Logo", "Logo", True, CInt(SqlDbType.Image), 2147483647, 0, 0, False, "", Nothing, GetType(System.Byte()), 28)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Idtipocliente", "idtipocliente", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 29)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Canaldistribucion", "Canaldistribucion", True, CInt(SqlDbType.NChar), 20, 0, 0, False, "", Nothing, GetType(System.String), 30)
+            MyBase.AddElementFieldMapping("MfacCatClientesEntity", "UsoCfdi", "UsoCFDI", False, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 31)
+            MyBase.AddElementFieldMapping("MfacCatClientesEntity", "FormaPago", "FormaPago", False, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 32)
         End Sub
         ''' <summary>Inits MfacClientesDatosFiscalesEntity's mappings</summary>
         Private Sub InitMfacClientesDatosFiscalesEntityMappings()
@@ -4188,7 +4190,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits RecepcionGanadoEntity's mappings</summary>
         Private Sub InitRecepcionGanadoEntityMappings()
-            MyBase.AddElementMapping("RecepcionGanadoEntity", "", "dbo", "usrProdRecepcionGanado", 27)
+            MyBase.AddElementMapping("RecepcionGanadoEntity", "", "dbo", "usrProdRecepcionGanado", 37)
             MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "LoteRecepcion", "LoteRecepcion", False, CInt(SqlDbType.Char), 10, 0, 0, False, "", Nothing, GetType(System.String), 0)
             MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "IdCliente", "IdCliente", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 1)
             MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "FechaRecepcion", "FechaRecepcion", False, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 2)
@@ -4216,6 +4218,16 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "FechaCaptura", "FechaCaptura", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 24)
             MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "FechaSalida", "FechaSalida", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 25)
             MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "Maquila", "Maquila", True, CInt(SqlDbType.Bit), 0, 0, 0, False, "", Nothing, GetType(System.Boolean), 26)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "CveLugCom", "Cve_LugCom", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 27)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "CveComiGan", "Cve_ComiGan", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 28)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "HorasViaje", "HorasViaje", False, CInt(SqlDbType.SmallMoney), 0, 4, 10, False, "", Nothing, GetType(System.Decimal), 29)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "KilosComp", "KilosComp", False, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 30)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "ImpteComp", "ImpteComp", False, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 31)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "DiasCredito", "DiasCredito", False, CInt(SqlDbType.TinyInt), 0, 0, 3, False, "", Nothing, GetType(System.Byte), 32)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "FecPago", "Fec_Pago", False, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 33)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "NumFactura", "Num_Factura", False, CInt(SqlDbType.Char), 20, 0, 0, False, "", Nothing, GetType(System.String), 34)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "FecConta", "Fec_Conta", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 35)
+            MyBase.AddElementFieldMapping("RecepcionGanadoEntity", "NumPoliza", "NumPoliza", True, CInt(SqlDbType.Char), 20, 0, 0, False, "", Nothing, GetType(System.String), 36)
         End Sub
         ''' <summary>Inits RecepcionOrdenCompraEntity's mappings</summary>
         Private Sub InitRecepcionOrdenCompraEntityMappings()

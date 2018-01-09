@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:23
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:17
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -2790,6 +2790,8 @@ Namespace Integralab.ORM
 		[Logo]
 		[Idtipocliente]
 		[Canaldistribucion]
+		[UsoCfdi]
+		[FormaPago]
 		AmountOfFields
 	End Enum
 
@@ -4752,6 +4754,16 @@ Namespace Integralab.ORM
 		[FechaCaptura]
 		[FechaSalida]
 		[Maquila]
+		[CveLugCom]
+		[CveComiGan]
+		[HorasViaje]
+		[KilosComp]
+		[ImpteComp]
+		[DiasCredito]
+		[FecPago]
+		[NumFactura]
+		[FecConta]
+		[NumPoliza]
 		AmountOfFields
 	End Enum
 

@@ -38,7 +38,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\MEAT\1.0.40.40\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\MEAT\1.0.41.41\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -53,8 +53,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>40</ApplicationRevision>
-    <ApplicationVersion>1.0.40.40</ApplicationVersion>
+    <ApplicationRevision>41</ApplicationRevision>
+    <ApplicationVersion>1.0.41.41</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -196,6 +196,10 @@
     <Reference Include="IntegraLab.Controles, Version=1.0.5276.20727, Culture=neutral, PublicKeyToken=3ed004e78cc9e3fc, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\IntegraLab.Controles.dll</HintPath>
+    </Reference>
+    <Reference Include="Integralab.ORM, Version=1.0.6576.19552, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Integralab.ORM.dll</HintPath>
     </Reference>
     <Reference Include="Integralab.ORMSeguridad, Version=1.0.5901.20144, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -5891,16 +5895,6 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="Integralab.ORM">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Integralab.ORMSeguridad">
       <Visible>False</Visible>
       <Group>
@@ -6092,10 +6086,6 @@
       <Name>ClasesNegocio</Name>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Integralab.ORM\Integralab.ORM.vbproj">
-      <Project>{DD9B650E-E2CA-4405-B598-C26B0770F6F4}</Project>
-      <Name>Integralab.ORM</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -6110,7 +6100,7 @@
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>taskkill /IM vshost32-clr2.exe /F 2&gt;nul 1&gt;nul
-Exit 0</PreBuildEvent>
+    <PreBuildEvent>if exist "$(TargetPath).locked" del "$(TargetPath).locked"
+if exist "$(TargetPath)" if not exist "$(TargetPath).locked" move "$(TargetPath)" "$(TargetPath).locked"</PreBuildEvent>
   </PropertyGroup>
 </Project>

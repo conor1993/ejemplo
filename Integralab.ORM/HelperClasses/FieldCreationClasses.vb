@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: martes, 26 de diciembre de 2017 16:41:38
+' Code is generated on: viernes, 5 de enero de 2018 17:48:23
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -10336,6 +10336,18 @@ Namespace Integralab.ORM.HelperClasses
 				Return CType(EntityFieldFactory.Create(MfacCatClientesFieldIndex.Canaldistribucion), EntityField)
 			End Get
 		End Property
+		''' <summary>Creates a new MfacCatClientesEntity.UsoCfdi field instance</summary>
+		Public Shared ReadOnly Property [UsoCfdi] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MfacCatClientesFieldIndex.UsoCfdi), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MfacCatClientesEntity.FormaPago field instance</summary>
+		Public Shared ReadOnly Property [FormaPago] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MfacCatClientesFieldIndex.FormaPago), EntityField)
+			End Get
+		End Property
 	End Class
 	''' <summary>Field Creation Class for entity MfacClientesDatosFiscalesEntity</summary>
 	Public Class MfacClientesDatosFiscalesFields
@@ -17970,6 +17982,66 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [Maquila] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.Maquila), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.CveLugCom field instance</summary>
+		Public Shared ReadOnly Property [CveLugCom] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.CveLugCom), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.CveComiGan field instance</summary>
+		Public Shared ReadOnly Property [CveComiGan] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.CveComiGan), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.HorasViaje field instance</summary>
+		Public Shared ReadOnly Property [HorasViaje] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.HorasViaje), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.KilosComp field instance</summary>
+		Public Shared ReadOnly Property [KilosComp] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.KilosComp), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.ImpteComp field instance</summary>
+		Public Shared ReadOnly Property [ImpteComp] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.ImpteComp), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.DiasCredito field instance</summary>
+		Public Shared ReadOnly Property [DiasCredito] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.DiasCredito), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.FecPago field instance</summary>
+		Public Shared ReadOnly Property [FecPago] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.FecPago), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.NumFactura field instance</summary>
+		Public Shared ReadOnly Property [NumFactura] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.NumFactura), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.FecConta field instance</summary>
+		Public Shared ReadOnly Property [FecConta] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.FecConta), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new RecepcionGanadoEntity.NumPoliza field instance</summary>
+		Public Shared ReadOnly Property [NumPoliza] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(RecepcionGanadoFieldIndex.NumPoliza), EntityField)
 			End Get
 		End Property
 	End Class

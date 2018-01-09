@@ -22,134 +22,134 @@ Partial Class FrmComprasGanado
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.txtHorasViaje = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.chkImpuestoPredial = New System.Windows.Forms.CheckBox
-        Me.chkImpuestoEducacion = New System.Windows.Forms.CheckBox
-        Me.rbtKilo = New System.Windows.Forms.RadioButton
-        Me.rbtCabeza = New System.Windows.Forms.RadioButton
-        Me.txtImporteEducacion = New System.Windows.Forms.TextBox
-        Me.txtComision = New System.Windows.Forms.TextBox
-        Me.txtImportePredial = New System.Windows.Forms.TextBox
-        Me.Label29 = New System.Windows.Forms.Label
-        Me.Label30 = New System.Windows.Forms.Label
-        Me.txtGastosTransporte = New System.Windows.Forms.TextBox
-        Me.txtGuiaTransito = New System.Windows.Forms.TextBox
-        Me.Label25 = New System.Windows.Forms.Label
-        Me.txtImporteTotal = New System.Windows.Forms.TextBox
-        Me.txtAdquisicion = New System.Windows.Forms.TextBox
-        Me.Label28 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.txtImporteGuia = New System.Windows.Forms.TextBox
-        Me.txtNoGuia = New System.Windows.Forms.TextBox
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox
-        Me.txtPorcentajeMerma = New System.Windows.Forms.TextBox
-        Me.txtKilosMerma = New System.Windows.Forms.TextBox
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.txtKilosRecibidos = New System.Windows.Forms.TextBox
-        Me.TabControl1 = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
-        Me.Label31 = New System.Windows.Forms.Label
-        Me.dgvTiposdeGanado = New System.Windows.Forms.DataGridView
-        Me.TipoGanadoC = New ClasesNegocio.TipoGanadoColecttionClass
-        Me.ComprasGanadoDetalleC = New ClasesNegocio.ComprasGanadoDetalleCollectionClass
-        Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.Label32 = New System.Windows.Forms.Label
-        Me.DgvConceptoGastos = New System.Windows.Forms.DataGridView
-        Me.ConceptoGastoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewComboBoxColumn
-        Me.ConceptoGastoC = New ClasesNegocio.ConceptoGastosTransporteColeccionClass
-        Me.PorcentajeIvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ImporteGastoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DetGasTransC = New ClasesNegocio.GastoTransporteDetalleCollectionClass
-        Me.Label24 = New System.Windows.Forms.Label
-        Me.txtSubTotal = New System.Windows.Forms.TextBox
-        Me.Label23 = New System.Windows.Forms.Label
-        Me.txtIVA = New System.Windows.Forms.TextBox
-        Me.Label22 = New System.Windows.Forms.Label
-        Me.txtTotal = New System.Windows.Forms.TextBox
-        Me.TxtFolio = New System.Windows.Forms.TextBox
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.CmbCamion = New System.Windows.Forms.ComboBox
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.cmbChofer = New System.Windows.Forms.ComboBox
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.TabPage3 = New System.Windows.Forms.TabPage
-        Me.dtpFechaPago = New System.Windows.Forms.DateTimePicker
-        Me.txtNoCuenta = New System.Windows.Forms.TextBox
-        Me.Label34 = New System.Windows.Forms.Label
-        Me.Label35 = New System.Windows.Forms.Label
-        Me.Label36 = New System.Windows.Forms.Label
-        Me.txtSucursal = New System.Windows.Forms.TextBox
-        Me.txtBanco = New System.Windows.Forms.TextBox
-        Me.txtNoFactura = New System.Windows.Forms.TextBox
-        Me.Label33 = New System.Windows.Forms.Label
-        Me.Label27 = New System.Windows.Forms.Label
-        Me.Label26 = New System.Windows.Forms.Label
-        Me.txtDiasDeCredito = New System.Windows.Forms.TextBox
-        Me.txtCantCabezas = New System.Windows.Forms.TextBox
-        Me.CmbLugarCompra = New System.Windows.Forms.ComboBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.cmbComprador = New System.Windows.Forms.ComboBox
-        Me.CompradoresGanadoC = New ClasesNegocio.CompradorGanadoCollectionClass
-        Me.cmbCorral = New System.Windows.Forms.ComboBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.txtKilosComprados = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.txtObservaciones = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.cmbProveedor = New System.Windows.Forms.ComboBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.dtpFecha = New System.Windows.Forms.DateTimePicker
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.txtFolioCompra = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.DataGridViewComboBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn
-        Me.IdTipoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewComboBoxColumn
-        Me.CantKilosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.KilosRecibidosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PrecioXKiloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CantCabezasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.KilosPromXCabezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CostoPromXCabezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.MovimeintoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaMovimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.EntidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SeleccionadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.ContenedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.EncabezadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FolioDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CompraGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IdRenglonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.TipoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtHorasViaje = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.chkImpuestoPredial = New System.Windows.Forms.CheckBox()
+        Me.chkImpuestoEducacion = New System.Windows.Forms.CheckBox()
+        Me.rbtKilo = New System.Windows.Forms.RadioButton()
+        Me.rbtCabeza = New System.Windows.Forms.RadioButton()
+        Me.txtImporteEducacion = New System.Windows.Forms.TextBox()
+        Me.txtComision = New System.Windows.Forms.TextBox()
+        Me.txtImportePredial = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.txtGastosTransporte = New System.Windows.Forms.TextBox()
+        Me.txtGuiaTransito = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.txtImporteTotal = New System.Windows.Forms.TextBox()
+        Me.txtAdquisicion = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.txtImporteGuia = New System.Windows.Forms.TextBox()
+        Me.txtNoGuia = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.txtPorcentajeMerma = New System.Windows.Forms.TextBox()
+        Me.txtKilosMerma = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txtKilosRecibidos = New System.Windows.Forms.TextBox()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.dgvTiposdeGanado = New System.Windows.Forms.DataGridView()
+        Me.IdTipoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.TipoGanadoC = New ClasesNegocio.TipoGanadoColecttionClass()
+        Me.CantKilosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.KilosRecibidosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioXKiloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantCabezasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.KilosPromXCabezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoPromXCabezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MovimeintoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaMovimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EntidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SeleccionadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ContenedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IndiceEnContenedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EncabezadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FolioDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompraGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdRenglonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoGanadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComprasGanadoDetalleC = New ClasesNegocio.ComprasGanadoDetalleCollectionClass()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.DgvConceptoGastos = New System.Windows.Forms.DataGridView()
+        Me.ConceptoGastoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.ConceptoGastoC = New ClasesNegocio.ConceptoGastosTransporteColeccionClass()
+        Me.PorcentajeIvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteGastoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DetGasTransC = New ClasesNegocio.GastoTransporteDetalleCollectionClass()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.txtSubTotal = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.txtIVA = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.TxtFolio = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.CmbCamion = New System.Windows.Forms.ComboBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.cmbChofer = New System.Windows.Forms.ComboBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.dtpFechaPago = New System.Windows.Forms.DateTimePicker()
+        Me.txtNoCuenta = New System.Windows.Forms.TextBox()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.txtSucursal = New System.Windows.Forms.TextBox()
+        Me.txtBanco = New System.Windows.Forms.TextBox()
+        Me.txtNoFactura = New System.Windows.Forms.TextBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.txtDiasDeCredito = New System.Windows.Forms.TextBox()
+        Me.txtCantCabezas = New System.Windows.Forms.TextBox()
+        Me.CmbLugarCompra = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.cmbComprador = New System.Windows.Forms.ComboBox()
+        Me.CompradoresGanadoC = New ClasesNegocio.CompradorGanadoCollectionClass()
+        Me.cmbCorral = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtKilosComprados = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtObservaciones = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cmbProveedor = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.dtpFecha = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtFolioCompra = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.DataGridViewComboBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -600,15 +600,15 @@ Partial Class FrmComprasGanado
         Me.Label31.Size = New System.Drawing.Size(447, 13)
         Me.Label31.TabIndex = 69
         Me.Label31.Text = "De click en el listado de animales y precione F12 para actualizar el listado de t" & _
-            "ipos de ganado"
+    "ipos de ganado"
         '
         'dgvTiposdeGanado
         '
         Me.dgvTiposdeGanado.AllowUserToDeleteRows = False
         Me.dgvTiposdeGanado.AllowUserToResizeRows = False
         Me.dgvTiposdeGanado.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvTiposdeGanado.AutoGenerateColumns = False
         Me.dgvTiposdeGanado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvTiposdeGanado.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdTipoGanadoDataGridViewTextBoxColumn, Me.CantKilosDataGridViewTextBoxColumn, Me.KilosRecibidosDataGridViewTextBoxColumn, Me.PrecioXKiloDataGridViewTextBoxColumn, Me.CantCabezasDataGridViewTextBoxColumn, Me.KilosPromXCabezaDataGridViewTextBoxColumn, Me.CostoPromXCabezaDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.MovimeintoGanadoDataGridViewTextBoxColumn, Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn, Me.FechaMovimientoDataGridViewTextBoxColumn, Me.EntidadDataGridViewTextBoxColumn, Me.SeleccionadoDataGridViewCheckBoxColumn, Me.ContenedorDataGridViewTextBoxColumn, Me.IndiceEnContenedorDataGridViewTextBoxColumn, Me.EncabezadoDataGridViewTextBoxColumn, Me.FolioDataGridViewTextBoxColumn1, Me.CompraGanadoDataGridViewTextBoxColumn, Me.IdRenglonDataGridViewTextBoxColumn, Me.DescripcionTipoGanadoDataGridViewTextBoxColumn, Me.TipoGanadoDataGridViewTextBoxColumn})
@@ -629,6 +629,19 @@ Partial Class FrmComprasGanado
         Me.dgvTiposdeGanado.TabIndex = 0
         Me.dgvTiposdeGanado.VirtualMode = True
         '
+        'IdTipoGanadoDataGridViewTextBoxColumn
+        '
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.DataPropertyName = "IdTipoGanado"
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.DataSource = Me.TipoGanadoC
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.DisplayMember = "Descripcion"
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.HeaderText = "Tipo Ganado"
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.Name = "IdTipoGanadoDataGridViewTextBoxColumn"
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.ValueMember = "IdTipoGanado"
+        Me.IdTipoGanadoDataGridViewTextBoxColumn.Width = 87
+        '
         'TipoGanadoC
         '
         Me.TipoGanadoC.AllowEdit = True
@@ -640,6 +653,193 @@ Partial Class FrmComprasGanado
         Me.TipoGanadoC.Name = ""
         Me.TipoGanadoC.RaiseListChangedEvents = True
         Me.TipoGanadoC.Transaction = Nothing
+        '
+        'CantKilosDataGridViewTextBoxColumn
+        '
+        Me.CantKilosDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CantKilosDataGridViewTextBoxColumn.DataPropertyName = "CantKilos"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N3"
+        DataGridViewCellStyle1.NullValue = "0.0"
+        Me.CantKilosDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        Me.CantKilosDataGridViewTextBoxColumn.HeaderText = "Kilos Comprados"
+        Me.CantKilosDataGridViewTextBoxColumn.Name = "CantKilosDataGridViewTextBoxColumn"
+        Me.CantKilosDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CantKilosDataGridViewTextBoxColumn.Width = 101
+        '
+        'KilosRecibidosDataGridViewTextBoxColumn
+        '
+        Me.KilosRecibidosDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.KilosRecibidosDataGridViewTextBoxColumn.DataPropertyName = "KilosRecibidos"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N3"
+        DataGridViewCellStyle2.NullValue = "0.0"
+        Me.KilosRecibidosDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.KilosRecibidosDataGridViewTextBoxColumn.HeaderText = "Kilos Recibidos"
+        Me.KilosRecibidosDataGridViewTextBoxColumn.Name = "KilosRecibidosDataGridViewTextBoxColumn"
+        Me.KilosRecibidosDataGridViewTextBoxColumn.Visible = False
+        '
+        'PrecioXKiloDataGridViewTextBoxColumn
+        '
+        Me.PrecioXKiloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.PrecioXKiloDataGridViewTextBoxColumn.DataPropertyName = "PrecioXKilo"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = "0.0"
+        Me.PrecioXKiloDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        Me.PrecioXKiloDataGridViewTextBoxColumn.HeaderText = "Costo X Kilo"
+        Me.PrecioXKiloDataGridViewTextBoxColumn.Name = "PrecioXKiloDataGridViewTextBoxColumn"
+        Me.PrecioXKiloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PrecioXKiloDataGridViewTextBoxColumn.Width = 67
+        '
+        'CantCabezasDataGridViewTextBoxColumn
+        '
+        Me.CantCabezasDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CantCabezasDataGridViewTextBoxColumn.DataPropertyName = "CantCabezas"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = "0"
+        Me.CantCabezasDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        Me.CantCabezasDataGridViewTextBoxColumn.HeaderText = "Cabezas"
+        Me.CantCabezasDataGridViewTextBoxColumn.Name = "CantCabezasDataGridViewTextBoxColumn"
+        Me.CantCabezasDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CantCabezasDataGridViewTextBoxColumn.Width = 73
+        '
+        'KilosPromXCabezaDataGridViewTextBoxColumn
+        '
+        Me.KilosPromXCabezaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.KilosPromXCabezaDataGridViewTextBoxColumn.DataPropertyName = "KilosPromXCabeza"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N3"
+        DataGridViewCellStyle5.NullValue = "0.0"
+        Me.KilosPromXCabezaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        Me.KilosPromXCabezaDataGridViewTextBoxColumn.HeaderText = "Kilos Promedio X Cabeza"
+        Me.KilosPromXCabezaDataGridViewTextBoxColumn.Name = "KilosPromXCabezaDataGridViewTextBoxColumn"
+        Me.KilosPromXCabezaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.KilosPromXCabezaDataGridViewTextBoxColumn.Width = 105
+        '
+        'CostoPromXCabezaDataGridViewTextBoxColumn
+        '
+        Me.CostoPromXCabezaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CostoPromXCabezaDataGridViewTextBoxColumn.DataPropertyName = "CostoPromXCabeza"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = "0.0"
+        Me.CostoPromXCabezaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
+        Me.CostoPromXCabezaDataGridViewTextBoxColumn.HeaderText = "Costo Promedio X Cabeza"
+        Me.CostoPromXCabezaDataGridViewTextBoxColumn.Name = "CostoPromXCabezaDataGridViewTextBoxColumn"
+        Me.CostoPromXCabezaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CostoPromXCabezaDataGridViewTextBoxColumn.Width = 109
+        '
+        'ImporteDataGridViewTextBoxColumn
+        '
+        Me.ImporteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "C2"
+        DataGridViewCellStyle7.NullValue = "0.0"
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
+        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
+        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
+        Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ImporteDataGridViewTextBoxColumn.Width = 67
+        '
+        'MovimeintoGanadoDataGridViewTextBoxColumn
+        '
+        Me.MovimeintoGanadoDataGridViewTextBoxColumn.DataPropertyName = "MovimeintoGanado"
+        Me.MovimeintoGanadoDataGridViewTextBoxColumn.HeaderText = "MovimeintoGanado"
+        Me.MovimeintoGanadoDataGridViewTextBoxColumn.Name = "MovimeintoGanadoDataGridViewTextBoxColumn"
+        Me.MovimeintoGanadoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MovimeintoGanadoDataGridViewTextBoxColumn.Visible = False
+        '
+        'FolioMovimeintoGanadoDataGridViewTextBoxColumn
+        '
+        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.DataPropertyName = "FolioMovimeintoGanado"
+        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.HeaderText = "FolioMovimeintoGanado"
+        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.Name = "FolioMovimeintoGanadoDataGridViewTextBoxColumn"
+        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.Visible = False
+        '
+        'FechaMovimientoDataGridViewTextBoxColumn
+        '
+        Me.FechaMovimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaMovimiento"
+        Me.FechaMovimientoDataGridViewTextBoxColumn.HeaderText = "FechaMovimiento"
+        Me.FechaMovimientoDataGridViewTextBoxColumn.Name = "FechaMovimientoDataGridViewTextBoxColumn"
+        Me.FechaMovimientoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaMovimientoDataGridViewTextBoxColumn.Visible = False
+        '
+        'EntidadDataGridViewTextBoxColumn
+        '
+        Me.EntidadDataGridViewTextBoxColumn.DataPropertyName = "Entidad"
+        Me.EntidadDataGridViewTextBoxColumn.HeaderText = "Entidad"
+        Me.EntidadDataGridViewTextBoxColumn.Name = "EntidadDataGridViewTextBoxColumn"
+        Me.EntidadDataGridViewTextBoxColumn.Visible = False
+        '
+        'SeleccionadoDataGridViewCheckBoxColumn
+        '
+        Me.SeleccionadoDataGridViewCheckBoxColumn.DataPropertyName = "Seleccionado"
+        Me.SeleccionadoDataGridViewCheckBoxColumn.HeaderText = "Seleccionado"
+        Me.SeleccionadoDataGridViewCheckBoxColumn.Name = "SeleccionadoDataGridViewCheckBoxColumn"
+        Me.SeleccionadoDataGridViewCheckBoxColumn.Visible = False
+        '
+        'ContenedorDataGridViewTextBoxColumn
+        '
+        Me.ContenedorDataGridViewTextBoxColumn.DataPropertyName = "Contenedor"
+        Me.ContenedorDataGridViewTextBoxColumn.HeaderText = "Contenedor"
+        Me.ContenedorDataGridViewTextBoxColumn.Name = "ContenedorDataGridViewTextBoxColumn"
+        Me.ContenedorDataGridViewTextBoxColumn.Visible = False
+        '
+        'IndiceEnContenedorDataGridViewTextBoxColumn
+        '
+        Me.IndiceEnContenedorDataGridViewTextBoxColumn.DataPropertyName = "IndiceEnContenedor"
+        Me.IndiceEnContenedorDataGridViewTextBoxColumn.HeaderText = "IndiceEnContenedor"
+        Me.IndiceEnContenedorDataGridViewTextBoxColumn.Name = "IndiceEnContenedorDataGridViewTextBoxColumn"
+        Me.IndiceEnContenedorDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IndiceEnContenedorDataGridViewTextBoxColumn.Visible = False
+        '
+        'EncabezadoDataGridViewTextBoxColumn
+        '
+        Me.EncabezadoDataGridViewTextBoxColumn.DataPropertyName = "Encabezado"
+        Me.EncabezadoDataGridViewTextBoxColumn.HeaderText = "Encabezado"
+        Me.EncabezadoDataGridViewTextBoxColumn.Name = "EncabezadoDataGridViewTextBoxColumn"
+        Me.EncabezadoDataGridViewTextBoxColumn.Visible = False
+        '
+        'FolioDataGridViewTextBoxColumn1
+        '
+        Me.FolioDataGridViewTextBoxColumn1.DataPropertyName = "Folio"
+        Me.FolioDataGridViewTextBoxColumn1.HeaderText = "Folio"
+        Me.FolioDataGridViewTextBoxColumn1.Name = "FolioDataGridViewTextBoxColumn1"
+        Me.FolioDataGridViewTextBoxColumn1.Visible = False
+        '
+        'CompraGanadoDataGridViewTextBoxColumn
+        '
+        Me.CompraGanadoDataGridViewTextBoxColumn.DataPropertyName = "CompraGanado"
+        Me.CompraGanadoDataGridViewTextBoxColumn.HeaderText = "CompraGanado"
+        Me.CompraGanadoDataGridViewTextBoxColumn.Name = "CompraGanadoDataGridViewTextBoxColumn"
+        Me.CompraGanadoDataGridViewTextBoxColumn.Visible = False
+        '
+        'IdRenglonDataGridViewTextBoxColumn
+        '
+        Me.IdRenglonDataGridViewTextBoxColumn.DataPropertyName = "IdRenglon"
+        Me.IdRenglonDataGridViewTextBoxColumn.HeaderText = "IdRenglon"
+        Me.IdRenglonDataGridViewTextBoxColumn.Name = "IdRenglonDataGridViewTextBoxColumn"
+        Me.IdRenglonDataGridViewTextBoxColumn.Visible = False
+        '
+        'DescripcionTipoGanadoDataGridViewTextBoxColumn
+        '
+        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.DataPropertyName = "DescripcionTipoGanado"
+        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.HeaderText = "DescripcionTipoGanado"
+        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.Name = "DescripcionTipoGanadoDataGridViewTextBoxColumn"
+        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.Visible = False
+        '
+        'TipoGanadoDataGridViewTextBoxColumn
+        '
+        Me.TipoGanadoDataGridViewTextBoxColumn.DataPropertyName = "TipoGanado"
+        Me.TipoGanadoDataGridViewTextBoxColumn.HeaderText = "TipoGanado"
+        Me.TipoGanadoDataGridViewTextBoxColumn.Name = "TipoGanadoDataGridViewTextBoxColumn"
+        Me.TipoGanadoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TipoGanadoDataGridViewTextBoxColumn.Visible = False
         '
         'ComprasGanadoDetalleC
         '
@@ -695,15 +895,15 @@ Partial Class FrmComprasGanado
         Me.Label32.Size = New System.Drawing.Size(525, 13)
         Me.Label32.TabIndex = 70
         Me.Label32.Text = "De click en el listado de gastos de transporte y precione F12 para actualizar el " & _
-            "listado de conceptos de gastos"
+    "listado de conceptos de gastos"
         '
         'DgvConceptoGastos
         '
         Me.DgvConceptoGastos.AllowUserToDeleteRows = False
         Me.DgvConceptoGastos.AllowUserToResizeRows = False
         Me.DgvConceptoGastos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvConceptoGastos.AutoGenerateColumns = False
         Me.DgvConceptoGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvConceptoGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ConceptoGastoDataGridViewTextBoxColumn, Me.PorcentajeIvaDataGridViewTextBoxColumn, Me.ImporteGastoDataGridViewTextBoxColumn})
@@ -749,7 +949,7 @@ Partial Class FrmComprasGanado
         Me.PorcentajeIvaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
         Me.PorcentajeIvaDataGridViewTextBoxColumn.HeaderText = "Iva %"
         Me.PorcentajeIvaDataGridViewTextBoxColumn.Name = "PorcentajeIvaDataGridViewTextBoxColumn"
-        Me.PorcentajeIvaDataGridViewTextBoxColumn.Width = 56
+        Me.PorcentajeIvaDataGridViewTextBoxColumn.Width = 58
         '
         'ImporteGastoDataGridViewTextBoxColumn
         '
@@ -761,7 +961,7 @@ Partial Class FrmComprasGanado
         Me.ImporteGastoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle10
         Me.ImporteGastoDataGridViewTextBoxColumn.HeaderText = "Importe Gasto"
         Me.ImporteGastoDataGridViewTextBoxColumn.Name = "ImporteGastoDataGridViewTextBoxColumn"
-        Me.ImporteGastoDataGridViewTextBoxColumn.Width = 96
+        Me.ImporteGastoDataGridViewTextBoxColumn.Width = 98
         '
         'DetGasTransC
         '
@@ -1215,207 +1415,6 @@ Partial Class FrmComprasGanado
         Me.DataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewComboBoxColumn1.Width = 200
-        '
-        'IdTipoGanadoDataGridViewTextBoxColumn
-        '
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.DataPropertyName = "IdTipoGanado"
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.DataSource = Me.TipoGanadoC
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.DisplayMember = "Descripcion"
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.HeaderText = "Tipo Ganado"
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.Name = "IdTipoGanadoDataGridViewTextBoxColumn"
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.ValueMember = "IdTipoGanado"
-        Me.IdTipoGanadoDataGridViewTextBoxColumn.Width = 92
-        '
-        'CantKilosDataGridViewTextBoxColumn
-        '
-        Me.CantKilosDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CantKilosDataGridViewTextBoxColumn.DataPropertyName = "CantKilos"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N3"
-        DataGridViewCellStyle1.NullValue = "0.0"
-        Me.CantKilosDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.CantKilosDataGridViewTextBoxColumn.HeaderText = "Kilos Comprados"
-        Me.CantKilosDataGridViewTextBoxColumn.Name = "CantKilosDataGridViewTextBoxColumn"
-        Me.CantKilosDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CantKilosDataGridViewTextBoxColumn.Width = 99
-        '
-        'KilosRecibidosDataGridViewTextBoxColumn
-        '
-        Me.KilosRecibidosDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.KilosRecibidosDataGridViewTextBoxColumn.DataPropertyName = "KilosRecibidos"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N3"
-        DataGridViewCellStyle2.NullValue = "0.0"
-        Me.KilosRecibidosDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.KilosRecibidosDataGridViewTextBoxColumn.HeaderText = "Kilos Recibidos"
-        Me.KilosRecibidosDataGridViewTextBoxColumn.Name = "KilosRecibidosDataGridViewTextBoxColumn"
-        Me.KilosRecibidosDataGridViewTextBoxColumn.Visible = False
-        Me.KilosRecibidosDataGridViewTextBoxColumn.Width = 94
-        '
-        'PrecioXKiloDataGridViewTextBoxColumn
-        '
-        Me.PrecioXKiloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.PrecioXKiloDataGridViewTextBoxColumn.DataPropertyName = "PrecioXKilo"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = "0.0"
-        Me.PrecioXKiloDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.PrecioXKiloDataGridViewTextBoxColumn.HeaderText = "Costo X Kilo"
-        Me.PrecioXKiloDataGridViewTextBoxColumn.Name = "PrecioXKiloDataGridViewTextBoxColumn"
-        Me.PrecioXKiloDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PrecioXKiloDataGridViewTextBoxColumn.Width = 65
-        '
-        'CantCabezasDataGridViewTextBoxColumn
-        '
-        Me.CantCabezasDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CantCabezasDataGridViewTextBoxColumn.DataPropertyName = "CantCabezas"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N0"
-        DataGridViewCellStyle4.NullValue = "0"
-        Me.CantCabezasDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
-        Me.CantCabezasDataGridViewTextBoxColumn.HeaderText = "Cabezas"
-        Me.CantCabezasDataGridViewTextBoxColumn.Name = "CantCabezasDataGridViewTextBoxColumn"
-        Me.CantCabezasDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CantCabezasDataGridViewTextBoxColumn.Width = 71
-        '
-        'KilosPromXCabezaDataGridViewTextBoxColumn
-        '
-        Me.KilosPromXCabezaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.KilosPromXCabezaDataGridViewTextBoxColumn.DataPropertyName = "KilosPromXCabeza"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N3"
-        DataGridViewCellStyle5.NullValue = "0.0"
-        Me.KilosPromXCabezaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
-        Me.KilosPromXCabezaDataGridViewTextBoxColumn.HeaderText = "Kilos Promedio X Cabeza"
-        Me.KilosPromXCabezaDataGridViewTextBoxColumn.Name = "KilosPromXCabezaDataGridViewTextBoxColumn"
-        Me.KilosPromXCabezaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.KilosPromXCabezaDataGridViewTextBoxColumn.Width = 103
-        '
-        'CostoPromXCabezaDataGridViewTextBoxColumn
-        '
-        Me.CostoPromXCabezaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CostoPromXCabezaDataGridViewTextBoxColumn.DataPropertyName = "CostoPromXCabeza"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "C2"
-        DataGridViewCellStyle6.NullValue = "0.0"
-        Me.CostoPromXCabezaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
-        Me.CostoPromXCabezaDataGridViewTextBoxColumn.HeaderText = "Costo Promedio X Cabeza"
-        Me.CostoPromXCabezaDataGridViewTextBoxColumn.Name = "CostoPromXCabezaDataGridViewTextBoxColumn"
-        Me.CostoPromXCabezaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CostoPromXCabezaDataGridViewTextBoxColumn.Width = 107
-        '
-        'ImporteDataGridViewTextBoxColumn
-        '
-        Me.ImporteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "C2"
-        DataGridViewCellStyle7.NullValue = "0.0"
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
-        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
-        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
-        Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ImporteDataGridViewTextBoxColumn.Width = 65
-        '
-        'MovimeintoGanadoDataGridViewTextBoxColumn
-        '
-        Me.MovimeintoGanadoDataGridViewTextBoxColumn.DataPropertyName = "MovimeintoGanado"
-        Me.MovimeintoGanadoDataGridViewTextBoxColumn.HeaderText = "MovimeintoGanado"
-        Me.MovimeintoGanadoDataGridViewTextBoxColumn.Name = "MovimeintoGanadoDataGridViewTextBoxColumn"
-        Me.MovimeintoGanadoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MovimeintoGanadoDataGridViewTextBoxColumn.Visible = False
-        '
-        'FolioMovimeintoGanadoDataGridViewTextBoxColumn
-        '
-        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.DataPropertyName = "FolioMovimeintoGanado"
-        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.HeaderText = "FolioMovimeintoGanado"
-        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.Name = "FolioMovimeintoGanadoDataGridViewTextBoxColumn"
-        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FolioMovimeintoGanadoDataGridViewTextBoxColumn.Visible = False
-        '
-        'FechaMovimientoDataGridViewTextBoxColumn
-        '
-        Me.FechaMovimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaMovimiento"
-        Me.FechaMovimientoDataGridViewTextBoxColumn.HeaderText = "FechaMovimiento"
-        Me.FechaMovimientoDataGridViewTextBoxColumn.Name = "FechaMovimientoDataGridViewTextBoxColumn"
-        Me.FechaMovimientoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaMovimientoDataGridViewTextBoxColumn.Visible = False
-        '
-        'EntidadDataGridViewTextBoxColumn
-        '
-        Me.EntidadDataGridViewTextBoxColumn.DataPropertyName = "Entidad"
-        Me.EntidadDataGridViewTextBoxColumn.HeaderText = "Entidad"
-        Me.EntidadDataGridViewTextBoxColumn.Name = "EntidadDataGridViewTextBoxColumn"
-        Me.EntidadDataGridViewTextBoxColumn.Visible = False
-        '
-        'SeleccionadoDataGridViewCheckBoxColumn
-        '
-        Me.SeleccionadoDataGridViewCheckBoxColumn.DataPropertyName = "Seleccionado"
-        Me.SeleccionadoDataGridViewCheckBoxColumn.HeaderText = "Seleccionado"
-        Me.SeleccionadoDataGridViewCheckBoxColumn.Name = "SeleccionadoDataGridViewCheckBoxColumn"
-        Me.SeleccionadoDataGridViewCheckBoxColumn.Visible = False
-        '
-        'ContenedorDataGridViewTextBoxColumn
-        '
-        Me.ContenedorDataGridViewTextBoxColumn.DataPropertyName = "Contenedor"
-        Me.ContenedorDataGridViewTextBoxColumn.HeaderText = "Contenedor"
-        Me.ContenedorDataGridViewTextBoxColumn.Name = "ContenedorDataGridViewTextBoxColumn"
-        Me.ContenedorDataGridViewTextBoxColumn.Visible = False
-        '
-        'IndiceEnContenedorDataGridViewTextBoxColumn
-        '
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.DataPropertyName = "IndiceEnContenedor"
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.HeaderText = "IndiceEnContenedor"
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.Name = "IndiceEnContenedorDataGridViewTextBoxColumn"
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.Visible = False
-        '
-        'EncabezadoDataGridViewTextBoxColumn
-        '
-        Me.EncabezadoDataGridViewTextBoxColumn.DataPropertyName = "Encabezado"
-        Me.EncabezadoDataGridViewTextBoxColumn.HeaderText = "Encabezado"
-        Me.EncabezadoDataGridViewTextBoxColumn.Name = "EncabezadoDataGridViewTextBoxColumn"
-        Me.EncabezadoDataGridViewTextBoxColumn.Visible = False
-        '
-        'FolioDataGridViewTextBoxColumn1
-        '
-        Me.FolioDataGridViewTextBoxColumn1.DataPropertyName = "Folio"
-        Me.FolioDataGridViewTextBoxColumn1.HeaderText = "Folio"
-        Me.FolioDataGridViewTextBoxColumn1.Name = "FolioDataGridViewTextBoxColumn1"
-        Me.FolioDataGridViewTextBoxColumn1.Visible = False
-        '
-        'CompraGanadoDataGridViewTextBoxColumn
-        '
-        Me.CompraGanadoDataGridViewTextBoxColumn.DataPropertyName = "CompraGanado"
-        Me.CompraGanadoDataGridViewTextBoxColumn.HeaderText = "CompraGanado"
-        Me.CompraGanadoDataGridViewTextBoxColumn.Name = "CompraGanadoDataGridViewTextBoxColumn"
-        Me.CompraGanadoDataGridViewTextBoxColumn.Visible = False
-        '
-        'IdRenglonDataGridViewTextBoxColumn
-        '
-        Me.IdRenglonDataGridViewTextBoxColumn.DataPropertyName = "IdRenglon"
-        Me.IdRenglonDataGridViewTextBoxColumn.HeaderText = "IdRenglon"
-        Me.IdRenglonDataGridViewTextBoxColumn.Name = "IdRenglonDataGridViewTextBoxColumn"
-        Me.IdRenglonDataGridViewTextBoxColumn.Visible = False
-        '
-        'DescripcionTipoGanadoDataGridViewTextBoxColumn
-        '
-        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.DataPropertyName = "DescripcionTipoGanado"
-        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.HeaderText = "DescripcionTipoGanado"
-        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.Name = "DescripcionTipoGanadoDataGridViewTextBoxColumn"
-        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DescripcionTipoGanadoDataGridViewTextBoxColumn.Visible = False
-        '
-        'TipoGanadoDataGridViewTextBoxColumn
-        '
-        Me.TipoGanadoDataGridViewTextBoxColumn.DataPropertyName = "TipoGanado"
-        Me.TipoGanadoDataGridViewTextBoxColumn.HeaderText = "TipoGanado"
-        Me.TipoGanadoDataGridViewTextBoxColumn.Name = "TipoGanadoDataGridViewTextBoxColumn"
-        Me.TipoGanadoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TipoGanadoDataGridViewTextBoxColumn.Visible = False
         '
         'FrmComprasGanado
         '

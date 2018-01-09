@@ -1018,6 +1018,7 @@ Partial Class frmFacturacionEspecial
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.MEAToolBar1)
+        Me.MaximizeBox = False
         Me.Name = "frmFacturacionEspecial"
         Me.Text = "Facturación Especial"
         Me.GroupBox1.ResumeLayout(False)

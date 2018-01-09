@@ -270,7 +270,7 @@ Public Class frmFacturacionEspecial
                         End If
                         ComprobanteImpuestoTraslado.TasaOCuotaSpecified = True
                         ComprobanteImpuestoTraslado.ImporteSpecified = True
-                        
+
                         ComprobanteImpuestosTraslados.Add(ComprobanteImpuestoTraslado)
                         'End If
 
@@ -340,7 +340,7 @@ Public Class frmFacturacionEspecial
             With Comprobante
                 .Folio = Folio
                 .Serie = Serie
-                If not txtDescuento.Text.Trim().Equals("") Then
+                If Not txtDescuento.Text.Trim().Equals("") Then
                     .Descuento = CDec(txtDescuento.Text.Trim())
                 Else
                     .Descuento = 0
@@ -411,7 +411,7 @@ Public Class frmFacturacionEspecial
             End If
 
 
-            
+
 
             'System.Threading.Thread.Sleep(6000)
             'Application.DoEvents()
@@ -426,11 +426,12 @@ Public Class frmFacturacionEspecial
                 'Dim FacturasDetalleCol As New CN.FacturasDetalleCollectionClass ' para crear la coleccion de detalle
                 'Dim FacturasDet As New EC.DetFacturasEntity 'para agregar al detalle
                 'para crear el folio de la factura
+
                 Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales
                 Folio.Año = Year(dtFechaFactura.Value)
                 Folio.Mes = Month(dtFechaFactura.Value)
 
-               
+
                 If Not Folio.Guardar(Trans) Then
                     Trans.Rollback()
                     Cursor = Cursors.Default
@@ -440,10 +441,10 @@ Public Class frmFacturacionEspecial
                 End If
 
                 Dim Fact As CFDI.Comprobante
-                Fact = ObtenerComprobante(Fact, Folio.Consecutivo.ToString("0000000"), "F")
+                Fact = ObtenerComprobante(Fact, Folio.Consecutivo.ToString("0000000"), "A")
 
                 Dim FactPDF As CFDI.Comprobante
-                FactPDF = ObtenerComprobante(FactPDF, Folio.Consecutivo.ToString("0000000"), "F", True)
+                FactPDF = ObtenerComprobante(FactPDF, Folio.Consecutivo.ToString("0000000"), "A", True)
 
 
 #If DEBUG Then
@@ -462,7 +463,7 @@ Public Class frmFacturacionEspecial
 
 
 
-                
+
 
                 'folio de la factura
                 FacturaCabecero.NoFactura = "F" & Folio.Consecutivo.ToString("0000000")
@@ -1384,6 +1385,7 @@ Public Class frmFacturacionEspecial
         cmbUsoCFDI.SelectedValue = "P01"
         cmbmetododepago.SelectedValue = "PUE"
         cmbformadepago.SelectedValue = "99"
+        txtCodigoCliente.Focus()
         'FacturasDetalle = New CN.FacturasDetalleClass
         'Me.dgvDetalle.DataSource = FacturaCabecero.Detalles
     End Sub
@@ -1414,6 +1416,9 @@ Public Class frmFacturacionEspecial
                 Else
                     Me.rdContado.Checked = True
                 End If
+
+                cmbUsoCFDI.SelectedValue = ClientesClas.UsoCFDI.Trim()
+                cmbformadepago.SelectedValue = ClientesClas.FormaPago.Trim()
 
                 Me.txtDireccion.Text = ClientesClas.Domicilio
                 Me.ultcmbDomiciliosFiscales.DataSource = ClientesClas.DomiciliosFiscales
@@ -1500,7 +1505,7 @@ Public Class frmFacturacionEspecial
                         'Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value * Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) + CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value * (Controlador.ObtenerIVA() / 100))).ToString("N2")
                         'Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value * (Controlador.ObtenerIVA() / 100)).ToString("N2")
                         'Me.dgvDetalle.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N2")
-                        
+
                         Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = TruncateDecimal(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (Controlador.ObtenerIVA() / 100)), 2)
                         Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVAdecimales.Index).Value = CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (Controlador.ObtenerIVA() / 100)).ToString("F4")
                         Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
@@ -1603,7 +1608,7 @@ Public Class frmFacturacionEspecial
         sumaIVA = 0
         For i As Integer = 0 To Me.dgvDetalle.Rows.Count - 1
             If Not dgvDetalle.Rows(i).IsNewRow Then
-                suma = suma + (CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value))
+                suma = suma + (Math.Truncate((CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) * 100) / 100)
                 If CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVA.Index).Value) > 0 Then
                     sumaIVA += CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVAdecimales.Index).Value) '((CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVA.Index).Value) / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value))
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = TruncateDecimal((TruncateDecimal(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2)) * (1 + CDec(Controlador.ObtenerIVA() / 100)), 2)
@@ -1613,8 +1618,8 @@ Public Class frmFacturacionEspecial
                 'Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) + (CDec(Controlador.ObtenerIVA() / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value))
             End If
         Next
-        Me.txtSubTotal.Text = (Math.Truncate(100 * suma) / 100).ToString()
-        Me.txtIVA.Text = (Math.Truncate(100 * sumaIVA) / 100).ToString()
+        Me.txtSubTotal.Text = (Math.Truncate(100 * suma) / 100).ToString("N2")
+        Me.txtIVA.Text = (Math.Truncate(100 * sumaIVA) / 100).ToString("N2")
 
         If Not txtDescuento.Text.Trim.Equals("") Then
             Me.txtTotal.Text = (((Math.Truncate(100 * suma) / 100) - CDec(txtDescuento.Text.Trim())) + (Math.Truncate(100 * sumaIVA) / 100)).ToString()
@@ -2008,12 +2013,12 @@ Public Class frmFacturacionEspecial
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-        
+
 
     End Sub
 
     Private Sub dgvDetalle_DefaultValuesNeeded(sender As System.Object, e As System.Windows.Forms.DataGridViewRowEventArgs) Handles dgvDetalle.DefaultValuesNeeded
-        
+
         e.Row.Cells(clmCargo.Index).Value = Math.Round(0, 2, MidpointRounding.AwayFromZero)
         e.Row.Cells(clmAbono.Index).Value = Math.Round(0, 2, MidpointRounding.AwayFromZero)
         e.Row.Cells(clmCantidad.Index).Value = Math.Round(1, 2, MidpointRounding.AwayFromZero)
@@ -2026,7 +2031,7 @@ Public Class frmFacturacionEspecial
 
     End Sub
 
-   
+
     Private Sub dgvDetalle_CurrentCellDirtyStateChanged(sender As System.Object, e As System.EventArgs) Handles dgvDetalle.CurrentCellDirtyStateChanged
         If dgvDetalle.IsCurrentCellDirty Then
             dgvDetalle.CommitEdit(DataGridViewDataErrorContexts.Commit)
@@ -2040,7 +2045,7 @@ Public Class frmFacturacionEspecial
 
     End Sub
 
-    
+
 
     'Private Sub frmFacturacionEspecial_KeyDown(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
     '    If e.KeyCode = Keys.Enter Then
@@ -2065,4 +2070,14 @@ Public Class frmFacturacionEspecial
 
 
     End Function
+
+    Private Sub GroupBox1_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
+    Private Sub txtCodigoCliente_Leave(sender As System.Object, e As System.EventArgs) Handles txtCodigoCliente.Leave
+        If Not txtCodigoCliente.Text.Trim().Equals("") Then
+            CmbCliente.SelectedValue = CInt(txtCodigoCliente.Text.Trim())
+        End If
+    End Sub
 End Class

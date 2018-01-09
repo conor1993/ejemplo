@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:32
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:21
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -54,8 +54,6 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchMscregistroSacrificioCabCollectionViaUsrProdRecepcionGanadoDet, _alreadyFetchedMscregistroSacrificioCabCollectionViaUsrProdRecepcionGanadoDet As Boolean
 		Private _clientes As MfacCatClientesEntity
 		Private _alwaysFetchClientes, _alreadyFetchedClientes, _clientesReturnsNewIfNotFound As Boolean
-		Private _proveedor As ProveedorEntity
-		Private _alwaysFetchProveedor, _alreadyFetchedProveedor, _proveedorReturnsNewIfNotFound As Boolean
 		Private _mcgcatTiposdeGanado As McgcatTiposdeGanadoEntity
 		Private _alwaysFetchMcgcatTiposdeGanado, _alreadyFetchedMcgcatTiposdeGanado, _mcgcatTiposdeGanadoReturnsNewIfNotFound As Boolean
 
@@ -130,13 +128,6 @@ Namespace Integralab.ORM.EntityClasses
 			_clientesReturnsNewIfNotFound = info.GetBoolean("_clientesReturnsNewIfNotFound")
 			_alwaysFetchClientes = info.GetBoolean("_alwaysFetchClientes")
 			_alreadyFetchedClientes = info.GetBoolean("_alreadyFetchedClientes")
-			_proveedor = CType(info.GetValue("_proveedor", GetType(ProveedorEntity)), ProveedorEntity)
-			If Not _proveedor Is Nothing Then
-				AddHandler _proveedor.AfterSave, AddressOf OnEntityAfterSave
-			End If
-			_proveedorReturnsNewIfNotFound = info.GetBoolean("_proveedorReturnsNewIfNotFound")
-			_alwaysFetchProveedor = info.GetBoolean("_alwaysFetchProveedor")
-			_alreadyFetchedProveedor = info.GetBoolean("_alreadyFetchedProveedor")
 			_mcgcatTiposdeGanado = CType(info.GetValue("_mcgcatTiposdeGanado", GetType(McgcatTiposdeGanadoEntity)), McgcatTiposdeGanadoEntity)
 			If Not _mcgcatTiposdeGanado Is Nothing Then
 				AddHandler _mcgcatTiposdeGanado.AfterSave, AddressOf OnEntityAfterSave
@@ -160,7 +151,6 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedMcgcatTiposdeGanadoCollectionViaUsrProdRecepcionDetalle = (_mcgcatTiposdeGanadoCollectionViaUsrProdRecepcionDetalle.Count > 0)
 			_alreadyFetchedMscregistroSacrificioCabCollectionViaUsrProdRecepcionGanadoDet = (_mscregistroSacrificioCabCollectionViaUsrProdRecepcionGanadoDet.Count > 0)
 			_alreadyFetchedClientes = Not(_clientes Is Nothing)
-			_alreadyFetchedProveedor = Not(_proveedor Is Nothing)
 			_alreadyFetchedMcgcatTiposdeGanado = Not(_mcgcatTiposdeGanado Is Nothing)
 
 		End Sub
@@ -231,10 +221,6 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_clientesReturnsNewIfNotFound", _clientesReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchClientes", _alwaysFetchClientes)
 			info.AddValue("_alreadyFetchedClientes", _alreadyFetchedClientes)
-			info.AddValue("_proveedor", _proveedor)
-			info.AddValue("_proveedorReturnsNewIfNotFound", _proveedorReturnsNewIfNotFound)
-			info.AddValue("_alwaysFetchProveedor", _alwaysFetchProveedor)
-			info.AddValue("_alreadyFetchedProveedor", _alreadyFetchedProveedor)
 			info.AddValue("_mcgcatTiposdeGanado", _mcgcatTiposdeGanado)
 			info.AddValue("_mcgcatTiposdeGanadoReturnsNewIfNotFound", _mcgcatTiposdeGanadoReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchMcgcatTiposdeGanado", _alwaysFetchMcgcatTiposdeGanado)
@@ -256,9 +242,6 @@ Namespace Integralab.ORM.EntityClasses
 				Case "Clientes"
 					_alreadyFetchedClientes = True
 					Me.Clientes = CType(entity, MfacCatClientesEntity)
-				Case "Proveedor"
-					_alreadyFetchedProveedor = True
-					Me.Proveedor = CType(entity, ProveedorEntity)
 				Case "McgcatTiposdeGanado"
 					_alreadyFetchedMcgcatTiposdeGanado = True
 					Me.McgcatTiposdeGanado = CType(entity, McgcatTiposdeGanadoEntity)
@@ -302,9 +285,6 @@ Namespace Integralab.ORM.EntityClasses
 				Case "Clientes"
 					SetupSyncClientes(relatedEntity)
 					OnRelatedEntitySet(relatedEntity, fieldName)
-				Case "Proveedor"
-					SetupSyncProveedor(relatedEntity)
-					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "McgcatTiposdeGanado"
 					SetupSyncMcgcatTiposdeGanado(relatedEntity)
 					OnRelatedEntitySet(relatedEntity, fieldName)
@@ -329,9 +309,6 @@ Namespace Integralab.ORM.EntityClasses
 			Select Case fieldName
 				Case "Clientes"
 					DesetupSyncClientes(False, True)
-					OnRelatedEntityUnset(relatedEntity, fieldName)
-				Case "Proveedor"
-					DesetupSyncProveedor(False, True)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "McgcatTiposdeGanado"
 					DesetupSyncMcgcatTiposdeGanado(False, True)
@@ -365,9 +342,6 @@ Namespace Integralab.ORM.EntityClasses
 			Dim toReturn As New List(Of IEntity)()
 			If Not _clientes Is Nothing Then
 				toReturn.Add(_clientes)
-			End If
-			If Not _proveedor Is Nothing Then
-				toReturn.Add(_proveedor)
 			End If
 			If Not _mcgcatTiposdeGanado Is Nothing Then
 				toReturn.Add(_mcgcatTiposdeGanado)
@@ -762,42 +736,6 @@ Namespace Integralab.ORM.EntityClasses
 			Return _clientes
 		End Function
 	
-		''' <summary>Retrieves the related entity of type 'ProveedorEntity', Imports a relation of type 'n:1'</summary>
-		''' <returns>A fetched entity of type 'ProveedorEntity' which is related to this entity.</returns>
-		Public Overridable Function GetSingleProveedor() As ProveedorEntity
-			Return GetSingleProveedor(False)
-		End Function
-
-		''' <summary>Retrieves the related entity of type 'ProveedorEntity', Imports a relation of type 'n:1'</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
-		''' <returns>A fetched entity of type 'ProveedorEntity' which is related to this entity.</returns>
-		Public Overridable Function GetSingleProveedor(forceFetch As Boolean) As ProveedorEntity
-			If ( Not _alreadyFetchedProveedor Or forceFetch Or _alwaysFetchProveedor) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
-
-				Dim newEntity As New ProveedorEntity()
-				If MyBase.ParticipatesInTransaction Then
-					MyBase.Transaction.Add(newEntity)
-				End If
-				Dim fetchResult As Boolean = False
-				If MyBase.CheckIfLazyLoadingShouldOccur(RecepcionGanadoEntity.Relations.ProveedorEntityUsingIdProveedor) Then
-					fetchResult = newEntity.FetchUsingPK(Me.IdProveedor.GetValueOrDefault())
-				End If
-				If Not _proveedorReturnsNewIfNotFound AndAlso Not fetchResult Then
-					Me.Proveedor = Nothing
-				Else
-					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
-						newEntity = CType(MyBase.ActiveContext.Get(newEntity), ProveedorEntity)
-					End If
-					Me.Proveedor = newEntity
-					_alreadyFetchedProveedor = fetchResult
-				End If
-				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
-					MyBase.Transaction.Remove(newEntity)
-				End If
-			End If
-			Return _proveedor
-		End Function
-	
 		''' <summary>Retrieves the related entity of type 'McgcatTiposdeGanadoEntity', Imports a relation of type 'n:1'</summary>
 		''' <returns>A fetched entity of type 'McgcatTiposdeGanadoEntity' which is related to this entity.</returns>
 		Public Overridable Function GetSingleMcgcatTiposdeGanado() As McgcatTiposdeGanadoEntity
@@ -873,9 +811,17 @@ Namespace Integralab.ORM.EntityClasses
 						_alreadyFetchedMcgcatTiposdeGanado = False
 
 
-					Case RecepcionGanadoFieldIndex.IdProveedor
-						DesetupSyncProveedor(True, False)
-						_alreadyFetchedProveedor = False
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -896,9 +842,6 @@ Namespace Integralab.ORM.EntityClasses
 			_mscregistroSacrificioCabCollectionViaUsrProdRecepcionGanadoDet.ActiveContext = MyBase.ActiveContext
 		If Not _clientes Is Nothing Then
 				_clientes.ActiveContext = MyBase.ActiveContext
-			End If
-		If Not _proveedor Is Nothing Then
-				_proveedor.ActiveContext = MyBase.ActiveContext
 			End If
 		If Not _mcgcatTiposdeGanado Is Nothing Then
 				_mcgcatTiposdeGanado.ActiveContext = MyBase.ActiveContext
@@ -996,10 +939,6 @@ Namespace Integralab.ORM.EntityClasses
 			_clientesReturnsNewIfNotFound = True
 			_alwaysFetchClientes = False
 			_alreadyFetchedClientes = False
-			_proveedor = Nothing
-			_proveedorReturnsNewIfNotFound = True
-			_alwaysFetchProveedor = False
-			_alreadyFetchedProveedor = False
 			_mcgcatTiposdeGanado = Nothing
 			_mcgcatTiposdeGanadoReturnsNewIfNotFound = True
 			_alwaysFetchMcgcatTiposdeGanado = False
@@ -1097,6 +1036,36 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("Maquila", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("CveLugCom", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("CveComiGan", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("HorasViaje", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("KilosComp", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("ImpteComp", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("DiasCredito", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("FecPago", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("NumFactura", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("FecConta", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("NumPoliza", fieldHashtable)
 		End Sub
 
 
@@ -1120,32 +1089,6 @@ Namespace Integralab.ORM.EntityClasses
 		''' <param name="sender"></param>
 		''' <param name="e"></param>
 		Private Sub OnClientesPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
-			Select Case e.PropertyName
-
-				Case Else
-					' Emtpy
-			End Select
-		End Sub
-		''' <summary>Removes the sync logic for member _proveedor</summary>
-		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
-		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
-		Private Sub DesetupSyncProveedor(signalRelatedEntity As Boolean, resetFKFields As Boolean)
-			MyBase.PerformDesetupSyncRelatedEntity( _proveedor, AddressOf OnProveedorPropertyChanged, "Proveedor", RecepcionGanadoEntity.Relations.ProveedorEntityUsingIdProveedor, True, signalRelatedEntity, "RecepcionGanado", resetFKFields, New Integer() { CInt(RecepcionGanadoFieldIndex.IdProveedor) } )
-			_proveedor = Nothing
-		End Sub
-		
-		''' <summary>setups the sync logic for member _proveedor</summary>
-		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
-		Private Sub SetupSyncProveedor(relatedEntity As IEntity)
-			DesetupSyncProveedor(True, True)
-			_proveedor = CType(relatedEntity, ProveedorEntity)
-			MyBase.PerformSetupSyncRelatedEntity( _proveedor, AddressOf OnProveedorPropertyChanged, "Proveedor", RecepcionGanadoEntity.Relations.ProveedorEntityUsingIdProveedor, True, _alreadyFetchedProveedor, New String() {  } )
-		End Sub
-		
-		''' <summary>Handles Property change events of properties In a related entity.</summary>
-		''' <param name="sender"></param>
-		''' <param name="e"></param>
-		Private Sub OnProveedorPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
 			Select Case e.PropertyName
 
 				Case Else
@@ -1301,17 +1244,6 @@ Namespace Integralab.ORM.EntityClasses
 				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.MfacCatClientesCollection(), _
 					RecepcionGanadoEntity.Relations.MfacCatClientesEntityUsingIdCliente, _
 					CType(Integralab.ORM.EntityType.RecepcionGanadoEntity, Integer), CType(Integralab.ORM.EntityType.MfacCatClientesEntity, Integer), 0, Nothing, Nothing, Nothing, "Clientes", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
-			End Get
-		End Property
-	
-		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'Proveedor' 
-		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
-		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
-		Public Shared ReadOnly Property PrefetchPathProveedor() As IPrefetchPathElement
-			Get
-				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.ProveedorCollection(), _
-					RecepcionGanadoEntity.Relations.ProveedorEntityUsingIdProveedor, _
-					CType(Integralab.ORM.EntityType.RecepcionGanadoEntity, Integer), CType(Integralab.ORM.EntityType.ProveedorEntity, Integer), 0, Nothing, Nothing, Nothing, "Proveedor", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
 			End Get
 		End Property
 	
@@ -1895,6 +1827,204 @@ Namespace Integralab.ORM.EntityClasses
 			End Set
 		End Property
 	
+		''' <summary>The CveLugCom property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."Cve_LugCom"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [CveLugCom]() As System.Int32
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.CveLugCom, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.Int32))
+				End If
+				Return CType(valueToReturn, System.Int32)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.CveLugCom, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The CveComiGan property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."Cve_ComiGan"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [CveComiGan]() As System.Int32
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.CveComiGan, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.Int32))
+				End If
+				Return CType(valueToReturn, System.Int32)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.CveComiGan, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The HorasViaje property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."HorasViaje"<br/>
+		''' Table field type characteristics (type, precision, scale, length): SmallMoney, 10, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [HorasViaje]() As System.Decimal
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.HorasViaje, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.Decimal))
+				End If
+				Return CType(valueToReturn, System.Decimal)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.HorasViaje, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The KilosComp property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."KilosComp"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Money, 19, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [KilosComp]() As System.Decimal
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.KilosComp, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.Decimal))
+				End If
+				Return CType(valueToReturn, System.Decimal)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.KilosComp, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The ImpteComp property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."ImpteComp"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Money, 19, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [ImpteComp]() As System.Decimal
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.ImpteComp, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.Decimal))
+				End If
+				Return CType(valueToReturn, System.Decimal)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.ImpteComp, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The DiasCredito property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."DiasCredito"<br/>
+		''' Table field type characteristics (type, precision, scale, length): TinyInt, 3, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [DiasCredito]() As System.Byte
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.DiasCredito, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.Byte))
+				End If
+				Return CType(valueToReturn, System.Byte)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.DiasCredito, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The FecPago property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."Fec_Pago"<br/>
+		''' Table field type characteristics (type, precision, scale, length): DateTime, 0, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [FecPago]() As System.DateTime
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.FecPago, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.DateTime))
+				End If
+				Return CType(valueToReturn, System.DateTime)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.FecPago, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The NumFactura property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."Num_Factura"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Char, 0, 0, 20<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [NumFactura]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.NumFactura, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.NumFactura, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The FecConta property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."Fec_Conta"<br/>
+		''' Table field type characteristics (type, precision, scale, length): DateTime, 0, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [FecConta]() As Nullable(Of System.DateTime)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.FecConta, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.DateTime))
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.FecConta, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The NumPoliza property of the Entity RecepcionGanado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrProdRecepcionGanado"."NumPoliza"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Char, 0, 0, 20<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [NumPoliza]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(RecepcionGanadoFieldIndex.NumPoliza, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(RecepcionGanadoFieldIndex.NumPoliza, Integer), value)
+			End Set
+		End Property
+	
 	
 		''' <summary>Retrieves all related entities of type 'UsrProdRecepcionDetalleEntity' Imports a relation of type '1:n'.</summary>
 		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiUsrProdRecepcionDetalle()', because 
@@ -2062,58 +2192,6 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				_clientesReturnsNewIfNotFound = value
-			End Set	
-		End Property
-	
-		''' <summary>Gets / sets related entity of type 'ProveedorEntity'. This property is not visible in databound grids.
-		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
-		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
-		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleProveedor()', because 
-		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
-		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
-		<Browsable(False)> _
-		Public Overridable Property [Proveedor]() As ProveedorEntity
-			Get
-				Return GetSingleProveedor(False)
-			End Get
-			Set
-				If MyBase.IsDeserializing Then
-					SetupSyncProveedor(value)
-				Else
-					If value Is Nothing Then
-						If Not _proveedor Is Nothing Then
-							_proveedor.UnsetRelatedEntity(Me, "RecepcionGanado")
-						End If
-					Else
-						CType(value, IEntity).SetRelatedEntity(Me, "RecepcionGanado")
-					End If
-				End If
-			End Set
-		End Property
-
-		''' <summary>Gets / sets the lazy loading flag for Proveedor. When set to true, Proveedor is always refetched from the 
-		''' persistent storage. When set to false, the data is only fetched the first time Proveedor is accessed. You can always execute
-		''' a forced fetch by calling GetSingleProveedor(True).</summary>
-		<Browsable(False)> _
-		Public Property AlwaysFetchProveedor As Boolean
-			Get
-				Return _alwaysFetchProveedor
-			End Get
-			Set
-				_alwaysFetchProveedor = value
-			End Set	
-		End Property
-
-		''' <summary>Gets / sets the flag for what to do if the related entity available through the property Proveedor is not found
-		''' in the database. When set to true, Proveedor will return a new entity instance if the related entity is not found, otherwise 
-		''' null be returned if the related entity is not found. Default: true.</summary>
-		<Browsable(False)> _
-		Public Property ProveedorReturnsNewIfNotFound As Boolean
-			Get
-				Return _proveedorReturnsNewIfNotFound
-			End Get
-			Set
-				_proveedorReturnsNewIfNotFound = value
 			End Set	
 		End Property
 	

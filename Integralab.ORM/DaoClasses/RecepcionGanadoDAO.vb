@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: martes, 26 de diciembre de 2017 16:41:20
+' Code is generated on: viernes, 5 de enero de 2018 17:48:16
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -66,14 +66,13 @@ Namespace Integralab.ORM.DaoClasses
 		''' <param name="entityFactoryToUse">The EntityFactory to use when creating entity objects during a GetMulti() call.</param>
 		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to return</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to return</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to return</param>
 		''' <param name="pageNumber">The page number to retrieve.</param>
 		''' <param name="pageSize">The page size of the page to retrieve.</param>
-		Public Overloads Function GetMulti(containingTransaction As ITransaction, collectionToFill As IEntityCollection, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, entityFactoryToUse As IEntityFactory, Filter As IPredicateExpression, clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, pageNumber As Integer, pageSize As Integer) As Boolean
+		Public Overloads Function GetMulti(containingTransaction As ITransaction, collectionToFill As IEntityCollection, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, entityFactoryToUse As IEntityFactory, Filter As IPredicateExpression, clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, pageNumber As Integer, pageSize As Integer) As Boolean
 			MyBase.EntityFactoryToUse = entityFactoryToUse
 			Dim fieldsToReturn  As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.RecepcionGanadoEntity)
-			Dim selectFilter As IPredicateExpression= CreateFilterUsingForeignKeys(clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance, fieldsToReturn)
+			Dim selectFilter As IPredicateExpression= CreateFilterUsingForeignKeys(clientesInstance, mcgcatTiposdeGanadoInstance, fieldsToReturn)
 			If Not Filter Is Nothing Then
 				' add contents to select filter, with AND
 				selectFilter.AddWithAnd(Filter)
@@ -247,12 +246,11 @@ Namespace Integralab.ORM.DaoClasses
 		''' </summary>
 		''' <param name="containingTransaction">A containing transaction, if caller is added to a transaction, or Nothing if not.</param>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to delete</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to delete</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to delete</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function DeleteMulti(containingTransaction As ITransaction, clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
+		Public Overloads Function DeleteMulti(containingTransaction As ITransaction, clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
 			Dim fields As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.RecepcionGanadoEntity)
-			Dim deleteFilter As IPredicateExpression = CreateFilterUsingForeignKeys(clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance, fields)
+			Dim deleteFilter As IPredicateExpression = CreateFilterUsingForeignKeys(clientesInstance, mcgcatTiposdeGanadoInstance, fields)
 			Return MyBase.DeleteMulti(containingTransaction, deleteFilter)
 		End Function
 
@@ -264,12 +262,11 @@ Namespace Integralab.ORM.DaoClasses
 		''' <param name="entityWithNewValues">IEntity instance which holds the new values for the matching entities to update. Only changed fields are taken into account</param>
 		''' <param name="containingTransaction">A containing transaction, if caller is added to a transaction, or Nothing if not.</param>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to update</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to update</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to update</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function UpdateMulti(entityWithNewValues As IEntity, containingTransaction As ITransaction, clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
+		Public Overloads Function UpdateMulti(entityWithNewValues As IEntity, containingTransaction As ITransaction, clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
 			Dim fields As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.RecepcionGanadoEntity)
-			Dim updateFilter As IPredicateExpression = CreateFilterUsingForeignKeys(clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance, fields)
+			Dim updateFilter As IPredicateExpression = CreateFilterUsingForeignKeys(clientesInstance, mcgcatTiposdeGanadoInstance, fields)
 			Return MyBase.UpdateMulti(entityWithNewValues, containingTransaction, updateFilter)
 		End Function
 	
@@ -296,18 +293,14 @@ Namespace Integralab.ORM.DaoClasses
 		''' Creates a PredicateExpression which should be used as a filter when any combination of available foreign keys is specified.
 		''' </summary>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects</param>
 		''' <param name="fieldsToReturn">IEntityFields implementation which forms the definition of the fieldset of the target entity.</param>
 		''' <returns>A ready to use PredicateExpression based on the passed in foreign key value holders.</returns>
-		Private Function CreateFilterUsingForeignKeys(clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, fieldsToReturn As IEntityFields) As IPredicateExpression
+		Private Function CreateFilterUsingForeignKeys(clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, fieldsToReturn As IEntityFields) As IPredicateExpression
 			Dim selectFilter As IPredicateExpression = New PredicateExpression()
 			
 			If Not clientesInstance Is Nothing Then
 				selectFilter.Add(New FieldCompareValuePredicate(fieldsToReturn(CInt(RecepcionGanadoFieldIndex.IdCliente)), ComparisonOperator.Equal, CType(clientesInstance, MfacCatClientesEntity).IdCliente))
-			End If
-			If Not proveedorInstance Is Nothing Then
-				selectFilter.Add(New FieldCompareValuePredicate(fieldsToReturn(CInt(RecepcionGanadoFieldIndex.IdProveedor)), ComparisonOperator.Equal, CType(proveedorInstance, ProveedorEntity).Codigo))
 			End If
 			If Not mcgcatTiposdeGanadoInstance Is Nothing Then
 				selectFilter.Add(New FieldCompareValuePredicate(fieldsToReturn(CInt(RecepcionGanadoFieldIndex.IdTipoGanado)), ComparisonOperator.Equal, CType(mcgcatTiposdeGanadoInstance, McgcatTiposdeGanadoEntity).IdTipoGanado))

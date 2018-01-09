@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:14
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:14
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -68,11 +68,10 @@ Namespace Integralab.ORM.CollectionClasses
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Boolean
-			Return GetMultiManyToOne(clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Nothing, 0, 0)
+		Public Overloads Function GetMultiManyToOne(clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Boolean
+			Return GetMultiManyToOne(clientesInstance, mcgcatTiposdeGanadoInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Nothing, 0, 0)
 		End Function
 
 
@@ -80,12 +79,11 @@ Namespace Integralab.ORM.CollectionClasses
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, Filter As IPredicateExpression) As Boolean
-			Return GetMultiManyToOne(clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Filter, 0, 0)
+		Public Overloads Function GetMultiManyToOne(clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, Filter As IPredicateExpression) As Boolean
+			Return GetMultiManyToOne(clientesInstance, mcgcatTiposdeGanadoInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Filter, 0, 0)
 		End Function
 
 
@@ -93,14 +91,13 @@ Namespace Integralab.ORM.CollectionClasses
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
 		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
 		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression) As Boolean
-			Return GetMultiManyToOne(clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance, maxNumberOfItemsToReturn, sortClauses, Filter, 0, 0)
+		Public Overloads Function GetMultiManyToOne(clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression) As Boolean
+			Return GetMultiManyToOne(clientesInstance, mcgcatTiposdeGanadoInstance, maxNumberOfItemsToReturn, sortClauses, Filter, 0, 0)
 		End Function
 
 
@@ -108,7 +105,6 @@ Namespace Integralab.ORM.CollectionClasses
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
 		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
@@ -116,10 +112,9 @@ Namespace Integralab.ORM.CollectionClasses
 		''' <param name="pageNumber">The page number to retrieve.</param>
 		''' <param name="pageSize">The page size of the page to retrieve.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Overridable Function GetMultiManyToOne(clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+		Public Overloads Overridable Function GetMultiManyToOne(clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression, pageNumber As Integer, pageSize As Integer) As Boolean
 			Dim validParameters As Boolean = False
 			validParameters = validParameters Or Not (clientesInstance Is Nothing)
-			validParameters = validParameters Or Not (proveedorInstance Is Nothing)
 			validParameters = validParameters Or Not (mcgcatTiposdeGanadoInstance Is Nothing)
 			If Not validParameters Then
 				Return GetMulti(Filter, maxNumberOfItemsToReturn, sortClauses, Nothing, pageNumber, pageSize)
@@ -128,7 +123,7 @@ Namespace Integralab.ORM.CollectionClasses
 				Me.Clear()
 			End If
 			Dim dao As RecepcionGanadoDAO = DAOFactory.CreateRecepcionGanadoDAO()
-			Return dao.GetMulti(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, Filter, clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance, pageNumber, pageSize)
+			Return dao.GetMulti(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, Filter, clientesInstance, mcgcatTiposdeGanadoInstance, pageNumber, pageSize)
 		End Function
 
 		''' <summary>Deletes from the persistent storage all RecepcionGanado entities which have data in common
@@ -136,12 +131,11 @@ Namespace Integralab.ORM.CollectionClasses
 		''' If one is omitted, that entity is not used as a filter.</summary>
 		''' <remarks>Runs directly on the persistent storage. It will not delete entity objects from the current collection.</remarks>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function DeleteMultiManyToOne(clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
+		Public Overloads Function DeleteMultiManyToOne(clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
 			Dim dao As RecepcionGanadoDAO = DAOFactory.CreateRecepcionGanadoDAO()
-			Return dao.DeleteMulti(MyBase.Transaction, clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance)
+			Return dao.DeleteMulti(MyBase.Transaction, clientesInstance, mcgcatTiposdeGanadoInstance)
 		End Function
 
 
@@ -152,12 +146,11 @@ Namespace Integralab.ORM.CollectionClasses
 		''' <param name="entityWithNewValues">RecepcionGanadoEntity instance which holds the new values for the matching entities to update. Only
 		''' changed fields are taken into account</param>
 		''' <param name="clientesInstance">MfacCatClientesEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
-		''' <param name="proveedorInstance">ProveedorEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the RecepcionGanadoEntity objects to Return</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function UpdateMultiManyToOne(entityWithNewValues As RecepcionGanadoEntity, clientesInstance As IEntity, proveedorInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
+		Public Overloads Function UpdateMultiManyToOne(entityWithNewValues As RecepcionGanadoEntity, clientesInstance As IEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
 			Dim dao As RecepcionGanadoDAO = DAOFactory.CreateRecepcionGanadoDAO()
-			Return dao.UpdateMulti(entityWithNewValues, MyBase.Transaction, clientesInstance, proveedorInstance, mcgcatTiposdeGanadoInstance)
+			Return dao.UpdateMulti(entityWithNewValues, MyBase.Transaction, clientesInstance, mcgcatTiposdeGanadoInstance)
 		End Function
 	
 	

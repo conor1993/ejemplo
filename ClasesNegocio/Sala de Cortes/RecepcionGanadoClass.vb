@@ -293,9 +293,9 @@ Public Class RecepcionGanadoClass
     Property Proveedor() As ProveedorClass
         Get
             If m_Proveedor Is Nothing Then
-                m_Proveedor = New ProveedorClass(Entity.Proveedor)
-            ElseIf Not m_Proveedor.Codigo = Me.IdProveedor Then
-                m_Proveedor.Entidad = Entity.Proveedor
+                m_Proveedor = New ProveedorClass(Entity.IdProveedor)
+                'ElseIf Not m_Proveedor.Codigo = Me.IdProveedor Then
+                '    m_Proveedor.Entidad = Entity.Proveedor
             End If
 
             Return m_Proveedor
@@ -303,11 +303,11 @@ Public Class RecepcionGanadoClass
         Set(ByVal value As ProveedorClass)
             m_Proveedor = value
 
-            If value Is Nothing Then
-                Entity.Proveedor = Nothing
-            Else
-                Entity.Proveedor = value.Entidad
-            End If
+            'If value Is Nothing Then
+            '    Entity.Proveedor = Nothing
+            'Else
+            '    Entity.Proveedor = value.Entidad
+            'End If
         End Set
     End Property
 
@@ -355,6 +355,99 @@ Public Class RecepcionGanadoClass
             End Try
         End Get
     End Property
+
+    Property CveLugarCompra() As Integer
+        Get
+            Return Entity.CveLugCom
+        End Get
+        Set(ByVal value As Integer)
+            Entity.CveLugCom = value
+        End Set
+    End Property
+
+    Property CveCompradorGanado() As Integer
+        Get
+            Return Entity.CveComiGan
+        End Get
+        Set(ByVal value As Integer)
+            Entity.CveComiGan = value
+        End Set
+    End Property
+
+    Property HorasViaje() As Decimal
+        Get
+            Return Entity.HorasViaje
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.HorasViaje = value
+        End Set
+    End Property
+
+    Property KilosComp() As Decimal
+        Get
+            Return Entity.KilosComp
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.KilosComp = value
+        End Set
+    End Property
+
+    Property ImporteComp() As Decimal
+        Get
+            Return Entity.ImpteComp
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.ImpteComp = value
+        End Set
+    End Property
+
+    Property DiasCredito() As Integer
+        Get
+            Return Entity.DiasCredito
+        End Get
+        Set(ByVal value As Integer)
+            Entity.DiasCredito = value
+        End Set
+    End Property
+
+    Property FechaPago() As DateTime
+        Get
+            Return Entity.FecPago
+        End Get
+        Set(ByVal value As DateTime)
+            Entity.FecPago = value
+        End Set
+    End Property
+
+    Property NumFactura() As String
+        Get
+            Return Entity.NumFactura
+        End Get
+        Set(ByVal value As String)
+            Entity.NumFactura = value
+        End Set
+    End Property
+
+    Property FechaContabilidad() As DateTime?
+        Get
+            Return Entity.FecConta
+        End Get
+        Set(ByVal value As DateTime?)
+            Entity.FecConta = value
+        End Set
+    End Property
+
+    Property NumPoliza() As String
+        Get
+            Return Entity.NumPoliza
+        End Get
+        Set(ByVal value As String)
+            Entity.NumPoliza = value
+        End Set
+    End Property
+
+
+
 #End Region
 
 #Region "Metodos"
@@ -464,7 +557,8 @@ Public Class RecepcionGanadoClass
                     Trans.Commit()
                 End If
             Else
-                If SPA.UspRecepcionGanado(LoteRecepcion, FechaRecepcion, IdCliente, LoteEngorda, CantCabezas, KilosEnviados, KilosRecibidos, Unidad, Conductor, Placas, Observaciones, IdUsuario, TipoGanado.IdTipoGanado, Estatus, FechaCancelacion, IdUsuarioCancelacion, ObservacionesCancelacion, KilosPrimeraPesada, KilosSegundaPesada, Func, NumOpc) = 0 Then
+
+                If SPA.UspRecepcionGanado(LoteRecepcion, FechaRecepcion, IdProveedor, LoteEngorda, CantCabezas, KilosEnviados, KilosRecibidos, Unidad, Conductor, Placas, Observaciones, IdUsuario, TipoGanado.IdTipoGanado, Estatus, FechaCancelacion, IdUsuarioCancelacion, ObservacionesCancelacion, KilosPrimeraPesada, KilosSegundaPesada, IdCliente, CveLugarCompra, CveCompradorGanado, HorasViaje, KilosComp, ImporteComp, DiasCredito, FechaPago, NumFactura, FechaContabilidad, NumPoliza, CabezasMachos, CabezasHembras, Func, NumOpc) = 0 Then
                     RaiseEvent MensajeError(Me, "Error al guardar información de Recepción de Ganado")
                     Return False
                 End If

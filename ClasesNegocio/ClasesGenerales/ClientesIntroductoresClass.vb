@@ -398,6 +398,25 @@ Public Class ClientesIntroductoresClass
         End Set
     End Property
 
+
+    Public Property UsoCFDI() As String
+        Get
+            Return Entity.UsoCfdi
+        End Get
+        Set(ByVal value As String)
+            Entity.UsoCfdi = value
+        End Set
+    End Property
+
+    Public Property FormaPago() As String
+        Get
+            Return Entity.FormaPago
+        End Get
+        Set(ByVal value As String)
+            Entity.FormaPago = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Constructores"
@@ -515,13 +534,15 @@ Public Class ClientesIntroductoresClass
     End Sub
 
     Public Shadows Function Guardar(ByVal Trans As Integralab.ORM.HelperClasses.Transaction) As Boolean
-        If Me.Entidad.IsNew Then
-            Dim Coleccion As New CC.MfacCatClientesCollection
-            If Coleccion.GetDbCount(HC.MfacCatClientesFields.Rfc = RFC) > 0 Then
+        ' If Me.Entidad.IsNew Then
+        Dim Coleccion As New CC.MfacCatClientesCollection
+        If RFC.Trim() <> "XAXX010101000" Then
+            If Coleccion.GetDbCount(HC.MfacCatClientesFields.Rfc = RFC And HC.MfacCatClientesFields.IdCliente <> Codigo) > 0 Then
                 MsgBox("Ya está registrado un cliente con este RFC, Ingrese otro..", MsgBoxStyle.Exclamation, "Aviso")
                 Return False
             End If
         End If
+        'End If
         MyBase.Guardar(Trans)
         GuardarDomiciliosFiscales(Trans)
         Return True
@@ -598,12 +619,14 @@ Public Class ClientesIntroductoresColeccion
     Public Overloads Function Obtener(ByVal EsIntroductor As Boolean) As Integer
         Try
             Dim filtro As New OC.PredicateExpression
+            Dim sort As New SD.LLBLGen.Pro.ORMSupportClasses.SortExpression
+            sort.Add(New SD.LLBLGen.Pro.ORMSupportClasses.SortClause(HC.MfacCatClientesFields.Nombre, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending))
             'If Not Estatus = CondicionEstatusEnum.TODOS Then
             '    filtro.Add(HC.MfacCatClientesFields.Estatus = Estatus)
             'End If
             filtro.Add(HC.MfacCatClientesFields.Introductor = EsIntroductor)
             filtro.Add(HC.MfacCatClientesFields.Estatus = EstatusEnum.ACTIVO)
-            coleccion.GetMulti(filtro)
+            coleccion.GetMulti(filtro, 0, sort)
             Rellenar()
             Return Count
         Catch ex As Exception

@@ -1,12 +1,13 @@
 Imports CN = ClasesNegocio
-Imports HC = Integralab.ORM.HelperClasses
-Imports CC = Integralab.ORM.CollectionClasses
-Imports EC = Integralab.ORM.EntityClasses
+Imports HC = IntegraLab.ORM.HelperClasses
+Imports CC = IntegraLab.ORM.CollectionClasses
+Imports EC = IntegraLab.ORM.EntityClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports ClasesComunes
 Imports System.Drawing
 Imports System.IO
 Imports System.Drawing.Imaging
+Imports System.Data.SqlClient
 
 Public Class FrmABCClientes
 
@@ -89,6 +90,9 @@ Public Class FrmABCClientes
             tipoclientes.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS)
             Me.cmbtipocliente.DataSource = tipoclientes
 
+            llenarUsoCFDISAT()
+            llenarFormasPago()
+
             'ClientesCol = New CN.ClientesIntroductoresColeccion
             'ClientesCol.Obtener(ClasesNegocio.CondicionEstatusEnum.TODOS)
 
@@ -101,6 +105,65 @@ Public Class FrmABCClientes
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Public Sub llenarFormasPago()
+        Dim connetionString As String = Nothing
+        Dim connection As SqlConnection
+        Dim command As SqlCommand
+        Dim adapter As New SqlDataAdapter()
+        Dim ds As New DataSet()
+        Dim i As Integer = 0
+        Dim sql As String = Nothing
+        connetionString = "Data Source=ServerName;Initial Catalog=databasename;User ID=userid;Password=yourpassword"
+        sql = "select Clave,Clave+'-'+Concepto as Concepto from CatFormasPagoSAT order by Clave"
+        connection = New SqlConnection(HC.DbUtils.ActualConnectionString)
+        Try
+            connection.Open()
+            command = New SqlCommand(sql, connection)
+            adapter.SelectCommand = command
+            adapter.Fill(ds)
+            adapter.Dispose()
+            command.Dispose()
+            connection.Close()
+            cmbFormaPago.DataSource = ds.Tables(0)
+            cmbFormaPago.ValueMember = "Clave"
+            cmbFormaPago.DisplayMember = "Concepto"
+            'connection.Close()
+            connection.Dispose()
+        Catch ex As Exception
+            MessageBox.Show("Problema en llenar los formas de pago ")
+        End Try
+    End Sub
+
+    Public Sub llenarUsoCFDISAT()
+        Dim connetionString As String = Nothing
+        Dim connection As SqlConnection
+        Dim command As SqlCommand
+        Dim adapter As New SqlDataAdapter()
+        Dim ds As New DataSet()
+        Dim i As Integer = 0
+        Dim sql As String = Nothing
+        connetionString = "Data Source=ServerName;Initial Catalog=databasename;User ID=userid;Password=yourpassword"
+        sql = "select Clave,Clave +'-'+Concepto as Concepto from UsoCFDISAT order by 1"
+        connection = New SqlConnection(HC.DbUtils.ActualConnectionString)
+        Try
+            connection.Open()
+            command = New SqlCommand(sql, connection)
+            adapter.SelectCommand = command
+            adapter.Fill(ds)
+            adapter.Dispose()
+            command.Dispose()
+            connection.Close()
+            cmbUsoCFDI.DataSource = ds.Tables(0)
+            cmbUsoCFDI.ValueMember = "Clave"
+            cmbUsoCFDI.DisplayMember = "Concepto"
+            'cmbUsoCFDI.ValueType = GetType(String)
+            'connection.Close()
+            connection.Dispose()
+        Catch ex As Exception
+            MessageBox.Show("Problema en llenar los uso de cfdi sat ")
         End Try
     End Sub
 #End Region
@@ -175,6 +238,8 @@ Public Class FrmABCClientes
         cmbtipocliente.SelectedIndex = -1
         cmbtipocliente.Text = "Seleccione el tipo de cliente..."
         rdtcanaldis.Checked = True
+        cmbUsoCFDI.SelectedValue = "P01"
+        cmbFormaPago.SelectedValue = "99"
     End Sub
 
     Private Sub LimpiarCamposDomicilioFiscal()
@@ -237,6 +302,8 @@ Public Class FrmABCClientes
         Me.cmbtipocliente.Enabled = True
         Me.rdtcanaldis.Enabled = True
         Me.rdtcanaldis2.Enabled = True
+        Me.cmbUsoCFDI.Enabled = True
+        Me.cmbFormaPago.Enabled = True
     End Sub
 
     'Private Sub Modo(ByVal Edicion As Boolean)
@@ -299,6 +366,8 @@ Public Class FrmABCClientes
         Me.cmbtipocliente.Enabled = False
         Me.rdtcanaldis.Enabled = False
         Me.rdtcanaldis2.Enabled = False
+        Me.cmbUsoCFDI.Enabled = False
+        Me.cmbFormaPago.Enabled = False
     End Sub
 
     Private Sub EstablecerDatos()
@@ -364,6 +433,9 @@ Public Class FrmABCClientes
             Else
                 Cliente.Logo = Nothing
             End If
+
+            Cliente.UsoCFDI = cmbUsoCFDI.SelectedValue.ToString().Trim()
+            Cliente.FormaPago = cmbFormaPago.SelectedValue.ToString().Trim()
             'End If
 
 
@@ -401,13 +473,13 @@ Public Class FrmABCClientes
             Me.cmbtipocliente.SelectedValue = Me.Cliente.Idtipocliente
 
 
-            If Cliente.canaldistribucion = "MAYOREO" Then
+            If Cliente.canaldistribucion.Trim().Equals("MAYOREO") Then
                 rdtcanaldis.Checked = True
             Else
                 rdtcanaldis2.Checked = True
             End If
 
-     
+
 
             If Me.Cliente.EsPersonaFisica Then
                 Me.RbtnPersonaFisica.Checked = True
@@ -440,6 +512,9 @@ Public Class FrmABCClientes
                 Dim ms As MemoryStream = New MemoryStream(Me.Cliente.Logo)
                 Me.pbLogo.Image = Image.FromStream(ms)
             End If
+
+            cmbUsoCFDI.SelectedValue = Cliente.UsoCFDI
+            cmbFormaPago.SelectedValue = Cliente.FormaPago
 
 
         Catch ex As Exception
@@ -1499,5 +1574,5 @@ Public Class FrmABCClientes
         Me.pbLogo.Tag = Nothing
     End Sub
 
-  
+
 End Class

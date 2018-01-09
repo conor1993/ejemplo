@@ -118,6 +118,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\IntegraLab.Controles.dll</HintPath>
     </Reference>
+    <Reference Include="Integralab.ORM, Version=1.0.6576.19552, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Integralab.ORM.dll</HintPath>
+    </Reference>
     <Reference Include="Integralab.ORMSeguridad, Version=1.0.0.27333, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Integralab.ORMSeguridad.dll</HintPath>
@@ -1244,10 +1248,6 @@
     <ProjectReference Include="..\ClasesNegocio\ClasesNegocio.vbproj">
       <Project>{F5B516EB-5C36-4EAC-A28E-AAF06675840C}</Project>
       <Name>ClasesNegocio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Integralab.ORM\Integralab.ORM.vbproj">
-      <Project>{DD9B650E-E2CA-4405-B598-C26B0770F6F4}</Project>
-      <Name>Integralab.ORM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

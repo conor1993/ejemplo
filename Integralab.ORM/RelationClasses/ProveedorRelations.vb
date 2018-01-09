@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:24
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:17
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -220,21 +220,6 @@ Namespace Integralab.ORM.RelationClasses
 				relation.AddEntityFieldPair(EntityFieldFactory.Create(ProveedorFieldIndex.Codigo), EntityFieldFactory.Create(UsrCxppagosProveedoresFieldIndex.IdProveedor))
 				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ProveedorEntity", True)
 				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("UsrCxppagosProveedoresEntity", False)
-				Return relation
-			End Get
-		End Property
-	
-		''' <summary>Returns a new IEntityRelation Object, between ProveedorEntity and RecepcionGanadoEntity over the 1:n relation they have, using the relation between the fields:
-		''' Proveedor.Codigo - RecepcionGanado.IdProveedor
-		''' </summary>
-		Public Overridable ReadOnly Property RecepcionGanadoEntityUsingIdProveedor() As IEntityRelation
-			Get
-
-				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
-				relation.StartEntityIsPkSide = True
-				relation.AddEntityFieldPair(EntityFieldFactory.Create(ProveedorFieldIndex.Codigo), EntityFieldFactory.Create(RecepcionGanadoFieldIndex.IdProveedor))
-				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ProveedorEntity", True)
-				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("RecepcionGanadoEntity", False)
 				Return relation
 			End Get
 		End Property

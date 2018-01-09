@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:29
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:19
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -68,8 +68,6 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchUsrCxpfacturasCab, _alreadyFetchedUsrCxpfacturasCab As Boolean
 		Private _usrCxppagosProveedores As Integralab.ORM.CollectionClasses.UsrCxppagosProveedoresCollection
 		Private _alwaysFetchUsrCxppagosProveedores, _alreadyFetchedUsrCxppagosProveedores As Boolean
-		Private _recepcionGanado As Integralab.ORM.CollectionClasses.RecepcionGanadoCollection
-		Private _alwaysFetchRecepcionGanado, _alreadyFetchedRecepcionGanado As Boolean
 		Private _cabMovGanCollectionViaCabRegCom As Integralab.ORM.CollectionClasses.CabMovGanCollection
 		Private _alwaysFetchCabMovGanCollectionViaCabRegCom, _alreadyFetchedCabMovGanCollectionViaCabRegCom As Boolean
 		Private _cabMovGanCollectionViaCabRegCom_ As Integralab.ORM.CollectionClasses.CabMovGanCollection
@@ -104,8 +102,6 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchCuentaCollectionViaUsrCxppagosProveedores, _alreadyFetchedCuentaCollectionViaUsrCxppagosProveedores As Boolean
 		Private _polizaCollectionViaUsrCxppagosProveedores As Integralab.ORM.CollectionClasses.PolizaCollection
 		Private _alwaysFetchPolizaCollectionViaUsrCxppagosProveedores, _alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores As Boolean
-		Private _mcgcatTiposdeGanadoCollectionViaRecepcionGanado As Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection
-		Private _alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado, _alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado As Boolean
 		Private _catLugaresDeCompra As CatLugaresDeCompraEntity
 		Private _alwaysFetchCatLugaresDeCompra, _alreadyFetchedCatLugaresDeCompra, _catLugaresDeCompraReturnsNewIfNotFound As Boolean
 		Private _cuentaContable As CuentaContableEntity
@@ -202,9 +198,6 @@ Namespace Integralab.ORM.EntityClasses
 			_usrCxppagosProveedores = CType(info.GetValue("_usrCxppagosProveedores", GetType(Integralab.ORM.CollectionClasses.UsrCxppagosProveedoresCollection)), Integralab.ORM.CollectionClasses.UsrCxppagosProveedoresCollection)
 			_alwaysFetchUsrCxppagosProveedores = info.GetBoolean("_alwaysFetchUsrCxppagosProveedores")
 			_alreadyFetchedUsrCxppagosProveedores = info.GetBoolean("_alreadyFetchedUsrCxppagosProveedores")
-			_recepcionGanado = CType(info.GetValue("_recepcionGanado", GetType(Integralab.ORM.CollectionClasses.RecepcionGanadoCollection)), Integralab.ORM.CollectionClasses.RecepcionGanadoCollection)
-			_alwaysFetchRecepcionGanado = info.GetBoolean("_alwaysFetchRecepcionGanado")
-			_alreadyFetchedRecepcionGanado = info.GetBoolean("_alreadyFetchedRecepcionGanado")
 			_cabMovGanCollectionViaCabRegCom = CType(info.GetValue("_cabMovGanCollectionViaCabRegCom", GetType(Integralab.ORM.CollectionClasses.CabMovGanCollection)), Integralab.ORM.CollectionClasses.CabMovGanCollection)
 			_alwaysFetchCabMovGanCollectionViaCabRegCom = info.GetBoolean("_alwaysFetchCabMovGanCollectionViaCabRegCom")
 			_alreadyFetchedCabMovGanCollectionViaCabRegCom = info.GetBoolean("_alreadyFetchedCabMovGanCollectionViaCabRegCom")
@@ -256,9 +249,6 @@ Namespace Integralab.ORM.EntityClasses
 			_polizaCollectionViaUsrCxppagosProveedores = CType(info.GetValue("_polizaCollectionViaUsrCxppagosProveedores", GetType(Integralab.ORM.CollectionClasses.PolizaCollection)), Integralab.ORM.CollectionClasses.PolizaCollection)
 			_alwaysFetchPolizaCollectionViaUsrCxppagosProveedores = info.GetBoolean("_alwaysFetchPolizaCollectionViaUsrCxppagosProveedores")
 			_alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores = info.GetBoolean("_alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores")
-			_mcgcatTiposdeGanadoCollectionViaRecepcionGanado = CType(info.GetValue("_mcgcatTiposdeGanadoCollectionViaRecepcionGanado", GetType(Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection)), Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection)
-			_alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado = info.GetBoolean("_alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado")
-			_alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado = info.GetBoolean("_alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado")
 			_catLugaresDeCompra = CType(info.GetValue("_catLugaresDeCompra", GetType(CatLugaresDeCompraEntity)), CatLugaresDeCompraEntity)
 			If Not _catLugaresDeCompra Is Nothing Then
 				AddHandler _catLugaresDeCompra.AfterSave, AddressOf OnEntityAfterSave
@@ -310,7 +300,6 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedUsrCxpfacturasApagar = (_usrCxpfacturasApagar.Count > 0)
 			_alreadyFetchedUsrCxpfacturasCab = (_usrCxpfacturasCab.Count > 0)
 			_alreadyFetchedUsrCxppagosProveedores = (_usrCxppagosProveedores.Count > 0)
-			_alreadyFetchedRecepcionGanado = (_recepcionGanado.Count > 0)
 			_alreadyFetchedCabMovGanCollectionViaCabRegCom = (_cabMovGanCollectionViaCabRegCom.Count > 0)
 			_alreadyFetchedCabMovGanCollectionViaCabRegCom_ = (_cabMovGanCollectionViaCabRegCom_.Count > 0)
 			_alreadyFetchedCatLugaresDeCompraCollectionViaCabRegCom = (_catLugaresDeCompraCollectionViaCabRegCom.Count > 0)
@@ -328,7 +317,6 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedTipoMonedaCollectionViaOrdenServicio = (_tipoMonedaCollectionViaOrdenServicio.Count > 0)
 			_alreadyFetchedCuentaCollectionViaUsrCxppagosProveedores = (_cuentaCollectionViaUsrCxppagosProveedores.Count > 0)
 			_alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores = (_polizaCollectionViaUsrCxppagosProveedores.Count > 0)
-			_alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado = (_mcgcatTiposdeGanadoCollectionViaRecepcionGanado.Count > 0)
 			_alreadyFetchedCatLugaresDeCompra = Not(_catLugaresDeCompra Is Nothing)
 			_alreadyFetchedCuentaContable = Not(_cuentaContable Is Nothing)
 			_alreadyFetchedCuentaContable_ = Not(_cuentaContable_ Is Nothing)
@@ -421,9 +409,6 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_usrCxppagosProveedores", _usrCxppagosProveedores)
 			info.AddValue("_alwaysFetchUsrCxppagosProveedores", _alwaysFetchUsrCxppagosProveedores)
 			info.AddValue("_alreadyFetchedUsrCxppagosProveedores", _alreadyFetchedUsrCxppagosProveedores)
-			info.AddValue("_recepcionGanado", _recepcionGanado)
-			info.AddValue("_alwaysFetchRecepcionGanado", _alwaysFetchRecepcionGanado)
-			info.AddValue("_alreadyFetchedRecepcionGanado", _alreadyFetchedRecepcionGanado)
 			info.AddValue("_cabMovGanCollectionViaCabRegCom", _cabMovGanCollectionViaCabRegCom)
 			info.AddValue("_alwaysFetchCabMovGanCollectionViaCabRegCom", _alwaysFetchCabMovGanCollectionViaCabRegCom)
 			info.AddValue("_alreadyFetchedCabMovGanCollectionViaCabRegCom", _alreadyFetchedCabMovGanCollectionViaCabRegCom)
@@ -475,9 +460,6 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_polizaCollectionViaUsrCxppagosProveedores", _polizaCollectionViaUsrCxppagosProveedores)
 			info.AddValue("_alwaysFetchPolizaCollectionViaUsrCxppagosProveedores", _alwaysFetchPolizaCollectionViaUsrCxppagosProveedores)
 			info.AddValue("_alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores", _alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores)
-			info.AddValue("_mcgcatTiposdeGanadoCollectionViaRecepcionGanado", _mcgcatTiposdeGanadoCollectionViaRecepcionGanado)
-			info.AddValue("_alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado", _alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado)
-			info.AddValue("_alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado", _alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado)
 			info.AddValue("_catLugaresDeCompra", _catLugaresDeCompra)
 			info.AddValue("_catLugaresDeCompraReturnsNewIfNotFound", _catLugaresDeCompraReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchCatLugaresDeCompra", _alwaysFetchCatLugaresDeCompra)
@@ -581,11 +563,6 @@ Namespace Integralab.ORM.EntityClasses
 					If Not entity Is Nothing Then
 						Me.UsrCxppagosProveedores.Add(CType(entity, UsrCxppagosProveedoresEntity))
 					End If
-				Case "RecepcionGanado"
-					_alreadyFetchedRecepcionGanado = True
-					If Not entity Is Nothing Then
-						Me.RecepcionGanado.Add(CType(entity, RecepcionGanadoEntity))
-					End If
 				Case "CabMovGanCollectionViaCabRegCom"
 					_alreadyFetchedCabMovGanCollectionViaCabRegCom = True
 					If Not entity Is Nothing Then
@@ -671,11 +648,6 @@ Namespace Integralab.ORM.EntityClasses
 					If Not entity Is Nothing Then
 						Me.PolizaCollectionViaUsrCxppagosProveedores.Add(CType(entity, PolizaEntity))
 					End If
-				Case "McgcatTiposdeGanadoCollectionViaRecepcionGanado"
-					_alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado = True
-					If Not entity Is Nothing Then
-						Me.McgcatTiposdeGanadoCollectionViaRecepcionGanado.Add(CType(entity, McgcatTiposdeGanadoEntity))
-					End If
 				Case "ProveedorAvanzado"
 					_alreadyFetchedProveedorAvanzado = True
 					Me.ProveedorAvanzado = CType(entity, ProveedorAvanzadoEntity)
@@ -737,9 +709,6 @@ Namespace Integralab.ORM.EntityClasses
 					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "UsrCxppagosProveedores"
 					_usrCxppagosProveedores.Add(CType(relatedEntity, UsrCxppagosProveedoresEntity))
-					OnRelatedEntitySet(relatedEntity, fieldName)
-				Case "RecepcionGanado"
-					_recepcionGanado.Add(CType(relatedEntity, RecepcionGanadoEntity))
 					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "ProveedorAvanzado"
 					SetupSyncProveedorAvanzado(relatedEntity)
@@ -804,9 +773,6 @@ Namespace Integralab.ORM.EntityClasses
 				Case "UsrCxppagosProveedores"
 					MyBase.PerformRelatedEntityRemoval(_usrCxppagosProveedores, relatedEntity, signalRelatedEntityManyToOne)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
-				Case "RecepcionGanado"
-					MyBase.PerformRelatedEntityRemoval(_recepcionGanado, relatedEntity, signalRelatedEntityManyToOne)
-					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "ProveedorAvanzado"
 					DesetupSyncProveedorAvanzado(False, True)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
@@ -868,7 +834,6 @@ Namespace Integralab.ORM.EntityClasses
 			toReturn.Add(_usrCxpfacturasApagar)
 			toReturn.Add(_usrCxpfacturasCab)
 			toReturn.Add(_usrCxppagosProveedores)
-			toReturn.Add(_recepcionGanado)
 
 			Return toReturn
 		End Function
@@ -1686,61 +1651,6 @@ Namespace Integralab.ORM.EntityClasses
 			_usrCxppagosProveedores.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub
 	
-		''' <summary>Retrieves all related entities of type 'RecepcionGanadoEntity' Imports a relation of type '1:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <returns>Filled collection with all related entities of type 'RecepcionGanadoEntity'</returns>
-		Public Function GetMultiRecepcionGanado(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.RecepcionGanadoCollection
-			Return GetMultiRecepcionGanado(forceFetch, _recepcionGanado.EntityFactoryToUse, Nothing)
-		End Function
-
-		''' <summary>Retrieves all related entities of type 'RecepcionGanadoEntity' Imports a relation of type '1:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToOne() routine.</param>
-		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
-		Public Function GetMultiRecepcionGanado(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.RecepcionGanadoCollection
-			Return GetMultiRecepcionGanado(forceFetch, entityFactoryToUse, Nothing)
-		End Function
-
-		''' <summary>Retrieves all related entities of type 'RecepcionGanadoEntity' Imports a relation of type '1:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <param name="filter">Extra filter to limit the resultset.</param>
-		''' <returns>Filled collection with all related entities of type 'RecepcionGanadoEntity'</returns>
-		Public Function GetMultiRecepcionGanado(forceFetch As Boolean, Filter As IPredicateExpression) As Integralab.ORM.CollectionClasses.RecepcionGanadoCollection
-			Return GetMultiRecepcionGanado(forceFetch, _recepcionGanado.EntityFactoryToUse, Filter)
-		End Function
-
-		''' <summary>Retrieves all related entities of type 'RecepcionGanadoEntity' Imports a relation of type '1:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToOne() routine.</param>
-		''' <param name="filter">Extra filter to limit the resultset.</param>
-		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
-		Public Overridable Function GetMultiRecepcionGanado(forceFetch As Boolean, entityFactoryToUse As IEntityFactory, Filter As IPredicateExpression) As Integralab.ORM.CollectionClasses.RecepcionGanadoCollection
-			If ( Not _alreadyFetchedRecepcionGanado Or forceFetch Or _alwaysFetchRecepcionGanado) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
-				If MyBase.ParticipatesInTransaction Then
-					If Not _recepcionGanado.ParticipatesInTransaction Then
-						MyBase.Transaction.Add(_recepcionGanado)
-					End If
-				End If
-				_recepcionGanado.SuppressClearInGetMulti = Not forceFetch
-				If Not entityFactoryToUse Is Nothing Then
-					_recepcionGanado.EntityFactoryToUse = entityFactoryToUse
-				End If
-				_recepcionGanado.GetMultiManyToOne(Nothing, Me, Nothing, Filter)
-				_recepcionGanado.SuppressClearInGetMulti = False
-				_alreadyFetchedRecepcionGanado = True
-			End If
-			Return _recepcionGanado
-		End Function
-
-		''' <summary>Sets the collection parameters for the collection for 'RecepcionGanado'. These settings will be taken into account
-		''' when the property RecepcionGanado is requested or GetMultiRecepcionGanado is called.</summary>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
-		Public Overridable Sub SetCollectionParametersRecepcionGanado(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
-			_recepcionGanado.SortClauses=sortClauses
-			_recepcionGanado.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
-		End Sub
-	
 	
 		''' <summary>Retrieves all related entities of type 'CabMovGanEntity' Imports a relation of type 'm:n'.</summary>
 		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
@@ -2473,49 +2383,6 @@ Namespace Integralab.ORM.EntityClasses
 			_polizaCollectionViaUsrCxppagosProveedores.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub	
 
-		''' <summary>Retrieves all related entities of type 'McgcatTiposdeGanadoEntity' Imports a relation of type 'm:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <returns>Filled collection with all related entities of type 'McgcatTiposdeGanadoEntity'</returns>
-		Public Function GetMultiMcgcatTiposdeGanadoCollectionViaRecepcionGanado(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection
-			Return GetMultiMcgcatTiposdeGanadoCollectionViaRecepcionGanado(forceFetch, _mcgcatTiposdeGanadoCollectionViaRecepcionGanado.EntityFactoryToUse)
-		End Function
-
-		''' <summary>Retrieves all related entities of type 'McgcatTiposdeGanadoEntity' Imports a relation of type 'm:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToMany() routine.</param>
-		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
-		Public Overridable Function GetMultiMcgcatTiposdeGanadoCollectionViaRecepcionGanado(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection
-			If ( Not _alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado Or forceFetch Or _alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
-				If MyBase.ParticipatesInTransaction Then
-					If Not _mcgcatTiposdeGanadoCollectionViaRecepcionGanado.ParticipatesInTransaction Then
-						MyBase.Transaction.Add(_mcgcatTiposdeGanadoCollectionViaRecepcionGanado)
-					End If
-				End If
-				Dim relations As IRelationCollection = New RelationCollection()
-				Dim Filter As IPredicateExpression = New PredicateExpression()
-				relations.Add(ProveedorEntity.Relations.RecepcionGanadoEntityUsingIdProveedor, "__ProveedorEntity__", "RecepcionGanado_", JoinHint.None)
-				relations.Add(RecepcionGanadoEntity.Relations.McgcatTiposdeGanadoEntityUsingIdTipoGanado, "RecepcionGanado_", String.Empty, JoinHint.None)
-				Filter.Add(New FieldCompareValuePredicate(EntityFieldFactory.Create(ProveedorFieldIndex.Codigo), ComparisonOperator.Equal, Me.Codigo))
-				_mcgcatTiposdeGanadoCollectionViaRecepcionGanado.SuppressClearInGetMulti = Not forceFetch
-				If Not entityFactoryToUse Is Nothing Then
-					_mcgcatTiposdeGanadoCollectionViaRecepcionGanado.EntityFactoryToUse = entityFactoryToUse
-				End If
-				_mcgcatTiposdeGanadoCollectionViaRecepcionGanado.GetMulti(Filter, relations)
-				_mcgcatTiposdeGanadoCollectionViaRecepcionGanado.SuppressClearInGetMulti = False
-				_alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado = True
-			End If
-			Return _mcgcatTiposdeGanadoCollectionViaRecepcionGanado
-		End Function
-
-		''' <summary>Sets the collection parameters for the collection for 'McgcatTiposdeGanadoCollectionViaRecepcionGanado'. These settings will be taken into account
-		''' when the property McgcatTiposdeGanadoCollectionViaRecepcionGanado is requested or GetMultiMcgcatTiposdeGanadoCollectionViaRecepcionGanado is called.</summary>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
-		Public Overridable Sub SetCollectionParametersMcgcatTiposdeGanadoCollectionViaRecepcionGanado(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
-			_mcgcatTiposdeGanadoCollectionViaRecepcionGanado.SortClauses=sortClauses
-			_mcgcatTiposdeGanadoCollectionViaRecepcionGanado.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
-		End Sub	
-
 		''' <summary>Retrieves the related entity of type 'CatLugaresDeCompraEntity', Imports a relation of type 'n:1'</summary>
 		''' <returns>A fetched entity of type 'CatLugaresDeCompraEntity' which is related to this entity.</returns>
 		Public Overridable Function GetSingleCatLugaresDeCompra() As CatLugaresDeCompraEntity
@@ -2738,7 +2605,6 @@ Namespace Integralab.ORM.EntityClasses
 			_usrCxpfacturasApagar.ActiveContext = MyBase.ActiveContext
 			_usrCxpfacturasCab.ActiveContext = MyBase.ActiveContext
 			_usrCxppagosProveedores.ActiveContext = MyBase.ActiveContext
-			_recepcionGanado.ActiveContext = MyBase.ActiveContext
 			_cabMovGanCollectionViaCabRegCom.ActiveContext = MyBase.ActiveContext
 			_cabMovGanCollectionViaCabRegCom_.ActiveContext = MyBase.ActiveContext
 			_catLugaresDeCompraCollectionViaCabRegCom.ActiveContext = MyBase.ActiveContext
@@ -2756,7 +2622,6 @@ Namespace Integralab.ORM.EntityClasses
 			_tipoMonedaCollectionViaOrdenServicio.ActiveContext = MyBase.ActiveContext
 			_cuentaCollectionViaUsrCxppagosProveedores.ActiveContext = MyBase.ActiveContext
 			_polizaCollectionViaUsrCxppagosProveedores.ActiveContext = MyBase.ActiveContext
-			_mcgcatTiposdeGanadoCollectionViaRecepcionGanado.ActiveContext = MyBase.ActiveContext
 		If Not _catLugaresDeCompra Is Nothing Then
 				_catLugaresDeCompra.ActiveContext = MyBase.ActiveContext
 			End If
@@ -2892,10 +2757,6 @@ Namespace Integralab.ORM.EntityClasses
 			_usrCxppagosProveedores.SetContainingEntityInfo(Me, "Proveedor")
 			_alwaysFetchUsrCxppagosProveedores = False
 			_alreadyFetchedUsrCxppagosProveedores = False
-			_recepcionGanado = New Integralab.ORM.CollectionClasses.RecepcionGanadoCollection(New RecepcionGanadoEntityFactory())
-			_recepcionGanado.SetContainingEntityInfo(Me, "Proveedor")
-			_alwaysFetchRecepcionGanado = False
-			_alreadyFetchedRecepcionGanado = False
 			_cabMovGanCollectionViaCabRegCom = New Integralab.ORM.CollectionClasses.CabMovGanCollection(New CabMovGanEntityFactory())
 			_alwaysFetchCabMovGanCollectionViaCabRegCom = False
 			_alreadyFetchedCabMovGanCollectionViaCabRegCom = False
@@ -2947,9 +2808,6 @@ Namespace Integralab.ORM.EntityClasses
 			_polizaCollectionViaUsrCxppagosProveedores = New Integralab.ORM.CollectionClasses.PolizaCollection(New PolizaEntityFactory())
 			_alwaysFetchPolizaCollectionViaUsrCxppagosProveedores = False
 			_alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores = False
-			_mcgcatTiposdeGanadoCollectionViaRecepcionGanado = New Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection(New McgcatTiposdeGanadoEntityFactory())
-			_alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado = False
-			_alreadyFetchedMcgcatTiposdeGanadoCollectionViaRecepcionGanado = False
 			_catLugaresDeCompra = Nothing
 			_catLugaresDeCompraReturnsNewIfNotFound = True
 			_alwaysFetchCatLugaresDeCompra = False
@@ -3387,17 +3245,6 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 		End Property
 	
-		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'RecepcionGanado' 
-		''' for this entity. Add the object Returned by this property to an existing PrefetchPath2 instance.</summary>
-		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
-		Public Shared ReadOnly Property PrefetchPathRecepcionGanado() As IPrefetchPathElement
-			Get
-				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.RecepcionGanadoCollection(), _
-					ProveedorEntity.Relations.RecepcionGanadoEntityUsingIdProveedor, _
-					CType(Integralab.ORM.EntityType.ProveedorEntity, Integer), CType(Integralab.ORM.EntityType.RecepcionGanadoEntity, Integer), 0, Nothing, Nothing, Nothing, "RecepcionGanado", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
-			End Get
-		End Property
-	
 	
 		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CabMovGan' 
 		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
@@ -3634,20 +3481,6 @@ Namespace Integralab.ORM.EntityClasses
 				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.PolizaCollection(), _
 					ProveedorEntity.Relations.UsrCxppagosProveedoresEntityUsingIdProveedor, _
 					CType(Integralab.ORM.EntityType.ProveedorEntity, Integer), CType(Integralab.ORM.EntityType.PolizaEntity, Integer), 0, Nothing, Nothing, relations, "PolizaCollectionViaUsrCxppagosProveedores", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
-			End Get
-		End Property
-	
-		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'McgcatTiposdeGanado' 
-		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
-		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
-		Public Shared ReadOnly Property PrefetchPathMcgcatTiposdeGanadoCollectionViaRecepcionGanado() As IPrefetchPathElement
-			Get
-				Dim relations As IRelationCollection = New RelationCollection()
-				relations.Add(ProveedorEntity.Relations.RecepcionGanadoEntityUsingIdProveedor, "__ProveedorEntity__", String.Empty, JoinHint.None)
-				relations.Add(RecepcionGanadoEntity.Relations.McgcatTiposdeGanadoEntityUsingIdTipoGanado)
-				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection(), _
-					ProveedorEntity.Relations.RecepcionGanadoEntityUsingIdProveedor, _
-					CType(Integralab.ORM.EntityType.ProveedorEntity, Integer), CType(Integralab.ORM.EntityType.McgcatTiposdeGanadoEntity, Integer), 0, Nothing, Nothing, relations, "McgcatTiposdeGanadoCollectionViaRecepcionGanado", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
 			End Get
 		End Property
 	
@@ -4739,29 +4572,6 @@ Namespace Integralab.ORM.EntityClasses
 			End Set	
 		End Property
 	
-		''' <summary>Retrieves all related entities of type 'RecepcionGanadoEntity' Imports a relation of type '1:n'.</summary>
-		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiRecepcionGanado()', because 
-		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
-		''' same scope.</remarks>
-		Public Overridable ReadOnly Property [RecepcionGanado]() As Integralab.ORM.CollectionClasses.RecepcionGanadoCollection
-			Get
-				Return GetMultiRecepcionGanado(False)
-			End Get
-		End Property
-
-		''' <summary>Gets / sets the lazy loading flag for RecepcionGanado. When set to true, RecepcionGanado is always refetched from the 
-		''' persistent storage. When set to false, the data is only fetched the first time RecepcionGanado is accessed. You can always execute
-		''' a forced fetch by calling GetMultiRecepcionGanado(True).</summary>
-		<Browsable(False)> _
-		Public Property AlwaysFetchRecepcionGanado As Boolean
-			Get
-				Return _alwaysFetchRecepcionGanado
-			End Get
-			Set
-				_alwaysFetchRecepcionGanado = value
-			End Set	
-		End Property
-	
 	
 		''' <summary>Retrieves all related entities of type 'CabMovGanEntity' Imports a relation of type 'm:n'.</summary>
 		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiCabMovGanCollectionViaCabRegCom()', because 
@@ -5151,29 +4961,6 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				_alwaysFetchPolizaCollectionViaUsrCxppagosProveedores = value
-			End Set	
-		End Property
-	
-		''' <summary>Retrieves all related entities of type 'McgcatTiposdeGanadoEntity' Imports a relation of type 'm:n'.</summary>
-		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiMcgcatTiposdeGanadoCollectionViaRecepcionGanado()', because 
-		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
-		''' same scope.</remarks>
-		Public Overridable ReadOnly Property [McgcatTiposdeGanadoCollectionViaRecepcionGanado]() As Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection
-			Get
-				Return GetMultiMcgcatTiposdeGanadoCollectionViaRecepcionGanado(False)
-			End Get
-		End Property
-
-		''' <summary>Gets / sets the lazy loading flag for McgcatTiposdeGanadoCollectionViaRecepcionGanado. When set to true, McgcatTiposdeGanadoCollectionViaRecepcionGanado is always refetched from the 
-		''' persistent storage. When set to false, the data is only fetched the first time McgcatTiposdeGanadoCollectionViaRecepcionGanado is accessed. You can always execute
-		''' a forced fetch by calling GetMultiMcgcatTiposdeGanadoCollectionViaRecepcionGanado(True).</summary>
-		<Browsable(False)> _
-		Public Property AlwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado As Boolean
-			Get
-				Return _alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado
-			End Get
-			Set
-				_alwaysFetchMcgcatTiposdeGanadoCollectionViaRecepcionGanado = value
 			End Set	
 		End Property
 	

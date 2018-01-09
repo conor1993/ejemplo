@@ -1390,4 +1390,5 @@ Public Class FrmComprasGanado
             e.Row.Cells(Me.CantCabezasDataGridViewTextBoxColumn.Index).ReadOnly = True
         End If
     End Sub
+
 End Class

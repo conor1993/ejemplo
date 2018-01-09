@@ -8,7 +8,8 @@ Public Class FacturasClass
 
     'Inherits ClassBase(Of EC.CabFacturasEntity)
     Inherits EC.CabFacturasEntity
-    Private _Detalle As FacturasDetalleCollectionClass = Nothing   
+    Private _Detalle As FacturasDetalleCollectionClass = Nothing
+    Private _cliente As ClasesNegocio.ClientesIntroductoresClass
 #End Region
 
 
@@ -106,6 +107,15 @@ Public Class FacturasClass
             MyBase.CveCliente = value
         End Set
     End Property
+
+    Public ReadOnly Property NomCliente As String
+        Get
+            _cliente = New ClasesNegocio.ClientesIntroductoresClass(MyBase.CveCliente)
+            Return _cliente.Nombre
+        End Get
+
+    End Property
+
     Public Property EstatusF() As String
         Get
             Return MyBase.StaFacturacion

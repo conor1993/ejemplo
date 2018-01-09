@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: martes, 26 de diciembre de 2017 16:41:23
+' Code is generated on: viernes, 5 de enero de 2018 17:48:17
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -2490,6 +2490,8 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "Logo", GetType(System.Byte()), False, False, False, True, CInt(MfacCatClientesFieldIndex.Logo), 2147483647, 0, 0)
 			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "Idtipocliente", GetType(System.Int32), False, False, False, True, CInt(MfacCatClientesFieldIndex.Idtipocliente), 0, 0, 10)
 			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "Canaldistribucion", GetType(System.String), False, False, False, True, CInt(MfacCatClientesFieldIndex.Canaldistribucion), 20, 0, 0)
+			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "UsoCfdi", GetType(System.String), False, False, False, False, CInt(MfacCatClientesFieldIndex.UsoCfdi), 10, 0, 0)
+			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "FormaPago", GetType(System.String), False, False, False, False, CInt(MfacCatClientesFieldIndex.FormaPago), 10, 0, 0)
 		End Sub
 		''' <summary>Inits MfacClientesDatosFiscalesEntity's FieldInfo objects</summary>
 		Private Sub InitMfacClientesDatosFiscalesEntityInfos()
@@ -3977,11 +3979,21 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "IdTipoGanado", GetType(System.Int32), False, True, False, False, CInt(RecepcionGanadoFieldIndex.IdTipoGanado), 0, 0, 10)
 			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "CabezasMachos", GetType(System.Int32), False, False, False, False, CInt(RecepcionGanadoFieldIndex.CabezasMachos), 0, 0, 10)
 			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "CabezaHembra", GetType(System.Int32), False, False, False, False, CInt(RecepcionGanadoFieldIndex.CabezaHembra), 0, 0, 10)
-			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "IdProveedor", GetType(System.Int32), False, True, False, True, CInt(RecepcionGanadoFieldIndex.IdProveedor), 0, 0, 10)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "IdProveedor", GetType(System.Int32), False, False, False, True, CInt(RecepcionGanadoFieldIndex.IdProveedor), 0, 0, 10)
 			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "TipoPesada", GetType(System.Int16), False, False, False, True, CInt(RecepcionGanadoFieldIndex.TipoPesada), 0, 0, 5)
 			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "FechaCaptura", GetType(System.DateTime), False, False, False, True, CInt(RecepcionGanadoFieldIndex.FechaCaptura), 0, 0, 0)
 			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "FechaSalida", GetType(System.DateTime), False, False, False, True, CInt(RecepcionGanadoFieldIndex.FechaSalida), 0, 0, 0)
 			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "Maquila", GetType(System.Boolean), False, False, False, True, CInt(RecepcionGanadoFieldIndex.Maquila), 0, 0, 0)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "CveLugCom", GetType(System.Int32), False, False, False, False, CInt(RecepcionGanadoFieldIndex.CveLugCom), 0, 0, 10)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "CveComiGan", GetType(System.Int32), False, False, False, False, CInt(RecepcionGanadoFieldIndex.CveComiGan), 0, 0, 10)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "HorasViaje", GetType(System.Decimal), False, False, False, False, CInt(RecepcionGanadoFieldIndex.HorasViaje), 0, 4, 10)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "KilosComp", GetType(System.Decimal), False, False, False, False, CInt(RecepcionGanadoFieldIndex.KilosComp), 0, 4, 19)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "ImpteComp", GetType(System.Decimal), False, False, False, False, CInt(RecepcionGanadoFieldIndex.ImpteComp), 0, 4, 19)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "DiasCredito", GetType(System.Byte), False, False, False, False, CInt(RecepcionGanadoFieldIndex.DiasCredito), 0, 0, 3)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "FecPago", GetType(System.DateTime), False, False, False, False, CInt(RecepcionGanadoFieldIndex.FecPago), 0, 0, 0)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "NumFactura", GetType(System.String), False, False, False, False, CInt(RecepcionGanadoFieldIndex.NumFactura), 20, 0, 0)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "FecConta", GetType(System.DateTime), False, False, False, True, CInt(RecepcionGanadoFieldIndex.FecConta), 0, 0, 0)
+			MyBase.AddElementFieldInfo("RecepcionGanadoEntity", "NumPoliza", GetType(System.String), False, False, False, True, CInt(RecepcionGanadoFieldIndex.NumPoliza), 20, 0, 0)
 		End Sub
 		''' <summary>Inits RecepcionOrdenCompraEntity's FieldInfo objects</summary>
 		Private Sub InitRecepcionOrdenCompraEntityInfos()

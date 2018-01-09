@@ -49,9 +49,15 @@ Public Class frmBusquedaFacturas
 
             Me.dgvFacturasCabecero.DataSource = Nothing
             Me.dgvFacturasDetalle.DataSource = Nothing
-            Dim cliente As ClasesNegocio.ClientesIntroductoresClass
-            cliente = Me.cmbClientes.SelectedValue
-            Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura)
+            If IsNothing(cmbClientes.SelectedValue) Then
+                Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, 0, Estatus, TipoFactura)
+            Else
+                Dim cliente As ClasesNegocio.ClientesIntroductoresClass
+                cliente = Me.cmbClientes.SelectedValue
+                Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura)
+            End If
+
+            
 
         Catch ex As Exception
             dgvFacturasDetalle.DataSource = Nothing

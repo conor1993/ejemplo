@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: martes, 26 de diciembre de 2017 16:41:19
+' Code is generated on: viernes, 5 de enero de 2018 17:48:16
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -585,53 +585,6 @@ Namespace Integralab.ORM.DaoClasses
 			relations.Add(UsrProdRecepcionDetalleEntity.Relations.RecepcionGanadoEntityUsingLoteRecepcion, "UsrProdRecepcionDetalle_", String.Empty, JoinHint.None)
 			Dim selectFilter As IPredicateExpression = New PredicateExpression()
 			selectFilter.Add(New FieldCompareValuePredicate(recepcionGanadoInstance.Fields(CInt(RecepcionGanadoFieldIndex.LoteRecepcion)), ComparisonOperator.Equal))
-			Return GetMulti(containingTransaction, collectionToFill, maxNumberOfItemsToReturn, sortClauses, entityFactoryToUse, selectFilter, relations, prefetchPathToUse)
-		End Function
-	
-		''' <summary>
-		''' Retrieves in the calling McgcatTiposdeGanadoCollection object all McgcatTiposdeGanadoEntity objects
-		''' which are related via a relation of type 'm:n' with the passed in ProveedorEntity. 
-		''' </summary>
-		''' <param name="containingTransaction">A containing transaction, if caller is added to a transaction, or Nothing if not.</param>
-		''' <param name="collectionToFill">Collection to fill with the entity objects retrieved</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return with this retrieval query. 
-		''' If the used Dynamic Query Engine supports it, 'TOP' is used to limit the amount of rows to return. When set to 0, no limitations are specified.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <param name="entityFactoryToUse">The EntityFactory to use when creating entity objects during a GetMulti() call.</param>
-		''' <param name="proveedorInstance">ProveedorEntity object to be used as a filter in the m:n relation</param>
-		''' <param name="pageNumber">The page number to retrieve.</param>
-		''' <param name="pageSize">The page size of the page to retrieve.</param>
-		''' <returns>true if succeeded, false otherwise</returns>
-		Public Function GetMultiUsingProveedorCollectionViaRecepcionGanado(containingTransaction As ITransaction, collectionToFill As IEntityCollection, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, entityFactoryToUse As IEntityFactory, proveedorInstance As IEntity, pageNumber As Integer, pageSize As Integer) As Boolean
-			Dim fieldsToReturn As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.McgcatTiposdeGanadoEntity)
-			Dim relations As New RelationCollection()
-			relations.Add(McgcatTiposdeGanadoEntity.Relations.RecepcionGanadoEntityUsingIdTipoGanado, "RecepcionGanado_")
-			relations.Add(RecepcionGanadoEntity.Relations.ProveedorEntityUsingIdProveedor, "RecepcionGanado_", String.Empty, JoinHint.None)
-			Dim selectFilter As IPredicateExpression = New PredicateExpression()
-			selectFilter.Add(New FieldCompareValuePredicate(proveedorInstance.Fields(CInt(ProveedorFieldIndex.Codigo)), ComparisonOperator.Equal))
-			Return GetMulti(containingTransaction, collectionToFill, maxNumberOfItemsToReturn, sortClauses, entityFactoryToUse, selectFilter, relations, pageNumber, pageSize)
-		End Function
-
-		''' <summary>
-		''' Retrieves in the calling McgcatTiposdeGanadoCollection object all McgcatTiposdeGanadoEntity objects
-		''' which are related via a relation of type 'm:n' with the passed in ProveedorEntity. 
-		''' </summary>
-		''' <param name="containingTransaction">A containing transaction, if caller is added to a transaction, or Nothing if not.</param>
-		''' <param name="collectionToFill">Collection to fill with the entity objects retrieved</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return with this retrieval query. 
-		''' If the used Dynamic Query Engine supports it, 'TOP' is used to limit the amount of rows to return. When set to 0, no limitations are specified.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <param name="entityFactoryToUse">The EntityFactory to use when creating entity objects during a GetMulti() call.</param>
-		''' <param name="proveedorInstance">ProveedorEntity object to be used as a filter in the m:n relation</param>
-		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
-		''' <returns>true if succeeded, false otherwise</returns>
-		Public Function GetMultiUsingProveedorCollectionViaRecepcionGanado(containingTransaction As ITransaction, collectionToFill As IEntityCollection, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, entityFactoryToUse As IEntityFactory, proveedorInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
-			Dim fieldsToReturn As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.McgcatTiposdeGanadoEntity)
-			Dim relations As  New RelationCollection()
-			relations.Add(McgcatTiposdeGanadoEntity.Relations.RecepcionGanadoEntityUsingIdTipoGanado, "RecepcionGanado_")
-			relations.Add(RecepcionGanadoEntity.Relations.ProveedorEntityUsingIdProveedor, "RecepcionGanado_", String.Empty, JoinHint.None)
-			Dim selectFilter As IPredicateExpression = New PredicateExpression()
-			selectFilter.Add(New FieldCompareValuePredicate(proveedorInstance.Fields(CInt(ProveedorFieldIndex.Codigo)), ComparisonOperator.Equal))
 			Return GetMulti(containingTransaction, collectionToFill, maxNumberOfItemsToReturn, sortClauses, entityFactoryToUse, selectFilter, relations, prefetchPathToUse)
 		End Function
 	

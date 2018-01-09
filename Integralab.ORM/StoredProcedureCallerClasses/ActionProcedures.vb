@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: martes, 26 de diciembre de 2017 16:41:38
+' // Code is generated on: viernes, 5 de enero de 2018 17:48:23
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -17496,7 +17496,9 @@ cveVig As System.String, func As System.String, numOpc As System.Int32, ByRef re
 		''' Delegate definition for stored procedure 'USP_RecepcionGanado' to be used in combination of a UnitOfWork object.
 		''' </summary>
 		Delegate Function UspRecepcionGanadoCallBack(loteRecepcion As System.String, fechaRecepcion As System.DateTime, idProveedor As System.Int32, loteEngorda As System.String, cantCabezas As System.Int32, kilosEnviados As System.Decimal, kilosRecibidos As System.Decimal, unidad As System.String, conductor As System.String, placas As System.String, observaciones As System.String,  _
-idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, func As System.String, numOpc As System.Int32, transactionToUse As ITransaction) As Integer
+idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, idCliente As System.Int32, cveLugarCompra As System.Int32, cveComprador As System.Int32,  _
+horasViaje As System.Decimal, kilosComprado As System.Decimal, importeComprado As System.Decimal, diasCredito As System.Byte, fechaPago As System.DateTime, numFactura As System.String, fechaConta As System.DateTime, numPoliza As System.String, numCabezasMacho As System.Int32, numCabezasHembra As System.Int32, func As System.String,  _
+numOpc As System.Int32, transactionToUse As ITransaction) As Integer
 
 		''' <summary>
 		''' Calls stored procedure 'USP_RecepcionGanado'.<br/><br/>
@@ -17521,13 +17523,28 @@ idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.Strin
 		''' <param name="observacionesCancelacion">Input parameter of stored procedure</param>
 		''' <param name="kilosPrimerPesada">Input parameter of stored procedure</param>
 		''' <param name="kilosSegundaPesada">Input parameter of stored procedure</param>
+		''' <param name="idCliente">Input parameter of stored procedure</param>
+		''' <param name="cveLugarCompra">Input parameter of stored procedure</param>
+		''' <param name="cveComprador">Input parameter of stored procedure</param>
+		''' <param name="horasViaje">Input parameter of stored procedure</param>
+		''' <param name="kilosComprado">Input parameter of stored procedure</param>
+		''' <param name="importeComprado">Input parameter of stored procedure</param>
+		''' <param name="diasCredito">Input parameter of stored procedure</param>
+		''' <param name="fechaPago">Input parameter of stored procedure</param>
+		''' <param name="numFactura">Input parameter of stored procedure</param>
+		''' <param name="fechaConta">Input parameter of stored procedure</param>
+		''' <param name="numPoliza">Input parameter of stored procedure</param>
+		''' <param name="numCabezasMacho">Input parameter of stored procedure</param>
+		''' <param name="numCabezasHembra">Input parameter of stored procedure</param>
 		''' <param name="func">Input parameter of stored procedure</param>
 		''' <param name="numOpc">Input parameter of stored procedure</param>
 		''' <returns>Amount of rows affected, if the database / routine doesn't surpress rowcounting.</returns>
 		Public Shared Function UspRecepcionGanado(loteRecepcion As System.String, fechaRecepcion As System.DateTime, idProveedor As System.Int32, loteEngorda As System.String, cantCabezas As System.Int32, kilosEnviados As System.Decimal, kilosRecibidos As System.Decimal, unidad As System.String, conductor As System.String, placas As System.String, observaciones As System.String,  _
-idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, func As System.String, numOpc As System.Int32) As Integer
+idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, idCliente As System.Int32, cveLugarCompra As System.Int32, cveComprador As System.Int32,  _
+horasViaje As System.Decimal, kilosComprado As System.Decimal, importeComprado As System.Decimal, diasCredito As System.Byte, fechaPago As System.DateTime, numFactura As System.String, fechaConta As System.DateTime, numPoliza As System.String, numCabezasMacho As System.Int32, numCabezasHembra As System.Int32, func As System.String,  _
+numOpc As System.Int32) As Integer
 			' create parameters
-			Dim parameters() As SqlParameter = New SqlParameter(21 - 1) {}
+			Dim parameters() As SqlParameter = New SqlParameter(34 - 1) {}
 			parameters(0) = New SqlParameter("@LoteRecepcion", SqlDbType.Char, 10, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, loteRecepcion)
 			parameters(1) = New SqlParameter("@FechaRecepcion", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaRecepcion)
 			parameters(2) = New SqlParameter("@IdProveedor", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idProveedor)
@@ -17547,8 +17564,21 @@ idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.Strin
 			parameters(16) = New SqlParameter("@ObservacionesCancelacion", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacionesCancelacion)
 			parameters(17) = New SqlParameter("@KilosPrimerPesada", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosPrimerPesada)
 			parameters(18) = New SqlParameter("@KilosSegundaPesada", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosSegundaPesada)
-			parameters(19) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
-			parameters(20) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
+			parameters(19) = New SqlParameter("@IdCliente", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idCliente)
+			parameters(20) = New SqlParameter("@CveLugarCompra", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cveLugarCompra)
+			parameters(21) = New SqlParameter("@CveComprador", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cveComprador)
+			parameters(22) = New SqlParameter("@HorasViaje", SqlDbType.SmallMoney, 0, ParameterDirection.Input, True, 10, 4, "",  DataRowVersion.Current, horasViaje)
+			parameters(23) = New SqlParameter("@KilosComprado", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosComprado)
+			parameters(24) = New SqlParameter("@ImporteComprado", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, importeComprado)
+			parameters(25) = New SqlParameter("@DiasCredito", SqlDbType.TinyInt, 0, ParameterDirection.Input, True, 3, 0, "",  DataRowVersion.Current, diasCredito)
+			parameters(26) = New SqlParameter("@FechaPago", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaPago)
+			parameters(27) = New SqlParameter("@NumFactura", SqlDbType.VarChar, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, numFactura)
+			parameters(28) = New SqlParameter("@FechaConta", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaConta)
+			parameters(29) = New SqlParameter("@NumPoliza", SqlDbType.VarChar, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, numPoliza)
+			parameters(30) = New SqlParameter("@NumCabezasMacho", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numCabezasMacho)
+			parameters(31) = New SqlParameter("@NumCabezasHembra", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numCabezasHembra)
+			parameters(32) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
+			parameters(33) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 
 			' Call the stored proc.
 			Dim toReturn As Integer = DbUtils.CallActionStoredProcedure("[dbo].[USP_RecepcionGanado]", parameters, Nothing)
@@ -17581,14 +17611,29 @@ idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.Strin
 		''' <param name="observacionesCancelacion">Input parameter of stored procedure</param>
 		''' <param name="kilosPrimerPesada">Input parameter of stored procedure</param>
 		''' <param name="kilosSegundaPesada">Input parameter of stored procedure</param>
+		''' <param name="idCliente">Input parameter of stored procedure</param>
+		''' <param name="cveLugarCompra">Input parameter of stored procedure</param>
+		''' <param name="cveComprador">Input parameter of stored procedure</param>
+		''' <param name="horasViaje">Input parameter of stored procedure</param>
+		''' <param name="kilosComprado">Input parameter of stored procedure</param>
+		''' <param name="importeComprado">Input parameter of stored procedure</param>
+		''' <param name="diasCredito">Input parameter of stored procedure</param>
+		''' <param name="fechaPago">Input parameter of stored procedure</param>
+		''' <param name="numFactura">Input parameter of stored procedure</param>
+		''' <param name="fechaConta">Input parameter of stored procedure</param>
+		''' <param name="numPoliza">Input parameter of stored procedure</param>
+		''' <param name="numCabezasMacho">Input parameter of stored procedure</param>
+		''' <param name="numCabezasHembra">Input parameter of stored procedure</param>
 		''' <param name="func">Input parameter of stored procedure</param>
 		''' <param name="numOpc">Input parameter of stored procedure</param>
 		''' <param name="returnValue">Return value of the stored procedure</param>
 		''' <returns>Amount of rows affected, if the database / routine doesn't surpress rowcounting.</returns>
 		Public Shared Function UspRecepcionGanado(loteRecepcion As System.String, fechaRecepcion As System.DateTime, idProveedor As System.Int32, loteEngorda As System.String, cantCabezas As System.Int32, kilosEnviados As System.Decimal, kilosRecibidos As System.Decimal, unidad As System.String, conductor As System.String, placas As System.String, observaciones As System.String,  _
-idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, func As System.String, numOpc As System.Int32, ByRef returnValue As System.Int32) As Integer
+idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, idCliente As System.Int32, cveLugarCompra As System.Int32, cveComprador As System.Int32,  _
+horasViaje As System.Decimal, kilosComprado As System.Decimal, importeComprado As System.Decimal, diasCredito As System.Byte, fechaPago As System.DateTime, numFactura As System.String, fechaConta As System.DateTime, numPoliza As System.String, numCabezasMacho As System.Int32, numCabezasHembra As System.Int32, func As System.String,  _
+numOpc As System.Int32, ByRef returnValue As System.Int32) As Integer
 			' create parameters. Add 1 to make room for the return value parameter.
-			Dim parameters() As SqlParameter = New SqlParameter(21) {}
+			Dim parameters() As SqlParameter = New SqlParameter(34) {}
 			parameters(0) = New SqlParameter("@LoteRecepcion", SqlDbType.Char, 10, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, loteRecepcion)
 			parameters(1) = New SqlParameter("@FechaRecepcion", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaRecepcion)
 			parameters(2) = New SqlParameter("@IdProveedor", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idProveedor)
@@ -17608,17 +17653,30 @@ idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.Strin
 			parameters(16) = New SqlParameter("@ObservacionesCancelacion", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacionesCancelacion)
 			parameters(17) = New SqlParameter("@KilosPrimerPesada", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosPrimerPesada)
 			parameters(18) = New SqlParameter("@KilosSegundaPesada", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosSegundaPesada)
-			parameters(19) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
-			parameters(20) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
+			parameters(19) = New SqlParameter("@IdCliente", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idCliente)
+			parameters(20) = New SqlParameter("@CveLugarCompra", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cveLugarCompra)
+			parameters(21) = New SqlParameter("@CveComprador", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cveComprador)
+			parameters(22) = New SqlParameter("@HorasViaje", SqlDbType.SmallMoney, 0, ParameterDirection.Input, True, 10, 4, "",  DataRowVersion.Current, horasViaje)
+			parameters(23) = New SqlParameter("@KilosComprado", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosComprado)
+			parameters(24) = New SqlParameter("@ImporteComprado", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, importeComprado)
+			parameters(25) = New SqlParameter("@DiasCredito", SqlDbType.TinyInt, 0, ParameterDirection.Input, True, 3, 0, "",  DataRowVersion.Current, diasCredito)
+			parameters(26) = New SqlParameter("@FechaPago", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaPago)
+			parameters(27) = New SqlParameter("@NumFactura", SqlDbType.VarChar, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, numFactura)
+			parameters(28) = New SqlParameter("@FechaConta", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaConta)
+			parameters(29) = New SqlParameter("@NumPoliza", SqlDbType.VarChar, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, numPoliza)
+			parameters(30) = New SqlParameter("@NumCabezasMacho", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numCabezasMacho)
+			parameters(31) = New SqlParameter("@NumCabezasHembra", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numCabezasHembra)
+			parameters(32) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
+			parameters(33) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 
 			' Return value parameter
-			parameters(21) = new SqlParameter("RETURNVALUE", SqlDbType.Int, 0, ParameterDirection.ReturnValue, True, 10, 0, "",  DataRowVersion.Current, returnValue)			
+			parameters(34) = new SqlParameter("RETURNVALUE", SqlDbType.Int, 0, ParameterDirection.ReturnValue, True, 10, 0, "",  DataRowVersion.Current, returnValue)			
 
 			' Call the stored proc.
 			Dim toReturn As Integer = DbUtils.CallActionStoredProcedure("[dbo].[USP_RecepcionGanado]", parameters, Nothing)
 
 
-			returnValue = CType(parameters(21).Value, Integer)
+			returnValue = CType(parameters(34).Value, Integer)
 			Return toReturn
 		End Function
 
@@ -17646,14 +17704,29 @@ idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.Strin
 		''' <param name="observacionesCancelacion">Input parameter of stored procedure</param>
 		''' <param name="kilosPrimerPesada">Input parameter of stored procedure</param>
 		''' <param name="kilosSegundaPesada">Input parameter of stored procedure</param>
+		''' <param name="idCliente">Input parameter of stored procedure</param>
+		''' <param name="cveLugarCompra">Input parameter of stored procedure</param>
+		''' <param name="cveComprador">Input parameter of stored procedure</param>
+		''' <param name="horasViaje">Input parameter of stored procedure</param>
+		''' <param name="kilosComprado">Input parameter of stored procedure</param>
+		''' <param name="importeComprado">Input parameter of stored procedure</param>
+		''' <param name="diasCredito">Input parameter of stored procedure</param>
+		''' <param name="fechaPago">Input parameter of stored procedure</param>
+		''' <param name="numFactura">Input parameter of stored procedure</param>
+		''' <param name="fechaConta">Input parameter of stored procedure</param>
+		''' <param name="numPoliza">Input parameter of stored procedure</param>
+		''' <param name="numCabezasMacho">Input parameter of stored procedure</param>
+		''' <param name="numCabezasHembra">Input parameter of stored procedure</param>
 		''' <param name="func">Input parameter of stored procedure</param>
 		''' <param name="numOpc">Input parameter of stored procedure</param>
 		''' <param name="transactionToUse">the transaction to use, or null if no transaction is available.</param>
 		''' <returns>Amount of rows affected, if the database / routine doesn't surpress rowcounting.</returns>
 		Public Shared Function UspRecepcionGanado(loteRecepcion As System.String, fechaRecepcion As System.DateTime, idProveedor As System.Int32, loteEngorda As System.String, cantCabezas As System.Int32, kilosEnviados As System.Decimal, kilosRecibidos As System.Decimal, unidad As System.String, conductor As System.String, placas As System.String, observaciones As System.String,  _
-idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, func As System.String, numOpc As System.Int32, transactionToUse As ITransaction) As Integer
+idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, idCliente As System.Int32, cveLugarCompra As System.Int32, cveComprador As System.Int32,  _
+horasViaje As System.Decimal, kilosComprado As System.Decimal, importeComprado As System.Decimal, diasCredito As System.Byte, fechaPago As System.DateTime, numFactura As System.String, fechaConta As System.DateTime, numPoliza As System.String, numCabezasMacho As System.Int32, numCabezasHembra As System.Int32, func As System.String,  _
+numOpc As System.Int32, transactionToUse As ITransaction) As Integer
 			' create parameters
-			Dim parameters() As SqlParameter = New SqlParameter(21 - 1) {}
+			Dim parameters() As SqlParameter = New SqlParameter(34 - 1) {}
 			parameters(0) = New SqlParameter("@LoteRecepcion", SqlDbType.Char, 10, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, loteRecepcion)
 			parameters(1) = New SqlParameter("@FechaRecepcion", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaRecepcion)
 			parameters(2) = New SqlParameter("@IdProveedor", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idProveedor)
@@ -17673,8 +17746,21 @@ idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.Strin
 			parameters(16) = New SqlParameter("@ObservacionesCancelacion", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacionesCancelacion)
 			parameters(17) = New SqlParameter("@KilosPrimerPesada", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosPrimerPesada)
 			parameters(18) = New SqlParameter("@KilosSegundaPesada", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosSegundaPesada)
-			parameters(19) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
-			parameters(20) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
+			parameters(19) = New SqlParameter("@IdCliente", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idCliente)
+			parameters(20) = New SqlParameter("@CveLugarCompra", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cveLugarCompra)
+			parameters(21) = New SqlParameter("@CveComprador", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cveComprador)
+			parameters(22) = New SqlParameter("@HorasViaje", SqlDbType.SmallMoney, 0, ParameterDirection.Input, True, 10, 4, "",  DataRowVersion.Current, horasViaje)
+			parameters(23) = New SqlParameter("@KilosComprado", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosComprado)
+			parameters(24) = New SqlParameter("@ImporteComprado", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, importeComprado)
+			parameters(25) = New SqlParameter("@DiasCredito", SqlDbType.TinyInt, 0, ParameterDirection.Input, True, 3, 0, "",  DataRowVersion.Current, diasCredito)
+			parameters(26) = New SqlParameter("@FechaPago", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaPago)
+			parameters(27) = New SqlParameter("@NumFactura", SqlDbType.VarChar, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, numFactura)
+			parameters(28) = New SqlParameter("@FechaConta", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaConta)
+			parameters(29) = New SqlParameter("@NumPoliza", SqlDbType.VarChar, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, numPoliza)
+			parameters(30) = New SqlParameter("@NumCabezasMacho", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numCabezasMacho)
+			parameters(31) = New SqlParameter("@NumCabezasHembra", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numCabezasHembra)
+			parameters(32) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
+			parameters(33) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 
 			' Call the stored proc.
 			Dim toReturn As Integer = DbUtils.CallActionStoredProcedure("[dbo].[USP_RecepcionGanado]", parameters, transactionToUse)
@@ -17707,15 +17793,30 @@ idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.Strin
 		''' <param name="observacionesCancelacion">Input parameter of stored procedure</param>
 		''' <param name="kilosPrimerPesada">Input parameter of stored procedure</param>
 		''' <param name="kilosSegundaPesada">Input parameter of stored procedure</param>
+		''' <param name="idCliente">Input parameter of stored procedure</param>
+		''' <param name="cveLugarCompra">Input parameter of stored procedure</param>
+		''' <param name="cveComprador">Input parameter of stored procedure</param>
+		''' <param name="horasViaje">Input parameter of stored procedure</param>
+		''' <param name="kilosComprado">Input parameter of stored procedure</param>
+		''' <param name="importeComprado">Input parameter of stored procedure</param>
+		''' <param name="diasCredito">Input parameter of stored procedure</param>
+		''' <param name="fechaPago">Input parameter of stored procedure</param>
+		''' <param name="numFactura">Input parameter of stored procedure</param>
+		''' <param name="fechaConta">Input parameter of stored procedure</param>
+		''' <param name="numPoliza">Input parameter of stored procedure</param>
+		''' <param name="numCabezasMacho">Input parameter of stored procedure</param>
+		''' <param name="numCabezasHembra">Input parameter of stored procedure</param>
 		''' <param name="func">Input parameter of stored procedure</param>
 		''' <param name="numOpc">Input parameter of stored procedure</param>
 		''' <param name="returnValue">Return value of the stored procedure</param>
 		''' <param name="transactionToUse">the transaction to use, or null if no transaction is available.</param>
 		''' <returns>Amount of rows affected, if the database / routine doesn't surpress rowcounting.</returns>
 		Public Shared Function UspRecepcionGanado(loteRecepcion As System.String, fechaRecepcion As System.DateTime, idProveedor As System.Int32, loteEngorda As System.String, cantCabezas As System.Int32, kilosEnviados As System.Decimal, kilosRecibidos As System.Decimal, unidad As System.String, conductor As System.String, placas As System.String, observaciones As System.String,  _
-idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, func As System.String, numOpc As System.Int32, ByRef returnValue As System.Int32, transactionToUse As ITransaction) As Integer
+idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.String, fechaCancelacion As System.DateTime, idUsuarioCancelacion As System.Int32, observacionesCancelacion As System.String, kilosPrimerPesada As System.Decimal, kilosSegundaPesada As System.Decimal, idCliente As System.Int32, cveLugarCompra As System.Int32, cveComprador As System.Int32,  _
+horasViaje As System.Decimal, kilosComprado As System.Decimal, importeComprado As System.Decimal, diasCredito As System.Byte, fechaPago As System.DateTime, numFactura As System.String, fechaConta As System.DateTime, numPoliza As System.String, numCabezasMacho As System.Int32, numCabezasHembra As System.Int32, func As System.String,  _
+numOpc As System.Int32, ByRef returnValue As System.Int32, transactionToUse As ITransaction) As Integer
 			' create parameters. Add 1 to make room for the return value parameter.
-			Dim parameters() As SqlParameter = New SqlParameter(21) {}
+			Dim parameters() As SqlParameter = New SqlParameter(34) {}
 			parameters(0) = New SqlParameter("@LoteRecepcion", SqlDbType.Char, 10, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, loteRecepcion)
 			parameters(1) = New SqlParameter("@FechaRecepcion", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaRecepcion)
 			parameters(2) = New SqlParameter("@IdProveedor", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idProveedor)
@@ -17735,17 +17836,30 @@ idUsuario As System.Int32, idTipoGanado As System.Int32, estatus As System.Strin
 			parameters(16) = New SqlParameter("@ObservacionesCancelacion", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacionesCancelacion)
 			parameters(17) = New SqlParameter("@KilosPrimerPesada", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosPrimerPesada)
 			parameters(18) = New SqlParameter("@KilosSegundaPesada", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosSegundaPesada)
-			parameters(19) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
-			parameters(20) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
+			parameters(19) = New SqlParameter("@IdCliente", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idCliente)
+			parameters(20) = New SqlParameter("@CveLugarCompra", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cveLugarCompra)
+			parameters(21) = New SqlParameter("@CveComprador", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cveComprador)
+			parameters(22) = New SqlParameter("@HorasViaje", SqlDbType.SmallMoney, 0, ParameterDirection.Input, True, 10, 4, "",  DataRowVersion.Current, horasViaje)
+			parameters(23) = New SqlParameter("@KilosComprado", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, kilosComprado)
+			parameters(24) = New SqlParameter("@ImporteComprado", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, importeComprado)
+			parameters(25) = New SqlParameter("@DiasCredito", SqlDbType.TinyInt, 0, ParameterDirection.Input, True, 3, 0, "",  DataRowVersion.Current, diasCredito)
+			parameters(26) = New SqlParameter("@FechaPago", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaPago)
+			parameters(27) = New SqlParameter("@NumFactura", SqlDbType.VarChar, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, numFactura)
+			parameters(28) = New SqlParameter("@FechaConta", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaConta)
+			parameters(29) = New SqlParameter("@NumPoliza", SqlDbType.VarChar, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, numPoliza)
+			parameters(30) = New SqlParameter("@NumCabezasMacho", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numCabezasMacho)
+			parameters(31) = New SqlParameter("@NumCabezasHembra", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numCabezasHembra)
+			parameters(32) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
+			parameters(33) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 
 			' Return value parameter
-			parameters(21) = new SqlParameter("RETURNVALUE", SqlDbType.Int, 0, ParameterDirection.ReturnValue, True, 10, 0, "",  DataRowVersion.Current, returnValue)			
+			parameters(34) = new SqlParameter("RETURNVALUE", SqlDbType.Int, 0, ParameterDirection.ReturnValue, True, 10, 0, "",  DataRowVersion.Current, returnValue)			
 
 			' Call the stored proc.
 			Dim toReturn As Integer = DbUtils.CallActionStoredProcedure("[dbo].[USP_RecepcionGanado]", parameters, transactionToUse)
 
 
-			returnValue = CType(parameters(21).Value, Integer)
+			returnValue = CType(parameters(34).Value, Integer)
 			Return toReturn
 		End Function
 	
