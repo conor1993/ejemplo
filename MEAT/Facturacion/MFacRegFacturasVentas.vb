@@ -4,13 +4,26 @@ Imports CC = Integralab.ORM.CollectionClasses
 Imports EC = Integralab.ORM.EntityClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports System.Data.SqlClient
-Imports Integralab.CFD
+Imports Integralab.CFDF
 Imports System.IO
 Imports Integralab
 
 Public Class MFacRegFacturasVentas
 
 #Region "Miembros"
+    Dim FacturaCabecero As New FacturasClass
+    Dim ClientesCol As ClientesIntroductoresColeccion
+    Dim ProductosGenCol As ProductoCollectionClass
+    Dim ConF As New CC.ConfiguracionFacturaCollection
+    Dim NumRenglones As Integer
+    Dim configurarImprecion As Boolean = True
+    Dim SumaCargo As Decimal
+    Dim SumaAbono As Decimal
+    Dim Band As Boolean
+    Dim PolizaACancelar As String
+    Dim dtProdServ As New DataTable
+    Dim dtUnidades As New DataTable
+    Dim Buscarr As Boolean
     'declaracion de clases    
     'variables para las clases de control y cuentas contables
     Dim Estado As FormState
@@ -786,6 +799,11 @@ Public Class MFacRegFacturasVentas
         End Try
     End Function
 
+
+    Public Function validar() As Boolean
+        Return True
+    End Function
+
     Private Sub ObtenerEmbarque(Optional ByVal SelConfiguracionFactura As Boolean = True)
         Dim RenglonesEnEmbarque As Integer = 0
 
@@ -883,6 +901,7 @@ Public Class MFacRegFacturasVentas
                                 Me.dgvDetalleConcentrado.Rows(k).Cells(Me.ImporteFacturado.Index).Value += Importe
                                 Me.dgvDetalleConcentrado.Rows(k).Cells(Me.KilosFacturados.Index).Value += TablaEmbarque2.Tables(0).Rows(j)("KilosFacturar")
                                 Me.dgvDetalleConcentrado.Rows(k).Cells(Me.clmPiezas.Index).Value += TablaEmbarque2.Tables(0).Rows(j)("Piezas")
+                                Me.dgvDetalleConcentrado.Rows(k).Cells(Me.clmiva.Index).Value = "0"
                                 band = True
                             End If
                         Next
@@ -1121,6 +1140,36 @@ Public Class MFacRegFacturasVentas
         End Try
     End Sub
 
+    Public Sub llenarUsoCFDISAT()
+        Dim connetionString As String = Nothing
+        Dim connection As SqlConnection
+        Dim command As SqlCommand
+        Dim adapter As New SqlDataAdapter()
+        Dim ds As New DataSet()
+        Dim i As Integer = 0
+        Dim sql As String = Nothing
+        connetionString = "Data Source=ServerName;Initial Catalog=databasename;User ID=userid;Password=yourpassword"
+        sql = "select Clave,Clave +'-'+Concepto as Concepto from UsoCFDISAT order by 1"
+        connection = New SqlConnection(HC.DbUtils.ActualConnectionString)
+        Try
+            connection.Open()
+            command = New SqlCommand(sql, connection)
+            adapter.SelectCommand = command
+            adapter.Fill(ds)
+            adapter.Dispose()
+            command.Dispose()
+            connection.Close()
+            cmbUsoCFDI.DataSource = ds.Tables(0)
+            cmbUsoCFDI.ValueMember = "Clave"
+            cmbUsoCFDI.DisplayMember = "Concepto"
+            'cmbUsoCFDI.ValueType = GetType(String)
+            'connection.Close()
+            connection.Dispose()
+        Catch ex As Exception
+            MessageBox.Show("Problema en llenar los uso de cfdi sat ")
+        End Try
+    End Sub
+
     Private Sub llenarcombosgrid()
         Try
             Dim FormasPago As DataSet = New DataSet
@@ -1146,12 +1195,164 @@ Public Class MFacRegFacturasVentas
         End Try
     End Sub
 
-    Private Sub guardarfacturacion()
-        Dim Fact As CFDI.Comprobante
-        Dim DomFiscalCte As DomicilioClienteClass
-        DomFiscalCte = DirectCast(ultcmbDomiciliosFiscales.SelectedRow.ListObject, DomicilioClienteClass)
-        Cliente = New ClientesIntroductoresClass(txtCodigoCliente.Text)
+    Public Function Guardar(ByVal Trans As HC.Transaction, ByVal Estatus As String) As Boolean
 
+        Dim ControlFD As Integralab.FactDigital.ControladorFactDigital
+        Dim ConStr As String
+        If File.Exists(Application.StartupPath + "\\cx.dat") Then
+            ConStr = Integralab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
+        Else
+            Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
+        End If
+        ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
+
+        Cursor = Cursors.WaitCursor
+        MEAToolBar1.Enabled = False
+        Application.DoEvents()
+
+        Dim TransG As New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
+        Try
+            If Not validar() Then
+                Return False
+                Exit Function
+            End If
+
+            If Estatus = "V" Then
+                Dim Folio As New FoliosClass 'variable para la clase de folio
+                'Dim FacturasDetalleCol As New CN.FacturasDetalleCollectionClass ' para crear la coleccion de detalle
+                'Dim FacturasDet As New EC.DetFacturasEntity 'para agregar al detalle
+                'para crear el folio de la factura
+
+                Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales
+                Folio.Año = Year(dtFechaFactura.Value)
+                Folio.Mes = Month(dtFechaFactura.Value)
+
+
+                If Not Folio.Guardar(Trans) Then
+                    Trans.Rollback()
+                    Cursor = Cursors.Default
+                    MEAToolBar1.Enabled = True
+                    MessageBox.Show("Error al generar folio de Factura", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+
+                Dim Fact As CFDI.Comprobante
+                Fact = ObtenerComprobante(Fact, Folio.Consecutivo.ToString("0000000"), "A")
+
+                Dim FactPDF As CFDI.Comprobante
+                FactPDF = ObtenerComprobante(FactPDF, Folio.Consecutivo.ToString("0000000"), "A", True)
+
+#If DEBUG Then
+                Dim cfdi As CFDI.ORM.CFDI = ControlFD.GenerarCFDI(Fact.Folio, Fact, TransG, True, True)
+#Else
+            Dim cfdi As CFDI.ORM.CFDI = ControlFD.GenerarCFDI(Fact.folio, Fact, TransG, False, True)
+#End If
+
+                If File.Exists(Application.StartupPath + "\\" + "Error.txt") Then
+                    TransG.Rollback()
+                    Cursor = Cursors.Default
+                    MEAToolBar1.Enabled = True
+                    File.ReadAllText(Application.StartupPath + "\\" + "Error.txt")
+                    MsgBox("Error al generar el CFDI." & vbCrLf & File.ReadAllText(Application.StartupPath + "\\" + "Error.txt"), MsgBoxStyle.Critical, "Facturación")
+                    Return False
+                End If
+
+                FacturaCabecero.NoFactura = "F" & Folio.Consecutivo.ToString("0000000")
+
+                '--------------------------------------------GUARDAR LA FACTURA--------------------------------------------------------------------------
+                Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
+                FacturaCabecero.FechaFactura = Me.dtFechaFactura.Value
+                FacturaCabecero.FechaVencimiento = Me.dtpFechaVencimiento.Value
+                FacturaCabecero.SubTotal = CDec(Me.txtSubTotal.Text)
+                FacturaCabecero.ImporteDescuento = CDec("0")
+                FacturaCabecero.Cliente = CType(Me.txtCodigoCliente.Text, Integer)
+                FacturaCabecero.ClaveUsuario = Controlador.Sesion.MiUsuario.Usrndx
+                FacturaCabecero.DiasCredito = Integer.Parse(Me.txtDiasCredito.Text)
+                'FacturaCabecero.Referencia = 0f
+                FacturaCabecero.Estatus = "V"
+                FacturaCabecero.StaFacturacion = "S"
+                FacturaCabecero.LugarExpedicion = txtlugarexpedicion.Text.Trim()
+                FacturaCabecero.FormaPago = CStr(cmbformadepago.SelectedValue)
+                FacturaCabecero.MetodoPago = CStr(cmbmetododepago.SelectedValue)
+                FacturaCabecero.NumCta = CStr(txtnumerodecuenta.Text.Trim())
+                FacturaCabecero.Uuid = cfdi.UUID.ToString()
+                FacturaCabecero.UsoCfdi = CStr(cmbUsoCFDI.SelectedValue)
+                FacturaCabecero.Observaciones = txtObservaciones.Text
+                FacturaCabecero.Direccion = txtDireccion.Text
+
+                'guardar cabecero
+                Controlador.RealizarFacturasdeVenta(FacturaCabecero, Now, ClasesNegocio.TipoFacturaEnum.FACTURACION_ESPECIAL, Trans)
+
+                'agregar a la clase detalle de facturas
+                For i As Integer = 0 To Me.dgvDetalleConcentrado.RowCount - 1
+                    If Not Me.dgvDetalle.Rows(i).IsNewRow Then
+                        Dim FacturasDetalle As New FacturasDetalleClass
+ 
+                            FacturasDetalle.Descripcion = Me.dgvDetalle.Rows(i).Cells(Me.Descripcion.Index).Value.ToString
+
+                        FacturasDetalle.PrecioUnitario = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.Precios.Index).Value, Decimal)
+                        FacturasDetalle.CantidadxProducto = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.KilosEmbarcados.Index).Value, Decimal)
+                        FacturasDetalle.PorcentajeIVA = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.ImporteEmbarcado.Index).Value, Decimal)
+                            FacturasDetalle.Renglon = i
+                            FacturasDetalle.Servicios = "N"
+                            FacturasDetalle.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
+                            FacturasDetalle.Estatus = "V"
+                        FacturasDetalle.CveProductoServ = CStr(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmproductoserv.Index).Value)
+                        FacturasDetalle.CveUnidad = CStr(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmunidadsat.Index).Value)
+                        FacturasDetalle.IVA = CDec(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmiva.Index).Value)
+                        FacturasDetalle.Total = CDec(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.ImporteFacturado.Index).Value)
+                        FacturasDetalle.Subtotal = CDec(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.ImporteFacturado.Index).Value)
+                            FacturasDetalle.Unidad = "kl"
+                            'guardar el detalle
+                            Controlador.RealizarFacturasdeVentaenDetalle(FacturasDetalle, Me.txtFolioFactura.Text, Trans)
+                        End If
+                Next
+
+                TransG.Commit()
+
+                Dim Ubicacion As String = ControlFD.GenerarArchivoPDF(cfdi, Fact.Conceptos, 0, FactPDF)
+                Application.DoEvents()
+                Cursor = Cursors.Default
+                Dim Procesar As New Process()
+
+                Procesar.StartInfo.FileName = Ubicacion
+                Procesar.StartInfo.CreateNoWindow = True
+
+                Procesar.Start()
+                Trans.Commit()
+                Cursor.Current = Cursors.Default
+                MessageBox.Show("La Factura de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                FacturaCabecero.Estatus = "C"
+                Controlador.RealizarFacturasdeVenta(FacturaCabecero, Now, ClasesNegocio.TipoFacturaEnum.FACTURACION_DE_VENTA_DE_CORRAL, Trans)
+            End If
+            Cursor = Cursors.Default
+            MEAToolBar1.Enabled = True
+            Application.DoEvents()
+            Return True
+
+
+
+
+
+        Catch ex As Exception
+
+        End Try
+
+    End Function
+
+    Public Function ObtenerComprobante(ByVal Comprobante As CFDI.Comprobante, ByVal Folio As String, ByVal Serie As String, Optional ByVal EsParaPDF As Boolean = False)
+
+        Dim ComprobanteImpuestos As New CFDI.ComprobanteImpuestos
+        Dim RegimenFis As CFDI.c_RegimenFiscal
+        RegimenFis = DirectCast([Enum].Parse(GetType(CFDI.c_RegimenFiscal), "_" + Controlador.Sesion.MiEmpresa.EmpRegimenFiscal.Trim()), CFDI.c_RegimenFiscal)
+        Dim Emisor As New CFDI.ComprobanteEmisor(Controlador.Sesion.MiEmpresa.EmpRfc, RegimenFis)
+        Dim Cliente As ClientesIntroductoresClass
+        Dim DomFiscalCte As DomicilioClienteClass
+        DomFiscalCte = DirectCast(DirectCast(ultcmbDomiciliosFiscales.SelectedRow.ListObject, Object), DomicilioClienteClass)
+        Cliente = New ClientesIntroductoresClass(CInt(txtCodigoCliente.Text))
+
+        Dim Receptor As New CFDI.ComprobanteReceptor(Cliente.RFC.Replace("_", "").Replace("-", "").Replace(" ", ""))
         '----------------------------------------------------
         '   Inicia codigo agregado para generar el CFDI
         '----------------------------------------------------
@@ -1162,66 +1363,187 @@ Public Class MFacRegFacturasVentas
         Else
             Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
         End If
-        ControlFD = New Integralab.FactDigital.ControladorFactDigital(1, ConStr)
-        Dim TransG As New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
+        ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
 
-        ''datos del emisor
-        Dim regimenfiscal = DirectCast([Enum].Parse(GetType(CFDI.c_RegimenFiscal), Controlador.Sesion.MiEmpresa.EmpRegimenFiscal), CFDI.c_RegimenFiscal)
-        Dim Emisor As New CFDI.ComprobanteEmisor(Controlador.Sesion.MiEmpresa.EmpRfc, regimenfiscal)
-
-        ''datos del receptor
-        Dim Receptor As New CFDI.ComprobanteReceptor(Cliente.RFC.Replace("_", "").Replace("-", "").Replace(" ", ""))
-        Dim Domicilio As New CFDI.Ubicacion("MEXICO")
-        Domicilio.calle = DomFiscalCte.Calle
-        Domicilio.colonia = DomFiscalCte.Colonia
-        Domicilio.codigoPostal = DomFiscalCte.CodigPostal
-        Domicilio.noExterior = DomFiscalCte.NoExt
-        Domicilio.noInterior = DomFiscalCte.NoInt
-        Domicilio.localidad = DomFiscalCte.Poblacion.Descripcion
-        Domicilio.municipio = DomFiscalCte.Ciudad.Descripcion
-        Domicilio.estado = DomFiscalCte.Estado.Descripcion
-        Receptor.Nombre = Cliente.RazonSocial
-        Receptor.UsoCFDI = CFDI.c_UsoCFDI.P01
-
-        ''CONCEPTOS
-        Dim Conceptos As New List(Of CFDI.ComprobanteConcepto)()
+        Try
+            Dim DomicilioFiscal As CFDI.UbicacionFiscal
+            Dim RegimenFiscalEmisor As New List(Of CFDI.ComprobanteEmisorRegimenFiscal)
+            Dim ExpedidoEn As New Integralab.CFDI.Ubicacion("MEXICO")
 
 
 
+            If EsParaPDF Then
+                DomicilioFiscal = New CFDI.UbicacionFiscal(Controlador.Sesion.MiEmpresa.EmpCalle, Controlador.Sesion.MiEmpresa.EmpLocalidad, Controlador.Sesion.MiEmpresa.EmpEstado, "MEXICO", Controlador.Sesion.MiEmpresa.EmpCodigoPostal)
+                DomicilioFiscal.colonia = Controlador.Sesion.MiEmpresa.EmpColonia
+                DomicilioFiscal.noExterior = Controlador.Sesion.MiEmpresa.EmpNoExt
+                DomicilioFiscal.noInterior = Controlador.Sesion.MiEmpresa.EmpNoInt
+                Emisor.DomicilioFiscal = DomicilioFiscal
+                RegimenFiscalEmisor.Add(New CFDI.ComprobanteEmisorRegimenFiscal(Controlador.Sesion.MiEmpresa.EmpRegimenFiscal))
+                Emisor.RegimenFiscalEmisor = RegimenFiscalEmisor(0)
 
-        ''RECORRER GRID
-        For Each det As DataGridViewRow In dgvDetalleConcentrado.Rows
+                ExpedidoEn.municipio = Controlador.Sesion.MiEmpresa.EmpLocalidad
+                ExpedidoEn.estado = Controlador.Sesion.MiEmpresa.EmpEstado
 
-            Dim concepto As New CFDI.ComprobanteConcepto(CStr(det.Cells("clmproductoserv").Value), CStr(det.Cells("clmunidadsat").Value), CStr(det.Index + 1), CDec(det.Cells("KilosFacturados").Value), "KG", CStr(det.Cells("Descripcion").Value), CDec(det.Cells("Precios").Value), CDec(det.Cells("ImporteFacturado").Value))
+                Emisor.ExpedidoEn = ExpedidoEn
 
-            ''traslados 
+                Dim Domicilio As New CFDI.Ubicacion("MEXICO")
+                Domicilio.calle = DomFiscalCte.Calle
+                Domicilio.colonia = DomFiscalCte.Colonia
+                Domicilio.codigoPostal = DomFiscalCte.CodigPostal
+                Domicilio.noExterior = DomFiscalCte.NoExt
+                Domicilio.noInterior = DomFiscalCte.NoInt
+                Domicilio.localidad = DomFiscalCte.Poblacion.Descripcion
+                Domicilio.municipio = DomFiscalCte.Ciudad.Descripcion
+                Domicilio.estado = DomFiscalCte.Estado.Descripcion
+                'Domicilio.referencia = CompA.Receptor.Domicilio.Referencia
+
+                Receptor.Domicilio = Domicilio
+
+            End If
+
+            Emisor.Nombre = Controlador.Sesion.MiEmpresa.Empnom
+
+            Receptor.Nombre = Cliente.RazonSocial
+            Dim usoCFDI As CFDI.c_UsoCFDI
+            usoCFDI = [Enum].Parse(GetType(CFDI.c_UsoCFDI), cmbUsoCFDI.SelectedValue)
+            Receptor.UsoCFDI = usoCFDI
+
+            Dim IvaAL0 As Boolean
+            IvaAL0 = False
+            Dim Conceptos As New List(Of CFDI.ComprobanteConcepto)()
+            'recorrer el grid
+
+            For Each row As DataGridViewRow In dgvDetalleConcentrado.Rows
+                If Not row.IsNewRow Then
+                    Dim ConceptosImpuestos As New CFDI.ComprobanteConceptoImpuestos
+                    Dim ConceptosImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
+                    Dim Concepto As CFDI.ComprobanteConcepto
 
 
-            Dim traslado As New CFDI.ComprobanteConceptoImpuestosTraslado
-            traslado.Base = "22500"
-            traslado.Impuesto = "002"
-            traslado.TipoFactor = CFDI.c_TipoFactor.Tasa
-            traslado.TasaOCuota = 0.6
-            traslado.Importe = 3600
+                    With row
+ 
+                        Concepto = New CFDI.ComprobanteConcepto(.Cells(clmproductoserv.Index).Value.ToString(), .Cells(clmunidadsat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(KilosEmbarcados.Index).Value), "kl", .Cells(Descripcion.Index).EditedFormattedValue.ToString(), CDec(.Cells(Precios.Index).Value), CDec(.Cells(ImporteEmbarcado.Index).Value))
 
-            ''se agrega traslado a la lista
-            Dim Traslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)
-            Traslados.Add(traslado)
-            ''comprobante
-            Dim comprobanteconceptoimpuesto As New CFDI.ComprobanteConceptoImpuestos()
-            comprobanteconceptoimpuesto.Traslados = Traslados
-            ''concepto
-            concepto.Impuestos = comprobanteconceptoimpuesto
+                        Dim ComprobanteImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
+                        'If CDec(.Cells(clmIVA.Index).Value) > 0 Then
+                        Dim PorcIva As Decimal
+                        PorcIva = Math.Round(Controlador.ObtenerIVA() / 100, 6, MidpointRounding.AwayFromZero)
+                        Dim ComprobanteImpuestoTraslado As New CFDI.ComprobanteConceptoImpuestosTraslado
+
+                        ComprobanteImpuestoTraslado.Base = Math.Round(CDec(.Cells(Precios.Index).Value) * CDec(.Cells(KilosEmbarcados.Index).Value), 2, MidpointRounding.AwayFromZero)
+
+                        ComprobanteImpuestoTraslado.Impuesto = CFDI.c_Impuesto._002
+                        ComprobanteImpuestoTraslado.TipoFactor = CFDI.c_TipoFactor.Tasa
+                        If CDec(.Cells(clmiva.Index).Value) > 0 Then
+                            ComprobanteImpuestoTraslado.TasaOCuota = PorcIva.ToString("N6")
+                            ComprobanteImpuestoTraslado.Importe = Math.Round(CDec(.Cells(clmiva.Index).Value), 2, MidpointRounding.AwayFromZero)
+                            IvaAL0 = False
+                        Else
+                            ComprobanteImpuestoTraslado.TasaOCuota = 0.ToString("N6")
+                            ComprobanteImpuestoTraslado.Importe = Math.Round(CDec(.Cells(clmiva.Index).Value), 2, MidpointRounding.AwayFromZero)
+                            IvaAL0 = True
+                        End If
+
+                        ComprobanteImpuestoTraslado.TasaOCuotaSpecified = True
+                        ComprobanteImpuestoTraslado.ImporteSpecified = True
+
+                        ComprobanteImpuestosTraslados.Add(ComprobanteImpuestoTraslado)
+                        'End If
+
+                        If ComprobanteImpuestosTraslados.Count > 0 Then
+                            ConceptosImpuestos.Traslados = ComprobanteImpuestosTraslados
+                        End If
+                        If Not IsNothing(ConceptosImpuestos.Traslados) Then
+                            If ConceptosImpuestos.Traslados.Count > 0 Then
+                                Concepto.Impuestos = ConceptosImpuestos
+                            End If
+                        End If
+
+                    End With
+                    Conceptos.Add(Concepto)
+                End If
+            Next
+
+            'Comprobante.Conceptos = Conceptos
+            Dim ComprobanteImpuestoTraslados As New List(Of CFDI.ComprobanteImpuestosTraslado)
+            If IvaAL0 Then
+
+                Dim ComprobanteImpuestoTraslado As New CFDI.ComprobanteImpuestosTraslado
+                ComprobanteImpuestoTraslado.Impuesto = CFDI.c_Impuesto._002
+                ComprobanteImpuestoTraslado.TipoFactor = CFDI.c_TipoFactor.Tasa
+                ComprobanteImpuestoTraslado.TasaOCuota = 0.ToString("N6")
+                ComprobanteImpuestoTraslado.Importe = Math.Round(0D, 2, MidpointRounding.AwayFromZero)
+
+                ComprobanteImpuestoTraslados.Add(ComprobanteImpuestoTraslado)
+                'If CDec(txtIVA.Text.Trim()) <= 0 Then
+                '    ComprobanteImpuestos.Traslados = ComprobanteImpuestoTraslados
+                'End If
+
+            End If
 
 
-            Conceptos.Add(concepto)
-            ''
+            If Not txtIVA.Text.Trim().Equals("") Then
+                If CDec(txtIVA.Text.Trim()) > 0 Then
+                    Dim PorcIva As Decimal
+                    PorcIva = Math.Round(Controlador.ObtenerIVA() / 100, 6, MidpointRounding.AwayFromZero)
 
-        Next
+                    'Dim ComprobanteImpuestoTraslados As New List(Of CFDI.ComprobanteImpuestosTraslado)
+                    Dim ComprobanteImpuestoTraslado As New CFDI.ComprobanteImpuestosTraslado
+                    ComprobanteImpuestoTraslado.Impuesto = CFDI.c_Impuesto._002
+                    ComprobanteImpuestoTraslado.TipoFactor = CFDI.c_TipoFactor.Tasa
+                    ComprobanteImpuestoTraslado.TasaOCuota = PorcIva.ToString("N6")
+                    ComprobanteImpuestoTraslado.Importe = Math.Round(CDec(txtIVA.Text.Trim()), 2, MidpointRounding.AwayFromZero)
+
+                    ComprobanteImpuestoTraslados.Add(ComprobanteImpuestoTraslado)
+
+                    'ComprobanteImpuestos.Traslados = ComprobanteImpuestoTraslados
+                    'ComprobanteImpuestos.TotalImpuestosTrasladados = Math.Round(CDec(txtIVA.Text.Trim()), 2, MidpointRounding.AwayFromZero)
+                    'Comprobante.Impuestos = ComprobanteImpuestos
+
+                End If
+            End If
+            If ComprobanteImpuestoTraslados.Count > 0 Then
+                ComprobanteImpuestos.Traslados = ComprobanteImpuestoTraslados
+                ComprobanteImpuestos.CalcularTotalImpuestosTrasladados()
+                ComprobanteImpuestos.TotalImpuestosTrasladadosSpecified = True
+            End If
 
 
-    End Sub
+            Dim formaPago = DirectCast([Enum].Parse(GetType(CFDI.c_FormaPago), cmbformadepago.SelectedValue.ToString()), CFDI.c_FormaPago)
+            Dim metodoPago = DirectCast([Enum].Parse(GetType(CFDI.c_MetodoPago), cmbmetododepago.SelectedValue.ToString()), CFDI.c_MetodoPago)
+            Comprobante = New CFDI.Comprobante(Emisor, Receptor, Conceptos, ComprobanteImpuestos, dtFechaFactura.Value, "", formaPago, "", "", _
+                      Math.Round(CDec(txtSubTotal.Text.Trim()), 2, MidpointRounding.AwayFromZero), Math.Round(CDec(txtTotal.Text.Trim()), 2, MidpointRounding.AwayFromZero), CFDI.c_TipoDeComprobante.I, metodoPago, txtlugarexpedicion.Tag.ToString())
 
+            With Comprobante
+                .Folio = Folio
+                .Serie = Serie
+
+                .Descuento = 0
+
+
+                .CondicionesDePago = IIf(Me.rdContado.Checked, "CONTADO", "CREDITO")
+
+
+                .TipoCambio = 1.0
+                .Moneda = CFDI.c_Moneda.MXN
+                .Observacion = txtObservaciones.Text.Trim
+                .eMail = DomFiscalCte.Email
+            End With
+            Return Comprobante
+
+        Catch ex As Exception
+            If ex.Message = "No hay ninguna aplicación asociada con el archivo especificado para esta operación" Then
+                MessageBox.Show("Debe instalar Adobe Reader para abrir los archivos pdf", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Else
+
+
+                'TransG.Rollback()
+                MsgBox("Error al generar el CFDI." & vbCrLf & ex.Message, MsgBoxStyle.Critical, ex.Source)
+                Return False
+            End If
+        End Try
+
+    End Function
 
 #End Region
 
@@ -1281,6 +1603,7 @@ Public Class MFacRegFacturasVentas
 
     Private Sub MFacRegFacturasVentas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            llenarUsoCFDISAT()
             llenarcomboformasdepago()
             llenarcombometododepago()
             llenarcombosgrid()
@@ -1295,6 +1618,10 @@ Public Class MFacRegFacturasVentas
             Me.dgvDetalle.AutoGenerateColumns = False
 
             Dim MtbEstados As New MEAToolBar.MEAToolBar.ToolBarButtonStatusStructure
+
+            Me.txtlugarexpedicion.Text = Controlador.Sesion.MiEmpresa.EmpCodigoPostal.Trim() + "-" + Controlador.Sesion.MiEmpresa.EmpMunicipio + ", " + Controlador.Sesion.MiEmpresa.EmpEstado + ", MEXICO"
+            Me.txtlugarexpedicion.Tag = Controlador.Sesion.MiEmpresa.EmpCodigoPostal.Trim()
+
 
             MtbEstados.StateBuscar = "101001111"
             MtbEstados.StateLimpiar = ""
@@ -1373,7 +1700,29 @@ Public Class MFacRegFacturasVentas
     End Sub
 
     Private Sub MEAToolBar1_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickGuardar
-        guardarfacturacion()
+        Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Guardar Facturas")
+        Try
+            Dim bool As Boolean
+            bool = Guardar(Trans, "V")
+            If bool Then
+                Trans.Commit()
+                Me.Limpiar()
+                Me.Deshabilitar()
+            Else
+                Trans.Rollback()
+                Cancelar = True
+                'Me.Limpiar()
+                'Me.Deshabilitar()
+            End If
+
+            'Trans.Commit()
+            'Me.Limpiar()
+            'Me.Deshabilitar()
+            'MessageBox.Show("Se ha cancelado la Factura:" & Me.txtFolioFactura.Text, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            Trans.Rollback()
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub MEAToolBar1_ClickImprimir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickImprimir
@@ -1434,41 +1783,7 @@ Public Class MFacRegFacturasVentas
     End Sub
 
     Private Sub dgvDetalleConcentrado_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalleConcentrado.CellEndEdit
-        Try
-            If Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.KilosFacturados.Index).Value IsNot Nothing Then
-                Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.KilosFacturados.Index).Value = CType(Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.KilosFacturados.Index).Value, Decimal)
 
-                If Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.Precios.Index).Value IsNot Nothing Then
-                    Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.Precios.Index).Value = CType(Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.Precios.Index).Value, Decimal)
-                    Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.ImporteFacturado.Index).Value = Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.KilosFacturados.Index).Value * Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.Precios.Index).Value
-                    Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.ImporteEmbarcado.Index).Value = Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.KilosEmbarcados.Index).Value * Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.Precios.Index).Value
-                End If
-            Else
-                Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.ImporteFacturado.Index).Value = Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.KilosFacturados.Index).Value * Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.Precios.Index).Value
-                Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.ImporteEmbarcado.Index).Value = Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.KilosEmbarcados.Index).Value * Me.dgvDetalleConcentrado.CurrentRow.Cells(Me.Precios.Index).Value
-            End If
-
-            PasarDatosAGridDetalle()
-
-            Dim SubTotal As Decimal = 0D, Total As Decimal = 0D, Kilos As Decimal = 0D, Piezas As Integer = 0
-
-            For i As Integer = 0 To Me.dgvDetalleConcentrado.Rows.Count - 1
-                Total += Me.dgvDetalleConcentrado.Rows(i).Cells("ImporteFacturado").Value
-                SubTotal += Me.dgvDetalleConcentrado.Rows(i).Cells("ImporteFacturado").Value
-                Piezas += Me.dgvDetalleConcentrado.Rows(i).Cells(clmPiezas.Index).Value
-
-                If Me.dgvDetalleConcentrado.Rows(i).Cells(KilosFacturados.Index).Value IsNot Nothing Then
-                    Kilos += Me.dgvDetalleConcentrado.Rows(i).Cells(KilosFacturados.Index).Value
-                End If
-
-                Me.txtTotal.Text = Total.ToString("C2")
-                Me.txtSubTotal.Text = SubTotal.ToString("C2")
-            Next
-            txtPiezas.Text = Piezas
-            txtKgrs.Text = Kilos.ToString("N2")
-        Catch ex As Exception
-            MessageBox.Show(ex.Message.ToString, "", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
 
     Private Sub ChkVarios_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkVarios.CheckedChanged
@@ -1543,5 +1858,55 @@ Public Class MFacRegFacturasVentas
 #End Region
 
 
+
+    Private Sub dgvDetalleConcentrado_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalleConcentrado.CellContentClick
+        Try
+            If e.RowIndex <> -1 Then
+                If e.ColumnIndex = chkiva.Index Then
+                    If dgvDetalleConcentrado.Rows(e.RowIndex).Cells(e.ColumnIndex).EditedFormattedValue = True Then
+
+                        dgvDetalleConcentrado.Rows(e.RowIndex).Cells(clmiva.Index).Value = TruncateDecimal(((Controlador.ObtenerIVA() / 100) * TruncateDecimal((CDec(dgvDetalleConcentrado.Rows(e.RowIndex).Cells(KilosFacturados.Index).Value) * CDec(dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Precios.Index).Value)), 2)), 2)
+
+                        dgvDetalleConcentrado.Rows(e.RowIndex).Cells(ImporteFacturado.Index).Value += dgvDetalleConcentrado.Rows(e.RowIndex).Cells(clmiva.Index).Value
+
+
+
+                    Else
+                        dgvDetalleConcentrado.Rows(e.RowIndex).Cells(clmiva.Index).Value = CDec(0).ToString("F2")
+                        Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.ImporteFacturado.Index).Value = (TruncateDecimal(CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.Precios.Index).Value) * CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.KilosFacturados.Index).Value), 2))
+                    End If
+
+                    calcular()
+                Else
+
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Function TruncateDecimal(value As Decimal, precision As Integer) As Decimal
+        Dim stepper As Decimal = Math.Pow(10, precision)
+        Dim tmp As Decimal = Math.Truncate(stepper * value)
+        Return tmp / stepper
+    End Function
+
+    Function calcular()
+
+        Me.txtSubTotal.Text = "0"
+        Me.txtTotal.Text = "0"
+        Me.txtIVA.Text = "0"
+
+        For k As Integer = 0 To Me.dgvDetalleConcentrado.Rows.Count - 1
+            If Me.dgvDetalleConcentrado.Rows(k).Visible Then
+                Me.txtSubTotal.Text += Me.dgvDetalleConcentrado.Rows(k).Cells(Me.ImporteEmbarcado.Index).Value
+                Me.txtTotal.Text += Me.dgvDetalleConcentrado.Rows(k).Cells(Me.ImporteFacturado.Index).Value
+                Me.txtIVA.Text += Me.dgvDetalleConcentrado.Rows(k).Cells(Me.clmiva.Index).Value
+                Me.txtSubTotal.Text = CDbl(Me.txtSubTotal.Text).ToString("C2")
+                Me.txtTotal.Text = CDbl(Me.txtTotal.Text).ToString("C2")
+            End If
+        Next
+    End Function
 
 End Class

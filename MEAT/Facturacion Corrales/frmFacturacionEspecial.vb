@@ -251,6 +251,7 @@ Public Class frmFacturacionEspecial
 
                     With row
                         Concepto = New CFDI.ComprobanteConcepto(.Cells(clmProductoServicio.Index).Value.ToString(), .Cells(clmUnidadSat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
+
                         Dim ComprobanteImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
                         'If CDec(.Cells(clmIVA.Index).Value) > 0 Then
                         Dim PorcIva As Decimal
@@ -268,6 +269,7 @@ Public Class frmFacturacionEspecial
                             ComprobanteImpuestoTraslado.Importe = Math.Round(CDec(.Cells(clmIVA.Index).Value), 2, MidpointRounding.AwayFromZero)
                             IvaAL0 = True
                         End If
+
                         ComprobanteImpuestoTraslado.TasaOCuotaSpecified = True
                         ComprobanteImpuestoTraslado.ImporteSpecified = True
 
@@ -360,18 +362,6 @@ Public Class frmFacturacionEspecial
             End With
             Return Comprobante
 
-
-
-
-
-
-
-
-
-
-
-
-
         Catch ex As Exception
             If ex.Message = "No hay ninguna aplicación asociada con el archivo especificado para esta operación" Then
                 MessageBox.Show("Debe instalar Adobe Reader para abrir los archivos pdf", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -383,8 +373,6 @@ Public Class frmFacturacionEspecial
                 Return False
             End If
         End Try
-
-
     End Function
 
     Public Function Guardar(ByVal Trans As HC.Transaction, ByVal Estatus As String) As Boolean
@@ -524,9 +512,11 @@ Public Class frmFacturacionEspecial
                     Exit Function
                 End If
 
-                'guardar facturas
-                'asignar datos a la factura
-                'asignar datos a cabecero de factura
+
+                '-------------------------------------------------------------DEAKI PARA ABAJO-------------------------------------------------
+                '--guardar facturas
+                '--asignar datos a la factura
+                '--asignar datos a cabecero de factura
 
                 Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
                 FacturaCabecero.FechaFactura = Me.dtFechaFactura.Value
@@ -1607,13 +1597,19 @@ Public Class frmFacturacionEspecial
         suma = 0
         sumaIVA = 0
         For i As Integer = 0 To Me.dgvDetalle.Rows.Count - 1
+
             If Not dgvDetalle.Rows(i).IsNewRow Then
+
                 suma = suma + (Math.Truncate((CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) * 100) / 100)
+
                 If CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVA.Index).Value) > 0 Then
                     sumaIVA += CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVAdecimales.Index).Value) '((CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVA.Index).Value) / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value))
+
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = TruncateDecimal((TruncateDecimal(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2)) * (1 + CDec(Controlador.ObtenerIVA() / 100)), 2)
                 Else
+
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (TruncateDecimal(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
+
                 End If
                 'Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) + (CDec(Controlador.ObtenerIVA() / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value))
             End If
@@ -2002,8 +1998,11 @@ Public Class frmFacturacionEspecial
                 End If
                 If e.ColumnIndex = clmConIVA.Index Then
                     If dgvDetalle.Rows(e.RowIndex).Cells(e.ColumnIndex).EditedFormattedValue = True Then
+
                         dgvDetalle.Rows(e.RowIndex).Cells(clmIVA.Index).Value = TruncateDecimal(((Controlador.ObtenerIVA() / 100) * TruncateDecimal((CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmCantidad.Index).Value) * CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmPrecio.Index).Value)), 2)), 2)
+
                         dgvDetalle.Rows(e.RowIndex).Cells(clmIVAdecimales.Index).Value = ((Controlador.ObtenerIVA() / 100) * (CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmCantidad.Index).Value) * CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmPrecio.Index).Value))).ToString("F4")
+
                     Else
                         dgvDetalle.Rows(e.RowIndex).Cells(clmIVA.Index).Value = CDec(0).ToString("F2")
                     End If

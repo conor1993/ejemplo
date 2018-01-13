@@ -130,27 +130,33 @@ Public Class MFacRegEmbarques
                     If Cliente.DiasCredito = 0 And Cliente.LimiteCredito = 0 Then
                         Exit Sub
                     End If
-                    Dim FacturasCol As New CC.FacturasClientesCabCollection
-                    FacturasCol.GetMulti(HC.FacturasClientesCabFields.IdCliente = Me.CmbCliente.SelectedValue And (HC.FacturasClientesCabFields.Estatus = "V" Or _
-                                     HC.FacturasClientesCabFields.Estatus = "A"))
 
-                    For Each Fact As EC.FacturasClientesCabEntity In FacturasCol
-                        If Fact.FechaVencimiento < Now Then
+                    Dim FacturasCol As New CC.CabFacturasCollection()
+                    FacturasCol.GetMulti(HC.CabFacturasFields.CveCliente = Me.CmbCliente.SelectedValue And (HC.CabFacturasFields.Status = "V" Or _
+                                     HC.CabFacturasFields.Status = "A"))
+
+
+
+                    For Each Fact As EC.CabFacturasEntity In FacturasCol
+                        If Fact.FecVenci < Now Then
 
                             If MessageBox.Show("El cliente tiene facturas vencidas, ¿Quiere realizar el embarque?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                                 Dim Ventana As New FrmAutorizacion
                                 Ventana.Icon = Me.Icon
                                 Autorizo = False
 
-                                If Ventana.ShowDialog = Windows.Forms.DialogResult.Cancel Then
-                                    Limpiar()
-                                    Deshabilitar()
-                                    Me.mtb.sbCambiarEstadoBotones("Cancelar")
-                                    Exit Sub
-                                Else
-                                    Autorizo = True
-                                    Exit Sub
-                                End If
+                                'If Ventana.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+                                '    Limpiar()
+                                '    Deshabilitar()
+                                '    Me.mtb.sbCambiarEstadoBotones("Cancelar")
+                                '    Exit Sub
+                                'Else
+                                '    Autorizo = True
+                                '    Exit Sub
+                                'End If
+
+                                Autorizo = True
+
                             Else
                                 Limpiar()
                                 Deshabilitar()
