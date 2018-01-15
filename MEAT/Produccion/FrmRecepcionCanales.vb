@@ -392,11 +392,11 @@ Public Class FrmRecepcionCanales
                     Return False
                 End If
             End If
-            Trans.Rollback()
-            Trans.Dispose()
-            GuardarIDE(FolioAlmacen, RecepCabCol.Count, IdFolioAlmacen, CerrarLote)
-            Return False
             Trans.Commit()
+
+            GuardarIDE(FolioAlmacen, RecepCabCol.Count, IdFolioAlmacen, CerrarLote)
+            Return True
+
             MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             If Configproduccion.ImprimirEtiquetasCanales = True Then
