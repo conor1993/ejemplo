@@ -447,7 +447,7 @@ Public Class MFacRegEmbarques
                     End If
 
                     With movimientoAlm
-                        If dgvRelaciondeCortes.Item(Etiqueta.Index, Fila.Index).Value.ToString.Trim <> "" Then
+                        If dgvRelaciondeCortes.Item(clmfetiqueta.Index, Fila.Index).Value.ToString.Trim <> "" Then
                             .IdAlmacen = caja.IdAlmacenActual
                         Else
                             .IdAlmacen = 1
