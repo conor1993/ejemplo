@@ -394,16 +394,18 @@ Public Class FrmRecepcionCanales
             End If
             Trans.Commit()
 
+            If Configproduccion.ImprimirEtiquetasCanales = True Then
+                Dim Codigo As String = Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text
+                Me.Imprimir(Me.txtNoRes.Text, Me.txtLado.Text, Me.txtKgrsRecibidos.Text, Me.txtNoRes.Text & "-" & Me.txtLado.Text, Codigo)
+            End If
+            Trans.Dispose()
+
             GuardarIDE(FolioAlmacen, RecepCabCol.Count, IdFolioAlmacen, CerrarLote)
-            Return True
+            'Return True
 
             MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            If Configproduccion.ImprimirEtiquetasCanales = True Then
-                Dim Codigo As String = Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text
-
-                Me.Imprimir(Me.txtNoRes.Text, Me.txtLado.Text, Me.txtKgrsRecibidos.Text, Me.txtNoRes.Text & "-" & Me.txtLado.Text, Codigo)
-            End If
+           
 
             Me.txtPeso.Text = "0.00"
             Me.txtTotalKilos.Text = "0.00"
@@ -422,10 +424,12 @@ Public Class FrmRecepcionCanales
 
 
     Private Function GuardarIDE(ByVal FolioAlm As String, ByVal RecepCabColCount As Integer, ByVal IdFolioAlmacen As String, Optional ByVal CerrarLote As Boolean = False) As Boolean
+
+        HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
 
         Try
-            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
+
 
             'Dim FolioAlmacen As String
             'Dim IdFolioAlmacen As String
@@ -690,20 +694,20 @@ Public Class FrmRecepcionCanales
             End If
 
             Trans.Commit()
-            MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            If Configproduccion.ImprimirEtiquetasCanales = True Then
-                Dim Codigo As String = Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text
+            'If Configproduccion.ImprimirEtiquetasCanales = True Then
+            '    Dim Codigo As String = Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text
 
-                Me.Imprimir(Me.txtNoRes.Text, Me.txtLado.Text, Me.txtKgrsRecibidos.Text, Me.txtNoRes.Text & "-" & Me.txtLado.Text, Codigo)
-            End If
+            '    Me.Imprimir(Me.txtNoRes.Text, Me.txtLado.Text, Me.txtKgrsRecibidos.Text, Me.txtNoRes.Text & "-" & Me.txtLado.Text, Codigo)
+            'End If
 
-            Me.txtPeso.Text = "0.00"
-            Me.txtTotalKilos.Text = "0.00"
-            Me.txtKilosRecibidos.Text = "0.00"
-            Me.tmActualizacion.Stop()
-            Me.ObtenerCanales()
-            Me.tmActualizacion.Start()
+            'Me.txtPeso.Text = "0.00"
+            'Me.txtTotalKilos.Text = "0.00"
+            'Me.txtKilosRecibidos.Text = "0.00"
+            'Me.tmActualizacion.Stop()
+            'Me.ObtenerCanales()
+            'Me.tmActualizacion.Start()
 
             Return True
         Catch ex As Exception

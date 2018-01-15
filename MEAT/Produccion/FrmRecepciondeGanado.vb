@@ -143,8 +143,11 @@ Public Class FrmRecepciondeGanado
 
             HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
 
+            If Not txtImporte.Text.Trim().Equals("") Then
+                RecepcionGanadoIDE.ImporteComp = CDec(txtImporte.Text)
+            End If
 
-            RecepcionGanadoIDE.ImporteComp = CDec(txtImporte.Text)
+
             Trans = New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
 
             If Not RecepcionGanadoIDE.Guardar(Trans) Then
