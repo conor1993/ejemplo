@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 5 de enero de 2018 17:48:14
+' // Code is generated on: jueves, 11 de enero de 2018 10:37:28
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -63,95 +63,6 @@ Namespace Integralab.ORM.CollectionClasses
 			MyBase.New(info, context)
 		End Sub
 
-	
-		''' <summary>Retrieves in this CabGasTransCollection Object all CabGasTransEntity objects which have data in common
-		''' with the specified related Entities.
-		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatChoferesInstance">McgcatChoferesEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(mcgcatChoferesInstance As IEntity, mcgcatVehiculosInstance As IEntity) As Boolean
-			Return GetMultiManyToOne(mcgcatChoferesInstance, mcgcatVehiculosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Nothing, 0, 0)
-		End Function
-
-
-		''' <summary>Retrieves in this CabGasTransCollection Object all CabGasTransEntity objects which have data in common
-		''' with the specified related Entities.
-		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatChoferesInstance">McgcatChoferesEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
-		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(mcgcatChoferesInstance As IEntity, mcgcatVehiculosInstance As IEntity, Filter As IPredicateExpression) As Boolean
-			Return GetMultiManyToOne(mcgcatChoferesInstance, mcgcatVehiculosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Filter, 0, 0)
-		End Function
-
-
-		''' <summary>Retrieves in this CabGasTransCollection Object all CabGasTransEntity objects which have data in common
-		''' with the specified related Entities.
-		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatChoferesInstance">McgcatChoferesEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
-		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(mcgcatChoferesInstance As IEntity, mcgcatVehiculosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression) As Boolean
-			Return GetMultiManyToOne(mcgcatChoferesInstance, mcgcatVehiculosInstance, maxNumberOfItemsToReturn, sortClauses, Filter, 0, 0)
-		End Function
-
-
-		''' <summary>Retrieves in this CabGasTransCollection Object all CabGasTransEntity objects which have data in common
-		''' with the specified related Entities.
-		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatChoferesInstance">McgcatChoferesEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
-		''' <param name="pageNumber">The page number to retrieve.</param>
-		''' <param name="pageSize">The page size of the page to retrieve.</param>
-		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Overridable Function GetMultiManyToOne(mcgcatChoferesInstance As IEntity, mcgcatVehiculosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression, pageNumber As Integer, pageSize As Integer) As Boolean
-			Dim validParameters As Boolean = False
-			validParameters = validParameters Or Not (mcgcatChoferesInstance Is Nothing)
-			validParameters = validParameters Or Not (mcgcatVehiculosInstance Is Nothing)
-			If Not validParameters Then
-				Return GetMulti(Filter, maxNumberOfItemsToReturn, sortClauses, Nothing, pageNumber, pageSize)
-			End If
-			If Not MyBase.SuppressClearInGetMulti Then
-				Me.Clear()
-			End If
-			Dim dao As CabGasTransDAO = DAOFactory.CreateCabGasTransDAO()
-			Return dao.GetMulti(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, Filter, mcgcatChoferesInstance, mcgcatVehiculosInstance, pageNumber, pageSize)
-		End Function
-
-		''' <summary>Deletes from the persistent storage all CabGasTrans entities which have data in common
-		''' with the specified related Entities.
-		''' If one is omitted, that entity is not used as a filter.</summary>
-		''' <remarks>Runs directly on the persistent storage. It will not delete entity objects from the current collection.</remarks>
-		''' <param name="mcgcatChoferesInstance">McgcatChoferesEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function DeleteMultiManyToOne(mcgcatChoferesInstance As IEntity, mcgcatVehiculosInstance As IEntity) As Integer
-			Dim dao As CabGasTransDAO = DAOFactory.CreateCabGasTransDAO()
-			Return dao.DeleteMulti(MyBase.Transaction, mcgcatChoferesInstance, mcgcatVehiculosInstance)
-		End Function
-
-
-		''' <summary>Updates in the persistent storage all CabGasTrans entities which have data in common with the specified related Entities.
-		''' If one is omitted, that entity is not used as a filter.
-		''' Which fields are updated in those matching entities depends on which fields are
-		''' <i>changed</i> in the passed in entity entityWithNewValues. The new values of these fields are read from entityWithNewValues. </summary>
-		''' <param name="entityWithNewValues">CabGasTransEntity instance which holds the new values for the matching entities to update. Only
-		''' changed fields are taken into account</param>
-		''' <param name="mcgcatChoferesInstance">McgcatChoferesEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity instance to use as a filter for the CabGasTransEntity objects to Return</param>
-		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function UpdateMultiManyToOne(entityWithNewValues As CabGasTransEntity, mcgcatChoferesInstance As IEntity, mcgcatVehiculosInstance As IEntity) As Integer
-			Dim dao As CabGasTransDAO = DAOFactory.CreateCabGasTransDAO()
-			Return dao.UpdateMulti(entityWithNewValues, MyBase.Transaction, mcgcatChoferesInstance, mcgcatVehiculosInstance)
-		End Function
 	
 	
 		''' <summary>Retrieves in this CabGasTransCollection Object all CabGasTransEntity objects which are related via a 

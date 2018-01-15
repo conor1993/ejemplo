@@ -138,7 +138,7 @@ Public Class FrmRecepcionCanales
 
             Me.RecepcCanalesDet = New RecepcionCanalesDetClass
             RecepCabCol.GetMulti(HC.MscrecepcionCanalesCabFields.FolioSacrificio = Me.txtLoteSacrificio.Text.Trim)
-
+            FolioAlmacen = ""
             If Not RecepCabCol.Count > 0 Then
                 'Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
                 Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
@@ -177,6 +177,8 @@ Public Class FrmRecepcionCanales
                     Trans.Rollback()
                     Return False
                 End If
+
+
             Else
                 RecepCab = RecepCabCol(RecepCabCol.Count - 1)
                 Me.RecepcCanalesDet.FolioMov = RecepCab.FolioMovimiento
@@ -216,6 +218,302 @@ Public Class FrmRecepcionCanales
             End If
 
             IdFolioAlmacen = Folio.Año & Folio.Mes & Folio.Consecutivo.ToString("000000")
+
+            'asignar datos de almacen a clase de cabecero de almacen 
+            Dim ConfigAlmacen As New CC.MscconfigMovtosAlmacenCollection
+
+            ConfigAlmacen.GetMulti(Nothing, 1, New SD.LLBLGen.Pro.ORMSupportClasses.SortExpression(New SD.LLBLGen.Pro.ORMSupportClasses.SortClause(HC.MscconfigMovtosAlmacenFields.IdConfiguracion, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending)))
+
+            Dim Config As EC.MscconfigMovtosAlmacenEntity
+
+            If ConfigAlmacen.Count > 0 Then
+                Config = ConfigAlmacen(0)
+            Else
+                Trans.Rollback()
+                MsgBox("Configure los movimientos de Almacén producción para poder guardar", MsgBoxStyle.Exclamation, "Aviso")
+                Return False
+            End If
+
+            If Config.EntradaCanalAlmacen.GetValueOrDefault(-1) = -1 Then
+                Trans.Rollback()
+                MsgBox("Debe configurar el movimiento de almacén Entradas de Canales a Almacén", MsgBoxStyle.Exclamation, "Aviso")
+                Return False
+            End If
+
+            'Obtener la Configuracion 
+            Dim ConfigProd As New CC.UsrProdConfiguracionCollection
+
+            ConfigProd.GetMulti(Nothing)
+
+            If Not ConfigProd.Count > 0 Then
+                Trans.Rollback()
+                MessageBox.Show("Seleccione un Almacen para la recepción de canales en la configuracion del modulo de Producción", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Return False
+            End If
+
+            Dim Configproduccion As EC.UsrProdConfiguracionEntity = ConfigProd(ConfigProd.Count - 1)
+
+            'Obtener el codigo del producto canal
+            Dim Productos As New CC.MsccatProductosCollection
+
+            Productos.GetMulti(HC.MsccatProductosFields.Canal = True)
+
+            If Productos.Count = 0 Then
+                Trans.Rollback()
+                MsgBox("No hay un producto registrado como canal", MsgBoxStyle.Exclamation, "Aviso")
+                Return False
+            End If
+
+            Dim Producto As EC.MsccatProductosEntity = Productos(0)
+
+            Almacen.IdFolioMovimiento = IdFolioAlmacen
+
+            If Not IsDBNull(Configproduccion.IdAlmacenCanales) Then
+                Almacen.IdCodAlmacen = Configproduccion.IdAlmacenCanales
+            Else
+                Trans.Rollback()
+                MessageBox.Show("Seleccione un Almacen para la recepción de canales en la configuracion del modulo de Producción", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Return False
+            End If
+
+            Almacen.FechaMovimiento = Me.dtpFechaCaptura.Value
+            Almacen.FechaCaptura = Now
+            Almacen.IdCodMovimiento = Config.EntradaCanalAlmacen
+            Almacen.CantKilos = Me.txtKgrsRecibidos.Text
+            Almacen.CantPzas = 1
+            Almacen.Estatus = "V"
+            Almacen.QuienCancelo = ""
+            Almacen.QuienContabilizo = ""
+            Almacen.ObservacionCancela = ""
+            Almacen.NumOpc = 1
+            Almacen.Func = "I"
+
+            If Not Almacen.Guardar(Trans) Then
+                Trans.Rollback()
+                Return False
+            End If
+
+            'clase para el detalle de almacen
+            AlmacenDetalle.IdFolioMovimiento = IdFolioAlmacen
+            AlmacenDetalle.IdCodProducto = Producto.IdProducto
+            AlmacenDetalle.CantPzas = 1
+            AlmacenDetalle.CantKilos = Me.txtKgrsRecibidos.Text
+            AlmacenDetalle.CostoUnitario = 0D
+            AlmacenDetalle.IVA = 0D
+            'AlmacenDetalle.Estatus = "V"
+            AlmacenDetalle.Func = "I"
+            AlmacenDetalle.NumOpc = 1
+
+            If Not AlmacenDetalle.Guardar(Trans) Then
+                Trans.Rollback()
+                Return False
+            End If
+
+            'RecepcCanalesDet.FolioMov = RecepcCanales.FolioMov
+            RecepcCanalesDet.FolioSacrificio = Me.txtLoteSacrificio.Text
+            RecepcCanalesDet.IdFolioCanal = CInt(Me.txtNoRes.Text).ToString("000") & "-" & Me.txtLado.Text
+            'RecepcCanalesDet.Consecutivo = Me.txtNoRes.Text
+            RecepcCanalesDet.Lado = Me.txtLado.Text
+            RecepcCanalesDet.KgrsRastro = 0
+            RecepcCanalesDet.KgrsBascula = Me.txtKgrsRecibidos.Text
+            RecepcCanalesDet.Estatus = EstatusCanal.VIGENTE
+            RecepcCanalesDet.IdFolioMovimiento = IdFolioAlmacen
+            RecepcCanalesDet.CodigoBarra = Me.txtLoteSacrificio.Text & "-" & Me.txtNoRes.Text & "-" & Me.txtLado.Text
+            RecepcCanalesDet.KgrsCalientes = Me.txtPeso.Text
+
+            If Me.CmbCliente.SelectedIndex > -1 Then
+                RecepcCanalesDet.IdCliente = Me.CmbCliente.SelectedValue
+            End If
+
+            If Me.rbtnHembra.Checked Then
+                RecepcCanalesDet.Sexo = SexoEnum.HEMBRA
+            Else
+                RecepcCanalesDet.Sexo = SexoEnum.MACHO
+            End If
+
+            Me.RecepcCanalesDet.Funcion = "I"
+            Me.RecepcCanalesDet.Opcion = 0
+
+            If Not Me.RecepcCanalesDet.Guardar(Trans) Then
+                Trans.Rollback()
+                Return False
+            End If
+
+            'clase para el control de inventarios
+            Inventario.IdCodAlmacen = Almacen.IdCodAlmacen
+            Inventario.IdCodProducto = AlmacenDetalle.IdCodProducto
+            Inventario.ExistKilos = AlmacenDetalle.CantKilos
+            Inventario.ExistPzas = AlmacenDetalle.CantPzas
+            Inventario.EntKilos = AlmacenDetalle.CantKilos
+            Inventario.EntPzas = AlmacenDetalle.CantPzas
+            Inventario.SalKilos = 0D
+            Inventario.SalPzas = 0D
+            Inventario.Func = "I"
+            Inventario.NumOpc = 1
+            Inventario.Año = Now.Year
+            Inventario.Mes = Now.Month
+
+            'llama el guardar del inventario de productos
+            If Not Inventario.Guardar(Trans) Then
+                Trans.Rollback()
+                Return False
+            End If
+
+            'Guardar los servicios que fueron seleccionados en la tabla MSCServiciosPorSacrificio
+            Dim SerXsacrif As EC.ServiciosPorSacrificioEntity
+            Dim i As Integer = 0
+
+            For Each Serv As ServiciosClass In Me.ServiciosC
+                If CBool(Me.dgvServicios.Rows(i).Cells(Me.clmSeleccion.Index).Value) Then
+                    SerXsacrif = New EC.ServiciosPorSacrificioEntity
+                    SerXsacrif.FolioSacrificio = RecepcCanalesDet.FolioSacrificio
+                    SerXsacrif.FolioCanal = RecepcCanalesDet.IdFolioCanal
+                    SerXsacrif.IdServicio = Serv.Codigo
+                    Trans.Add(SerXsacrif)
+
+                    If Not SerXsacrif.Save Then
+                        Trans.Rollback()
+                        Return False
+                    End If
+                End If
+
+                i = i + 1
+            Next
+
+            If CerrarLote = True Then
+                Dim FolioSacr As String = Me.txtLoteSacrificio.Text
+
+                Me.RegistroSacrificiosCab = New RegistroSacrificiosClass(FolioSacr)
+
+                RegistroSacrificiosCab.Estatus = "C"
+
+                If Not RegistroSacrificiosCab.Guardar(Trans) Then
+                    Trans.Rollback()
+                    Return False
+                End If
+            End If
+            Trans.Rollback()
+            Trans.Dispose()
+            GuardarIDE(FolioAlmacen, RecepCabCol.Count, IdFolioAlmacen, CerrarLote)
+            Return False
+            Trans.Commit()
+            MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            If Configproduccion.ImprimirEtiquetasCanales = True Then
+                Dim Codigo As String = Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text
+
+                Me.Imprimir(Me.txtNoRes.Text, Me.txtLado.Text, Me.txtKgrsRecibidos.Text, Me.txtNoRes.Text & "-" & Me.txtLado.Text, Codigo)
+            End If
+
+            Me.txtPeso.Text = "0.00"
+            Me.txtTotalKilos.Text = "0.00"
+            Me.txtKilosRecibidos.Text = "0.00"
+            Me.tmActualizacion.Stop()
+            Me.ObtenerCanales()
+            Me.tmActualizacion.Start()
+
+            Return True
+        Catch ex As Exception
+            Trans.Rollback()
+            MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
+
+
+    Private Function GuardarIDE(ByVal FolioAlm As String, ByVal RecepCabColCount As Integer, ByVal IdFolioAlmacen As String, Optional ByVal CerrarLote As Boolean = False) As Boolean
+        Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
+
+        Try
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
+
+            'Dim FolioAlmacen As String
+            'Dim IdFolioAlmacen As String
+            Dim RecepCabCol As New CC.MscrecepcionCanalesCabCollection
+            Dim RecepCab As EC.MscrecepcionCanalesCabEntity
+
+            Me.RecepcCanalesDet = New RecepcionCanalesDetClass
+            RecepCabCol.GetMulti(HC.MscrecepcionCanalesCabFields.FolioSacrificio = Me.txtLoteSacrificio.Text.Trim)
+
+            If Not RecepCabColCount > 0 Then
+                'Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
+                'Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
+                'Folio.Año = Now.Year
+                'Folio.Mes = Now.ToString("MM")
+
+                'If Not Folio.Guardar(Trans) Then
+                '    Trans.Rollback()
+                '    Return False
+                'End If
+
+                'folio para el registro de movimientos de almacen
+                'FolioAlmacen = Folio.Año & Folio.Mes & Folio.Consecutivo.ToString("0000")
+                'Asignar valore a al cabecero de la recepcion de canales
+                RecepcCanales = New RecepcionCanalesCabClass
+
+                RecepcCanales.FolioMov = FolioAlm
+                RecepcCanales.FolioSacrificio = txtLoteSacrificio.Text
+                RecepcCanales.FechaSacrificio = dtpFechaSacrificio.Value
+                RecepcCanales.FechaCaptura = Now
+                RecepcCanales.LotePropio = False
+                RecepcCanales.CodCliente = CodCliente
+                RecepcCanales.CantCanales = 1
+                RecepcCanales.KgrsRastro = 0
+                RecepcCanales.Observaciones = ""
+                RecepcCanales.Estatus = "V"
+                RecepcCanales.IdRastro = 0
+                RecepcCanales.KgrsCalientes = Me.txtPeso.Text
+                RecepcCanales.KgrsBascula = Me.txtKgrsRecibidos.Text
+                RecepcCanales.Funcion = "I"
+                RecepcCanales.Opcion = 0
+
+                Me.RecepcCanalesDet.FolioMov = FolioAlm
+
+                If Not RecepcCanales.Guardar(Trans) Then
+                    Trans.Rollback()
+                    Return False
+                End If
+
+
+            Else
+                RecepCab = RecepCabCol(RecepCabCol.Count - 1)
+                Me.RecepcCanalesDet.FolioMov = RecepCab.FolioMovimiento
+                'IdFolioAlmacen = RecepDet.FolioMovimiento
+                'Modificar las cantidades del cabecero de la recepcion
+
+                RecepcCanales = New RecepcionCanalesCabClass
+
+                RecepcCanales.FolioMov = RecepCab.FolioMovimiento
+                RecepcCanales.FechaSacrificio = dtpFechaSacrificio.Value
+                RecepcCanales.FolioSacrificio = Me.txtLoteSacrificio.Text
+                RecepcCanales.KgrsCalientes = Me.txtPeso.Text
+                RecepcCanales.KgrsBascula = Me.txtKgrsRecibidos.Text
+                RecepcCanales.KgrsRastro = Me.txtKgrsRecibidos.Text
+                RecepcCanales.CantCanales = Me.txtTotalCanales.Text
+                RecepcCanales.FechaCaptura = Now
+                RecepcCanales.LotePropio = False
+                RecepcCanales.CodCliente = CodCliente
+                RecepcCanales.Funcion = "M"
+                RecepcCanales.Opcion = 1
+
+                If Not RecepcCanales.Guardar(Trans) Then
+                    Trans.Rollback()
+                    Return False
+                End If
+            End If
+
+            'Generar el Folio de movimiento 
+            'Folio = New FoliosClass
+            'Folio.Codigo = CodigodeFolios.MovimientosdeAlmacen
+            'Folio.Año = Now.Year
+            'Folio.Mes = Now.ToString("MM")
+
+            'If Not Folio.Guardar(Trans) Then
+            '    Trans.Rollback()
+            '    Return False
+            'End If
+
+            'IdFolioAlmacen = Folio.Año & Folio.Mes & Folio.Consecutivo.ToString("000000")
 
             'asignar datos de almacen a clase de cabecero de almacen 
             Dim ConfigAlmacen As New CC.MscconfigMovtosAlmacenCollection

@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 5 de enero de 2018 17:48:16
+' Code is generated on: jueves, 11 de enero de 2018 10:37:29
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -69,55 +69,6 @@ Namespace Integralab.ORM.DaoClasses
 			Dim fieldsToReturn As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.McgcatVehiculosEntity)
 			Return MyBase.PerformGetMultiAsDataTableAction(maxNumberOfItemsToReturn, sortClauses, selectFilter, relations, pageNumber, pageSize)
 		End Function
-
-	
-		''' <summary>
-		''' Retrieves in the calling McgcatVehiculosCollection object all McgcatVehiculosEntity objects
-		''' which are related via a relation of type 'm:n' with the passed in McgcatChoferesEntity. 
-		''' </summary>
-		''' <param name="containingTransaction">A containing transaction, if caller is added to a transaction, or Nothing if not.</param>
-		''' <param name="collectionToFill">Collection to fill with the entity objects retrieved</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return with this retrieval query. 
-		''' If the used Dynamic Query Engine supports it, 'TOP' is used to limit the amount of rows to return. When set to 0, no limitations are specified.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <param name="entityFactoryToUse">The EntityFactory to use when creating entity objects during a GetMulti() call.</param>
-		''' <param name="mcgcatChoferesInstance">McgcatChoferesEntity object to be used as a filter in the m:n relation</param>
-		''' <param name="pageNumber">The page number to retrieve.</param>
-		''' <param name="pageSize">The page size of the page to retrieve.</param>
-		''' <returns>true if succeeded, false otherwise</returns>
-		Public Function GetMultiUsingMcgcatChoferesCollectionViaCabGasTrans(containingTransaction As ITransaction, collectionToFill As IEntityCollection, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, entityFactoryToUse As IEntityFactory, mcgcatChoferesInstance As IEntity, pageNumber As Integer, pageSize As Integer) As Boolean
-			Dim fieldsToReturn As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.McgcatVehiculosEntity)
-			Dim relations As New RelationCollection()
-			relations.Add(McgcatVehiculosEntity.Relations.CabGasTransEntityUsingCveVehiculo, "CabGasTrans_")
-			relations.Add(CabGasTransEntity.Relations.McgcatChoferesEntityUsingCveChofer, "CabGasTrans_", String.Empty, JoinHint.None)
-			Dim selectFilter As IPredicateExpression = New PredicateExpression()
-			selectFilter.Add(New FieldCompareValuePredicate(mcgcatChoferesInstance.Fields(CInt(McgcatChoferesFieldIndex.IdChofer)), ComparisonOperator.Equal))
-			Return GetMulti(containingTransaction, collectionToFill, maxNumberOfItemsToReturn, sortClauses, entityFactoryToUse, selectFilter, relations, pageNumber, pageSize)
-		End Function
-
-		''' <summary>
-		''' Retrieves in the calling McgcatVehiculosCollection object all McgcatVehiculosEntity objects
-		''' which are related via a relation of type 'm:n' with the passed in McgcatChoferesEntity. 
-		''' </summary>
-		''' <param name="containingTransaction">A containing transaction, if caller is added to a transaction, or Nothing if not.</param>
-		''' <param name="collectionToFill">Collection to fill with the entity objects retrieved</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return with this retrieval query. 
-		''' If the used Dynamic Query Engine supports it, 'TOP' is used to limit the amount of rows to return. When set to 0, no limitations are specified.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <param name="entityFactoryToUse">The EntityFactory to use when creating entity objects during a GetMulti() call.</param>
-		''' <param name="mcgcatChoferesInstance">McgcatChoferesEntity object to be used as a filter in the m:n relation</param>
-		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
-		''' <returns>true if succeeded, false otherwise</returns>
-		Public Function GetMultiUsingMcgcatChoferesCollectionViaCabGasTrans(containingTransaction As ITransaction, collectionToFill As IEntityCollection, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, entityFactoryToUse As IEntityFactory, mcgcatChoferesInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
-			Dim fieldsToReturn As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.McgcatVehiculosEntity)
-			Dim relations As  New RelationCollection()
-			relations.Add(McgcatVehiculosEntity.Relations.CabGasTransEntityUsingCveVehiculo, "CabGasTrans_")
-			relations.Add(CabGasTransEntity.Relations.McgcatChoferesEntityUsingCveChofer, "CabGasTrans_", String.Empty, JoinHint.None)
-			Dim selectFilter As IPredicateExpression = New PredicateExpression()
-			selectFilter.Add(New FieldCompareValuePredicate(mcgcatChoferesInstance.Fields(CInt(McgcatChoferesFieldIndex.IdChofer)), ComparisonOperator.Equal))
-			Return GetMulti(containingTransaction, collectionToFill, maxNumberOfItemsToReturn, sortClauses, entityFactoryToUse, selectFilter, relations, prefetchPathToUse)
-		End Function
-	
 
 	
 

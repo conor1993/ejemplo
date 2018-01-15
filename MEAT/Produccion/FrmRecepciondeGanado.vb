@@ -3,6 +3,7 @@ Imports HC = IntegraLab.ORM.HelperClasses
 Imports EC = IntegraLab.ORM.EntityClasses
 Imports CC = IntegraLab.ORM.CollectionClasses
 Imports SD.LLBLGen.Pro.ORMSupportClasses
+Imports System.IO
 
 Public Class FrmRecepciondeGanado
     Dim WithEvents RecepcionGanado As RecepcionGanadoClass
@@ -36,6 +37,7 @@ Public Class FrmRecepciondeGanado
 
     Private Sub FrmRecepciondeGanado_Loadc(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            DgvConceptoGastos.AutoGenerateColumns = False
             Dim MtbEstados As New MEAToolBar.MEAToolBar.ToolBarButtonStatusStructure
             MtbEstados.StateBuscar = "101001111"
             MtbEstados.StateLimpiar = ""
@@ -93,9 +95,14 @@ Public Class FrmRecepciondeGanado
             RecepcionGanado.IdUsuario = Controlador.Sesion.Usrndx
             RecepcionGanado.TipoGanado = Me.CmbTipoGanado.SelectedItem
 
-            RecepcionGanado.IdProveedor = IIf(cmbProveedor.SelectedValue = String.Empty, 0, cmbProveedor.SelectedValue)
-            RecepcionGanado.CveCompradorGanado = IIf(cmbComprador.SelectedValue = String.Empty, 0, cmbComprador.SelectedValue)
-            RecepcionGanado.CveLugarCompra = IIf(CmbLugarCompra.SelectedValue = String.Empty, 0, CmbLugarCompra.SelectedValue)
+            'RecepcionGanado.IdProveedor = IIf(cmbProveedor.SelectedValue = String.Empty, 0, cmbProveedor.SelectedValue)
+            'RecepcionGanado.CveCompradorGanado = IIf(cmbComprador.SelectedValue = String.Empty, 0, cmbComprador.SelectedValue)
+            'RecepcionGanado.CveLugarCompra = IIf(CmbLugarCompra.SelectedValue = String.Empty, 0, CmbLugarCompra.SelectedValue)
+            'RecepcionGanado.HorasViaje = IIf(txtHorasViaje.Text.Trim().Equals(""), 0, txtHorasViaje.Text.Trim())
+
+            RecepcionGanado.IdProveedor = cmbProveedor.SelectedValue
+            RecepcionGanado.CveCompradorGanado = cmbComprador.SelectedValue
+            RecepcionGanado.CveLugarCompra = CmbLugarCompra.SelectedValue
             RecepcionGanado.HorasViaje = IIf(txtHorasViaje.Text.Trim().Equals(""), 0, txtHorasViaje.Text.Trim())
 
             ''falta total de kilos y el importe por kilo
@@ -116,10 +123,37 @@ Public Class FrmRecepciondeGanado
 
             RecepcionGanado.Func = "I"
             RecepcionGanado.NumOpc = 1
+
+            Dim RecepcionGanadoIDE As ClasesNegocio.RecepcionGanadoClass
+            RecepcionGanadoIDE = RecepcionGanado.Clonar()
+            'RecepcionGanadoIDE = CloneObject(Of ClasesNegocio.RecepcionGanadoClass)(RecepcionGanado)
+
             If Not RecepcionGanado.Guardar(Trans) Then
                 Trans.Rollback()
                 Return False
             End If
+
+
+            Trans.Commit()
+
+
+            ''''-----------------------------------------------------------''''
+            ''''-------------------AQUI SE GUARDA EN IDE FOODS-------------''''
+            ''''-----------------------------------------------------------''''
+
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
+
+
+            RecepcionGanadoIDE.ImporteComp = CDec(txtImporte.Text)
+            Trans = New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
+
+            If Not RecepcionGanadoIDE.Guardar(Trans) Then
+                Trans.Rollback()
+                Return False
+            End If
+
+
+
 
             Dim Gastos As New ClasesNegocio.GastoTransporteClass(RecepcionGanado.LoteRecepcion)
             If Not Gastos.Folio.Equals("") Then
@@ -129,13 +163,19 @@ Public Class FrmRecepciondeGanado
                     Gastos.ImporteTotal = CDec(Me.txtTotal.Text.Replace("$", ""))
                     Gastos.IVA = CDec(Me.txtIVA.Text.Replace("$", ""))
 
-                    If Gastos.Detalle.Count = DgvConceptoGastos.RowCount Then
-                        For Each Fila As DataGridViewRow In DgvConceptoGastos.Rows
-                            If Fila.IsNewRow Then
-                                Gastos.Detalle.RemoveAt(Fila.Index)
-                            End If
-                        Next
-                    End If
+                    'If Gastos.Detalle.Count = DgvConceptoGastos.RowCount Then
+                    For Each Fila As DataGridViewRow In DgvConceptoGastos.Rows
+                        If Not Fila.IsNewRow Then
+                            Dim gastoDetalle As New ClasesNegocio.GastoTransporteDetalleClass()
+                            gastoDetalle.Folio = Gastos.Folio
+                            gastoDetalle.Renglon = (Fila.Index + 1)
+                            gastoDetalle.IdGasto = Fila.Cells(clmcmbConceptoGasto.Index).Value
+                            gastoDetalle.PorcentajeIva = Fila.Cells(clmtxtIva.Index).Value
+                            gastoDetalle.ImporteGasto = Fila.Cells(clmtxtImporteGasto.Index).Value
+                            Gastos.Detalle.Add(gastoDetalle)
+                        End If
+                    Next
+                    'End If
 
                     If Not Gastos.Guardar(Trans) Then
                         Trans.Rollback()
@@ -144,10 +184,10 @@ Public Class FrmRecepciondeGanado
 
                 End If
 
-                
+
             End If
 
-            
+
 
 
 
@@ -159,6 +199,33 @@ Public Class FrmRecepciondeGanado
             Return False
         End Try
     End Function
+
+    Public Shared Function CloneObject(Of T As New)(objClone As T) As T
+        Dim GetString As String = SeralizeObjectToXML(Of T)(objClone)
+        Return DeserializeXML(Of T)(GetString)
+    End Function
+
+    Public Shared Function DeserializeXML(Of T As New)(xmlData As String) As T
+        If String.IsNullOrEmpty(xmlData) Then
+            Return Nothing
+        End If
+
+        Dim tr As TextReader = New StringReader(xmlData)
+        Dim DocItms As New T()
+        Dim xms As New System.Xml.Serialization.XmlSerializer(DocItms.[GetType]())
+        DocItms = DirectCast(xms.Deserialize(tr), T)
+        Return If(DocItms Is Nothing, Nothing, DocItms)
+    End Function
+
+    Public Shared Function SeralizeObjectToXML(Of T)(xmlObject As T) As String
+        Dim sbTR As New System.Text.StringBuilder()
+        Dim xmsTR As New System.Xml.Serialization.XmlSerializer(xmlObject.[GetType]())
+        Dim xwsTR As New System.Xml.XmlWriterSettings()
+        Dim xmwTR As System.Xml.XmlWriter = System.Xml.XmlWriter.Create(sbTR, xwsTR)
+        xmsTR.Serialize(xmwTR, xmlObject)
+        Return sbTR.ToString()
+    End Function
+
 
     Public Sub NumerosyDecimal(ByVal CajaTexto As Windows.Forms.TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
@@ -200,12 +267,18 @@ Public Class FrmRecepciondeGanado
             CmbTipoGanado.SelectedIndex = -1
 
             TxtFolio.Text = ""
+            DgvConceptoGastos.Rows.Clear()
             DgvConceptoGastos.DataSource = Nothing
             dtpFechaPago.Value = DateTime.Now
             txtNoFactura.Text = ""
             txtDiasDeCredito.Text = ""
             txtHorasViaje.Text = ""
             Me.mtb.sbCambiarEstadoBotones("Nuevo")
+            DgvConceptoGastos.AllowUserToAddRows = True
+            txtSubTotal.Text = "0.00"
+            txtIVA.Text = "0.00"
+            txtTotal.Text = "0.00"
+            txtImporte.Text = ""
             RecepcionGanado = New RecepcionGanadoClass
         Else
             Me.txtCantCabezas.Text = "0"
@@ -236,12 +309,19 @@ Public Class FrmRecepciondeGanado
             CmbLugarCompra.Text = "Seleccione un Lugar..."
             CmbLugarCompra.SelectedIndex = -1
             TxtFolio.Text = ""
+            DgvConceptoGastos.Rows.Clear()
             DgvConceptoGastos.DataSource = Nothing
+            txtSubTotal.Text = "0.00"
+            txtIVA.Text = "0.00"
+            txtTotal.Text = "0.00"
             dtpFechaPago.Value = DateTime.Now
             txtNoFactura.Text = ""
             txtDiasDeCredito.Text = ""
             txtHorasViaje.Text = ""
+            txtImporte.Text = ""
+            DgvConceptoGastos.AllowUserToAddRows = True
         End If
+        HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
         CargaPantalla = False
         Editar = False
     End Function
@@ -272,6 +352,8 @@ Public Class FrmRecepciondeGanado
             ctl.Enabled = True
         Next
         Me.txtHorasViaje.Enabled = True
+        txtNoFactura.Enabled = True
+        txtImporte.Enabled = True
     End Sub
 
     Private Sub Deshabilitar()
@@ -302,7 +384,8 @@ Public Class FrmRecepciondeGanado
             ctl.Enabled = False
         Next
         Me.txtHorasViaje.Enabled = False
-
+        txtNoFactura.Enabled = False
+        txtImporte.Enabled = False
     End Sub
 
 
@@ -408,7 +491,9 @@ Public Class FrmRecepciondeGanado
             'Me.CmbTipoGanado.ValueMember = "IdTipoGanado"
             'Me.CmbTipoGanado.DataSource = TipoGanado
             'Me.CmbTipoGanado.SelectedIndex = -1
+
             LlenaComboBox()
+            CargaPantalla = False
             Me.txtLoteRecepcion.Text = Me.RecepcionGanado.LoteRecepcion
             Me.txtLoteEngorda.Text = Me.RecepcionGanado.LoteEngorda
             Me.txtKilosEnviados.Text = Me.RecepcionGanado.KilosEnviados.ToString("N3")
@@ -424,12 +509,16 @@ Public Class FrmRecepciondeGanado
             'Me.cmbIntroductor.DisplayMember = "Nombre"
             'Me.cmbIntroductor.DataSource = Introductores
             'Me.cmbIntroductor.SelectedIndex = -1
+            CargaPantalla = True
             Me.cmbIntroductor.SelectedValue = Me.RecepcionGanado.IdCliente
+            CargaPantalla = False
             Me.txtUnidad.Text = Me.RecepcionGanado.Unidad
             Me.txtConductor.Text = Me.RecepcionGanado.Conductor
             Me.txtPlacas.Text = Me.RecepcionGanado.Placas
             Me.txtHorasViaje.Text = Me.RecepcionGanado.HorasViaje.ToString("N2")
+
             Me.cmbProveedor.SelectedValue = Me.RecepcionGanado.IdProveedor
+
             Me.CmbLugarCompra.SelectedValue = Me.RecepcionGanado.CveLugarCompra
             Me.cmbComprador.SelectedValue = Me.RecepcionGanado.CveCompradorGanado
             Me.txtObservaciones.Text = Me.RecepcionGanado.Observaciones
@@ -437,10 +526,34 @@ Public Class FrmRecepciondeGanado
             Me.CmbTipoGanado.SelectedValue = Me.RecepcionGanado.TipoGanado.IdTipoGanado
             Me.dtpFechaPago.Value = Me.RecepcionGanado.FechaPago
             Me.txtNoFactura.Text = Me.RecepcionGanado.NumFactura
+            txtDiasDeCredito.Text = Me.RecepcionGanado.DiasCredito.ToString()
+
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
+            Dim recepGanadoIDe As New ClasesNegocio.RecepcionGanadoClass(RecepcionGanado.LoteRecepcion)
+
+
+
+            Dim Gastos As New ClasesNegocio.GastoTransporteClass()
+            Gastos.Obtener(RecepcionGanado.LoteRecepcion)
+            txtSubTotal.Text = (Gastos.ImporteTotal - Gastos.IVA).ToString("N2")
+            txtIVA.Text = Gastos.IVA.ToString("N2")
+            txtTotal.Text = Gastos.ImporteTotal.ToString("N2")
+            DgvConceptoGastos.DataSource = Gastos.Detalle
+            DgvConceptoGastos.AllowUserToAddRows = False
+            txtImporte.Text = recepGanadoIDe.ImporteComp.ToString("N2")
+            'For Each renglon As ClasesNegocio.GastoTransporteDetalleClass In Gastos.Detalle
+
+            'Next
+
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
+
+
+            CargaPantalla = True
         Catch ex As Exception
 #If CONFIG = "Debug" Then
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
 #Else
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
             MsgBox("Ocurrió un Error", MsgBoxStyle.Critical, "Error")
 #End If
         End Try
@@ -526,15 +639,32 @@ Public Class FrmRecepciondeGanado
                     Cancelar = True
                     Exit Sub
                 End If
-                RecepcionGanado.KilosPrimeraPesada = Me.txtKilos1erpasada.Text
-                RecepcionGanado.KilosSegundaPesada = Me.txtKilos2daPasada.Text
+
+                RecepcionGanado.KilosPrimeraPesada = CDec(Me.txtKilos1erpasada.Text)
+                RecepcionGanado.KilosSegundaPesada = CDec(Me.txtKilos2daPasada.Text)
                 RecepcionGanado.KilosRecibidos = RecepcionGanado.KilosPrimeraPesada - RecepcionGanado.KilosSegundaPesada
+                RecepcionGanado.KilosComp = RecepcionGanado.KilosPrimeraPesada - RecepcionGanado.KilosSegundaPesada
+
+
+                'RecepcionGanadoIDE = RecepcionGanado.Clonar()
+
                 If Me.RecepcionGanado.ObtenerEntidad.Save Then
-                    MessageBox.Show("Se Guardó Recepción ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Limpiar(False)
-                    Deshabilitar()
-                    If RecepcionGanado.KilosSegundaPesada > 0D Then
-                        Imprimir()
+                    '''------GUARDAR EN IDE FOODS
+                    HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
+                    Dim RecepcionGanadoIDE As New ClasesNegocio.RecepcionGanadoClass(RecepcionGanado.LoteRecepcion)
+                    RecepcionGanadoIDE.KilosPrimeraPesada = CDec(Me.txtKilos1erpasada.Text)
+                    RecepcionGanadoIDE.KilosSegundaPesada = CDec(Me.txtKilos2daPasada.Text)
+                    RecepcionGanadoIDE.KilosComp = RecepcionGanado.KilosPrimeraPesada - RecepcionGanado.KilosSegundaPesada
+                    If RecepcionGanadoIDE.ObtenerEntidad.Save Then
+                        MessageBox.Show("Se Guardó Recepción ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Limpiar(False)
+                        Deshabilitar()
+                        HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
+                        If RecepcionGanado.KilosSegundaPesada > 0D Then
+                            Imprimir()
+                        End If
+                    Else
+                        HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
                     End If
                 End If
             End If
@@ -880,7 +1010,7 @@ Public Class FrmRecepciondeGanado
         Return Nothing
     End Function
 
-   
+
 #Region "Metodos Creados"
     Private Function LlenaComboBox() As Boolean
         Try
@@ -904,7 +1034,7 @@ Public Class FrmRecepciondeGanado
             Me.CmbTipoGanado.DataSource = TipoGanado
             Me.CmbTipoGanado.SelectedIndex = -1
 
-            
+
 
             lugares.Obtener(CondicionEnum.ACTIVOS)
             Me.CmbLugarCompra.DisplayMember = "Descripcion"
@@ -1034,7 +1164,7 @@ Public Class FrmRecepciondeGanado
 
 
 
-    Private Sub txtImporte_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtImporte.KeyPress
+    Private Sub txtImporte_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs)
         NumerosyDecimal(txtImporte, e)
     End Sub
 
@@ -1050,6 +1180,17 @@ Public Class FrmRecepciondeGanado
                 AddHandler combo.SelectedIndexChanged, AddressOf Me.combo_SelectedIndexChanged
             End If
         End If
+        If Me.DgvConceptoGastos.CurrentCell.ColumnIndex = clmtxtImporteGasto.Index Or Me.DgvConceptoGastos.CurrentCell.ColumnIndex = clmtxtIva.Index Then
+            Dim cajatexto As TextBox = TryCast(e.Control, TextBox)
+            If cajatexto IsNot Nothing Then
+                RemoveHandler cajatexto.KeyPress, AddressOf Me.cajaTexto_KeyPress
+                AddHandler cajatexto.KeyPress, AddressOf Me.cajaTexto_KeyPress
+            End If
+
+
+        End If
+     
+
     End Sub
 
     Private Sub combo_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -1069,9 +1210,18 @@ Public Class FrmRecepciondeGanado
 
     End Sub
 
+    Private Sub cajaTexto_KeyPress(sender As Object, e As EventArgs)
+        NumerosyDecimal(sender, e)
+    End Sub
+
     Private Sub DgvConceptoGastos_RowValidating(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvConceptoGastos.RowValidating
         'If clmcmbConceptoGasto.Index = e.ColumnIndex or Then
-        MessageBox.Show(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        'MessageBox.Show(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If DgvConceptoGastos.Rows(e.RowIndex).IsNewRow Then
+            e.Cancel = False
+            Return
+        End If
+
         If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit) Is Nothing Then
             e.Cancel = True
             MessageBox.Show("Seleccione un concepto...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1084,5 +1234,46 @@ Public Class FrmRecepciondeGanado
         End If
 
         ' End If
+    End Sub
+
+    Private Sub DgvConceptoGastos_CellEndEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvConceptoGastos.CellEndEdit
+        If e.ColumnIndex = clmtxtImporteGasto.Index Or e.ColumnIndex = clmtxtIva.Index Then
+            DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N2")
+            calcular()
+        End If
+    End Sub
+
+    Public Sub calcular()
+        Dim sumaSubTotal As Decimal, sumaIVA As Decimal
+        sumaIVA = 0
+        sumaSubTotal = 0
+        For Each row As DataGridViewRow In DgvConceptoGastos.Rows
+            If Not row.IsNewRow Then
+                sumaIVA += Math.Round(CDec(row.Cells(clmtxtImporteGasto.Index).Value) * (CDec(row.Cells(clmtxtIva.Index).Value) / 100), 2)
+                sumaSubTotal += Math.Round(CDec(row.Cells(clmtxtImporteGasto.Index).Value), 2)
+            End If
+        Next
+        txtSubTotal.Text = sumaSubTotal.ToString("N2")
+        txtIVA.Text = sumaIVA.ToString("N2")
+        txtTotal.Text = (sumaIVA + sumaSubTotal).ToString("N2")
+    End Sub
+
+    Private Sub txtNoFactura_TextChanged(sender As System.Object, e As System.EventArgs)
+
+    End Sub
+    Private Sub Label33_Click(sender As System.Object, e As System.EventArgs)
+
+    End Sub
+
+  
+
+    Private Sub DgvConceptoGastos_KeyDown(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles DgvConceptoGastos.KeyDown
+        If e.KeyCode = Keys.Delete Then
+            Dim i As Integer = DgvConceptoGastos.CurrentCell.RowIndex
+            If Not DgvConceptoGastos.Rows(i).IsNewRow Then
+                DgvConceptoGastos.Rows.RemoveAt(i)
+                calcular()
+            End If
+        End If
     End Sub
 End Class

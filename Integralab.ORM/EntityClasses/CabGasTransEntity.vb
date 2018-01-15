@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 5 de enero de 2018 17:48:21
+' // Code is generated on: jueves, 11 de enero de 2018 10:37:35
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -46,10 +46,7 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchDetGasTrans, _alreadyFetchedDetGasTrans As Boolean
 		Private _mcgcatConcepGastosCollectionViaDetGasTrans As Integralab.ORM.CollectionClasses.McgcatConcepGastosCollection
 		Private _alwaysFetchMcgcatConcepGastosCollectionViaDetGasTrans, _alreadyFetchedMcgcatConcepGastosCollectionViaDetGasTrans As Boolean
-		Private _mcgcatChoferes As McgcatChoferesEntity
-		Private _alwaysFetchMcgcatChoferes, _alreadyFetchedMcgcatChoferes, _mcgcatChoferesReturnsNewIfNotFound As Boolean
-		Private _mcgcatVehiculos As McgcatVehiculosEntity
-		Private _alwaysFetchMcgcatVehiculos, _alreadyFetchedMcgcatVehiculos, _mcgcatVehiculosReturnsNewIfNotFound As Boolean
+
 		Private _cabRegCom As CabRegComEntity
 		Private _alwaysFetchCabRegCom, _alreadyFetchedCabRegCom, _cabRegComReturnsNewIfNotFound As Boolean
 
@@ -107,20 +104,7 @@ Namespace Integralab.ORM.EntityClasses
 			_mcgcatConcepGastosCollectionViaDetGasTrans = CType(info.GetValue("_mcgcatConcepGastosCollectionViaDetGasTrans", GetType(Integralab.ORM.CollectionClasses.McgcatConcepGastosCollection)), Integralab.ORM.CollectionClasses.McgcatConcepGastosCollection)
 			_alwaysFetchMcgcatConcepGastosCollectionViaDetGasTrans = info.GetBoolean("_alwaysFetchMcgcatConcepGastosCollectionViaDetGasTrans")
 			_alreadyFetchedMcgcatConcepGastosCollectionViaDetGasTrans = info.GetBoolean("_alreadyFetchedMcgcatConcepGastosCollectionViaDetGasTrans")
-			_mcgcatChoferes = CType(info.GetValue("_mcgcatChoferes", GetType(McgcatChoferesEntity)), McgcatChoferesEntity)
-			If Not _mcgcatChoferes Is Nothing Then
-				AddHandler _mcgcatChoferes.AfterSave, AddressOf OnEntityAfterSave
-			End If
-			_mcgcatChoferesReturnsNewIfNotFound = info.GetBoolean("_mcgcatChoferesReturnsNewIfNotFound")
-			_alwaysFetchMcgcatChoferes = info.GetBoolean("_alwaysFetchMcgcatChoferes")
-			_alreadyFetchedMcgcatChoferes = info.GetBoolean("_alreadyFetchedMcgcatChoferes")
-			_mcgcatVehiculos = CType(info.GetValue("_mcgcatVehiculos", GetType(McgcatVehiculosEntity)), McgcatVehiculosEntity)
-			If Not _mcgcatVehiculos Is Nothing Then
-				AddHandler _mcgcatVehiculos.AfterSave, AddressOf OnEntityAfterSave
-			End If
-			_mcgcatVehiculosReturnsNewIfNotFound = info.GetBoolean("_mcgcatVehiculosReturnsNewIfNotFound")
-			_alwaysFetchMcgcatVehiculos = info.GetBoolean("_alwaysFetchMcgcatVehiculos")
-			_alreadyFetchedMcgcatVehiculos = info.GetBoolean("_alreadyFetchedMcgcatVehiculos")
+
 			_cabRegCom = CType(info.GetValue("_cabRegCom", GetType(CabRegComEntity)), CabRegComEntity)
 			If Not _cabRegCom Is Nothing Then
 				' rewire event handler.
@@ -140,8 +124,7 @@ Namespace Integralab.ORM.EntityClasses
 		Protected Overrides Sub PostReadXmlFixups()
 			_alreadyFetchedDetGasTrans = (_detGasTrans.Count > 0)
 			_alreadyFetchedMcgcatConcepGastosCollectionViaDetGasTrans = (_mcgcatConcepGastosCollectionViaDetGasTrans.Count > 0)
-			_alreadyFetchedMcgcatChoferes = Not(_mcgcatChoferes Is Nothing)
-			_alreadyFetchedMcgcatVehiculos = Not(_mcgcatVehiculos Is Nothing)
+
 			_alreadyFetchedCabRegCom = Not(_cabRegCom Is Nothing)
 		End Sub
 
@@ -198,14 +181,7 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_mcgcatConcepGastosCollectionViaDetGasTrans", _mcgcatConcepGastosCollectionViaDetGasTrans)
 			info.AddValue("_alwaysFetchMcgcatConcepGastosCollectionViaDetGasTrans", _alwaysFetchMcgcatConcepGastosCollectionViaDetGasTrans)
 			info.AddValue("_alreadyFetchedMcgcatConcepGastosCollectionViaDetGasTrans", _alreadyFetchedMcgcatConcepGastosCollectionViaDetGasTrans)
-			info.AddValue("_mcgcatChoferes", _mcgcatChoferes)
-			info.AddValue("_mcgcatChoferesReturnsNewIfNotFound", _mcgcatChoferesReturnsNewIfNotFound)
-			info.AddValue("_alwaysFetchMcgcatChoferes", _alwaysFetchMcgcatChoferes)
-			info.AddValue("_alreadyFetchedMcgcatChoferes", _alreadyFetchedMcgcatChoferes)
-			info.AddValue("_mcgcatVehiculos", _mcgcatVehiculos)
-			info.AddValue("_mcgcatVehiculosReturnsNewIfNotFound", _mcgcatVehiculosReturnsNewIfNotFound)
-			info.AddValue("_alwaysFetchMcgcatVehiculos", _alwaysFetchMcgcatVehiculos)
-			info.AddValue("_alreadyFetchedMcgcatVehiculos", _alreadyFetchedMcgcatVehiculos)
+
 			info.AddValue("_cabRegCom", _cabRegCom)
 			info.AddValue("_cabRegComReturnsNewIfNotFound", _cabRegComReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchCabRegCom", _alwaysFetchCabRegCom)
@@ -223,12 +199,7 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub SetRelatedEntityProperty(propertyName As String, entity As IEntity)
 			Select Case propertyName
-				Case "McgcatChoferes"
-					_alreadyFetchedMcgcatChoferes = True
-					Me.McgcatChoferes = CType(entity, McgcatChoferesEntity)
-				Case "McgcatVehiculos"
-					_alreadyFetchedMcgcatVehiculos = True
-					Me.McgcatVehiculos = CType(entity, McgcatVehiculosEntity)
+
 				Case "DetGasTrans"
 					_alreadyFetchedDetGasTrans = True
 					If Not entity Is Nothing Then
@@ -253,12 +224,7 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub SetRelatedEntity(relatedEntity As IEntity, fieldName As String)
 			Select Case fieldName
-				Case "McgcatChoferes"
-					SetupSyncMcgcatChoferes(relatedEntity)
-					OnRelatedEntitySet(relatedEntity, fieldName)
-				Case "McgcatVehiculos"
-					SetupSyncMcgcatVehiculos(relatedEntity)
-					OnRelatedEntitySet(relatedEntity, fieldName)
+
 				Case "DetGasTrans"
 					_detGasTrans.Add(CType(relatedEntity, DetGasTransEntity))
 					OnRelatedEntitySet(relatedEntity, fieldName)
@@ -277,12 +243,7 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub UnsetRelatedEntity(relatedEntity As IEntity, fieldName As String, signalRelatedEntityManyToOne As Boolean)
 			Select Case fieldName
-				Case "McgcatChoferes"
-					DesetupSyncMcgcatChoferes(False, True)
-					OnRelatedEntityUnset(relatedEntity, fieldName)
-				Case "McgcatVehiculos"
-					DesetupSyncMcgcatVehiculos(False, True)
-					OnRelatedEntityUnset(relatedEntity, fieldName)
+
 				Case "DetGasTrans"
 					MyBase.PerformRelatedEntityRemoval(_detGasTrans, relatedEntity, signalRelatedEntityManyToOne)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
@@ -313,12 +274,7 @@ Namespace Integralab.ORM.EntityClasses
 		''' <returns>Collection with 0 or more IEntity objects, referenced by this entity</returns>
 		Public Overrides Function GetDependentRelatedEntities() As List(Of IEntity)
 			Dim toReturn As New List(Of IEntity)()
-			If Not _mcgcatChoferes Is Nothing Then
-				toReturn.Add(_mcgcatChoferes)
-			End If
-			If Not _mcgcatVehiculos Is Nothing Then
-				toReturn.Add(_mcgcatVehiculos)
-			End If
+
 
 
 
@@ -533,78 +489,6 @@ Namespace Integralab.ORM.EntityClasses
 			_mcgcatConcepGastosCollectionViaDetGasTrans.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub	
 
-		''' <summary>Retrieves the related entity of type 'McgcatChoferesEntity', Imports a relation of type 'n:1'</summary>
-		''' <returns>A fetched entity of type 'McgcatChoferesEntity' which is related to this entity.</returns>
-		Public Overridable Function GetSingleMcgcatChoferes() As McgcatChoferesEntity
-			Return GetSingleMcgcatChoferes(False)
-		End Function
-
-		''' <summary>Retrieves the related entity of type 'McgcatChoferesEntity', Imports a relation of type 'n:1'</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
-		''' <returns>A fetched entity of type 'McgcatChoferesEntity' which is related to this entity.</returns>
-		Public Overridable Function GetSingleMcgcatChoferes(forceFetch As Boolean) As McgcatChoferesEntity
-			If ( Not _alreadyFetchedMcgcatChoferes Or forceFetch Or _alwaysFetchMcgcatChoferes) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
-
-				Dim newEntity As New McgcatChoferesEntity()
-				If MyBase.ParticipatesInTransaction Then
-					MyBase.Transaction.Add(newEntity)
-				End If
-				Dim fetchResult As Boolean = False
-				If MyBase.CheckIfLazyLoadingShouldOccur(CabGasTransEntity.Relations.McgcatChoferesEntityUsingCveChofer) Then
-					fetchResult = newEntity.FetchUsingPK(Me.CveChofer)
-				End If
-				If Not _mcgcatChoferesReturnsNewIfNotFound AndAlso Not fetchResult Then
-					Me.McgcatChoferes = Nothing
-				Else
-					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
-						newEntity = CType(MyBase.ActiveContext.Get(newEntity), McgcatChoferesEntity)
-					End If
-					Me.McgcatChoferes = newEntity
-					_alreadyFetchedMcgcatChoferes = fetchResult
-				End If
-				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
-					MyBase.Transaction.Remove(newEntity)
-				End If
-			End If
-			Return _mcgcatChoferes
-		End Function
-	
-		''' <summary>Retrieves the related entity of type 'McgcatVehiculosEntity', Imports a relation of type 'n:1'</summary>
-		''' <returns>A fetched entity of type 'McgcatVehiculosEntity' which is related to this entity.</returns>
-		Public Overridable Function GetSingleMcgcatVehiculos() As McgcatVehiculosEntity
-			Return GetSingleMcgcatVehiculos(False)
-		End Function
-
-		''' <summary>Retrieves the related entity of type 'McgcatVehiculosEntity', Imports a relation of type 'n:1'</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
-		''' <returns>A fetched entity of type 'McgcatVehiculosEntity' which is related to this entity.</returns>
-		Public Overridable Function GetSingleMcgcatVehiculos(forceFetch As Boolean) As McgcatVehiculosEntity
-			If ( Not _alreadyFetchedMcgcatVehiculos Or forceFetch Or _alwaysFetchMcgcatVehiculos) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
-
-				Dim newEntity As New McgcatVehiculosEntity()
-				If MyBase.ParticipatesInTransaction Then
-					MyBase.Transaction.Add(newEntity)
-				End If
-				Dim fetchResult As Boolean = False
-				If MyBase.CheckIfLazyLoadingShouldOccur(CabGasTransEntity.Relations.McgcatVehiculosEntityUsingCveVehiculo) Then
-					fetchResult = newEntity.FetchUsingPK(Me.CveVehiculo)
-				End If
-				If Not _mcgcatVehiculosReturnsNewIfNotFound AndAlso Not fetchResult Then
-					Me.McgcatVehiculos = Nothing
-				Else
-					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
-						newEntity = CType(MyBase.ActiveContext.Get(newEntity), McgcatVehiculosEntity)
-					End If
-					Me.McgcatVehiculos = newEntity
-					_alreadyFetchedMcgcatVehiculos = fetchResult
-				End If
-				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
-					MyBase.Transaction.Remove(newEntity)
-				End If
-			End If
-			Return _mcgcatVehiculos
-		End Function
-	
 	
 		''' <summary>Retrieves the related entity of type 'CabRegComEntity', Imports a relation of type '1:1'</summary>
 		''' <returns>A fetched entity of type 'CabRegComEntity' which is related to this entity.</returns>
@@ -656,12 +540,8 @@ Namespace Integralab.ORM.EntityClasses
 				Select Case CType(fieldIndex, CabGasTransFieldIndex)
 
 
-					Case CabGasTransFieldIndex.CveChofer
-						DesetupSyncMcgcatChoferes(True, False)
-						_alreadyFetchedMcgcatChoferes = False
-					Case CabGasTransFieldIndex.CveVehiculo
-						DesetupSyncMcgcatVehiculos(True, False)
-						_alreadyFetchedMcgcatVehiculos = False
+
+
 
 
 
@@ -678,12 +558,7 @@ Namespace Integralab.ORM.EntityClasses
 		Protected Overrides Overloads Sub AddInternalsToContext()
 			_detGasTrans.ActiveContext = MyBase.ActiveContext
 			_mcgcatConcepGastosCollectionViaDetGasTrans.ActiveContext = MyBase.ActiveContext
-		If Not _mcgcatChoferes Is Nothing Then
-				_mcgcatChoferes.ActiveContext = MyBase.ActiveContext
-			End If
-		If Not _mcgcatVehiculos Is Nothing Then
-				_mcgcatVehiculos.ActiveContext = MyBase.ActiveContext
-			End If
+
 		If Not _cabRegCom Is Nothing Then
 				_cabRegCom.ActiveContext = MyBase.ActiveContext
 			End If
@@ -765,14 +640,7 @@ Namespace Integralab.ORM.EntityClasses
 			_mcgcatConcepGastosCollectionViaDetGasTrans = New Integralab.ORM.CollectionClasses.McgcatConcepGastosCollection(New McgcatConcepGastosEntityFactory())
 			_alwaysFetchMcgcatConcepGastosCollectionViaDetGasTrans = False
 			_alreadyFetchedMcgcatConcepGastosCollectionViaDetGasTrans = False
-			_mcgcatChoferes = Nothing
-			_mcgcatChoferesReturnsNewIfNotFound = True
-			_alwaysFetchMcgcatChoferes = False
-			_alreadyFetchedMcgcatChoferes = False
-			_mcgcatVehiculos = Nothing
-			_mcgcatVehiculosReturnsNewIfNotFound = True
-			_alwaysFetchMcgcatVehiculos = False
-			_alreadyFetchedMcgcatVehiculos = False
+
 			_cabRegCom = Nothing
 			_cabRegComReturnsNewIfNotFound = True
 			_alwaysFetchCabRegCom = False
@@ -818,58 +686,6 @@ Namespace Integralab.ORM.EntityClasses
 		End Sub
 
 
-		''' <summary>Removes the sync logic for member _mcgcatChoferes</summary>
-		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
-		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
-		Private Sub DesetupSyncMcgcatChoferes(signalRelatedEntity As Boolean, resetFKFields As Boolean)
-			MyBase.PerformDesetupSyncRelatedEntity( _mcgcatChoferes, AddressOf OnMcgcatChoferesPropertyChanged, "McgcatChoferes", CabGasTransEntity.Relations.McgcatChoferesEntityUsingCveChofer, True, signalRelatedEntity, "CabGasTrans", resetFKFields, New Integer() { CInt(CabGasTransFieldIndex.CveChofer) } )
-			_mcgcatChoferes = Nothing
-		End Sub
-		
-		''' <summary>setups the sync logic for member _mcgcatChoferes</summary>
-		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
-		Private Sub SetupSyncMcgcatChoferes(relatedEntity As IEntity)
-			DesetupSyncMcgcatChoferes(True, True)
-			_mcgcatChoferes = CType(relatedEntity, McgcatChoferesEntity)
-			MyBase.PerformSetupSyncRelatedEntity( _mcgcatChoferes, AddressOf OnMcgcatChoferesPropertyChanged, "McgcatChoferes", CabGasTransEntity.Relations.McgcatChoferesEntityUsingCveChofer, True, _alreadyFetchedMcgcatChoferes, New String() {  } )
-		End Sub
-		
-		''' <summary>Handles Property change events of properties In a related entity.</summary>
-		''' <param name="sender"></param>
-		''' <param name="e"></param>
-		Private Sub OnMcgcatChoferesPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
-			Select Case e.PropertyName
-
-				Case Else
-					' Emtpy
-			End Select
-		End Sub
-		''' <summary>Removes the sync logic for member _mcgcatVehiculos</summary>
-		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
-		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
-		Private Sub DesetupSyncMcgcatVehiculos(signalRelatedEntity As Boolean, resetFKFields As Boolean)
-			MyBase.PerformDesetupSyncRelatedEntity( _mcgcatVehiculos, AddressOf OnMcgcatVehiculosPropertyChanged, "McgcatVehiculos", CabGasTransEntity.Relations.McgcatVehiculosEntityUsingCveVehiculo, True, signalRelatedEntity, "CabGasTrans", resetFKFields, New Integer() { CInt(CabGasTransFieldIndex.CveVehiculo) } )
-			_mcgcatVehiculos = Nothing
-		End Sub
-		
-		''' <summary>setups the sync logic for member _mcgcatVehiculos</summary>
-		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
-		Private Sub SetupSyncMcgcatVehiculos(relatedEntity As IEntity)
-			DesetupSyncMcgcatVehiculos(True, True)
-			_mcgcatVehiculos = CType(relatedEntity, McgcatVehiculosEntity)
-			MyBase.PerformSetupSyncRelatedEntity( _mcgcatVehiculos, AddressOf OnMcgcatVehiculosPropertyChanged, "McgcatVehiculos", CabGasTransEntity.Relations.McgcatVehiculosEntityUsingCveVehiculo, True, _alreadyFetchedMcgcatVehiculos, New String() {  } )
-		End Sub
-		
-		''' <summary>Handles Property change events of properties In a related entity.</summary>
-		''' <param name="sender"></param>
-		''' <param name="e"></param>
-		Private Sub OnMcgcatVehiculosPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
-			Select Case e.PropertyName
-
-				Case Else
-					' Emtpy
-			End Select
-		End Sub
 
 		''' <summary>Removes the sync logic for member _cabRegCom</summary>
 		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
@@ -971,28 +787,6 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 		End Property
 	
-	
-		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'McgcatChoferes' 
-		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
-		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
-		Public Shared ReadOnly Property PrefetchPathMcgcatChoferes() As IPrefetchPathElement
-			Get
-				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.McgcatChoferesCollection(), _
-					CabGasTransEntity.Relations.McgcatChoferesEntityUsingCveChofer, _
-					CType(Integralab.ORM.EntityType.CabGasTransEntity, Integer), CType(Integralab.ORM.EntityType.McgcatChoferesEntity, Integer), 0, Nothing, Nothing, Nothing, "McgcatChoferes", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
-			End Get
-		End Property
-	
-		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'McgcatVehiculos' 
-		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
-		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
-		Public Shared ReadOnly Property PrefetchPathMcgcatVehiculos() As IPrefetchPathElement
-			Get
-				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.McgcatVehiculosCollection(), _
-					CabGasTransEntity.Relations.McgcatVehiculosEntityUsingCveVehiculo, _
-					CType(Integralab.ORM.EntityType.CabGasTransEntity, Integer), CType(Integralab.ORM.EntityType.McgcatVehiculosEntity, Integer), 0, Nothing, Nothing, Nothing, "McgcatVehiculos", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
-			End Get
-		End Property
 	
 	
 		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CabRegCom' 
@@ -1272,110 +1066,6 @@ Namespace Integralab.ORM.EntityClasses
 			End Set	
 		End Property
 	
-	
-		''' <summary>Gets / sets related entity of type 'McgcatChoferesEntity'. This property is not visible in databound grids.
-		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
-		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
-		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleMcgcatChoferes()', because 
-		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
-		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
-		<Browsable(False)> _
-		Public Overridable Property [McgcatChoferes]() As McgcatChoferesEntity
-			Get
-				Return GetSingleMcgcatChoferes(False)
-			End Get
-			Set
-				If MyBase.IsDeserializing Then
-					SetupSyncMcgcatChoferes(value)
-				Else
-					If value Is Nothing Then
-						If Not _mcgcatChoferes Is Nothing Then
-							_mcgcatChoferes.UnsetRelatedEntity(Me, "CabGasTrans")
-						End If
-					Else
-						CType(value, IEntity).SetRelatedEntity(Me, "CabGasTrans")
-					End If
-				End If
-			End Set
-		End Property
-
-		''' <summary>Gets / sets the lazy loading flag for McgcatChoferes. When set to true, McgcatChoferes is always refetched from the 
-		''' persistent storage. When set to false, the data is only fetched the first time McgcatChoferes is accessed. You can always execute
-		''' a forced fetch by calling GetSingleMcgcatChoferes(True).</summary>
-		<Browsable(False)> _
-		Public Property AlwaysFetchMcgcatChoferes As Boolean
-			Get
-				Return _alwaysFetchMcgcatChoferes
-			End Get
-			Set
-				_alwaysFetchMcgcatChoferes = value
-			End Set	
-		End Property
-
-		''' <summary>Gets / sets the flag for what to do if the related entity available through the property McgcatChoferes is not found
-		''' in the database. When set to true, McgcatChoferes will return a new entity instance if the related entity is not found, otherwise 
-		''' null be returned if the related entity is not found. Default: true.</summary>
-		<Browsable(False)> _
-		Public Property McgcatChoferesReturnsNewIfNotFound As Boolean
-			Get
-				Return _mcgcatChoferesReturnsNewIfNotFound
-			End Get
-			Set
-				_mcgcatChoferesReturnsNewIfNotFound = value
-			End Set	
-		End Property
-	
-		''' <summary>Gets / sets related entity of type 'McgcatVehiculosEntity'. This property is not visible in databound grids.
-		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
-		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
-		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleMcgcatVehiculos()', because 
-		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
-		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
-		<Browsable(False)> _
-		Public Overridable Property [McgcatVehiculos]() As McgcatVehiculosEntity
-			Get
-				Return GetSingleMcgcatVehiculos(False)
-			End Get
-			Set
-				If MyBase.IsDeserializing Then
-					SetupSyncMcgcatVehiculos(value)
-				Else
-					If value Is Nothing Then
-						If Not _mcgcatVehiculos Is Nothing Then
-							_mcgcatVehiculos.UnsetRelatedEntity(Me, "CabGasTrans")
-						End If
-					Else
-						CType(value, IEntity).SetRelatedEntity(Me, "CabGasTrans")
-					End If
-				End If
-			End Set
-		End Property
-
-		''' <summary>Gets / sets the lazy loading flag for McgcatVehiculos. When set to true, McgcatVehiculos is always refetched from the 
-		''' persistent storage. When set to false, the data is only fetched the first time McgcatVehiculos is accessed. You can always execute
-		''' a forced fetch by calling GetSingleMcgcatVehiculos(True).</summary>
-		<Browsable(False)> _
-		Public Property AlwaysFetchMcgcatVehiculos As Boolean
-			Get
-				Return _alwaysFetchMcgcatVehiculos
-			End Get
-			Set
-				_alwaysFetchMcgcatVehiculos = value
-			End Set	
-		End Property
-
-		''' <summary>Gets / sets the flag for what to do if the related entity available through the property McgcatVehiculos is not found
-		''' in the database. When set to true, McgcatVehiculos will return a new entity instance if the related entity is not found, otherwise 
-		''' null be returned if the related entity is not found. Default: true.</summary>
-		<Browsable(False)> _
-		Public Property McgcatVehiculosReturnsNewIfNotFound As Boolean
-			Get
-				Return _mcgcatVehiculosReturnsNewIfNotFound
-			End Get
-			Set
-				_mcgcatVehiculosReturnsNewIfNotFound = value
-			End Set	
-		End Property
 	
 	
 		''' <summary>Gets / Sets related entity of type 'CabRegComEntity'. This property is not visible in databound grids.

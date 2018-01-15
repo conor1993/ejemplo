@@ -31,15 +31,21 @@ Partial Class FrmRecepciondeGanado
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtImporte = New System.Windows.Forms.TextBox()
+        Me.txtNoFactura = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
         Me.txtHorasViaje = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.tabControl = New System.Windows.Forms.TabControl()
         Me.tbOtrosGastos = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label28 = New System.Windows.Forms.Label()
         Me.DgvConceptoGastos = New System.Windows.Forms.DataGridView()
         Me.clmcmbConceptoGasto = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.clmtxtIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmtxtImporteGasto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmRenglon = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtSubTotal = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -49,11 +55,7 @@ Partial Class FrmRecepciondeGanado
         Me.TxtFolio = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.tbDatosPago = New System.Windows.Forms.TabPage()
-        Me.txtImporte = New System.Windows.Forms.TextBox()
-        Me.Label25 = New System.Windows.Forms.Label()
         Me.dtpFechaPago = New System.Windows.Forms.DateTimePicker()
-        Me.txtNoFactura = New System.Windows.Forms.TextBox()
-        Me.Label33 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.txtDiasDeCredito = New System.Windows.Forms.TextBox()
@@ -137,7 +139,7 @@ Partial Class FrmRecepciondeGanado
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 782)
+        Me.mtb.Size = New System.Drawing.Size(50, 791)
         Me.mtb.TabIndex = 48
         '
         'Label17
@@ -157,6 +159,10 @@ Partial Class FrmRecepciondeGanado
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.txtImporte)
+        Me.GroupBox1.Controls.Add(Me.txtNoFactura)
+        Me.GroupBox1.Controls.Add(Me.Label25)
+        Me.GroupBox1.Controls.Add(Me.Label33)
         Me.GroupBox1.Controls.Add(Me.txtHorasViaje)
         Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.tabControl)
@@ -201,9 +207,42 @@ Partial Class FrmRecepciondeGanado
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(53, 30)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(637, 740)
+        Me.GroupBox1.Size = New System.Drawing.Size(637, 749)
         Me.GroupBox1.TabIndex = 49
         Me.GroupBox1.TabStop = False
+        '
+        'txtImporte
+        '
+        Me.txtImporte.Location = New System.Drawing.Point(465, 92)
+        Me.txtImporte.Name = "txtImporte"
+        Me.txtImporte.Size = New System.Drawing.Size(105, 20)
+        Me.txtImporte.TabIndex = 104
+        Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtNoFactura
+        '
+        Me.txtNoFactura.Location = New System.Drawing.Point(465, 69)
+        Me.txtNoFactura.Name = "txtNoFactura"
+        Me.txtNoFactura.Size = New System.Drawing.Size(105, 20)
+        Me.txtNoFactura.TabIndex = 103
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(376, 95)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(45, 13)
+        Me.Label25.TabIndex = 102
+        Me.Label25.Text = "Importe:"
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Location = New System.Drawing.Point(376, 72)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(89, 13)
+        Me.Label33.TabIndex = 101
+        Me.Label33.Text = "Num. de Factura:"
         '
         'txtHorasViaje
         '
@@ -230,7 +269,7 @@ Partial Class FrmRecepciondeGanado
         Me.tabControl.Location = New System.Drawing.Point(10, 469)
         Me.tabControl.Name = "tabControl"
         Me.tabControl.SelectedIndex = 0
-        Me.tabControl.Size = New System.Drawing.Size(609, 265)
+        Me.tabControl.Size = New System.Drawing.Size(609, 274)
         Me.tabControl.TabIndex = 99
         '
         'tbOtrosGastos
@@ -243,12 +282,13 @@ Partial Class FrmRecepciondeGanado
         Me.tbOtrosGastos.Location = New System.Drawing.Point(4, 22)
         Me.tbOtrosGastos.Name = "tbOtrosGastos"
         Me.tbOtrosGastos.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbOtrosGastos.Size = New System.Drawing.Size(601, 239)
+        Me.tbOtrosGastos.Size = New System.Drawing.Size(601, 248)
         Me.tbOtrosGastos.TabIndex = 0
         Me.tbOtrosGastos.Text = "Otros Gastos"
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Label28)
         Me.GroupBox3.Controls.Add(Me.DgvConceptoGastos)
         Me.GroupBox3.Controls.Add(Me.Label24)
         Me.GroupBox3.Controls.Add(Me.txtSubTotal)
@@ -258,10 +298,20 @@ Partial Class FrmRecepciondeGanado
         Me.GroupBox3.Controls.Add(Me.txtTotal)
         Me.GroupBox3.Location = New System.Drawing.Point(9, 32)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(586, 201)
+        Me.GroupBox3.Size = New System.Drawing.Size(586, 204)
         Me.GroupBox3.TabIndex = 16
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Gastos de Transporte"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.Location = New System.Drawing.Point(7, 180)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(104, 13)
+        Me.Label28.TabIndex = 98
+        Me.Label28.Text = "<supr> Borrar fila"
         '
         'DgvConceptoGastos
         '
@@ -281,7 +331,7 @@ Partial Class FrmRecepciondeGanado
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DgvConceptoGastos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DgvConceptoGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvConceptoGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmcmbConceptoGasto, Me.clmtxtIva, Me.clmtxtImporteGasto})
+        Me.DgvConceptoGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmcmbConceptoGasto, Me.clmtxtIva, Me.clmtxtImporteGasto, Me.clmRenglon})
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -302,11 +352,12 @@ Partial Class FrmRecepciondeGanado
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DgvConceptoGastos.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DgvConceptoGastos.RowHeadersVisible = False
-        Me.DgvConceptoGastos.Size = New System.Drawing.Size(574, 102)
+        Me.DgvConceptoGastos.Size = New System.Drawing.Size(574, 105)
         Me.DgvConceptoGastos.TabIndex = 22
         '
         'clmcmbConceptoGasto
         '
+        Me.clmcmbConceptoGasto.DataPropertyName = "IdGasto"
         Me.clmcmbConceptoGasto.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
         Me.clmcmbConceptoGasto.FillWeight = 70.0!
         Me.clmcmbConceptoGasto.HeaderText = "Gasto"
@@ -315,6 +366,7 @@ Partial Class FrmRecepciondeGanado
         '
         'clmtxtIva
         '
+        Me.clmtxtIva.DataPropertyName = "PorcentajeIva"
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle2.Format = "N2"
         Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle2
@@ -324,18 +376,27 @@ Partial Class FrmRecepciondeGanado
         '
         'clmtxtImporteGasto
         '
+        Me.clmtxtImporteGasto.DataPropertyName = "ImporteGasto"
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
         Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle3
         Me.clmtxtImporteGasto.FillWeight = 20.0!
         Me.clmtxtImporteGasto.HeaderText = "Importe"
         Me.clmtxtImporteGasto.Name = "clmtxtImporteGasto"
         '
+        'clmRenglon
+        '
+        Me.clmRenglon.DataPropertyName = "Renglon"
+        Me.clmRenglon.HeaderText = "Renglon"
+        Me.clmRenglon.Name = "clmRenglon"
+        Me.clmRenglon.Visible = False
+        '
         'Label24
         '
         Me.Label24.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(385, 173)
+        Me.Label24.Location = New System.Drawing.Point(385, 176)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(34, 13)
         Me.Label24.TabIndex = 14
@@ -346,7 +407,7 @@ Partial Class FrmRecepciondeGanado
         Me.txtSubTotal.AcceptsTab = True
         Me.txtSubTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSubTotal.Enabled = False
-        Me.txtSubTotal.Location = New System.Drawing.Point(429, 126)
+        Me.txtSubTotal.Location = New System.Drawing.Point(429, 129)
         Me.txtSubTotal.Name = "txtSubTotal"
         Me.txtSubTotal.ReadOnly = True
         Me.txtSubTotal.Size = New System.Drawing.Size(152, 20)
@@ -357,7 +418,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.Label23.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(392, 151)
+        Me.Label23.Location = New System.Drawing.Point(392, 154)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(27, 13)
         Me.Label23.TabIndex = 13
@@ -367,7 +428,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.txtIVA.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtIVA.Enabled = False
-        Me.txtIVA.Location = New System.Drawing.Point(429, 148)
+        Me.txtIVA.Location = New System.Drawing.Point(429, 151)
         Me.txtIVA.Name = "txtIVA"
         Me.txtIVA.ReadOnly = True
         Me.txtIVA.Size = New System.Drawing.Size(152, 20)
@@ -378,7 +439,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.Label22.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(363, 129)
+        Me.Label22.Location = New System.Drawing.Point(363, 132)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(56, 13)
         Me.Label22.TabIndex = 12
@@ -388,7 +449,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.txtTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotal.Enabled = False
-        Me.txtTotal.Location = New System.Drawing.Point(429, 170)
+        Me.txtTotal.Location = New System.Drawing.Point(429, 173)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
         Me.txtTotal.Size = New System.Drawing.Size(152, 20)
@@ -415,37 +476,16 @@ Partial Class FrmRecepciondeGanado
         'tbDatosPago
         '
         Me.tbDatosPago.BackColor = System.Drawing.SystemColors.Menu
-        Me.tbDatosPago.Controls.Add(Me.txtImporte)
-        Me.tbDatosPago.Controls.Add(Me.Label25)
         Me.tbDatosPago.Controls.Add(Me.dtpFechaPago)
-        Me.tbDatosPago.Controls.Add(Me.txtNoFactura)
-        Me.tbDatosPago.Controls.Add(Me.Label33)
         Me.tbDatosPago.Controls.Add(Me.Label27)
         Me.tbDatosPago.Controls.Add(Me.Label26)
         Me.tbDatosPago.Controls.Add(Me.txtDiasDeCredito)
         Me.tbDatosPago.Location = New System.Drawing.Point(4, 22)
         Me.tbDatosPago.Name = "tbDatosPago"
         Me.tbDatosPago.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbDatosPago.Size = New System.Drawing.Size(601, 239)
+        Me.tbDatosPago.Size = New System.Drawing.Size(601, 248)
         Me.tbDatosPago.TabIndex = 1
         Me.tbDatosPago.Text = "Datos de Pago"
-        '
-        'txtImporte
-        '
-        Me.txtImporte.Location = New System.Drawing.Point(99, 78)
-        Me.txtImporte.Name = "txtImporte"
-        Me.txtImporte.Size = New System.Drawing.Size(105, 20)
-        Me.txtImporte.TabIndex = 21
-        Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(6, 81)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(45, 13)
-        Me.Label25.TabIndex = 32
-        Me.Label25.Text = "Importe:"
         '
         'dtpFechaPago
         '
@@ -454,22 +494,6 @@ Partial Class FrmRecepciondeGanado
         Me.dtpFechaPago.Name = "dtpFechaPago"
         Me.dtpFechaPago.Size = New System.Drawing.Size(105, 20)
         Me.dtpFechaPago.TabIndex = 19
-        '
-        'txtNoFactura
-        '
-        Me.txtNoFactura.Location = New System.Drawing.Point(99, 54)
-        Me.txtNoFactura.Name = "txtNoFactura"
-        Me.txtNoFactura.Size = New System.Drawing.Size(105, 20)
-        Me.txtNoFactura.TabIndex = 20
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(6, 58)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(89, 13)
-        Me.Label33.TabIndex = 29
-        Me.Label33.Text = "Num. de Factura:"
         '
         'Label27
         '
@@ -914,7 +938,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(699, 782)
+        Me.ClientSize = New System.Drawing.Size(699, 791)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.mtb)
@@ -999,16 +1023,18 @@ Partial Class FrmRecepciondeGanado
     Friend WithEvents txtTotal As System.Windows.Forms.TextBox
     Friend WithEvents DgvConceptoGastos As System.Windows.Forms.DataGridView
     Friend WithEvents dtpFechaPago As System.Windows.Forms.DateTimePicker
-    Friend WithEvents txtNoFactura As System.Windows.Forms.TextBox
-    Friend WithEvents Label33 As System.Windows.Forms.Label
     Friend WithEvents Label27 As System.Windows.Forms.Label
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents txtDiasDeCredito As System.Windows.Forms.TextBox
     Friend WithEvents txtHorasViaje As System.Windows.Forms.TextBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
-    Friend WithEvents txtImporte As System.Windows.Forms.TextBox
-    Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents clmcmbConceptoGasto As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents clmtxtIva As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmtxtImporteGasto As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmRenglon As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents txtImporte As System.Windows.Forms.TextBox
+    Friend WithEvents txtNoFactura As System.Windows.Forms.TextBox
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents Label33 As System.Windows.Forms.Label
+    Friend WithEvents Label28 As System.Windows.Forms.Label
 End Class

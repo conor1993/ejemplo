@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 5 de enero de 2018 17:48:18
+' // Code is generated on: jueves, 11 de enero de 2018 10:37:32
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -64,36 +64,6 @@ Namespace Integralab.ORM.RelationClasses
 			End Get
 		End Property
 	
-	
-		''' <summary>Returns a new IEntityRelation Object, between CabGasTransEntity and McgcatChoferesEntity over the m:1 relation they have, using the relation between the fields:
-		''' CabGasTrans.CveChofer - McgcatChoferes.IdChofer
-		''' </summary>
-		Public Overridable  ReadOnly Property McgcatChoferesEntityUsingCveChofer() As IEntityRelation
-			Get
-
-				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
-				relation.StartEntityIsPkSide = False
-				relation.AddEntityFieldPair(EntityFieldFactory.Create(McgcatChoferesFieldIndex.IdChofer), EntityFieldFactory.Create(CabGasTransFieldIndex.CveChofer))
-				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("McgcatChoferesEntity", False)
-				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CabGasTransEntity", True)
-				Return relation
-			End Get
-		End Property
-	
-		''' <summary>Returns a new IEntityRelation Object, between CabGasTransEntity and McgcatVehiculosEntity over the m:1 relation they have, using the relation between the fields:
-		''' CabGasTrans.CveVehiculo - McgcatVehiculos.IdVehiculo
-		''' </summary>
-		Public Overridable  ReadOnly Property McgcatVehiculosEntityUsingCveVehiculo() As IEntityRelation
-			Get
-
-				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
-				relation.StartEntityIsPkSide = False
-				relation.AddEntityFieldPair(EntityFieldFactory.Create(McgcatVehiculosFieldIndex.IdVehiculo), EntityFieldFactory.Create(CabGasTransFieldIndex.CveVehiculo))
-				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("McgcatVehiculosEntity", False)
-				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CabGasTransEntity", True)
-				Return relation
-			End Get
-		End Property
 	
 		
 		''' <summary>stub, not used In this entity, only For TargetPerEntity entities.</summary>

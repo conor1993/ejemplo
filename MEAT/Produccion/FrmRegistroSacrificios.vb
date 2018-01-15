@@ -177,6 +177,8 @@ Public Class FrmRegistroSacrificios
             Dim numeroSacrificios As Integer
             Dim FechaInicio As Date = Date.Parse(Now.ToString("yyyy-MM-01"))
 
+
+
             filtro.Add(New OC.FieldBetweenPredicate(HC.MscregistroSacrificioCabFields.FechaCaptura, FechaInicio, Now.AddDays(1)))
 
             numeroSacrificios = sacrificios.GetDbCount(filtro) + 1
@@ -246,6 +248,9 @@ Public Class FrmRegistroSacrificios
                 RegistroSacrificio.Introductor = 0
             End If
 
+
+
+
             RegistroSacrificio.CantCanales = Me.txtCantCanales.Text
             RegistroSacrificio.Rendimiento = Me.txtRendimiento.Text
             RegistroSacrificio.KilosCanal = Me.txtCantCanales.Text
@@ -255,6 +260,12 @@ Public Class FrmRegistroSacrificios
             RegistroSacrificio.FechaSacrificio = Me.dtpFechaSacrificio.Value
             RegistroSacrificio.Func = "I"
             RegistroSacrificio.NumOpc = 1
+
+
+
+
+
+            'RegistroSacrificioIDE = RegistroSacrificio.Clonar()
 
             If Not RegistroSacrificio.Guardar(Trans) Then
                 Trans.Rollback()
@@ -278,6 +289,64 @@ Public Class FrmRegistroSacrificios
             Next
 
             Trans.Commit()
+
+
+
+
+
+
+            '''''--------GUARDAR IDE FOODS------'''''
+            '------------V---V---------V-------------
+            '''''--------V---V---------V-------------
+
+            If CInt(Me.cmbIntroductor.SelectedValue) = 2 Then
+                Trans.Dispose()
+
+                HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
+
+                Dim RegistroSacrificioIDE As New ClasesNegocio.RegistroSacrificiosClass
+                RegistroSacrificioIDE.IdLoteSacrificio = Me.txtLoteSacrificio.Text
+                RegistroSacrificioIDE.CantCabezasEnmantadas = Me.txtCantCabezasEnmantadas.Text
+                RegistroSacrificioIDE.CantCabezasSacrificio = Me.txtCantCabezas.Text
+                If BanderaIntroductor = True Then
+                    RegistroSacrificioIDE.Introductor = Me.cmbIntroductor.SelectedValue
+                Else
+                    RegistroSacrificioIDE.Introductor = 0
+                End If
+                RegistroSacrificioIDE.CantCanales = Me.txtCantCanales.Text
+                RegistroSacrificioIDE.Rendimiento = Me.txtRendimiento.Text
+                RegistroSacrificioIDE.KilosCanal = Me.txtCantCanales.Text
+                RegistroSacrificioIDE.KilosEnPie = Me.txtKilosEnPie.Text
+                RegistroSacrificioIDE.Estatus = "A"
+                RegistroSacrificioIDE.LoteRastro = Me.txtLoteRastro.Text
+                RegistroSacrificioIDE.FechaSacrificio = Me.dtpFechaSacrificio.Value
+                RegistroSacrificioIDE.Func = "I"
+                RegistroSacrificioIDE.NumOpc = 1
+
+                'Trans = New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
+                If Not RegistroSacrificioIDE.Guardar() Then
+                    Trans.Rollback()
+                    Return False
+                End If
+
+                'IDEFOODS----->actualiza recepciones de ganado con folios de lote de sacrifcio<-----IDEFOODS
+                For i As Integer = 0 To Me.dgvRecepcionesGanado.Rows.Count - 1
+                    If CBool(Me.dgvRecepcionesGanado.Rows(i).Cells("Checar").Value) Then
+                        Dim RecDet As New RecepcionGanadoDetalleClass
+                        RecDet.LoteRecepcion = Me.dgvRecepcionesGanado.Rows(i).Cells("LoteRecepcion").Value
+                        RecDet.LoteSacrificio = Me.txtLoteSacrificio.Text
+                        RecDet.KilosEnPie = Me.txtKilosEnPie.Text
+                        RecDet.CantidadCabezas = Me.dgvRecepcionesGanado.Rows(i).Cells("ClmCabezasSacrificio").Value
+                        RecDet.Estatus = 1
+                        If Not RecDet.Guardar() Then
+                            'Trans.Rollback()
+                            Return False
+                        End If
+                    End If
+                Next
+            End If
+            
+            'Trans.Commit()
 
             Return True
         Catch ex As Exception
@@ -592,7 +661,7 @@ Public Class FrmRegistroSacrificios
         If Me.txtCantCabezas.Text <> "0" And Me.txtCantCabezas.Text <> "" Then
             Me.txtCantCabezas.Text = CantidadCabezas - CDec(Me.txtCantCabezasEnmantadas.Text)
             CantidadCabezas = Me.txtCantCabezas.Text
-            Me.txtCantCanales.Text = (CantidadCabezas * 2).ToString("N2")
+            Me.txtCantCanales.Text = (CantidadCabezas).ToString("N2")
         End If
     End Sub
 

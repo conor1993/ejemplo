@@ -61,22 +61,22 @@ Public Class GastoTransporteClass
 
     Public Property Chofer() As ChoferesClass
         Get
-            If m_Chofer Is Nothing Then
-                m_Chofer = New ChoferesClass(Entity.McgcatChoferes)
-            ElseIf Not m_Chofer.IdChofer = IdChofer Then
-                m_Chofer.Entidad = Entity.McgcatChoferes
-            End If
+            'If m_Chofer Is Nothing Then
+            m_Chofer = New ChoferesClass(Entity.CveChofer)
+            'ElseIf Not m_Chofer.IdChofer = IdChofer Then
+            '    m_Chofer.Entidad = Entity.McgcatChoferes
+            'End If
 
             Return m_Chofer
         End Get
         Set(ByVal value As ChoferesClass)
             m_Chofer = value
 
-            If value Is Nothing Then
-                Entity.McgcatChoferes = Nothing
-            Else
-                Entity.McgcatChoferes = value.Entidad
-            End If
+            ' If value Is Nothing Then
+            'Entity.McgcatChoferes = Nothing
+            ' Else
+            ' Entity.McgcatChoferes = value.Entidad
+            ' End If
         End Set
     End Property
 
@@ -91,22 +91,22 @@ Public Class GastoTransporteClass
 
     Public Property Vehiculo() As VehiculosClass
         Get
-            If m_Vehiculo Is Nothing Then
-                m_Vehiculo = New VehiculosClass(Entity.McgcatVehiculos)
-            ElseIf Not m_Vehiculo.Codigo = IdVehiculo Then
-                m_Vehiculo.Entidad = Entity.McgcatVehiculos
-            End If
+            'If m_Vehiculo Is Nothing Then
+            m_Vehiculo = New VehiculosClass(Entidad.CveVehiculo)
+            'ElseIf Not m_Vehiculo.Codigo = IdVehiculo Then
+            '    m_Vehiculo.Entidad = Entity.McgcatVehiculos
+            'End If
 
             Return m_Vehiculo
         End Get
         Set(ByVal value As VehiculosClass)
             m_Vehiculo = value
 
-            If value Is Nothing Then
-                Entity.McgcatVehiculos = Nothing
-            Else
-                Entity.McgcatVehiculos = value.Entidad
-            End If
+            'If value Is Nothing Then
+            '    Entity.McgcatVehiculos = Nothing
+            'Else
+            '    Entity.McgcatVehiculos = value.Entidad
+            'End If
         End Set
     End Property
 

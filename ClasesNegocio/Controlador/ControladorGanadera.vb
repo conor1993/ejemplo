@@ -4968,9 +4968,9 @@ Partial Public Class ControladorGanadera
                         Agrupador = "Proveedor no encontrado"
                     End If
                 Case ReporteMermasAgrupacion.Chofer
-                    Dim RelacionChofer As New OC.RelationCollection
-                    RelacionChofer.Add(EC.McgcatChoferesEntity.Relations.CabGasTransEntityUsingCveChofer)
-                    Dim dtChoferes As DataTable = CC.McgcatChoferesCollection.GetMultiAsDataTable(HC.CabGasTransFields.FolRecep = Renglon("FolRecep"), 0, Nothing, RelacionChofer)
+                    'Dim RelacionChofer As New OC.RelationCollection
+                    'RelacionChofer.Add(EC.McgcatChoferesEntity.Relations.CabGasTransEntityUsingCveChofer)
+                    Dim dtChoferes As DataTable = CC.McgcatChoferesCollection.GetMultiAsDataTable(HC.CabGasTransFields.FolRecep = Renglon("FolRecep"), 0, Nothing) ', RelacionChofer)
 
                     If dtChoferes.Rows.Count > 0 Then
                         Agrupador = dtChoferes.Rows(0).Item("ApPatChofer") & " " & dtChoferes.Rows(0).Item("ApMatChofer") & " " & dtChoferes.Rows(0).Item("NombreChofer")

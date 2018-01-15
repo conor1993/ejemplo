@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 5 de enero de 2018 17:48:14
+' // Code is generated on: jueves, 11 de enero de 2018 10:37:27
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -64,75 +64,6 @@ Namespace Integralab.ORM.CollectionClasses
 		End Sub
 
 	
-	
-		''' <summary>Retrieves in this McgcatChoferesCollection Object all McgcatChoferesEntity objects which are related via a 
-		''' Relation of type 'm:n' with the passed in McgcatVehiculosEntity. 
-		''' All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity Object to be used as a filter in the m:n relation</param>
-		''' <returns>true if the retrieval succeeded, false otherwise</returns>
-		Public Function GetMultiManyToManyUsingMcgcatVehiculosCollectionViaCabGasTrans(mcgcatVehiculosInstance As IEntity) As Boolean
-			Return GetMultiManyToManyUsingMcgcatVehiculosCollectionViaCabGasTrans(mcgcatVehiculosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, 0, 0)
-		End Function
-		
-
-		''' <summary>Retrieves in this McgcatChoferesCollection Object all McgcatChoferesEntity objects which are related via a 
-		''' relation of type 'm:n' with the passed in McgcatVehiculosEntity. 
-		''' All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity Object to be used as a filter in the m:n relation</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <returns>true if the retrieval succeeded, false otherwise</returns>
-		Public Function GetMultiManyToManyUsingMcgcatVehiculosCollectionViaCabGasTrans(mcgcatVehiculosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression) As Boolean
-			Return GetMultiManyToManyUsingMcgcatVehiculosCollectionViaCabGasTrans(mcgcatVehiculosInstance, maxNumberOfItemsToReturn, sortClauses, 0, 0)
-		End Function
-
-
-		''' <summary>Retrieves in this McgcatChoferesCollection Object all McgcatChoferesEntity objects which are related via a 
-		''' relation of type 'm:n' with the passed in McgcatVehiculosEntity. 
-		''' All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity Object to be used as a filter in the m:n relation</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <param name="pageNumber">The page number to retrieve.</param>
-		''' <param name="pageSize">The page size of the page to retrieve.</param>
-		''' <returns>true if the retrieval succeeded, false otherwise</returns>
-		Public Function GetMultiManyToManyUsingMcgcatVehiculosCollectionViaCabGasTrans(mcgcatVehiculosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, pageNumber As Integer, pageSize As Integer) As Boolean
-			If Not MyBase.SuppressClearInGetMulti Then
-				Me.Clear()
-			End If
-
-			Dim dao As McgcatChoferesDAO = DAOFactory.CreateMcgcatChoferesDAO()
-			Return dao.GetMultiUsingMcgcatVehiculosCollectionViaCabGasTrans(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, mcgcatVehiculosInstance, pageNumber, pageSize)
-		End Function
-
-
-		''' <summary>Retrieves in this McgcatChoferesCollection Object all McgcatChoferesEntity objects which are related via a 
-		''' Relation of type 'm:n' with the passed in McgcatVehiculosEntity. 
-		''' All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity Object to be used as a filter in the m:n relation</param>
-		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
-		''' <returns>true if the retrieval succeeded, false otherwise</returns>
-		Public Function GetMultiManyToManyUsingMcgcatVehiculosCollectionViaCabGasTrans(mcgcatVehiculosInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
-			Return GetMultiManyToManyUsingMcgcatVehiculosCollectionViaCabGasTrans(mcgcatVehiculosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, prefetchPathToUse)
-		End Function
-
-
-		''' <summary>Retrieves in this McgcatChoferesCollection Object all McgcatChoferesEntity objects which are related via a 
-		''' relation of type 'm:n' with the passed in McgcatVehiculosEntity. 
-		''' All current elements in the collection are removed from the collection.</summary>
-		''' <param name="mcgcatVehiculosInstance">McgcatVehiculosEntity Object to be used as a filter in the m:n relation</param>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
-		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
-		''' <returns>true if the retrieval succeeded, false otherwise</returns>
-		Public Overridable Function GetMultiManyToManyUsingMcgcatVehiculosCollectionViaCabGasTrans(mcgcatVehiculosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, prefetchPathToUse As IPrefetchPath) As Boolean
-			If Not MyBase.SuppressClearInGetMulti Then
-				Me.Clear()
-			End If
-
-			Dim dao As McgcatChoferesDAO = DAOFactory.CreateMcgcatChoferesDAO()
-			Return dao.GetMultiUsingMcgcatVehiculosCollectionViaCabGasTrans(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, mcgcatVehiculosInstance, prefetchPathToUse)
-		End Function
 	
 
 		''' <summary>Retrieves McgcatChoferesEntity rows in a datatable which match the specified filter. It will always create a new connection to the database.</summary>

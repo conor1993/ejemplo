@@ -9,6 +9,7 @@ Imports ORM = Integralab.ORM
 
 Public Class RecepcionGanadoClass
     Inherits ClassBase(Of EC.RecepcionGanadoEntity)
+    Implements ICloneable
 
 #Region "Miembros"
     Enum Tipo As Short
@@ -461,6 +462,10 @@ Public Class RecepcionGanadoClass
     '    End Set
     'End Property
 
+    Public Function Clonar() As ClasesNegocio.RecepcionGanadoClass
+        Return DirectCast(Me.MemberwiseClone(), RecepcionGanadoClass)
+    End Function
+
     Public Overrides Function Borrar(Optional ByVal Trans As Integralab.ORM.HelperClasses.Transaction = Nothing) As Boolean
         Try
             Dim Nuevo As Boolean = False
@@ -558,7 +563,7 @@ Public Class RecepcionGanadoClass
                 End If
             Else
 
-                If SPA.UspRecepcionGanado(LoteRecepcion, FechaRecepcion, IdProveedor, LoteEngorda, CantCabezas, KilosEnviados, KilosRecibidos, Unidad, Conductor, Placas, Observaciones, IdUsuario, TipoGanado.IdTipoGanado, Estatus, FechaCancelacion, IdUsuarioCancelacion, ObservacionesCancelacion, KilosPrimeraPesada, KilosSegundaPesada, IdCliente, CveLugarCompra, CveCompradorGanado, HorasViaje, KilosComp, ImporteComp, DiasCredito, FechaPago, NumFactura, FechaContabilidad, NumPoliza, CabezasMachos, CabezasHembras, Func, NumOpc) = 0 Then
+                If SPA.UspRecepcionGanado(LoteRecepcion, FechaRecepcion, IdProveedor, LoteEngorda, CantCabezas, KilosEnviados, KilosRecibidos, Unidad, Conductor, Placas, Observaciones, IdUsuario, TipoGanado.IdTipoGanado, Estatus, FechaCancelacion, IdUsuarioCancelacion, ObservacionesCancelacion, KilosPrimeraPesada, KilosSegundaPesada, IdCliente, CveLugarCompra, CveCompradorGanado, HorasViaje, KilosComp, ImporteComp, DiasCredito, FechaPago, NumFactura, FechaContabilidad, NumPoliza, CabezasMachos, CabezasHembras, KilosComp, ImporteComp, Func, NumOpc) = 0 Then
                     RaiseEvent MensajeError(Me, "Error al guardar información de Recepción de Ganado")
                     Return False
                 End If

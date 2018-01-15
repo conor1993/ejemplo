@@ -12,6 +12,10 @@ Public Class RegistroSacrificiosClass
     Dim _Func As String
     Dim _NumOpc As Integer
 
+    Public Function Clonar() As ClasesNegocio.RegistroSacrificiosClass
+        Return DirectCast(Me.MemberwiseClone(), RegistroSacrificiosClass)
+    End Function
+
     Property IdLoteSacrificio() As String
         Get
             Return Entity.IdFolioSacrificio

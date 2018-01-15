@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 5 de enero de 2018 17:48:17
+' Code is generated on: jueves, 11 de enero de 2018 10:37:31
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -696,8 +696,8 @@ Namespace Integralab.ORM.HelperClasses
 		Private Sub InitCabGasTransEntityInfos()
 			MyBase.AddElementFieldInfo("CabGasTransEntity", "FolRecep", GetType(System.String), True, False, False, False, CInt(CabGasTransFieldIndex.FolRecep), 10, 0, 0)
 			MyBase.AddElementFieldInfo("CabGasTransEntity", "FecRecep", GetType(System.DateTime), False, False, False, False, CInt(CabGasTransFieldIndex.FecRecep), 0, 0, 0)
-			MyBase.AddElementFieldInfo("CabGasTransEntity", "CveChofer", GetType(System.Int32), False, True, False, False, CInt(CabGasTransFieldIndex.CveChofer), 0, 0, 10)
-			MyBase.AddElementFieldInfo("CabGasTransEntity", "CveVehiculo", GetType(System.Int32), False, True, False, False, CInt(CabGasTransFieldIndex.CveVehiculo), 0, 0, 10)
+			MyBase.AddElementFieldInfo("CabGasTransEntity", "CveChofer", GetType(System.Int32), False, False, False, False, CInt(CabGasTransFieldIndex.CveChofer), 0, 0, 10)
+			MyBase.AddElementFieldInfo("CabGasTransEntity", "CveVehiculo", GetType(System.Int32), False, False, False, False, CInt(CabGasTransFieldIndex.CveVehiculo), 0, 0, 10)
 			MyBase.AddElementFieldInfo("CabGasTransEntity", "ImpteIva", GetType(System.Decimal), False, False, False, False, CInt(CabGasTransFieldIndex.ImpteIva), 0, 4, 19)
 			MyBase.AddElementFieldInfo("CabGasTransEntity", "ImpteTotal", GetType(System.Decimal), False, False, False, False, CInt(CabGasTransFieldIndex.ImpteTotal), 0, 4, 19)
 			MyBase.AddElementFieldInfo("CabGasTransEntity", "FecConta", GetType(System.DateTime), False, False, False, False, CInt(CabGasTransFieldIndex.FecConta), 0, 0, 0)

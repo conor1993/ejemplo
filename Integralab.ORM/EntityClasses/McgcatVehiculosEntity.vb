@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 5 de enero de 2018 17:48:20
+' // Code is generated on: jueves, 11 de enero de 2018 10:37:34
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -42,10 +42,8 @@ Namespace Integralab.ORM.EntityClasses
 		' __LLBLGENPRO_USER_CODE_REGION_END	
 
 #Region "Class Member Declarations"
-		Private _cabGasTrans As Integralab.ORM.CollectionClasses.CabGasTransCollection
-		Private _alwaysFetchCabGasTrans, _alreadyFetchedCabGasTrans As Boolean
-		Private _mcgcatChoferesCollectionViaCabGasTrans As Integralab.ORM.CollectionClasses.McgcatChoferesCollection
-		Private _alwaysFetchMcgcatChoferesCollectionViaCabGasTrans, _alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans As Boolean
+
+
 
 
 
@@ -97,12 +95,8 @@ Namespace Integralab.ORM.EntityClasses
 		''' <param name="context"></param>
 		Protected Sub New(info As SerializationInfo, context As StreamingContext)
 			MyBase.New(info, context)
-			_cabGasTrans = CType(info.GetValue("_cabGasTrans", GetType(Integralab.ORM.CollectionClasses.CabGasTransCollection)), Integralab.ORM.CollectionClasses.CabGasTransCollection)
-			_alwaysFetchCabGasTrans = info.GetBoolean("_alwaysFetchCabGasTrans")
-			_alreadyFetchedCabGasTrans = info.GetBoolean("_alreadyFetchedCabGasTrans")
-			_mcgcatChoferesCollectionViaCabGasTrans = CType(info.GetValue("_mcgcatChoferesCollectionViaCabGasTrans", GetType(Integralab.ORM.CollectionClasses.McgcatChoferesCollection)), Integralab.ORM.CollectionClasses.McgcatChoferesCollection)
-			_alwaysFetchMcgcatChoferesCollectionViaCabGasTrans = info.GetBoolean("_alwaysFetchMcgcatChoferesCollectionViaCabGasTrans")
-			_alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans = info.GetBoolean("_alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans")
+
+
 
 
 			MyBase.FixupDeserialization(FieldInfoProviderSingleton.GetInstance(), PersistenceInfoProviderSingleton.GetInstance())
@@ -114,8 +108,8 @@ Namespace Integralab.ORM.EntityClasses
 
 		''' <summary> Will perform post-ReadXml actions</summary>
 		Protected Overrides Sub PostReadXmlFixups()
-			_alreadyFetchedCabGasTrans = (_cabGasTrans.Count > 0)
-			_alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans = (_mcgcatChoferesCollectionViaCabGasTrans.Count > 0)
+
+
 
 
 		End Sub
@@ -167,12 +161,8 @@ Namespace Integralab.ORM.EntityClasses
 		''' <param name="context"></param>
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Sub GetObjectData(info As SerializationInfo, context As StreamingContext)
-			info.AddValue("_cabGasTrans", _cabGasTrans)
-			info.AddValue("_alwaysFetchCabGasTrans", _alwaysFetchCabGasTrans)
-			info.AddValue("_alreadyFetchedCabGasTrans", _alreadyFetchedCabGasTrans)
-			info.AddValue("_mcgcatChoferesCollectionViaCabGasTrans", _mcgcatChoferesCollectionViaCabGasTrans)
-			info.AddValue("_alwaysFetchMcgcatChoferesCollectionViaCabGasTrans", _alwaysFetchMcgcatChoferesCollectionViaCabGasTrans)
-			info.AddValue("_alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans", _alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans)
+
+
 
 
 			
@@ -189,16 +179,8 @@ Namespace Integralab.ORM.EntityClasses
 		Public Overrides Overloads Sub SetRelatedEntityProperty(propertyName As String, entity As IEntity)
 			Select Case propertyName
 
-				Case "CabGasTrans"
-					_alreadyFetchedCabGasTrans = True
-					If Not entity Is Nothing Then
-						Me.CabGasTrans.Add(CType(entity, CabGasTransEntity))
-					End If
-				Case "McgcatChoferesCollectionViaCabGasTrans"
-					_alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans = True
-					If Not entity Is Nothing Then
-						Me.McgcatChoferesCollectionViaCabGasTrans.Add(CType(entity, McgcatChoferesEntity))
-					End If
+
+
 
 				Case Else
 
@@ -212,9 +194,7 @@ Namespace Integralab.ORM.EntityClasses
 		Public Overrides Overloads Sub SetRelatedEntity(relatedEntity As IEntity, fieldName As String)
 			Select Case fieldName
 
-				Case "CabGasTrans"
-					_cabGasTrans.Add(CType(relatedEntity, CabGasTransEntity))
-					OnRelatedEntitySet(relatedEntity, fieldName)
+
 
 				Case Else
 
@@ -229,9 +209,7 @@ Namespace Integralab.ORM.EntityClasses
 		Public Overrides Overloads Sub UnsetRelatedEntity(relatedEntity As IEntity, fieldName As String, signalRelatedEntityManyToOne As Boolean)
 			Select Case fieldName
 
-				Case "CabGasTrans"
-					MyBase.PerformRelatedEntityRemoval(_cabGasTrans, relatedEntity, signalRelatedEntityManyToOne)
-					OnRelatedEntityUnset(relatedEntity, fieldName)
+
 
 				Case Else
 
@@ -264,7 +242,7 @@ Namespace Integralab.ORM.EntityClasses
 		''' <returns>Collection with 0 or more IEntityCollection objects, referenced by this entity</returns>
 		Public Overrides Function GetMemberEntityCollections() As List(Of IEntityCollection)
 			Dim toReturn As New List(Of IEntityCollection)()
-			toReturn.Add(_cabGasTrans)
+
 
 			Return toReturn
 		End Function
@@ -367,104 +345,7 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
-		''' <summary>Retrieves all related entities of type 'CabGasTransEntity' Imports a relation of type '1:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <returns>Filled collection with all related entities of type 'CabGasTransEntity'</returns>
-		Public Function GetMultiCabGasTrans(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.CabGasTransCollection
-			Return GetMultiCabGasTrans(forceFetch, _cabGasTrans.EntityFactoryToUse, Nothing)
-		End Function
-
-		''' <summary>Retrieves all related entities of type 'CabGasTransEntity' Imports a relation of type '1:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToOne() routine.</param>
-		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
-		Public Function GetMultiCabGasTrans(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.CabGasTransCollection
-			Return GetMultiCabGasTrans(forceFetch, entityFactoryToUse, Nothing)
-		End Function
-
-		''' <summary>Retrieves all related entities of type 'CabGasTransEntity' Imports a relation of type '1:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <param name="filter">Extra filter to limit the resultset.</param>
-		''' <returns>Filled collection with all related entities of type 'CabGasTransEntity'</returns>
-		Public Function GetMultiCabGasTrans(forceFetch As Boolean, Filter As IPredicateExpression) As Integralab.ORM.CollectionClasses.CabGasTransCollection
-			Return GetMultiCabGasTrans(forceFetch, _cabGasTrans.EntityFactoryToUse, Filter)
-		End Function
-
-		''' <summary>Retrieves all related entities of type 'CabGasTransEntity' Imports a relation of type '1:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToOne() routine.</param>
-		''' <param name="filter">Extra filter to limit the resultset.</param>
-		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
-		Public Overridable Function GetMultiCabGasTrans(forceFetch As Boolean, entityFactoryToUse As IEntityFactory, Filter As IPredicateExpression) As Integralab.ORM.CollectionClasses.CabGasTransCollection
-			If ( Not _alreadyFetchedCabGasTrans Or forceFetch Or _alwaysFetchCabGasTrans) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
-				If MyBase.ParticipatesInTransaction Then
-					If Not _cabGasTrans.ParticipatesInTransaction Then
-						MyBase.Transaction.Add(_cabGasTrans)
-					End If
-				End If
-				_cabGasTrans.SuppressClearInGetMulti = Not forceFetch
-				If Not entityFactoryToUse Is Nothing Then
-					_cabGasTrans.EntityFactoryToUse = entityFactoryToUse
-				End If
-				_cabGasTrans.GetMultiManyToOne(Nothing, Me, Filter)
-				_cabGasTrans.SuppressClearInGetMulti = False
-				_alreadyFetchedCabGasTrans = True
-			End If
-			Return _cabGasTrans
-		End Function
-
-		''' <summary>Sets the collection parameters for the collection for 'CabGasTrans'. These settings will be taken into account
-		''' when the property CabGasTrans is requested or GetMultiCabGasTrans is called.</summary>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
-		Public Overridable Sub SetCollectionParametersCabGasTrans(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
-			_cabGasTrans.SortClauses=sortClauses
-			_cabGasTrans.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
-		End Sub
 	
-	
-		''' <summary>Retrieves all related entities of type 'McgcatChoferesEntity' Imports a relation of type 'm:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <returns>Filled collection with all related entities of type 'McgcatChoferesEntity'</returns>
-		Public Function GetMultiMcgcatChoferesCollectionViaCabGasTrans(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.McgcatChoferesCollection
-			Return GetMultiMcgcatChoferesCollectionViaCabGasTrans(forceFetch, _mcgcatChoferesCollectionViaCabGasTrans.EntityFactoryToUse)
-		End Function
-
-		''' <summary>Retrieves all related entities of type 'McgcatChoferesEntity' Imports a relation of type 'm:n'.</summary>
-		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
-		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToMany() routine.</param>
-		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
-		Public Overridable Function GetMultiMcgcatChoferesCollectionViaCabGasTrans(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.McgcatChoferesCollection
-			If ( Not _alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans Or forceFetch Or _alwaysFetchMcgcatChoferesCollectionViaCabGasTrans) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
-				If MyBase.ParticipatesInTransaction Then
-					If Not _mcgcatChoferesCollectionViaCabGasTrans.ParticipatesInTransaction Then
-						MyBase.Transaction.Add(_mcgcatChoferesCollectionViaCabGasTrans)
-					End If
-				End If
-				Dim relations As IRelationCollection = New RelationCollection()
-				Dim Filter As IPredicateExpression = New PredicateExpression()
-				relations.Add(McgcatVehiculosEntity.Relations.CabGasTransEntityUsingCveVehiculo, "__McgcatVehiculosEntity__", "CabGasTrans_", JoinHint.None)
-				relations.Add(CabGasTransEntity.Relations.McgcatChoferesEntityUsingCveChofer, "CabGasTrans_", String.Empty, JoinHint.None)
-				Filter.Add(New FieldCompareValuePredicate(EntityFieldFactory.Create(McgcatVehiculosFieldIndex.IdVehiculo), ComparisonOperator.Equal, Me.IdVehiculo))
-				_mcgcatChoferesCollectionViaCabGasTrans.SuppressClearInGetMulti = Not forceFetch
-				If Not entityFactoryToUse Is Nothing Then
-					_mcgcatChoferesCollectionViaCabGasTrans.EntityFactoryToUse = entityFactoryToUse
-				End If
-				_mcgcatChoferesCollectionViaCabGasTrans.GetMulti(Filter, relations)
-				_mcgcatChoferesCollectionViaCabGasTrans.SuppressClearInGetMulti = False
-				_alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans = True
-			End If
-			Return _mcgcatChoferesCollectionViaCabGasTrans
-		End Function
-
-		''' <summary>Sets the collection parameters for the collection for 'McgcatChoferesCollectionViaCabGasTrans'. These settings will be taken into account
-		''' when the property McgcatChoferesCollectionViaCabGasTrans is requested or GetMultiMcgcatChoferesCollectionViaCabGasTrans is called.</summary>
-		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
-		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
-		Public Overridable Sub SetCollectionParametersMcgcatChoferesCollectionViaCabGasTrans(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
-			_mcgcatChoferesCollectionViaCabGasTrans.SortClauses=sortClauses
-			_mcgcatChoferesCollectionViaCabGasTrans.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
-		End Sub	
 
 	
 		
@@ -501,8 +382,8 @@ Namespace Integralab.ORM.EntityClasses
 
 		''' <summary>Adds the internals To the active context. </summary>
 		Protected Overrides Overloads Sub AddInternalsToContext()
-			_cabGasTrans.ActiveContext = MyBase.ActiveContext
-			_mcgcatChoferesCollectionViaCabGasTrans.ActiveContext = MyBase.ActiveContext
+
+
 
 
 
@@ -576,13 +457,8 @@ Namespace Integralab.ORM.EntityClasses
 
 		''' <summary>Initializes the class members</summary>
 		Private Sub InitClassMembers()
-			_cabGasTrans = New Integralab.ORM.CollectionClasses.CabGasTransCollection(New CabGasTransEntityFactory())
-			_cabGasTrans.SetContainingEntityInfo(Me, "McgcatVehiculos")
-			_alwaysFetchCabGasTrans = False
-			_alreadyFetchedCabGasTrans = False
-			_mcgcatChoferesCollectionViaCabGasTrans = New Integralab.ORM.CollectionClasses.McgcatChoferesCollection(New McgcatChoferesEntityFactory())
-			_alwaysFetchMcgcatChoferesCollectionViaCabGasTrans = False
-			_alreadyFetchedMcgcatChoferesCollectionViaCabGasTrans = False
+
+
 
 
 			
@@ -687,31 +563,6 @@ Namespace Integralab.ORM.EntityClasses
 		End Property
 		
 	
-		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CabGasTrans' 
-		''' for this entity. Add the object Returned by this property to an existing PrefetchPath2 instance.</summary>
-		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
-		Public Shared ReadOnly Property PrefetchPathCabGasTrans() As IPrefetchPathElement
-			Get
-				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CabGasTransCollection(), _
-					McgcatVehiculosEntity.Relations.CabGasTransEntityUsingCveVehiculo, _
-					CType(Integralab.ORM.EntityType.McgcatVehiculosEntity, Integer), CType(Integralab.ORM.EntityType.CabGasTransEntity, Integer), 0, Nothing, Nothing, Nothing, "CabGasTrans", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
-			End Get
-		End Property
-	
-	
-		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'McgcatChoferes' 
-		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
-		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
-		Public Shared ReadOnly Property PrefetchPathMcgcatChoferesCollectionViaCabGasTrans() As IPrefetchPathElement
-			Get
-				Dim relations As IRelationCollection = New RelationCollection()
-				relations.Add(McgcatVehiculosEntity.Relations.CabGasTransEntityUsingCveVehiculo, "__McgcatVehiculosEntity__", String.Empty, JoinHint.None)
-				relations.Add(CabGasTransEntity.Relations.McgcatChoferesEntityUsingCveChofer)
-				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.McgcatChoferesCollection(), _
-					McgcatVehiculosEntity.Relations.CabGasTransEntityUsingCveVehiculo, _
-					CType(Integralab.ORM.EntityType.McgcatVehiculosEntity, Integer), CType(Integralab.ORM.EntityType.McgcatChoferesEntity, Integer), 0, Nothing, Nothing, relations, "McgcatChoferesCollectionViaCabGasTrans", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
-			End Get
-		End Property
 	
 	
 	
@@ -1014,52 +865,6 @@ Namespace Integralab.ORM.EntityClasses
 		End Property
 	
 	
-		''' <summary>Retrieves all related entities of type 'CabGasTransEntity' Imports a relation of type '1:n'.</summary>
-		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiCabGasTrans()', because 
-		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
-		''' same scope.</remarks>
-		Public Overridable ReadOnly Property [CabGasTrans]() As Integralab.ORM.CollectionClasses.CabGasTransCollection
-			Get
-				Return GetMultiCabGasTrans(False)
-			End Get
-		End Property
-
-		''' <summary>Gets / sets the lazy loading flag for CabGasTrans. When set to true, CabGasTrans is always refetched from the 
-		''' persistent storage. When set to false, the data is only fetched the first time CabGasTrans is accessed. You can always execute
-		''' a forced fetch by calling GetMultiCabGasTrans(True).</summary>
-		<Browsable(False)> _
-		Public Property AlwaysFetchCabGasTrans As Boolean
-			Get
-				Return _alwaysFetchCabGasTrans
-			End Get
-			Set
-				_alwaysFetchCabGasTrans = value
-			End Set	
-		End Property
-	
-	
-		''' <summary>Retrieves all related entities of type 'McgcatChoferesEntity' Imports a relation of type 'm:n'.</summary>
-		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiMcgcatChoferesCollectionViaCabGasTrans()', because 
-		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
-		''' same scope.</remarks>
-		Public Overridable ReadOnly Property [McgcatChoferesCollectionViaCabGasTrans]() As Integralab.ORM.CollectionClasses.McgcatChoferesCollection
-			Get
-				Return GetMultiMcgcatChoferesCollectionViaCabGasTrans(False)
-			End Get
-		End Property
-
-		''' <summary>Gets / sets the lazy loading flag for McgcatChoferesCollectionViaCabGasTrans. When set to true, McgcatChoferesCollectionViaCabGasTrans is always refetched from the 
-		''' persistent storage. When set to false, the data is only fetched the first time McgcatChoferesCollectionViaCabGasTrans is accessed. You can always execute
-		''' a forced fetch by calling GetMultiMcgcatChoferesCollectionViaCabGasTrans(True).</summary>
-		<Browsable(False)> _
-		Public Property AlwaysFetchMcgcatChoferesCollectionViaCabGasTrans As Boolean
-			Get
-				Return _alwaysFetchMcgcatChoferesCollectionViaCabGasTrans
-			End Get
-			Set
-				_alwaysFetchMcgcatChoferesCollectionViaCabGasTrans = value
-			End Set	
-		End Property
 	
 	
 	
