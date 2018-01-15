@@ -1011,6 +1011,7 @@ Public Class MFacRegFacturasVentas
             Next
 
             Me.dtFechaFactura.Value = FechaMenor
+            Me.cmbUsoCFDI.SelectedValue = "P01"
             Me.txtFolioEmbarque.Text = ListaEmbarques.Item(0) 'Consultas.DgvEmbarques.CurrentRow.Cells("IdFolioEmbarque").Value
             Me.txtCliente.Text = Consultas.DgvEmbarques.CurrentRow.Cells("Cliente").Value
             Me.txtCodigoCliente.Text = Consultas.DgvEmbarques.CurrentRow.Cells("ClmIdCliente").Value
