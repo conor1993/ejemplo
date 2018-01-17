@@ -1246,7 +1246,7 @@ Public Class MFacRegFacturasVentas
 #If DEBUG Then
                 Dim cfdi As CFDI.ORM.CFDI = ControlFD.GenerarCFDI(Fact.Folio, Fact, TransG, True, True, FactPDF)
 #Else
-            Dim cfdi As CFDI.ORM.CFDI = ControlFD.GenerarCFDI(Fact.folio, Fact, TransG, False, True)
+            Dim cfdi As CFDI.ORM.CFDI = ControlFD.GenerarCFDI(Fact.folio, Fact, TransG, False, True,FactPDF)
 #End If
 
                 If File.Exists(Application.StartupPath + "\\" + "Error.txt") Then
