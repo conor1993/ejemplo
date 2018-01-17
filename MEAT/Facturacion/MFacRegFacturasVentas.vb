@@ -1785,6 +1785,38 @@ Public Class MFacRegFacturasVentas
 
     Private Sub dgvDetalleConcentrado_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalleConcentrado.CellEndEdit
 
+        Try
+            If e.RowIndex <> -1 Then
+                If e.ColumnIndex = Precios.Index Then
+                    If dgvDetalleConcentrado.Rows(e.RowIndex).Cells(chkiva.Index).EditedFormattedValue = True Then
+
+                        dgvDetalleConcentrado.Rows(e.RowIndex).Cells(clmiva.Index).Value = TruncateDecimal(((Controlador.ObtenerIVA() / 100) * TruncateDecimal((CDec(dgvDetalleConcentrado.Rows(e.RowIndex).Cells(KilosFacturados.Index).Value) * CDec(dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Precios.Index).Value)), 2)), 2)
+
+                        Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.ImporteEmbarcado.Index).Value = (TruncateDecimal(CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.Precios.Index).Value) * CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.KilosFacturados.Index).Value), 2))
+
+
+                        dgvDetalleConcentrado.Rows(e.RowIndex).Cells(ImporteFacturado.Index).Value = (TruncateDecimal(CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.Precios.Index).Value) * CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.KilosFacturados.Index).Value), 2)) + dgvDetalleConcentrado.Rows(e.RowIndex).Cells(clmiva.Index).Value
+
+
+
+
+                    Else
+                        dgvDetalleConcentrado.Rows(e.RowIndex).Cells(clmiva.Index).Value = CDec(0).ToString("F2")
+                        Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.ImporteFacturado.Index).Value = (TruncateDecimal(CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.Precios.Index).Value) * CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.KilosFacturados.Index).Value), 2))
+                        Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.ImporteEmbarcado.Index).Value = (TruncateDecimal(CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.Precios.Index).Value) * CDec(Me.dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Me.KilosFacturados.Index).Value), 2))
+
+                    End If
+
+                    calcular()
+                Else
+
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+
+
     End Sub
 
     Private Sub ChkVarios_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkVarios.CheckedChanged
@@ -1869,6 +1901,8 @@ Public Class MFacRegFacturasVentas
                         dgvDetalleConcentrado.Rows(e.RowIndex).Cells(clmiva.Index).Value = TruncateDecimal(((Controlador.ObtenerIVA() / 100) * TruncateDecimal((CDec(dgvDetalleConcentrado.Rows(e.RowIndex).Cells(KilosFacturados.Index).Value) * CDec(dgvDetalleConcentrado.Rows(e.RowIndex).Cells(Precios.Index).Value)), 2)), 2)
 
                         dgvDetalleConcentrado.Rows(e.RowIndex).Cells(ImporteFacturado.Index).Value += dgvDetalleConcentrado.Rows(e.RowIndex).Cells(clmiva.Index).Value
+
+
 
 
 
