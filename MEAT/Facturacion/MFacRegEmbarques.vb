@@ -1496,7 +1496,7 @@ Public Class MFacRegEmbarques
 
                         Me.RecepcionCanalDet = New CN.RecepcionCanalesDetClass
                         RecepcionCanalDet.Opcion = 6
-                        RecepcionCanalDet.FolioSacrificio = ""
+                        'RecepcionCanalDet.FolioSacrificio = ""
                         RecepcionCanalDet.CodigoBarra = DgvCanales.CurrentRow.Cells(Me.ClmEtiqueta.Index).Value
                         DsCanal = Me.RecepcionCanalDet.Obtener(RecepcionCanalDet.Opcion, RecepcionCanalDet.FolioSacrificio, RecepcionCanalDet.CodigoBarra, Now)
 

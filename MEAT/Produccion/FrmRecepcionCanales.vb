@@ -44,6 +44,7 @@ Public Class FrmRecepcionCanales
 #Region "Metodos"
     Private Sub ObtenerSacrificios(ByVal Opcion As Integer)
         Try
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
             RegistroSacrifC = New RegistroSacrificioColeccionClass
 
             If Opcion = 1 Then
@@ -83,8 +84,33 @@ Public Class FrmRecepcionCanales
                     NumLados = 2
                 Else
                     If RegistroSacrifC(0).ObtenerEntidad.UsrProdRecepcionGanadoDet.Count > 0 Then
+
+
                         Dim RecGanDetEnty As EC.UsrProdRecepcionGanadoDetEntity = RegistroSacrifC(0).ObtenerEntidad.UsrProdRecepcionGanadoDet(0)
                         NumLados = RecGanDetEnty.RecepcionGanado.McgcatTiposdeGanado.Lados
+                        lblCostoXKilo.Text = Convert.ToDecimal(RecGanDetEnty.RecepcionGanado.ImpteComp / RecGanDetEnty.RecepcionGanado.KilosComp).ToString("N2")
+
+                        ''Recupera estructura de meatla20
+                        HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
+                        RegistroSacrifC = New RegistroSacrificioColeccionClass
+
+                        If Opcion = 1 Then
+                            RegistroSacrifC.Obtener(Me.RegistroSacrificiosCab.IdLoteSacrificio, Me.RegistroSacrificiosCab.Introductor)
+
+                            If RegistroSacrifC.Count = 0 Then
+                                MessageBox.Show("Este lote de sacrifcio no existe", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                Exit Sub
+                            End If
+                        Else
+                            RegistroSacrifC.Obtener("A")
+
+                            If RegistroSacrifC.Count = 0 Then
+                                MessageBox.Show("No existen lotes de sacrificios en apertura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                Exit Sub
+                            End If
+                        End If
+
+
                     End If
                 End If
             Else
@@ -1272,6 +1298,10 @@ Public Class FrmRecepcionCanales
                 ObtenerSacrificios(2)
             End If
 
+#If DEBUG Then
+            lblCostoXKilo.Visible = True
+#End If
+
             'obtener canales para este lote de sacrificio
             '' Obtener()
             Me.ObtenerCanales()
@@ -1298,7 +1328,7 @@ Public Class FrmRecepcionCanales
             Me.CmbCliente.DataSource = ClientesCol
             Me.CmbCliente.SelectedIndex = 0
 
-            Me.ServiciosC.Obtener(TipoServicionEnum.PRODUCCION)
+            'Me.ServiciosC.Obtener(TipoServicionEnum.PRODUCCION)
 
             AddHandler pdDocumento.PrintPage, AddressOf Imprime_Documento
             ppdVisor.Document = pdDocumento

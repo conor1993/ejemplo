@@ -1244,7 +1244,7 @@ Public Class MFacRegFacturasVentas
                 FactPDF = ObtenerComprobante(FactPDF, Folio.Consecutivo.ToString("0000000"), "A", True)
 
 #If DEBUG Then
-                Dim cfdi As CFDI.ORM.CFDI = ControlFD.GenerarCFDI(Fact.Folio, Fact, TransG, True, True)
+                Dim cfdi As CFDI.ORM.CFDI = ControlFD.GenerarCFDI(Fact.Folio, Fact, TransG, True, True, FactPDF)
 #Else
             Dim cfdi As CFDI.ORM.CFDI = ControlFD.GenerarCFDI(Fact.folio, Fact, TransG, False, True)
 #End If

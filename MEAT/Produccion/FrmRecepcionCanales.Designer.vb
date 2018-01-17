@@ -32,12 +32,18 @@ Partial Class FrmRecepcionCanales
         Me.txtProductor = New System.Windows.Forms.TextBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.dgvServicios = New System.Windows.Forms.DataGridView()
-        Me.ServiciosC = New ClasesNegocio.ServiciosCollectionClass()
+        Me.clmSeleccion = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.RbtnMacho = New System.Windows.Forms.RadioButton()
         Me.rbtnHembra = New System.Windows.Forms.RadioButton()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.dgvCanales = New System.Windows.Forms.DataGridView()
+        Me.clmRegistro = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFolioMov = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCanal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmKilosCalientes = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmKilosRecbidos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtTotalKilos = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -90,15 +96,7 @@ Partial Class FrmRecepcionCanales
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tmActualizacion = New System.Windows.Forms.Timer(Me.components)
-        Me.clmSeleccion = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.CodigoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmRegistro = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmFolioMov = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCanal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmKilosCalientes = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmKilosRecbidos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lblCostoXKilo = New System.Windows.Forms.Label()
         Me.Gb.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         CType(Me.dgvServicios, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -230,11 +228,9 @@ Partial Class FrmRecepcionCanales
         Me.dgvServicios.AllowUserToResizeRows = False
         Me.dgvServicios.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.dgvServicios.AutoGenerateColumns = False
         Me.dgvServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvServicios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSeleccion, Me.CodigoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn})
-        Me.dgvServicios.DataSource = Me.ServiciosC
+        Me.dgvServicios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSeleccion})
         Me.dgvServicios.Location = New System.Drawing.Point(6, 19)
         Me.dgvServicios.MultiSelect = False
         Me.dgvServicios.Name = "dgvServicios"
@@ -243,17 +239,11 @@ Partial Class FrmRecepcionCanales
         Me.dgvServicios.Size = New System.Drawing.Size(432, 143)
         Me.dgvServicios.TabIndex = 1
         '
-        'ServiciosC
+        'clmSeleccion
         '
-        Me.ServiciosC.AllowEdit = True
-        Me.ServiciosC.AllowNew = True
-        Me.ServiciosC.AllowRemove = True
-        Me.ServiciosC.MaximoElementosSeleccionados = 1
-        Me.ServiciosC.MensajeLimiteMaximo = "Ya se selecciono el maximo de elementos permitidos"
-        Me.ServiciosC.MostrarAlertas = False
-        Me.ServiciosC.Name = Nothing
-        Me.ServiciosC.RaiseListChangedEvents = True
-        Me.ServiciosC.Transaction = Nothing
+        Me.clmSeleccion.FillWeight = 10.0!
+        Me.clmSeleccion.HeaderText = ""
+        Me.clmSeleccion.Name = "clmSeleccion"
         '
         'GroupBox5
         '
@@ -316,6 +306,48 @@ Partial Class FrmRecepcionCanales
         Me.dgvCanales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.dgvCanales.Size = New System.Drawing.Size(457, 322)
         Me.dgvCanales.TabIndex = 0
+        '
+        'clmRegistro
+        '
+        Me.clmRegistro.DataPropertyName = "Consecutivo"
+        Me.clmRegistro.HeaderText = "Registro"
+        Me.clmRegistro.Name = "clmRegistro"
+        Me.clmRegistro.Visible = False
+        '
+        'clmFolioMov
+        '
+        Me.clmFolioMov.DataPropertyName = "FolioMovimiento"
+        Me.clmFolioMov.HeaderText = "Folio Movimiento"
+        Me.clmFolioMov.Name = "clmFolioMov"
+        Me.clmFolioMov.ReadOnly = True
+        Me.clmFolioMov.Visible = False
+        '
+        'clmCanal
+        '
+        Me.clmCanal.DataPropertyName = "IdFolioCanal"
+        Me.clmCanal.HeaderText = "Pieza"
+        Me.clmCanal.Name = "clmCanal"
+        Me.clmCanal.ReadOnly = True
+        '
+        'clmKilosCalientes
+        '
+        Me.clmKilosCalientes.DataPropertyName = "KgrsCalientes"
+        Me.clmKilosCalientes.HeaderText = "Kilos Calientes"
+        Me.clmKilosCalientes.Name = "clmKilosCalientes"
+        '
+        'clmKilosRecbidos
+        '
+        Me.clmKilosRecbidos.DataPropertyName = "kgrsBascula"
+        Me.clmKilosRecbidos.HeaderText = "Kilos Recibidos"
+        Me.clmKilosRecbidos.Name = "clmKilosRecbidos"
+        Me.clmKilosRecbidos.ReadOnly = True
+        '
+        'clmEstatus
+        '
+        Me.clmEstatus.DataPropertyName = "Estatus"
+        Me.clmEstatus.HeaderText = "Estatus"
+        Me.clmEstatus.Name = "clmEstatus"
+        Me.clmEstatus.ReadOnly = True
         '
         'GroupBox2
         '
@@ -530,6 +562,7 @@ Partial Class FrmRecepcionCanales
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.lblCostoXKilo)
         Me.GroupBox3.Controls.Add(Me.txtKgrsRecibidos)
         Me.GroupBox3.Controls.Add(Me.chkActivarLectura)
         Me.GroupBox3.Controls.Add(Me.txtKgrsRecibidos2)
@@ -832,69 +865,14 @@ Partial Class FrmRecepcionCanales
         '
         Me.tmActualizacion.Interval = 60000
         '
-        'clmSeleccion
+        'lblCostoXKilo
         '
-        Me.clmSeleccion.FillWeight = 10.0!
-        Me.clmSeleccion.HeaderText = ""
-        Me.clmSeleccion.Name = "clmSeleccion"
-        '
-        'CodigoDataGridViewTextBoxColumn
-        '
-        Me.CodigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo"
-        Me.CodigoDataGridViewTextBoxColumn.HeaderText = "Código"
-        Me.CodigoDataGridViewTextBoxColumn.Name = "CodigoDataGridViewTextBoxColumn"
-        Me.CodigoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CodigoDataGridViewTextBoxColumn.Visible = False
-        '
-        'DescripcionDataGridViewTextBoxColumn
-        '
-        Me.DescripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion"
-        Me.DescripcionDataGridViewTextBoxColumn.FillWeight = 90.0!
-        Me.DescripcionDataGridViewTextBoxColumn.HeaderText = "Descripción"
-        Me.DescripcionDataGridViewTextBoxColumn.Name = "DescripcionDataGridViewTextBoxColumn"
-        Me.DescripcionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'clmRegistro
-        '
-        Me.clmRegistro.DataPropertyName = "Consecutivo"
-        Me.clmRegistro.HeaderText = "Registro"
-        Me.clmRegistro.Name = "clmRegistro"
-        Me.clmRegistro.Visible = False
-        '
-        'clmFolioMov
-        '
-        Me.clmFolioMov.DataPropertyName = "FolioMovimiento"
-        Me.clmFolioMov.HeaderText = "Folio Movimiento"
-        Me.clmFolioMov.Name = "clmFolioMov"
-        Me.clmFolioMov.ReadOnly = True
-        Me.clmFolioMov.Visible = False
-        '
-        'clmCanal
-        '
-        Me.clmCanal.DataPropertyName = "IdFolioCanal"
-        Me.clmCanal.HeaderText = "Pieza"
-        Me.clmCanal.Name = "clmCanal"
-        Me.clmCanal.ReadOnly = True
-        '
-        'clmKilosCalientes
-        '
-        Me.clmKilosCalientes.DataPropertyName = "KgrsCalientes"
-        Me.clmKilosCalientes.HeaderText = "Kilos Calientes"
-        Me.clmKilosCalientes.Name = "clmKilosCalientes"
-        '
-        'clmKilosRecbidos
-        '
-        Me.clmKilosRecbidos.DataPropertyName = "kgrsBascula"
-        Me.clmKilosRecbidos.HeaderText = "Kilos Recibidos"
-        Me.clmKilosRecbidos.Name = "clmKilosRecbidos"
-        Me.clmKilosRecbidos.ReadOnly = True
-        '
-        'clmEstatus
-        '
-        Me.clmEstatus.DataPropertyName = "Estatus"
-        Me.clmEstatus.HeaderText = "Estatus"
-        Me.clmEstatus.Name = "clmEstatus"
-        Me.clmEstatus.ReadOnly = True
+        Me.lblCostoXKilo.Location = New System.Drawing.Point(257, 138)
+        Me.lblCostoXKilo.Name = "lblCostoXKilo"
+        Me.lblCostoXKilo.Size = New System.Drawing.Size(181, 12)
+        Me.lblCostoXKilo.TabIndex = 94
+        Me.lblCostoXKilo.Text = "0.00"
+        Me.lblCostoXKilo.Visible = False
         '
         'FrmRecepcionCanales
         '
@@ -1002,4 +980,5 @@ Partial Class FrmRecepcionCanales
     Friend WithEvents clmKilosCalientes As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmKilosRecbidos As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmEstatus As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lblCostoXKilo As System.Windows.Forms.Label
 End Class
