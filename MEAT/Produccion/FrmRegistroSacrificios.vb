@@ -345,7 +345,8 @@ Public Class FrmRegistroSacrificios
                     End If
                 Next
             End If
-            
+
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
             'Trans.Commit()
 
             Return True
