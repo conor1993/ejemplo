@@ -11,9 +11,8 @@
     <RootNamespace>MEAT</RootNamespace>
     <AssemblyName>Sistema MEAT</AssemblyName>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
-    <ManifestCertificateThumbprint>5A471447D7DE4D9348D09C0AAFB0065AC87A9E4F</ManifestCertificateThumbprint>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -38,7 +37,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\MEAT\1.0.45.45\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\MEAT\1.0.47.47\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -53,8 +52,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>45</ApplicationRevision>
-    <ApplicationVersion>1.0.45.45</ApplicationVersion>
+    <ApplicationRevision>47</ApplicationRevision>
+    <ApplicationVersion>1.0.47.47</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -5159,6 +5158,7 @@
       <DependentUpon>Facturas.xsd</DependentUpon>
     </None>
     <None Include="Ganadero.snk" />
+    <None Include="Ganadero_TemporaryKey.pfx" />
     <None Include="Migrated rules for Ganadero.ruleset" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

@@ -653,19 +653,24 @@ Public Class FrmRecepciondeGanado
 
                 If Me.RecepcionGanado.ObtenerEntidad.Save Then
                     '''------GUARDAR EN IDE FOODS
+                    ''' 
+                    MessageBox.Show("Se Guardó Recepción ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    If RecepcionGanado.KilosSegundaPesada > 0D Then
+                        Imprimir()
+                    End If
+
                     HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
                     Dim RecepcionGanadoIDE As New ClasesNegocio.RecepcionGanadoClass(RecepcionGanado.LoteRecepcion)
                     RecepcionGanadoIDE.KilosPrimeraPesada = CDec(Me.txtKilos1erpasada.Text)
                     RecepcionGanadoIDE.KilosSegundaPesada = CDec(Me.txtKilos2daPasada.Text)
                     RecepcionGanadoIDE.KilosComp = RecepcionGanado.KilosPrimeraPesada - RecepcionGanado.KilosSegundaPesada
+                    RecepcionGanadoIDE.KilosRecibidos = RecepcionGanado.KilosPrimeraPesada - RecepcionGanado.KilosSegundaPesada
                     If RecepcionGanadoIDE.ObtenerEntidad.Save Then
-                        MessageBox.Show("Se Guardó Recepción ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                         Limpiar(False)
                         Deshabilitar()
                         HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
-                        If RecepcionGanado.KilosSegundaPesada > 0D Then
-                            Imprimir()
-                        End If
+                        
                     Else
                         HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
                     End If
@@ -1279,4 +1284,5 @@ Public Class FrmRecepciondeGanado
             End If
         End If
     End Sub
+
 End Class

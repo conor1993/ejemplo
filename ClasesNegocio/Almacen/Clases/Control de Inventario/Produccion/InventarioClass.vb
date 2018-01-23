@@ -276,6 +276,130 @@ Public Class InventarioClass
         End Try
     End Function
 
+    Public Function Guardar() As Boolean
+        Try
+            If Not (Año > 1 And Mes >= 1) Then
+                Return False
+            End If
+
+            Dim inv As New EC.MscinventarioProductoEntity
+
+            'trans.Add(inv)
+
+            If inv.FetchUsingPK(Me.IdCodAlmacen, Me.IdCodProducto, Me.Año, Me.Mes) Then
+                If Me.NumOpc = 1 Then
+                    inv.ExistKilos += Me.EntKilos
+                    inv.ExistPzas += Me.EntPzas
+                    inv.EntKilos += Me.EntKilos
+                    inv.EntPzas += Me.EntPzas
+                    inv.FechaUltimaEntrada = Now
+                ElseIf Me.NumOpc = 2 Then
+                    If Me.ExistKilos < 0 Then
+                        Me.ExistKilos *= -1
+                    End If
+
+                    If Me.ExistPzas < 0 Then
+                        Me.ExistPzas *= -1
+                    End If
+
+                    inv.ExistKilos -= Me.SalKilos
+                    inv.ExistPzas -= Me.SalPzas
+                    inv.SalKilos += Me.SalKilos
+                    inv.SalPzas += Me.SalPzas
+                    inv.FechaUltimaSalida = Now
+                End If
+
+                inv.Save()
+            Else
+                Dim col As New CC.MscinventarioProductoCollection
+
+                'trans.Add(col)
+
+                Dim orden As New OC.SortExpression
+
+                orden.Add(New OC.SortClause(HC.MscinventarioProductoFields.Año, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
+                orden.Add(New OC.SortClause(HC.MscinventarioProductoFields.Mes, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
+
+                col.GetMulti(HC.MscinventarioProductoFields.IdCodAlmacen = Me.IdCodAlmacen And _
+                                HC.MscinventarioProductoFields.IdCodProducto = Me.IdCodProducto, 1, orden, Nothing)
+
+                If col.Count > 0 Then
+                    Dim invNuevo As New EC.MscinventarioProductoEntity
+
+                    'trans.Add(invNuevo)
+
+                    invNuevo.IdCodAlmacen = Me.IdCodAlmacen
+                    invNuevo.IdCodProducto = Me.IdCodProducto
+                    invNuevo.Año = Año
+                    invNuevo.Mes = Mes
+
+                    If Me.NumOpc = 1 Then
+                        invNuevo.ExistKilos = col(0).ExistKilos + Me.EntKilos
+                        invNuevo.ExistPzas = col(0).ExistPzas + Me.EntPzas
+                        invNuevo.EntKilos = Me.EntKilos
+                        invNuevo.EntPzas = Me.EntPzas
+                        invNuevo.FechaUltimaEntrada = Now
+                        invNuevo.ExtKilosInicial = col(0).ExistKilos
+                        invNuevo.ExtPiezasInicial = col(0).ExistPzas
+                    ElseIf Me.NumOpc = 2 Then
+                        invNuevo.ExistKilos = col(0).ExistKilos - Me.SalKilos
+                        invNuevo.ExistPzas = col(0).ExistPzas - Me.SalPzas
+                        invNuevo.SalKilos = Me.SalKilos
+                        invNuevo.SalPzas = Me.SalPzas
+                        invNuevo.FechaUltimaSalida = Now
+                        invNuevo.ExtKilosInicial = col(0).ExistKilos
+                        invNuevo.ExtPiezasInicial = col(0).ExistPzas
+                    End If
+
+                    invNuevo.Save()
+                Else
+                    If Me.NumOpc = 2 Then
+                        Return True
+                        'If MsgBox("No hay producto en el inventario. ¿Quiere seguir con la instrucción? no se descontara del inventrio", MsgBoxStyle.Question, "Seguir con la isntrucción") = MsgBoxResult.Ok Then
+                        '    Return True
+                        'Else
+                        '    Return False
+                        'End If
+                    End If
+
+                    Dim invNuevo As New EC.MscinventarioProductoEntity
+
+                    'trans.Add(invNuevo)
+
+                    invNuevo.IdCodAlmacen = Me.IdCodAlmacen
+                    invNuevo.IdCodProducto = Me.IdCodProducto
+                    invNuevo.Año = Año
+                    invNuevo.Mes = Mes
+                    invNuevo.ExistKilos = Me.EntKilos
+                    invNuevo.ExistPzas = Me.EntPzas
+                    invNuevo.EntKilos = Me.EntKilos
+                    invNuevo.EntPzas = Me.EntPzas
+                    invNuevo.FechaUltimaEntrada = Now
+                    invNuevo.ExtKilosInicial = 0D
+                    invNuevo.ExtPiezasInicial = 0D
+
+                    invNuevo.Save()
+                End If
+            End If
+
+            'ExistKilos =   ExistKilos  +   @ExistKilos,
+            'ExistPzas  =   ExistPzas   +   @ExistPzas,
+            'EntKilos   =   EntKilos    +   @EntKilos,
+            'EntPzas    =   EntPzas     +   @EntPzas
+
+            'If SPA.UspMscinventarioProducto(IdCodAlmacen, IdCodProducto, ExistKilos, ExistPzas, EntKilos, EntPzas, SalKilos, SalPzas, Func, NumOpc, trans) = 0 Then
+            '    'RaiseEvent MensajeError(Me, "Error al guardar información en el inventario")
+            '    Return False
+            'End If
+
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+
+
     Public Function Obtener(ByVal Codigo As Integer) As Boolean Implements IEntidad.Obtener
 
     End Function

@@ -44,7 +44,7 @@ Public Class FrmRecepcionCanales
 #Region "Metodos"
     Private Sub ObtenerSacrificios(ByVal Opcion As Integer)
         Try
-            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
+            'HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
             RegistroSacrifC = New RegistroSacrificioColeccionClass
 
             If Opcion = 1 Then
@@ -88,10 +88,14 @@ Public Class FrmRecepcionCanales
 
                         Dim RecGanDetEnty As EC.UsrProdRecepcionGanadoDetEntity = RegistroSacrifC(0).ObtenerEntidad.UsrProdRecepcionGanadoDet(0)
                         NumLados = RecGanDetEnty.RecepcionGanado.McgcatTiposdeGanado.Lados
-                        lblCostoXKilo.Text = Convert.ToDecimal(RecGanDetEnty.RecepcionGanado.ImpteComp / RecGanDetEnty.RecepcionGanado.KilosComp).ToString("N2")
+                        'lblCostoXKilo.Text = Convert.ToDecimal(RecGanDetEnty.RecepcionGanado.ImpteComp / RecGanDetEnty.RecepcionGanado.KilosComp).ToString("N2")
 
-                        ''Recupera estructura de meatla20
-                        HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
+
+
+
+                        ''Cambia a la bd idefoods para obtener el precio por kilo
+
+                        HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
                         RegistroSacrifC = New RegistroSacrificioColeccionClass
 
                         If Opcion = 1 Then
@@ -109,6 +113,33 @@ Public Class FrmRecepcionCanales
                                 Exit Sub
                             End If
                         End If
+                        RecGanDetEnty = RegistroSacrifC(0).ObtenerEntidad.UsrProdRecepcionGanadoDet(0)
+                        If RecGanDetEnty.RecepcionGanado.KilosComp > 0 Then
+                            lblCostoXKilo.Text = Convert.ToDecimal(RecGanDetEnty.RecepcionGanado.ImpteComp / RecGanDetEnty.RecepcionGanado.KilosComp).ToString("N2")
+                        End If
+
+
+                        ''Regresa a la estructura de la20
+                        HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
+
+                        RegistroSacrifC = New RegistroSacrificioColeccionClass
+
+                        If Opcion = 1 Then
+                            RegistroSacrifC.Obtener(Me.RegistroSacrificiosCab.IdLoteSacrificio, Me.RegistroSacrificiosCab.Introductor)
+
+                            If RegistroSacrifC.Count = 0 Then
+                                MessageBox.Show("Este lote de sacrifcio no existe", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                Exit Sub
+                            End If
+                        Else
+                            RegistroSacrifC.Obtener("A")
+
+                            If RegistroSacrifC.Count = 0 Then
+                                MessageBox.Show("No existen lotes de sacrificios en apertura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                Exit Sub
+                            End If
+                        End If
+                        RecGanDetEnty = RegistroSacrifC(0).ObtenerEntidad.UsrProdRecepcionGanadoDet(0)
 
 
                     End If
@@ -389,22 +420,22 @@ Public Class FrmRecepcionCanales
             Dim SerXsacrif As EC.ServiciosPorSacrificioEntity
             Dim i As Integer = 0
 
-            For Each Serv As ServiciosClass In Me.ServiciosC
-                If CBool(Me.dgvServicios.Rows(i).Cells(Me.clmSeleccion.Index).Value) Then
-                    SerXsacrif = New EC.ServiciosPorSacrificioEntity
-                    SerXsacrif.FolioSacrificio = RecepcCanalesDet.FolioSacrificio
-                    SerXsacrif.FolioCanal = RecepcCanalesDet.IdFolioCanal
-                    SerXsacrif.IdServicio = Serv.Codigo
-                    Trans.Add(SerXsacrif)
+            'For Each Serv As ServiciosClass In Me.ServiciosC
+            '    If CBool(Me.dgvServicios.Rows(i).Cells(Me.clmSeleccion.Index).Value) Then
+            '        SerXsacrif = New EC.ServiciosPorSacrificioEntity
+            '        SerXsacrif.FolioSacrificio = RecepcCanalesDet.FolioSacrificio
+            '        SerXsacrif.FolioCanal = RecepcCanalesDet.IdFolioCanal
+            '        SerXsacrif.IdServicio = Serv.Codigo
+            '        Trans.Add(SerXsacrif)
 
-                    If Not SerXsacrif.Save Then
-                        Trans.Rollback()
-                        Return False
-                    End If
-                End If
+            '        If Not SerXsacrif.Save Then
+            '            Trans.Rollback()
+            '            Return False
+            '        End If
+            '    End If
 
-                i = i + 1
-            Next
+            '    i = i + 1
+            'Next
 
             If CerrarLote = True Then
                 Dim FolioSacr As String = Me.txtLoteSacrificio.Text
@@ -452,7 +483,7 @@ Public Class FrmRecepcionCanales
     Private Function GuardarIDE(ByVal FolioAlm As String, ByVal RecepCabColCount As Integer, ByVal IdFolioAlmacen As String, Optional ByVal CerrarLote As Boolean = False) As Boolean
 
         HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
-        Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
+        'Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
 
         Try
 
@@ -499,8 +530,8 @@ Public Class FrmRecepcionCanales
 
                 Me.RecepcCanalesDet.FolioMov = FolioAlm
 
-                If Not RecepcCanales.Guardar(Trans) Then
-                    Trans.Rollback()
+                If Not RecepcCanales.Guardar() Then
+                    'Trans.Rollback()
                     Return False
                 End If
 
@@ -526,8 +557,8 @@ Public Class FrmRecepcionCanales
                 RecepcCanales.Funcion = "M"
                 RecepcCanales.Opcion = 1
 
-                If Not RecepcCanales.Guardar(Trans) Then
-                    Trans.Rollback()
+                If Not RecepcCanales.Guardar() Then
+                    'Trans.Rollback()
                     Return False
                 End If
             End If
@@ -555,13 +586,13 @@ Public Class FrmRecepcionCanales
             If ConfigAlmacen.Count > 0 Then
                 Config = ConfigAlmacen(0)
             Else
-                Trans.Rollback()
+                'Trans.Rollback()
                 MsgBox("Configure los movimientos de Almacén producción para poder guardar", MsgBoxStyle.Exclamation, "Aviso")
                 Return False
             End If
 
             If Config.EntradaCanalAlmacen.GetValueOrDefault(-1) = -1 Then
-                Trans.Rollback()
+                'Trans.Rollback()
                 MsgBox("Debe configurar el movimiento de almacén Entradas de Canales a Almacén", MsgBoxStyle.Exclamation, "Aviso")
                 Return False
             End If
@@ -572,7 +603,7 @@ Public Class FrmRecepcionCanales
             ConfigProd.GetMulti(Nothing)
 
             If Not ConfigProd.Count > 0 Then
-                Trans.Rollback()
+                'Trans.Rollback()
                 MessageBox.Show("Seleccione un Almacen para la recepción de canales en la configuracion del modulo de Producción", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Return False
             End If
@@ -585,7 +616,7 @@ Public Class FrmRecepcionCanales
             Productos.GetMulti(HC.MsccatProductosFields.Canal = True)
 
             If Productos.Count = 0 Then
-                Trans.Rollback()
+                'Trans.Rollback()
                 MsgBox("No hay un producto registrado como canal", MsgBoxStyle.Exclamation, "Aviso")
                 Return False
             End If
@@ -597,7 +628,7 @@ Public Class FrmRecepcionCanales
             If Not IsDBNull(Configproduccion.IdAlmacenCanales) Then
                 Almacen.IdCodAlmacen = Configproduccion.IdAlmacenCanales
             Else
-                Trans.Rollback()
+                'Trans.Rollback()
                 MessageBox.Show("Seleccione un Almacen para la recepción de canales en la configuracion del modulo de Producción", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Return False
             End If
@@ -614,8 +645,8 @@ Public Class FrmRecepcionCanales
             Almacen.NumOpc = 1
             Almacen.Func = "I"
 
-            If Not Almacen.Guardar(Trans) Then
-                Trans.Rollback()
+            If Not Almacen.Guardar() Then
+                'Trans.Rollback()
                 Return False
             End If
 
@@ -624,14 +655,14 @@ Public Class FrmRecepcionCanales
             AlmacenDetalle.IdCodProducto = Producto.IdProducto
             AlmacenDetalle.CantPzas = 1
             AlmacenDetalle.CantKilos = Me.txtKgrsRecibidos.Text
-            AlmacenDetalle.CostoUnitario = 0D
+            AlmacenDetalle.CostoUnitario = CDec(lblCostoXKilo.Text)
             AlmacenDetalle.IVA = 0D
             'AlmacenDetalle.Estatus = "V"
             AlmacenDetalle.Func = "I"
             AlmacenDetalle.NumOpc = 1
 
-            If Not AlmacenDetalle.Guardar(Trans) Then
-                Trans.Rollback()
+            If Not AlmacenDetalle.Guardar() Then
+                'Trans.Rollback()
                 Return False
             End If
 
@@ -660,8 +691,8 @@ Public Class FrmRecepcionCanales
             Me.RecepcCanalesDet.Funcion = "I"
             Me.RecepcCanalesDet.Opcion = 0
 
-            If Not Me.RecepcCanalesDet.Guardar(Trans) Then
-                Trans.Rollback()
+            If Not Me.RecepcCanalesDet.Guardar() Then
+                'Trans.Rollback()
                 Return False
             End If
 
@@ -680,8 +711,8 @@ Public Class FrmRecepcionCanales
             Inventario.Mes = Now.Month
 
             'llama el guardar del inventario de productos
-            If Not Inventario.Guardar(Trans) Then
-                Trans.Rollback()
+            If Not Inventario.Guardar() Then
+                'Trans.Rollback()
                 Return False
             End If
 
@@ -689,22 +720,22 @@ Public Class FrmRecepcionCanales
             Dim SerXsacrif As EC.ServiciosPorSacrificioEntity
             Dim i As Integer = 0
 
-            For Each Serv As ServiciosClass In Me.ServiciosC
-                If CBool(Me.dgvServicios.Rows(i).Cells(Me.clmSeleccion.Index).Value) Then
-                    SerXsacrif = New EC.ServiciosPorSacrificioEntity
-                    SerXsacrif.FolioSacrificio = RecepcCanalesDet.FolioSacrificio
-                    SerXsacrif.FolioCanal = RecepcCanalesDet.IdFolioCanal
-                    SerXsacrif.IdServicio = Serv.Codigo
-                    Trans.Add(SerXsacrif)
+            'For Each Serv As ServiciosClass In Me.ServiciosC
+            '    If CBool(Me.dgvServicios.Rows(i).Cells(Me.clmSeleccion.Index).Value) Then
+            '        SerXsacrif = New EC.ServiciosPorSacrificioEntity
+            '        SerXsacrif.FolioSacrificio = RecepcCanalesDet.FolioSacrificio
+            '        SerXsacrif.FolioCanal = RecepcCanalesDet.IdFolioCanal
+            '        SerXsacrif.IdServicio = Serv.Codigo
+            '        Trans.Add(SerXsacrif)
 
-                    If Not SerXsacrif.Save Then
-                        Trans.Rollback()
-                        Return False
-                    End If
-                End If
+            '        If Not SerXsacrif.Save Then
+            '            Trans.Rollback()
+            '            Return False
+            '        End If
+            '    End If
 
-                i = i + 1
-            Next
+            '    i = i + 1
+            'Next
 
             If CerrarLote = True Then
                 Dim FolioSacr As String = Me.txtLoteSacrificio.Text
@@ -713,13 +744,13 @@ Public Class FrmRecepcionCanales
 
                 RegistroSacrificiosCab.Estatus = "C"
 
-                If Not RegistroSacrificiosCab.Guardar(Trans) Then
-                    Trans.Rollback()
+                If Not RegistroSacrificiosCab.Guardar() Then
+                    'Trans.Rollback()
                     Return False
                 End If
             End If
 
-            Trans.Commit()
+            'Trans.Commit()
             'MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             'If Configproduccion.ImprimirEtiquetasCanales = True Then
@@ -735,9 +766,10 @@ Public Class FrmRecepcionCanales
             'Me.ObtenerCanales()
             'Me.tmActualizacion.Start()
 
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
             Return True
         Catch ex As Exception
-            Trans.Rollback()
+            'Trans.Rollback()
             MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try

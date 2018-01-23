@@ -176,6 +176,21 @@ Public Class AlmacenProduccionClass
         End Try
     End Function
 
+    Public Function Guardar() As Boolean
+        Try
+            If SPA.UspMscmovtosAlmacenCab(IdFolioMovimiento, IdCodAlmacen, FechaMovimiento, FechaCaptura, IdCodMovimiento, CantPzas, CantKilos, Estatus, Contabilizado, FechaContabilizacion, IdPoliza, QuienContabilizo, FechaCancelacion, QuienCancelo, ObservacionCancela, Func, NumOpc) = 0 Then
+                'RaiseEvent MensajeError(Me, "Error al guardar información en almacen")
+                Return False
+            End If
+
+            Return True
+        Catch ex As Exception
+            'RaiseEvent MensajeError(Me, "Error al guardar información en almacen")
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
+
     Public Event MensajeError(ByVal sender As Object, ByVal mensaje As String) Implements IEntidad.MensajeError
 
     Public Event Modificado(ByVal sender As Object, ByVal e As System.EventArgs) Implements IEntidad.Modificado
@@ -306,6 +321,19 @@ Public Class AlmacenDetalleClass
     Public Function Guardar(ByRef trans As Integralab.ORM.HelperClasses.Transaction) As Boolean
         Try
             If SPA.UspMscmovtosAlmacenDet(IdFolioMovimiento, IdCodProducto, CantKilos, CantPzas, CostoUnitario, IVA, Func, NumOpc, trans) = 0 Then
+                RaiseEvent MensajeError(Me, "Error al guardar información del detalle de almacen")
+                Return False
+            End If
+            Return True
+        Catch ex As Exception
+            RaiseEvent MensajeError(Me, "Error al guardar información del detalle de almacen")
+            Return False
+        End Try
+    End Function
+
+    Public Function Guardar() As Boolean
+        Try
+            If SPA.UspMscmovtosAlmacenDet(IdFolioMovimiento, IdCodProducto, CantKilos, CantPzas, CostoUnitario, IVA, Func, NumOpc) = 0 Then
                 RaiseEvent MensajeError(Me, "Error al guardar información del detalle de almacen")
                 Return False
             End If
