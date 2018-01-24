@@ -14,6 +14,9 @@ Public Class FrmAperturaLoteCorte2
     Private Sub MEAToolBar1_ButtonClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs) Handles MEAToolBar1.ButtonClick
         Select Case e.Button.Text
             Case "Guardar"
+                If (Not Validar()) Then
+                    Exit Sub
+                End If
                 If Not Guardar() Then
                     MessageBox.Show("No se pudo generar Lote de Corte", "ERP FLEXI", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
@@ -35,24 +38,38 @@ Public Class FrmAperturaLoteCorte2
     Private Function Guardar() As Boolean
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
         Try
-            Dim LoteCorte As New CortesClass
-            LoteCorte.LoteSacrificio = Me.txtFolioSacrificio.Text
-            LoteCorte.FechaCorte = Me.dtpFechaLoteCorte.Value
-            LoteCorte.FechaFapsa = Me.dtpFechaSacrificio.Value
-            LoteCorte.IdCliente = Me.txtCodCliente.Text
-            LoteCorte.DiasCad = Me.txtDiasCaducidad.Text
-            LoteCorte.FechaCad = Me.dtpFechaCaducidad.Value
-            LoteCorte.Observaciones = Me.txtObservaciones.Text
-            LoteCorte.Estatus = "A"
-            LoteCorte.Func = "I"
-            LoteCorte.NumOpc = 1
-            If Not LoteCorte.Guardar(Trans) Then
-                Trans.Rollback()
-                Return False
-            End If
-            Me.txtLoteCorte.Text = LoteCorte.LoteCorte
-            Trans.Commit()
-            Return True
+
+                Dim LoteCorte As New CortesClass
+                LoteCorte.LoteSacrificio = Me.txtFolioSacrificio.Text
+                LoteCorte.FechaCorte = Me.dtpFechaLoteCorte.Value
+                LoteCorte.FechaFapsa = Me.dtpFechaSacrificio.Value
+                LoteCorte.IdCliente = Me.txtCodCliente.Text
+                LoteCorte.DiasCad = Me.txtDiasCaducidad.Text
+                LoteCorte.FechaCad = Me.dtpFechaCaducidad.Value
+                LoteCorte.Observaciones = Me.txtObservaciones.Text
+                LoteCorte.Estatus = "A"
+                LoteCorte.Func = "A"
+                LoteCorte.NumOpc = 1
+
+                ''nuevos datos -------------------------------
+                LoteCorte.Nopiezas = txtNoPiezas.Text
+                LoteCorte.Producto = CmbTipoGanado.SelectedValue
+                LoteCorte.Unidad = txtUnidad.Text
+                LoteCorte.Conductor = txtConductor.Text
+                LoteCorte.Placas = txtPlacas.Text
+                LoteCorte.Horaviaje = txtHorasViaje.Text
+                LoteCorte.Idproveedor = cmbProveedor.SelectedValue
+                LoteCorte.Cvelugcom = CmbLugarCompra.SelectedValue
+                LoteCorte.Cvecomprador = cmbComprador.SelectedValue
+                LoteCorte.Observacioneslote = txtobserbacioneslote.Text
+
+                If Not LoteCorte.Guardar(Trans) Then
+                    Trans.Rollback()
+                    Return False
+                End If
+                Me.txtLoteCorte.Text = LoteCorte.LoteCorte
+                Trans.Commit()
+                Return True
         Catch ex As Exception
             MessageBox.Show(ex.Message, "ERP FLEXI", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Trans.Rollback()
@@ -91,6 +108,38 @@ Public Class FrmAperturaLoteCorte2
         'End If
         Me.txtLoteCorte.Focus()
     End Function
+
+    Private Function Validar() As Boolean
+        Try
+            Dim Mensaje As New System.Text.StringBuilder()
+
+            If Me.txtNoPiezas.Text.Trim = "" Then Mensaje.AppendLine("*No piezas")
+            If Me.txtKilosRecibidos.Text.Trim = "" Then Mensaje.AppendLine("*Kilos recibidos")
+            If Me.txtNoFactura.Text.Trim = "" Then Mensaje.AppendLine("*No de factura")
+            If Me.txtImporte.Text.Trim = "" Then Mensaje.AppendLine("*El importe")
+            If Me.CmbTipoGanado.SelectedValue Is Nothing Then Mensaje.AppendLine("*Poblacion")
+            If Me.txtUnidad.Text.Trim = "" Then Mensaje.AppendLine("*La unidad")
+            If Me.txtConductor.Text.Trim = "" Then Mensaje.AppendLine("*El conductor")
+            If Me.txtPlacas.Text.Trim = "" Then Mensaje.AppendLine("*Las placas")
+            If Me.cmbProveedor.SelectedValue Is Nothing Then Mensaje.AppendLine("* el proveedor")
+            If Me.cmbProveedor.SelectedValue Is Nothing Then Mensaje.AppendLine("* el lugar de compra")
+            If Me.cmbComprador.SelectedValue Is Nothing Then Mensaje.AppendLine("* el comprador")
+            If Me.txtobserbacioneslote.Text.Trim = "" Then Mensaje.AppendLine("* la obserbacion")
+
+            If Mensaje.ToString() <> String.Empty Then
+
+                Mensaje.Insert(0, New System.Text.StringBuilder().AppendLine("En la seccion de , debe especificar los siguientes datos correctamente:"))
+                'Throw New Exception(Mensaje.ToString())
+                MessageBox.Show(Mensaje.ToString(), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+
+            Return True
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom.Trim & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
+
     Private Function Imprimir() As Boolean
     End Function
 

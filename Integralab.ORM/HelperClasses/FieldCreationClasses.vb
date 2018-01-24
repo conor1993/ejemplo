@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: jueves, 11 de enero de 2018 10:37:37
+' Code is generated on: miércoles, 24 de enero de 2018 11:05:23
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -5826,6 +5826,24 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [ImpteGasto] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(DetGasTransFieldIndex.ImpteGasto), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new DetGasTransEntity.Retencion field instance</summary>
+		Public Shared ReadOnly Property [Retencion] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(DetGasTransFieldIndex.Retencion), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new DetGasTransEntity.NoFactura field instance</summary>
+		Public Shared ReadOnly Property [NoFactura] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(DetGasTransFieldIndex.NoFactura), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new DetGasTransEntity.CodProveedor field instance</summary>
+		Public Shared ReadOnly Property [CodProveedor] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(DetGasTransFieldIndex.CodProveedor), EntityField)
 			End Get
 		End Property
 	End Class
@@ -12890,6 +12908,66 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [EsReproceso] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.EsReproceso), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Nopiezas field instance</summary>
+		Public Shared ReadOnly Property [Nopiezas] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Nopiezas), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Producto field instance</summary>
+		Public Shared ReadOnly Property [Producto] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Producto), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Unidad field instance</summary>
+		Public Shared ReadOnly Property [Unidad] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Unidad), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Conductor field instance</summary>
+		Public Shared ReadOnly Property [Conductor] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Conductor), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Placas field instance</summary>
+		Public Shared ReadOnly Property [Placas] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Placas), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Horaviaje field instance</summary>
+		Public Shared ReadOnly Property [Horaviaje] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Horaviaje), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Idproveedor field instance</summary>
+		Public Shared ReadOnly Property [Idproveedor] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Idproveedor), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Cvelugcomp field instance</summary>
+		Public Shared ReadOnly Property [Cvelugcomp] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Cvelugcomp), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Cvecomprador field instance</summary>
+		Public Shared ReadOnly Property [Cvecomprador] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Cvecomprador), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.ObservacionesLotes field instance</summary>
+		Public Shared ReadOnly Property [ObservacionesLotes] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.ObservacionesLotes), EntityField)
 			End Get
 		End Property
 	End Class

@@ -1870,6 +1870,12 @@
     <Compile Include="Produccion\FrmActFechaCortes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Produccion\FrmAperturaLoteCorte2.Designer.vb">
+      <DependentUpon>FrmAperturaLoteCorte2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\FrmAperturaLoteCorte2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Produccion\frmArmadoCajas.Designer.vb">
       <DependentUpon>frmArmadoCajas.vb</DependentUpon>
     </Compile>
@@ -4288,6 +4294,9 @@
     <EmbeddedResource Include="Produccion\FrmActFechaCortes.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FrmActFechaCortes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion\FrmAperturaLoteCorte2.resx">
+      <DependentUpon>FrmAperturaLoteCorte2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produccion\frmArmadoCajas.resx">
       <SubType>Designer</SubType>

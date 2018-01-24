@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 11 de enero de 2018 10:37:34
+' // Code is generated on: miércoles, 24 de enero de 2018 11:05:18
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -46,7 +46,8 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchMscloteCortesDet, _alreadyFetchedMscloteCortesDet As Boolean
 		Private _mscmovtosAlmacenCabCollectionViaMscloteCortesDet As Integralab.ORM.CollectionClasses.MscmovtosAlmacenCabCollection
 		Private _alwaysFetchMscmovtosAlmacenCabCollectionViaMscloteCortesDet, _alreadyFetchedMscmovtosAlmacenCabCollectionViaMscloteCortesDet As Boolean
-
+		Private _mcgcatTiposdeGanado As McgcatTiposdeGanadoEntity
+		Private _alwaysFetchMcgcatTiposdeGanado, _alreadyFetchedMcgcatTiposdeGanado, _mcgcatTiposdeGanadoReturnsNewIfNotFound As Boolean
 
 
 		Private Shared _customProperties As Dictionary(Of String, String)
@@ -103,7 +104,13 @@ Namespace Integralab.ORM.EntityClasses
 			_mscmovtosAlmacenCabCollectionViaMscloteCortesDet = CType(info.GetValue("_mscmovtosAlmacenCabCollectionViaMscloteCortesDet", GetType(Integralab.ORM.CollectionClasses.MscmovtosAlmacenCabCollection)), Integralab.ORM.CollectionClasses.MscmovtosAlmacenCabCollection)
 			_alwaysFetchMscmovtosAlmacenCabCollectionViaMscloteCortesDet = info.GetBoolean("_alwaysFetchMscmovtosAlmacenCabCollectionViaMscloteCortesDet")
 			_alreadyFetchedMscmovtosAlmacenCabCollectionViaMscloteCortesDet = info.GetBoolean("_alreadyFetchedMscmovtosAlmacenCabCollectionViaMscloteCortesDet")
-
+			_mcgcatTiposdeGanado = CType(info.GetValue("_mcgcatTiposdeGanado", GetType(McgcatTiposdeGanadoEntity)), McgcatTiposdeGanadoEntity)
+			If Not _mcgcatTiposdeGanado Is Nothing Then
+				AddHandler _mcgcatTiposdeGanado.AfterSave, AddressOf OnEntityAfterSave
+			End If
+			_mcgcatTiposdeGanadoReturnsNewIfNotFound = info.GetBoolean("_mcgcatTiposdeGanadoReturnsNewIfNotFound")
+			_alwaysFetchMcgcatTiposdeGanado = info.GetBoolean("_alwaysFetchMcgcatTiposdeGanado")
+			_alreadyFetchedMcgcatTiposdeGanado = info.GetBoolean("_alreadyFetchedMcgcatTiposdeGanado")
 
 			MyBase.FixupDeserialization(FieldInfoProviderSingleton.GetInstance(), PersistenceInfoProviderSingleton.GetInstance())
 			
@@ -116,7 +123,7 @@ Namespace Integralab.ORM.EntityClasses
 		Protected Overrides Sub PostReadXmlFixups()
 			_alreadyFetchedMscloteCortesDet = (_mscloteCortesDet.Count > 0)
 			_alreadyFetchedMscmovtosAlmacenCabCollectionViaMscloteCortesDet = (_mscmovtosAlmacenCabCollectionViaMscloteCortesDet.Count > 0)
-
+			_alreadyFetchedMcgcatTiposdeGanado = Not(_mcgcatTiposdeGanado Is Nothing)
 
 		End Sub
 
@@ -173,7 +180,10 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_mscmovtosAlmacenCabCollectionViaMscloteCortesDet", _mscmovtosAlmacenCabCollectionViaMscloteCortesDet)
 			info.AddValue("_alwaysFetchMscmovtosAlmacenCabCollectionViaMscloteCortesDet", _alwaysFetchMscmovtosAlmacenCabCollectionViaMscloteCortesDet)
 			info.AddValue("_alreadyFetchedMscmovtosAlmacenCabCollectionViaMscloteCortesDet", _alreadyFetchedMscmovtosAlmacenCabCollectionViaMscloteCortesDet)
-
+			info.AddValue("_mcgcatTiposdeGanado", _mcgcatTiposdeGanado)
+			info.AddValue("_mcgcatTiposdeGanadoReturnsNewIfNotFound", _mcgcatTiposdeGanadoReturnsNewIfNotFound)
+			info.AddValue("_alwaysFetchMcgcatTiposdeGanado", _alwaysFetchMcgcatTiposdeGanado)
+			info.AddValue("_alreadyFetchedMcgcatTiposdeGanado", _alreadyFetchedMcgcatTiposdeGanado)
 
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START GetObjectInfo
@@ -188,7 +198,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub SetRelatedEntityProperty(propertyName As String, entity As IEntity)
 			Select Case propertyName
-
+				Case "McgcatTiposdeGanado"
+					_alreadyFetchedMcgcatTiposdeGanado = True
+					Me.McgcatTiposdeGanado = CType(entity, McgcatTiposdeGanadoEntity)
 				Case "MscloteCortesDet"
 					_alreadyFetchedMscloteCortesDet = True
 					If Not entity Is Nothing Then
@@ -211,7 +223,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub SetRelatedEntity(relatedEntity As IEntity, fieldName As String)
 			Select Case fieldName
-
+				Case "McgcatTiposdeGanado"
+					SetupSyncMcgcatTiposdeGanado(relatedEntity)
+					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "MscloteCortesDet"
 					_mscloteCortesDet.Add(CType(relatedEntity, MscloteCortesDetEntity))
 					OnRelatedEntitySet(relatedEntity, fieldName)
@@ -228,7 +242,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub UnsetRelatedEntity(relatedEntity As IEntity, fieldName As String, signalRelatedEntityManyToOne As Boolean)
 			Select Case fieldName
-
+				Case "McgcatTiposdeGanado"
+					DesetupSyncMcgcatTiposdeGanado(False, True)
+					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "MscloteCortesDet"
 					MyBase.PerformRelatedEntityRemoval(_mscloteCortesDet, relatedEntity, signalRelatedEntityManyToOne)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
@@ -253,7 +269,9 @@ Namespace Integralab.ORM.EntityClasses
 		''' <returns>Collection with 0 or more IEntity objects, referenced by this entity</returns>
 		Public Overrides Function GetDependentRelatedEntities() As List(Of IEntity)
 			Dim toReturn As New List(Of IEntity)()
-
+			If Not _mcgcatTiposdeGanado Is Nothing Then
+				toReturn.Add(_mcgcatTiposdeGanado)
+			End If
 
 
 			Return toReturn
@@ -466,6 +484,42 @@ Namespace Integralab.ORM.EntityClasses
 			_mscmovtosAlmacenCabCollectionViaMscloteCortesDet.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub	
 
+		''' <summary>Retrieves the related entity of type 'McgcatTiposdeGanadoEntity', Imports a relation of type 'n:1'</summary>
+		''' <returns>A fetched entity of type 'McgcatTiposdeGanadoEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleMcgcatTiposdeGanado() As McgcatTiposdeGanadoEntity
+			Return GetSingleMcgcatTiposdeGanado(False)
+		End Function
+
+		''' <summary>Retrieves the related entity of type 'McgcatTiposdeGanadoEntity', Imports a relation of type 'n:1'</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
+		''' <returns>A fetched entity of type 'McgcatTiposdeGanadoEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleMcgcatTiposdeGanado(forceFetch As Boolean) As McgcatTiposdeGanadoEntity
+			If ( Not _alreadyFetchedMcgcatTiposdeGanado Or forceFetch Or _alwaysFetchMcgcatTiposdeGanado) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
+
+				Dim newEntity As New McgcatTiposdeGanadoEntity()
+				If MyBase.ParticipatesInTransaction Then
+					MyBase.Transaction.Add(newEntity)
+				End If
+				Dim fetchResult As Boolean = False
+				If MyBase.CheckIfLazyLoadingShouldOccur(MscloteCortesCabEntity.Relations.McgcatTiposdeGanadoEntityUsingProducto) Then
+					fetchResult = newEntity.FetchUsingPK(Me.Producto.GetValueOrDefault())
+				End If
+				If Not _mcgcatTiposdeGanadoReturnsNewIfNotFound AndAlso Not fetchResult Then
+					Me.McgcatTiposdeGanado = Nothing
+				Else
+					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
+						newEntity = CType(MyBase.ActiveContext.Get(newEntity), McgcatTiposdeGanadoEntity)
+					End If
+					Me.McgcatTiposdeGanado = newEntity
+					_alreadyFetchedMcgcatTiposdeGanado = fetchResult
+				End If
+				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
+					MyBase.Transaction.Remove(newEntity)
+				End If
+			End If
+			Return _mcgcatTiposdeGanado
+		End Function
+	
 	
 		
 		''' <summary>Sets the field On index fieldIndex To the New value value. Marks also the fields Object As dirty. </summary>
@@ -499,6 +553,18 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
+					Case MscloteCortesCabFieldIndex.Producto
+						DesetupSyncMcgcatTiposdeGanado(True, False)
+						_alreadyFetchedMcgcatTiposdeGanado = False
+
+
+
+
+
+
+
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -510,7 +576,9 @@ Namespace Integralab.ORM.EntityClasses
 		Protected Overrides Overloads Sub AddInternalsToContext()
 			_mscloteCortesDet.ActiveContext = MyBase.ActiveContext
 			_mscmovtosAlmacenCabCollectionViaMscloteCortesDet.ActiveContext = MyBase.ActiveContext
-
+		If Not _mcgcatTiposdeGanado Is Nothing Then
+				_mcgcatTiposdeGanado.ActiveContext = MyBase.ActiveContext
+			End If
 
 
 		End Sub
@@ -590,7 +658,10 @@ Namespace Integralab.ORM.EntityClasses
 			_mscmovtosAlmacenCabCollectionViaMscloteCortesDet = New Integralab.ORM.CollectionClasses.MscmovtosAlmacenCabCollection(New MscmovtosAlmacenCabEntityFactory())
 			_alwaysFetchMscmovtosAlmacenCabCollectionViaMscloteCortesDet = False
 			_alreadyFetchedMscmovtosAlmacenCabCollectionViaMscloteCortesDet = False
-
+			_mcgcatTiposdeGanado = Nothing
+			_mcgcatTiposdeGanadoReturnsNewIfNotFound = True
+			_alwaysFetchMcgcatTiposdeGanado = False
+			_alreadyFetchedMcgcatTiposdeGanado = False
 
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitClassMembers
@@ -663,9 +734,65 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("EsReproceso", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Nopiezas", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Producto", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Unidad", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Conductor", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Placas", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Horaviaje", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Idproveedor", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Cvelugcomp", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Cvecomprador", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("ObservacionesLotes", fieldHashtable)
 		End Sub
 
 
+		''' <summary>Removes the sync logic for member _mcgcatTiposdeGanado</summary>
+		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
+		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
+		Private Sub DesetupSyncMcgcatTiposdeGanado(signalRelatedEntity As Boolean, resetFKFields As Boolean)
+			MyBase.PerformDesetupSyncRelatedEntity( _mcgcatTiposdeGanado, AddressOf OnMcgcatTiposdeGanadoPropertyChanged, "McgcatTiposdeGanado", MscloteCortesCabEntity.Relations.McgcatTiposdeGanadoEntityUsingProducto, True, signalRelatedEntity, "MscloteCortesCab", resetFKFields, New Integer() { CInt(MscloteCortesCabFieldIndex.Producto) } )
+			_mcgcatTiposdeGanado = Nothing
+		End Sub
+		
+		''' <summary>setups the sync logic for member _mcgcatTiposdeGanado</summary>
+		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
+		Private Sub SetupSyncMcgcatTiposdeGanado(relatedEntity As IEntity)
+			DesetupSyncMcgcatTiposdeGanado(True, True)
+			_mcgcatTiposdeGanado = CType(relatedEntity, McgcatTiposdeGanadoEntity)
+			MyBase.PerformSetupSyncRelatedEntity( _mcgcatTiposdeGanado, AddressOf OnMcgcatTiposdeGanadoPropertyChanged, "McgcatTiposdeGanado", MscloteCortesCabEntity.Relations.McgcatTiposdeGanadoEntityUsingProducto, True, _alreadyFetchedMcgcatTiposdeGanado, New String() {  } )
+		End Sub
+		
+		''' <summary>Handles Property change events of properties In a related entity.</summary>
+		''' <param name="sender"></param>
+		''' <param name="e"></param>
+		Private Sub OnMcgcatTiposdeGanadoPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
+			Select Case e.PropertyName
+
+				Case Else
+					' Emtpy
+			End Select
+		End Sub
 
 
 
@@ -741,6 +868,17 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 		End Property
 	
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'McgcatTiposdeGanado' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathMcgcatTiposdeGanado() As IPrefetchPathElement
+			Get
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.McgcatTiposdeGanadoCollection(), _
+					MscloteCortesCabEntity.Relations.McgcatTiposdeGanadoEntityUsingProducto, _
+					CType(Integralab.ORM.EntityType.MscloteCortesCabEntity, Integer), CType(Integralab.ORM.EntityType.McgcatTiposdeGanadoEntity, Integer), 0, Nothing, Nothing, Nothing, "McgcatTiposdeGanado", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+			End Get
+		End Property
 	
 	
 
@@ -1181,6 +1319,194 @@ Namespace Integralab.ORM.EntityClasses
 			End Set
 		End Property
 	
+		''' <summary>The Nopiezas property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Nopiezas"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Nopiezas]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Nopiezas, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Nopiezas, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Producto property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Producto"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Producto]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Producto, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Producto, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Unidad property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Unidad"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 120<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Unidad]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Unidad, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Unidad, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Conductor property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Conductor"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 120<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Conductor]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Conductor, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Conductor, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Placas property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Placas"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 120<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Placas]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Placas, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Placas, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Horaviaje property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Horaviaje"<br/>
+		''' Table field type characteristics (type, precision, scale, length): SmallMoney, 10, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Horaviaje]() As Nullable(Of System.Decimal)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Horaviaje, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Decimal))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Horaviaje, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Idproveedor property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Idproveedor"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Idproveedor]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Idproveedor, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Idproveedor, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Cvelugcomp property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Cvelugcomp"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Cvelugcomp]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Cvelugcomp, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Cvelugcomp, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Cvecomprador property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Cvecomprador"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Cvecomprador]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Cvecomprador, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Cvecomprador, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The ObservacionesLotes property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."ObservacionesLotes"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 500<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [ObservacionesLotes]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.ObservacionesLotes, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.ObservacionesLotes, Integer), value)
+			End Set
+		End Property
+	
 	
 		''' <summary>Retrieves all related entities of type 'MscloteCortesDetEntity' Imports a relation of type '1:n'.</summary>
 		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiMscloteCortesDet()', because 
@@ -1229,6 +1555,58 @@ Namespace Integralab.ORM.EntityClasses
 			End Set	
 		End Property
 	
+	
+		''' <summary>Gets / sets related entity of type 'McgcatTiposdeGanadoEntity'. This property is not visible in databound grids.
+		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
+		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
+		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleMcgcatTiposdeGanado()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
+		<Browsable(False)> _
+		Public Overridable Property [McgcatTiposdeGanado]() As McgcatTiposdeGanadoEntity
+			Get
+				Return GetSingleMcgcatTiposdeGanado(False)
+			End Get
+			Set
+				If MyBase.IsDeserializing Then
+					SetupSyncMcgcatTiposdeGanado(value)
+				Else
+					If value Is Nothing Then
+						If Not _mcgcatTiposdeGanado Is Nothing Then
+							_mcgcatTiposdeGanado.UnsetRelatedEntity(Me, "MscloteCortesCab")
+						End If
+					Else
+						CType(value, IEntity).SetRelatedEntity(Me, "MscloteCortesCab")
+					End If
+				End If
+			End Set
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for McgcatTiposdeGanado. When set to true, McgcatTiposdeGanado is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time McgcatTiposdeGanado is accessed. You can always execute
+		''' a forced fetch by calling GetSingleMcgcatTiposdeGanado(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchMcgcatTiposdeGanado As Boolean
+			Get
+				Return _alwaysFetchMcgcatTiposdeGanado
+			End Get
+			Set
+				_alwaysFetchMcgcatTiposdeGanado = value
+			End Set	
+		End Property
+
+		''' <summary>Gets / sets the flag for what to do if the related entity available through the property McgcatTiposdeGanado is not found
+		''' in the database. When set to true, McgcatTiposdeGanado will return a new entity instance if the related entity is not found, otherwise 
+		''' null be returned if the related entity is not found. Default: true.</summary>
+		<Browsable(False)> _
+		Public Property McgcatTiposdeGanadoReturnsNewIfNotFound As Boolean
+			Get
+				Return _mcgcatTiposdeGanadoReturnsNewIfNotFound
+			End Get
+			Set
+				_mcgcatTiposdeGanadoReturnsNewIfNotFound = value
+			End Set	
+		End Property
 	
 	
 	

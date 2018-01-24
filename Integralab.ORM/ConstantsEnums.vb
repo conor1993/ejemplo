@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 11 de enero de 2018 10:37:31
+' // Code is generated on: miércoles, 24 de enero de 2018 11:05:14
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -1562,6 +1562,9 @@ Namespace Integralab.ORM
 		[CveGasto]
 		[PtjIva]
 		[ImpteGasto]
+		[Retencion]
+		[NoFactura]
+		[CodProveedor]
 		AmountOfFields
 	End Enum
 
@@ -3480,6 +3483,16 @@ Namespace Integralab.ORM
 		[FolCorPza]
 		[FechaFapsa]
 		[EsReproceso]
+		[Nopiezas]
+		[Producto]
+		[Unidad]
+		[Conductor]
+		[Placas]
+		[Horaviaje]
+		[Idproveedor]
+		[Cvelugcomp]
+		[Cvecomprador]
+		[ObservacionesLotes]
 		AmountOfFields
 	End Enum
 
