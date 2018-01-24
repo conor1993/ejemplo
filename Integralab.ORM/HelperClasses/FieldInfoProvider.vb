@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: jueves, 11 de enero de 2018 10:37:31
+' Code is generated on: miércoles, 24 de enero de 2018 11:05:15
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -1587,6 +1587,9 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("DetGasTransEntity", "CveGasto", GetType(System.Int32), True, True, False, False, CInt(DetGasTransFieldIndex.CveGasto), 0, 0, 10)
 			MyBase.AddElementFieldInfo("DetGasTransEntity", "PtjIva", GetType(System.Decimal), False, False, False, False, CInt(DetGasTransFieldIndex.PtjIva), 0, 4, 10)
 			MyBase.AddElementFieldInfo("DetGasTransEntity", "ImpteGasto", GetType(System.Decimal), False, False, False, False, CInt(DetGasTransFieldIndex.ImpteGasto), 0, 4, 19)
+			MyBase.AddElementFieldInfo("DetGasTransEntity", "Retencion", GetType(System.Decimal), False, False, False, False, CInt(DetGasTransFieldIndex.Retencion), 0, 4, 19)
+			MyBase.AddElementFieldInfo("DetGasTransEntity", "NoFactura", GetType(System.String), False, False, False, True, CInt(DetGasTransFieldIndex.NoFactura), 30, 0, 0)
+			MyBase.AddElementFieldInfo("DetGasTransEntity", "CodProveedor", GetType(System.Int32), False, False, False, True, CInt(DetGasTransFieldIndex.CodProveedor), 0, 0, 10)
 		End Sub
 		''' <summary>Inits DetMovGanEntity's FieldInfo objects</summary>
 		Private Sub InitDetMovGanEntityInfos()
@@ -3000,6 +3003,16 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "FolCorPza", GetType(System.String), False, False, False, False, CInt(MscloteCortesCabFieldIndex.FolCorPza), 8, 0, 0)
 			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "FechaFapsa", GetType(System.DateTime), False, False, False, False, CInt(MscloteCortesCabFieldIndex.FechaFapsa), 0, 0, 0)
 			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "EsReproceso", GetType(System.Boolean), False, False, False, False, CInt(MscloteCortesCabFieldIndex.EsReproceso), 0, 0, 0)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Nopiezas", GetType(System.Int32), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Nopiezas), 0, 0, 10)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Producto", GetType(System.Int32), False, True, False, True, CInt(MscloteCortesCabFieldIndex.Producto), 0, 0, 10)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Unidad", GetType(System.String), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Unidad), 120, 0, 0)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Conductor", GetType(System.String), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Conductor), 120, 0, 0)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Placas", GetType(System.String), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Placas), 120, 0, 0)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Horaviaje", GetType(System.Decimal), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Horaviaje), 0, 4, 10)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Idproveedor", GetType(System.Int32), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Idproveedor), 0, 0, 10)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Cvelugcomp", GetType(System.Int32), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Cvelugcomp), 0, 0, 10)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Cvecomprador", GetType(System.Int32), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Cvecomprador), 0, 0, 10)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "ObservacionesLotes", GetType(System.String), False, False, False, True, CInt(MscloteCortesCabFieldIndex.ObservacionesLotes), 500, 0, 0)
 		End Sub
 		''' <summary>Inits MscloteCortesDetEntity's FieldInfo objects</summary>
 		Private Sub InitMscloteCortesDetEntityInfos()

@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 11 de enero de 2018 10:37:35
+' // Code is generated on: miércoles, 24 de enero de 2018 11:05:20
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -497,6 +497,9 @@ Namespace Integralab.ORM.EntityClasses
 						_alreadyFetchedMcgcatConcepGastos = False
 
 
+
+
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -625,6 +628,15 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("ImpteGasto", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Retencion", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("NoFactura", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("CodProveedor", fieldHashtable)
 		End Sub
 
 
@@ -893,6 +905,64 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(DetGasTransFieldIndex.ImpteGasto, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Retencion property of the Entity DetGasTrans<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "DetGasTrans"."Retencion"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Money, 19, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' </remarks>
+		Public Overridable Property [Retencion]() As System.Decimal
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(DetGasTransFieldIndex.Retencion, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.Decimal))
+				End If
+				Return CType(valueToReturn, System.Decimal)
+			End Get
+			Set
+				SetNewFieldValue(CType(DetGasTransFieldIndex.Retencion, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The NoFactura property of the Entity DetGasTrans<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "DetGasTrans"."NoFactura"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 30<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [NoFactura]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(DetGasTransFieldIndex.NoFactura, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(DetGasTransFieldIndex.NoFactura, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The CodProveedor property of the Entity DetGasTrans<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "DetGasTrans"."CodProveedor"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [CodProveedor]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(DetGasTransFieldIndex.CodProveedor, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(DetGasTransFieldIndex.CodProveedor, Integer), value)
 			End Set
 		End Property
 	

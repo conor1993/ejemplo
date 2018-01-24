@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 11 de enero de 2018 10:37:37
+' // Code is generated on: miércoles, 24 de enero de 2018 11:05:23
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -14325,7 +14325,8 @@ longParte6 As System.Int32, func As System.String, numOpc As System.Int32, ByRef
 		''' Delegate definition for stored procedure 'Usp_MSCLoteCortesCab' to be used in combination of a UnitOfWork object.
 		''' </summary>
 		Delegate Function UspMscloteCortesCabCallBack(idLoteFapsa As System.String, fechaCorte As System.DateTime, idCliente As System.Int32, fechaCad As System.DateTime, diasCad As System.Int32, totalPzas As System.Decimal, totalKgs As System.Decimal, consecEtiquetas As System.Decimal, observaciones As System.String, estatus As System.String, fechaCierre As System.DateTime,  _
-fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String, transactionToUse As ITransaction) As Integer
+fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, nopiezas As System.Int32, producto As System.Int32, unidad As System.String, conductor As System.String,  _
+placas As System.String, horaviaje As System.Decimal, idproveedor As System.Int32, cvelugcom As System.Int32, cvecomprador As System.Int32, observacioneslote As System.String, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String, transactionToUse As ITransaction) As Integer
 
 		''' <summary>
 		''' Calls stored procedure 'Usp_MSCLoteCortesCab'.<br/><br/>
@@ -14350,13 +14351,24 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 		''' <param name="observacionesCancela">Input parameter of stored procedure</param>
 		''' <param name="folCorPza">Input parameter of stored procedure</param>
 		''' <param name="fechaFapsa">Input parameter of stored procedure</param>
+		''' <param name="nopiezas">Input parameter of stored procedure</param>
+		''' <param name="producto">Input parameter of stored procedure</param>
+		''' <param name="unidad">Input parameter of stored procedure</param>
+		''' <param name="conductor">Input parameter of stored procedure</param>
+		''' <param name="placas">Input parameter of stored procedure</param>
+		''' <param name="horaviaje">Input parameter of stored procedure</param>
+		''' <param name="idproveedor">Input parameter of stored procedure</param>
+		''' <param name="cvelugcom">Input parameter of stored procedure</param>
+		''' <param name="cvecomprador">Input parameter of stored procedure</param>
+		''' <param name="observacioneslote">Input parameter of stored procedure</param>
 		''' <param name="func">Input parameter of stored procedure</param>
 		''' <param name="numOpc">Input parameter of stored procedure</param>
 		''' <returns>Amount of rows affected, if the database / routine doesn't surpress rowcounting.</returns>
 		Public Shared Function UspMscloteCortesCab(idLoteFapsa As System.String, fechaCorte As System.DateTime, idCliente As System.Int32, fechaCad As System.DateTime, diasCad As System.Int32, totalPzas As System.Decimal, totalKgs As System.Decimal, consecEtiquetas As System.Decimal, observaciones As System.String, estatus As System.String, fechaCierre As System.DateTime,  _
-fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String) As Integer
+fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, nopiezas As System.Int32, producto As System.Int32, unidad As System.String, conductor As System.String,  _
+placas As System.String, horaviaje As System.Decimal, idproveedor As System.Int32, cvelugcom As System.Int32, cvecomprador As System.Int32, observacioneslote As System.String, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String) As Integer
 			' create parameters
-			Dim parameters() As SqlParameter = New SqlParameter(21 - 1) {}
+			Dim parameters() As SqlParameter = New SqlParameter(31 - 1) {}
 			parameters(1) = New SqlParameter("@IdLoteFapsa", SqlDbType.VarChar, 10, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, idLoteFapsa)
 			parameters(2) = New SqlParameter("@FechaCorte", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaCorte)
 			parameters(3) = New SqlParameter("@IdCliente", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idCliente)
@@ -14375,8 +14387,18 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 			parameters(16) = New SqlParameter("@ObservacionesCancela", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacionesCancela)
 			parameters(17) = New SqlParameter("@Fol_CorPza", SqlDbType.Char, 8, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, folCorPza)
 			parameters(18) = New SqlParameter("@FechaFapsa", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaFapsa)
-			parameters(19) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
-			parameters(20) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
+			parameters(19) = New SqlParameter("@Nopiezas", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, nopiezas)
+			parameters(20) = New SqlParameter("@Producto", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, producto)
+			parameters(21) = New SqlParameter("@Unidad", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, unidad)
+			parameters(22) = New SqlParameter("@Conductor", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, conductor)
+			parameters(23) = New SqlParameter("@Placas", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, placas)
+			parameters(24) = New SqlParameter("@Horaviaje", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, horaviaje)
+			parameters(25) = New SqlParameter("@Idproveedor", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idproveedor)
+			parameters(26) = New SqlParameter("@Cvelugcom", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cvelugcom)
+			parameters(27) = New SqlParameter("@Cvecomprador", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cvecomprador)
+			parameters(28) = New SqlParameter("@Observacioneslote", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacioneslote)
+			parameters(29) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
+			parameters(30) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 			parameters(0) = new SqlParameter("@IdLoteCorte", SqlDbType.VarChar, 9, ParameterDirection.InputOutput, True, 0, 0, "",  DataRowVersion.Current, idLoteCorte)
 			' Call the stored proc.
 			Dim toReturn As Integer = DbUtils.CallActionStoredProcedure("[dbo].[Usp_MSCLoteCortesCab]", parameters, Nothing)
@@ -14411,14 +14433,25 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 		''' <param name="observacionesCancela">Input parameter of stored procedure</param>
 		''' <param name="folCorPza">Input parameter of stored procedure</param>
 		''' <param name="fechaFapsa">Input parameter of stored procedure</param>
+		''' <param name="nopiezas">Input parameter of stored procedure</param>
+		''' <param name="producto">Input parameter of stored procedure</param>
+		''' <param name="unidad">Input parameter of stored procedure</param>
+		''' <param name="conductor">Input parameter of stored procedure</param>
+		''' <param name="placas">Input parameter of stored procedure</param>
+		''' <param name="horaviaje">Input parameter of stored procedure</param>
+		''' <param name="idproveedor">Input parameter of stored procedure</param>
+		''' <param name="cvelugcom">Input parameter of stored procedure</param>
+		''' <param name="cvecomprador">Input parameter of stored procedure</param>
+		''' <param name="observacioneslote">Input parameter of stored procedure</param>
 		''' <param name="func">Input parameter of stored procedure</param>
 		''' <param name="numOpc">Input parameter of stored procedure</param>
 		''' <param name="returnValue">Return value of the stored procedure</param>
 		''' <returns>Amount of rows affected, if the database / routine doesn't surpress rowcounting.</returns>
 		Public Shared Function UspMscloteCortesCab(idLoteFapsa As System.String, fechaCorte As System.DateTime, idCliente As System.Int32, fechaCad As System.DateTime, diasCad As System.Int32, totalPzas As System.Decimal, totalKgs As System.Decimal, consecEtiquetas As System.Decimal, observaciones As System.String, estatus As System.String, fechaCierre As System.DateTime,  _
-fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String, ByRef returnValue As System.Int32) As Integer
+fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, nopiezas As System.Int32, producto As System.Int32, unidad As System.String, conductor As System.String,  _
+placas As System.String, horaviaje As System.Decimal, idproveedor As System.Int32, cvelugcom As System.Int32, cvecomprador As System.Int32, observacioneslote As System.String, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String, ByRef returnValue As System.Int32) As Integer
 			' create parameters. Add 1 to make room for the return value parameter.
-			Dim parameters() As SqlParameter = New SqlParameter(21) {}
+			Dim parameters() As SqlParameter = New SqlParameter(31) {}
 			parameters(1) = New SqlParameter("@IdLoteFapsa", SqlDbType.VarChar, 10, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, idLoteFapsa)
 			parameters(2) = New SqlParameter("@FechaCorte", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaCorte)
 			parameters(3) = New SqlParameter("@IdCliente", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idCliente)
@@ -14437,11 +14470,21 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 			parameters(16) = New SqlParameter("@ObservacionesCancela", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacionesCancela)
 			parameters(17) = New SqlParameter("@Fol_CorPza", SqlDbType.Char, 8, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, folCorPza)
 			parameters(18) = New SqlParameter("@FechaFapsa", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaFapsa)
-			parameters(19) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
-			parameters(20) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
+			parameters(19) = New SqlParameter("@Nopiezas", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, nopiezas)
+			parameters(20) = New SqlParameter("@Producto", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, producto)
+			parameters(21) = New SqlParameter("@Unidad", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, unidad)
+			parameters(22) = New SqlParameter("@Conductor", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, conductor)
+			parameters(23) = New SqlParameter("@Placas", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, placas)
+			parameters(24) = New SqlParameter("@Horaviaje", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, horaviaje)
+			parameters(25) = New SqlParameter("@Idproveedor", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idproveedor)
+			parameters(26) = New SqlParameter("@Cvelugcom", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cvelugcom)
+			parameters(27) = New SqlParameter("@Cvecomprador", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cvecomprador)
+			parameters(28) = New SqlParameter("@Observacioneslote", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacioneslote)
+			parameters(29) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
+			parameters(30) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 			parameters(0) = new SqlParameter("@IdLoteCorte", SqlDbType.VarChar, 9, ParameterDirection.InputOutput, True, 0, 0, "",  DataRowVersion.Current, idLoteCorte)
 			' Return value parameter
-			parameters(21) = new SqlParameter("RETURNVALUE", SqlDbType.Int, 0, ParameterDirection.ReturnValue, True, 10, 0, "",  DataRowVersion.Current, returnValue)			
+			parameters(31) = new SqlParameter("RETURNVALUE", SqlDbType.Int, 0, ParameterDirection.ReturnValue, True, 10, 0, "",  DataRowVersion.Current, returnValue)			
 
 			' Call the stored proc.
 			Dim toReturn As Integer = DbUtils.CallActionStoredProcedure("[dbo].[Usp_MSCLoteCortesCab]", parameters, Nothing)
@@ -14449,7 +14492,7 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 				idLoteCorte = CType(parameters(0).Value, System.String)
 			End If
 
-			returnValue = CType(parameters(21).Value, Integer)
+			returnValue = CType(parameters(31).Value, Integer)
 			Return toReturn
 		End Function
 
@@ -14477,14 +14520,25 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 		''' <param name="observacionesCancela">Input parameter of stored procedure</param>
 		''' <param name="folCorPza">Input parameter of stored procedure</param>
 		''' <param name="fechaFapsa">Input parameter of stored procedure</param>
+		''' <param name="nopiezas">Input parameter of stored procedure</param>
+		''' <param name="producto">Input parameter of stored procedure</param>
+		''' <param name="unidad">Input parameter of stored procedure</param>
+		''' <param name="conductor">Input parameter of stored procedure</param>
+		''' <param name="placas">Input parameter of stored procedure</param>
+		''' <param name="horaviaje">Input parameter of stored procedure</param>
+		''' <param name="idproveedor">Input parameter of stored procedure</param>
+		''' <param name="cvelugcom">Input parameter of stored procedure</param>
+		''' <param name="cvecomprador">Input parameter of stored procedure</param>
+		''' <param name="observacioneslote">Input parameter of stored procedure</param>
 		''' <param name="func">Input parameter of stored procedure</param>
 		''' <param name="numOpc">Input parameter of stored procedure</param>
 		''' <param name="transactionToUse">the transaction to use, or null if no transaction is available.</param>
 		''' <returns>Amount of rows affected, if the database / routine doesn't surpress rowcounting.</returns>
 		Public Shared Function UspMscloteCortesCab(idLoteFapsa As System.String, fechaCorte As System.DateTime, idCliente As System.Int32, fechaCad As System.DateTime, diasCad As System.Int32, totalPzas As System.Decimal, totalKgs As System.Decimal, consecEtiquetas As System.Decimal, observaciones As System.String, estatus As System.String, fechaCierre As System.DateTime,  _
-fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String, transactionToUse As ITransaction) As Integer
+fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, nopiezas As System.Int32, producto As System.Int32, unidad As System.String, conductor As System.String,  _
+placas As System.String, horaviaje As System.Decimal, idproveedor As System.Int32, cvelugcom As System.Int32, cvecomprador As System.Int32, observacioneslote As System.String, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String, transactionToUse As ITransaction) As Integer
 			' create parameters
-			Dim parameters() As SqlParameter = New SqlParameter(21 - 1) {}
+			Dim parameters() As SqlParameter = New SqlParameter(31 - 1) {}
 			parameters(1) = New SqlParameter("@IdLoteFapsa", SqlDbType.VarChar, 10, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, idLoteFapsa)
 			parameters(2) = New SqlParameter("@FechaCorte", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaCorte)
 			parameters(3) = New SqlParameter("@IdCliente", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idCliente)
@@ -14503,8 +14557,18 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 			parameters(16) = New SqlParameter("@ObservacionesCancela", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacionesCancela)
 			parameters(17) = New SqlParameter("@Fol_CorPza", SqlDbType.Char, 8, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, folCorPza)
 			parameters(18) = New SqlParameter("@FechaFapsa", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaFapsa)
-			parameters(19) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
-			parameters(20) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
+			parameters(19) = New SqlParameter("@Nopiezas", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, nopiezas)
+			parameters(20) = New SqlParameter("@Producto", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, producto)
+			parameters(21) = New SqlParameter("@Unidad", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, unidad)
+			parameters(22) = New SqlParameter("@Conductor", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, conductor)
+			parameters(23) = New SqlParameter("@Placas", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, placas)
+			parameters(24) = New SqlParameter("@Horaviaje", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, horaviaje)
+			parameters(25) = New SqlParameter("@Idproveedor", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idproveedor)
+			parameters(26) = New SqlParameter("@Cvelugcom", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cvelugcom)
+			parameters(27) = New SqlParameter("@Cvecomprador", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cvecomprador)
+			parameters(28) = New SqlParameter("@Observacioneslote", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacioneslote)
+			parameters(29) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
+			parameters(30) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 			parameters(0) = new SqlParameter("@IdLoteCorte", SqlDbType.VarChar, 9, ParameterDirection.InputOutput, True, 0, 0, "",  DataRowVersion.Current, idLoteCorte)
 			' Call the stored proc.
 			Dim toReturn As Integer = DbUtils.CallActionStoredProcedure("[dbo].[Usp_MSCLoteCortesCab]", parameters, transactionToUse)
@@ -14539,15 +14603,26 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 		''' <param name="observacionesCancela">Input parameter of stored procedure</param>
 		''' <param name="folCorPza">Input parameter of stored procedure</param>
 		''' <param name="fechaFapsa">Input parameter of stored procedure</param>
+		''' <param name="nopiezas">Input parameter of stored procedure</param>
+		''' <param name="producto">Input parameter of stored procedure</param>
+		''' <param name="unidad">Input parameter of stored procedure</param>
+		''' <param name="conductor">Input parameter of stored procedure</param>
+		''' <param name="placas">Input parameter of stored procedure</param>
+		''' <param name="horaviaje">Input parameter of stored procedure</param>
+		''' <param name="idproveedor">Input parameter of stored procedure</param>
+		''' <param name="cvelugcom">Input parameter of stored procedure</param>
+		''' <param name="cvecomprador">Input parameter of stored procedure</param>
+		''' <param name="observacioneslote">Input parameter of stored procedure</param>
 		''' <param name="func">Input parameter of stored procedure</param>
 		''' <param name="numOpc">Input parameter of stored procedure</param>
 		''' <param name="returnValue">Return value of the stored procedure</param>
 		''' <param name="transactionToUse">the transaction to use, or null if no transaction is available.</param>
 		''' <returns>Amount of rows affected, if the database / routine doesn't surpress rowcounting.</returns>
 		Public Shared Function UspMscloteCortesCab(idLoteFapsa As System.String, fechaCorte As System.DateTime, idCliente As System.Int32, fechaCad As System.DateTime, diasCad As System.Int32, totalPzas As System.Decimal, totalKgs As System.Decimal, consecEtiquetas As System.Decimal, observaciones As System.String, estatus As System.String, fechaCierre As System.DateTime,  _
-fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String, ByRef returnValue As System.Int32, transactionToUse As ITransaction) As Integer
+fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As System.DateTime, idUsuarioCancela As System.Int32, observacionesCancela As System.String, folCorPza As System.String, fechaFapsa As System.DateTime, nopiezas As System.Int32, producto As System.Int32, unidad As System.String, conductor As System.String,  _
+placas As System.String, horaviaje As System.Decimal, idproveedor As System.Int32, cvelugcom As System.Int32, cvecomprador As System.Int32, observacioneslote As System.String, func As System.String, numOpc As System.Int32, ByRef idLoteCorte As System.String, ByRef returnValue As System.Int32, transactionToUse As ITransaction) As Integer
 			' create parameters. Add 1 to make room for the return value parameter.
-			Dim parameters() As SqlParameter = New SqlParameter(21) {}
+			Dim parameters() As SqlParameter = New SqlParameter(31) {}
 			parameters(1) = New SqlParameter("@IdLoteFapsa", SqlDbType.VarChar, 10, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, idLoteFapsa)
 			parameters(2) = New SqlParameter("@FechaCorte", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaCorte)
 			parameters(3) = New SqlParameter("@IdCliente", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idCliente)
@@ -14566,11 +14641,21 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 			parameters(16) = New SqlParameter("@ObservacionesCancela", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacionesCancela)
 			parameters(17) = New SqlParameter("@Fol_CorPza", SqlDbType.Char, 8, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, folCorPza)
 			parameters(18) = New SqlParameter("@FechaFapsa", SqlDbType.DateTime, 0, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, fechaFapsa)
-			parameters(19) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
-			parameters(20) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
+			parameters(19) = New SqlParameter("@Nopiezas", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, nopiezas)
+			parameters(20) = New SqlParameter("@Producto", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, producto)
+			parameters(21) = New SqlParameter("@Unidad", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, unidad)
+			parameters(22) = New SqlParameter("@Conductor", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, conductor)
+			parameters(23) = New SqlParameter("@Placas", SqlDbType.VarChar, 120, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, placas)
+			parameters(24) = New SqlParameter("@Horaviaje", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, horaviaje)
+			parameters(25) = New SqlParameter("@Idproveedor", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, idproveedor)
+			parameters(26) = New SqlParameter("@Cvelugcom", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cvelugcom)
+			parameters(27) = New SqlParameter("@Cvecomprador", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, cvecomprador)
+			parameters(28) = New SqlParameter("@Observacioneslote", SqlDbType.VarChar, 500, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, observacioneslote)
+			parameters(29) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
+			parameters(30) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 			parameters(0) = new SqlParameter("@IdLoteCorte", SqlDbType.VarChar, 9, ParameterDirection.InputOutput, True, 0, 0, "",  DataRowVersion.Current, idLoteCorte)
 			' Return value parameter
-			parameters(21) = new SqlParameter("RETURNVALUE", SqlDbType.Int, 0, ParameterDirection.ReturnValue, True, 10, 0, "",  DataRowVersion.Current, returnValue)			
+			parameters(31) = new SqlParameter("RETURNVALUE", SqlDbType.Int, 0, ParameterDirection.ReturnValue, True, 10, 0, "",  DataRowVersion.Current, returnValue)			
 
 			' Call the stored proc.
 			Dim toReturn As Integer = DbUtils.CallActionStoredProcedure("[dbo].[Usp_MSCLoteCortesCab]", parameters, transactionToUse)
@@ -14578,7 +14663,7 @@ fechaCancela As System.DateTime, motivoCancela As System.String, fechaCaptura As
 				idLoteCorte = CType(parameters(0).Value, System.String)
 			End If
 
-			returnValue = CType(parameters(21).Value, Integer)
+			returnValue = CType(parameters(31).Value, Integer)
 			Return toReturn
 		End Function
 	

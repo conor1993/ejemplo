@@ -205,6 +205,107 @@ Public Class CortesClass
             Entity.Estatus = value
         End Set
     End Property
+    ''------------------------------------------------------------------------------------
+    Property Nopiezas() As Integer
+        Get
+            Return Entity.Nopiezas
+        End Get
+        Set(ByVal value As Integer)
+            Entity.Nopiezas = value
+        End Set
+    End Property
+
+    Property Producto() As Integer
+        Get
+            Return Entity.Producto
+        End Get
+        Set(ByVal value As Integer)
+            Entity.Producto = value
+        End Set
+    End Property
+
+    Property Unidad() As String
+        Get
+            Return Entity.Unidad
+        End Get
+        Set(ByVal value As String)
+            Entity.Unidad = value
+        End Set
+    End Property
+
+    Property Condutor() As String
+        Get
+            Return Entity.Conductor
+        End Get
+        Set(ByVal value As String)
+            Entity.Conductor = value
+        End Set
+    End Property
+
+    Property Placas() As String
+        Get
+            Return Entity.Placas
+        End Get
+        Set(ByVal value As String)
+            Entity.Placas = value
+        End Set
+    End Property
+
+    Property Horaviaje() As Decimal
+        Get
+            Return Entity.Horaviaje
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.Horaviaje = value
+        End Set
+    End Property
+
+    Property Idproveedor() As Integer
+        Get
+            Return Entity.Idproveedor
+        End Get
+        Set(ByVal value As Integer)
+            Entity.Idproveedor = value
+        End Set
+    End Property
+
+    Property Cvelugcom() As Integer
+        Get
+            Return Entity.Cvelugcomp
+        End Get
+        Set(ByVal value As Integer)
+            Entity.Cvelugcomp = value
+        End Set
+    End Property
+
+    Property Cvecomprador() As Integer
+        Get
+            Return Entity.Cvecomprador
+        End Get
+        Set(ByVal value As Integer)
+            Entity.Cvecomprador = value
+        End Set
+    End Property
+
+    Property Observacioneslote() As String
+        Get
+            Return Entity.ObservacionesLotes
+        End Get
+        Set(ByVal value As String)
+            Entity.ObservacionesLotes = value
+        End Set
+    End Property
+
+    Property Conductor() As String
+        Get
+            Return Entity.Unidad
+        End Get
+        Set(ByVal value As String)
+            Entity.Unidad = value
+        End Set
+    End Property
+
+    ''------------------------------------------------------------------------------------
 
     Property Func() As String
         Get
@@ -226,7 +327,7 @@ Public Class CortesClass
 
     Public Overloads Function Guardar(ByRef trans As Integralab.ORM.HelperClasses.Transaction) As Boolean
         Try
-            If SPA.UspMscloteCortesCab(LoteSacrificio, FechaCorte, IdCliente, FechaCad, DiasCad, TotalPzas, TotalKgs, ConsecEtiquetas, Observaciones, Estatus, FechaCierre, FechaCancela, MotivoCancela, FechaCaptura, IdUsuarioCancela, ObservacionesCancela, FolCorPza, FechaFapsa, Func, NumOpc, LoteCorte, trans) = 0 Then
+            If SPA.UspMscloteCortesCab(LoteSacrificio, FechaCorte, IdCliente, FechaCad, DiasCad, TotalPzas, TotalKgs, ConsecEtiquetas, Observaciones, Estatus, FechaCierre, FechaCancela, MotivoCancela, FechaCaptura, IdUsuarioCancela, ObservacionesCancela, FolCorPza, FechaFapsa, Nopiezas, Producto, Unidad, Conductor, Placas, Horaviaje, Idproveedor, Cvelugcom, Cvecomprador, Observacioneslote, Func, NumOpc, LoteCorte, trans) = 0 Then
                 MsgBox("Error al guardar información de lote de corte", MsgBoxStyle.Critical, "Error")
                 Return False
             End If

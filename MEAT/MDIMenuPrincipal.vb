@@ -1523,4 +1523,8 @@ Public Class MDIMenuPrincipal
             MessageBox.Show(ex.Message.ToString() & " Favor de configurar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End Try
     End Sub
+
+    Private Sub AperturaDeLoteDeCortes2ToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AperturaDeLoteDeCortes2ToolStripMenuItem.Click
+        Abrir(FrmAperturaLoteCorte2)
+    End Sub
 End Class

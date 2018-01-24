@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 11 de enero de 2018 10:37:37
+' // Code is generated on: miércoles, 24 de enero de 2018 11:05:22
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -3132,6 +3132,12 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("DetGasTransEntity", "PtjIva"), persistenceProvider.GetFieldPersistenceInfo("DetGasTransEntity", "PtjIva"))
 				Case DetGasTransFieldIndex.ImpteGasto
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("DetGasTransEntity", "ImpteGasto"), persistenceProvider.GetFieldPersistenceInfo("DetGasTransEntity", "ImpteGasto"))
+				Case DetGasTransFieldIndex.Retencion
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("DetGasTransEntity", "Retencion"), persistenceProvider.GetFieldPersistenceInfo("DetGasTransEntity", "Retencion"))
+				Case DetGasTransFieldIndex.NoFactura
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("DetGasTransEntity", "NoFactura"), persistenceProvider.GetFieldPersistenceInfo("DetGasTransEntity", "NoFactura"))
+				Case DetGasTransFieldIndex.CodProveedor
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("DetGasTransEntity", "CodProveedor"), persistenceProvider.GetFieldPersistenceInfo("DetGasTransEntity", "CodProveedor"))
 
 			End Select
 			Return fieldToReturn
@@ -6968,6 +6974,26 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "FechaFapsa"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "FechaFapsa"))
 				Case MscloteCortesCabFieldIndex.EsReproceso
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "EsReproceso"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "EsReproceso"))
+				Case MscloteCortesCabFieldIndex.Nopiezas
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Nopiezas"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Nopiezas"))
+				Case MscloteCortesCabFieldIndex.Producto
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Producto"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Producto"))
+				Case MscloteCortesCabFieldIndex.Unidad
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Unidad"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Unidad"))
+				Case MscloteCortesCabFieldIndex.Conductor
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Conductor"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Conductor"))
+				Case MscloteCortesCabFieldIndex.Placas
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Placas"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Placas"))
+				Case MscloteCortesCabFieldIndex.Horaviaje
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Horaviaje"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Horaviaje"))
+				Case MscloteCortesCabFieldIndex.Idproveedor
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Idproveedor"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Idproveedor"))
+				Case MscloteCortesCabFieldIndex.Cvelugcomp
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Cvelugcomp"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Cvelugcomp"))
+				Case MscloteCortesCabFieldIndex.Cvecomprador
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Cvecomprador"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Cvecomprador"))
+				Case MscloteCortesCabFieldIndex.ObservacionesLotes
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "ObservacionesLotes"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "ObservacionesLotes"))
 
 			End Select
 			Return fieldToReturn

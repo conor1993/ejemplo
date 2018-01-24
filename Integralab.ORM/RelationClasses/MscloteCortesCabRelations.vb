@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 11 de enero de 2018 10:37:31
+' // Code is generated on: miércoles, 24 de enero de 2018 11:05:15
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -45,6 +45,21 @@ Namespace Integralab.ORM.RelationClasses
 		End Property
 	
 	
+	
+		''' <summary>Returns a new IEntityRelation Object, between MscloteCortesCabEntity and McgcatTiposdeGanadoEntity over the m:1 relation they have, using the relation between the fields:
+		''' MscloteCortesCab.Producto - McgcatTiposdeGanado.IdTipoGanado
+		''' </summary>
+		Public Overridable  ReadOnly Property McgcatTiposdeGanadoEntityUsingProducto() As IEntityRelation
+			Get
+
+				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+				relation.StartEntityIsPkSide = False
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(McgcatTiposdeGanadoFieldIndex.IdTipoGanado), EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Producto))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("McgcatTiposdeGanadoEntity", False)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MscloteCortesCabEntity", True)
+				Return relation
+			End Get
+		End Property
 	
 		
 		''' <summary>stub, not used In this entity, only For TargetPerEntity entities.</summary>

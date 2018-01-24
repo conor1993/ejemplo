@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 11 de enero de 2018 10:37:27
+' // Code is generated on: miércoles, 24 de enero de 2018 11:05:10
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -63,6 +63,88 @@ Namespace Integralab.ORM.CollectionClasses
 			MyBase.New(info, context)
 		End Sub
 
+	
+		''' <summary>Retrieves in this MscloteCortesCabCollection Object all MscloteCortesCabEntity objects which have data in common
+		''' with the specified related Entities.
+		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
+		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the MscloteCortesCabEntity objects to Return</param>
+		''' <returns>true if succeeded, false otherwise</returns>
+		Public Overloads Function GetMultiManyToOne(mcgcatTiposdeGanadoInstance As IEntity) As Boolean
+			Return GetMultiManyToOne(mcgcatTiposdeGanadoInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Nothing, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this MscloteCortesCabCollection Object all MscloteCortesCabEntity objects which have data in common
+		''' with the specified related Entities.
+		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
+		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the MscloteCortesCabEntity objects to Return</param>
+		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
+		''' <returns>true if succeeded, false otherwise</returns>
+		Public Overloads Function GetMultiManyToOne(mcgcatTiposdeGanadoInstance As IEntity, Filter As IPredicateExpression) As Boolean
+			Return GetMultiManyToOne(mcgcatTiposdeGanadoInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Filter, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this MscloteCortesCabCollection Object all MscloteCortesCabEntity objects which have data in common
+		''' with the specified related Entities.
+		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
+		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the MscloteCortesCabEntity objects to Return</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
+		''' <returns>true if succeeded, false otherwise</returns>
+		Public Overloads Function GetMultiManyToOne(mcgcatTiposdeGanadoInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression) As Boolean
+			Return GetMultiManyToOne(mcgcatTiposdeGanadoInstance, maxNumberOfItemsToReturn, sortClauses, Filter, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this MscloteCortesCabCollection Object all MscloteCortesCabEntity objects which have data in common
+		''' with the specified related Entities.
+		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
+		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the MscloteCortesCabEntity objects to Return</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
+		''' <param name="pageNumber">The page number to retrieve.</param>
+		''' <param name="pageSize">The page size of the page to retrieve.</param>
+		''' <returns>true if succeeded, false otherwise</returns>
+		Public Overloads Overridable Function GetMultiManyToOne(mcgcatTiposdeGanadoInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+			Dim validParameters As Boolean = False
+			validParameters = validParameters Or Not (mcgcatTiposdeGanadoInstance Is Nothing)
+			If Not validParameters Then
+				Return GetMulti(Filter, maxNumberOfItemsToReturn, sortClauses, Nothing, pageNumber, pageSize)
+			End If
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+			Dim dao As MscloteCortesCabDAO = DAOFactory.CreateMscloteCortesCabDAO()
+			Return dao.GetMulti(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, Filter, mcgcatTiposdeGanadoInstance, pageNumber, pageSize)
+		End Function
+
+		''' <summary>Deletes from the persistent storage all MscloteCortesCab entities which have data in common
+		''' with the specified related Entities.
+		''' If one is omitted, that entity is not used as a filter.</summary>
+		''' <remarks>Runs directly on the persistent storage. It will not delete entity objects from the current collection.</remarks>
+		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the MscloteCortesCabEntity objects to Return</param>
+		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
+		Public Overloads Function DeleteMultiManyToOne(mcgcatTiposdeGanadoInstance As IEntity) As Integer
+			Dim dao As MscloteCortesCabDAO = DAOFactory.CreateMscloteCortesCabDAO()
+			Return dao.DeleteMulti(MyBase.Transaction, mcgcatTiposdeGanadoInstance)
+		End Function
+
+
+		''' <summary>Updates in the persistent storage all MscloteCortesCab entities which have data in common with the specified related Entities.
+		''' If one is omitted, that entity is not used as a filter.
+		''' Which fields are updated in those matching entities depends on which fields are
+		''' <i>changed</i> in the passed in entity entityWithNewValues. The new values of these fields are read from entityWithNewValues. </summary>
+		''' <param name="entityWithNewValues">MscloteCortesCabEntity instance which holds the new values for the matching entities to update. Only
+		''' changed fields are taken into account</param>
+		''' <param name="mcgcatTiposdeGanadoInstance">McgcatTiposdeGanadoEntity instance to use as a filter for the MscloteCortesCabEntity objects to Return</param>
+		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
+		Public Overloads Function UpdateMultiManyToOne(entityWithNewValues As MscloteCortesCabEntity, mcgcatTiposdeGanadoInstance As IEntity) As Integer
+			Dim dao As MscloteCortesCabDAO = DAOFactory.CreateMscloteCortesCabDAO()
+			Return dao.UpdateMulti(entityWithNewValues, MyBase.Transaction, mcgcatTiposdeGanadoInstance)
+		End Function
 	
 	
 		''' <summary>Retrieves in this MscloteCortesCabCollection Object all MscloteCortesCabEntity objects which are related via a 
