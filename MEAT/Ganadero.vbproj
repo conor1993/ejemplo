@@ -13,7 +13,7 @@
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
     <SignManifests>true</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>JSLogo32.ico</ApplicationIcon>
@@ -37,7 +37,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\MEAT\1.0.47.47\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\MEAT\1.0.48.48\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -52,8 +52,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>47</ApplicationRevision>
-    <ApplicationVersion>1.0.47.47</ApplicationVersion>
+    <ApplicationRevision>48</ApplicationRevision>
+    <ApplicationVersion>1.0.48.48</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -1856,6 +1856,12 @@
       <DependentUpon>frmPolizaFacturaRecibaVenta.vb</DependentUpon>
     </Compile>
     <Compile Include="Polizas\frmPolizaFacturaRecibaVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produccion\FrmCapturaProdTerminado.Designer.vb">
+      <DependentUpon>FrmCapturaProdTerminado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\FrmCapturaProdTerminado.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Produccion\fmrAvisoAntesReimprimirEtiqeutas.Designer.vb">
@@ -4280,6 +4286,10 @@
     <EmbeddedResource Include="Polizas\frmPolizaFacturaRecibaVenta.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmPolizaFacturaRecibaVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion\FrmCapturaProdTerminado.resx">
+      <DependentUpon>FrmCapturaProdTerminado.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Produccion\fmrAvisoAntesReimprimirEtiqeutas.resx">
       <SubType>Designer</SubType>

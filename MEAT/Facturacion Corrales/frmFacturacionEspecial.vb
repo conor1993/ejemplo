@@ -250,7 +250,10 @@ Public Class frmFacturacionEspecial
                     Dim Concepto As CFDI.ComprobanteConcepto
 
                     With row
-                        Concepto = New CFDI.ComprobanteConcepto(.Cells(clmProductoServicio.Index).Value.ToString(), .Cells(clmUnidadSat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
+                        Dim CveProdServ = DirectCast([Enum].Parse(GetType(CFDI.c_ClaveProdServ), .Cells(clmProductoServicio.Index).Value.ToString()), CFDI.c_ClaveProdServ)
+                        Dim CveUnidadS = DirectCast([Enum].Parse(GetType(CFDI.c_ClaveUnidad), .Cells(clmUnidadSat.Index).Value.ToString()), CFDI.c_ClaveUnidad)
+
+                        Concepto = New CFDI.ComprobanteConcepto(CveProdServ, CveUnidadS, String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
                         Dim ComprobanteImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
                         'If CDec(.Cells(clmIVA.Index).Value) > 0 Then
                         Dim PorcIva As Decimal
