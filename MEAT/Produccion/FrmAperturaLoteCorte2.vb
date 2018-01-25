@@ -39,37 +39,75 @@ Public Class FrmAperturaLoteCorte2
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
         Try
 
-                Dim LoteCorte As New CortesClass
-                LoteCorte.LoteSacrificio = Me.txtFolioSacrificio.Text
-                LoteCorte.FechaCorte = Me.dtpFechaLoteCorte.Value
-                LoteCorte.FechaFapsa = Me.dtpFechaSacrificio.Value
-                LoteCorte.IdCliente = Me.txtCodCliente.Text
-                LoteCorte.DiasCad = Me.txtDiasCaducidad.Text
-                LoteCorte.FechaCad = Me.dtpFechaCaducidad.Value
-                LoteCorte.Observaciones = Me.txtObservaciones.Text
-                LoteCorte.Estatus = "A"
-                LoteCorte.Func = "A"
-                LoteCorte.NumOpc = 1
+            Dim LoteCorte As New CortesClass
+            LoteCorte.LoteSacrificio = Me.txtFolioSacrificio.Text
+            LoteCorte.FechaCorte = Me.dtpFechaLoteCorte.Value
+            LoteCorte.FechaFapsa = Me.dtpFechaSacrificio.Value
+            LoteCorte.IdCliente = 0
+            LoteCorte.DiasCad = Me.txtDiasCaducidad.Text
+            LoteCorte.FechaCad = Me.dtpFechaCaducidad.Value
+            LoteCorte.Observaciones = Me.txtObservaciones.Text
+            LoteCorte.Estatus = "A"
+            LoteCorte.Func = "A"
+            LoteCorte.NumOpc = 1
 
-                ''nuevos datos -------------------------------
-                LoteCorte.Nopiezas = txtNoPiezas.Text
-                LoteCorte.Producto = CmbTipoGanado.SelectedValue
-                LoteCorte.Unidad = txtUnidad.Text
-                LoteCorte.Conductor = txtConductor.Text
-                LoteCorte.Placas = txtPlacas.Text
-                LoteCorte.Horaviaje = txtHorasViaje.Text
-                LoteCorte.Idproveedor = cmbProveedor.SelectedValue
-                LoteCorte.Cvelugcom = CmbLugarCompra.SelectedValue
-                LoteCorte.Cvecomprador = cmbComprador.SelectedValue
-                LoteCorte.Observacioneslote = txtobserbacioneslote.Text
+            ''nuevos datos -------------------------------
+            LoteCorte.Nopiezas = txtNoPiezas.Text
+            LoteCorte.Producto = CmbTipoGanado.SelectedValue
+            LoteCorte.Unidad = txtUnidad.Text
+            LoteCorte.Conductor = txtConductor.Text
+            LoteCorte.Placas = txtPlacas.Text
+            LoteCorte.Horaviaje = txtHorasViaje.Text
+            LoteCorte.Idproveedor = cmbProveedor.SelectedValue
+            LoteCorte.Cvelugcom = CmbLugarCompra.SelectedValue
+            LoteCorte.Cvecomprador = cmbComprador.SelectedValue
+            LoteCorte.Observacioneslote = txtobserbacioneslote.Text
+            LoteCorte.KilosRecibidos = txtKilosRecibidos.Text
+            LoteCorte.Nofactura = txtNoFactura.Text
+            LoteCorte.Importe = txtImporte.Text
 
-                If Not LoteCorte.Guardar(Trans) Then
-                    Trans.Rollback()
-                    Return False
+            If Not LoteCorte.Guardar(Trans) Then
+                Trans.Rollback()
+                Return False
+            End If
+
+
+            Dim Gastos As New ClasesNegocio.GastoTransporteClass(LoteCorte.LoteCorte)
+            If Not Gastos.Folio.Equals("") Then
+                If DgvConceptoGastos.Rows.Count > 1 Then
+                    Gastos.Folio = LoteCorte.LoteCorte
+                    Gastos.FechaRecepcion = LoteCorte.FechaCorte
+                    Gastos.ImporteTotal = CDec(Me.txtTotal.Text.Replace("$", ""))
+                    Gastos.IVA = CDec(Me.txtIVA.Text.Replace("$", ""))
+
+                    'If Gastos.Detalle.Count = DgvConceptoGastos.RowCount Then
+                    For Each Fila As DataGridViewRow In DgvConceptoGastos.Rows
+                        If Not Fila.IsNewRow Then
+                            Dim gastoDetalle As New ClasesNegocio.GastoTransporteDetalleClass()
+                            gastoDetalle.Folio = Gastos.Folio
+                            gastoDetalle.Renglon = (Fila.Index + 1)
+                            gastoDetalle.IdGasto = Fila.Cells(clmcmbConceptoGasto.Index).Value
+                            gastoDetalle.PorcentajeIva = Fila.Cells(clmtxtIva.Index).Value
+                            gastoDetalle.ImporteGasto = Fila.Cells(clmtxtImporteGasto.Index).Value
+                            Gastos.Detalle.Add(gastoDetalle)
+                        End If
+                    Next
+                    'End If
+
+                    If Not Gastos.Guardar(Trans) Then
+                        Trans.Rollback()
+                        Return False
+                    End If
+
                 End If
-                Me.txtLoteCorte.Text = LoteCorte.LoteCorte
-                Trans.Commit()
-                Return True
+
+
+            End If
+
+
+            Me.txtLoteCorte.Text = LoteCorte.LoteCorte
+            Trans.Commit()
+            Return True
         Catch ex As Exception
             MessageBox.Show(ex.Message, "ERP FLEXI", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Trans.Rollback()
@@ -81,9 +119,9 @@ Public Class FrmAperturaLoteCorte2
     Private Function Limpiar() As Boolean
         Me.txtLoteCorte.Text = 0
         Me.txtFolioSacrificio.Text = ""
-        Me.txtCodCliente.Text = 0
+
         Me.txtDiasCaducidad.Text = 0
-        Me.txtNombre.Text = ""
+
         Me.txtObservaciones.Text = ""
         Me.dtpFechaCaducidad.Value = Now
         Me.dtpFechaLoteCorte.Value = Now
@@ -155,23 +193,8 @@ Public Class FrmAperturaLoteCorte2
         End If
     End Sub
 
-    Private Sub dtpFechaSacrificio_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles dtpFechaSacrificio.KeyPress
-        If e.KeyChar = Chr(13) Then
-            Me.txtCodCliente.Focus()
-        End If
-    End Sub
 
-    Private Sub txtCodCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCodCliente.KeyPress
-        If Not e.KeyChar = Chr(8) And Not IsNumeric(e.KeyChar) Then
-            e.Handled = True
-        End If
-        If e.KeyChar = Chr(13) Then
-            Me.txtCodCliente.Focus()
-        End If
-    End Sub
-
-
-    Private Sub txtNombre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress
+    Private Sub txtNombre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If e.KeyChar = Chr(13) Then
             Me.txtDiasCaducidad.Focus()
         End If
@@ -196,13 +219,14 @@ Public Class FrmAperturaLoteCorte2
             Dim lugares As New LugaresDeCompraCollectionClass
             Dim CompradoresGanadoC As New ClasesNegocio.CompradorGanadoCollectionClass
             Dim ConceptosGasto As New ClasesNegocio.ConceptoGastosTransporteColeccionClass
+            Dim productos As New ClasesNegocio.ProductosCollectionsClass
 
 
 
-            TipoGanado.Obtener()
+            productos.Obtener()
             Me.CmbTipoGanado.DisplayMember = "Descripcion"
-            Me.CmbTipoGanado.ValueMember = "IdTipoGanado"
-            Me.CmbTipoGanado.DataSource = TipoGanado
+            Me.CmbTipoGanado.ValueMember = "IdProducto"
+            Me.CmbTipoGanado.DataSource = productos
             Me.CmbTipoGanado.SelectedIndex = -1
 
 
@@ -239,4 +263,57 @@ Public Class FrmAperturaLoteCorte2
         End Try
     End Function
 
+    Private Sub DgvConceptoGastos_CellEndEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvConceptoGastos.CellEndEdit
+        If e.ColumnIndex = clmtxtImporteGasto.Index Or e.ColumnIndex = clmtxtIva.Index Then
+            DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N2")
+            calcular()
+        End If
+    End Sub
+    Public Sub calcular()
+        Dim sumaSubTotal As Decimal, sumaIVA As Decimal
+        sumaIVA = 0
+        sumaSubTotal = 0
+        For Each row As DataGridViewRow In DgvConceptoGastos.Rows
+            If Not row.IsNewRow Then
+                sumaIVA += Math.Round(CDec(row.Cells(clmtxtImporteGasto.Index).Value) * (CDec(row.Cells(clmtxtIva.Index).Value) / 100), 2)
+                sumaSubTotal += Math.Round(CDec(row.Cells(clmtxtImporteGasto.Index).Value), 2)
+            End If
+        Next
+        txtSubTotal.Text = sumaSubTotal.ToString("N2")
+        txtIVA.Text = sumaIVA.ToString("N2")
+        txtTotal.Text = (sumaIVA + sumaSubTotal).ToString("N2")
+    End Sub
+
+
+    Private Sub DgvConceptoGastos_RowValidating(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvConceptoGastos.RowValidating
+        'If clmcmbConceptoGasto.Index = e.ColumnIndex or Then
+        'MessageBox.Show(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If DgvConceptoGastos.Rows(e.RowIndex).IsNewRow Then
+            e.Cancel = False
+            Return
+        End If
+
+        If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit) Is Nothing Then
+            e.Cancel = True
+            MessageBox.Show("Seleccione un concepto...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        ' End If
+        'If clmtxtImporteGasto.Index = e.ColumnIndex Then
+        If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit).ToString().Equals("") Then
+            e.Cancel = True
+            MessageBox.Show("Se debe ingresar el importe...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+        ' End If
+    End Sub
+
+    Private Sub DgvConceptoGastos_KeyDown(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles DgvConceptoGastos.KeyDown
+        If e.KeyCode = Keys.Delete Then
+            Dim i As Integer = DgvConceptoGastos.CurrentCell.RowIndex
+            If Not DgvConceptoGastos.Rows(i).IsNewRow Then
+                DgvConceptoGastos.Rows.RemoveAt(i)
+                calcular()
+            End If
+        End If
+    End Sub
 End Class

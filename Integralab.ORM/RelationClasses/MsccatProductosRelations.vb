@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 25 de enero de 2018 09:23:43
+' // Code is generated on: jueves, 25 de enero de 2018 11:40:25
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -115,6 +115,21 @@ Namespace Integralab.ORM.RelationClasses
 				relation.AddEntityFieldPair(EntityFieldFactory.Create(MsccatProductosFieldIndex.IdProducto), EntityFieldFactory.Create(MscinventarioProductoFieldIndex.IdCodProducto))
 				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MsccatProductosEntity", True)
 				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MscinventarioProductoEntity", False)
+				Return relation
+			End Get
+		End Property
+	
+		''' <summary>Returns a new IEntityRelation Object, between MsccatProductosEntity and MscloteCortesCabEntity over the 1:n relation they have, using the relation between the fields:
+		''' MsccatProductos.IdProducto - MscloteCortesCab.Producto
+		''' </summary>
+		Public Overridable ReadOnly Property MscloteCortesCabEntityUsingProducto() As IEntityRelation
+			Get
+
+				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
+				relation.StartEntityIsPkSide = True
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(MsccatProductosFieldIndex.IdProducto), EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Producto))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MsccatProductosEntity", True)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MscloteCortesCabEntity", False)
 				Return relation
 			End Get
 		End Property

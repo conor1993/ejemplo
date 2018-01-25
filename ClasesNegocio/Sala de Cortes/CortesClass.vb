@@ -296,6 +296,36 @@ Public Class CortesClass
         End Set
     End Property
 
+    Property KilosRecibidos() As Decimal
+        Get
+            Return Entity.KilosRecibidos
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.KilosRecibidos = value
+        End Set
+    End Property
+
+    Property Nofactura() As String
+        Get
+            Return Entity.Nofactura
+        End Get
+        Set(ByVal value As String)
+            Entity.Nofactura = value
+        End Set
+    End Property
+
+
+
+    Property Importe() As Decimal
+        Get
+            Return Entity.Importe
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.Importe = value
+        End Set
+    End Property
+
+
     Property Conductor() As String
         Get
             Return Entity.Unidad
@@ -327,7 +357,7 @@ Public Class CortesClass
 
     Public Overloads Function Guardar(ByRef trans As Integralab.ORM.HelperClasses.Transaction) As Boolean
         Try
-            If SPA.UspMscloteCortesCab(LoteSacrificio, FechaCorte, IdCliente, FechaCad, DiasCad, TotalPzas, TotalKgs, ConsecEtiquetas, Observaciones, Estatus, FechaCierre, FechaCancela, MotivoCancela, FechaCaptura, IdUsuarioCancela, ObservacionesCancela, FolCorPza, FechaFapsa, Nopiezas, Producto, Unidad, Conductor, Placas, Horaviaje, Idproveedor, Cvelugcom, Cvecomprador, Observacioneslote, Func, NumOpc, LoteCorte, trans) = 0 Then
+            If SPA.UspMscloteCortesCab(LoteSacrificio, FechaCorte, IdCliente, FechaCad, DiasCad, TotalPzas, TotalKgs, ConsecEtiquetas, Observaciones, Estatus, FechaCierre, FechaCancela, MotivoCancela, FechaCaptura, IdUsuarioCancela, ObservacionesCancela, FolCorPza, FechaFapsa, Nopiezas, Producto, Unidad, Conductor, Placas, Horaviaje, Idproveedor, Cvelugcom, Cvecomprador, Observacioneslote, KilosRecibidos, Nofactura, Importe, Func, NumOpc, LoteCorte, trans) = 0 Then
                 MsgBox("Error al guardar información de lote de corte", MsgBoxStyle.Critical, "Error")
                 Return False
             End If

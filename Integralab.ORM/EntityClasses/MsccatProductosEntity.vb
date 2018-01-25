@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 25 de enero de 2018 09:23:47
+' // Code is generated on: jueves, 25 de enero de 2018 11:40:28
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -54,6 +54,8 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchDevolucionProductos, _alreadyFetchedDevolucionProductos As Boolean
 		Private _mscinventarioProducto As Integralab.ORM.CollectionClasses.MscinventarioProductoCollection
 		Private _alwaysFetchMscinventarioProducto, _alreadyFetchedMscinventarioProducto As Boolean
+		Private _mscloteCortesCab As Integralab.ORM.CollectionClasses.MscloteCortesCabCollection
+		Private _alwaysFetchMscloteCortesCab, _alreadyFetchedMscloteCortesCab As Boolean
 		Private _mscloteCortesDet As Integralab.ORM.CollectionClasses.MscloteCortesDetCollection
 		Private _alwaysFetchMscloteCortesDet, _alreadyFetchedMscloteCortesDet As Boolean
 		Private _mscloteCortesDet_ As Integralab.ORM.CollectionClasses.MscloteCortesDetCollection
@@ -157,6 +159,9 @@ Namespace Integralab.ORM.EntityClasses
 			_mscinventarioProducto = CType(info.GetValue("_mscinventarioProducto", GetType(Integralab.ORM.CollectionClasses.MscinventarioProductoCollection)), Integralab.ORM.CollectionClasses.MscinventarioProductoCollection)
 			_alwaysFetchMscinventarioProducto = info.GetBoolean("_alwaysFetchMscinventarioProducto")
 			_alreadyFetchedMscinventarioProducto = info.GetBoolean("_alreadyFetchedMscinventarioProducto")
+			_mscloteCortesCab = CType(info.GetValue("_mscloteCortesCab", GetType(Integralab.ORM.CollectionClasses.MscloteCortesCabCollection)), Integralab.ORM.CollectionClasses.MscloteCortesCabCollection)
+			_alwaysFetchMscloteCortesCab = info.GetBoolean("_alwaysFetchMscloteCortesCab")
+			_alreadyFetchedMscloteCortesCab = info.GetBoolean("_alreadyFetchedMscloteCortesCab")
 			_mscloteCortesDet = CType(info.GetValue("_mscloteCortesDet", GetType(Integralab.ORM.CollectionClasses.MscloteCortesDetCollection)), Integralab.ORM.CollectionClasses.MscloteCortesDetCollection)
 			_alwaysFetchMscloteCortesDet = info.GetBoolean("_alwaysFetchMscloteCortesDet")
 			_alreadyFetchedMscloteCortesDet = info.GetBoolean("_alreadyFetchedMscloteCortesDet")
@@ -235,6 +240,7 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedMsccortesPreCortes_ = (_msccortesPreCortes_.Count > 0)
 			_alreadyFetchedDevolucionProductos = (_devolucionProductos.Count > 0)
 			_alreadyFetchedMscinventarioProducto = (_mscinventarioProducto.Count > 0)
+			_alreadyFetchedMscloteCortesCab = (_mscloteCortesCab.Count > 0)
 			_alreadyFetchedMscloteCortesDet = (_mscloteCortesDet.Count > 0)
 			_alreadyFetchedMscloteCortesDet_ = (_mscloteCortesDet_.Count > 0)
 			_alreadyFetchedMscloteCortesDetComparacion = (_mscloteCortesDetComparacion.Count > 0)
@@ -320,6 +326,9 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_mscinventarioProducto", _mscinventarioProducto)
 			info.AddValue("_alwaysFetchMscinventarioProducto", _alwaysFetchMscinventarioProducto)
 			info.AddValue("_alreadyFetchedMscinventarioProducto", _alreadyFetchedMscinventarioProducto)
+			info.AddValue("_mscloteCortesCab", _mscloteCortesCab)
+			info.AddValue("_alwaysFetchMscloteCortesCab", _alwaysFetchMscloteCortesCab)
+			info.AddValue("_alreadyFetchedMscloteCortesCab", _alreadyFetchedMscloteCortesCab)
 			info.AddValue("_mscloteCortesDet", _mscloteCortesDet)
 			info.AddValue("_alwaysFetchMscloteCortesDet", _alwaysFetchMscloteCortesDet)
 			info.AddValue("_alreadyFetchedMscloteCortesDet", _alreadyFetchedMscloteCortesDet)
@@ -421,6 +430,11 @@ Namespace Integralab.ORM.EntityClasses
 					_alreadyFetchedMscinventarioProducto = True
 					If Not entity Is Nothing Then
 						Me.MscinventarioProducto.Add(CType(entity, MscinventarioProductoEntity))
+					End If
+				Case "MscloteCortesCab"
+					_alreadyFetchedMscloteCortesCab = True
+					If Not entity Is Nothing Then
+						Me.MscloteCortesCab.Add(CType(entity, MscloteCortesCabEntity))
 					End If
 				Case "MscloteCortesDet"
 					_alreadyFetchedMscloteCortesDet = True
@@ -537,6 +551,9 @@ Namespace Integralab.ORM.EntityClasses
 				Case "MscinventarioProducto"
 					_mscinventarioProducto.Add(CType(relatedEntity, MscinventarioProductoEntity))
 					OnRelatedEntitySet(relatedEntity, fieldName)
+				Case "MscloteCortesCab"
+					_mscloteCortesCab.Add(CType(relatedEntity, MscloteCortesCabEntity))
+					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "MscloteCortesDet"
 					_mscloteCortesDet.Add(CType(relatedEntity, MscloteCortesDetEntity))
 					OnRelatedEntitySet(relatedEntity, fieldName)
@@ -608,6 +625,9 @@ Namespace Integralab.ORM.EntityClasses
 					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "MscinventarioProducto"
 					MyBase.PerformRelatedEntityRemoval(_mscinventarioProducto, relatedEntity, signalRelatedEntityManyToOne)
+					OnRelatedEntityUnset(relatedEntity, fieldName)
+				Case "MscloteCortesCab"
+					MyBase.PerformRelatedEntityRemoval(_mscloteCortesCab, relatedEntity, signalRelatedEntityManyToOne)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "MscloteCortesDet"
 					MyBase.PerformRelatedEntityRemoval(_mscloteCortesDet, relatedEntity, signalRelatedEntityManyToOne)
@@ -693,6 +713,7 @@ Namespace Integralab.ORM.EntityClasses
 			toReturn.Add(_msccortesPreCortes_)
 			toReturn.Add(_devolucionProductos)
 			toReturn.Add(_mscinventarioProducto)
+			toReturn.Add(_mscloteCortesCab)
 			toReturn.Add(_mscloteCortesDet)
 			toReturn.Add(_mscloteCortesDet_)
 			toReturn.Add(_mscloteCortesDetComparacion)
@@ -1135,6 +1156,61 @@ Namespace Integralab.ORM.EntityClasses
 		Public Overridable Sub SetCollectionParametersMscinventarioProducto(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
 			_mscinventarioProducto.SortClauses=sortClauses
 			_mscinventarioProducto.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
+		End Sub
+	
+		''' <summary>Retrieves all related entities of type 'MscloteCortesCabEntity' Imports a relation of type '1:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <returns>Filled collection with all related entities of type 'MscloteCortesCabEntity'</returns>
+		Public Function GetMultiMscloteCortesCab(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.MscloteCortesCabCollection
+			Return GetMultiMscloteCortesCab(forceFetch, _mscloteCortesCab.EntityFactoryToUse, Nothing)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'MscloteCortesCabEntity' Imports a relation of type '1:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToOne() routine.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Function GetMultiMscloteCortesCab(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.MscloteCortesCabCollection
+			Return GetMultiMscloteCortesCab(forceFetch, entityFactoryToUse, Nothing)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'MscloteCortesCabEntity' Imports a relation of type '1:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="filter">Extra filter to limit the resultset.</param>
+		''' <returns>Filled collection with all related entities of type 'MscloteCortesCabEntity'</returns>
+		Public Function GetMultiMscloteCortesCab(forceFetch As Boolean, Filter As IPredicateExpression) As Integralab.ORM.CollectionClasses.MscloteCortesCabCollection
+			Return GetMultiMscloteCortesCab(forceFetch, _mscloteCortesCab.EntityFactoryToUse, Filter)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'MscloteCortesCabEntity' Imports a relation of type '1:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToOne() routine.</param>
+		''' <param name="filter">Extra filter to limit the resultset.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Overridable Function GetMultiMscloteCortesCab(forceFetch As Boolean, entityFactoryToUse As IEntityFactory, Filter As IPredicateExpression) As Integralab.ORM.CollectionClasses.MscloteCortesCabCollection
+			If ( Not _alreadyFetchedMscloteCortesCab Or forceFetch Or _alwaysFetchMscloteCortesCab) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
+				If MyBase.ParticipatesInTransaction Then
+					If Not _mscloteCortesCab.ParticipatesInTransaction Then
+						MyBase.Transaction.Add(_mscloteCortesCab)
+					End If
+				End If
+				_mscloteCortesCab.SuppressClearInGetMulti = Not forceFetch
+				If Not entityFactoryToUse Is Nothing Then
+					_mscloteCortesCab.EntityFactoryToUse = entityFactoryToUse
+				End If
+				_mscloteCortesCab.GetMultiManyToOne(Me, Filter)
+				_mscloteCortesCab.SuppressClearInGetMulti = False
+				_alreadyFetchedMscloteCortesCab = True
+			End If
+			Return _mscloteCortesCab
+		End Function
+
+		''' <summary>Sets the collection parameters for the collection for 'MscloteCortesCab'. These settings will be taken into account
+		''' when the property MscloteCortesCab is requested or GetMultiMscloteCortesCab is called.</summary>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
+		Public Overridable Sub SetCollectionParametersMscloteCortesCab(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
+			_mscloteCortesCab.SortClauses=sortClauses
+			_mscloteCortesCab.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub
 	
 		''' <summary>Retrieves all related entities of type 'MscloteCortesDetEntity' Imports a relation of type '1:n'.</summary>
@@ -2096,6 +2172,7 @@ Namespace Integralab.ORM.EntityClasses
 			_msccortesPreCortes_.ActiveContext = MyBase.ActiveContext
 			_devolucionProductos.ActiveContext = MyBase.ActiveContext
 			_mscinventarioProducto.ActiveContext = MyBase.ActiveContext
+			_mscloteCortesCab.ActiveContext = MyBase.ActiveContext
 			_mscloteCortesDet.ActiveContext = MyBase.ActiveContext
 			_mscloteCortesDet_.ActiveContext = MyBase.ActiveContext
 			_mscloteCortesDetComparacion.ActiveContext = MyBase.ActiveContext
@@ -2213,6 +2290,10 @@ Namespace Integralab.ORM.EntityClasses
 			_mscinventarioProducto.SetContainingEntityInfo(Me, "MsccatProductos")
 			_alwaysFetchMscinventarioProducto = False
 			_alreadyFetchedMscinventarioProducto = False
+			_mscloteCortesCab = New Integralab.ORM.CollectionClasses.MscloteCortesCabCollection(New MscloteCortesCabEntityFactory())
+			_mscloteCortesCab.SetContainingEntityInfo(Me, "MsccatProductos")
+			_alwaysFetchMscloteCortesCab = False
+			_alreadyFetchedMscloteCortesCab = False
 			_mscloteCortesDet = New Integralab.ORM.CollectionClasses.MscloteCortesDetCollection(New MscloteCortesDetEntityFactory())
 			_mscloteCortesDet.SetContainingEntityInfo(Me, "MsccatProductosPreCorte")
 			_alwaysFetchMscloteCortesDet = False
@@ -2531,6 +2612,17 @@ Namespace Integralab.ORM.EntityClasses
 				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.MscinventarioProductoCollection(), _
 					MsccatProductosEntity.Relations.MscinventarioProductoEntityUsingIdCodProducto, _
 					CType(Integralab.ORM.EntityType.MsccatProductosEntity, Integer), CType(Integralab.ORM.EntityType.MscinventarioProductoEntity, Integer), 0, Nothing, Nothing, Nothing, "MscinventarioProducto", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'MscloteCortesCab' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath2 instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathMscloteCortesCab() As IPrefetchPathElement
+			Get
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.MscloteCortesCabCollection(), _
+					MsccatProductosEntity.Relations.MscloteCortesCabEntityUsingProducto, _
+					CType(Integralab.ORM.EntityType.MsccatProductosEntity, Integer), CType(Integralab.ORM.EntityType.MscloteCortesCabEntity, Integer), 0, Nothing, Nothing, Nothing, "MscloteCortesCab", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
 			End Get
 		End Property
 	
@@ -3399,6 +3491,29 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				_alwaysFetchMscinventarioProducto = value
+			End Set	
+		End Property
+	
+		''' <summary>Retrieves all related entities of type 'MscloteCortesCabEntity' Imports a relation of type '1:n'.</summary>
+		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiMscloteCortesCab()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope.</remarks>
+		Public Overridable ReadOnly Property [MscloteCortesCab]() As Integralab.ORM.CollectionClasses.MscloteCortesCabCollection
+			Get
+				Return GetMultiMscloteCortesCab(False)
+			End Get
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for MscloteCortesCab. When set to true, MscloteCortesCab is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time MscloteCortesCab is accessed. You can always execute
+		''' a forced fetch by calling GetMultiMscloteCortesCab(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchMscloteCortesCab As Boolean
+			Get
+				Return _alwaysFetchMscloteCortesCab
+			End Get
+			Set
+				_alwaysFetchMscloteCortesCab = value
 			End Set	
 		End Property
 	

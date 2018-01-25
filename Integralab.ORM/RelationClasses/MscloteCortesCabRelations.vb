@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 25 de enero de 2018 09:23:43
+' // Code is generated on: jueves, 25 de enero de 2018 11:40:24
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -46,16 +46,16 @@ Namespace Integralab.ORM.RelationClasses
 	
 	
 	
-		''' <summary>Returns a new IEntityRelation Object, between MscloteCortesCabEntity and McgcatTiposdeGanadoEntity over the m:1 relation they have, using the relation between the fields:
-		''' MscloteCortesCab.Producto - McgcatTiposdeGanado.IdTipoGanado
+		''' <summary>Returns a new IEntityRelation Object, between MscloteCortesCabEntity and MsccatProductosEntity over the m:1 relation they have, using the relation between the fields:
+		''' MscloteCortesCab.Producto - MsccatProductos.IdProducto
 		''' </summary>
-		Public Overridable  ReadOnly Property McgcatTiposdeGanadoEntityUsingProducto() As IEntityRelation
+		Public Overridable  ReadOnly Property MsccatProductosEntityUsingProducto() As IEntityRelation
 			Get
 
 				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
 				relation.StartEntityIsPkSide = False
-				relation.AddEntityFieldPair(EntityFieldFactory.Create(McgcatTiposdeGanadoFieldIndex.IdTipoGanado), EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Producto))
-				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("McgcatTiposdeGanadoEntity", False)
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(MsccatProductosFieldIndex.IdProducto), EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Producto))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MsccatProductosEntity", False)
 				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MscloteCortesCabEntity", True)
 				Return relation
 			End Get
