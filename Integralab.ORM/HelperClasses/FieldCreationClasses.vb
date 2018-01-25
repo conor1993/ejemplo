@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: miércoles, 24 de enero de 2018 11:05:23
+' Code is generated on: jueves, 25 de enero de 2018 09:23:51
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -12968,6 +12968,24 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [ObservacionesLotes] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.ObservacionesLotes), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.KilosRecibidos field instance</summary>
+		Public Shared ReadOnly Property [KilosRecibidos] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.KilosRecibidos), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Nofactura field instance</summary>
+		Public Shared ReadOnly Property [Nofactura] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Nofactura), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Importe field instance</summary>
+		Public Shared ReadOnly Property [Importe] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Importe), EntityField)
 			End Get
 		End Property
 	End Class

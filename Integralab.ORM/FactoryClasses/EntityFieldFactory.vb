@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: miércoles, 24 de enero de 2018 11:05:22
+' // Code is generated on: jueves, 25 de enero de 2018 09:23:50
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -6994,6 +6994,12 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Cvecomprador"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Cvecomprador"))
 				Case MscloteCortesCabFieldIndex.ObservacionesLotes
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "ObservacionesLotes"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "ObservacionesLotes"))
+				Case MscloteCortesCabFieldIndex.KilosRecibidos
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "KilosRecibidos"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "KilosRecibidos"))
+				Case MscloteCortesCabFieldIndex.Nofactura
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Nofactura"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Nofactura"))
+				Case MscloteCortesCabFieldIndex.Importe
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Importe"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Importe"))
 
 			End Select
 			Return fieldToReturn
