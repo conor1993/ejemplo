@@ -37,7 +37,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\MEAT\1.0.48.48\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\MEAT\1.0.50.50\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -52,8 +52,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>48</ApplicationRevision>
-    <ApplicationVersion>1.0.48.48</ApplicationVersion>
+    <ApplicationRevision>50</ApplicationRevision>
+    <ApplicationVersion>1.0.50.50</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -1856,6 +1856,12 @@
       <DependentUpon>frmPolizaFacturaRecibaVenta.vb</DependentUpon>
     </Compile>
     <Compile Include="Polizas\frmPolizaFacturaRecibaVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produccion\FrmAperturaLoteCorte2.Designer.vb">
+      <DependentUpon>FrmAperturaLoteCorte2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\FrmAperturaLoteCorte2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Produccion\FrmCapturaProdTerminado.Designer.vb">
@@ -4286,6 +4292,9 @@
     <EmbeddedResource Include="Polizas\frmPolizaFacturaRecibaVenta.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmPolizaFacturaRecibaVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion\FrmAperturaLoteCorte2.resx">
+      <DependentUpon>FrmAperturaLoteCorte2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produccion\FrmCapturaProdTerminado.resx">
       <DependentUpon>FrmCapturaProdTerminado.vb</DependentUpon>

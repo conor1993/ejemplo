@@ -23,11 +23,11 @@ Partial Class FrmAperturaLoteCorte2
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -75,6 +75,7 @@ Partial Class FrmAperturaLoteCorte2
         Me.CmbLugarCompra = New System.Windows.Forms.ComboBox()
         Me.txtHorasViaje = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label29 = New System.Windows.Forms.Label()
         Me.tabControl = New System.Windows.Forms.TabControl()
         Me.tbOtrosGastos = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -97,7 +98,6 @@ Partial Class FrmAperturaLoteCorte2
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.txtDiasDeCredito = New System.Windows.Forms.TextBox()
-        Me.Label29 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.tabControl.SuspendLayout()
@@ -144,9 +144,9 @@ Partial Class FrmAperturaLoteCorte2
         Me.Label17.ForeColor = System.Drawing.Color.White
         Me.Label17.Location = New System.Drawing.Point(61, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(607, 32)
+        Me.Label17.Size = New System.Drawing.Size(649, 32)
         Me.Label17.TabIndex = 40
-        Me.Label17.Text = "Apertura de Lotes de Corte"
+        Me.Label17.Text = "Registro de Lote de Producto Terminado"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'GroupBox1
@@ -604,6 +604,15 @@ Partial Class FrmAperturaLoteCorte2
         Me.GroupBox2.TabIndex = 43
         Me.GroupBox2.TabStop = False
         '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(290, 192)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(78, 13)
+        Me.Label29.TabIndex = 126
+        Me.Label29.Text = "Horas de viaje:"
+        '
         'tabControl
         '
         Me.tabControl.Controls.Add(Me.tbOtrosGastos)
@@ -664,35 +673,35 @@ Partial Class FrmAperturaLoteCorte2
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvConceptoGastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DgvConceptoGastos.BackgroundColor = System.Drawing.SystemColors.ControlLight
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvConceptoGastos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvConceptoGastos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DgvConceptoGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvConceptoGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmcmbConceptoGasto, Me.clmtxtIva, Me.clmtxtImporteGasto, Me.clmRenglon})
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvConceptoGastos.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvConceptoGastos.DefaultCellStyle = DataGridViewCellStyle9
         Me.DgvConceptoGastos.Location = New System.Drawing.Point(6, 18)
         Me.DgvConceptoGastos.MultiSelect = False
         Me.DgvConceptoGastos.Name = "DgvConceptoGastos"
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvConceptoGastos.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvConceptoGastos.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.DgvConceptoGastos.RowHeadersVisible = False
         Me.DgvConceptoGastos.Size = New System.Drawing.Size(574, 105)
         Me.DgvConceptoGastos.TabIndex = 22
@@ -709,9 +718,9 @@ Partial Class FrmAperturaLoteCorte2
         'clmtxtIva
         '
         Me.clmtxtIva.DataPropertyName = "PorcentajeIva"
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "N2"
-        Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N2"
+        Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle7
         Me.clmtxtIva.FillWeight = 10.0!
         Me.clmtxtIva.HeaderText = "Iva %"
         Me.clmtxtIva.Name = "clmtxtIva"
@@ -719,10 +728,10 @@ Partial Class FrmAperturaLoteCorte2
         'clmtxtImporteGasto
         '
         Me.clmtxtImporteGasto.DataPropertyName = "ImporteGasto"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle13.Format = "N2"
-        DataGridViewCellStyle13.NullValue = Nothing
-        Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "N2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle8
         Me.clmtxtImporteGasto.FillWeight = 20.0!
         Me.clmtxtImporteGasto.HeaderText = "Importe"
         Me.clmtxtImporteGasto.Name = "clmtxtImporteGasto"
@@ -863,15 +872,6 @@ Partial Class FrmAperturaLoteCorte2
         Me.txtDiasDeCredito.Size = New System.Drawing.Size(105, 20)
         Me.txtDiasDeCredito.TabIndex = 26
         '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(290, 192)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(78, 13)
-        Me.Label29.TabIndex = 126
-        Me.Label29.Text = "Horas de viaje:"
-        '
         'FrmAperturaLoteCorte2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -882,7 +882,7 @@ Partial Class FrmAperturaLoteCorte2
         Me.Controls.Add(Me.MEAToolBar1)
         Me.Controls.Add(Me.Label17)
         Me.Name = "FrmAperturaLoteCorte2"
-        Me.Text = "Apertur de Lotes de Corte"
+        Me.Text = "Registro de Lote de Producto Terminado"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)

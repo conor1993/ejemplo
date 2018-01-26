@@ -1527,4 +1527,8 @@ Public Class MDIMenuPrincipal
     Private Sub AperturaDeLoteDeCortes2ToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AperturaDeLoteDeCortes2ToolStripMenuItem.Click
         Abrir(FrmAperturaLoteCorte2)
     End Sub
+
+    Private Sub CapturaDeProductoTerminadoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles CapturaDeProductoTerminadoToolStripMenuItem.Click
+        Abrir(FrmCapturaProdTerminado)
+    End Sub
 End Class
