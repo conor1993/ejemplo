@@ -13,8 +13,8 @@
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>false</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>JSLogo32.ico</ApplicationIcon>
     <TargetZone>LocalIntranet</TargetZone>
@@ -37,11 +37,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-<<<<<<< HEAD
-    <PublishUrl>C:\Publicaciones\MEAT\1.0.50.50\</PublishUrl>
-=======
     <PublishUrl>C:\Publicaciones\MEAT\1.0.52.52\</PublishUrl>
->>>>>>> 658c4dc7423eb28861906507fcafd377db29fe9b
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -56,13 +52,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-<<<<<<< HEAD
-    <ApplicationRevision>50</ApplicationRevision>
-    <ApplicationVersion>1.0.50.50</ApplicationVersion>
-=======
     <ApplicationRevision>52</ApplicationRevision>
     <ApplicationVersion>1.0.52.52</ApplicationVersion>
->>>>>>> 658c4dc7423eb28861906507fcafd377db29fe9b
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -1867,18 +1858,6 @@
     <Compile Include="Polizas\frmPolizaFacturaRecibaVenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Produccion\FrmAperturaLoteCorte2.Designer.vb">
-      <DependentUpon>FrmAperturaLoteCorte2.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\FrmAperturaLoteCorte2.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Produccion\FrmCapturaProdTerminado.Designer.vb">
-      <DependentUpon>FrmCapturaProdTerminado.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\FrmCapturaProdTerminado.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Produccion\fmrAvisoAntesReimprimirEtiqeutas.Designer.vb">
       <DependentUpon>fmrAvisoAntesReimprimirEtiqeutas.vb</DependentUpon>
     </Compile>
@@ -1889,6 +1868,12 @@
       <DependentUpon>FrmActFechaCortes.vb</DependentUpon>
     </Compile>
     <Compile Include="Produccion\FrmActFechaCortes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produccion\FrmAperturaLoteCorte2.Designer.vb">
+      <DependentUpon>FrmAperturaLoteCorte2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\FrmAperturaLoteCorte2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Produccion\frmArmadoCajas.Designer.vb">
@@ -4302,13 +4287,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmPolizaFacturaRecibaVenta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Produccion\FrmAperturaLoteCorte2.resx">
-      <DependentUpon>FrmAperturaLoteCorte2.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Produccion\FrmCapturaProdTerminado.resx">
-      <DependentUpon>FrmCapturaProdTerminado.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Produccion\fmrAvisoAntesReimprimirEtiqeutas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>fmrAvisoAntesReimprimirEtiqeutas.vb</DependentUpon>
@@ -4316,6 +4294,9 @@
     <EmbeddedResource Include="Produccion\FrmActFechaCortes.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FrmActFechaCortes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion\FrmAperturaLoteCorte2.resx">
+      <DependentUpon>FrmAperturaLoteCorte2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produccion\frmArmadoCajas.resx">
       <SubType>Designer</SubType>

@@ -1529,6 +1529,6 @@ Public Class MDIMenuPrincipal
     End Sub
 
     Private Sub CapturaDeProductoTerminadoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles CapturaDeProductoTerminadoToolStripMenuItem.Click
-        Abrir(FrmCapturaProdTerminado)
+        '  Abrir(FrmCapturaProdTerminado)
     End Sub
 End Class
