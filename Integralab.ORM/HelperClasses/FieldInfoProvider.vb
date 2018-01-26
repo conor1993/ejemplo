@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: miércoles, 24 de enero de 2018 11:05:15
+' Code is generated on: jueves, 25 de enero de 2018 11:40:24
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -3013,6 +3013,9 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Cvelugcomp", GetType(System.Int32), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Cvelugcomp), 0, 0, 10)
 			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Cvecomprador", GetType(System.Int32), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Cvecomprador), 0, 0, 10)
 			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "ObservacionesLotes", GetType(System.String), False, False, False, True, CInt(MscloteCortesCabFieldIndex.ObservacionesLotes), 500, 0, 0)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "KilosRecibidos", GetType(System.Decimal), False, False, False, True, CInt(MscloteCortesCabFieldIndex.KilosRecibidos), 0, 4, 19)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Nofactura", GetType(System.String), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Nofactura), 20, 0, 0)
+			MyBase.AddElementFieldInfo("MscloteCortesCabEntity", "Importe", GetType(System.Decimal), False, False, False, True, CInt(MscloteCortesCabFieldIndex.Importe), 0, 4, 19)
 		End Sub
 		''' <summary>Inits MscloteCortesDetEntity's FieldInfo objects</summary>
 		Private Sub InitMscloteCortesDetEntityInfos()
