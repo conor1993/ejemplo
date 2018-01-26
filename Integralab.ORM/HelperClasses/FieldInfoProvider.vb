@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: jueves, 25 de enero de 2018 11:40:24
+' Code is generated on: viernes, 26 de enero de 2018 13:41:25
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -4184,6 +4184,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("ServiciosEntity", "TipoServicio", GetType(System.Int16), False, False, False, True, CInt(ServiciosFieldIndex.TipoServicio), 0, 0, 5)
 			MyBase.AddElementFieldInfo("ServiciosEntity", "Estatus", GetType(System.Int16), False, False, False, False, CInt(ServiciosFieldIndex.Estatus), 0, 0, 5)
 			MyBase.AddElementFieldInfo("ServiciosEntity", "FechaAlta", GetType(System.DateTime), False, False, False, False, CInt(ServiciosFieldIndex.FechaAlta), 0, 0, 0)
+			MyBase.AddElementFieldInfo("ServiciosEntity", "Costo", GetType(System.Decimal), False, False, False, True, CInt(ServiciosFieldIndex.Costo), 0, 4, 19)
 		End Sub
 		''' <summary>Inits ServiciosPorSacrificioEntity's FieldInfo objects</summary>
 		Private Sub InitServiciosPorSacrificioEntityInfos()

@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 25 de enero de 2018 11:40:31
+' // Code is generated on: viernes, 26 de enero de 2018 13:41:34
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -10026,6 +10026,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ServiciosEntity", "Estatus"), persistenceProvider.GetFieldPersistenceInfo("ServiciosEntity", "Estatus"))
 				Case ServiciosFieldIndex.FechaAlta
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ServiciosEntity", "FechaAlta"), persistenceProvider.GetFieldPersistenceInfo("ServiciosEntity", "FechaAlta"))
+				Case ServiciosFieldIndex.Costo
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ServiciosEntity", "Costo"), persistenceProvider.GetFieldPersistenceInfo("ServiciosEntity", "Costo"))
 
 			End Select
 			Return fieldToReturn

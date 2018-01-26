@@ -117,6 +117,35 @@ Public Class GastoTransporteDetalleClass
             Entity.ImpteGasto = value
         End Set
     End Property
+
+    Public Property CodProveedor() As Integer
+        Get
+            Return Entity.CodProveedor
+        End Get
+        Set(ByVal value As Integer)
+            Entity.CodProveedor = value
+        End Set
+    End Property
+
+    Public Property Nofactura() As String
+        Get
+            Return Entity.NoFactura
+        End Get
+        Set(ByVal value As String)
+            Entity.NoFactura = value
+        End Set
+    End Property
+
+
+    Public Property Retencion() As Decimal
+        Get
+            Return Entity.Retencion
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.Retencion = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Metodos"

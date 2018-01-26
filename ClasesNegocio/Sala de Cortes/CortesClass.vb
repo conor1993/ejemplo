@@ -206,20 +206,20 @@ Public Class CortesClass
         End Set
     End Property
     ''------------------------------------------------------------------------------------
-    Property Nopiezas() As Integer
+    Property Nopiezas() As Integer?
         Get
             Return Entity.Nopiezas
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Integer?)
             Entity.Nopiezas = value
         End Set
     End Property
 
-    Property Producto() As Integer
+    Property Producto() As Integer?
         Get
             Return Entity.Producto
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Integer?)
             Entity.Producto = value
         End Set
     End Property
@@ -251,38 +251,38 @@ Public Class CortesClass
         End Set
     End Property
 
-    Property Horaviaje() As Decimal
+    Property Horaviaje() As Decimal?
         Get
             Return Entity.Horaviaje
         End Get
-        Set(ByVal value As Decimal)
+        Set(ByVal value As Decimal?)
             Entity.Horaviaje = value
         End Set
     End Property
 
-    Property Idproveedor() As Integer
+    Property Idproveedor() As Integer?
         Get
             Return Entity.Idproveedor
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Integer?)
             Entity.Idproveedor = value
         End Set
     End Property
 
-    Property Cvelugcom() As Integer
+    Property Cvelugcom() As Integer?
         Get
             Return Entity.Cvelugcomp
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Integer?)
             Entity.Cvelugcomp = value
         End Set
     End Property
 
-    Property Cvecomprador() As Integer
+    Property Cvecomprador() As Integer?
         Get
             Return Entity.Cvecomprador
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Integer?)
             Entity.Cvecomprador = value
         End Set
     End Property
@@ -296,11 +296,11 @@ Public Class CortesClass
         End Set
     End Property
 
-    Property KilosRecibidos() As Decimal
+    Property KilosRecibidos() As Decimal?
         Get
             Return Entity.KilosRecibidos
         End Get
-        Set(ByVal value As Decimal)
+        Set(ByVal value As Decimal?)
             Entity.KilosRecibidos = value
         End Set
     End Property
@@ -316,11 +316,11 @@ Public Class CortesClass
 
 
 
-    Property Importe() As Decimal
+    Property Importe() As Decimal?
         Get
             Return Entity.Importe
         End Get
-        Set(ByVal value As Decimal)
+        Set(ByVal value As Decimal?)
             Entity.Importe = value
         End Set
     End Property
@@ -346,11 +346,11 @@ Public Class CortesClass
         End Set
     End Property
 
-    Property NumOpc() As Integer
+    Property NumOpc() As Integer?
         Get
             Return _NumOpc
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Integer?)
             _NumOpc = value
         End Set
     End Property

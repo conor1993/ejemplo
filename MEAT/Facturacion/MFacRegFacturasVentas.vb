@@ -1337,7 +1337,8 @@ Public Class MFacRegFacturasVentas
 
 
         Catch ex As Exception
-
+            MsgBox("Error ." & vbCrLf & ex.Message, MsgBoxStyle.Critical, ex.Source)
+            Application.DoEvents()
         End Try
 
     End Function

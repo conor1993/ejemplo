@@ -574,6 +574,22 @@ Public Class FrmCapturadeCortes
             LoteCorte.LoteCorte = Me.txtLoteCorte.Text
             LoteCorte.TotalKgs = Me.txtPeso.Text
             LoteCorte.TotalPzas = Me.txtPiezas.Text
+
+            LoteCorte.Nopiezas = 0
+            LoteCorte.Producto = 1
+            LoteCorte.Unidad = ""
+            LoteCorte.Conductor = ""
+            LoteCorte.Placas = ""
+            LoteCorte.Horaviaje = 0D
+            LoteCorte.Idproveedor = 0
+            LoteCorte.Cvecomprador = 0
+            LoteCorte.Cvelugcom = 0
+            LoteCorte.Observacioneslote = ""
+            LoteCorte.KilosRecibidos = 0D
+            LoteCorte.Nofactura = ""
+            LoteCorte.Importe = 0D
+
+
             LoteCorte.Func = "M"
             LoteCorte.NumOpc = 1
 
