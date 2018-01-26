@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 25 de enero de 2018 11:40:31
+' // Code is generated on: viernes, 26 de enero de 2018 13:41:34
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -4423,12 +4423,13 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits ServiciosEntity's mappings</summary>
         Private Sub InitServiciosEntityMappings()
-            MyBase.AddElementMapping("ServiciosEntity", "", "dbo", "CatServicios", 5)
+            MyBase.AddElementMapping("ServiciosEntity", "", "dbo", "CatServicios", 6)
             MyBase.AddElementFieldMapping("ServiciosEntity", "Codigo", "Cve_Servicio", False, CInt(SqlDbType.SmallInt), 0, 0, 5, True, "SCOPE_IDENTITY()", Nothing, GetType(System.Int16), 0)
             MyBase.AddElementFieldMapping("ServiciosEntity", "NomServicio", "Nom_Servicio", False, CInt(SqlDbType.Char), 50, 0, 0, False, "", Nothing, GetType(System.String), 1)
             MyBase.AddElementFieldMapping("ServiciosEntity", "TipoServicio", "TipoServicio", True, CInt(SqlDbType.SmallInt), 0, 0, 5, False, "", Nothing, GetType(System.Int16), 2)
             MyBase.AddElementFieldMapping("ServiciosEntity", "Estatus", "Estatus", False, CInt(SqlDbType.SmallInt), 0, 0, 5, False, "", Nothing, GetType(System.Int16), 3)
             MyBase.AddElementFieldMapping("ServiciosEntity", "FechaAlta", "FechaAlta", False, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 4)
+            MyBase.AddElementFieldMapping("ServiciosEntity", "Costo", "Costo", True, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 5)
         End Sub
         ''' <summary>Inits ServiciosPorSacrificioEntity's mappings</summary>
         Private Sub InitServiciosPorSacrificioEntityMappings()

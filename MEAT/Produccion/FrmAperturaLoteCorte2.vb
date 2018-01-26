@@ -89,6 +89,9 @@ Public Class FrmAperturaLoteCorte2
                             gastoDetalle.IdGasto = Fila.Cells(clmcmbConceptoGasto.Index).Value
                             gastoDetalle.PorcentajeIva = Fila.Cells(clmtxtIva.Index).Value
                             gastoDetalle.ImporteGasto = Fila.Cells(clmtxtImporteGasto.Index).Value
+                            gastoDetalle.Nofactura = Fila.Cells(clmfactura.Index).Value
+                            gastoDetalle.CodProveedor = Fila.Cells(clmproovedor.Index).Value
+                            gastoDetalle.Retencion = Fila.Cells(clmretencion.Index).Value
                             Gastos.Detalle.Add(gastoDetalle)
                         End If
                     Next
@@ -126,6 +129,36 @@ Public Class FrmAperturaLoteCorte2
         Me.dtpFechaCaducidad.Value = Now
         Me.dtpFechaLoteCorte.Value = Now
         Me.dtpFechaSacrificio.Value = Now
+
+
+        cmbComprador.Text = "Seleccione un Comprador..."
+        cmbComprador.SelectedIndex = -1
+        cmbProveedor.Text = "Seleccione un Proveedor..."
+        cmbProveedor.SelectedIndex = -1
+        CmbLugarCompra.Text = "Seleccione un Lugar..."
+        CmbLugarCompra.SelectedIndex = -1
+        CmbTipoGanado.Text = "Seleccione un Tipo de ganado..."
+        CmbTipoGanado.SelectedIndex = -1
+
+        TxtFolio.Text = ""
+        DgvConceptoGastos.Rows.Clear()
+        DgvConceptoGastos.DataSource = Nothing
+        dtpFechaPago.Value = DateTime.Now
+        txtNoFactura.Text = ""
+        txtDiasDeCredito.Text = ""
+        txtHorasViaje.Text = ""
+        txtobserbacioneslote.Text = ""
+        txtPlacas.Text = ""
+        txtConductor.Text = ""
+        txtUnidad.Text = ""
+        txtKilosRecibidos.Text = ""
+        txtNoPiezas.Text = ""
+        DgvConceptoGastos.AllowUserToAddRows = True
+        txtSubTotal.Text = "0.00"
+        txtIVA.Text = "0.00"
+        txtTotal.Text = "0.00"
+        txtImporte.Text = ""
+
     End Function
     Private Function Buscar() As Boolean
         Dim TablaEmbarque As DataSet = Integralab.ORM.StoredProcedureCallerClasses.RetrievalProcedures.UspConMscloteCortesCab(1, "")
@@ -202,6 +235,13 @@ Public Class FrmAperturaLoteCorte2
 
 
     Private Sub txtDiasCaducidad_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDiasCaducidad.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
         If e.KeyChar = Chr(13) Then
             'Me.dtpFechaCaducidad.Value = Me.dtpFechaCaducidad. + Me.txtDiasCaducidad.Text
             Me.txtObservaciones.Focus()
@@ -255,6 +295,12 @@ Public Class FrmAperturaLoteCorte2
             Me.cmbProveedor.ValueMember = "Codigo"
             Me.cmbProveedor.SelectedIndex = -1
 
+            proveedores.Obtener(CondicionEnum.ACTIVOS)
+            Me.clmproovedor.DataSource = proveedores
+            Me.clmproovedor.DisplayMember = "RazonSocial"
+            Me.clmproovedor.ValueMember = "Codigo"
+
+
 
             Return True
         Catch ex As Exception
@@ -267,6 +313,9 @@ Public Class FrmAperturaLoteCorte2
         If e.ColumnIndex = clmtxtImporteGasto.Index Or e.ColumnIndex = clmtxtIva.Index Then
             DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N2")
             calcular()
+        End If
+        If e.ColumnIndex = clmretencion.Index Then
+            DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N2")
         End If
     End Sub
     Public Sub calcular()
@@ -298,13 +347,13 @@ Public Class FrmAperturaLoteCorte2
             MessageBox.Show("Seleccione un concepto...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         ' End If
-        'If clmtxtImporteGasto.Index = e.ColumnIndex Then
-        If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit).ToString().Equals("") Then
-            e.Cancel = True
-            MessageBox.Show("Se debe ingresar el importe...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
+        If clmtxtImporteGasto.Index = e.ColumnIndex Then
+            If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit).ToString().Equals("") Then
+                e.Cancel = True
+                MessageBox.Show("Se debe ingresar el importe...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
 
-        ' End If
+        End If
     End Sub
 
     Private Sub DgvConceptoGastos_KeyDown(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles DgvConceptoGastos.KeyDown
@@ -314,6 +363,101 @@ Public Class FrmAperturaLoteCorte2
                 DgvConceptoGastos.Rows.RemoveAt(i)
                 calcular()
             End If
+        End If
+    End Sub
+
+    Private Sub DgvConceptoGastos_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DgvConceptoGastos.EditingControlShowing
+        If Me.DgvConceptoGastos.CurrentCell.ColumnIndex = clmcmbConceptoGasto.Index Then
+            Dim combo As ComboBox = TryCast(e.Control, ComboBox)
+            If combo IsNot Nothing Then
+                RemoveHandler combo.SelectedIndexChanged, AddressOf Me.combo_SelectedIndexChanged
+                AddHandler combo.SelectedIndexChanged, AddressOf Me.combo_SelectedIndexChanged
+            End If
+        End If
+        If Me.DgvConceptoGastos.CurrentCell.ColumnIndex = clmtxtImporteGasto.Index Or Me.DgvConceptoGastos.CurrentCell.ColumnIndex = clmtxtIva.Index Then
+            Dim cajatexto As TextBox = TryCast(e.Control, TextBox)
+            If cajatexto IsNot Nothing Then
+                RemoveHandler cajatexto.KeyPress, AddressOf Me.cajaTexto_KeyPress
+                AddHandler cajatexto.KeyPress, AddressOf Me.cajaTexto_KeyPress
+            End If
+
+
+        End If
+
+        If Me.DgvConceptoGastos.CurrentCell.ColumnIndex = clmfactura.Index Then
+            Dim cajatexto As TextBox = TryCast(e.Control, TextBox)
+            If cajatexto IsNot Nothing Then
+                RemoveHandler cajatexto.KeyPress, AddressOf Me.cajaTexto_KeyPress
+
+            End If
+
+
+        End If
+    End Sub
+    Private Sub combo_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim cb As ComboBox = CType(sender, ComboBox)
+        'Dim item As String = cb.Text
+        'If item IsNot Nothing Then MessageBox.Show(item)+
+        Dim catgasto As ClasesNegocio.ConceptoGastosTransporteClass
+        If TypeOf cb.SelectedValue Is ClasesNegocio.ConceptoGastosTransporteClass Then
+            catgasto = New ClasesNegocio.ConceptoGastosTransporteClass(CInt(CType(cb.SelectedValue, ClasesNegocio.ConceptoGastosTransporteClass).IdConceptoGasto))
+        Else
+            catgasto = New ClasesNegocio.ConceptoGastosTransporteClass(CInt(cb.SelectedValue))
+        End If
+
+        If catgasto.AplicaIVA Then
+            Me.DgvConceptoGastos.CurrentRow.Cells(clmtxtIva.Index).Value = catgasto.PorcentajeIVA.ToString("N2")
+        End If
+
+    End Sub
+
+    Private Sub cajaTexto_KeyPress(sender As Object, e As EventArgs)
+        NumerosyDecimal(sender, e)
+    End Sub
+
+    Public Sub NumerosyDecimal(ByVal CajaTexto As Windows.Forms.TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf e.KeyChar = "." And Not CajaTexto.Text.IndexOf(".") Then
+            e.Handled = True
+        ElseIf e.KeyChar = "." Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+
+
+    Private Sub txtKilosRecibidos_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtKilosRecibidos.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtImporte_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtImporte.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtHorasViaje_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtHorasViaje.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
         End If
     End Sub
 End Class

@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: jueves, 25 de enero de 2018 11:40:32
+' Code is generated on: viernes, 26 de enero de 2018 13:41:34
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -19028,6 +19028,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [FechaAlta] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(ServiciosFieldIndex.FechaAlta), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new ServiciosEntity.Costo field instance</summary>
+		Public Shared ReadOnly Property [Costo] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ServiciosFieldIndex.Costo), EntityField)
 			End Get
 		End Property
 	End Class

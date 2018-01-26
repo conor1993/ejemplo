@@ -37,7 +37,11 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
+<<<<<<< HEAD
     <PublishUrl>C:\Publicaciones\MEAT\1.0.50.50\</PublishUrl>
+=======
+    <PublishUrl>C:\Publicaciones\MEAT\1.0.52.52\</PublishUrl>
+>>>>>>> 658c4dc7423eb28861906507fcafd377db29fe9b
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -52,8 +56,13 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+<<<<<<< HEAD
     <ApplicationRevision>50</ApplicationRevision>
     <ApplicationVersion>1.0.50.50</ApplicationVersion>
+=======
+    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationVersion>1.0.52.52</ApplicationVersion>
+>>>>>>> 658c4dc7423eb28861906507fcafd377db29fe9b
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
