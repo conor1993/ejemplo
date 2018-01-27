@@ -38,6 +38,12 @@ Partial Class MFacRegFacturasVentas
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -46,12 +52,6 @@ Partial Class MFacRegFacturasVentas
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.cmbUsoCFDI = New System.Windows.Forms.ComboBox()
@@ -72,6 +72,19 @@ Partial Class MFacRegFacturasVentas
         Me.Label3 = New System.Windows.Forms.Label()
         Me.CmbClientesVarios = New System.Windows.Forms.ComboBox()
         Me.dgvDetalleConcentrado = New System.Windows.Forms.DataGridView()
+        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.KilosEmbarcados = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.KilosFacturados = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precios = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmiva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteFacturado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteEmbarcado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmPrecioReal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmPiezas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmunidadsat = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.clmproductoserv = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.chkiva = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.txtPoliza = New System.Windows.Forms.TextBox()
         Me.txtCodigoCliente = New System.Windows.Forms.TextBox()
         Me.dtpFechaVencimiento = New System.Windows.Forms.DateTimePicker()
@@ -123,20 +136,7 @@ Partial Class MFacRegFacturasVentas
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
         Me.pdDocumento = New System.Drawing.Printing.PrintDocument()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.CuentaControl = New IntegraLab.ORM.CollectionClasses.CfgCtrlCtasCollection()
-        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.KilosEmbarcados = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.KilosFacturados = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precios = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmiva = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteFacturado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteEmbarcado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmPrecioReal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmPiezas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmunidadsat = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.clmproductoserv = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.chkiva = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.CuentaControl = New Integralab.ORM.CollectionClasses.CfgCtrlCtasCollection()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.ultcmbDomiciliosFiscales, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -460,6 +460,115 @@ Partial Class MFacRegFacturasVentas
         Me.dgvDetalleConcentrado.RowHeadersVisible = False
         Me.dgvDetalleConcentrado.Size = New System.Drawing.Size(1052, 200)
         Me.dgvDetalleConcentrado.TabIndex = 15
+        '
+        'Codigo
+        '
+        Me.Codigo.DataPropertyName = "Codigo"
+        Me.Codigo.HeaderText = "Codigo"
+        Me.Codigo.Name = "Codigo"
+        Me.Codigo.ReadOnly = True
+        Me.Codigo.Width = 60
+        '
+        'Descripcion
+        '
+        Me.Descripcion.HeaderText = "Descripcion"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        '
+        'KilosEmbarcados
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.KilosEmbarcados.DefaultCellStyle = DataGridViewCellStyle2
+        Me.KilosEmbarcados.HeaderText = "Kilos Embarcados"
+        Me.KilosEmbarcados.Name = "KilosEmbarcados"
+        Me.KilosEmbarcados.ReadOnly = True
+        Me.KilosEmbarcados.Width = 120
+        '
+        'KilosFacturados
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = "0.00"
+        Me.KilosFacturados.DefaultCellStyle = DataGridViewCellStyle3
+        Me.KilosFacturados.HeaderText = "Kilos Facturados"
+        Me.KilosFacturados.Name = "KilosFacturados"
+        Me.KilosFacturados.Width = 120
+        '
+        'Precios
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "C2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Precios.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Precios.HeaderText = "PrecioxKgr"
+        Me.Precios.Name = "Precios"
+        '
+        'clmiva
+        '
+        DataGridViewCellStyle5.NullValue = "0.00"
+        Me.clmiva.DefaultCellStyle = DataGridViewCellStyle5
+        Me.clmiva.HeaderText = "Iva"
+        Me.clmiva.Name = "clmiva"
+        Me.clmiva.ReadOnly = True
+        Me.clmiva.Width = 50
+        '
+        'ImporteFacturado
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = "0.00"
+        Me.ImporteFacturado.DefaultCellStyle = DataGridViewCellStyle6
+        Me.ImporteFacturado.HeaderText = "Importe Facturado"
+        Me.ImporteFacturado.Name = "ImporteFacturado"
+        Me.ImporteFacturado.ReadOnly = True
+        Me.ImporteFacturado.Width = 120
+        '
+        'ImporteEmbarcado
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "C2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.ImporteEmbarcado.DefaultCellStyle = DataGridViewCellStyle7
+        Me.ImporteEmbarcado.HeaderText = "Importe Embarcado"
+        Me.ImporteEmbarcado.Name = "ImporteEmbarcado"
+        Me.ImporteEmbarcado.ReadOnly = True
+        Me.ImporteEmbarcado.Width = 130
+        '
+        'clmPrecioReal
+        '
+        Me.clmPrecioReal.HeaderText = "Precio Real"
+        Me.clmPrecioReal.Name = "clmPrecioReal"
+        Me.clmPrecioReal.Visible = False
+        '
+        'clmPiezas
+        '
+        Me.clmPiezas.HeaderText = "Piezas"
+        Me.clmPiezas.Name = "clmPiezas"
+        Me.clmPiezas.Visible = False
+        '
+        'clmunidadsat
+        '
+        Me.clmunidadsat.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.clmunidadsat.HeaderText = "Unidad sat"
+        Me.clmunidadsat.Name = "clmunidadsat"
+        Me.clmunidadsat.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.clmunidadsat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'clmproductoserv
+        '
+        Me.clmproductoserv.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.clmproductoserv.HeaderText = "Producto/Servicio"
+        Me.clmproductoserv.Name = "clmproductoserv"
+        Me.clmproductoserv.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.clmproductoserv.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'chkiva
+        '
+        Me.chkiva.HeaderText = "iva"
+        Me.chkiva.Name = "chkiva"
+        Me.chkiva.Width = 50
         '
         'txtPoliza
         '
@@ -981,121 +1090,12 @@ Partial Class MFacRegFacturasVentas
         Me.CuentaControl.Capacity = 32
         Me.CuentaControl.ConcurrencyPredicateFactoryToUse = Nothing
         Me.CuentaControl.DoNotPerformAddIfPresent = False
-        Me.CuentaControl.EntityFactoryToUse = New IntegraLab.ORM.FactoryClasses.CfgCtrlCtasEntityFactory()
+        Me.CuentaControl.EntityFactoryToUse = New Integralab.ORM.FactoryClasses.CfgCtrlCtasEntityFactory()
         Me.CuentaControl.IsReadOnly = False
         Me.CuentaControl.MaxNumberOfItemsToReturn = CType(0, Long)
         Me.CuentaControl.SortClauses = Nothing
         Me.CuentaControl.SuppressClearInGetMulti = False
         Me.CuentaControl.Transaction = Nothing
-        '
-        'Codigo
-        '
-        Me.Codigo.DataPropertyName = "Codigo"
-        Me.Codigo.HeaderText = "Codigo"
-        Me.Codigo.Name = "Codigo"
-        Me.Codigo.ReadOnly = True
-        Me.Codigo.Width = 60
-        '
-        'Descripcion
-        '
-        Me.Descripcion.HeaderText = "Descripcion"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
-        '
-        'KilosEmbarcados
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.KilosEmbarcados.DefaultCellStyle = DataGridViewCellStyle2
-        Me.KilosEmbarcados.HeaderText = "Kilos Embarcados"
-        Me.KilosEmbarcados.Name = "KilosEmbarcados"
-        Me.KilosEmbarcados.ReadOnly = True
-        Me.KilosEmbarcados.Width = 120
-        '
-        'KilosFacturados
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = "0.00"
-        Me.KilosFacturados.DefaultCellStyle = DataGridViewCellStyle3
-        Me.KilosFacturados.HeaderText = "Kilos Facturados"
-        Me.KilosFacturados.Name = "KilosFacturados"
-        Me.KilosFacturados.Width = 120
-        '
-        'Precios
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Precios.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Precios.HeaderText = "PrecioxKgr"
-        Me.Precios.Name = "Precios"
-        '
-        'clmiva
-        '
-        DataGridViewCellStyle5.NullValue = "0.00"
-        Me.clmiva.DefaultCellStyle = DataGridViewCellStyle5
-        Me.clmiva.HeaderText = "Iva"
-        Me.clmiva.Name = "clmiva"
-        Me.clmiva.ReadOnly = True
-        Me.clmiva.Width = 50
-        '
-        'ImporteFacturado
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "C2"
-        DataGridViewCellStyle6.NullValue = "0.00"
-        Me.ImporteFacturado.DefaultCellStyle = DataGridViewCellStyle6
-        Me.ImporteFacturado.HeaderText = "Importe Facturado"
-        Me.ImporteFacturado.Name = "ImporteFacturado"
-        Me.ImporteFacturado.ReadOnly = True
-        Me.ImporteFacturado.Width = 120
-        '
-        'ImporteEmbarcado
-        '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "C2"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.ImporteEmbarcado.DefaultCellStyle = DataGridViewCellStyle7
-        Me.ImporteEmbarcado.HeaderText = "Importe Embarcado"
-        Me.ImporteEmbarcado.Name = "ImporteEmbarcado"
-        Me.ImporteEmbarcado.ReadOnly = True
-        Me.ImporteEmbarcado.Width = 130
-        '
-        'clmPrecioReal
-        '
-        Me.clmPrecioReal.HeaderText = "Precio Real"
-        Me.clmPrecioReal.Name = "clmPrecioReal"
-        Me.clmPrecioReal.Visible = False
-        '
-        'clmPiezas
-        '
-        Me.clmPiezas.HeaderText = "Piezas"
-        Me.clmPiezas.Name = "clmPiezas"
-        Me.clmPiezas.Visible = False
-        '
-        'clmunidadsat
-        '
-        Me.clmunidadsat.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.clmunidadsat.HeaderText = "Unidad sat"
-        Me.clmunidadsat.Name = "clmunidadsat"
-        Me.clmunidadsat.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.clmunidadsat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'clmproductoserv
-        '
-        Me.clmproductoserv.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.clmproductoserv.HeaderText = "Producto/Servicio"
-        Me.clmproductoserv.Name = "clmproductoserv"
-        Me.clmproductoserv.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.clmproductoserv.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'chkiva
-        '
-        Me.chkiva.HeaderText = "iva"
-        Me.chkiva.Name = "chkiva"
-        Me.chkiva.Width = 50
         '
         'MFacRegFacturasVentas
         '

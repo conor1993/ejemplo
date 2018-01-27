@@ -1294,10 +1294,10 @@ Public Class MFacRegFacturasVentas
                         FacturasDetalle.PrecioUnitario = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.Precios.Index).Value, Decimal)
                         FacturasDetalle.CantidadxProducto = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.KilosEmbarcados.Index).Value, Decimal)
                         FacturasDetalle.PorcentajeIVA = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.ImporteEmbarcado.Index).Value, Decimal)
-                            FacturasDetalle.Renglon = i
-                            FacturasDetalle.Servicios = "N"
-                            FacturasDetalle.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
-                            FacturasDetalle.Estatus = "V"
+                        FacturasDetalle.Renglon = i
+                        FacturasDetalle.Servicios = "N"
+                        FacturasDetalle.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
+                        FacturasDetalle.Estatus = "V"
                         FacturasDetalle.CveProductoServ = CStr(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmproductoserv.Index).Value)
                         FacturasDetalle.CveUnidad = CStr(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmunidadsat.Index).Value)
                         FacturasDetalle.IVA = CDec(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmiva.Index).Value)
@@ -1338,6 +1338,8 @@ Public Class MFacRegFacturasVentas
 
         Catch ex As Exception
             MsgBox("Error ." & vbCrLf & ex.Message, MsgBoxStyle.Critical, ex.Source)
+            Cursor = Cursors.Default
+            MEAToolBar1.Enabled = True
             Application.DoEvents()
         End Try
 
@@ -1913,9 +1915,11 @@ Public Class MFacRegFacturasVentas
                     End If
 
                     calcular()
+
                 Else
 
                 End If
+
             End If
         Catch ex As Exception
 
@@ -1945,4 +1949,11 @@ Public Class MFacRegFacturasVentas
         Next
     End Function
 
+    Private Sub dgvDetalleConcentrado_CurrentCellDirtyStateChanged(sender As System.Object, e As System.EventArgs) Handles dgvDetalleConcentrado.CurrentCellDirtyStateChanged
+
+        If (dgvDetalleConcentrado.IsCurrentCellDirty) Then
+            dgvDetalleConcentrado.CommitEdit(DataGridViewDataErrorContexts.Commit)
+        End If
+
+    End Sub
 End Class

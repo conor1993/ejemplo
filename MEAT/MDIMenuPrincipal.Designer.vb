@@ -251,6 +251,7 @@ Partial Class MDIMenuPrincipal
         Me.ToolStripMenuItem14 = New System.Windows.Forms.ToolStripSeparator()
         Me.ReimpresiónDeEtiquetasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AperturaDeLoteDeCortes2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FacturacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConfiguracionFacturaciontsmi = New System.Windows.Forms.ToolStripMenuItem()
         Me.Conexiontsmi = New System.Windows.Forms.ToolStripMenuItem()
@@ -433,7 +434,6 @@ Partial Class MDIMenuPrincipal
         Me.tmProgreso = New System.Windows.Forms.Timer(Me.components)
         Me.tmHora = New System.Windows.Forms.Timer(Me.components)
         Me.CachedRptVentasPorProducto1 = New MEAT.CachedRptVentasPorProducto()
-        Me.AperturaDeLoteDeCortes2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -1835,6 +1835,12 @@ Partial Class MDIMenuPrincipal
         Me.ReToolStripMenuItem.Size = New System.Drawing.Size(292, 22)
         Me.ReToolStripMenuItem.Text = "Modificación de Etiquetas de Cortes"
         '
+        'AperturaDeLoteDeCortes2ToolStripMenuItem
+        '
+        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Name = "AperturaDeLoteDeCortes2ToolStripMenuItem"
+        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Size = New System.Drawing.Size(292, 22)
+        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Text = "Compras de producto terminado"
+        '
         'FacturacionToolStripMenuItem
         '
         Me.FacturacionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguracionFacturaciontsmi, Me.FacturaDeCortesToolStripMenuItem, Me.RegistroDeFacturasToolStripMenuItem, Me.DevoluciónVentaToolStripMenuItem, Me.ToolStripMenuItem4, Me.ReportesToolStripMenuItem5})
@@ -2945,12 +2951,6 @@ Partial Class MDIMenuPrincipal
         '
         Me.tmHora.Enabled = True
         Me.tmHora.Interval = 1000
-        '
-        'AperturaDeLoteDeCortes2ToolStripMenuItem
-        '
-        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Name = "AperturaDeLoteDeCortes2ToolStripMenuItem"
-        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Size = New System.Drawing.Size(292, 22)
-        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Text = "Apertura de lote de cortes 2"
         '
         'MDIMenuPrincipal
         '
