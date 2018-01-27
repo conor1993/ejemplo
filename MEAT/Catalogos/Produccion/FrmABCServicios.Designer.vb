@@ -22,29 +22,32 @@ Partial Class FrmABCServicios
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtCodigo = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.txtDescripcion = New System.Windows.Forms.TextBox
-        Me.rbtnProduccion = New System.Windows.Forms.RadioButton
-        Me.GrpTipoServ = New System.Windows.Forms.GroupBox
-        Me.rbtnEmbarque = New System.Windows.Forms.RadioButton
-        Me.Dtpfecha = New System.Windows.Forms.DateTimePicker
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.txtDescFiltro = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.dgvServicios = New System.Windows.Forms.DataGridView
-        Me.CodigoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.TipoServicioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaAltaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ServiciosC = New ClasesNegocio.ServiciosCollectionClass
+        Me.components = New System.ComponentModel.Container()
+        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtCodigo = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtDescripcion = New System.Windows.Forms.TextBox()
+        Me.rbtnProduccion = New System.Windows.Forms.RadioButton()
+        Me.GrpTipoServ = New System.Windows.Forms.GroupBox()
+        Me.rbtnEmbarque = New System.Windows.Forms.RadioButton()
+        Me.Dtpfecha = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtDescFiltro = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.dgvServicios = New System.Windows.Forms.DataGridView()
+        Me.CodigoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoServicioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaAltaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciosC = New ClasesNegocio.ServiciosCollectionClass()
+        Me.Costo = New System.Windows.Forms.Label()
+        Me.txtCosto = New System.Windows.Forms.TextBox()
         Me.GrpTipoServ.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvServicios, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,7 +80,7 @@ Partial Class FrmABCServicios
         Me.MEAToolBar1.MostrarSalir = True
         Me.MEAToolBar1.Name = "MEAToolBar1"
         Me.MEAToolBar1.ShowToolTips = True
-        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 501)
+        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 570)
         Me.MEAToolBar1.TabIndex = 31
         '
         'Label17
@@ -88,7 +91,7 @@ Partial Class FrmABCServicios
         Me.Label17.ForeColor = System.Drawing.Color.White
         Me.Label17.Location = New System.Drawing.Point(50, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(541, 32)
+        Me.Label17.Size = New System.Drawing.Size(604, 32)
         Me.Label17.TabIndex = 32
         Me.Label17.Text = "SERVICIOS DE RASTROS"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -108,7 +111,7 @@ Partial Class FrmABCServicios
         Me.txtCodigo.Name = "txtCodigo"
         Me.txtCodigo.ReadOnly = True
         Me.txtCodigo.Size = New System.Drawing.Size(58, 20)
-        Me.txtCodigo.TabIndex = 34
+        Me.txtCodigo.TabIndex = 5
         Me.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label2
@@ -127,7 +130,7 @@ Partial Class FrmABCServicios
         Me.txtDescripcion.MaxLength = 50
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(277, 20)
-        Me.txtDescripcion.TabIndex = 36
+        Me.txtDescripcion.TabIndex = 0
         '
         'rbtnProduccion
         '
@@ -146,10 +149,10 @@ Partial Class FrmABCServicios
         Me.GrpTipoServ.Controls.Add(Me.rbtnEmbarque)
         Me.GrpTipoServ.Controls.Add(Me.rbtnProduccion)
         Me.GrpTipoServ.Enabled = False
-        Me.GrpTipoServ.Location = New System.Drawing.Point(54, 113)
+        Me.GrpTipoServ.Location = New System.Drawing.Point(60, 139)
         Me.GrpTipoServ.Name = "GrpTipoServ"
         Me.GrpTipoServ.Size = New System.Drawing.Size(226, 52)
-        Me.GrpTipoServ.TabIndex = 38
+        Me.GrpTipoServ.TabIndex = 1
         Me.GrpTipoServ.TabStop = False
         Me.GrpTipoServ.Text = "Tipo de Servicio"
         '
@@ -197,15 +200,15 @@ Partial Class FrmABCServicios
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Controls.Add(Me.txtDescFiltro)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.dgvServicios)
-        Me.GroupBox2.Location = New System.Drawing.Point(54, 181)
+        Me.GroupBox2.Location = New System.Drawing.Point(60, 197)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(524, 304)
-        Me.GroupBox2.TabIndex = 42
+        Me.GroupBox2.Size = New System.Drawing.Size(587, 373)
+        Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Servicios Registrados"
         '
@@ -233,11 +236,11 @@ Partial Class FrmABCServicios
         Me.dgvServicios.AllowUserToDeleteRows = False
         Me.dgvServicios.AllowUserToResizeRows = False
         Me.dgvServicios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvServicios.AutoGenerateColumns = False
         Me.dgvServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvServicios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.EstatusDataGridViewTextBoxColumn, Me.TipoServicioDataGridViewTextBoxColumn, Me.FechaAltaDataGridViewTextBoxColumn})
+        Me.dgvServicios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.EstatusDataGridViewTextBoxColumn, Me.TipoServicioDataGridViewTextBoxColumn, Me.FechaAltaDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn1})
         Me.dgvServicios.DataSource = Me.ServiciosC
         Me.dgvServicios.Location = New System.Drawing.Point(6, 47)
         Me.dgvServicios.MultiSelect = False
@@ -245,7 +248,7 @@ Partial Class FrmABCServicios
         Me.dgvServicios.ReadOnly = True
         Me.dgvServicios.RowHeadersVisible = False
         Me.dgvServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvServicios.Size = New System.Drawing.Size(505, 251)
+        Me.dgvServicios.Size = New System.Drawing.Size(568, 320)
         Me.dgvServicios.TabIndex = 0
         '
         'CodigoDataGridViewTextBoxColumn
@@ -285,6 +288,13 @@ Partial Class FrmABCServicios
         Me.FechaAltaDataGridViewTextBoxColumn.Name = "FechaAltaDataGridViewTextBoxColumn"
         Me.FechaAltaDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Costo"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Costo"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
         'ServiciosC
         '
         Me.ServiciosC.AllowEdit = True
@@ -297,11 +307,29 @@ Partial Class FrmABCServicios
         Me.ServiciosC.RaiseListChangedEvents = True
         Me.ServiciosC.Transaction = Nothing
         '
+        'Costo
+        '
+        Me.Costo.AutoSize = True
+        Me.Costo.Location = New System.Drawing.Point(51, 113)
+        Me.Costo.Name = "Costo"
+        Me.Costo.Size = New System.Drawing.Size(37, 13)
+        Me.Costo.TabIndex = 43
+        Me.Costo.Text = "Costo:"
+        '
+        'txtCosto
+        '
+        Me.txtCosto.Location = New System.Drawing.Point(123, 113)
+        Me.txtCosto.Name = "txtCosto"
+        Me.txtCosto.Size = New System.Drawing.Size(58, 20)
+        Me.txtCosto.TabIndex = 1
+        '
         'FrmABCServicios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(591, 501)
+        Me.ClientSize = New System.Drawing.Size(654, 570)
+        Me.Controls.Add(Me.txtCosto)
+        Me.Controls.Add(Me.Costo)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lblEstatus)
         Me.Controls.Add(Me.Label3)
@@ -313,6 +341,7 @@ Partial Class FrmABCServicios
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.MEAToolBar1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Name = "FrmABCServicios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Servicios de Rastros"
@@ -342,9 +371,12 @@ Partial Class FrmABCServicios
     Friend WithEvents txtDescFiltro As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents ServiciosC As ClasesNegocio.ServiciosCollectionClass
+    Friend WithEvents Costo As System.Windows.Forms.Label
+    Friend WithEvents txtCosto As System.Windows.Forms.TextBox
     Friend WithEvents CodigoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EstatusDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TipoServicioDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FechaAltaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
