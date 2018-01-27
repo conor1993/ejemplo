@@ -122,6 +122,8 @@ Public Class LoteClass
         End Get
     End Property
 
+ 
+
     Property SaldoCabezas() As Decimal
         Get
             Return Entity.SaldoCabezas

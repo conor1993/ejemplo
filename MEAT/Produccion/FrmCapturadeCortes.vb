@@ -593,6 +593,18 @@ Public Class FrmCapturadeCortes
             LoteCorte.Func = "M"
             LoteCorte.NumOpc = 1
 
+            LoteCorte.Nopiezas = 0
+            LoteCorte.Producto = 1
+            LoteCorte.Unidad = ""
+            LoteCorte.Conductor = ""
+            LoteCorte.Placas = ""
+            LoteCorte.Horaviaje = 0D
+            LoteCorte.Idproveedor = 0
+            LoteCorte.Cvecomprador = 0
+            LoteCorte.Cvelugcom = 0
+            LoteCorte.Observacioneslote = ""
+
+
             If Not LoteCorte.Guardar(Trans) Then
                 Trans.Rollback()
                 Return False

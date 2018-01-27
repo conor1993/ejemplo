@@ -39,6 +39,7 @@ Public Class FrmABCServicios
         Me.txtCodigo.Text = ""
         Me.txtDescFiltro.Text = ""
         Me.txtDescripcion.Text = ""
+        Me.txtCosto.Text = ""
         Me.Dtpfecha.Value = Now
         Me.lblEstatus.Visible = False
         Me.rbtnProduccion.Checked = True
@@ -47,11 +48,15 @@ Public Class FrmABCServicios
     Private Sub Habilitar()
         Me.txtDescripcion.ReadOnly = False
         Me.GrpTipoServ.Enabled = True
+        Me.txtCosto.ReadOnly = False
+
     End Sub
 
     Private Sub DesHabilitar()
         Me.txtDescripcion.ReadOnly = True
         Me.GrpTipoServ.Enabled = False
+        Me.txtCosto.ReadOnly = True
+
     End Sub
 
     Private Sub Imprimir()
@@ -118,7 +123,17 @@ Public Class FrmABCServicios
                 Exit Sub
             End If
 
+            If Me.txtCosto.Text = "" Then
+                MsgBox("Ingrese el costo del servicio", MsgBoxStyle.Exclamation, "Aviso")
+                Me.txtCosto.Focus()
+                Cancelar = True
+                Exit Sub
+            End If
+
             Servicio.Descripcion = Trim(Me.txtDescripcion.Text)
+            Servicio.Costo = Trim(Me.txtCosto.Text)
+
+
             If Me.rbtnProduccion.Checked Then
                 Servicio.TipoServicio = ClasesNegocio.TipoServicionEnum.PRODUCCION
             Else
@@ -215,5 +230,18 @@ Public Class FrmABCServicios
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
+    End Sub
+
+    Private Sub txtCosto_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCosto.KeyPress
+        If Char.IsDigit(e.KeyChar) Or e.KeyChar = "." Then
+            e.Handled = False
+
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+
+
+        End If
     End Sub
 End Class

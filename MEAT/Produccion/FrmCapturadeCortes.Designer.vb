@@ -618,7 +618,7 @@ Partial Class FrmCapturadeCortes
         Me.dtpFechaCaducidad.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpFechaCaducidad.Location = New System.Drawing.Point(461, 77)
         Me.dtpFechaCaducidad.Name = "dtpFechaCaducidad"
-        Me.dtpFechaCaducidad.Size = New System.Drawing.Size(126, 26)
+        Me.dtpFechaCaducidad.Size = New System.Drawing.Size(133, 26)
         Me.dtpFechaCaducidad.TabIndex = 73
         '
         'Label2

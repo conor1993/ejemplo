@@ -48,7 +48,15 @@ Public Class ServiciosClass
             Entity.TipoServicio = value
         End Set
     End Property
+    Public Property Costo() As Decimal
 
+        Get
+            Return Entity.Costo
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.Costo = value
+        End Set
+    End Property
 #End Region
 
 #Region "Metodos"
