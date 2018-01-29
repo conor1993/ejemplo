@@ -434,6 +434,7 @@ Partial Class MDIMenuPrincipal
         Me.tmProgreso = New System.Windows.Forms.Timer(Me.components)
         Me.tmHora = New System.Windows.Forms.Timer(Me.components)
         Me.CachedRptVentasPorProducto1 = New MEAT.CachedRptVentasPorProducto()
+        Me.CapturaDeProductoTerminadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -1674,7 +1675,7 @@ Partial Class MDIMenuPrincipal
         '
         'SalaDeCortesToolStripMenuItem1
         '
-        Me.SalaDeCortesToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RecepcionDeGanadoToolStripMenuItem, Me.RegistroDeSacrificioToolStripMenuItem, Me.RecepciónDeCanalesToolStripMenuItem, Me.EntradaDeCanalesACorteToolStripMenuItem, Me.AperturaDeLoteDeCortesToolStripMenuItem, Me.CierreDeLoteDeCortesToolStripMenuItem, Me.DecomisosYSubProductosToolStripMenuItem, Me.ProducciónToolStripMenuItem, Me.ToolStripSeparator11, Me.ReportesToolStripMenuItem6, Me.ToolStripMenuItem14, Me.ReimpresiónDeEtiquetasToolStripMenuItem, Me.ReToolStripMenuItem, Me.AperturaDeLoteDeCortes2ToolStripMenuItem})
+        Me.SalaDeCortesToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RecepcionDeGanadoToolStripMenuItem, Me.RegistroDeSacrificioToolStripMenuItem, Me.RecepciónDeCanalesToolStripMenuItem, Me.EntradaDeCanalesACorteToolStripMenuItem, Me.AperturaDeLoteDeCortesToolStripMenuItem, Me.CierreDeLoteDeCortesToolStripMenuItem, Me.DecomisosYSubProductosToolStripMenuItem, Me.AperturaDeLoteDeCortes2ToolStripMenuItem, Me.ProducciónToolStripMenuItem, Me.ToolStripSeparator11, Me.ReportesToolStripMenuItem6, Me.ToolStripMenuItem14, Me.ReimpresiónDeEtiquetasToolStripMenuItem, Me.ReToolStripMenuItem})
         Me.SalaDeCortesToolStripMenuItem1.Name = "SalaDeCortesToolStripMenuItem1"
         Me.SalaDeCortesToolStripMenuItem1.Size = New System.Drawing.Size(80, 19)
         Me.SalaDeCortesToolStripMenuItem1.Text = "Produccion"
@@ -1724,7 +1725,7 @@ Partial Class MDIMenuPrincipal
         '
         'ProducciónToolStripMenuItem
         '
-        Me.ProducciónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CapturaDeCortesToolStripMenuItem, Me.ActualizacionToolStripMenuItem, Me.CapturaDeProductosToolStripMenuItem, Me.ToolStripMenuItem15, Me.SalidaDeCortesPorReprocesoToolStripMenuItem})
+        Me.ProducciónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CapturaDeCortesToolStripMenuItem, Me.ActualizacionToolStripMenuItem, Me.CapturaDeProductosToolStripMenuItem, Me.CapturaDeProductoTerminadoToolStripMenuItem, Me.ToolStripMenuItem15, Me.SalidaDeCortesPorReprocesoToolStripMenuItem})
         Me.ProducciónToolStripMenuItem.Name = "ProducciónToolStripMenuItem"
         Me.ProducciónToolStripMenuItem.Size = New System.Drawing.Size(292, 22)
         Me.ProducciónToolStripMenuItem.Text = "Producción"
@@ -1732,30 +1733,30 @@ Partial Class MDIMenuPrincipal
         'CapturaDeCortesToolStripMenuItem
         '
         Me.CapturaDeCortesToolStripMenuItem.Name = "CapturaDeCortesToolStripMenuItem"
-        Me.CapturaDeCortesToolStripMenuItem.Size = New System.Drawing.Size(237, 22)
+        Me.CapturaDeCortesToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
         Me.CapturaDeCortesToolStripMenuItem.Text = "Captura de Cortes"
         '
         'ActualizacionToolStripMenuItem
         '
         Me.ActualizacionToolStripMenuItem.Name = "ActualizacionToolStripMenuItem"
-        Me.ActualizacionToolStripMenuItem.Size = New System.Drawing.Size(237, 22)
+        Me.ActualizacionToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
         Me.ActualizacionToolStripMenuItem.Text = "Actualizacion Fecha de Cortes"
         '
         'CapturaDeProductosToolStripMenuItem
         '
         Me.CapturaDeProductosToolStripMenuItem.Name = "CapturaDeProductosToolStripMenuItem"
-        Me.CapturaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(237, 22)
+        Me.CapturaDeProductosToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
         Me.CapturaDeProductosToolStripMenuItem.Text = "Captura de Productos"
         '
         'ToolStripMenuItem15
         '
         Me.ToolStripMenuItem15.Name = "ToolStripMenuItem15"
-        Me.ToolStripMenuItem15.Size = New System.Drawing.Size(234, 6)
+        Me.ToolStripMenuItem15.Size = New System.Drawing.Size(239, 6)
         '
         'SalidaDeCortesPorReprocesoToolStripMenuItem
         '
         Me.SalidaDeCortesPorReprocesoToolStripMenuItem.Name = "SalidaDeCortesPorReprocesoToolStripMenuItem"
-        Me.SalidaDeCortesPorReprocesoToolStripMenuItem.Size = New System.Drawing.Size(237, 22)
+        Me.SalidaDeCortesPorReprocesoToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
         Me.SalidaDeCortesPorReprocesoToolStripMenuItem.Text = "Salida de Cortes Por Reproceso"
         '
         'ToolStripSeparator11
@@ -1839,7 +1840,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Name = "AperturaDeLoteDeCortes2ToolStripMenuItem"
         Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Size = New System.Drawing.Size(292, 22)
-        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Text = "Compras de producto terminado"
+        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Text = "Registro de producto terminado"
         '
         'FacturacionToolStripMenuItem
         '
@@ -2952,6 +2953,12 @@ Partial Class MDIMenuPrincipal
         Me.tmHora.Enabled = True
         Me.tmHora.Interval = 1000
         '
+        'CapturaDeProductoTerminadoToolStripMenuItem
+        '
+        Me.CapturaDeProductoTerminadoToolStripMenuItem.Name = "CapturaDeProductoTerminadoToolStripMenuItem"
+        Me.CapturaDeProductoTerminadoToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.CapturaDeProductoTerminadoToolStripMenuItem.Text = "Captura de Producto terminado"
+        '
         'MDIMenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3389,4 +3396,5 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents Conexiontsmi As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ParametrosYSellostsmi As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AperturaDeLoteDeCortes2ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CapturaDeProductoTerminadoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

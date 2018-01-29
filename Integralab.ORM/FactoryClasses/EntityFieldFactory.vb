@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 26 de enero de 2018 13:41:34
+' // Code is generated on: lunes, 29 de enero de 2018 10:43:45
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -10684,6 +10684,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UnidadMedidaEntity", "MotivoBaja"), persistenceProvider.GetFieldPersistenceInfo("UnidadMedidaEntity", "MotivoBaja"))
 				Case UnidadMedidaFieldIndex.ObservacionesBaja
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UnidadMedidaEntity", "ObservacionesBaja"), persistenceProvider.GetFieldPersistenceInfo("UnidadMedidaEntity", "ObservacionesBaja"))
+				Case UnidadMedidaFieldIndex.Claveunidadsat
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UnidadMedidaEntity", "Claveunidadsat"), persistenceProvider.GetFieldPersistenceInfo("UnidadMedidaEntity", "Claveunidadsat"))
 
 			End Select
 			Return fieldToReturn

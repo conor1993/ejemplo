@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 26 de enero de 2018 13:41:25
+' Code is generated on: lunes, 29 de enero de 2018 10:43:38
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -4418,6 +4418,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("UnidadMedidaEntity", "UsuarioBaja", GetType(System.Int32), False, False, False, True, CInt(UnidadMedidaFieldIndex.UsuarioBaja), 0, 0, 10)
 			MyBase.AddElementFieldInfo("UnidadMedidaEntity", "MotivoBaja", GetType(System.Int32), False, False, False, True, CInt(UnidadMedidaFieldIndex.MotivoBaja), 0, 0, 10)
 			MyBase.AddElementFieldInfo("UnidadMedidaEntity", "ObservacionesBaja", GetType(System.String), False, False, False, True, CInt(UnidadMedidaFieldIndex.ObservacionesBaja), 250, 0, 0)
+			MyBase.AddElementFieldInfo("UnidadMedidaEntity", "Claveunidadsat", GetType(System.String), False, False, False, True, CInt(UnidadMedidaFieldIndex.Claveunidadsat), 5, 0, 0)
 		End Sub
 		''' <summary>Inits UsrBanDepositosEntity's FieldInfo objects</summary>
 		Private Sub InitUsrBanDepositosEntityInfos()

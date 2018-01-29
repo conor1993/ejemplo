@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 26 de enero de 2018 13:41:34
+' Code is generated on: lunes, 29 de enero de 2018 10:43:46
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -20166,6 +20166,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [ObservacionesBaja] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(UnidadMedidaFieldIndex.ObservacionesBaja), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new UnidadMedidaEntity.Claveunidadsat field instance</summary>
+		Public Shared ReadOnly Property [Claveunidadsat] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(UnidadMedidaFieldIndex.Claveunidadsat), EntityField)
 			End Get
 		End Property
 	End Class

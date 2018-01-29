@@ -812,6 +812,7 @@ Public Class CuentaContableClass
                 Return True
             ElseIf cuentas.Validar(Me) Or (Not cuentas.Validar(Me) And Referencia = True) Then
                 If Entity.IsNew Then
+
                     Entity.NumeroHijos = CType(Entity.CuentasHijas.Count, Short)
                     Entity.BooAfectable = True
                     If Entity.NumeroHijos > 0 Then Entity.BooAfectable = False
