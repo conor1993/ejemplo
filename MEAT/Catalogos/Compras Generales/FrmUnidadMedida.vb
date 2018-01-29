@@ -1,3 +1,9 @@
+Imports System.Data.SqlClient
+Imports HC = IntegraLab.ORM.HelperClasses
+Imports CC = IntegraLab.ORM.CollectionClasses
+Imports EC = IntegraLab.ORM.EntityClasses
+Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
+
 Public Class FrmUnidadMedida
 
     Dim puedorefrescar As Boolean = True
@@ -46,6 +52,8 @@ Public Class FrmUnidadMedida
         Editar = False
         Me.LblEstatus.Visible = False
         Me.txtDescripcion.Focus()
+        CmbClaveSAT.SelectedItem = Nothing
+
     End Sub
 
     Private Sub Habilitar()
@@ -53,6 +61,8 @@ Public Class FrmUnidadMedida
         txtDesCta.Enabled = True
         txtObservacion.Enabled = True
         DataGrid.Enabled = False
+        CmbClaveSAT.Enabled = True
+
     End Sub
 
     Private Sub DesHabilitar()
@@ -60,6 +70,8 @@ Public Class FrmUnidadMedida
         txtDesCta.Enabled = False
         txtObservacion.Enabled = False
         DataGrid.Enabled = True
+        CmbClaveSAT.Enabled = False
+
     End Sub
 
     Private Sub Guardar()
@@ -67,6 +79,7 @@ Public Class FrmUnidadMedida
         UnidadMedida.Descripcion = txtDescripcion.Text
         UnidadMedida.DescCorta = txtDesCta.Text
         UnidadMedida.Observaciones = txtObservacion.Text
+        UnidadMedida.Claveunidadsat = CmbClaveSAT.SelectedValue
     End Sub
 
     Private Function Validar() As Boolean
@@ -128,6 +141,7 @@ Public Class FrmUnidadMedida
             txtDesCta.Text = UnidadMedida.DescCorta
             txtObservacion.Text = UnidadMedida.Observaciones
             LblEstatus.Text = UnidadMedida.Estatus.ToString
+            CmbClaveSAT.SelectedValue = UnidadMedida.Claveunidadsat
         End If
     End Sub
 
@@ -151,6 +165,18 @@ Public Class FrmUnidadMedida
         MEAToolBar1.sbCambiarEstadoBotones("Cancelar")
 
         LlenarGrid()
+        Try
+            Dim FormasPago As DataSet = New DataSet
+            Dim queryString As String = "SELECT * FROM CatUnidadSAT"
+            Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
+            adapter.Fill(FormasPago)
+            Me.CmbClaveSAT.DataSource = FormasPago.Tables(0)
+            Me.CmbClaveSAT.DisplayMember = "concepto"
+            Me.CmbClaveSAT.ValueMember = "clave"
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
         DesHabilitar()
         Limpiar()
     End Sub

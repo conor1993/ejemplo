@@ -22,33 +22,34 @@ Partial Class FrmUnidadMedida
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.panel1 = New System.Windows.Forms.Panel
-        Me.dtpFecha = New System.Windows.Forms.DateTimePicker
-        Me.txtDescripcion = New System.Windows.Forms.TextBox
-        Me.txtDesCta = New System.Windows.Forms.TextBox
-        Me.txtObservacion = New System.Windows.Forms.TextBox
-        Me.txtCodigo = New System.Windows.Forms.TextBox
-        Me.label5 = New System.Windows.Forms.Label
-        Me.label4 = New System.Windows.Forms.Label
-        Me.label3 = New System.Windows.Forms.Label
-        Me.label2 = New System.Windows.Forms.Label
-        Me.label1 = New System.Windows.Forms.Label
-        Me.LblEstatus = New System.Windows.Forms.Label
-        Me.gbUnidadesMedidaReg = New System.Windows.Forms.GroupBox
-        Me.DataGrid = New System.Windows.Forms.DataGridView
-        Me.ClmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmDescripcionCorta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmObservaciones = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmFechaAlta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.UnidadesMedidaC = New ClasesNegocio.UnidadesMedidaCollectionClass
-        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.panel1 = New System.Windows.Forms.Panel()
+        Me.dtpFecha = New System.Windows.Forms.DateTimePicker()
+        Me.txtDescripcion = New System.Windows.Forms.TextBox()
+        Me.txtDesCta = New System.Windows.Forms.TextBox()
+        Me.txtObservacion = New System.Windows.Forms.TextBox()
+        Me.txtCodigo = New System.Windows.Forms.TextBox()
+        Me.label5 = New System.Windows.Forms.Label()
+        Me.label4 = New System.Windows.Forms.Label()
+        Me.label3 = New System.Windows.Forms.Label()
+        Me.label2 = New System.Windows.Forms.Label()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.LblEstatus = New System.Windows.Forms.Label()
+        Me.gbUnidadesMedidaReg = New System.Windows.Forms.GroupBox()
+        Me.DataGrid = New System.Windows.Forms.DataGridView()
+        Me.ClmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcionCorta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmObservaciones = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmFechaAlta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
+        Me.CmbClaveSAT = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.panel1.SuspendLayout()
         Me.gbUnidadesMedidaReg.SuspendLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,13 +64,15 @@ Partial Class FrmUnidadMedida
         Me.Label17.Location = New System.Drawing.Point(0, 0)
         Me.Label17.MaximumSize = New System.Drawing.Size(1600, 900)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(726, 29)
+        Me.Label17.Size = New System.Drawing.Size(718, 29)
         Me.Label17.TabIndex = 1
         Me.Label17.Text = "CATÁLOGO DE UNIDADES DE MEDIDA"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'panel1
         '
+        Me.panel1.Controls.Add(Me.Label6)
+        Me.panel1.Controls.Add(Me.CmbClaveSAT)
         Me.panel1.Controls.Add(Me.dtpFecha)
         Me.panel1.Controls.Add(Me.txtDescripcion)
         Me.panel1.Controls.Add(Me.txtDesCta)
@@ -83,7 +86,7 @@ Partial Class FrmUnidadMedida
         Me.panel1.Controls.Add(Me.LblEstatus)
         Me.panel1.Location = New System.Drawing.Point(53, 34)
         Me.panel1.Name = "panel1"
-        Me.panel1.Size = New System.Drawing.Size(666, 162)
+        Me.panel1.Size = New System.Drawing.Size(666, 182)
         Me.panel1.TabIndex = 2
         '
         'dtpFecha
@@ -116,7 +119,7 @@ Partial Class FrmUnidadMedida
         'txtObservacion
         '
         Me.txtObservacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtObservacion.Location = New System.Drawing.Point(117, 85)
+        Me.txtObservacion.Location = New System.Drawing.Point(117, 110)
         Me.txtObservacion.MaxLength = 250
         Me.txtObservacion.Multiline = True
         Me.txtObservacion.Name = "txtObservacion"
@@ -134,7 +137,7 @@ Partial Class FrmUnidadMedida
         'label5
         '
         Me.label5.AutoSize = True
-        Me.label5.Location = New System.Drawing.Point(11, 88)
+        Me.label5.Location = New System.Drawing.Point(11, 113)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(87, 13)
         Me.label5.TabIndex = 8
@@ -194,9 +197,9 @@ Partial Class FrmUnidadMedida
         Me.gbUnidadesMedidaReg.Controls.Add(Me.DataGrid)
         Me.gbUnidadesMedidaReg.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbUnidadesMedidaReg.ForeColor = System.Drawing.Color.Blue
-        Me.gbUnidadesMedidaReg.Location = New System.Drawing.Point(53, 202)
+        Me.gbUnidadesMedidaReg.Location = New System.Drawing.Point(53, 237)
         Me.gbUnidadesMedidaReg.Name = "gbUnidadesMedidaReg"
-        Me.gbUnidadesMedidaReg.Size = New System.Drawing.Size(667, 265)
+        Me.gbUnidadesMedidaReg.Size = New System.Drawing.Size(667, 230)
         Me.gbUnidadesMedidaReg.TabIndex = 6
         Me.gbUnidadesMedidaReg.TabStop = False
         Me.gbUnidadesMedidaReg.Text = "Unidades de Medida Registradas"
@@ -217,7 +220,7 @@ Partial Class FrmUnidadMedida
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGrid.DefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGrid.Location = New System.Drawing.Point(6, 26)
+        Me.DataGrid.Location = New System.Drawing.Point(6, 22)
         Me.DataGrid.Name = "DataGrid"
         Me.DataGrid.ReadOnly = True
         Me.DataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
@@ -238,7 +241,7 @@ Partial Class FrmUnidadMedida
         Me.DataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.ControlText
         Me.DataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGrid.Size = New System.Drawing.Size(655, 236)
+        Me.DataGrid.Size = New System.Drawing.Size(655, 203)
         Me.DataGrid.TabIndex = 0
         '
         'ClmCodigo
@@ -283,14 +286,6 @@ Partial Class FrmUnidadMedida
         Me.ClmEstatus.ReadOnly = True
         Me.ClmEstatus.Width = 85
         '
-        'UnidadesMedidaC
-        '
-        Me.UnidadesMedidaC.AllowEdit = True
-        Me.UnidadesMedidaC.AllowNew = True
-        Me.UnidadesMedidaC.AllowRemove = True
-        Me.UnidadesMedidaC.Name = ""
-        Me.UnidadesMedidaC.RaiseListChangedEvents = True
-        '
         'MEAToolBar1
         '
         Me.MEAToolBar1.ButtonSize = New System.Drawing.Size(50, 50)
@@ -321,11 +316,28 @@ Partial Class FrmUnidadMedida
         Me.MEAToolBar1.Size = New System.Drawing.Size(50, 747)
         Me.MEAToolBar1.TabIndex = 0
         '
+        'CmbClaveSAT
+        '
+        Me.CmbClaveSAT.FormattingEnabled = True
+        Me.CmbClaveSAT.Location = New System.Drawing.Point(117, 83)
+        Me.CmbClaveSAT.Name = "CmbClaveSAT"
+        Me.CmbClaveSAT.Size = New System.Drawing.Size(121, 21)
+        Me.CmbClaveSAT.TabIndex = 9
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(11, 86)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(58, 13)
+        Me.Label6.TabIndex = 10
+        Me.Label6.Text = "Clave SAT"
+        '
         'FrmUnidadMedida
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(726, 471)
+        Me.ClientSize = New System.Drawing.Size(718, 467)
         Me.Controls.Add(Me.gbUnidadesMedidaReg)
         Me.Controls.Add(Me.panel1)
         Me.Controls.Add(Me.Label17)
@@ -367,4 +379,6 @@ Partial Class FrmUnidadMedida
     Friend WithEvents ClmObservaciones As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmFechaAlta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmEstatus As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents CmbClaveSAT As System.Windows.Forms.ComboBox
 End Class
