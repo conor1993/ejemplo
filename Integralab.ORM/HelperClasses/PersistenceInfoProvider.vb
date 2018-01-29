@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 29 de enero de 2018 10:43:45
+' // Code is generated on: lunes, 29 de enero de 2018 16:36:37
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -2954,7 +2954,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits MsccatProductosEntity's mappings</summary>
         Private Sub InitMsccatProductosEntityMappings()
-            MyBase.AddElementMapping("MsccatProductosEntity", "", "dbo", "MSCCatProductos", 24)
+            MyBase.AddElementMapping("MsccatProductosEntity", "", "dbo", "MSCCatProductos", 25)
             MyBase.AddElementFieldMapping("MsccatProductosEntity", "IdProducto", "IdProducto", False, CInt(SqlDbType.Int), 0, 0, 10, True, "SCOPE_IDENTITY()", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("MsccatProductosEntity", "Descripcion", "Descripcion", False, CInt(SqlDbType.VarChar), 100, 0, 0, False, "", Nothing, GetType(System.String), 1)
             MyBase.AddElementFieldMapping("MsccatProductosEntity", "DescripcionCorta", "DescripcionCorta", False, CInt(SqlDbType.VarChar), 50, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -2979,6 +2979,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("MsccatProductosEntity", "ValorAgregado", "ValorAgregado", False, CInt(SqlDbType.Bit), 0, 0, 0, False, "", Nothing, GetType(System.Boolean), 21)
             MyBase.AddElementFieldMapping("MsccatProductosEntity", "ConHueso", "ConHueso", False, CInt(SqlDbType.Bit), 0, 0, 0, False, "", Nothing, GetType(System.Boolean), 22)
             MyBase.AddElementFieldMapping("MsccatProductosEntity", "EsDerivable", "EsDerivable", False, CInt(SqlDbType.Bit), 0, 0, 0, False, "", Nothing, GetType(System.Boolean), 23)
+            MyBase.AddElementFieldMapping("MsccatProductosEntity", "Claveproserv", "Claveproserv", True, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 24)
         End Sub
         ''' <summary>Inits MsccatProductosDetalleEntity's mappings</summary>
         Private Sub InitMsccatProductosDetalleEntityMappings()

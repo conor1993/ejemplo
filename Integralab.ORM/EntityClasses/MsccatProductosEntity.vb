@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 29 de enero de 2018 10:43:42
+' // Code is generated on: lunes, 29 de enero de 2018 16:36:34
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -2157,6 +2157,7 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -2445,6 +2446,9 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("EsDerivable", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Claveproserv", fieldHashtable)
 		End Sub
 
 
@@ -3352,6 +3356,26 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(MsccatProductosFieldIndex.EsDerivable, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Claveproserv property of the Entity MsccatProductos<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCCatProductos"."Claveproserv"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 10<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Claveproserv]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MsccatProductosFieldIndex.Claveproserv, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(MsccatProductosFieldIndex.Claveproserv, Integer), value)
 			End Set
 		End Property
 	

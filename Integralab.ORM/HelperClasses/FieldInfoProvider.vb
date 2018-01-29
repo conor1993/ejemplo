@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: lunes, 29 de enero de 2018 10:43:38
+' Code is generated on: lunes, 29 de enero de 2018 16:36:30
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -2814,6 +2814,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("MsccatProductosEntity", "ValorAgregado", GetType(System.Boolean), False, False, False, False, CInt(MsccatProductosFieldIndex.ValorAgregado), 0, 0, 0)
 			MyBase.AddElementFieldInfo("MsccatProductosEntity", "ConHueso", GetType(System.Boolean), False, False, False, False, CInt(MsccatProductosFieldIndex.ConHueso), 0, 0, 0)
 			MyBase.AddElementFieldInfo("MsccatProductosEntity", "EsDerivable", GetType(System.Boolean), False, False, False, False, CInt(MsccatProductosFieldIndex.EsDerivable), 0, 0, 0)
+			MyBase.AddElementFieldInfo("MsccatProductosEntity", "Claveproserv", GetType(System.String), False, False, False, True, CInt(MsccatProductosFieldIndex.Claveproserv), 10, 0, 0)
 		End Sub
 		''' <summary>Inits MsccatProductosDetalleEntity's FieldInfo objects</summary>
 		Private Sub InitMsccatProductosDetalleEntityInfos()

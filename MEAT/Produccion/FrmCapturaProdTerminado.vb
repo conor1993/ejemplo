@@ -34,6 +34,7 @@ Public Class FrmCapturaProdTerminado
     Private tempConservar As Integer
     Private mostarMensajes As Boolean = True
     Private CveProduto As String
+    Private numcaja As Integer
 #End Region
 
 #Region "Metodos"
@@ -574,8 +575,36 @@ Public Class FrmCapturaProdTerminado
             LoteCorte.LoteCorte = Me.txtLoteCorte.Text
             LoteCorte.TotalKgs = Me.txtPeso.Text
             LoteCorte.TotalPzas = Me.txtPiezas.Text
+
+
+            LoteCorte.Nopiezas = 0
+            LoteCorte.Producto = 1
+            LoteCorte.Unidad = ""
+            LoteCorte.Conductor = ""
+            LoteCorte.Placas = ""
+            LoteCorte.Horaviaje = 0D
+            LoteCorte.Idproveedor = 0
+            LoteCorte.Cvecomprador = 0
+            LoteCorte.Cvelugcom = 0
+            LoteCorte.Observacioneslote = ""
+            LoteCorte.KilosRecibidos = 0D
+            LoteCorte.Nofactura = ""
+            LoteCorte.Importe = 0D
+
+
             LoteCorte.Func = "M"
             LoteCorte.NumOpc = 1
+
+            LoteCorte.Nopiezas = 0
+            LoteCorte.Producto = 1
+            LoteCorte.Unidad = ""
+            LoteCorte.Conductor = ""
+            LoteCorte.Placas = ""
+            LoteCorte.Horaviaje = 0D
+            LoteCorte.Idproveedor = 0
+            LoteCorte.Cvecomprador = 0
+            LoteCorte.Cvelugcom = 0
+            LoteCorte.Observacioneslote = ""
 
             If Not LoteCorte.Guardar(Trans) Then
                 Trans.Rollback()
@@ -1028,9 +1057,25 @@ Public Class FrmCapturaProdTerminado
                 Exit Sub
             End If
 
+
+            If Me.txtcajas.Text = "" Or Me.txtcajas.Text = "0" Then
+                MsgBox("Seleccione el numero de cajas/bultos.", MsgBoxStyle.Exclamation, "Aviso")
+                Exit Sub
+            End If
+
+            numcaja = txtcajas.Text
+            ''nuevo modo de guardar----------------------------------------
+
+            For i As Integer = 1 To numcaja
+
+            Next
+
             If Me.Guardar() Then
                 Me.txtCodSubCorte.Focus()
             End If
+
+            ''------------------------------------------------------------
+
         End If
 
         If Not IsNumeric(e.KeyChar) And Not e.KeyChar = Chr(8) And Not e.KeyChar = "." Then

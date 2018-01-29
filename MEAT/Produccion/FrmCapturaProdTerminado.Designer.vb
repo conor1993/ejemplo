@@ -24,10 +24,13 @@ Partial Class FrmCapturaProdTerminado
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmCapturaProdTerminado))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmCapturaProdTerminado))
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvEtiquetas = New System.Windows.Forms.DataGridView()
         Me.IdFolioEtiqueta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -95,9 +98,9 @@ Partial Class FrmCapturaProdTerminado
         Me.chkTipoCorte = New System.Windows.Forms.CheckBox()
         Me.chkEdadGanado = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.LoteCortesDet = New IntegraLab.ORM.CollectionClasses.MscloteCortesDetCollection()
+        Me.LoteCortesDet = New Integralab.ORM.CollectionClasses.MscloteCortesDetCollection()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtcajas = New System.Windows.Forms.TextBox()
         CType(Me.dgvEtiquetas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Frame2.SuspendLayout()
         Me.gpbCanales.SuspendLayout()
@@ -111,12 +114,36 @@ Partial Class FrmCapturaProdTerminado
         Me.dgvEtiquetas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvEtiquetas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvEtiquetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvEtiquetas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdFolioEtiqueta, Me.IdCorte, Me.Nom_Corte, Me.IdProducto, Me.Nom_SubCorte, Me.CantPzas, Me.CantKgrs})
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvEtiquetas.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgvEtiquetas.Location = New System.Drawing.Point(12, 284)
         Me.dgvEtiquetas.MultiSelect = False
         Me.dgvEtiquetas.Name = "dgvEtiquetas"
         Me.dgvEtiquetas.ReadOnly = True
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvEtiquetas.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgvEtiquetas.RowHeadersVisible = False
         Me.dgvEtiquetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvEtiquetas.Size = New System.Drawing.Size(994, 270)
@@ -158,8 +185,8 @@ Partial Class FrmCapturaProdTerminado
         '
         'CantPzas
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.CantPzas.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.CantPzas.DefaultCellStyle = DataGridViewCellStyle2
         Me.CantPzas.HeaderText = "Piezas"
         Me.CantPzas.Name = "CantPzas"
         Me.CantPzas.ReadOnly = True
@@ -167,10 +194,10 @@ Partial Class FrmCapturaProdTerminado
         '
         'CantKgrs
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle2.Format = "N3"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.CantKgrs.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle3.Format = "N3"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.CantKgrs.DefaultCellStyle = DataGridViewCellStyle3
         Me.CantKgrs.HeaderText = "Kilos"
         Me.CantKgrs.Name = "CantKgrs"
         Me.CantKgrs.ReadOnly = True
@@ -863,8 +890,8 @@ Partial Class FrmCapturaProdTerminado
         '
         'DataGridViewTextBoxColumn6
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn6.HeaderText = "Piezas"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -872,10 +899,10 @@ Partial Class FrmCapturaProdTerminado
         '
         'DataGridViewTextBoxColumn7
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle7.Format = "N2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn7.HeaderText = "Kilos"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -932,7 +959,7 @@ Partial Class FrmCapturaProdTerminado
         Me.LoteCortesDet.Capacity = 32
         Me.LoteCortesDet.ConcurrencyPredicateFactoryToUse = Nothing
         Me.LoteCortesDet.DoNotPerformAddIfPresent = False
-        Me.LoteCortesDet.EntityFactoryToUse = New IntegraLab.ORM.FactoryClasses.MscloteCortesDetEntityFactory()
+        Me.LoteCortesDet.EntityFactoryToUse = New Integralab.ORM.FactoryClasses.MscloteCortesDetEntityFactory()
         Me.LoteCortesDet.IsReadOnly = False
         Me.LoteCortesDet.MaxNumberOfItemsToReturn = CType(0, Long)
         Me.LoteCortesDet.SortClauses = Nothing
@@ -953,28 +980,28 @@ Partial Class FrmCapturaProdTerminado
         Me.Label6.TabIndex = 98
         Me.Label6.Text = "Cajas/" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Bultos:"
         '
-        'TextBox1
+        'txtcajas
         '
-        Me.TextBox1.AcceptsReturn = True
-        Me.TextBox1.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(102, 194)
-        Me.TextBox1.MaxLength = 0
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TextBox1.Size = New System.Drawing.Size(81, 50)
-        Me.TextBox1.TabIndex = 99
-        Me.TextBox1.Text = "0"
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtcajas.AcceptsReturn = True
+        Me.txtcajas.BackColor = System.Drawing.SystemColors.Window
+        Me.txtcajas.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtcajas.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtcajas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtcajas.Location = New System.Drawing.Point(102, 194)
+        Me.txtcajas.MaxLength = 0
+        Me.txtcajas.Name = "txtcajas"
+        Me.txtcajas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtcajas.Size = New System.Drawing.Size(81, 50)
+        Me.txtcajas.TabIndex = 99
+        Me.txtcajas.Text = "0"
+        Me.txtcajas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'FrmCapturaProdTerminado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1018, 595)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtcajas)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.chkTipoCorte)
         Me.Controls.Add(Me.chkActivarLectura)
@@ -1101,5 +1128,5 @@ Partial Class FrmCapturaProdTerminado
     Friend WithEvents CantPzas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CantKgrs As System.Windows.Forms.DataGridViewTextBoxColumn
     Public WithEvents Label6 As System.Windows.Forms.Label
-    Public WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Public WithEvents txtcajas As System.Windows.Forms.TextBox
 End Class
