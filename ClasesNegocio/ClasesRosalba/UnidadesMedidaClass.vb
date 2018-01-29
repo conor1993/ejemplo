@@ -141,6 +141,18 @@ Public Class UnidadesMedidaClass
         End Get
     End Property
 
+    <System.ComponentModel.DisplayName("ClaveUnidad")> _
+    Public Property Claveunidadsat() As String
+        Get
+            Return UnidadMedida.Claveunidadsat
+
+        End Get
+        Set(ByVal value As String)
+            UnidadMedida.Claveunidadsat = value
+            RaiseEvent Modificado(Me, New EventArgs)
+        End Set
+    End Property
+
 #End Region
 
     Public Function Borrar() As Boolean Implements IEntidad.Borrar
