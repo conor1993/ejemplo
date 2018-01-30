@@ -710,19 +710,19 @@ Public Class FrmCapturaProdTerminado
                 Me.CantKgrs.DataPropertyName = "CantKgrs"
             End If
 
-            Me.txtPeso.Text = "0"
+
             'Me.cmbClientes.SelectedIndex = 0
 
             Sumar()
 
 
-            If Me.mostarMensajes Then MessageBox.Show("Se genero corte con el folio :" & folioEtiqueta, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'If Me.mostarMensajes Then MessageBox.Show("Se genero corte con el folio :" & folioEtiqueta, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            If CDec(Me.txtKilosCanales.Text) - CDec(Me.txtTotKgrs.Text) <= 30 Then
-                If mostarMensajes Then MsgBox("Está por terminar la captura de cortes.", MsgBoxStyle.Exclamation, "Aviso")
-            End If
+            'If CDec(Me.txtKilosCanales.Text) - CDec(Me.txtTotKgrs.Text) <= 30 Then
+            '    If mostarMensajes Then MsgBox("Está por terminar la captura de cortes.", MsgBoxStyle.Exclamation, "Aviso")
+            'End If
 
-            Me.txtPeso.SelectAll()
+            'Me.txtPeso.SelectAll()
 
             Return True
         Catch ex As Exception
@@ -1067,13 +1067,14 @@ Public Class FrmCapturaProdTerminado
             ''nuevo modo de guardar----------------------------------------
 
             For i As Integer = 1 To numcaja
-
+                Me.Guardar()
             Next
 
-            If Me.Guardar() Then
-                Me.txtCodSubCorte.Focus()
-            End If
+            Me.txtPeso.Text = "0"
 
+            'If Me.Guardar() Then
+            '    Me.txtCodSubCorte.Focus()
+            'End If
             ''------------------------------------------------------------
 
         End If

@@ -504,7 +504,7 @@ Partial Class CompCatProveedor
         'mtbRFC
         '
         Me.mtbRFC.Location = New System.Drawing.Point(124, 36)
-        Me.mtbRFC.Mask = ">LLLL-000000-AA0"
+        Me.mtbRFC.Mask = ">LLLL-000000-AAA"
         Me.mtbRFC.Name = "mtbRFC"
         Me.mtbRFC.Size = New System.Drawing.Size(97, 20)
         Me.mtbRFC.TabIndex = 1
