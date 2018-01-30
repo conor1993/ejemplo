@@ -11,8 +11,9 @@
 Imports ClasesNegocio
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports CD = IntegraLab.ORM.CollectionClasses
-Imports EC = Integralab.ORM.EntityClasses
+Imports EC = IntegraLab.ORM.EntityClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
+Imports System.Data.SqlClient
 
 Public Class FrmABCCortes
     Dim LbNuevo As Boolean
@@ -43,6 +44,17 @@ Public Class FrmABCCortes
             Me.cmbPreCortes.DisplayMember = "Descripcion"
             Me.cmbPreCortes.ValueMember = "IdProducto"
             LlenarComboPreCortes()
+            Try
+                Dim FormasPago As DataSet = New DataSet
+                Dim queryString As String = "SELECT * FROM CatProdServSAT"
+                Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
+                adapter.Fill(FormasPago)
+                Me.cmbProdSAT.DataSource = FormasPago.Tables(0)
+                Me.cmbProdSAT.DisplayMember = "Concepto"
+                Me.cmbProdSAT.ValueMember = "Clave"
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
             Me.Limpiar()
             Me.Deshabilitar()
         Catch ex As Exception
@@ -68,6 +80,7 @@ Public Class FrmABCCortes
         Me.lblEstatus.Visible = False
         Me.txtPrecio.Text = 0
         Me.txtPiezasXCabeza.Text = 0
+        Me.cmbProdSAT.SelectedItem = Nothing
     End Function
 
     Public Function Deshabilitar() As Boolean
@@ -86,6 +99,8 @@ Public Class FrmABCCortes
         Me.txtPrecio.Enabled = False
         Me.txtPiezasXCabeza.Enabled = False
         Me.chkHueso.Enabled = False
+        Me.cmbProdSAT.Enabled = False
+
     End Function
 
     Public Function Habilitar() As Boolean
@@ -104,6 +119,8 @@ Public Class FrmABCCortes
         Me.txtPrecio.Enabled = True
         Me.txtPiezasXCabeza.Enabled = True
         Me.chkHueso.Enabled = True
+        Me.cmbProdSAT.Enabled = True
+
     End Function
 
     Public Function Guardar() As Boolean
@@ -117,6 +134,7 @@ Public Class FrmABCCortes
         Productos.PiezasXCabeza = Me.txtPiezasXCabeza.Text
         Productos.PrecioXKilo = CDec(Me.txtPrecio.Text.Replace("$", "").Replace(",", ","))
         Productos.ConHueso = Me.chkHueso.Checked
+        Productos.ClaveprodSat = Me.cmbProdSAT.SelectedValue
     End Function
 
     Public Function PonerDatos() As Boolean
@@ -131,6 +149,7 @@ Public Class FrmABCCortes
         Me.txtPiezasXCabeza.Text = Productos.PiezasXCabeza.ToString("N3")
         Me.txtPrecio.Text = Productos.PrecioXKilo.ToString("C2")
         Me.chkHueso.Checked = Productos.ConHueso
+        Me.cmbProdSAT.SelectedValue = Productos.ClaveprodSat
     End Function
 
     ''' <summary>
