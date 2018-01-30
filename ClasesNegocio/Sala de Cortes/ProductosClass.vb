@@ -378,7 +378,17 @@ Public Class ProductosClass
     '        Entity.PorcIVA = value
     '    End Set
     'End Property
+    <System.ComponentModel.DisplayName("ClaveprodSat")> _
+    Public Property ClaveprodSat() As String
+        Get
+            Return Entity.Claveproserv
 
+        End Get
+        Set(ByVal value As String)
+            Entity.Claveproserv = value
+            RaiseEvent Modificado(Me, New EventArgs)
+        End Set
+    End Property
 
 #End Region
 

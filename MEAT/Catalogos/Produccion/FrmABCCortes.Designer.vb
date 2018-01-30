@@ -22,59 +22,61 @@ Partial Class FrmABCCortes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.dgvProductos = New System.Windows.Forms.DataGridView
-        Me.IdProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DescripcionCortaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ObservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SubProductoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.PreCorteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.CorteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.CanalDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.DecomisaDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.EnPiezasDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CodProdAntDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.MaximoPiezasxCajaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NombreInglesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CodigoBarraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CodProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IdCuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CuentaContableNombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PrecioXKiloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PiezasXCabezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DetallePropRelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ValorAgregadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.EsMermaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CatProductos = New ClasesNegocio.ProductosCollectionsClass
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.txtCodigo = New System.Windows.Forms.TextBox
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.txtCodigoBarra = New Integralab.Controles.TextBoxMejorado
-        Me.txtDescripcion = New Integralab.Controles.TextBoxMejorado
-        Me.txtDescCorta = New Integralab.Controles.TextBoxMejorado
-        Me.txtMaximoPiezasxCaja = New Integralab.Controles.TextBoxMejorado
-        Me.txtNombreIngles = New Integralab.Controles.TextBoxMejorado
-        Me.txtCodigoPrecorte = New Integralab.Controles.TextBoxMejorado
-        Me.cmbPreCortes = New Integralab.Controles.ComboBoxMejorado
-        Me.txtPrecio = New Integralab.Controles.TextBoxMejorado
-        Me.txtPiezasXCabeza = New Integralab.Controles.TextBoxMejorado
-        Me.chkHueso = New System.Windows.Forms.CheckBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.txtFiltro = New Integralab.Controles.TextBoxMejorado
-        Me.Label9 = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.dgvProductos = New System.Windows.Forms.DataGridView()
+        Me.IdProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionCortaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ObservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubProductoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.PreCorteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.CorteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.CanalDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DecomisaDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EnPiezasDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodProdAntDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MaximoPiezasxCajaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreInglesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodigoBarraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdCuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuentaContableNombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioXKiloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PiezasXCabezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DetallePropRelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ValorAgregadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EsMermaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CatProductos = New ClasesNegocio.ProductosCollectionsClass()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtCodigo = New System.Windows.Forms.TextBox()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtCodigoBarra = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtDescripcion = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtDescCorta = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtMaximoPiezasxCaja = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtNombreIngles = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtCodigoPrecorte = New IntegraLab.Controles.TextBoxMejorado()
+        Me.cmbPreCortes = New IntegraLab.Controles.ComboBoxMejorado()
+        Me.txtPrecio = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtPiezasXCabeza = New IntegraLab.Controles.TextBoxMejorado()
+        Me.chkHueso = New System.Windows.Forms.CheckBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtFiltro = New IntegraLab.Controles.TextBoxMejorado()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cmbProdSAT = New System.Windows.Forms.ComboBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -128,18 +130,18 @@ Partial Class FrmABCCortes
         Me.dgvProductos.AllowUserToDeleteRows = False
         Me.dgvProductos.AllowUserToResizeRows = False
         Me.dgvProductos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.dgvProductos.AutoGenerateColumns = False
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvProductos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdProductoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.DescripcionCortaDataGridViewTextBoxColumn, Me.ObservacionesDataGridViewTextBoxColumn, Me.SubProductoDataGridViewCheckBoxColumn, Me.PreCorteDataGridViewCheckBoxColumn, Me.CorteDataGridViewCheckBoxColumn, Me.CanalDataGridViewCheckBoxColumn, Me.DecomisaDataGridViewCheckBoxColumn, Me.EnPiezasDataGridViewCheckBoxColumn, Me.EstatusDataGridViewTextBoxColumn, Me.CodProdAntDataGridViewTextBoxColumn, Me.MaximoPiezasxCajaDataGridViewTextBoxColumn, Me.NombreInglesDataGridViewTextBoxColumn, Me.CodigoBarraDataGridViewTextBoxColumn, Me.CodProductoDataGridViewTextBoxColumn, Me.IdCuentaContableDataGridViewTextBoxColumn, Me.CuentaContableDataGridViewTextBoxColumn, Me.CuentaContableNombreDataGridViewTextBoxColumn, Me.PrecioXKiloDataGridViewTextBoxColumn, Me.PiezasXCabezaDataGridViewTextBoxColumn, Me.DetallePropRelDataGridViewTextBoxColumn, Me.ValorAgregadoDataGridViewCheckBoxColumn, Me.EsMermaDataGridViewTextBoxColumn})
         Me.dgvProductos.DataSource = Me.CatProductos
-        Me.dgvProductos.Location = New System.Drawing.Point(6, 60)
+        Me.dgvProductos.Location = New System.Drawing.Point(6, 62)
         Me.dgvProductos.MultiSelect = False
         Me.dgvProductos.Name = "dgvProductos"
         Me.dgvProductos.ReadOnly = True
         Me.dgvProductos.RowHeadersVisible = False
         Me.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProductos.Size = New System.Drawing.Size(492, 231)
+        Me.dgvProductos.Size = New System.Drawing.Size(492, 188)
         Me.dgvProductos.TabIndex = 12
         '
         'IdProductoDataGridViewTextBoxColumn
@@ -365,7 +367,7 @@ Partial Class FrmABCCortes
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(62, 178)
+        Me.Label6.Location = New System.Drawing.Point(62, 207)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(57, 13)
         Me.Label6.TabIndex = 15
@@ -433,7 +435,7 @@ Partial Class FrmABCCortes
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(291, 207)
+        Me.Label10.Location = New System.Drawing.Point(291, 236)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(90, 13)
         Me.Label10.TabIndex = 20
@@ -442,7 +444,7 @@ Partial Class FrmABCCortes
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(62, 207)
+        Me.Label4.Location = New System.Drawing.Point(62, 236)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(70, 13)
         Me.Label4.TabIndex = 18
@@ -461,7 +463,7 @@ Partial Class FrmABCCortes
         Me.txtCodigoBarra.SiguienteControl = Me.txtDescripcion
         Me.txtCodigoBarra.Size = New System.Drawing.Size(156, 20)
         Me.txtCodigoBarra.TabIndex = 1
-        Me.txtCodigoBarra.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
+        Me.txtCodigoBarra.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
         Me.txtCodigoBarra.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtCodigoBarra.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -478,7 +480,7 @@ Partial Class FrmABCCortes
         Me.txtDescripcion.SiguienteControl = Me.txtDescCorta
         Me.txtDescripcion.Size = New System.Drawing.Size(397, 20)
         Me.txtDescripcion.TabIndex = 2
-        Me.txtDescripcion.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
+        Me.txtDescripcion.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
         Me.txtDescripcion.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtDescripcion.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -495,7 +497,7 @@ Partial Class FrmABCCortes
         Me.txtDescCorta.SiguienteControl = Me.txtMaximoPiezasxCaja
         Me.txtDescCorta.Size = New System.Drawing.Size(170, 20)
         Me.txtDescCorta.TabIndex = 3
-        Me.txtDescCorta.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
+        Me.txtDescCorta.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
         Me.txtDescCorta.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtDescCorta.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -512,7 +514,7 @@ Partial Class FrmABCCortes
         Me.txtMaximoPiezasxCaja.SiguienteControl = Me.txtNombreIngles
         Me.txtMaximoPiezasxCaja.Size = New System.Drawing.Size(100, 20)
         Me.txtMaximoPiezasxCaja.TabIndex = 4
-        Me.txtMaximoPiezasxCaja.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtMaximoPiezasxCaja.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
         Me.txtMaximoPiezasxCaja.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtMaximoPiezasxCaja.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -528,7 +530,7 @@ Partial Class FrmABCCortes
         Me.txtNombreIngles.SiguienteControl = Me.txtCodigoPrecorte
         Me.txtNombreIngles.Size = New System.Drawing.Size(397, 20)
         Me.txtNombreIngles.TabIndex = 5
-        Me.txtNombreIngles.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
+        Me.txtNombreIngles.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
         Me.txtNombreIngles.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtNombreIngles.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -537,7 +539,7 @@ Partial Class FrmABCCortes
         Me.txtCodigoPrecorte.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtCodigoPrecorte.ComboBoxEnlazado = Me.cmbPreCortes
         Me.txtCodigoPrecorte.Decimales = 0
-        Me.txtCodigoPrecorte.Location = New System.Drawing.Point(164, 174)
+        Me.txtCodigoPrecorte.Location = New System.Drawing.Point(164, 203)
         Me.txtCodigoPrecorte.MaxLength = 3000
         Me.txtCodigoPrecorte.MensajeCombo = "Seleccionar un Precorte"
         Me.txtCodigoPrecorte.MensajeNoExiste = "No existe un Precorte con este código o se encuentra inactivo"
@@ -545,14 +547,14 @@ Partial Class FrmABCCortes
         Me.txtCodigoPrecorte.SiguienteControl = Me.txtPrecio
         Me.txtCodigoPrecorte.Size = New System.Drawing.Size(60, 20)
         Me.txtCodigoPrecorte.TabIndex = 6
-        Me.txtCodigoPrecorte.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtCodigoPrecorte.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
         Me.txtCodigoPrecorte.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtCodigoPrecorte.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'cmbPreCortes
         '
         Me.cmbPreCortes.FormattingEnabled = True
-        Me.cmbPreCortes.Location = New System.Drawing.Point(230, 174)
+        Me.cmbPreCortes.Location = New System.Drawing.Point(230, 203)
         Me.cmbPreCortes.Name = "cmbPreCortes"
         Me.cmbPreCortes.NombreMetodo = Nothing
         Me.cmbPreCortes.Parametros = Nothing
@@ -567,7 +569,7 @@ Partial Class FrmABCCortes
         Me.txtPrecio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtPrecio.ComboBoxEnlazado = Nothing
         Me.txtPrecio.Decimales = 4
-        Me.txtPrecio.Location = New System.Drawing.Point(164, 203)
+        Me.txtPrecio.Location = New System.Drawing.Point(164, 232)
         Me.txtPrecio.MaxLength = 3000
         Me.txtPrecio.MensajeCombo = "Seleccionar un item..."
         Me.txtPrecio.MensajeNoExiste = "No existe un item con este código o se encuentra inactivo"
@@ -575,7 +577,7 @@ Partial Class FrmABCCortes
         Me.txtPrecio.SiguienteControl = Me.txtPiezasXCabeza
         Me.txtPrecio.Size = New System.Drawing.Size(100, 20)
         Me.txtPrecio.TabIndex = 8
-        Me.txtPrecio.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.[Decimal]
+        Me.txtPrecio.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.[Decimal]
         Me.txtPrecio.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtPrecio.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -583,7 +585,7 @@ Partial Class FrmABCCortes
         '
         Me.txtPiezasXCabeza.ComboBoxEnlazado = Nothing
         Me.txtPiezasXCabeza.Decimales = 0
-        Me.txtPiezasXCabeza.Location = New System.Drawing.Point(392, 203)
+        Me.txtPiezasXCabeza.Location = New System.Drawing.Point(392, 232)
         Me.txtPiezasXCabeza.MaxLength = 3000
         Me.txtPiezasXCabeza.MensajeCombo = "Seleccionar un item..."
         Me.txtPiezasXCabeza.MensajeNoExiste = "No existe un item con este código o se encuentra inactivo"
@@ -591,14 +593,14 @@ Partial Class FrmABCCortes
         Me.txtPiezasXCabeza.SiguienteControl = Me.chkHueso
         Me.txtPiezasXCabeza.Size = New System.Drawing.Size(100, 20)
         Me.txtPiezasXCabeza.TabIndex = 9
-        Me.txtPiezasXCabeza.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtPiezasXCabeza.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
         Me.txtPiezasXCabeza.ValorMaximo = New Decimal(New Integer() {99, 0, 0, 0})
         Me.txtPiezasXCabeza.ValorMinimo = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'chkHueso
         '
         Me.chkHueso.AutoSize = True
-        Me.chkHueso.Location = New System.Drawing.Point(504, 205)
+        Me.chkHueso.Location = New System.Drawing.Point(504, 234)
         Me.chkHueso.Name = "chkHueso"
         Me.chkHueso.Size = New System.Drawing.Size(57, 17)
         Me.chkHueso.TabIndex = 10
@@ -610,9 +612,9 @@ Partial Class FrmABCCortes
         Me.GroupBox1.Controls.Add(Me.txtFiltro)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.dgvProductos)
-        Me.GroupBox1.Location = New System.Drawing.Point(59, 236)
+        Me.GroupBox1.Location = New System.Drawing.Point(59, 277)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(504, 297)
+        Me.GroupBox1.Size = New System.Drawing.Size(504, 256)
         Me.GroupBox1.TabIndex = 23
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cortes Regitrados"
@@ -630,7 +632,7 @@ Partial Class FrmABCCortes
         Me.txtFiltro.SiguienteControl = Me.dgvProductos
         Me.txtFiltro.Size = New System.Drawing.Size(317, 20)
         Me.txtFiltro.TabIndex = 11
-        Me.txtFiltro.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
+        Me.txtFiltro.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
         Me.txtFiltro.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtFiltro.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -643,11 +645,30 @@ Partial Class FrmABCCortes
         Me.Label9.TabIndex = 24
         Me.Label9.Text = "Descripción :"
         '
+        'cmbProdSAT
+        '
+        Me.cmbProdSAT.FormattingEnabled = True
+        Me.cmbProdSAT.Location = New System.Drawing.Point(164, 175)
+        Me.cmbProdSAT.Name = "cmbProdSAT"
+        Me.cmbProdSAT.Size = New System.Drawing.Size(121, 21)
+        Me.cmbProdSAT.TabIndex = 24
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(63, 178)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(79, 13)
+        Me.Label11.TabIndex = 25
+        Me.Label11.Text = "Productos SAT"
+        '
         'FrmABCCortes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(575, 545)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.cmbProdSAT)
         Me.Controls.Add(Me.chkHueso)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtPiezasXCabeza)
@@ -741,4 +762,6 @@ Partial Class FrmABCCortes
     Friend WithEvents ValorAgregadoDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents EsMermaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents chkHueso As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbProdSAT As System.Windows.Forms.ComboBox
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 End Class
