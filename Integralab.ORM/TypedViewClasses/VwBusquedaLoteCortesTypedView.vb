@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 29 de enero de 2018 16:36:39
+' // Code is generated on: miércoles, 31 de enero de 2018 11:15:27
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -60,6 +60,8 @@ Namespace Integralab.ORM.TypedViewClasses
 		Private _columnTipoLote As DataColumn
 		Private _columnEsReproceso As DataColumn
 		Private _columnTotalPzas As DataColumn
+		Private _columnProducto As DataColumn
+		Private _columnDescripcion As DataColumn
 		
 		' __LLBLGENPRO_USER_CODE_REGION_START AdditionalMembers
 		' __LLBLGENPRO_USER_CODE_REGION_END
@@ -71,7 +73,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' <summary>
 		''' The amount of fields in the resultset.
 		''' </summary>
-		Private Const AmountOfFields As Integer = 12
+		Private Const AmountOfFields As Integer = 14
 #End Region
 		
 		''' <summary>
@@ -341,6 +343,16 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnTotalPzas.ReadOnly = True
 			_columnTotalPzas.Caption = "TotalPzas"
 			Me.Columns.Add(_columnTotalPzas)
+
+			_columnProducto = New DataColumn("Producto", GetType(System.Int32), Nothing, MappingType.Element)
+			_columnProducto.ReadOnly = True
+			_columnProducto.Caption = "Producto"
+			Me.Columns.Add(_columnProducto)
+
+			_columnDescripcion = New DataColumn("Descripcion", GetType(System.String), Nothing, MappingType.Element)
+			_columnDescripcion.ReadOnly = True
+			_columnDescripcion.Caption = "Descripcion"
+			Me.Columns.Add(_columnDescripcion)
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitClass
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -363,6 +375,8 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnTipoLote = Me.Columns("TipoLote")
 			_columnEsReproceso = Me.Columns("EsReproceso")
 			_columnTotalPzas = Me.Columns("TotalPzas")
+			_columnProducto = Me.Columns("Producto")
+			_columnDescripcion = Me.Columns("Descripcion")
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitMembers
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -428,6 +442,14 @@ Namespace Integralab.ORM.TypedViewClasses
 			fieldHashtable = New Hashtable()
 
 			_fieldsCustomProperties.Add("TotalPzas", fieldHashtable)
+			
+			fieldHashtable = New Hashtable()
+
+			_fieldsCustomProperties.Add("Producto", fieldHashtable)
+			
+			fieldHashtable = New Hashtable()
+
+			_fieldsCustomProperties.Add("Descripcion", fieldHashtable)
 			
 		End Sub
 
@@ -631,6 +653,24 @@ Namespace Integralab.ORM.TypedViewClasses
 		ReadOnly Friend Property TotalPzasColumn As DataColumn
 			Get 
 				Return _columnTotalPzas 
+			End Get
+		End Property
+    
+		''' <summary>
+		''' Returns the column Object belonging to the TypedView field Producto
+		''' </summary>
+		ReadOnly Friend Property ProductoColumn As DataColumn
+			Get 
+				Return _columnProducto 
+			End Get
+		End Property
+    
+		''' <summary>
+		''' Returns the column Object belonging to the TypedView field Descripcion
+		''' </summary>
+		ReadOnly Friend Property DescripcionColumn As DataColumn
+			Get 
+				Return _columnDescripcion 
 			End Get
 		End Property
     
@@ -1140,6 +1180,84 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' </summary>
     	Public Sub SetTotalPzasNull() 
 			Me(_parent.TotalPzasColumn) = System.Convert.DBNull
+		End Sub
+
+	
+
+		''' <summary>
+		''' Gets / sets the value of the TypedView field Producto<br/><br/>
+		''' 
+		''' </summary>
+		''' <remarks>
+		''' Mapped on view field: "VwBusquedaLoteCortes"."Producto"<br/>
+		''' View field characteristics (type, precision, scale, length): Int, 10, 0, 0
+		''' </remarks>
+		Public Property [Producto]() As System.Int32
+			Get 
+				If IsProductoNull() Then
+					' return default value for this type.
+					Return CType(TypeDefaultValue.GetDefaultValue(GetType(System.Int32)), System.Int32)
+				Else
+					Return CType(Me(_parent.ProductoColumn), System.Int32)
+				End If
+			End Get
+			Set 
+				Me(_parent.ProductoColumn) = Value
+			End Set
+		End Property
+
+		''' <summary>
+		''' Returns True if the TypedView field Producto is NULL, False otherwise.
+		''' </summary>
+		Public Function IsProductoNull() As Boolean
+			Return IsNull(_parent.ProductoColumn)
+		End Function
+
+		''' <summary>
+		''' Sets the TypedView field Producto to NULL. Not recommended a typed view should be used
+		''' as a readonly Object.
+		''' </summary>
+    	Public Sub SetProductoNull() 
+			Me(_parent.ProductoColumn) = System.Convert.DBNull
+		End Sub
+
+	
+
+		''' <summary>
+		''' Gets / sets the value of the TypedView field Descripcion<br/><br/>
+		''' 
+		''' </summary>
+		''' <remarks>
+		''' Mapped on view field: "VwBusquedaLoteCortes"."Descripcion"<br/>
+		''' View field characteristics (type, precision, scale, length): VarChar, 0, 0, 100
+		''' </remarks>
+		Public Property [Descripcion]() As System.String
+			Get 
+				If IsDescripcionNull() Then
+					' return default value for this type.
+					Return CType(TypeDefaultValue.GetDefaultValue(GetType(System.String)), System.String)
+				Else
+					Return CType(Me(_parent.DescripcionColumn), System.String)
+				End If
+			End Get
+			Set 
+				Me(_parent.DescripcionColumn) = Value
+			End Set
+		End Property
+
+		''' <summary>
+		''' Returns True if the TypedView field Descripcion is NULL, False otherwise.
+		''' </summary>
+		Public Function IsDescripcionNull() As Boolean
+			Return IsNull(_parent.DescripcionColumn)
+		End Function
+
+		''' <summary>
+		''' Sets the TypedView field Descripcion to NULL. Not recommended a typed view should be used
+		''' as a readonly Object.
+		''' </summary>
+    	Public Sub SetDescripcionNull() 
+			Me(_parent.DescripcionColumn) = System.Convert.DBNull
 		End Sub
 
 	

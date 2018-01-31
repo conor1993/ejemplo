@@ -2,6 +2,8 @@ Imports ClasesNegocio
 Imports HC = Integralab.ORM.HelperClasses
 Imports EC = Integralab.ORM.EntityClasses
 Imports CC = Integralab.ORM.CollectionClasses
+Imports TC = Integralab.ORM.TypedViewClasses
+Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 
 
 
@@ -161,23 +163,8 @@ Public Class FrmAperturaLoteCorte2
 
     End Function
     Private Function Buscar() As Boolean
-        Dim TablaEmbarque As DataSet = Integralab.ORM.StoredProcedureCallerClasses.RetrievalProcedures.UspConMscloteCortesCab(1, "")
-        'Dim Consultas As New FrmConsLoteCortes
-        'Consultas.dgvLoteCortes.AutoGenerateColumns = False
-        'Consultas.dgvLoteCortes.DataSource = TablaEmbarque.Tables(0)
-        'Consultas.LoteCorte.DataPropertyName = "IdFolioLoteCorte"
-        'Consultas.FechaCorte.DataPropertyName = "FechaCorte"
-        'Consultas.Cliente.DataPropertyName = "Nom_Cliente"
-        'Consultas.DiasCad.DataPropertyName = "DiasCad"
-        'Consultas.Estatus.DataPropertyName = "Estatus"
-        'If Consultas.ShowDialog = Windows.Forms.DialogResult.OK Then
-        '    Me.txtLoteCorte.Text = Consultas.dgvLoteCortes.CurrentRow.Cells("IdFolioLoteCorte").Value
-        '    Me.dtpFechaLoteCorte.Value = Consultas.dgvLoteCortes.CurrentRow.Cells("Fecha").Value
-        '    Me.txtNombre.Text = Consultas.dgvLoteCortes.CurrentRow.Cells("Cliente").Value
-        '    Me.txtDiasCaducidad.Text = Consultas.dgvLoteCortes.CurrentRow.Cells("DiasCad").Value
-        '    Me.lblEstatus.Text = Consultas.dgvLoteCortes.CurrentRow.Cells("Estatus").Value
-        'End If
-        Me.txtLoteCorte.Focus()
+
+
     End Function
 
     Private Function Validar() As Boolean

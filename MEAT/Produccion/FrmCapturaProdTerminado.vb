@@ -754,6 +754,7 @@ Public Class FrmCapturaProdTerminado
     End Function
 
     Private Function Buscar() As Boolean
+
     End Function
 
     Private Sub Imprimir(ByVal NomCorte As String, ByVal Kilos As Decimal, ByVal Codigo As Integer, ByVal Piezas As Integer, ByVal Lote As String, ByVal Fecha As Date, ByVal FechaCad As Date, _
@@ -1254,6 +1255,7 @@ Public Class FrmCapturaProdTerminado
 #Region "Form"
     Private Sub FrmCapturaProdTerminado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            Dim idproducto As String
             Controlador.Configuracion.ActualizarProduccion()
 
             If Controlador.Configuracion.Produccion.Entidad.IsNew Then
@@ -1276,6 +1278,8 @@ Public Class FrmCapturaProdTerminado
                     Me.txtDiasCad.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmDiasCad.Index).Value
                     Me.dtpFechaCaducidad.Value = CDate(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmFechaCorte.Index).Value).AddDays(CInt(Me.txtDiasCad.Text))
                     Me.txtProveedor.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmIntroductor.Index).Value
+                    idproducto = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmproducto.Index).Value
+
                 Else
                     For Each control As Control In Me.Controls
                         control.Enabled = False

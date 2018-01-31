@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 29 de enero de 2018 16:36:30
+' // Code is generated on: miércoles, 31 de enero de 2018 11:15:18
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -4704,6 +4704,8 @@ Namespace Integralab.ORM
 		[PrioridadPago]
 		[PorcentajeFinanciero]
 		[AutoFactura]
+		[PrNoCuenta]
+		[PrClaveBancaria]
 		AmountOfFields
 	End Enum
 
@@ -6055,6 +6057,8 @@ Namespace Integralab.ORM
 		[TipoLote]
 		[EsReproceso]
 		[TotalPzas]
+		[Producto]
+		[Descripcion]
 		AmountOfFields
 	End Enum
 

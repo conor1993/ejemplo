@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: lunes, 29 de enero de 2018 16:36:37
+' Code is generated on: miércoles, 31 de enero de 2018 11:15:26
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -17816,6 +17816,18 @@ Namespace Integralab.ORM.HelperClasses
 				Return CType(EntityFieldFactory.Create(ProveedorAvanzadoFieldIndex.AutoFactura), EntityField)
 			End Get
 		End Property
+		''' <summary>Creates a new ProveedorAvanzadoEntity.PrNoCuenta field instance</summary>
+		Public Shared ReadOnly Property [PrNoCuenta] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ProveedorAvanzadoFieldIndex.PrNoCuenta), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new ProveedorAvanzadoEntity.PrClaveBancaria field instance</summary>
+		Public Shared ReadOnly Property [PrClaveBancaria] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ProveedorAvanzadoFieldIndex.PrClaveBancaria), EntityField)
+			End Get
+		End Property
 	End Class
 	''' <summary>Field Creation Class for entity PvnotasVentaRetCabEntity</summary>
 	Public Class PvnotasVentaRetCabFields
@@ -22974,6 +22986,18 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [TotalPzas] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(VwBusquedaLoteCortesFieldIndex.TotalPzas), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new VwBusquedaLoteCortesTypedView.Producto field instance</summary>
+		Public Shared ReadOnly Property [Producto] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(VwBusquedaLoteCortesFieldIndex.Producto), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new VwBusquedaLoteCortesTypedView.Descripcion field instance</summary>
+		Public Shared ReadOnly Property [Descripcion] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(VwBusquedaLoteCortesFieldIndex.Descripcion), EntityField)
 			End Get
 		End Property
 	End Class

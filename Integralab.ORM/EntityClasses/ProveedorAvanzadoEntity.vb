@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 29 de enero de 2018 16:36:32
+' // Code is generated on: miércoles, 31 de enero de 2018 11:15:20
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -560,6 +560,8 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -733,6 +735,12 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("AutoFactura", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("PrNoCuenta", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("PrClaveBancaria", fieldHashtable)
 		End Sub
 
 
@@ -1306,6 +1314,42 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(ProveedorAvanzadoFieldIndex.AutoFactura, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The PrNoCuenta property of the Entity ProveedorAvanzado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MCatCompProveedoresAvanzados"."PrNoCuenta"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [PrNoCuenta]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(ProveedorAvanzadoFieldIndex.PrNoCuenta, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(ProveedorAvanzadoFieldIndex.PrNoCuenta, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The PrClaveBancaria property of the Entity ProveedorAvanzado<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MCatCompProveedoresAvanzados"."PrClaveBancaria"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [PrClaveBancaria]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(ProveedorAvanzadoFieldIndex.PrClaveBancaria, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(ProveedorAvanzadoFieldIndex.PrClaveBancaria, Integer), value)
 			End Set
 		End Property
 	

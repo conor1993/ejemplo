@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: lunes, 29 de enero de 2018 16:36:30
+' Code is generated on: miércoles, 31 de enero de 2018 11:15:18
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -3949,6 +3949,8 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PrioridadPago", GetType(System.Int16), False, False, False, False, CInt(ProveedorAvanzadoFieldIndex.PrioridadPago), 0, 0, 5)
 			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PorcentajeFinanciero", GetType(System.Decimal), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.PorcentajeFinanciero), 0, 4, 19)
 			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "AutoFactura", GetType(System.Boolean), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.AutoFactura), 0, 0, 0)
+			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PrNoCuenta", GetType(System.Int32), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.PrNoCuenta), 0, 0, 10)
+			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PrClaveBancaria", GetType(System.Int32), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.PrClaveBancaria), 0, 0, 10)
 		End Sub
 		''' <summary>Inits PvnotasVentaRetCabEntity's FieldInfo objects</summary>
 		Private Sub InitPvnotasVentaRetCabEntityInfos()
@@ -4966,6 +4968,8 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "TipoLote", GetType(System.String), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.TipoLote), 10, 0, 0)
 			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "EsReproceso", GetType(System.Boolean), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.EsReproceso), 0, 0, 0)
 			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "TotalPzas", GetType(System.Decimal), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.TotalPzas), 0, 4, 19)
+			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "Producto", GetType(System.Int32), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.Producto), 0, 0, 10)
+			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "Descripcion", GetType(System.String), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.Descripcion), 100, 0, 0)
 		End Sub
 		''' <summary>Inits View's FieldInfo objects</summary>
 		Private Sub InitVwBusquedaMovimientosAlmacenTypedViewInfos()

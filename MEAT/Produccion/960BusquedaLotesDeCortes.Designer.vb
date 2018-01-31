@@ -22,39 +22,40 @@ Partial Class _960BusquasedaLotesDeCortes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.CmbIntroductor = New System.Windows.Forms.ComboBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.DtpFechaFinal = New System.Windows.Forms.DateTimePicker
-        Me.gbFechas = New System.Windows.Forms.GroupBox
-        Me.DtpFechaInicio = New System.Windows.Forms.DateTimePicker
-        Me.txtLoteCorte = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.BtnAceptar = New System.Windows.Forms.Button
-        Me.DgvLotes = New System.Windows.Forms.DataGridView
-        Me.clmLoteCorte = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmLoteSacrificio = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmIntroductor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.cmlKilos = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmFechaCorte = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmTipoLote = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmDiasCad = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmPiezas = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.gbResultadoBusqueda = New System.Windows.Forms.GroupBox
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.chkFecha = New System.Windows.Forms.CheckBox
-        Me.gbEstatus = New System.Windows.Forms.GroupBox
-        Me.chkCerrado = New System.Windows.Forms.CheckBox
-        Me.chkVigentes = New System.Windows.Forms.CheckBox
-        Me.chkReproceso = New System.Windows.Forms.CheckBox
-        Me.chkProduccion = New System.Windows.Forms.CheckBox
-        Me.gbTipoLote = New System.Windows.Forms.GroupBox
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.CmbIntroductor = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.DtpFechaFinal = New System.Windows.Forms.DateTimePicker()
+        Me.gbFechas = New System.Windows.Forms.GroupBox()
+        Me.DtpFechaInicio = New System.Windows.Forms.DateTimePicker()
+        Me.txtLoteCorte = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BtnAceptar = New System.Windows.Forms.Button()
+        Me.DgvLotes = New System.Windows.Forms.DataGridView()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.gbResultadoBusqueda = New System.Windows.Forms.GroupBox()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.chkFecha = New System.Windows.Forms.CheckBox()
+        Me.gbEstatus = New System.Windows.Forms.GroupBox()
+        Me.chkCerrado = New System.Windows.Forms.CheckBox()
+        Me.chkVigentes = New System.Windows.Forms.CheckBox()
+        Me.chkReproceso = New System.Windows.Forms.CheckBox()
+        Me.chkProduccion = New System.Windows.Forms.CheckBox()
+        Me.gbTipoLote = New System.Windows.Forms.GroupBox()
+        Me.clmLoteCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmLoteSacrificio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIntroductor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmlKilos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFechaCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmTipoLote = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmDiasCad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmPiezas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmproducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gbFechas.SuspendLayout()
         CType(Me.DgvLotes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbResultadoBusqueda.SuspendLayout()
@@ -173,7 +174,7 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.DgvLotes.AllowUserToDeleteRows = False
         Me.DgvLotes.AllowUserToResizeRows = False
         Me.DgvLotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvLotes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmLoteCorte, Me.clmLoteSacrificio, Me.clmIntroductor, Me.cmlKilos, Me.clmFechaCorte, Me.clmTipoLote, Me.clmEstatus, Me.clmDiasCad, Me.clmPiezas})
+        Me.DgvLotes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmLoteCorte, Me.clmLoteSacrificio, Me.clmIntroductor, Me.cmlKilos, Me.clmFechaCorte, Me.clmTipoLote, Me.clmEstatus, Me.clmDiasCad, Me.clmPiezas, Me.clmproducto})
         Me.DgvLotes.Location = New System.Drawing.Point(6, 19)
         Me.DgvLotes.MultiSelect = False
         Me.DgvLotes.Name = "DgvLotes"
@@ -182,75 +183,6 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.DgvLotes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DgvLotes.Size = New System.Drawing.Size(898, 408)
         Me.DgvLotes.TabIndex = 0
-        '
-        'clmLoteCorte
-        '
-        Me.clmLoteCorte.DataPropertyName = "LoteCorte"
-        Me.clmLoteCorte.HeaderText = "Lote Corte"
-        Me.clmLoteCorte.Name = "clmLoteCorte"
-        Me.clmLoteCorte.ReadOnly = True
-        '
-        'clmLoteSacrificio
-        '
-        Me.clmLoteSacrificio.DataPropertyName = "LoteSacrificio"
-        Me.clmLoteSacrificio.HeaderText = "Lote Sacrificio"
-        Me.clmLoteSacrificio.Name = "clmLoteSacrificio"
-        Me.clmLoteSacrificio.ReadOnly = True
-        Me.clmLoteSacrificio.Visible = False
-        '
-        'clmIntroductor
-        '
-        Me.clmIntroductor.DataPropertyName = "Introductor"
-        Me.clmIntroductor.HeaderText = "Introductor"
-        Me.clmIntroductor.Name = "clmIntroductor"
-        Me.clmIntroductor.ReadOnly = True
-        Me.clmIntroductor.Width = 200
-        '
-        'cmlKilos
-        '
-        Me.cmlKilos.DataPropertyName = "TotalKgs"
-        Me.cmlKilos.HeaderText = "Kgrs Producidos"
-        Me.cmlKilos.Name = "cmlKilos"
-        Me.cmlKilos.ReadOnly = True
-        '
-        'clmFechaCorte
-        '
-        Me.clmFechaCorte.DataPropertyName = "FechaCorte"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.clmFechaCorte.DefaultCellStyle = DataGridViewCellStyle1
-        Me.clmFechaCorte.HeaderText = "Fecha de Corte"
-        Me.clmFechaCorte.Name = "clmFechaCorte"
-        Me.clmFechaCorte.ReadOnly = True
-        '
-        'clmTipoLote
-        '
-        Me.clmTipoLote.DataPropertyName = "TipoLote"
-        Me.clmTipoLote.HeaderText = "Tipo Lote"
-        Me.clmTipoLote.Name = "clmTipoLote"
-        Me.clmTipoLote.ReadOnly = True
-        '
-        'clmEstatus
-        '
-        Me.clmEstatus.DataPropertyName = "EstatusCad"
-        Me.clmEstatus.HeaderText = "Estatus"
-        Me.clmEstatus.Name = "clmEstatus"
-        Me.clmEstatus.ReadOnly = True
-        '
-        'clmDiasCad
-        '
-        Me.clmDiasCad.DataPropertyName = "DiasCad"
-        Me.clmDiasCad.HeaderText = "Dias Cad"
-        Me.clmDiasCad.Name = "clmDiasCad"
-        Me.clmDiasCad.ReadOnly = True
-        Me.clmDiasCad.Visible = False
-        '
-        'clmPiezas
-        '
-        Me.clmPiezas.DataPropertyName = "TotalPzas"
-        Me.clmPiezas.HeaderText = "Piezas"
-        Me.clmPiezas.Name = "clmPiezas"
-        Me.clmPiezas.ReadOnly = True
-        Me.clmPiezas.Visible = False
         '
         'Button1
         '
@@ -381,6 +313,82 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.gbTipoLote.TabStop = False
         Me.gbTipoLote.Text = "Tipo Lote"
         '
+        'clmLoteCorte
+        '
+        Me.clmLoteCorte.DataPropertyName = "LoteCorte"
+        Me.clmLoteCorte.HeaderText = "Lote Corte"
+        Me.clmLoteCorte.Name = "clmLoteCorte"
+        Me.clmLoteCorte.ReadOnly = True
+        '
+        'clmLoteSacrificio
+        '
+        Me.clmLoteSacrificio.DataPropertyName = "LoteSacrificio"
+        Me.clmLoteSacrificio.HeaderText = "Lote Sacrificio"
+        Me.clmLoteSacrificio.Name = "clmLoteSacrificio"
+        Me.clmLoteSacrificio.ReadOnly = True
+        Me.clmLoteSacrificio.Visible = False
+        '
+        'clmIntroductor
+        '
+        Me.clmIntroductor.DataPropertyName = "Introductor"
+        Me.clmIntroductor.HeaderText = "Introductor"
+        Me.clmIntroductor.Name = "clmIntroductor"
+        Me.clmIntroductor.ReadOnly = True
+        Me.clmIntroductor.Width = 200
+        '
+        'cmlKilos
+        '
+        Me.cmlKilos.DataPropertyName = "TotalKgs"
+        Me.cmlKilos.HeaderText = "Kgrs Producidos"
+        Me.cmlKilos.Name = "cmlKilos"
+        Me.cmlKilos.ReadOnly = True
+        '
+        'clmFechaCorte
+        '
+        Me.clmFechaCorte.DataPropertyName = "FechaCorte"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.clmFechaCorte.DefaultCellStyle = DataGridViewCellStyle1
+        Me.clmFechaCorte.HeaderText = "Fecha de Corte"
+        Me.clmFechaCorte.Name = "clmFechaCorte"
+        Me.clmFechaCorte.ReadOnly = True
+        '
+        'clmTipoLote
+        '
+        Me.clmTipoLote.DataPropertyName = "TipoLote"
+        Me.clmTipoLote.HeaderText = "Tipo Lote"
+        Me.clmTipoLote.Name = "clmTipoLote"
+        Me.clmTipoLote.ReadOnly = True
+        '
+        'clmEstatus
+        '
+        Me.clmEstatus.DataPropertyName = "EstatusCad"
+        Me.clmEstatus.HeaderText = "Estatus"
+        Me.clmEstatus.Name = "clmEstatus"
+        Me.clmEstatus.ReadOnly = True
+        '
+        'clmDiasCad
+        '
+        Me.clmDiasCad.DataPropertyName = "DiasCad"
+        Me.clmDiasCad.HeaderText = "Dias Cad"
+        Me.clmDiasCad.Name = "clmDiasCad"
+        Me.clmDiasCad.ReadOnly = True
+        Me.clmDiasCad.Visible = False
+        '
+        'clmPiezas
+        '
+        Me.clmPiezas.DataPropertyName = "TotalPzas"
+        Me.clmPiezas.HeaderText = "Piezas"
+        Me.clmPiezas.Name = "clmPiezas"
+        Me.clmPiezas.ReadOnly = True
+        Me.clmPiezas.Visible = False
+        '
+        'clmproducto
+        '
+        Me.clmproducto.DataPropertyName = "DiasCad"
+        Me.clmproducto.HeaderText = "clmproducto"
+        Me.clmproducto.Name = "clmproducto"
+        Me.clmproducto.ReadOnly = True
+        '
         '_960BusquasedaLotesDeCortes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -447,4 +455,5 @@ Partial Class _960BusquasedaLotesDeCortes
     Friend WithEvents clmEstatus As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmDiasCad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmPiezas As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmproducto As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

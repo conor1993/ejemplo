@@ -65,6 +65,7 @@ Public Class _960BusquasedaLotesDeCortes
 
             Vista.Fill(0, Nothing, False, Filtro)
 
+
             If Vista.Count > 0 Then
                 Me.DgvLotes.AutoGenerateColumns = False
                 Me.DgvLotes.DataSource = Vista
