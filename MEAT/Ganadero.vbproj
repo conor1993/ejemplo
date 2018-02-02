@@ -14,7 +14,7 @@
     <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>false</GenerateManifests>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>JSLogo32.ico</ApplicationIcon>
     <TargetZone>LocalIntranet</TargetZone>
@@ -29,7 +29,7 @@
     </SccProvider>
     <OptionStrict>Off</OptionStrict>
     <OptionExplicit>On</OptionExplicit>
-    <AssemblyOriginatorKeyFile>Ganadero.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Ganadero_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
@@ -37,7 +37,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\MEAT\1.0.52.52\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\MEAT\1.0.54.54\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -52,8 +52,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>52</ApplicationRevision>
-    <ApplicationVersion>1.0.52.52</ApplicationVersion>
+    <ApplicationRevision>54</ApplicationRevision>
+    <ApplicationVersion>1.0.54.54</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>

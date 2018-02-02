@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: miércoles, 31 de enero de 2018 11:15:18
+' Code is generated on: viernes, 2 de febrero de 2018 11:54:43
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -3949,8 +3949,9 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PrioridadPago", GetType(System.Int16), False, False, False, False, CInt(ProveedorAvanzadoFieldIndex.PrioridadPago), 0, 0, 5)
 			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PorcentajeFinanciero", GetType(System.Decimal), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.PorcentajeFinanciero), 0, 4, 19)
 			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "AutoFactura", GetType(System.Boolean), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.AutoFactura), 0, 0, 0)
-			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PrNoCuenta", GetType(System.Int32), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.PrNoCuenta), 0, 0, 10)
-			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PrClaveBancaria", GetType(System.Int32), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.PrClaveBancaria), 0, 0, 10)
+			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PrNoCuenta", GetType(System.Int64), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.PrNoCuenta), 0, 0, 19)
+			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "PrClaveBancaria", GetType(System.Int64), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.PrClaveBancaria), 0, 0, 19)
+			MyBase.AddElementFieldInfo("ProveedorAvanzadoEntity", "ClaveMonedas", GetType(System.Int32), False, False, False, True, CInt(ProveedorAvanzadoFieldIndex.ClaveMonedas), 0, 0, 10)
 		End Sub
 		''' <summary>Inits PvnotasVentaRetCabEntity's FieldInfo objects</summary>
 		Private Sub InitPvnotasVentaRetCabEntityInfos()
@@ -4422,6 +4423,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("UnidadMedidaEntity", "MotivoBaja", GetType(System.Int32), False, False, False, True, CInt(UnidadMedidaFieldIndex.MotivoBaja), 0, 0, 10)
 			MyBase.AddElementFieldInfo("UnidadMedidaEntity", "ObservacionesBaja", GetType(System.String), False, False, False, True, CInt(UnidadMedidaFieldIndex.ObservacionesBaja), 250, 0, 0)
 			MyBase.AddElementFieldInfo("UnidadMedidaEntity", "Claveunidadsat", GetType(System.String), False, False, False, True, CInt(UnidadMedidaFieldIndex.Claveunidadsat), 5, 0, 0)
+			MyBase.AddElementFieldInfo("UnidadMedidaEntity", "Clavedemoneda", GetType(System.Int32), False, False, False, True, CInt(UnidadMedidaFieldIndex.Clavedemoneda), 0, 0, 10)
 		End Sub
 		''' <summary>Inits UsrBanDepositosEntity's FieldInfo objects</summary>
 		Private Sub InitUsrBanDepositosEntityInfos()

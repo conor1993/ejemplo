@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: miércoles, 31 de enero de 2018 11:15:25
+' // Code is generated on: viernes, 2 de febrero de 2018 11:54:50
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -9420,6 +9420,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ProveedorAvanzadoEntity", "PrNoCuenta"), persistenceProvider.GetFieldPersistenceInfo("ProveedorAvanzadoEntity", "PrNoCuenta"))
 				Case ProveedorAvanzadoFieldIndex.PrClaveBancaria
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ProveedorAvanzadoEntity", "PrClaveBancaria"), persistenceProvider.GetFieldPersistenceInfo("ProveedorAvanzadoEntity", "PrClaveBancaria"))
+				Case ProveedorAvanzadoFieldIndex.ClaveMonedas
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ProveedorAvanzadoEntity", "ClaveMonedas"), persistenceProvider.GetFieldPersistenceInfo("ProveedorAvanzadoEntity", "ClaveMonedas"))
 
 			End Select
 			Return fieldToReturn
@@ -10692,6 +10694,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UnidadMedidaEntity", "ObservacionesBaja"), persistenceProvider.GetFieldPersistenceInfo("UnidadMedidaEntity", "ObservacionesBaja"))
 				Case UnidadMedidaFieldIndex.Claveunidadsat
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UnidadMedidaEntity", "Claveunidadsat"), persistenceProvider.GetFieldPersistenceInfo("UnidadMedidaEntity", "Claveunidadsat"))
+				Case UnidadMedidaFieldIndex.Clavedemoneda
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UnidadMedidaEntity", "Clavedemoneda"), persistenceProvider.GetFieldPersistenceInfo("UnidadMedidaEntity", "Clavedemoneda"))
 
 			End Select
 			Return fieldToReturn

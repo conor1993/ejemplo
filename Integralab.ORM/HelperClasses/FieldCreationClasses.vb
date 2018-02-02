@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: miércoles, 31 de enero de 2018 11:15:26
+' Code is generated on: viernes, 2 de febrero de 2018 11:54:51
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -17828,6 +17828,12 @@ Namespace Integralab.ORM.HelperClasses
 				Return CType(EntityFieldFactory.Create(ProveedorAvanzadoFieldIndex.PrClaveBancaria), EntityField)
 			End Get
 		End Property
+		''' <summary>Creates a new ProveedorAvanzadoEntity.ClaveMonedas field instance</summary>
+		Public Shared ReadOnly Property [ClaveMonedas] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ProveedorAvanzadoFieldIndex.ClaveMonedas), EntityField)
+			End Get
+		End Property
 	End Class
 	''' <summary>Field Creation Class for entity PvnotasVentaRetCabEntity</summary>
 	Public Class PvnotasVentaRetCabFields
@@ -20190,6 +20196,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [Claveunidadsat] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(UnidadMedidaFieldIndex.Claveunidadsat), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new UnidadMedidaEntity.Clavedemoneda field instance</summary>
+		Public Shared ReadOnly Property [Clavedemoneda] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(UnidadMedidaFieldIndex.Clavedemoneda), EntityField)
 			End Get
 		End Property
 	End Class

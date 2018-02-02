@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: miércoles, 31 de enero de 2018 11:15:21
+' // Code is generated on: viernes, 2 de febrero de 2018 11:54:46
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -814,6 +814,7 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -976,6 +977,9 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("Claveunidadsat", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Clavedemoneda", fieldHashtable)
 		End Sub
 
 
@@ -1385,6 +1389,24 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(UnidadMedidaFieldIndex.Claveunidadsat, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Clavedemoneda property of the Entity UnidadMedida<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MCatCompUnidadMedida"."clavedemoneda"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Clavedemoneda]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(UnidadMedidaFieldIndex.Clavedemoneda, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(UnidadMedidaFieldIndex.Clavedemoneda, Integer), value)
 			End Set
 		End Property
 	
