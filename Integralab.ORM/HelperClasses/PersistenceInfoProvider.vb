@@ -420,7 +420,7 @@ Namespace Integralab.ORM.HelperClasses
 			InitVwReporteDeEmbarquesConcentradoTypedViewMappings()
 			InitVwReporteDevolucionesTypedViewMappings()
 			InitVwReporteEmbarquesTypedViewMappings()
-			InitVwReporteExistenciaSubProductosTypedViewMappings()
+            InitVwReporteExistenciaSubProductosTypedViewMappings()
 			InitVwReporteMovimientosProduccionTypedViewMappings()
 			InitVwReporteNominaTypedViewMappings()
 			InitVwTraspasoDeCajasTypedViewMappings()
