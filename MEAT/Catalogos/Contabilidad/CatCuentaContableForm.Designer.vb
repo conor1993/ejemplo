@@ -22,74 +22,74 @@ Partial Class CatCuentaContableForm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.gpo = New System.Windows.Forms.GroupBox
-        Me.txtSSSCtaBusq = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.txtSSCtaBusq = New System.Windows.Forms.TextBox
-        Me.txtCtaBusq = New System.Windows.Forms.TextBox
-        Me.txtSCtaBusq = New System.Windows.Forms.TextBox
-        Me.TabControl1 = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
-        Me.dgv = New System.Windows.Forms.DataGridView
-        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NombreCuentaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NaturalezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Afectable = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.InactivaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CuentasContable = New ClasesNegocio.CuentaContableCollectionClass
-        Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.BtnQuitarCtaE = New System.Windows.Forms.Button
-        Me.btnCtaE = New System.Windows.Forms.Button
-        Me.txtCtaE = New System.Windows.Forms.TextBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.cmbAfectable = New System.Windows.Forms.ComboBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.cmbNaturazleza = New System.Windows.Forms.ComboBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Txtfiltro = New System.Windows.Forms.TextBox
-        Me.cmbEstatus = New System.Windows.Forms.ComboBox
-        Me.Condiciones = New Integra.Clases.CondicionesClass
-        Me.pan = New System.Windows.Forms.Panel
-        Me.gpClasificador = New System.Windows.Forms.GroupBox
-        Me.cmbSubTitulo = New System.Windows.Forms.ComboBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.cmbTitulo = New System.Windows.Forms.ComboBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.txtSSSCta = New System.Windows.Forms.TextBox
-        Me.txtSSCta = New System.Windows.Forms.TextBox
-        Me.txtSCta = New System.Windows.Forms.TextBox
-        Me.txtCta = New System.Windows.Forms.TextBox
-        Me.btnCta = New System.Windows.Forms.Button
-        Me.txtCtaC = New System.Windows.Forms.TextBox
-        Me.txtSdoIni = New Integra.Controles.TextboxDecimal
-        Me.txtSdoAnt = New Integra.Controles.TextboxDecimal
-        Me.gpoCaracteristicas = New System.Windows.Forms.GroupBox
-        Me.chkBancos = New System.Windows.Forms.CheckBox
-        Me.chkInactiva = New System.Windows.Forms.CheckBox
-        Me.chkDepartamentalizable = New System.Windows.Forms.CheckBox
-        Me.chkAfectable = New System.Windows.Forms.CheckBox
-        Me.chkPresupuestos = New System.Windows.Forms.CheckBox
-        Me.chkResultados = New System.Windows.Forms.CheckBox
-        Me.gpoNaturaleza = New System.Windows.Forms.GroupBox
-        Me.rdbAcredora = New System.Windows.Forms.RadioButton
-        Me.rdbDeudora = New System.Windows.Forms.RadioButton
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtNombre = New System.Windows.Forms.TextBox
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.gpo = New System.Windows.Forms.GroupBox()
+        Me.txtSSSCtaBusq = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtSSCtaBusq = New System.Windows.Forms.TextBox()
+        Me.txtCtaBusq = New System.Windows.Forms.TextBox()
+        Me.txtSCtaBusq = New System.Windows.Forms.TextBox()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreCuentaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NaturalezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Afectable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InactivaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuentasContable = New ClasesNegocio.CuentaContableCollectionClass()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.BtnQuitarCtaE = New System.Windows.Forms.Button()
+        Me.btnCtaE = New System.Windows.Forms.Button()
+        Me.txtCtaE = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cmbAfectable = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cmbNaturazleza = New System.Windows.Forms.ComboBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Txtfiltro = New System.Windows.Forms.TextBox()
+        Me.cmbEstatus = New System.Windows.Forms.ComboBox()
+        Me.Condiciones = New Integra.Clases.CondicionesClass()
+        Me.pan = New System.Windows.Forms.Panel()
+        Me.gpClasificador = New System.Windows.Forms.GroupBox()
+        Me.cmbSubTitulo = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cmbTitulo = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtSSSCta = New System.Windows.Forms.TextBox()
+        Me.txtSSCta = New System.Windows.Forms.TextBox()
+        Me.txtSCta = New System.Windows.Forms.TextBox()
+        Me.txtCta = New System.Windows.Forms.TextBox()
+        Me.btnCta = New System.Windows.Forms.Button()
+        Me.txtCtaC = New System.Windows.Forms.TextBox()
+        Me.txtSdoIni = New Integra.Controles.TextboxDecimal()
+        Me.txtSdoAnt = New Integra.Controles.TextboxDecimal()
+        Me.gpoCaracteristicas = New System.Windows.Forms.GroupBox()
+        Me.chkBancos = New System.Windows.Forms.CheckBox()
+        Me.chkInactiva = New System.Windows.Forms.CheckBox()
+        Me.chkDepartamentalizable = New System.Windows.Forms.CheckBox()
+        Me.chkAfectable = New System.Windows.Forms.CheckBox()
+        Me.chkPresupuestos = New System.Windows.Forms.CheckBox()
+        Me.chkResultados = New System.Windows.Forms.CheckBox()
+        Me.gpoNaturaleza = New System.Windows.Forms.GroupBox()
+        Me.rdbAcredora = New System.Windows.Forms.RadioButton()
+        Me.rdbDeudora = New System.Windows.Forms.RadioButton()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtNombre = New System.Windows.Forms.TextBox()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.gpo.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -177,8 +177,8 @@ Partial Class CatCuentaContableForm
         'TabControl1
         '
         Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Location = New System.Drawing.Point(11, 75)
@@ -204,8 +204,8 @@ Partial Class CatCuentaContableForm
         Me.dgv.AllowUserToDeleteRows = False
         Me.dgv.AllowUserToResizeRows = False
         Me.dgv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgv.AutoGenerateColumns = False
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigo, Me.NombreCuentaDataGridViewTextBoxColumn, Me.CuentaContableDataGridViewTextBoxColumn, Me.NaturalezaDataGridViewTextBoxColumn, Me.SaldoAñoAnteriorDataGridViewTextBoxColumn, Me.SaldoInicioEjercicioDataGridViewTextBoxColumn, Me.Afectable, Me.InactivaDataGridViewTextBoxColumn})
@@ -263,9 +263,9 @@ Partial Class CatCuentaContableForm
         '
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DataPropertyName = "SaldoAñoAnterior"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Format = "C2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.HeaderText = "Saldo del Año Anterior"
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.Name = "SaldoAñoAnteriorDataGridViewTextBoxColumn"
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.ReadOnly = True
@@ -275,9 +275,9 @@ Partial Class CatCuentaContableForm
         '
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DataPropertyName = "SaldoInicioEjercicio"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.HeaderText = "Saldo de Inicio del Ejercicio"
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.Name = "SaldoInicioEjercicioDataGridViewTextBoxColumn"
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.ReadOnly = True
@@ -449,7 +449,7 @@ Partial Class CatCuentaContableForm
         'pan
         '
         Me.pan.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pan.Controls.Add(Me.gpClasificador)
         Me.pan.Controls.Add(Me.txtSSSCta)
         Me.pan.Controls.Add(Me.txtSSCta)
