@@ -167,11 +167,11 @@ Public Class FrmUnidadMedida
         LlenarGrid()
         Try
             Dim FormasPago As DataSet = New DataSet
-            Dim queryString As String = "SELECT * FROM CatUnidadSAT"
+            Dim queryString As String = "SELECT clave,clave+'.- '+concepto as clavesat FROM CatUnidadSAT"
             Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
             adapter.Fill(FormasPago)
             Me.CmbClaveSAT.DataSource = FormasPago.Tables(0)
-            Me.CmbClaveSAT.DisplayMember = "concepto"
+            Me.CmbClaveSAT.DisplayMember = "clavesat"
             Me.CmbClaveSAT.ValueMember = "clave"
         Catch ex As Exception
             MessageBox.Show(ex.Message)

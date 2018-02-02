@@ -26,31 +26,6 @@ Partial Class FrmABCCortes
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.dgvProductos = New System.Windows.Forms.DataGridView()
-        Me.IdProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionCortaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SubProductoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.PreCorteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.CorteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.CanalDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DecomisaDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.EnPiezasDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodProdAntDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MaximoPiezasxCajaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombreInglesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodigoBarraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdCuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CuentaContableNombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioXKiloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PiezasXCabezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DetallePropRelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ValorAgregadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.EsMermaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CatProductos = New ClasesNegocio.ProductosCollectionsClass()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -131,10 +106,7 @@ Partial Class FrmABCCortes
         Me.dgvProductos.AllowUserToResizeRows = False
         Me.dgvProductos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.dgvProductos.AutoGenerateColumns = False
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProductos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdProductoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.DescripcionCortaDataGridViewTextBoxColumn, Me.ObservacionesDataGridViewTextBoxColumn, Me.SubProductoDataGridViewCheckBoxColumn, Me.PreCorteDataGridViewCheckBoxColumn, Me.CorteDataGridViewCheckBoxColumn, Me.CanalDataGridViewCheckBoxColumn, Me.DecomisaDataGridViewCheckBoxColumn, Me.EnPiezasDataGridViewCheckBoxColumn, Me.EstatusDataGridViewTextBoxColumn, Me.CodProdAntDataGridViewTextBoxColumn, Me.MaximoPiezasxCajaDataGridViewTextBoxColumn, Me.NombreInglesDataGridViewTextBoxColumn, Me.CodigoBarraDataGridViewTextBoxColumn, Me.CodProductoDataGridViewTextBoxColumn, Me.IdCuentaContableDataGridViewTextBoxColumn, Me.CuentaContableDataGridViewTextBoxColumn, Me.CuentaContableNombreDataGridViewTextBoxColumn, Me.PrecioXKiloDataGridViewTextBoxColumn, Me.PiezasXCabezaDataGridViewTextBoxColumn, Me.DetallePropRelDataGridViewTextBoxColumn, Me.ValorAgregadoDataGridViewCheckBoxColumn, Me.EsMermaDataGridViewTextBoxColumn})
-        Me.dgvProductos.DataSource = Me.CatProductos
         Me.dgvProductos.Location = New System.Drawing.Point(6, 62)
         Me.dgvProductos.MultiSelect = False
         Me.dgvProductos.Name = "dgvProductos"
@@ -143,208 +115,6 @@ Partial Class FrmABCCortes
         Me.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvProductos.Size = New System.Drawing.Size(492, 188)
         Me.dgvProductos.TabIndex = 12
-        '
-        'IdProductoDataGridViewTextBoxColumn
-        '
-        Me.IdProductoDataGridViewTextBoxColumn.DataPropertyName = "IdProducto"
-        Me.IdProductoDataGridViewTextBoxColumn.HeaderText = "Código"
-        Me.IdProductoDataGridViewTextBoxColumn.Name = "IdProductoDataGridViewTextBoxColumn"
-        Me.IdProductoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdProductoDataGridViewTextBoxColumn.Width = 50
-        '
-        'DescripcionDataGridViewTextBoxColumn
-        '
-        Me.DescripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion"
-        Me.DescripcionDataGridViewTextBoxColumn.HeaderText = "Descripción"
-        Me.DescripcionDataGridViewTextBoxColumn.Name = "DescripcionDataGridViewTextBoxColumn"
-        Me.DescripcionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DescripcionDataGridViewTextBoxColumn.Width = 240
-        '
-        'DescripcionCortaDataGridViewTextBoxColumn
-        '
-        Me.DescripcionCortaDataGridViewTextBoxColumn.DataPropertyName = "DescripcionCorta"
-        Me.DescripcionCortaDataGridViewTextBoxColumn.HeaderText = "Desc Corta"
-        Me.DescripcionCortaDataGridViewTextBoxColumn.Name = "DescripcionCortaDataGridViewTextBoxColumn"
-        Me.DescripcionCortaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ObservacionesDataGridViewTextBoxColumn
-        '
-        Me.ObservacionesDataGridViewTextBoxColumn.DataPropertyName = "Observaciones"
-        Me.ObservacionesDataGridViewTextBoxColumn.HeaderText = "Observaciones"
-        Me.ObservacionesDataGridViewTextBoxColumn.Name = "ObservacionesDataGridViewTextBoxColumn"
-        Me.ObservacionesDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ObservacionesDataGridViewTextBoxColumn.Visible = False
-        '
-        'SubProductoDataGridViewCheckBoxColumn
-        '
-        Me.SubProductoDataGridViewCheckBoxColumn.DataPropertyName = "SubProducto"
-        Me.SubProductoDataGridViewCheckBoxColumn.HeaderText = "SubProducto"
-        Me.SubProductoDataGridViewCheckBoxColumn.Name = "SubProductoDataGridViewCheckBoxColumn"
-        Me.SubProductoDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.SubProductoDataGridViewCheckBoxColumn.Visible = False
-        '
-        'PreCorteDataGridViewCheckBoxColumn
-        '
-        Me.PreCorteDataGridViewCheckBoxColumn.DataPropertyName = "PreCorte"
-        Me.PreCorteDataGridViewCheckBoxColumn.HeaderText = "PreCorte"
-        Me.PreCorteDataGridViewCheckBoxColumn.Name = "PreCorteDataGridViewCheckBoxColumn"
-        Me.PreCorteDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.PreCorteDataGridViewCheckBoxColumn.Visible = False
-        '
-        'CorteDataGridViewCheckBoxColumn
-        '
-        Me.CorteDataGridViewCheckBoxColumn.DataPropertyName = "Corte"
-        Me.CorteDataGridViewCheckBoxColumn.HeaderText = "Corte"
-        Me.CorteDataGridViewCheckBoxColumn.Name = "CorteDataGridViewCheckBoxColumn"
-        Me.CorteDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.CorteDataGridViewCheckBoxColumn.Visible = False
-        '
-        'CanalDataGridViewCheckBoxColumn
-        '
-        Me.CanalDataGridViewCheckBoxColumn.DataPropertyName = "Canal"
-        Me.CanalDataGridViewCheckBoxColumn.HeaderText = "Canal"
-        Me.CanalDataGridViewCheckBoxColumn.Name = "CanalDataGridViewCheckBoxColumn"
-        Me.CanalDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.CanalDataGridViewCheckBoxColumn.Visible = False
-        '
-        'DecomisaDataGridViewCheckBoxColumn
-        '
-        Me.DecomisaDataGridViewCheckBoxColumn.DataPropertyName = "Decomisa"
-        Me.DecomisaDataGridViewCheckBoxColumn.HeaderText = "Decomisa"
-        Me.DecomisaDataGridViewCheckBoxColumn.Name = "DecomisaDataGridViewCheckBoxColumn"
-        Me.DecomisaDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.DecomisaDataGridViewCheckBoxColumn.Visible = False
-        '
-        'EnPiezasDataGridViewCheckBoxColumn
-        '
-        Me.EnPiezasDataGridViewCheckBoxColumn.DataPropertyName = "EnPiezas"
-        Me.EnPiezasDataGridViewCheckBoxColumn.HeaderText = "EnPiezas"
-        Me.EnPiezasDataGridViewCheckBoxColumn.Name = "EnPiezasDataGridViewCheckBoxColumn"
-        Me.EnPiezasDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.EnPiezasDataGridViewCheckBoxColumn.Visible = False
-        '
-        'EstatusDataGridViewTextBoxColumn
-        '
-        Me.EstatusDataGridViewTextBoxColumn.DataPropertyName = "Estatus"
-        Me.EstatusDataGridViewTextBoxColumn.HeaderText = "Estatus"
-        Me.EstatusDataGridViewTextBoxColumn.Name = "EstatusDataGridViewTextBoxColumn"
-        Me.EstatusDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CodProdAntDataGridViewTextBoxColumn
-        '
-        Me.CodProdAntDataGridViewTextBoxColumn.DataPropertyName = "CodProdAnt"
-        Me.CodProdAntDataGridViewTextBoxColumn.HeaderText = "CodProdAnt"
-        Me.CodProdAntDataGridViewTextBoxColumn.Name = "CodProdAntDataGridViewTextBoxColumn"
-        Me.CodProdAntDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CodProdAntDataGridViewTextBoxColumn.Visible = False
-        '
-        'MaximoPiezasxCajaDataGridViewTextBoxColumn
-        '
-        Me.MaximoPiezasxCajaDataGridViewTextBoxColumn.DataPropertyName = "MaximoPiezasxCaja"
-        Me.MaximoPiezasxCajaDataGridViewTextBoxColumn.HeaderText = "MaximoPiezasxCaja"
-        Me.MaximoPiezasxCajaDataGridViewTextBoxColumn.Name = "MaximoPiezasxCajaDataGridViewTextBoxColumn"
-        Me.MaximoPiezasxCajaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MaximoPiezasxCajaDataGridViewTextBoxColumn.Visible = False
-        '
-        'NombreInglesDataGridViewTextBoxColumn
-        '
-        Me.NombreInglesDataGridViewTextBoxColumn.DataPropertyName = "NombreIngles"
-        Me.NombreInglesDataGridViewTextBoxColumn.HeaderText = "NombreIngles"
-        Me.NombreInglesDataGridViewTextBoxColumn.Name = "NombreInglesDataGridViewTextBoxColumn"
-        Me.NombreInglesDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NombreInglesDataGridViewTextBoxColumn.Visible = False
-        '
-        'CodigoBarraDataGridViewTextBoxColumn
-        '
-        Me.CodigoBarraDataGridViewTextBoxColumn.DataPropertyName = "CodigoBarra"
-        Me.CodigoBarraDataGridViewTextBoxColumn.HeaderText = "CodigoBarra"
-        Me.CodigoBarraDataGridViewTextBoxColumn.Name = "CodigoBarraDataGridViewTextBoxColumn"
-        Me.CodigoBarraDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CodigoBarraDataGridViewTextBoxColumn.Visible = False
-        '
-        'CodProductoDataGridViewTextBoxColumn
-        '
-        Me.CodProductoDataGridViewTextBoxColumn.DataPropertyName = "CodProducto"
-        Me.CodProductoDataGridViewTextBoxColumn.HeaderText = "CodProducto"
-        Me.CodProductoDataGridViewTextBoxColumn.Name = "CodProductoDataGridViewTextBoxColumn"
-        Me.CodProductoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CodProductoDataGridViewTextBoxColumn.Visible = False
-        '
-        'IdCuentaContableDataGridViewTextBoxColumn
-        '
-        Me.IdCuentaContableDataGridViewTextBoxColumn.DataPropertyName = "IdCuentaContable"
-        Me.IdCuentaContableDataGridViewTextBoxColumn.HeaderText = "IdCuentaContable"
-        Me.IdCuentaContableDataGridViewTextBoxColumn.Name = "IdCuentaContableDataGridViewTextBoxColumn"
-        Me.IdCuentaContableDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdCuentaContableDataGridViewTextBoxColumn.Visible = False
-        '
-        'CuentaContableDataGridViewTextBoxColumn
-        '
-        Me.CuentaContableDataGridViewTextBoxColumn.DataPropertyName = "CuentaContable"
-        Me.CuentaContableDataGridViewTextBoxColumn.HeaderText = "CuentaContable"
-        Me.CuentaContableDataGridViewTextBoxColumn.Name = "CuentaContableDataGridViewTextBoxColumn"
-        Me.CuentaContableDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CuentaContableDataGridViewTextBoxColumn.Visible = False
-        '
-        'CuentaContableNombreDataGridViewTextBoxColumn
-        '
-        Me.CuentaContableNombreDataGridViewTextBoxColumn.DataPropertyName = "CuentaContableNombre"
-        Me.CuentaContableNombreDataGridViewTextBoxColumn.HeaderText = "CuentaContableNombre"
-        Me.CuentaContableNombreDataGridViewTextBoxColumn.Name = "CuentaContableNombreDataGridViewTextBoxColumn"
-        Me.CuentaContableNombreDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CuentaContableNombreDataGridViewTextBoxColumn.Visible = False
-        '
-        'PrecioXKiloDataGridViewTextBoxColumn
-        '
-        Me.PrecioXKiloDataGridViewTextBoxColumn.DataPropertyName = "PrecioXKilo"
-        Me.PrecioXKiloDataGridViewTextBoxColumn.HeaderText = "PrecioXKilo"
-        Me.PrecioXKiloDataGridViewTextBoxColumn.Name = "PrecioXKiloDataGridViewTextBoxColumn"
-        Me.PrecioXKiloDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PrecioXKiloDataGridViewTextBoxColumn.Visible = False
-        '
-        'PiezasXCabezaDataGridViewTextBoxColumn
-        '
-        Me.PiezasXCabezaDataGridViewTextBoxColumn.DataPropertyName = "PiezasXCabeza"
-        Me.PiezasXCabezaDataGridViewTextBoxColumn.HeaderText = "PiezasXCabeza"
-        Me.PiezasXCabezaDataGridViewTextBoxColumn.Name = "PiezasXCabezaDataGridViewTextBoxColumn"
-        Me.PiezasXCabezaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PiezasXCabezaDataGridViewTextBoxColumn.Visible = False
-        '
-        'DetallePropRelDataGridViewTextBoxColumn
-        '
-        Me.DetallePropRelDataGridViewTextBoxColumn.DataPropertyName = "DetallePropRel"
-        Me.DetallePropRelDataGridViewTextBoxColumn.HeaderText = "DetallePropRel"
-        Me.DetallePropRelDataGridViewTextBoxColumn.Name = "DetallePropRelDataGridViewTextBoxColumn"
-        Me.DetallePropRelDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DetallePropRelDataGridViewTextBoxColumn.Visible = False
-        '
-        'ValorAgregadoDataGridViewCheckBoxColumn
-        '
-        Me.ValorAgregadoDataGridViewCheckBoxColumn.DataPropertyName = "ValorAgregado"
-        Me.ValorAgregadoDataGridViewCheckBoxColumn.HeaderText = "ValorAgregado"
-        Me.ValorAgregadoDataGridViewCheckBoxColumn.Name = "ValorAgregadoDataGridViewCheckBoxColumn"
-        Me.ValorAgregadoDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.ValorAgregadoDataGridViewCheckBoxColumn.Visible = False
-        '
-        'EsMermaDataGridViewTextBoxColumn
-        '
-        Me.EsMermaDataGridViewTextBoxColumn.DataPropertyName = "EsMerma"
-        Me.EsMermaDataGridViewTextBoxColumn.HeaderText = "EsMerma"
-        Me.EsMermaDataGridViewTextBoxColumn.Name = "EsMermaDataGridViewTextBoxColumn"
-        Me.EsMermaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EsMermaDataGridViewTextBoxColumn.Visible = False
-        '
-        'CatProductos
-        '
-        Me.CatProductos.AllowEdit = True
-        Me.CatProductos.AllowNew = True
-        Me.CatProductos.AllowRemove = True
-        Me.CatProductos.MaximoElementosSeleccionados = 1
-        Me.CatProductos.MensajeLimiteMaximo = "Ya se selecciono el maximo de elementos permitidos"
-        Me.CatProductos.MostrarAlertas = False
-        Me.CatProductos.Name = ""
-        Me.CatProductos.RaiseListChangedEvents = True
-        Me.CatProductos.Transaction = Nothing
         '
         'Label7
         '
@@ -650,7 +420,7 @@ Partial Class FrmABCCortes
         Me.cmbProdSAT.FormattingEnabled = True
         Me.cmbProdSAT.Location = New System.Drawing.Point(164, 175)
         Me.cmbProdSAT.Name = "cmbProdSAT"
-        Me.cmbProdSAT.Size = New System.Drawing.Size(121, 21)
+        Me.cmbProdSAT.Size = New System.Drawing.Size(393, 21)
         Me.cmbProdSAT.TabIndex = 24
         '
         'Label11

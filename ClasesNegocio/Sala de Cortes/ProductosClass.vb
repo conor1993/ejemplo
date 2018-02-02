@@ -378,6 +378,7 @@ Public Class ProductosClass
     '        Entity.PorcIVA = value
     '    End Set
     'End Property
+
     <System.ComponentModel.DisplayName("ClaveprodSat")> _
     Public Property ClaveprodSat() As String
         Get
