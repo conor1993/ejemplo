@@ -638,6 +638,20 @@ Public Class CompCatProveedor
             TxtEmail.Text = Proveedor.Email
             ChekPago.Checked = Proveedor.ppago
             TxtPaginaWeb.Text = Proveedor.Web
+            'TxtClaveBancaria.Text = Proveedor.PrClaveBancaria
+            If Proveedor.prClaveBancaria Is Nothing Then
+                TxtClaveBancaria.Text = 0
+            Else
+                TxtClaveBancaria.Text = Proveedor.prClaveBancaria
+            End If
+
+            'TxtNoCuenta.Text = Proveedor.prNoCuenta
+            If Proveedor.prNoCuenta Is Nothing Then
+                TxtNoCuenta.Text = 0
+            Else
+                TxtNoCuenta.Text = Proveedor.prNoCuenta
+
+            End If
             If Proveedor.TipoProveedor.HasValue Then
                 CmbProveedor.SelectedValue = Proveedor.TipoProveedor
             End If
@@ -663,6 +677,8 @@ Public Class CompCatProveedor
                     cmbLugarCompra.SelectedValue = Proveedor.IdLugarCompra.Value
                 End If
             End If
+
+
 
 
             chkAutoFactura.Checked = Proveedor.AutoFactura
@@ -820,6 +836,8 @@ Public Class CompCatProveedor
         seleccionado = False
         Me.txtCtaAnt.Text = ""
         Me.txtCtaCont.Text = ""
+        TxtClaveBancaria.Text = 0
+        TxtNoCuenta.Text = 0
 
         'By: Jorge
         txtNombre.Text = String.Empty
@@ -879,6 +897,9 @@ Public Class CompCatProveedor
         Me.btnCtaAnt.Enabled = False
         Me.btnCtaCont.Enabled = False
         grpTipoPersona.Enabled = False
+        TxtClaveBancaria.Enabled = False
+        TxtNoCuenta.Enabled = False
+
 
         'By: Jorge
         chkEsdeGanado.Enabled = False
@@ -925,6 +946,9 @@ Public Class CompCatProveedor
         Me.btnCtaAnt.Enabled = True
         Me.btnCtaCont.Enabled = True
         grpTipoPersona.Enabled = True
+        TxtClaveBancaria.Enabled = True
+        TxtNoCuenta.Enabled = True
+
 
         'By: Jorge
         chkEsdeGanado.Enabled = True
@@ -958,6 +982,9 @@ Public Class CompCatProveedor
             Proveedor.Poblacion = DirectCast(CmbPoblación.SelectedItem, ClasesNegocio.PoblacionClass)
             Proveedor.FechaAlta = Now
             Proveedor.Banco = cmbBanco.SelectedValue
+            Proveedor.PrClaveBancaria = TxtClaveBancaria.Text
+            Proveedor.prNoCuenta = TxtNoCuenta.Text
+
 
             If ChekPago.Checked Then
                 Proveedor.ppago = ClasesNegocio.PPagoEnum.SI

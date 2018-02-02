@@ -29,7 +29,7 @@
     </SccProvider>
     <OptionStrict>Off</OptionStrict>
     <OptionExplicit>On</OptionExplicit>
-    <AssemblyOriginatorKeyFile>Ganadero.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Ganadero_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>

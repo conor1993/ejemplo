@@ -30,6 +30,8 @@ Public Class ProvAvanzadoClass
         ProvAvanzado.PorcentajeDescuento = 0
         ProvAvanzado.ClaveBancaria = ""
         ProvAvanzado.CodigoBanco = 0
+        ProvAvanzado.PrClaveBancaria = 0
+        ProvAvanzado.PrNoCuenta = 0
     End Sub
 
     <System.ComponentModel.DisplayName("Código")> _
@@ -200,6 +202,28 @@ Public Class ProvAvanzadoClass
         End Get
         Set(ByVal value As String)
             ProvAvanzado.ClaveBancaria = value
+            RaiseEvent Modificado(Me, New EventArgs)
+        End Set
+    End Property
+
+    <System.ComponentModel.DisplayName("ClaveBancaria")> _
+    Public Property PrClaveBancaria() As Int64
+        Get
+            Return ProvAvanzado.PrClaveBancaria
+        End Get
+        Set(ByVal value As Int64)
+            ProvAvanzado.PrClaveBancaria = value
+            RaiseEvent Modificado(Me, New EventArgs)
+        End Set
+    End Property
+    <System.ComponentModel.DisplayName("CuentaBancaria")> _
+    Public Property prNoCuenta() As Int64?
+        Get
+            Return ProvAvanzado.PrNoCuenta
+
+        End Get
+        Set(ByVal value As Int64?)
+            ProvAvanzado.PrNoCuenta = value
             RaiseEvent Modificado(Me, New EventArgs)
         End Set
     End Property

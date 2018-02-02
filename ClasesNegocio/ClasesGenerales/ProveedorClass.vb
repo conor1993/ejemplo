@@ -26,6 +26,7 @@ Public Class ProveedorClass
     Public Event MensajeError(ByVal sender As Object, ByVal mensaje As String)
 
     Sub New()
+
         AddHandler Modificado, AddressOf FueModificado
         'Inicializacion de Todas las variables
         Entity = New EC.ProveedorEntity()
@@ -57,8 +58,11 @@ Public Class ProveedorClass
         ProveedorAvanzado.LadaFax = ""
         ProveedorAvanzado.DiasCredito = 0
         ProveedorAvanzado.PorcentajeDescuento = 0
-        ProveedorAvanzado.ClaveBancaria = ""
+        ProveedorAvanzado.ClaveBancaria = 0
         ProveedorAvanzado.CodigoBanco = 0
+        ProveedorAvanzado.PrClaveBancaria = 0
+        ProveedorAvanzado.PrNoCuenta = 0
+
     End Sub
 
     Sub New(ByVal Entidad As EC.ProveedorEntity)
@@ -421,6 +425,28 @@ Public Class ProveedorClass
         End Get
         Set(ByVal value As String)
             ProveedorAvanzado.ClaveBancaria = value
+            RaiseEvent Modificado(Me, New EventArgs)
+        End Set
+    End Property
+
+    <System.ComponentModel.DisplayName("ClaveBancaria")> _
+    Public Property prClaveBancaria() As Int64?
+        Get
+            Return ProveedorAvanzado.PrClaveBancaria
+        End Get
+        Set(ByVal value As Int64?)
+            ProveedorAvanzado.PrClaveBancaria = value
+            RaiseEvent Modificado(Me, New EventArgs)
+        End Set
+    End Property
+    <System.ComponentModel.DisplayName("CuentaBancaria")> _
+    Public Property prNoCuenta() As Int64?
+        Get
+            Return ProveedorAvanzado.PrNoCuenta
+
+        End Get
+        Set(ByVal value As Int64?)
+            ProveedorAvanzado.PrNoCuenta = value
             RaiseEvent Modificado(Me, New EventArgs)
         End Set
     End Property
