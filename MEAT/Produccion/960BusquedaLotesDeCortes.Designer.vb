@@ -384,7 +384,7 @@ Partial Class _960BusquasedaLotesDeCortes
         '
         'clmproducto
         '
-        Me.clmproducto.DataPropertyName = "DiasCad"
+        Me.clmproducto.DataPropertyName = "Producto"
         Me.clmproducto.HeaderText = "clmproducto"
         Me.clmproducto.Name = "clmproducto"
         Me.clmproducto.ReadOnly = True

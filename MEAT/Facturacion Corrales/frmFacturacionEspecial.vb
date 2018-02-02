@@ -1518,19 +1518,19 @@ Public Class frmFacturacionEspecial
 
                     Else
                         If Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmConIVA.Index).EditedFormattedValue = True Then
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = TruncateDecimal(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (Controlador.ObtenerIVA() / 100)), 2)
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = Math.Round(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (Controlador.ObtenerIVA() / 100)), 2)
                             Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVAdecimales.Index).Value = CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (Controlador.ObtenerIVA() / 100)).ToString("F4")
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
-                                                                                                              + TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((Controlador.ObtenerIVA() / 100))), 2))
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporteDecimales.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
-                                                                                                        + TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((Controlador.ObtenerIVA() / 100))), 2))
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
+                                                                                                              + Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((Controlador.ObtenerIVA() / 100))), 2))
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporteDecimales.Index).Value = (Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
+                                                                                                        + Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((Controlador.ObtenerIVA() / 100))), 2))
                         Else
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = TruncateDecimal(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (0)), 2)
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = Math.Round(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (0)), 2)
                             Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVAdecimales.Index).Value = CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (0)).ToString("F4")
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
-                                                                                                              + TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((0))), 2))
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporteDecimales.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
-                                                                                                        + TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((0))), 2))
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
+                                                                                                              + Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((0))), 2))
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporteDecimales.Index).Value = (Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
+                                                                                                        + Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((0))), 2))
                         End If
 
                     End If
@@ -1564,19 +1564,19 @@ Public Class frmFacturacionEspecial
 
                     Else
                         If Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmConIVA.Index).EditedFormattedValue = True Then
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = TruncateDecimal(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (Controlador.ObtenerIVA() / 100)), 2)
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = Math.Round(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (Controlador.ObtenerIVA() / 100)), 2)
                             Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVAdecimales.Index).Value = CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (Controlador.ObtenerIVA() / 100)).ToString("F4")
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
-                                                                                                              + TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((Controlador.ObtenerIVA() / 100))), 2))
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporteDecimales.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
-                                                                                                        + TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((Controlador.ObtenerIVA() / 100))), 2))
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
+                                                                                                              + Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((Controlador.ObtenerIVA() / 100))), 2))
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporteDecimales.Index).Value = (Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
+                                                                                                        + Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((Controlador.ObtenerIVA() / 100))), 2))
                         Else
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = TruncateDecimal(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (0)), 2)
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVA.Index).Value = Math.Round(CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (0)), 2)
                             Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmIVAdecimales.Index).Value = CDec((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)) * (0)).ToString("F4")
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
-                                                                                                              + TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((0))), 2))
-                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporteDecimales.Index).Value = (TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
-                                                                                                        + TruncateDecimal((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((0))), 2))
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporte.Index).Value = (Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
+                                                                                                              + Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((0))), 2))
+                            Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmImporteDecimales.Index).Value = (Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value)), 2) _
+                                                                                                        + Math.Round((CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmCantidad.Index).Value) * CDec(Me.dgvDetalle.Rows(e.RowIndex).Cells(Me.clmPrecio.Index).Value) * CDec((0))), 2))
                         End If
 
                     End If
@@ -1614,22 +1614,22 @@ Public Class frmFacturacionEspecial
                 suma = suma + (Math.Truncate((CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) * 100) / 100)
                 If CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVA.Index).Value) > 0 Then
                     sumaIVA += CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVAdecimales.Index).Value) '((CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmIVA.Index).Value) / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value))
-                    Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = TruncateDecimal((TruncateDecimal(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2)) * (1 + CDec(Controlador.ObtenerIVA() / 100)), 2)
+                    Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = Math.Round((Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2)) * (1 + CDec(Controlador.ObtenerIVA() / 100)), 2)
                 Else
-                    Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (TruncateDecimal(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
+                    Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
                 End If
                 'Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) + (CDec(Controlador.ObtenerIVA() / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value))
             End If
         Next
-        Me.txtSubTotal.Text = (Math.Truncate(100 * suma) / 100).ToString("N2")
-        Me.txtIVA.Text = (Math.Truncate(100 * sumaIVA) / 100).ToString("N2")
+        Me.txtSubTotal.Text = (Math.Round(suma, 2)).ToString()
+        Me.txtIVA.Text = (Math.Round(sumaIVA, 2)).ToString()
 
         If Not txtDescuento.Text.Trim.Equals("") Then
-            Me.txtTotal.Text = (((Math.Truncate(100 * suma) / 100) - CDec(txtDescuento.Text.Trim())) + (Math.Truncate(100 * sumaIVA) / 100)).ToString()
+            Me.txtTotal.Text = ((Math.Round(suma, 2)) - CDec(txtDescuento.Text.Trim()) + (Math.Round(sumaIVA, 2))).ToString("N2") '(((Math.Round(suma, 2)) - CDec(txtDescuento.Text.Trim())) + (Math.Truncate(100 * sumaIVA) / 100)).ToString()
             Me.dgvCuentasContables.Rows(0).Cells(Me.clmCargo.Index).Value = (((Math.Truncate(100 * suma) / 100) - CDec(txtDescuento.Text.Trim())) + (Math.Truncate(100 * sumaIVA) / 100)).ToString()
             Me.dgvCuentasContables.Rows(0).Cells(Me.clmAbono.Index).Value = CDec(0).ToString()
         Else
-            Me.txtTotal.Text = (((Math.Truncate(100 * suma) / 100)) + (Math.Truncate(100 * sumaIVA) / 100)).ToString()
+            Me.txtTotal.Text = ((Math.Round(suma, 2)) + (Math.Round(sumaIVA, 2))).ToString("N2")
             Me.dgvCuentasContables.Rows(0).Cells(Me.clmCargo.Index).Value = ((Math.Truncate(100 * suma) / 100) + (Math.Truncate(100 * sumaIVA) / 100)).ToString()
             Me.dgvCuentasContables.Rows(0).Cells(Me.clmAbono.Index).Value = CDec(0).ToString()
         End If
@@ -2005,7 +2005,7 @@ Public Class frmFacturacionEspecial
                 End If
                 If e.ColumnIndex = clmConIVA.Index Then
                     If dgvDetalle.Rows(e.RowIndex).Cells(e.ColumnIndex).EditedFormattedValue = True Then
-                        dgvDetalle.Rows(e.RowIndex).Cells(clmIVA.Index).Value = TruncateDecimal(((Controlador.ObtenerIVA() / 100) * TruncateDecimal((CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmCantidad.Index).Value) * CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmPrecio.Index).Value)), 2)), 2)
+                        dgvDetalle.Rows(e.RowIndex).Cells(clmIVA.Index).Value = Math.Round(((Controlador.ObtenerIVA() / 100) * Math.Round((CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmCantidad.Index).Value) * CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmPrecio.Index).Value)), 2)), 2)
                         dgvDetalle.Rows(e.RowIndex).Cells(clmIVAdecimales.Index).Value = ((Controlador.ObtenerIVA() / 100) * (CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmCantidad.Index).Value) * CDec(dgvDetalle.Rows(e.RowIndex).Cells(clmPrecio.Index).Value))).ToString("F4")
                     Else
                         dgvDetalle.Rows(e.RowIndex).Cells(clmIVA.Index).Value = CDec(0).ToString("F2")
@@ -2082,5 +2082,9 @@ Public Class frmFacturacionEspecial
         If Not txtCodigoCliente.Text.Trim().Equals("") Then
             CmbCliente.SelectedValue = CInt(txtCodigoCliente.Text.Trim())
         End If
+    End Sub
+
+    Private Sub dgvDetalle_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalle.CellContentClick
+
     End Sub
 End Class

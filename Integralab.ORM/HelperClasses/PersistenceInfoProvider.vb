@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: miércoles, 31 de enero de 2018 11:15:26
+' // Code is generated on: viernes, 2 de febrero de 2018 11:54:51
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -420,7 +420,7 @@ Namespace Integralab.ORM.HelperClasses
 			InitVwReporteDeEmbarquesConcentradoTypedViewMappings()
 			InitVwReporteDevolucionesTypedViewMappings()
 			InitVwReporteEmbarquesTypedViewMappings()
-            InitVwReporteExistenciaSubProductosTypedViewMappings()
+			InitVwReporteExistenciaSubProductosTypedViewMappings()
 			InitVwReporteMovimientosProduccionTypedViewMappings()
 			InitVwReporteNominaTypedViewMappings()
 			InitVwTraspasoDeCajasTypedViewMappings()
@@ -4160,7 +4160,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits ProveedorAvanzadoEntity's mappings</summary>
         Private Sub InitProveedorAvanzadoEntityMappings()
-            MyBase.AddElementMapping("ProveedorAvanzadoEntity", "", "dbo", "MCatCompProveedoresAvanzados", 21)
+            MyBase.AddElementMapping("ProveedorAvanzadoEntity", "", "dbo", "MCatCompProveedoresAvanzados", 22)
             MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "Codigo", "PrIdProveedor", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "Email", "PrEmail", False, CInt(SqlDbType.VarChar), 50, 0, 0, False, "", Nothing, GetType(System.String), 1)
             MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "Web", "PrWeb", False, CInt(SqlDbType.VarChar), 250, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -4180,8 +4180,9 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "PrioridadPago", "PrPrioridadPago", False, CInt(SqlDbType.SmallInt), 0, 0, 5, False, "", Nothing, GetType(System.Int16), 16)
             MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "PorcentajeFinanciero", "PorcentajeFinanciero", True, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 17)
             MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "AutoFactura", "AutoFactura", True, CInt(SqlDbType.Bit), 0, 0, 0, False, "", Nothing, GetType(System.Boolean), 18)
-            MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "PrNoCuenta", "PrNoCuenta", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 19)
-            MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "PrClaveBancaria", "PrClaveBancaria", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 20)
+            MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "PrNoCuenta", "PrNoCuenta", True, CInt(SqlDbType.BigInt), 0, 0, 19, False, "", Nothing, GetType(System.Int64), 19)
+            MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "PrClaveBancaria", "PrClaveBancaria", True, CInt(SqlDbType.BigInt), 0, 0, 19, False, "", Nothing, GetType(System.Int64), 20)
+            MyBase.AddElementFieldMapping("ProveedorAvanzadoEntity", "ClaveMonedas", "ClaveMonedas", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 21)
         End Sub
         ''' <summary>Inits PvnotasVentaRetCabEntity's mappings</summary>
         Private Sub InitPvnotasVentaRetCabEntityMappings()
@@ -4673,7 +4674,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits UnidadMedidaEntity's mappings</summary>
         Private Sub InitUnidadMedidaEntityMappings()
-            MyBase.AddElementMapping("UnidadMedidaEntity", "", "dbo", "MCatCompUnidadMedida", 12)
+            MyBase.AddElementMapping("UnidadMedidaEntity", "", "dbo", "MCatCompUnidadMedida", 13)
             MyBase.AddElementFieldMapping("UnidadMedidaEntity", "Codigo", "UMIdUnidadMedida", False, CInt(SqlDbType.Int), 0, 0, 10, True, "SCOPE_IDENTITY()", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("UnidadMedidaEntity", "Descripcion", "UMDescripcion", True, CInt(SqlDbType.VarChar), 30, 0, 0, False, "", Nothing, GetType(System.String), 1)
             MyBase.AddElementFieldMapping("UnidadMedidaEntity", "DescripcionCorta", "UMDescCorta", True, CInt(SqlDbType.VarChar), 3, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -4686,6 +4687,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("UnidadMedidaEntity", "MotivoBaja", "UMidMotivoBaja", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 9)
             MyBase.AddElementFieldMapping("UnidadMedidaEntity", "ObservacionesBaja", "UMObservacionesBaja", True, CInt(SqlDbType.VarChar), 250, 0, 0, False, "", Nothing, GetType(System.String), 10)
             MyBase.AddElementFieldMapping("UnidadMedidaEntity", "Claveunidadsat", "Claveunidadsat", True, CInt(SqlDbType.VarChar), 5, 0, 0, False, "", Nothing, GetType(System.String), 11)
+            MyBase.AddElementFieldMapping("UnidadMedidaEntity", "Clavedemoneda", "clavedemoneda", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 12)
         End Sub
         ''' <summary>Inits UsrBanDepositosEntity's mappings</summary>
         Private Sub InitUsrBanDepositosEntityMappings()

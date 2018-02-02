@@ -728,19 +728,7 @@ Public Class CatCuentaContableForm
     End Sub
 
     Private Sub txtCta_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtCta.TextChanged
-        BuscarSoloUnaCuentaContable()
 
-        If Cuenta IsNot Nothing Then
-            If Me.txtSCta.Text = "0000" Then
-                Me.txtCtaC.Text = BuscarPadre()
-                AsignarPadre(Me.txtSCta)
-            End If
-        Else
-            gpoNaturaleza.Enabled = True
-            cmbTitulo.Enabled = True
-            cmbSubTitulo.Enabled = True
-            txtCtaC.Text = ""
-        End If
     End Sub
 
     Private Sub txtCta_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCta.LostFocus
@@ -759,14 +747,7 @@ Public Class CatCuentaContableForm
     End Sub
 
     Private Sub txtSCta_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtSCta.TextChanged
-        BuscarSoloUnaCuentaContable()
 
-        If Cuenta IsNot Nothing Then
-            If Me.txtSSCta.Text = "0000" Then
-                Me.txtCtaC.Text = BuscarPadre()
-                AsignarPadre(Me.txtSSCta)
-            End If
-        End If
     End Sub
 
     Private Sub txtSCta_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSCta.LostFocus
@@ -785,17 +766,12 @@ Public Class CatCuentaContableForm
     End Sub
 
     Private Sub txtSSCta_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtSSCta.TextChanged
-        BuscarSoloUnaCuentaContable()
 
-        If Cuenta IsNot Nothing Then
-            If Me.txtSSSCta.Text = "0000" Then
-                Me.txtCtaC.Text = BuscarPadre()
-                AsignarPadre(Me.txtSSCta)
-            End If
-        End If
     End Sub
 
     Private Sub txtSSCta_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSSCta.Leave
+        BuscacuentaSscta()
+
         If Not Me.txtSSCta.Text = "" Then
             Me.txtSSCta.Text = CInt(Me.txtSSCta.Text).ToString("0000")
         Else
@@ -811,10 +787,7 @@ Public Class CatCuentaContableForm
     End Sub
 
     Private Sub txtSSSCta_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtSSSCta.TextChanged
-        BuscarSoloUnaCuentaContable()
-        If Cuenta IsNot Nothing Then
-            Me.txtSSSCta.Enabled = True
-        End If
+
     End Sub
 
     Private Sub txtSSSCta_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSSSCta.LostFocus
@@ -958,4 +931,63 @@ Public Class CatCuentaContableForm
         End If
     End Function
 
+    ''--------------------------------    funciones de usqueda de cuentas  -----------------------------------------
+
+    Public Sub buscacuentaCta()
+        BuscarSoloUnaCuentaContable()
+
+        If Cuenta IsNot Nothing Then
+            If Me.txtSCta.Text = "0000" Then
+                Me.txtCtaC.Text = BuscarPadre()
+                AsignarPadre(Me.txtSCta)
+            End If
+        Else
+            gpoNaturaleza.Enabled = True
+            cmbTitulo.Enabled = True
+            cmbSubTitulo.Enabled = True
+            txtCtaC.Text = ""
+        End If
+    End Sub
+
+    Public Sub buscacuentaScta()
+        BuscarSoloUnaCuentaContable()
+
+        If Cuenta IsNot Nothing Then
+            If Me.txtSSCta.Text = "0000" Then
+                Me.txtCtaC.Text = BuscarPadre()
+                AsignarPadre(Me.txtSSCta)
+            End If
+        End If
+    End Sub
+
+    Public Sub BuscacuentaSscta()
+        BuscarSoloUnaCuentaContable()
+
+        If Cuenta IsNot Nothing Then
+            If Me.txtSSSCta.Text = "0000" Then
+                Me.txtCtaC.Text = BuscarPadre()
+                AsignarPadre(Me.txtSSCta)
+            End If
+        End If
+    End Sub
+
+    Public Sub buscacuentaSsscta()
+        BuscarSoloUnaCuentaContable()
+        If Cuenta IsNot Nothing Then
+            Me.txtSSSCta.Enabled = True
+        End If
+    End Sub
+
+    Private Sub txtCta_Leave(sender As System.Object, e As System.EventArgs) Handles txtCta.Leave
+        buscacuentaCta()
+    End Sub
+
+    Private Sub txtSCta_Leave(sender As System.Object, e As System.EventArgs) Handles txtSCta.Leave
+        buscacuentaScta()
+    End Sub
+
+    Private Sub txtSSSCta_Leave(sender As System.Object, e As System.EventArgs) Handles txtSSSCta.Leave
+        buscacuentaSsscta()
+    End Sub
+    ''----------------------------------------------------------------------------------------------------
 End Class

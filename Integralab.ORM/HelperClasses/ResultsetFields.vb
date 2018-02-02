@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: miércoles, 31 de enero de 2018 11:15:26
+' // Code is generated on: viernes, 2 de febrero de 2018 11:54:51
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.BackwardsCompatibility.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
