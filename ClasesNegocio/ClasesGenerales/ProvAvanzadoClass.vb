@@ -32,6 +32,7 @@ Public Class ProvAvanzadoClass
         ProvAvanzado.CodigoBanco = 0
         ProvAvanzado.PrClaveBancaria = 0
         ProvAvanzado.PrNoCuenta = 0
+        ProvAvanzado.ClaveMonedas = 0
     End Sub
 
     <System.ComponentModel.DisplayName("Código")> _
@@ -228,6 +229,18 @@ Public Class ProvAvanzadoClass
         End Set
     End Property
 
+    <System.ComponentModel.DisplayName("Tipomoneda")> _
+    Public Property TipoMoneda() As Integer
+        Get
+            Return ProvAvanzado.ClaveMonedas
+
+        End Get
+        Set(ByVal value As Integer)
+            ProvAvanzado.ClaveMonedas = value
+            RaiseEvent Modificado(Me, New EventArgs)
+        End Set
+    End Property
+
     <System.ComponentModel.DisplayName("Estatus")> _
     Public Property Estatus() As EstatusEnum Implements IEntidad.Estatus
         Get
@@ -306,7 +319,9 @@ Public Class ProvAvanzadoClass
 
     Public Event MensajeError(ByVal sender As Object, ByVal mensaje As String) Implements IEntidad.MensajeError
 
+
     Public Event Modificado(ByVal sender As Object, ByVal e As System.EventArgs) Implements IEntidad.Modificado
+
 End Class
 
 Public Class ProvAvanzadoCollectionClass

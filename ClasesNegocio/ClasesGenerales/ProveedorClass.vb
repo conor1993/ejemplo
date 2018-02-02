@@ -62,6 +62,7 @@ Public Class ProveedorClass
         ProveedorAvanzado.CodigoBanco = 0
         ProveedorAvanzado.PrClaveBancaria = 0
         ProveedorAvanzado.PrNoCuenta = 0
+        ProveedorAvanzado.ClaveMonedas = 0
 
     End Sub
 
@@ -447,6 +448,18 @@ Public Class ProveedorClass
         End Get
         Set(ByVal value As Int64?)
             ProveedorAvanzado.PrNoCuenta = value
+            RaiseEvent Modificado(Me, New EventArgs)
+        End Set
+    End Property
+
+    <System.ComponentModel.DisplayName("Tipomoneda")> _
+    Public Property TipoMoneda() As Integer?
+        Get
+            Return ProveedorAvanzado.ClaveMonedas
+
+        End Get
+        Set(ByVal value As Integer?)
+            ProveedorAvanzado.ClaveMonedas = value
             RaiseEvent Modificado(Me, New EventArgs)
         End Set
     End Property
