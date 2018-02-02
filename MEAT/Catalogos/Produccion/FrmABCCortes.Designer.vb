@@ -52,8 +52,14 @@ Partial Class FrmABCCortes
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cmbProdSAT = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.DsCortes = New MEAT.dsCortes()
+        Me.DsCortesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataTable1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DsCortes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCortesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'mtb
@@ -432,6 +438,21 @@ Partial Class FrmABCCortes
         Me.Label11.TabIndex = 25
         Me.Label11.Text = "Productos SAT"
         '
+        'DsCortes
+        '
+        Me.DsCortes.DataSetName = "dsCortes"
+        Me.DsCortes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DsCortesBindingSource
+        '
+        Me.DsCortesBindingSource.DataSource = Me.DsCortes
+        Me.DsCortesBindingSource.Position = 0
+        '
+        'DataTable1BindingSource
+        '
+        Me.DataTable1BindingSource.DataMember = "DataTable1"
+        Me.DataTable1BindingSource.DataSource = Me.DsCortesBindingSource
+        '
         'FrmABCCortes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -472,6 +493,9 @@ Partial Class FrmABCCortes
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.DsCortes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCortesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -534,4 +558,7 @@ Partial Class FrmABCCortes
     Friend WithEvents chkHueso As System.Windows.Forms.CheckBox
     Friend WithEvents cmbProdSAT As System.Windows.Forms.ComboBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents DsCortesBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents DsCortes As MEAT.dsCortes
+    Friend WithEvents DataTable1BindingSource As System.Windows.Forms.BindingSource
 End Class
