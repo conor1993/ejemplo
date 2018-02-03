@@ -650,7 +650,7 @@ Partial Class FrmABCCortes
         Me.cmbProdSAT.FormattingEnabled = True
         Me.cmbProdSAT.Location = New System.Drawing.Point(164, 175)
         Me.cmbProdSAT.Name = "cmbProdSAT"
-        Me.cmbProdSAT.Size = New System.Drawing.Size(121, 21)
+        Me.cmbProdSAT.Size = New System.Drawing.Size(393, 21)
         Me.cmbProdSAT.TabIndex = 24
         '
         'Label11

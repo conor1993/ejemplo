@@ -46,11 +46,11 @@ Public Class FrmABCCortes
             LlenarComboPreCortes()
             Try
                 Dim FormasPago As DataSet = New DataSet
-                Dim queryString As String = "SELECT * FROM CatProdServSAT"
+                Dim queryString As String = "SELECT clave, clave+'.- '+concepto as productosat FROM CatProdServSAT"
                 Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
                 adapter.Fill(FormasPago)
                 Me.cmbProdSAT.DataSource = FormasPago.Tables(0)
-                Me.cmbProdSAT.DisplayMember = "Concepto"
+                Me.cmbProdSAT.DisplayMember = "productosat"
                 Me.cmbProdSAT.ValueMember = "Clave"
             Catch ex As Exception
                 MessageBox.Show(ex.Message)

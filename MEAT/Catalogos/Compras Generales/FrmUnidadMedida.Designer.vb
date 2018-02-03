@@ -28,6 +28,8 @@ Partial Class FrmUnidadMedida
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.panel1 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.CmbClaveSAT = New System.Windows.Forms.ComboBox()
         Me.dtpFecha = New System.Windows.Forms.DateTimePicker()
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.txtDesCta = New System.Windows.Forms.TextBox()
@@ -48,8 +50,6 @@ Partial Class FrmUnidadMedida
         Me.ClmFechaAlta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
-        Me.CmbClaveSAT = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.panel1.SuspendLayout()
         Me.gbUnidadesMedidaReg.SuspendLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,6 +88,23 @@ Partial Class FrmUnidadMedida
         Me.panel1.Name = "panel1"
         Me.panel1.Size = New System.Drawing.Size(666, 182)
         Me.panel1.TabIndex = 2
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(11, 86)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(58, 13)
+        Me.Label6.TabIndex = 10
+        Me.Label6.Text = "Clave SAT"
+        '
+        'CmbClaveSAT
+        '
+        Me.CmbClaveSAT.FormattingEnabled = True
+        Me.CmbClaveSAT.Location = New System.Drawing.Point(117, 83)
+        Me.CmbClaveSAT.Name = "CmbClaveSAT"
+        Me.CmbClaveSAT.Size = New System.Drawing.Size(517, 21)
+        Me.CmbClaveSAT.TabIndex = 9
         '
         'dtpFecha
         '
@@ -315,23 +332,6 @@ Partial Class FrmUnidadMedida
         Me.MEAToolBar1.ShowToolTips = True
         Me.MEAToolBar1.Size = New System.Drawing.Size(50, 747)
         Me.MEAToolBar1.TabIndex = 0
-        '
-        'CmbClaveSAT
-        '
-        Me.CmbClaveSAT.FormattingEnabled = True
-        Me.CmbClaveSAT.Location = New System.Drawing.Point(117, 83)
-        Me.CmbClaveSAT.Name = "CmbClaveSAT"
-        Me.CmbClaveSAT.Size = New System.Drawing.Size(121, 21)
-        Me.CmbClaveSAT.TabIndex = 9
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(11, 86)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(58, 13)
-        Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Clave SAT"
         '
         'FrmUnidadMedida
         '

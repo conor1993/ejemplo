@@ -2,6 +2,7 @@ Imports ClasesNegocio
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports CC = IntegraLab.ORM.CollectionClasses
 Imports EC = IntegraLab.ORM.EntityClasses
+Imports System.Data.SqlClient
 
 Public Class CompCatProveedor
 
@@ -94,6 +95,19 @@ Public Class CompCatProveedor
         cmbLugarCompra.ValueMember = "IdLugarCompra"
         cmbLugarCompra.DataSource = LugaresDeCompraCollectionClass.CargarLugaresdeCompra()
         bandera = True
+
+        'tipo de moneda
+        Try
+            Dim FormasPago As DataSet = New DataSet
+            Dim queryString As String = "SELECT * FROM CatTiposMoneda"
+            Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
+            adapter.Fill(FormasPago)
+            Me.cmbMoneda.DataSource = FormasPago.Tables(0)
+            Me.cmbMoneda.DisplayMember = "Descripcion"
+            Me.cmbMoneda.ValueMember = "IdTipoMoneda"
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
 #Region "Validaciones"
@@ -638,6 +652,25 @@ Public Class CompCatProveedor
             TxtEmail.Text = Proveedor.Email
             ChekPago.Checked = Proveedor.ppago
             TxtPaginaWeb.Text = Proveedor.Web
+            'TxtClaveBancaria.Text = Proveedor.PrClaveBancaria
+            If Proveedor.prClaveBancaria Is Nothing Then
+                TxtClaveBancaria.Text = 0
+            Else
+                TxtClaveBancaria.Text = Proveedor.prClaveBancaria
+            End If
+
+            'TxtNoCuenta.Text = Proveedor.prNoCuenta
+            If Proveedor.prNoCuenta Is Nothing Then
+                TxtNoCuenta.Text = 0
+            Else
+                TxtNoCuenta.Text = Proveedor.prNoCuenta
+
+            End If
+
+            If Proveedor.TipoProveedor IsNot Nothing Then
+                cmbMoneda.SelectedValue = Proveedor.TipoMoneda
+            End If
+
             If Proveedor.TipoProveedor.HasValue Then
                 CmbProveedor.SelectedValue = Proveedor.TipoProveedor
             End If
@@ -665,6 +698,8 @@ Public Class CompCatProveedor
             End If
 
 
+
+
             chkAutoFactura.Checked = Proveedor.AutoFactura
             txtImporteUltimaCompra.Text = Proveedor.ImporteUltimaCompra.ToString
             txtImporteUltimoPago.Text = Proveedor.ImporteUltimoPago
@@ -689,7 +724,7 @@ Public Class CompCatProveedor
     End Sub
 #End Region
 
-   
+
     Private Sub CmbEstado_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles CmbEstado.PreviewKeyDown
         Try
             If e.KeyCode = Keys.F12 Then
@@ -817,9 +852,12 @@ Public Class CompCatProveedor
         TxtFax.Clear()
         Me.LblEstatus.Visible = False
         LblEstatus.Text = "ESTATUS"
-        seleccionado = False
+        Seleccionado = False
         Me.txtCtaAnt.Text = ""
         Me.txtCtaCont.Text = ""
+        TxtClaveBancaria.Text = 0
+        TxtNoCuenta.Text = 0
+        cmbMoneda.SelectedValue = -1
 
         'By: Jorge
         txtNombre.Text = String.Empty
@@ -879,6 +917,10 @@ Public Class CompCatProveedor
         Me.btnCtaAnt.Enabled = False
         Me.btnCtaCont.Enabled = False
         grpTipoPersona.Enabled = False
+        TxtClaveBancaria.Enabled = False
+        TxtNoCuenta.Enabled = False
+        cmbMoneda.Enabled = False
+
 
         'By: Jorge
         chkEsdeGanado.Enabled = False
@@ -925,6 +967,9 @@ Public Class CompCatProveedor
         Me.btnCtaAnt.Enabled = True
         Me.btnCtaCont.Enabled = True
         grpTipoPersona.Enabled = True
+        TxtClaveBancaria.Enabled = True
+        TxtNoCuenta.Enabled = True
+        cmbMoneda.Enabled = True
 
         'By: Jorge
         chkEsdeGanado.Enabled = True
@@ -958,6 +1003,10 @@ Public Class CompCatProveedor
             Proveedor.Poblacion = DirectCast(CmbPoblación.SelectedItem, ClasesNegocio.PoblacionClass)
             Proveedor.FechaAlta = Now
             Proveedor.Banco = cmbBanco.SelectedValue
+            Proveedor.prClaveBancaria = TxtClaveBancaria.Text
+            Proveedor.prNoCuenta = TxtNoCuenta.Text
+            Proveedor.TipoMoneda = cmbMoneda.SelectedValue
+
 
             If ChekPago.Checked Then
                 Proveedor.ppago = ClasesNegocio.PPagoEnum.SI
@@ -1075,7 +1124,7 @@ Public Class CompCatProveedor
 #End Region
 
     Private Sub MEAToolBar1_ClickLimpiar(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As System.Boolean) Handles MEAToolBar1.ClickLimpiar
-        If Me.seleccionado Then
+        If Me.Seleccionado Then
             Limpiar()
         Else
             Limpiar()
@@ -1127,13 +1176,13 @@ Public Class CompCatProveedor
     Private Sub MEAToolBar1_ClickGuardar(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As System.Boolean) Handles MEAToolBar1.ClickGuardar
         Dim trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Proveedor")
         Try
-            puedorefrescar = False
+            PuedoRefrescar = False
             If Not Validar2() Then
                 Cancelar = True
                 Exit Sub
             End If
             guardar()
-            puedorefrescar = True
+            PuedoRefrescar = True
             If band = True Then
                 If Not GuardarBeneficiario(trans) Then
                     trans.Rollback()
@@ -1200,7 +1249,7 @@ Public Class CompCatProveedor
         Dim emailRegex As _
             New System.Text.RegularExpressions.Regex( _
             "^(?<user>[^@]+)@(?<host>.+)$")
-        Dim emailMatch As _
+        Dim emailMatch As  _
             System.Text.RegularExpressions.Match = emailRegex.Match(email)
         Return emailMatch.Success
     End Function
@@ -1236,9 +1285,9 @@ Public Class CompCatProveedor
 
         If ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
             Proveedor = New ClasesNegocio.ProveedorClass(New EC.ProveedorEntity(ventana.DataGrid.SelectedRows(0).Cells(ventana.clmCodigo.Index).Value))
-            Me.puedorefrescar = True
+            Me.PuedoRefrescar = True
             Me.Proveedor_Modificado(Me, New EventArgs)
-            Me.puedorefrescar = False
+            Me.PuedoRefrescar = False
             Me.ProveedorCol.Add(Proveedor)
         End If
     End Sub

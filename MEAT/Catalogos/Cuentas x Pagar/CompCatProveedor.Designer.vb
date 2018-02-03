@@ -137,6 +137,12 @@ Partial Class CompCatProveedor
         Me.LblEstatus = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
+        Me.cmbMoneda = New System.Windows.Forms.ComboBox()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.TxtClaveBancaria = New System.Windows.Forms.TextBox()
+        Me.TxtNoCuenta = New System.Windows.Forms.TextBox()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.Label45 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.grpTipoPersona.SuspendLayout()
         Me.TabControl4.SuspendLayout()
@@ -403,7 +409,7 @@ Partial Class CompCatProveedor
         Me.Panel1.Controls.Add(Me.TxtRazonSocial)
         Me.Panel1.Location = New System.Drawing.Point(60, 36)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(750, 470)
+        Me.Panel1.Size = New System.Drawing.Size(750, 531)
         Me.Panel1.TabIndex = 2
         '
         'grpTipoPersona
@@ -461,7 +467,7 @@ Partial Class CompCatProveedor
         Me.TabControl4.Location = New System.Drawing.Point(3, 145)
         Me.TabControl4.Name = "TabControl4"
         Me.TabControl4.SelectedIndex = 0
-        Me.TabControl4.Size = New System.Drawing.Size(740, 322)
+        Me.TabControl4.Size = New System.Drawing.Size(740, 383)
         Me.TabControl4.TabIndex = 4
         '
         'TabPage1
@@ -741,6 +747,12 @@ Partial Class CompCatProveedor
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label45)
+        Me.TabPage2.Controls.Add(Me.Label44)
+        Me.TabPage2.Controls.Add(Me.TxtNoCuenta)
+        Me.TabPage2.Controls.Add(Me.TxtClaveBancaria)
+        Me.TabPage2.Controls.Add(Me.Label43)
+        Me.TabPage2.Controls.Add(Me.cmbMoneda)
         Me.TabPage2.Controls.Add(Me.chkAutoFactura)
         Me.TabPage2.Controls.Add(Me.txtPorcentajeFinanciero)
         Me.TabPage2.Controls.Add(Me.Label42)
@@ -775,7 +787,7 @@ Partial Class CompCatProveedor
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(732, 296)
+        Me.TabPage2.Size = New System.Drawing.Size(732, 357)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Datos Avanzados"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -796,7 +808,7 @@ Partial Class CompCatProveedor
         '
         Me.txtPorcentajeFinanciero.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtPorcentajeFinanciero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtPorcentajeFinanciero.Location = New System.Drawing.Point(530, 191)
+        Me.txtPorcentajeFinanciero.Location = New System.Drawing.Point(530, 283)
         Me.txtPorcentajeFinanciero.MinimumSize = New System.Drawing.Size(20, 15)
         Me.txtPorcentajeFinanciero.Name = "txtPorcentajeFinanciero"
         Me.txtPorcentajeFinanciero.ReadOnly = True
@@ -808,7 +820,7 @@ Partial Class CompCatProveedor
         '
         Me.Label42.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(411, 194)
+        Me.Label42.Location = New System.Drawing.Point(411, 286)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(113, 13)
         Me.Label42.TabIndex = 45
@@ -827,7 +839,7 @@ Partial Class CompCatProveedor
         '
         Me.CmbDiaPgo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CmbDiaPgo.FormattingEnabled = True
-        Me.CmbDiaPgo.Location = New System.Drawing.Point(530, 160)
+        Me.CmbDiaPgo.Location = New System.Drawing.Point(530, 252)
         Me.CmbDiaPgo.Name = "CmbDiaPgo"
         Me.CmbDiaPgo.Size = New System.Drawing.Size(138, 21)
         Me.CmbDiaPgo.TabIndex = 16
@@ -836,7 +848,7 @@ Partial Class CompCatProveedor
         '
         Me.CmbDiaRevisión.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CmbDiaRevisión.FormattingEnabled = True
-        Me.CmbDiaRevisión.Location = New System.Drawing.Point(530, 130)
+        Me.CmbDiaRevisión.Location = New System.Drawing.Point(530, 222)
         Me.CmbDiaRevisión.Name = "CmbDiaRevisión"
         Me.CmbDiaRevisión.Size = New System.Drawing.Size(137, 21)
         Me.CmbDiaRevisión.TabIndex = 15
@@ -845,7 +857,7 @@ Partial Class CompCatProveedor
         '
         Me.Label25.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(411, 168)
+        Me.Label25.Location = New System.Drawing.Point(411, 260)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(51, 13)
         Me.Label25.TabIndex = 41
@@ -855,7 +867,7 @@ Partial Class CompCatProveedor
         '
         Me.Label24.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(411, 137)
+        Me.Label24.Location = New System.Drawing.Point(411, 229)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(70, 13)
         Me.Label24.TabIndex = 39
@@ -1443,12 +1455,61 @@ Partial Class CompCatProveedor
         Me.MEAToolBar1.Size = New System.Drawing.Size(50, 682)
         Me.MEAToolBar1.TabIndex = 0
         '
+        'cmbMoneda
+        '
+        Me.cmbMoneda.FormattingEnabled = True
+        Me.cmbMoneda.Location = New System.Drawing.Point(530, 188)
+        Me.cmbMoneda.Name = "cmbMoneda"
+        Me.cmbMoneda.Size = New System.Drawing.Size(137, 21)
+        Me.cmbMoneda.TabIndex = 46
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(411, 191)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(88, 13)
+        Me.Label43.TabIndex = 47
+        Me.Label43.Text = "Tipo de Moneda:"
+        '
+        'TxtClaveBancaria
+        '
+        Me.TxtClaveBancaria.Location = New System.Drawing.Point(530, 125)
+        Me.TxtClaveBancaria.Name = "TxtClaveBancaria"
+        Me.TxtClaveBancaria.Size = New System.Drawing.Size(138, 20)
+        Me.TxtClaveBancaria.TabIndex = 48
+        '
+        'TxtNoCuenta
+        '
+        Me.TxtNoCuenta.Location = New System.Drawing.Point(530, 151)
+        Me.TxtNoCuenta.Name = "TxtNoCuenta"
+        Me.TxtNoCuenta.Size = New System.Drawing.Size(137, 20)
+        Me.TxtNoCuenta.TabIndex = 49
+        '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Location = New System.Drawing.Point(411, 128)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(82, 13)
+        Me.Label44.TabIndex = 50
+        Me.Label44.Text = "Clave Bancaria:"
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.Location = New System.Drawing.Point(411, 154)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(99, 13)
+        Me.Label45.TabIndex = 51
+        Me.Label45.Text = "Numero de Cuenta:"
+        '
         'CompCatProveedor
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(820, 518)
+        Me.ClientSize = New System.Drawing.Size(820, 579)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.MEAToolBar1)
         Me.Controls.Add(Me.Panel1)
@@ -1622,4 +1683,10 @@ Partial Class CompCatProveedor
     Friend WithEvents grpTipoPersona As System.Windows.Forms.GroupBox
     Friend WithEvents rbtPerMoral As System.Windows.Forms.RadioButton
     Friend WithEvents rbtPerFisica As System.Windows.Forms.RadioButton
+    Friend WithEvents Label43 As System.Windows.Forms.Label
+    Friend WithEvents cmbMoneda As System.Windows.Forms.ComboBox
+    Friend WithEvents Label45 As System.Windows.Forms.Label
+    Friend WithEvents Label44 As System.Windows.Forms.Label
+    Friend WithEvents TxtNoCuenta As System.Windows.Forms.TextBox
+    Friend WithEvents TxtClaveBancaria As System.Windows.Forms.TextBox
 End Class
