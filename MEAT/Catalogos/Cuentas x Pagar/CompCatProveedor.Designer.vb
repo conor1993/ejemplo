@@ -20,7 +20,6 @@ Partial Class CompCatProveedor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtCodigo = New System.Windows.Forms.TextBox()
         Me.TxtRazonSocial = New System.Windows.Forms.TextBox()
@@ -76,6 +75,12 @@ Partial Class CompCatProveedor
         Me.TxtBeneficiario = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.TxtNoCuenta = New System.Windows.Forms.TextBox()
+        Me.TxtClaveBancaria = New System.Windows.Forms.TextBox()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.cmbMoneda = New System.Windows.Forms.ComboBox()
         Me.chkAutoFactura = New System.Windows.Forms.CheckBox()
         Me.txtPorcentajeFinanciero = New System.Windows.Forms.TextBox()
         Me.Label42 = New System.Windows.Forms.Label()
@@ -94,13 +99,6 @@ Partial Class CompCatProveedor
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DgFiscal = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DomicilioCompletoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaAltaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EsPrincipalDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DomicilioFiscalCol = New ClasesNegocio.DomicilioFiscalCollectionClass()
         Me.BtnAgrega = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.btnCtaAnt = New System.Windows.Forms.Button()
@@ -137,12 +135,10 @@ Partial Class CompCatProveedor
         Me.LblEstatus = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
-        Me.cmbMoneda = New System.Windows.Forms.ComboBox()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.TxtClaveBancaria = New System.Windows.Forms.TextBox()
-        Me.TxtNoCuenta = New System.Windows.Forms.TextBox()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.Label45 = New System.Windows.Forms.Label()
+        Me.cmbTercero = New System.Windows.Forms.ComboBox()
+        Me.cmbOperacion = New System.Windows.Forms.ComboBox()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.Label47 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.grpTipoPersona.SuspendLayout()
         Me.TabControl4.SuspendLayout()
@@ -502,7 +498,7 @@ Partial Class CompCatProveedor
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(732, 296)
+        Me.TabPage1.Size = New System.Drawing.Size(732, 357)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Datos Generales"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -747,6 +743,10 @@ Partial Class CompCatProveedor
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label47)
+        Me.TabPage2.Controls.Add(Me.Label46)
+        Me.TabPage2.Controls.Add(Me.cmbOperacion)
+        Me.TabPage2.Controls.Add(Me.cmbTercero)
         Me.TabPage2.Controls.Add(Me.Label45)
         Me.TabPage2.Controls.Add(Me.Label44)
         Me.TabPage2.Controls.Add(Me.TxtNoCuenta)
@@ -791,6 +791,55 @@ Partial Class CompCatProveedor
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Datos Avanzados"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.Location = New System.Drawing.Point(411, 154)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(99, 13)
+        Me.Label45.TabIndex = 51
+        Me.Label45.Text = "Numero de Cuenta:"
+        '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Location = New System.Drawing.Point(411, 128)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(82, 13)
+        Me.Label44.TabIndex = 50
+        Me.Label44.Text = "Clave Bancaria:"
+        '
+        'TxtNoCuenta
+        '
+        Me.TxtNoCuenta.Location = New System.Drawing.Point(530, 151)
+        Me.TxtNoCuenta.Name = "TxtNoCuenta"
+        Me.TxtNoCuenta.Size = New System.Drawing.Size(137, 20)
+        Me.TxtNoCuenta.TabIndex = 49
+        '
+        'TxtClaveBancaria
+        '
+        Me.TxtClaveBancaria.Location = New System.Drawing.Point(530, 125)
+        Me.TxtClaveBancaria.Name = "TxtClaveBancaria"
+        Me.TxtClaveBancaria.Size = New System.Drawing.Size(138, 20)
+        Me.TxtClaveBancaria.TabIndex = 48
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(411, 191)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(88, 13)
+        Me.Label43.TabIndex = 47
+        Me.Label43.Text = "Tipo de Moneda:"
+        '
+        'cmbMoneda
+        '
+        Me.cmbMoneda.FormattingEnabled = True
+        Me.cmbMoneda.Location = New System.Drawing.Point(530, 188)
+        Me.cmbMoneda.Name = "cmbMoneda"
+        Me.cmbMoneda.Size = New System.Drawing.Size(137, 21)
+        Me.cmbMoneda.TabIndex = 46
         '
         'chkAutoFactura
         '
@@ -948,7 +997,7 @@ Partial Class CompCatProveedor
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(732, 296)
+        Me.TabPage4.Size = New System.Drawing.Size(732, 357)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Domicilios Fiscales"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -968,69 +1017,12 @@ Partial Class CompCatProveedor
         '
         Me.DgFiscal.AllowUserToAddRows = False
         Me.DgFiscal.AllowUserToDeleteRows = False
-        Me.DgFiscal.AutoGenerateColumns = False
         Me.DgFiscal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgFiscal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5, Me.DomicilioCompletoDataGridViewTextBoxColumn, Me.FechaAltaDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn8, Me.EsPrincipalDataGridViewCheckBoxColumn, Me.DataGridViewTextBoxColumn4})
-        Me.DgFiscal.DataSource = Me.DomicilioFiscalCol
         Me.DgFiscal.Location = New System.Drawing.Point(6, 19)
         Me.DgFiscal.Name = "DgFiscal"
         Me.DgFiscal.ReadOnly = True
         Me.DgFiscal.Size = New System.Drawing.Size(705, 247)
         Me.DgFiscal.TabIndex = 0
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Codigo"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Código"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'DomicilioCompletoDataGridViewTextBoxColumn
-        '
-        Me.DomicilioCompletoDataGridViewTextBoxColumn.DataPropertyName = "DomicilioCompleto"
-        Me.DomicilioCompletoDataGridViewTextBoxColumn.HeaderText = "DomicilioCompleto"
-        Me.DomicilioCompletoDataGridViewTextBoxColumn.Name = "DomicilioCompletoDataGridViewTextBoxColumn"
-        Me.DomicilioCompletoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DomicilioCompletoDataGridViewTextBoxColumn.Width = 200
-        '
-        'FechaAltaDataGridViewTextBoxColumn
-        '
-        Me.FechaAltaDataGridViewTextBoxColumn.DataPropertyName = "FechaAlta"
-        DataGridViewCellStyle1.Format = "d"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.FechaAltaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.FechaAltaDataGridViewTextBoxColumn.HeaderText = "Fecha de Alta"
-        Me.FechaAltaDataGridViewTextBoxColumn.Name = "FechaAltaDataGridViewTextBoxColumn"
-        Me.FechaAltaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "CP"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Código Postal"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        '
-        'EsPrincipalDataGridViewCheckBoxColumn
-        '
-        Me.EsPrincipalDataGridViewCheckBoxColumn.DataPropertyName = "EsPrincipal"
-        Me.EsPrincipalDataGridViewCheckBoxColumn.HeaderText = "Es Principal"
-        Me.EsPrincipalDataGridViewCheckBoxColumn.Name = "EsPrincipalDataGridViewCheckBoxColumn"
-        Me.EsPrincipalDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Estatus"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Estatus"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DomicilioFiscalCol
-        '
-        Me.DomicilioFiscalCol.AllowEdit = True
-        Me.DomicilioFiscalCol.AllowNew = True
-        Me.DomicilioFiscalCol.AllowRemove = True
-        Me.DomicilioFiscalCol.Name = ""
-        Me.DomicilioFiscalCol.RaiseListChangedEvents = True
         '
         'BtnAgrega
         '
@@ -1052,7 +1044,7 @@ Partial Class CompCatProveedor
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(732, 296)
+        Me.TabPage3.Size = New System.Drawing.Size(732, 357)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Control Contable"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -1144,7 +1136,7 @@ Partial Class CompCatProveedor
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(732, 296)
+        Me.TabPage5.Size = New System.Drawing.Size(732, 357)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Acumulados"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -1455,54 +1447,39 @@ Partial Class CompCatProveedor
         Me.MEAToolBar1.Size = New System.Drawing.Size(50, 682)
         Me.MEAToolBar1.TabIndex = 0
         '
-        'cmbMoneda
+        'cmbTercero
         '
-        Me.cmbMoneda.FormattingEnabled = True
-        Me.cmbMoneda.Location = New System.Drawing.Point(530, 188)
-        Me.cmbMoneda.Name = "cmbMoneda"
-        Me.cmbMoneda.Size = New System.Drawing.Size(137, 21)
-        Me.cmbMoneda.TabIndex = 46
+        Me.cmbTercero.FormattingEnabled = True
+        Me.cmbTercero.Location = New System.Drawing.Point(98, 217)
+        Me.cmbTercero.Name = "cmbTercero"
+        Me.cmbTercero.Size = New System.Drawing.Size(121, 21)
+        Me.cmbTercero.TabIndex = 52
         '
-        'Label43
+        'cmbOperacion
         '
-        Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(411, 191)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(88, 13)
-        Me.Label43.TabIndex = 47
-        Me.Label43.Text = "Tipo de Moneda:"
+        Me.cmbOperacion.FormattingEnabled = True
+        Me.cmbOperacion.Location = New System.Drawing.Point(98, 244)
+        Me.cmbOperacion.Name = "cmbOperacion"
+        Me.cmbOperacion.Size = New System.Drawing.Size(121, 21)
+        Me.cmbOperacion.TabIndex = 53
         '
-        'TxtClaveBancaria
+        'Label46
         '
-        Me.TxtClaveBancaria.Location = New System.Drawing.Point(530, 125)
-        Me.TxtClaveBancaria.Name = "TxtClaveBancaria"
-        Me.TxtClaveBancaria.Size = New System.Drawing.Size(138, 20)
-        Me.TxtClaveBancaria.TabIndex = 48
+        Me.Label46.AutoSize = True
+        Me.Label46.Location = New System.Drawing.Point(12, 225)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(81, 13)
+        Me.Label46.TabIndex = 54
+        Me.Label46.Text = "Tipos Terceros:"
         '
-        'TxtNoCuenta
+        'Label47
         '
-        Me.TxtNoCuenta.Location = New System.Drawing.Point(530, 151)
-        Me.TxtNoCuenta.Name = "TxtNoCuenta"
-        Me.TxtNoCuenta.Size = New System.Drawing.Size(137, 20)
-        Me.TxtNoCuenta.TabIndex = 49
-        '
-        'Label44
-        '
-        Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(411, 128)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(82, 13)
-        Me.Label44.TabIndex = 50
-        Me.Label44.Text = "Clave Bancaria:"
-        '
-        'Label45
-        '
-        Me.Label45.AutoSize = True
-        Me.Label45.Location = New System.Drawing.Point(411, 154)
-        Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(99, 13)
-        Me.Label45.TabIndex = 51
-        Me.Label45.Text = "Numero de Cuenta:"
+        Me.Label47.AutoSize = True
+        Me.Label47.Location = New System.Drawing.Point(8, 247)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(83, 13)
+        Me.Label47.TabIndex = 55
+        Me.Label47.Text = "Tipo Operacion:"
         '
         'CompCatProveedor
         '
@@ -1689,4 +1666,8 @@ Partial Class CompCatProveedor
     Friend WithEvents Label44 As System.Windows.Forms.Label
     Friend WithEvents TxtNoCuenta As System.Windows.Forms.TextBox
     Friend WithEvents TxtClaveBancaria As System.Windows.Forms.TextBox
+    Friend WithEvents Label47 As System.Windows.Forms.Label
+    Friend WithEvents Label46 As System.Windows.Forms.Label
+    Friend WithEvents cmbOperacion As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbTercero As System.Windows.Forms.ComboBox
 End Class

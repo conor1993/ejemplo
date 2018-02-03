@@ -99,12 +99,37 @@ Public Class CompCatProveedor
         'tipo de moneda
         Try
             Dim FormasPago As DataSet = New DataSet
-            Dim queryString As String = "SELECT * FROM CatTiposMoneda"
+            Dim queryString As String = "SELECT IdTipoMoneda,Descripcion+'/'+DescCorta as Moneda FROM CatTiposMoneda"
             Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
             adapter.Fill(FormasPago)
             Me.cmbMoneda.DataSource = FormasPago.Tables(0)
-            Me.cmbMoneda.DisplayMember = "Descripcion"
+            Me.cmbMoneda.DisplayMember = "Moneda"
             Me.cmbMoneda.ValueMember = "IdTipoMoneda"
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        'tipo de operacion 
+        Try
+            Dim FormasPago As DataSet = New DataSet
+            Dim queryString As String = "SELECT * FROM ContDiotTiposOperacion"
+            Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
+            adapter.Fill(FormasPago)
+            Me.cmbOperacion.DataSource = FormasPago.Tables(0)
+            Me.cmbOperacion.DisplayMember = "Descripcion"
+            Me.cmbOperacion.ValueMember = "CodDiot"
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+        'tipo de terceros 
+        Try
+            Dim FormasPago As DataSet = New DataSet
+            Dim queryString As String = "SELECT * FROM ContDiotTiposTerceros"
+            Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
+            adapter.Fill(FormasPago)
+            Me.cmbTercero.DataSource = FormasPago.Tables(0)
+            Me.cmbTercero.DisplayMember = "Descripcion"
+            Me.cmbTercero.ValueMember = "CodDiot"
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -667,8 +692,16 @@ Public Class CompCatProveedor
 
             End If
 
-            If Proveedor.TipoProveedor IsNot Nothing Then
+            If Proveedor.TipoMoneda IsNot Nothing Then
                 cmbMoneda.SelectedValue = Proveedor.TipoMoneda
+            End If
+
+            If Proveedor.TipoTerceros IsNot Nothing Then
+                cmbTercero.SelectedValue = Proveedor.TipoTerceros
+            End If
+
+            If Proveedor.TipoOperacion IsNot Nothing Then
+                cmbOperacion.SelectedValue = Proveedor.TipoOperacion
             End If
 
             If Proveedor.TipoProveedor.HasValue Then
@@ -858,6 +891,8 @@ Public Class CompCatProveedor
         TxtClaveBancaria.Text = 0
         TxtNoCuenta.Text = 0
         cmbMoneda.SelectedValue = -1
+        cmbOperacion.SelectedValue = -1
+        cmbTercero.SelectedValue = -1
 
         'By: Jorge
         txtNombre.Text = String.Empty
@@ -920,6 +955,8 @@ Public Class CompCatProveedor
         TxtClaveBancaria.Enabled = False
         TxtNoCuenta.Enabled = False
         cmbMoneda.Enabled = False
+        cmbOperacion.Enabled = False
+        cmbTercero.Enabled = False
 
 
         'By: Jorge
@@ -970,6 +1007,8 @@ Public Class CompCatProveedor
         TxtClaveBancaria.Enabled = True
         TxtNoCuenta.Enabled = True
         cmbMoneda.Enabled = True
+        cmbOperacion.Enabled = True
+        cmbTercero.Enabled = True
 
         'By: Jorge
         chkEsdeGanado.Enabled = True
@@ -1006,6 +1045,8 @@ Public Class CompCatProveedor
             Proveedor.prClaveBancaria = TxtClaveBancaria.Text
             Proveedor.prNoCuenta = TxtNoCuenta.Text
             Proveedor.TipoMoneda = cmbMoneda.SelectedValue
+            Proveedor.TipoOperacion = cmbOperacion.SelectedValue
+            Proveedor.TipoTerceros = cmbTercero.SelectedValue
 
 
             If ChekPago.Checked Then
