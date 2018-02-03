@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 2 de febrero de 2018 11:54:51
+' Code is generated on: viernes, 2 de febrero de 2018 16:33:26
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -4374,6 +4374,50 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [Abierto] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(ConMesFieldIndex.Abierto), EntityField)
+			End Get
+		End Property
+	End Class
+	''' <summary>Field Creation Class for entity ContDiotTiposOperacionEntity</summary>
+	Public Class ContDiotTiposOperacionFields
+
+		''' <summary>Creates a new ContDiotTiposOperacionEntity.CodDiot field instance</summary>
+		Public Shared ReadOnly Property [CodDiot] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ContDiotTiposOperacionFieldIndex.CodDiot), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new ContDiotTiposOperacionEntity.ClaveHacienda field instance</summary>
+		Public Shared ReadOnly Property [ClaveHacienda] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ContDiotTiposOperacionFieldIndex.ClaveHacienda), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new ContDiotTiposOperacionEntity.Descripcion field instance</summary>
+		Public Shared ReadOnly Property [Descripcion] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ContDiotTiposOperacionFieldIndex.Descripcion), EntityField)
+			End Get
+		End Property
+	End Class
+	''' <summary>Field Creation Class for entity ContDiotTiposTercerosEntity</summary>
+	Public Class ContDiotTiposTercerosFields
+
+		''' <summary>Creates a new ContDiotTiposTercerosEntity.CodDiot field instance</summary>
+		Public Shared ReadOnly Property [CodDiot] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ContDiotTiposTercerosFieldIndex.CodDiot), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new ContDiotTiposTercerosEntity.ClaveHacienda field instance</summary>
+		Public Shared ReadOnly Property [ClaveHacienda] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ContDiotTiposTercerosFieldIndex.ClaveHacienda), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new ContDiotTiposTercerosEntity.Descripcion field instance</summary>
+		Public Shared ReadOnly Property [Descripcion] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ContDiotTiposTercerosFieldIndex.Descripcion), EntityField)
 			End Get
 		End Property
 	End Class
@@ -17696,6 +17740,18 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [PrPuntoVenta] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(ProveedorFieldIndex.PrPuntoVenta), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new ProveedorEntity.Idcontdiottiposterceros field instance</summary>
+		Public Shared ReadOnly Property [Idcontdiottiposterceros] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ProveedorFieldIndex.Idcontdiottiposterceros), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new ProveedorEntity.Idcontdiottiposoperacion field instance</summary>
+		Public Shared ReadOnly Property [Idcontdiottiposoperacion] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(ProveedorFieldIndex.Idcontdiottiposoperacion), EntityField)
 			End Get
 		End Property
 	End Class

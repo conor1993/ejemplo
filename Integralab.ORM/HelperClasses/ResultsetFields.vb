@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:51
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:26
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.BackwardsCompatibility.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -1668,6 +1668,58 @@ Namespace Integralab.ORM.HelperClasses
 		''' <param name="entityAlias">The alias to use for the entity this field belongs to. Required to specify multiple times the same entity in a typed list</param>
 		''' <param name="aggregateFunctionToApply">the aggregate function to apply to this field.</param>
 		Public Overloads Sub DefineField(fieldToDefine As ConMesFieldIndex, indexInResultset As Integer, fieldAlias As String, entityAlias As String, aggregateFunctionToApply As AggregateFunction)
+			MyBase.DefineField(EntityFieldFactory.Create(fieldToDefine), indexInResultset, fieldAlias, entityAlias, aggregateFunctionToApply)
+		End Sub
+		''' <summary>Creates the specified field on the position indexInResultset in the resultset. </summary>
+		''' <param name="fieldToDefine">The specification of the field to create.</param>
+		''' <param name="indexInResultset">The position in the resultset where the field will be created on</param>
+		''' <param name="fieldAlias">The alias to use for this field in the resultset</param>
+		Public Overloads Sub DefineField(fieldToDefine As ContDiotTiposOperacionFieldIndex, indexInResultset As Integer, fieldAlias As String)
+			DefineField(fieldToDefine, indexInResultset, fieldAlias, String.Empty, AggregateFunction.None)
+		End Sub
+
+		''' <summary>Creates the specified field on the position indexInResultset in the resultset. </summary>
+		''' <param name="fieldToDefine">The specification of the field to create.</param>
+		''' <param name="indexInResultset">The position in the resultset where the field will be created on</param>
+		''' <param name="fieldAlias">The alias to use for this field in the resultset</param>
+		''' <param name="entityAlias">The alias to use for the entity this field belongs to. Required to specify multiple times the same entity in a typed list</param>
+		Public Overloads Sub DefineField(fieldToDefine As ContDiotTiposOperacionFieldIndex, indexInResultset As Integer, fieldAlias As String, entityAlias As String)
+			DefineField(fieldToDefine, indexInResultset, fieldAlias, entityAlias, AggregateFunction.None)
+		End Sub
+
+		''' <summary>Creates the specified field on the position indexInResultset in the resultset. </summary>
+		''' <param name="fieldToDefine">The specification of the field to create.</param>
+		''' <param name="indexInResultset">The position in the resultset where the field will be created on</param>
+		''' <param name="fieldAlias">The alias to use for this field in the resultset</param>
+		''' <param name="entityAlias">The alias to use for the entity this field belongs to. Required to specify multiple times the same entity in a typed list</param>
+		''' <param name="aggregateFunctionToApply">the aggregate function to apply to this field.</param>
+		Public Overloads Sub DefineField(fieldToDefine As ContDiotTiposOperacionFieldIndex, indexInResultset As Integer, fieldAlias As String, entityAlias As String, aggregateFunctionToApply As AggregateFunction)
+			MyBase.DefineField(EntityFieldFactory.Create(fieldToDefine), indexInResultset, fieldAlias, entityAlias, aggregateFunctionToApply)
+		End Sub
+		''' <summary>Creates the specified field on the position indexInResultset in the resultset. </summary>
+		''' <param name="fieldToDefine">The specification of the field to create.</param>
+		''' <param name="indexInResultset">The position in the resultset where the field will be created on</param>
+		''' <param name="fieldAlias">The alias to use for this field in the resultset</param>
+		Public Overloads Sub DefineField(fieldToDefine As ContDiotTiposTercerosFieldIndex, indexInResultset As Integer, fieldAlias As String)
+			DefineField(fieldToDefine, indexInResultset, fieldAlias, String.Empty, AggregateFunction.None)
+		End Sub
+
+		''' <summary>Creates the specified field on the position indexInResultset in the resultset. </summary>
+		''' <param name="fieldToDefine">The specification of the field to create.</param>
+		''' <param name="indexInResultset">The position in the resultset where the field will be created on</param>
+		''' <param name="fieldAlias">The alias to use for this field in the resultset</param>
+		''' <param name="entityAlias">The alias to use for the entity this field belongs to. Required to specify multiple times the same entity in a typed list</param>
+		Public Overloads Sub DefineField(fieldToDefine As ContDiotTiposTercerosFieldIndex, indexInResultset As Integer, fieldAlias As String, entityAlias As String)
+			DefineField(fieldToDefine, indexInResultset, fieldAlias, entityAlias, AggregateFunction.None)
+		End Sub
+
+		''' <summary>Creates the specified field on the position indexInResultset in the resultset. </summary>
+		''' <param name="fieldToDefine">The specification of the field to create.</param>
+		''' <param name="indexInResultset">The position in the resultset where the field will be created on</param>
+		''' <param name="fieldAlias">The alias to use for this field in the resultset</param>
+		''' <param name="entityAlias">The alias to use for the entity this field belongs to. Required to specify multiple times the same entity in a typed list</param>
+		''' <param name="aggregateFunctionToApply">the aggregate function to apply to this field.</param>
+		Public Overloads Sub DefineField(fieldToDefine As ContDiotTiposTercerosFieldIndex, indexInResultset As Integer, fieldAlias As String, entityAlias As String, aggregateFunctionToApply As AggregateFunction)
 			MyBase.DefineField(EntityFieldFactory.Create(fieldToDefine), indexInResultset, fieldAlias, entityAlias, aggregateFunctionToApply)
 		End Sub
 		''' <summary>Creates the specified field on the position indexInResultset in the resultset. </summary>

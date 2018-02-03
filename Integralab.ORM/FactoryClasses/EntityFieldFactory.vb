@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:50
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:25
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -2384,6 +2384,50 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ConMesEntity", "NumMes"), persistenceProvider.GetFieldPersistenceInfo("ConMesEntity", "NumMes"))
 				Case ConMesFieldIndex.Abierto
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ConMesEntity", "Abierto"), persistenceProvider.GetFieldPersistenceInfo("ConMesEntity", "Abierto"))
+
+			End Select
+			Return fieldToReturn
+		End Function
+	
+		''' <summary>
+		''' Creates a new IEntityField instance for usage in the EntityFields Object for the ContDiotTiposOperacionEntity. 
+		''' Which EntityField is created is specified by fieldIndex
+		''' </summary>
+		''' <param name="fieldIndex">The field which IEntityField instance should be created</param>
+		''' <returns>The IEntityField instance for the field specified in fieldIndex</returns>
+		Public Shared Function Create(fieldIndex As ContDiotTiposOperacionFieldIndex) As IEntityField
+			Dim fieldProvider As IFieldInfoProvider = FieldInfoProviderSingleton.GetInstance()
+			Dim persistenceProvider As IPersistenceInfoProvider = PersistenceInfoProviderSingleton.GetInstance()
+			Dim fieldToReturn As IEntityField = Nothing
+			Select Case fieldIndex
+				Case ContDiotTiposOperacionFieldIndex.CodDiot
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ContDiotTiposOperacionEntity", "CodDiot"), persistenceProvider.GetFieldPersistenceInfo("ContDiotTiposOperacionEntity", "CodDiot"))
+				Case ContDiotTiposOperacionFieldIndex.ClaveHacienda
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ContDiotTiposOperacionEntity", "ClaveHacienda"), persistenceProvider.GetFieldPersistenceInfo("ContDiotTiposOperacionEntity", "ClaveHacienda"))
+				Case ContDiotTiposOperacionFieldIndex.Descripcion
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ContDiotTiposOperacionEntity", "Descripcion"), persistenceProvider.GetFieldPersistenceInfo("ContDiotTiposOperacionEntity", "Descripcion"))
+
+			End Select
+			Return fieldToReturn
+		End Function
+	
+		''' <summary>
+		''' Creates a new IEntityField instance for usage in the EntityFields Object for the ContDiotTiposTercerosEntity. 
+		''' Which EntityField is created is specified by fieldIndex
+		''' </summary>
+		''' <param name="fieldIndex">The field which IEntityField instance should be created</param>
+		''' <returns>The IEntityField instance for the field specified in fieldIndex</returns>
+		Public Shared Function Create(fieldIndex As ContDiotTiposTercerosFieldIndex) As IEntityField
+			Dim fieldProvider As IFieldInfoProvider = FieldInfoProviderSingleton.GetInstance()
+			Dim persistenceProvider As IPersistenceInfoProvider = PersistenceInfoProviderSingleton.GetInstance()
+			Dim fieldToReturn As IEntityField = Nothing
+			Select Case fieldIndex
+				Case ContDiotTiposTercerosFieldIndex.CodDiot
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ContDiotTiposTercerosEntity", "CodDiot"), persistenceProvider.GetFieldPersistenceInfo("ContDiotTiposTercerosEntity", "CodDiot"))
+				Case ContDiotTiposTercerosFieldIndex.ClaveHacienda
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ContDiotTiposTercerosEntity", "ClaveHacienda"), persistenceProvider.GetFieldPersistenceInfo("ContDiotTiposTercerosEntity", "ClaveHacienda"))
+				Case ContDiotTiposTercerosFieldIndex.Descripcion
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ContDiotTiposTercerosEntity", "Descripcion"), persistenceProvider.GetFieldPersistenceInfo("ContDiotTiposTercerosEntity", "Descripcion"))
 
 			End Select
 			Return fieldToReturn
@@ -9362,6 +9406,10 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ProveedorEntity", "PrMeat"), persistenceProvider.GetFieldPersistenceInfo("ProveedorEntity", "PrMeat"))
 				Case ProveedorFieldIndex.PrPuntoVenta
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ProveedorEntity", "PrPuntoVenta"), persistenceProvider.GetFieldPersistenceInfo("ProveedorEntity", "PrPuntoVenta"))
+				Case ProveedorFieldIndex.Idcontdiottiposterceros
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ProveedorEntity", "Idcontdiottiposterceros"), persistenceProvider.GetFieldPersistenceInfo("ProveedorEntity", "Idcontdiottiposterceros"))
+				Case ProveedorFieldIndex.Idcontdiottiposoperacion
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("ProveedorEntity", "Idcontdiottiposoperacion"), persistenceProvider.GetFieldPersistenceInfo("ProveedorEntity", "Idcontdiottiposoperacion"))
 
 			End Select
 			Return fieldToReturn

@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:46
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:21
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -104,6 +104,10 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchPolizaCollectionViaUsrCxppagosProveedores, _alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores As Boolean
 		Private _catLugaresDeCompra As CatLugaresDeCompraEntity
 		Private _alwaysFetchCatLugaresDeCompra, _alreadyFetchedCatLugaresDeCompra, _catLugaresDeCompraReturnsNewIfNotFound As Boolean
+		Private _contDiotTiposOperacion As ContDiotTiposOperacionEntity
+		Private _alwaysFetchContDiotTiposOperacion, _alreadyFetchedContDiotTiposOperacion, _contDiotTiposOperacionReturnsNewIfNotFound As Boolean
+		Private _contDiotTiposTerceros As ContDiotTiposTercerosEntity
+		Private _alwaysFetchContDiotTiposTerceros, _alreadyFetchedContDiotTiposTerceros, _contDiotTiposTercerosReturnsNewIfNotFound As Boolean
 		Private _cuentaContable As CuentaContableEntity
 		Private _alwaysFetchCuentaContable, _alreadyFetchedCuentaContable, _cuentaContableReturnsNewIfNotFound As Boolean
 		Private _cuentaContable_ As CuentaContableEntity
@@ -256,6 +260,20 @@ Namespace Integralab.ORM.EntityClasses
 			_catLugaresDeCompraReturnsNewIfNotFound = info.GetBoolean("_catLugaresDeCompraReturnsNewIfNotFound")
 			_alwaysFetchCatLugaresDeCompra = info.GetBoolean("_alwaysFetchCatLugaresDeCompra")
 			_alreadyFetchedCatLugaresDeCompra = info.GetBoolean("_alreadyFetchedCatLugaresDeCompra")
+			_contDiotTiposOperacion = CType(info.GetValue("_contDiotTiposOperacion", GetType(ContDiotTiposOperacionEntity)), ContDiotTiposOperacionEntity)
+			If Not _contDiotTiposOperacion Is Nothing Then
+				AddHandler _contDiotTiposOperacion.AfterSave, AddressOf OnEntityAfterSave
+			End If
+			_contDiotTiposOperacionReturnsNewIfNotFound = info.GetBoolean("_contDiotTiposOperacionReturnsNewIfNotFound")
+			_alwaysFetchContDiotTiposOperacion = info.GetBoolean("_alwaysFetchContDiotTiposOperacion")
+			_alreadyFetchedContDiotTiposOperacion = info.GetBoolean("_alreadyFetchedContDiotTiposOperacion")
+			_contDiotTiposTerceros = CType(info.GetValue("_contDiotTiposTerceros", GetType(ContDiotTiposTercerosEntity)), ContDiotTiposTercerosEntity)
+			If Not _contDiotTiposTerceros Is Nothing Then
+				AddHandler _contDiotTiposTerceros.AfterSave, AddressOf OnEntityAfterSave
+			End If
+			_contDiotTiposTercerosReturnsNewIfNotFound = info.GetBoolean("_contDiotTiposTercerosReturnsNewIfNotFound")
+			_alwaysFetchContDiotTiposTerceros = info.GetBoolean("_alwaysFetchContDiotTiposTerceros")
+			_alreadyFetchedContDiotTiposTerceros = info.GetBoolean("_alreadyFetchedContDiotTiposTerceros")
 			_cuentaContable = CType(info.GetValue("_cuentaContable", GetType(CuentaContableEntity)), CuentaContableEntity)
 			If Not _cuentaContable Is Nothing Then
 				AddHandler _cuentaContable.AfterSave, AddressOf OnEntityAfterSave
@@ -318,6 +336,8 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedCuentaCollectionViaUsrCxppagosProveedores = (_cuentaCollectionViaUsrCxppagosProveedores.Count > 0)
 			_alreadyFetchedPolizaCollectionViaUsrCxppagosProveedores = (_polizaCollectionViaUsrCxppagosProveedores.Count > 0)
 			_alreadyFetchedCatLugaresDeCompra = Not(_catLugaresDeCompra Is Nothing)
+			_alreadyFetchedContDiotTiposOperacion = Not(_contDiotTiposOperacion Is Nothing)
+			_alreadyFetchedContDiotTiposTerceros = Not(_contDiotTiposTerceros Is Nothing)
 			_alreadyFetchedCuentaContable = Not(_cuentaContable Is Nothing)
 			_alreadyFetchedCuentaContable_ = Not(_cuentaContable_ Is Nothing)
 			_alreadyFetchedProveedorAvanzado = Not(_proveedorAvanzado Is Nothing)
@@ -464,6 +484,14 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_catLugaresDeCompraReturnsNewIfNotFound", _catLugaresDeCompraReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchCatLugaresDeCompra", _alwaysFetchCatLugaresDeCompra)
 			info.AddValue("_alreadyFetchedCatLugaresDeCompra", _alreadyFetchedCatLugaresDeCompra)
+			info.AddValue("_contDiotTiposOperacion", _contDiotTiposOperacion)
+			info.AddValue("_contDiotTiposOperacionReturnsNewIfNotFound", _contDiotTiposOperacionReturnsNewIfNotFound)
+			info.AddValue("_alwaysFetchContDiotTiposOperacion", _alwaysFetchContDiotTiposOperacion)
+			info.AddValue("_alreadyFetchedContDiotTiposOperacion", _alreadyFetchedContDiotTiposOperacion)
+			info.AddValue("_contDiotTiposTerceros", _contDiotTiposTerceros)
+			info.AddValue("_contDiotTiposTercerosReturnsNewIfNotFound", _contDiotTiposTercerosReturnsNewIfNotFound)
+			info.AddValue("_alwaysFetchContDiotTiposTerceros", _alwaysFetchContDiotTiposTerceros)
+			info.AddValue("_alreadyFetchedContDiotTiposTerceros", _alreadyFetchedContDiotTiposTerceros)
 			info.AddValue("_cuentaContable", _cuentaContable)
 			info.AddValue("_cuentaContableReturnsNewIfNotFound", _cuentaContableReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchCuentaContable", _alwaysFetchCuentaContable)
@@ -492,6 +520,12 @@ Namespace Integralab.ORM.EntityClasses
 				Case "CatLugaresDeCompra"
 					_alreadyFetchedCatLugaresDeCompra = True
 					Me.CatLugaresDeCompra = CType(entity, CatLugaresDeCompraEntity)
+				Case "ContDiotTiposOperacion"
+					_alreadyFetchedContDiotTiposOperacion = True
+					Me.ContDiotTiposOperacion = CType(entity, ContDiotTiposOperacionEntity)
+				Case "ContDiotTiposTerceros"
+					_alreadyFetchedContDiotTiposTerceros = True
+					Me.ContDiotTiposTerceros = CType(entity, ContDiotTiposTercerosEntity)
 				Case "CuentaContable"
 					_alreadyFetchedCuentaContable = True
 					Me.CuentaContable = CType(entity, CuentaContableEntity)
@@ -665,6 +699,12 @@ Namespace Integralab.ORM.EntityClasses
 				Case "CatLugaresDeCompra"
 					SetupSyncCatLugaresDeCompra(relatedEntity)
 					OnRelatedEntitySet(relatedEntity, fieldName)
+				Case "ContDiotTiposOperacion"
+					SetupSyncContDiotTiposOperacion(relatedEntity)
+					OnRelatedEntitySet(relatedEntity, fieldName)
+				Case "ContDiotTiposTerceros"
+					SetupSyncContDiotTiposTerceros(relatedEntity)
+					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "CuentaContable"
 					SetupSyncCuentaContable(relatedEntity)
 					OnRelatedEntitySet(relatedEntity, fieldName)
@@ -727,6 +767,12 @@ Namespace Integralab.ORM.EntityClasses
 			Select Case fieldName
 				Case "CatLugaresDeCompra"
 					DesetupSyncCatLugaresDeCompra(False, True)
+					OnRelatedEntityUnset(relatedEntity, fieldName)
+				Case "ContDiotTiposOperacion"
+					DesetupSyncContDiotTiposOperacion(False, True)
+					OnRelatedEntityUnset(relatedEntity, fieldName)
+				Case "ContDiotTiposTerceros"
+					DesetupSyncContDiotTiposTerceros(False, True)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "CuentaContable"
 					DesetupSyncCuentaContable(False, True)
@@ -802,6 +848,12 @@ Namespace Integralab.ORM.EntityClasses
 			Dim toReturn As New List(Of IEntity)()
 			If Not _catLugaresDeCompra Is Nothing Then
 				toReturn.Add(_catLugaresDeCompra)
+			End If
+			If Not _contDiotTiposOperacion Is Nothing Then
+				toReturn.Add(_contDiotTiposOperacion)
+			End If
+			If Not _contDiotTiposTerceros Is Nothing Then
+				toReturn.Add(_contDiotTiposTerceros)
 			End If
 			If Not _cuentaContable Is Nothing Then
 				toReturn.Add(_cuentaContable)
@@ -2419,6 +2471,78 @@ Namespace Integralab.ORM.EntityClasses
 			Return _catLugaresDeCompra
 		End Function
 	
+		''' <summary>Retrieves the related entity of type 'ContDiotTiposOperacionEntity', Imports a relation of type 'n:1'</summary>
+		''' <returns>A fetched entity of type 'ContDiotTiposOperacionEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleContDiotTiposOperacion() As ContDiotTiposOperacionEntity
+			Return GetSingleContDiotTiposOperacion(False)
+		End Function
+
+		''' <summary>Retrieves the related entity of type 'ContDiotTiposOperacionEntity', Imports a relation of type 'n:1'</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
+		''' <returns>A fetched entity of type 'ContDiotTiposOperacionEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleContDiotTiposOperacion(forceFetch As Boolean) As ContDiotTiposOperacionEntity
+			If ( Not _alreadyFetchedContDiotTiposOperacion Or forceFetch Or _alwaysFetchContDiotTiposOperacion) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
+
+				Dim newEntity As New ContDiotTiposOperacionEntity()
+				If MyBase.ParticipatesInTransaction Then
+					MyBase.Transaction.Add(newEntity)
+				End If
+				Dim fetchResult As Boolean = False
+				If MyBase.CheckIfLazyLoadingShouldOccur(ProveedorEntity.Relations.ContDiotTiposOperacionEntityUsingIdcontdiottiposoperacion) Then
+					fetchResult = newEntity.FetchUsingPK(Me.Idcontdiottiposoperacion.GetValueOrDefault())
+				End If
+				If Not _contDiotTiposOperacionReturnsNewIfNotFound AndAlso Not fetchResult Then
+					Me.ContDiotTiposOperacion = Nothing
+				Else
+					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
+						newEntity = CType(MyBase.ActiveContext.Get(newEntity), ContDiotTiposOperacionEntity)
+					End If
+					Me.ContDiotTiposOperacion = newEntity
+					_alreadyFetchedContDiotTiposOperacion = fetchResult
+				End If
+				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
+					MyBase.Transaction.Remove(newEntity)
+				End If
+			End If
+			Return _contDiotTiposOperacion
+		End Function
+	
+		''' <summary>Retrieves the related entity of type 'ContDiotTiposTercerosEntity', Imports a relation of type 'n:1'</summary>
+		''' <returns>A fetched entity of type 'ContDiotTiposTercerosEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleContDiotTiposTerceros() As ContDiotTiposTercerosEntity
+			Return GetSingleContDiotTiposTerceros(False)
+		End Function
+
+		''' <summary>Retrieves the related entity of type 'ContDiotTiposTercerosEntity', Imports a relation of type 'n:1'</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
+		''' <returns>A fetched entity of type 'ContDiotTiposTercerosEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleContDiotTiposTerceros(forceFetch As Boolean) As ContDiotTiposTercerosEntity
+			If ( Not _alreadyFetchedContDiotTiposTerceros Or forceFetch Or _alwaysFetchContDiotTiposTerceros) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
+
+				Dim newEntity As New ContDiotTiposTercerosEntity()
+				If MyBase.ParticipatesInTransaction Then
+					MyBase.Transaction.Add(newEntity)
+				End If
+				Dim fetchResult As Boolean = False
+				If MyBase.CheckIfLazyLoadingShouldOccur(ProveedorEntity.Relations.ContDiotTiposTercerosEntityUsingIdcontdiottiposterceros) Then
+					fetchResult = newEntity.FetchUsingPK(Me.Idcontdiottiposterceros.GetValueOrDefault())
+				End If
+				If Not _contDiotTiposTercerosReturnsNewIfNotFound AndAlso Not fetchResult Then
+					Me.ContDiotTiposTerceros = Nothing
+				Else
+					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
+						newEntity = CType(MyBase.ActiveContext.Get(newEntity), ContDiotTiposTercerosEntity)
+					End If
+					Me.ContDiotTiposTerceros = newEntity
+					_alreadyFetchedContDiotTiposTerceros = fetchResult
+				End If
+				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
+					MyBase.Transaction.Remove(newEntity)
+				End If
+			End If
+			Return _contDiotTiposTerceros
+		End Function
+	
 		''' <summary>Retrieves the related entity of type 'CuentaContableEntity', Imports a relation of type 'n:1'</summary>
 		''' <returns>A fetched entity of type 'CuentaContableEntity' which is related to this entity.</returns>
 		Public Overridable Function GetSingleCuentaContable() As CuentaContableEntity
@@ -2583,6 +2707,12 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+					Case ProveedorFieldIndex.Idcontdiottiposterceros
+						DesetupSyncContDiotTiposTerceros(True, False)
+						_alreadyFetchedContDiotTiposTerceros = False
+					Case ProveedorFieldIndex.Idcontdiottiposoperacion
+						DesetupSyncContDiotTiposOperacion(True, False)
+						_alreadyFetchedContDiotTiposOperacion = False
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -2624,6 +2754,12 @@ Namespace Integralab.ORM.EntityClasses
 			_polizaCollectionViaUsrCxppagosProveedores.ActiveContext = MyBase.ActiveContext
 		If Not _catLugaresDeCompra Is Nothing Then
 				_catLugaresDeCompra.ActiveContext = MyBase.ActiveContext
+			End If
+		If Not _contDiotTiposOperacion Is Nothing Then
+				_contDiotTiposOperacion.ActiveContext = MyBase.ActiveContext
+			End If
+		If Not _contDiotTiposTerceros Is Nothing Then
+				_contDiotTiposTerceros.ActiveContext = MyBase.ActiveContext
 			End If
 		If Not _cuentaContable Is Nothing Then
 				_cuentaContable.ActiveContext = MyBase.ActiveContext
@@ -2812,6 +2948,14 @@ Namespace Integralab.ORM.EntityClasses
 			_catLugaresDeCompraReturnsNewIfNotFound = True
 			_alwaysFetchCatLugaresDeCompra = False
 			_alreadyFetchedCatLugaresDeCompra = False
+			_contDiotTiposOperacion = Nothing
+			_contDiotTiposOperacionReturnsNewIfNotFound = True
+			_alwaysFetchContDiotTiposOperacion = False
+			_alreadyFetchedContDiotTiposOperacion = False
+			_contDiotTiposTerceros = Nothing
+			_contDiotTiposTercerosReturnsNewIfNotFound = True
+			_alwaysFetchContDiotTiposTerceros = False
+			_alreadyFetchedContDiotTiposTerceros = False
 			_cuentaContable = Nothing
 			_cuentaContableReturnsNewIfNotFound = True
 			_alwaysFetchCuentaContable = False
@@ -2946,6 +3090,12 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("PrPuntoVenta", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Idcontdiottiposterceros", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Idcontdiottiposoperacion", fieldHashtable)
 		End Sub
 
 
@@ -2969,6 +3119,58 @@ Namespace Integralab.ORM.EntityClasses
 		''' <param name="sender"></param>
 		''' <param name="e"></param>
 		Private Sub OnCatLugaresDeCompraPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
+			Select Case e.PropertyName
+
+				Case Else
+					' Emtpy
+			End Select
+		End Sub
+		''' <summary>Removes the sync logic for member _contDiotTiposOperacion</summary>
+		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
+		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
+		Private Sub DesetupSyncContDiotTiposOperacion(signalRelatedEntity As Boolean, resetFKFields As Boolean)
+			MyBase.PerformDesetupSyncRelatedEntity( _contDiotTiposOperacion, AddressOf OnContDiotTiposOperacionPropertyChanged, "ContDiotTiposOperacion", ProveedorEntity.Relations.ContDiotTiposOperacionEntityUsingIdcontdiottiposoperacion, True, signalRelatedEntity, "Proveedor", resetFKFields, New Integer() { CInt(ProveedorFieldIndex.Idcontdiottiposoperacion) } )
+			_contDiotTiposOperacion = Nothing
+		End Sub
+		
+		''' <summary>setups the sync logic for member _contDiotTiposOperacion</summary>
+		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
+		Private Sub SetupSyncContDiotTiposOperacion(relatedEntity As IEntity)
+			DesetupSyncContDiotTiposOperacion(True, True)
+			_contDiotTiposOperacion = CType(relatedEntity, ContDiotTiposOperacionEntity)
+			MyBase.PerformSetupSyncRelatedEntity( _contDiotTiposOperacion, AddressOf OnContDiotTiposOperacionPropertyChanged, "ContDiotTiposOperacion", ProveedorEntity.Relations.ContDiotTiposOperacionEntityUsingIdcontdiottiposoperacion, True, _alreadyFetchedContDiotTiposOperacion, New String() {  } )
+		End Sub
+		
+		''' <summary>Handles Property change events of properties In a related entity.</summary>
+		''' <param name="sender"></param>
+		''' <param name="e"></param>
+		Private Sub OnContDiotTiposOperacionPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
+			Select Case e.PropertyName
+
+				Case Else
+					' Emtpy
+			End Select
+		End Sub
+		''' <summary>Removes the sync logic for member _contDiotTiposTerceros</summary>
+		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
+		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
+		Private Sub DesetupSyncContDiotTiposTerceros(signalRelatedEntity As Boolean, resetFKFields As Boolean)
+			MyBase.PerformDesetupSyncRelatedEntity( _contDiotTiposTerceros, AddressOf OnContDiotTiposTercerosPropertyChanged, "ContDiotTiposTerceros", ProveedorEntity.Relations.ContDiotTiposTercerosEntityUsingIdcontdiottiposterceros, True, signalRelatedEntity, "Proveedor", resetFKFields, New Integer() { CInt(ProveedorFieldIndex.Idcontdiottiposterceros) } )
+			_contDiotTiposTerceros = Nothing
+		End Sub
+		
+		''' <summary>setups the sync logic for member _contDiotTiposTerceros</summary>
+		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
+		Private Sub SetupSyncContDiotTiposTerceros(relatedEntity As IEntity)
+			DesetupSyncContDiotTiposTerceros(True, True)
+			_contDiotTiposTerceros = CType(relatedEntity, ContDiotTiposTercerosEntity)
+			MyBase.PerformSetupSyncRelatedEntity( _contDiotTiposTerceros, AddressOf OnContDiotTiposTercerosPropertyChanged, "ContDiotTiposTerceros", ProveedorEntity.Relations.ContDiotTiposTercerosEntityUsingIdcontdiottiposterceros, True, _alreadyFetchedContDiotTiposTerceros, New String() {  } )
+		End Sub
+		
+		''' <summary>Handles Property change events of properties In a related entity.</summary>
+		''' <param name="sender"></param>
+		''' <param name="e"></param>
+		Private Sub OnContDiotTiposTercerosPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
 			Select Case e.PropertyName
 
 				Case Else
@@ -3493,6 +3695,28 @@ Namespace Integralab.ORM.EntityClasses
 				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CatLugaresDeCompraCollection(), _
 					ProveedorEntity.Relations.CatLugaresDeCompraEntityUsingIdLugarCompra, _
 					CType(Integralab.ORM.EntityType.ProveedorEntity, Integer), CType(Integralab.ORM.EntityType.CatLugaresDeCompraEntity, Integer), 0, Nothing, Nothing, Nothing, "CatLugaresDeCompra", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'ContDiotTiposOperacion' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathContDiotTiposOperacion() As IPrefetchPathElement
+			Get
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection(), _
+					ProveedorEntity.Relations.ContDiotTiposOperacionEntityUsingIdcontdiottiposoperacion, _
+					CType(Integralab.ORM.EntityType.ProveedorEntity, Integer), CType(Integralab.ORM.EntityType.ContDiotTiposOperacionEntity, Integer), 0, Nothing, Nothing, Nothing, "ContDiotTiposOperacion", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'ContDiotTiposTerceros' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathContDiotTiposTerceros() As IPrefetchPathElement
+			Get
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection(), _
+					ProveedorEntity.Relations.ContDiotTiposTercerosEntityUsingIdcontdiottiposterceros, _
+					CType(Integralab.ORM.EntityType.ProveedorEntity, Integer), CType(Integralab.ORM.EntityType.ContDiotTiposTercerosEntity, Integer), 0, Nothing, Nothing, Nothing, "ContDiotTiposTerceros", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
 			End Get
 		End Property
 	
@@ -4272,6 +4496,42 @@ Namespace Integralab.ORM.EntityClasses
 			End Set
 		End Property
 	
+		''' <summary>The Idcontdiottiposterceros property of the Entity Proveedor<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MCatCompProveedores"."Idcontdiottiposterceros"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Idcontdiottiposterceros]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(ProveedorFieldIndex.Idcontdiottiposterceros, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(ProveedorFieldIndex.Idcontdiottiposterceros, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Idcontdiottiposoperacion property of the Entity Proveedor<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MCatCompProveedores"."Idcontdiottiposoperacion"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Idcontdiottiposoperacion]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(ProveedorFieldIndex.Idcontdiottiposoperacion, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(ProveedorFieldIndex.Idcontdiottiposoperacion, Integer), value)
+			End Set
+		End Property
+	
 	
 		''' <summary>Retrieves all related entities of type 'CabRegComEntity' Imports a relation of type '1:n'.</summary>
 		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiCabRegCom()', because 
@@ -5014,6 +5274,110 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				_catLugaresDeCompraReturnsNewIfNotFound = value
+			End Set	
+		End Property
+	
+		''' <summary>Gets / sets related entity of type 'ContDiotTiposOperacionEntity'. This property is not visible in databound grids.
+		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
+		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
+		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleContDiotTiposOperacion()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
+		<Browsable(False)> _
+		Public Overridable Property [ContDiotTiposOperacion]() As ContDiotTiposOperacionEntity
+			Get
+				Return GetSingleContDiotTiposOperacion(False)
+			End Get
+			Set
+				If MyBase.IsDeserializing Then
+					SetupSyncContDiotTiposOperacion(value)
+				Else
+					If value Is Nothing Then
+						If Not _contDiotTiposOperacion Is Nothing Then
+							_contDiotTiposOperacion.UnsetRelatedEntity(Me, "Proveedor")
+						End If
+					Else
+						CType(value, IEntity).SetRelatedEntity(Me, "Proveedor")
+					End If
+				End If
+			End Set
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for ContDiotTiposOperacion. When set to true, ContDiotTiposOperacion is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time ContDiotTiposOperacion is accessed. You can always execute
+		''' a forced fetch by calling GetSingleContDiotTiposOperacion(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchContDiotTiposOperacion As Boolean
+			Get
+				Return _alwaysFetchContDiotTiposOperacion
+			End Get
+			Set
+				_alwaysFetchContDiotTiposOperacion = value
+			End Set	
+		End Property
+
+		''' <summary>Gets / sets the flag for what to do if the related entity available through the property ContDiotTiposOperacion is not found
+		''' in the database. When set to true, ContDiotTiposOperacion will return a new entity instance if the related entity is not found, otherwise 
+		''' null be returned if the related entity is not found. Default: true.</summary>
+		<Browsable(False)> _
+		Public Property ContDiotTiposOperacionReturnsNewIfNotFound As Boolean
+			Get
+				Return _contDiotTiposOperacionReturnsNewIfNotFound
+			End Get
+			Set
+				_contDiotTiposOperacionReturnsNewIfNotFound = value
+			End Set	
+		End Property
+	
+		''' <summary>Gets / sets related entity of type 'ContDiotTiposTercerosEntity'. This property is not visible in databound grids.
+		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
+		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
+		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleContDiotTiposTerceros()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
+		<Browsable(False)> _
+		Public Overridable Property [ContDiotTiposTerceros]() As ContDiotTiposTercerosEntity
+			Get
+				Return GetSingleContDiotTiposTerceros(False)
+			End Get
+			Set
+				If MyBase.IsDeserializing Then
+					SetupSyncContDiotTiposTerceros(value)
+				Else
+					If value Is Nothing Then
+						If Not _contDiotTiposTerceros Is Nothing Then
+							_contDiotTiposTerceros.UnsetRelatedEntity(Me, "Proveedor")
+						End If
+					Else
+						CType(value, IEntity).SetRelatedEntity(Me, "Proveedor")
+					End If
+				End If
+			End Set
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for ContDiotTiposTerceros. When set to true, ContDiotTiposTerceros is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time ContDiotTiposTerceros is accessed. You can always execute
+		''' a forced fetch by calling GetSingleContDiotTiposTerceros(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchContDiotTiposTerceros As Boolean
+			Get
+				Return _alwaysFetchContDiotTiposTerceros
+			End Get
+			Set
+				_alwaysFetchContDiotTiposTerceros = value
+			End Set	
+		End Property
+
+		''' <summary>Gets / sets the flag for what to do if the related entity available through the property ContDiotTiposTerceros is not found
+		''' in the database. When set to true, ContDiotTiposTerceros will return a new entity instance if the related entity is not found, otherwise 
+		''' null be returned if the related entity is not found. Default: true.</summary>
+		<Browsable(False)> _
+		Public Property ContDiotTiposTercerosReturnsNewIfNotFound As Boolean
+			Get
+				Return _contDiotTiposTercerosReturnsNewIfNotFound
+			End Get
+			Set
+				_contDiotTiposTercerosReturnsNewIfNotFound = value
 			End Set	
 		End Property
 	

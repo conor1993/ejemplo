@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:39
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:13
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -68,11 +68,13 @@ Namespace Integralab.ORM.CollectionClasses
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Boolean
-			Return GetMultiManyToOne(catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Nothing, 0, 0)
+		Public Overloads Function GetMultiManyToOne(catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Boolean
+			Return GetMultiManyToOne(catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Nothing, 0, 0)
 		End Function
 
 
@@ -80,12 +82,14 @@ Namespace Integralab.ORM.CollectionClasses
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, Filter As IPredicateExpression) As Boolean
-			Return GetMultiManyToOne(catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Filter, 0, 0)
+		Public Overloads Function GetMultiManyToOne(catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, Filter As IPredicateExpression) As Boolean
+			Return GetMultiManyToOne(catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Filter, 0, 0)
 		End Function
 
 
@@ -93,14 +97,16 @@ Namespace Integralab.ORM.CollectionClasses
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
 		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
 		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression) As Boolean
-			Return GetMultiManyToOne(catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance, maxNumberOfItemsToReturn, sortClauses, Filter, 0, 0)
+		Public Overloads Function GetMultiManyToOne(catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression) As Boolean
+			Return GetMultiManyToOne(catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance, maxNumberOfItemsToReturn, sortClauses, Filter, 0, 0)
 		End Function
 
 
@@ -108,6 +114,8 @@ Namespace Integralab.ORM.CollectionClasses
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
@@ -116,9 +124,11 @@ Namespace Integralab.ORM.CollectionClasses
 		''' <param name="pageNumber">The page number to retrieve.</param>
 		''' <param name="pageSize">The page size of the page to retrieve.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Overridable Function GetMultiManyToOne(catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+		Public Overloads Overridable Function GetMultiManyToOne(catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression, pageNumber As Integer, pageSize As Integer) As Boolean
 			Dim validParameters As Boolean = False
 			validParameters = validParameters Or Not (catLugaresDeCompraInstance Is Nothing)
+			validParameters = validParameters Or Not (contDiotTiposOperacionInstance Is Nothing)
+			validParameters = validParameters Or Not (contDiotTiposTercerosInstance Is Nothing)
 			validParameters = validParameters Or Not (cuentaContableInstance Is Nothing)
 			validParameters = validParameters Or Not (cuentaContable_Instance Is Nothing)
 			If Not validParameters Then
@@ -128,7 +138,7 @@ Namespace Integralab.ORM.CollectionClasses
 				Me.Clear()
 			End If
 			Dim dao As ProveedorDAO = DAOFactory.CreateProveedorDAO()
-			Return dao.GetMulti(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, Filter, catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance, pageNumber, pageSize)
+			Return dao.GetMulti(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, Filter, catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance, pageNumber, pageSize)
 		End Function
 
 		''' <summary>Deletes from the persistent storage all Proveedor entities which have data in common
@@ -136,12 +146,14 @@ Namespace Integralab.ORM.CollectionClasses
 		''' If one is omitted, that entity is not used as a filter.</summary>
 		''' <remarks>Runs directly on the persistent storage. It will not delete entity objects from the current collection.</remarks>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function DeleteMultiManyToOne(catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Integer
+		Public Overloads Function DeleteMultiManyToOne(catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Integer
 			Dim dao As ProveedorDAO = DAOFactory.CreateProveedorDAO()
-			Return dao.DeleteMulti(MyBase.Transaction, catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance)
+			Return dao.DeleteMulti(MyBase.Transaction, catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance)
 		End Function
 
 
@@ -152,12 +164,14 @@ Namespace Integralab.ORM.CollectionClasses
 		''' <param name="entityWithNewValues">ProveedorEntity instance which holds the new values for the matching entities to update. Only
 		''' changed fields are taken into account</param>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to Return</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function UpdateMultiManyToOne(entityWithNewValues As ProveedorEntity, catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Integer
+		Public Overloads Function UpdateMultiManyToOne(entityWithNewValues As ProveedorEntity, catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Integer
 			Dim dao As ProveedorDAO = DAOFactory.CreateProveedorDAO()
-			Return dao.UpdateMulti(entityWithNewValues, MyBase.Transaction, catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance)
+			Return dao.UpdateMulti(entityWithNewValues, MyBase.Transaction, catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance)
 		End Function
 	
 	

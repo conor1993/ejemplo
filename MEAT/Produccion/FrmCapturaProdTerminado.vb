@@ -1278,7 +1278,7 @@ Public Class FrmCapturaProdTerminado
                     Me.txtDiasCad.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmDiasCad.Index).Value
                     Me.dtpFechaCaducidad.Value = CDate(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmFechaCorte.Index).Value).AddDays(CInt(Me.txtDiasCad.Text))
                     Me.txtProveedor.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmIntroductor.Index).Value
-                    idproducto = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmproducto.Index).Value
+
 
                 Else
                     For Each control As Control In Me.Controls

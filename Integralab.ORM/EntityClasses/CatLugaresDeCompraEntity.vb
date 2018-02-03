@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:49
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:24
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -56,6 +56,10 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchMcecatCorralesCabCollectionViaCabRegCom, _alreadyFetchedMcecatCorralesCabCollectionViaCabRegCom As Boolean
 		Private _mcgcatCompradoresdeGanadoCollectionViaCabRegCom As Integralab.ORM.CollectionClasses.McgcatCompradoresdeGanadoCollection
 		Private _alwaysFetchMcgcatCompradoresdeGanadoCollectionViaCabRegCom, _alreadyFetchedMcgcatCompradoresdeGanadoCollectionViaCabRegCom As Boolean
+		Private _contDiotTiposOperacionCollectionViaProveedor As Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection
+		Private _alwaysFetchContDiotTiposOperacionCollectionViaProveedor, _alreadyFetchedContDiotTiposOperacionCollectionViaProveedor As Boolean
+		Private _contDiotTiposTercerosCollectionViaProveedor As Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection
+		Private _alwaysFetchContDiotTiposTercerosCollectionViaProveedor, _alreadyFetchedContDiotTiposTercerosCollectionViaProveedor As Boolean
 		Private _cuentaContableCollectionViaProveedor As Integralab.ORM.CollectionClasses.CuentaContableCollection
 		Private _alwaysFetchCuentaContableCollectionViaProveedor, _alreadyFetchedCuentaContableCollectionViaProveedor As Boolean
 		Private _cuentaContableCollectionViaProveedor_ As Integralab.ORM.CollectionClasses.CuentaContableCollection
@@ -132,6 +136,12 @@ Namespace Integralab.ORM.EntityClasses
 			_mcgcatCompradoresdeGanadoCollectionViaCabRegCom = CType(info.GetValue("_mcgcatCompradoresdeGanadoCollectionViaCabRegCom", GetType(Integralab.ORM.CollectionClasses.McgcatCompradoresdeGanadoCollection)), Integralab.ORM.CollectionClasses.McgcatCompradoresdeGanadoCollection)
 			_alwaysFetchMcgcatCompradoresdeGanadoCollectionViaCabRegCom = info.GetBoolean("_alwaysFetchMcgcatCompradoresdeGanadoCollectionViaCabRegCom")
 			_alreadyFetchedMcgcatCompradoresdeGanadoCollectionViaCabRegCom = info.GetBoolean("_alreadyFetchedMcgcatCompradoresdeGanadoCollectionViaCabRegCom")
+			_contDiotTiposOperacionCollectionViaProveedor = CType(info.GetValue("_contDiotTiposOperacionCollectionViaProveedor", GetType(Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection)), Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection)
+			_alwaysFetchContDiotTiposOperacionCollectionViaProveedor = info.GetBoolean("_alwaysFetchContDiotTiposOperacionCollectionViaProveedor")
+			_alreadyFetchedContDiotTiposOperacionCollectionViaProveedor = info.GetBoolean("_alreadyFetchedContDiotTiposOperacionCollectionViaProveedor")
+			_contDiotTiposTercerosCollectionViaProveedor = CType(info.GetValue("_contDiotTiposTercerosCollectionViaProveedor", GetType(Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection)), Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection)
+			_alwaysFetchContDiotTiposTercerosCollectionViaProveedor = info.GetBoolean("_alwaysFetchContDiotTiposTercerosCollectionViaProveedor")
+			_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor = info.GetBoolean("_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor")
 			_cuentaContableCollectionViaProveedor = CType(info.GetValue("_cuentaContableCollectionViaProveedor", GetType(Integralab.ORM.CollectionClasses.CuentaContableCollection)), Integralab.ORM.CollectionClasses.CuentaContableCollection)
 			_alwaysFetchCuentaContableCollectionViaProveedor = info.GetBoolean("_alwaysFetchCuentaContableCollectionViaProveedor")
 			_alreadyFetchedCuentaContableCollectionViaProveedor = info.GetBoolean("_alreadyFetchedCuentaContableCollectionViaProveedor")
@@ -156,6 +166,8 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedProveedorCollectionViaCabRegCom = (_proveedorCollectionViaCabRegCom.Count > 0)
 			_alreadyFetchedMcecatCorralesCabCollectionViaCabRegCom = (_mcecatCorralesCabCollectionViaCabRegCom.Count > 0)
 			_alreadyFetchedMcgcatCompradoresdeGanadoCollectionViaCabRegCom = (_mcgcatCompradoresdeGanadoCollectionViaCabRegCom.Count > 0)
+			_alreadyFetchedContDiotTiposOperacionCollectionViaProveedor = (_contDiotTiposOperacionCollectionViaProveedor.Count > 0)
+			_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor = (_contDiotTiposTercerosCollectionViaProveedor.Count > 0)
 			_alreadyFetchedCuentaContableCollectionViaProveedor = (_cuentaContableCollectionViaProveedor.Count > 0)
 			_alreadyFetchedCuentaContableCollectionViaProveedor_ = (_cuentaContableCollectionViaProveedor_.Count > 0)
 
@@ -230,6 +242,12 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_mcgcatCompradoresdeGanadoCollectionViaCabRegCom", _mcgcatCompradoresdeGanadoCollectionViaCabRegCom)
 			info.AddValue("_alwaysFetchMcgcatCompradoresdeGanadoCollectionViaCabRegCom", _alwaysFetchMcgcatCompradoresdeGanadoCollectionViaCabRegCom)
 			info.AddValue("_alreadyFetchedMcgcatCompradoresdeGanadoCollectionViaCabRegCom", _alreadyFetchedMcgcatCompradoresdeGanadoCollectionViaCabRegCom)
+			info.AddValue("_contDiotTiposOperacionCollectionViaProveedor", _contDiotTiposOperacionCollectionViaProveedor)
+			info.AddValue("_alwaysFetchContDiotTiposOperacionCollectionViaProveedor", _alwaysFetchContDiotTiposOperacionCollectionViaProveedor)
+			info.AddValue("_alreadyFetchedContDiotTiposOperacionCollectionViaProveedor", _alreadyFetchedContDiotTiposOperacionCollectionViaProveedor)
+			info.AddValue("_contDiotTiposTercerosCollectionViaProveedor", _contDiotTiposTercerosCollectionViaProveedor)
+			info.AddValue("_alwaysFetchContDiotTiposTercerosCollectionViaProveedor", _alwaysFetchContDiotTiposTercerosCollectionViaProveedor)
+			info.AddValue("_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor", _alreadyFetchedContDiotTiposTercerosCollectionViaProveedor)
 			info.AddValue("_cuentaContableCollectionViaProveedor", _cuentaContableCollectionViaProveedor)
 			info.AddValue("_alwaysFetchCuentaContableCollectionViaProveedor", _alwaysFetchCuentaContableCollectionViaProveedor)
 			info.AddValue("_alreadyFetchedCuentaContableCollectionViaProveedor", _alreadyFetchedCuentaContableCollectionViaProveedor)
@@ -286,6 +304,16 @@ Namespace Integralab.ORM.EntityClasses
 					_alreadyFetchedMcgcatCompradoresdeGanadoCollectionViaCabRegCom = True
 					If Not entity Is Nothing Then
 						Me.McgcatCompradoresdeGanadoCollectionViaCabRegCom.Add(CType(entity, McgcatCompradoresdeGanadoEntity))
+					End If
+				Case "ContDiotTiposOperacionCollectionViaProveedor"
+					_alreadyFetchedContDiotTiposOperacionCollectionViaProveedor = True
+					If Not entity Is Nothing Then
+						Me.ContDiotTiposOperacionCollectionViaProveedor.Add(CType(entity, ContDiotTiposOperacionEntity))
+					End If
+				Case "ContDiotTiposTercerosCollectionViaProveedor"
+					_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor = True
+					If Not entity Is Nothing Then
+						Me.ContDiotTiposTercerosCollectionViaProveedor.Add(CType(entity, ContDiotTiposTercerosEntity))
 					End If
 				Case "CuentaContableCollectionViaProveedor"
 					_alreadyFetchedCuentaContableCollectionViaProveedor = True
@@ -566,7 +594,7 @@ Namespace Integralab.ORM.EntityClasses
 				If Not entityFactoryToUse Is Nothing Then
 					_proveedor.EntityFactoryToUse = entityFactoryToUse
 				End If
-				_proveedor.GetMultiManyToOne(Me, Nothing, Nothing, Filter)
+				_proveedor.GetMultiManyToOne(Me, Nothing, Nothing, Nothing, Nothing, Filter)
 				_proveedor.SuppressClearInGetMulti = False
 				_alreadyFetchedProveedor = True
 			End If
@@ -798,6 +826,92 @@ Namespace Integralab.ORM.EntityClasses
 			_mcgcatCompradoresdeGanadoCollectionViaCabRegCom.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub	
 
+		''' <summary>Retrieves all related entities of type 'ContDiotTiposOperacionEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <returns>Filled collection with all related entities of type 'ContDiotTiposOperacionEntity'</returns>
+		Public Function GetMultiContDiotTiposOperacionCollectionViaProveedor(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection
+			Return GetMultiContDiotTiposOperacionCollectionViaProveedor(forceFetch, _contDiotTiposOperacionCollectionViaProveedor.EntityFactoryToUse)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'ContDiotTiposOperacionEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToMany() routine.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Overridable Function GetMultiContDiotTiposOperacionCollectionViaProveedor(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection
+			If ( Not _alreadyFetchedContDiotTiposOperacionCollectionViaProveedor Or forceFetch Or _alwaysFetchContDiotTiposOperacionCollectionViaProveedor) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
+				If MyBase.ParticipatesInTransaction Then
+					If Not _contDiotTiposOperacionCollectionViaProveedor.ParticipatesInTransaction Then
+						MyBase.Transaction.Add(_contDiotTiposOperacionCollectionViaProveedor)
+					End If
+				End If
+				Dim relations As IRelationCollection = New RelationCollection()
+				Dim Filter As IPredicateExpression = New PredicateExpression()
+				relations.Add(CatLugaresDeCompraEntity.Relations.ProveedorEntityUsingIdLugarCompra, "__CatLugaresDeCompraEntity__", "Proveedor_", JoinHint.None)
+				relations.Add(ProveedorEntity.Relations.ContDiotTiposOperacionEntityUsingIdcontdiottiposoperacion, "Proveedor_", String.Empty, JoinHint.None)
+				Filter.Add(New FieldCompareValuePredicate(EntityFieldFactory.Create(CatLugaresDeCompraFieldIndex.IdLugarCompra), ComparisonOperator.Equal, Me.IdLugarCompra))
+				_contDiotTiposOperacionCollectionViaProveedor.SuppressClearInGetMulti = Not forceFetch
+				If Not entityFactoryToUse Is Nothing Then
+					_contDiotTiposOperacionCollectionViaProveedor.EntityFactoryToUse = entityFactoryToUse
+				End If
+				_contDiotTiposOperacionCollectionViaProveedor.GetMulti(Filter, relations)
+				_contDiotTiposOperacionCollectionViaProveedor.SuppressClearInGetMulti = False
+				_alreadyFetchedContDiotTiposOperacionCollectionViaProveedor = True
+			End If
+			Return _contDiotTiposOperacionCollectionViaProveedor
+		End Function
+
+		''' <summary>Sets the collection parameters for the collection for 'ContDiotTiposOperacionCollectionViaProveedor'. These settings will be taken into account
+		''' when the property ContDiotTiposOperacionCollectionViaProveedor is requested or GetMultiContDiotTiposOperacionCollectionViaProveedor is called.</summary>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
+		Public Overridable Sub SetCollectionParametersContDiotTiposOperacionCollectionViaProveedor(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
+			_contDiotTiposOperacionCollectionViaProveedor.SortClauses=sortClauses
+			_contDiotTiposOperacionCollectionViaProveedor.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
+		End Sub	
+
+		''' <summary>Retrieves all related entities of type 'ContDiotTiposTercerosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <returns>Filled collection with all related entities of type 'ContDiotTiposTercerosEntity'</returns>
+		Public Function GetMultiContDiotTiposTercerosCollectionViaProveedor(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection
+			Return GetMultiContDiotTiposTercerosCollectionViaProveedor(forceFetch, _contDiotTiposTercerosCollectionViaProveedor.EntityFactoryToUse)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'ContDiotTiposTercerosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToMany() routine.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Overridable Function GetMultiContDiotTiposTercerosCollectionViaProveedor(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection
+			If ( Not _alreadyFetchedContDiotTiposTercerosCollectionViaProveedor Or forceFetch Or _alwaysFetchContDiotTiposTercerosCollectionViaProveedor) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
+				If MyBase.ParticipatesInTransaction Then
+					If Not _contDiotTiposTercerosCollectionViaProveedor.ParticipatesInTransaction Then
+						MyBase.Transaction.Add(_contDiotTiposTercerosCollectionViaProveedor)
+					End If
+				End If
+				Dim relations As IRelationCollection = New RelationCollection()
+				Dim Filter As IPredicateExpression = New PredicateExpression()
+				relations.Add(CatLugaresDeCompraEntity.Relations.ProveedorEntityUsingIdLugarCompra, "__CatLugaresDeCompraEntity__", "Proveedor_", JoinHint.None)
+				relations.Add(ProveedorEntity.Relations.ContDiotTiposTercerosEntityUsingIdcontdiottiposterceros, "Proveedor_", String.Empty, JoinHint.None)
+				Filter.Add(New FieldCompareValuePredicate(EntityFieldFactory.Create(CatLugaresDeCompraFieldIndex.IdLugarCompra), ComparisonOperator.Equal, Me.IdLugarCompra))
+				_contDiotTiposTercerosCollectionViaProveedor.SuppressClearInGetMulti = Not forceFetch
+				If Not entityFactoryToUse Is Nothing Then
+					_contDiotTiposTercerosCollectionViaProveedor.EntityFactoryToUse = entityFactoryToUse
+				End If
+				_contDiotTiposTercerosCollectionViaProveedor.GetMulti(Filter, relations)
+				_contDiotTiposTercerosCollectionViaProveedor.SuppressClearInGetMulti = False
+				_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor = True
+			End If
+			Return _contDiotTiposTercerosCollectionViaProveedor
+		End Function
+
+		''' <summary>Sets the collection parameters for the collection for 'ContDiotTiposTercerosCollectionViaProveedor'. These settings will be taken into account
+		''' when the property ContDiotTiposTercerosCollectionViaProveedor is requested or GetMultiContDiotTiposTercerosCollectionViaProveedor is called.</summary>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
+		Public Overridable Sub SetCollectionParametersContDiotTiposTercerosCollectionViaProveedor(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
+			_contDiotTiposTercerosCollectionViaProveedor.SortClauses=sortClauses
+			_contDiotTiposTercerosCollectionViaProveedor.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
+		End Sub	
+
 		''' <summary>Retrieves all related entities of type 'CuentaContableEntity' Imports a relation of type 'm:n'.</summary>
 		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
 		''' <returns>Filled collection with all related entities of type 'CuentaContableEntity'</returns>
@@ -920,6 +1034,8 @@ Namespace Integralab.ORM.EntityClasses
 			_proveedorCollectionViaCabRegCom.ActiveContext = MyBase.ActiveContext
 			_mcecatCorralesCabCollectionViaCabRegCom.ActiveContext = MyBase.ActiveContext
 			_mcgcatCompradoresdeGanadoCollectionViaCabRegCom.ActiveContext = MyBase.ActiveContext
+			_contDiotTiposOperacionCollectionViaProveedor.ActiveContext = MyBase.ActiveContext
+			_contDiotTiposTercerosCollectionViaProveedor.ActiveContext = MyBase.ActiveContext
 			_cuentaContableCollectionViaProveedor.ActiveContext = MyBase.ActiveContext
 			_cuentaContableCollectionViaProveedor_.ActiveContext = MyBase.ActiveContext
 
@@ -1018,6 +1134,12 @@ Namespace Integralab.ORM.EntityClasses
 			_mcgcatCompradoresdeGanadoCollectionViaCabRegCom = New Integralab.ORM.CollectionClasses.McgcatCompradoresdeGanadoCollection(New McgcatCompradoresdeGanadoEntityFactory())
 			_alwaysFetchMcgcatCompradoresdeGanadoCollectionViaCabRegCom = False
 			_alreadyFetchedMcgcatCompradoresdeGanadoCollectionViaCabRegCom = False
+			_contDiotTiposOperacionCollectionViaProveedor = New Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection(New ContDiotTiposOperacionEntityFactory())
+			_alwaysFetchContDiotTiposOperacionCollectionViaProveedor = False
+			_alreadyFetchedContDiotTiposOperacionCollectionViaProveedor = False
+			_contDiotTiposTercerosCollectionViaProveedor = New Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection(New ContDiotTiposTercerosEntityFactory())
+			_alwaysFetchContDiotTiposTercerosCollectionViaProveedor = False
+			_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor = False
 			_cuentaContableCollectionViaProveedor = New Integralab.ORM.CollectionClasses.CuentaContableCollection(New CuentaContableEntityFactory())
 			_alwaysFetchCuentaContableCollectionViaProveedor = False
 			_alreadyFetchedCuentaContableCollectionViaProveedor = False
@@ -1200,6 +1322,34 @@ Namespace Integralab.ORM.EntityClasses
 				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.McgcatCompradoresdeGanadoCollection(), _
 					CatLugaresDeCompraEntity.Relations.CabRegComEntityUsingCveLugCom, _
 					CType(Integralab.ORM.EntityType.CatLugaresDeCompraEntity, Integer), CType(Integralab.ORM.EntityType.McgcatCompradoresdeGanadoEntity, Integer), 0, Nothing, Nothing, relations, "McgcatCompradoresdeGanadoCollectionViaCabRegCom", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'ContDiotTiposOperacion' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathContDiotTiposOperacionCollectionViaProveedor() As IPrefetchPathElement
+			Get
+				Dim relations As IRelationCollection = New RelationCollection()
+				relations.Add(CatLugaresDeCompraEntity.Relations.ProveedorEntityUsingIdLugarCompra, "__CatLugaresDeCompraEntity__", String.Empty, JoinHint.None)
+				relations.Add(ProveedorEntity.Relations.ContDiotTiposOperacionEntityUsingIdcontdiottiposoperacion)
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection(), _
+					CatLugaresDeCompraEntity.Relations.ProveedorEntityUsingIdLugarCompra, _
+					CType(Integralab.ORM.EntityType.CatLugaresDeCompraEntity, Integer), CType(Integralab.ORM.EntityType.ContDiotTiposOperacionEntity, Integer), 0, Nothing, Nothing, relations, "ContDiotTiposOperacionCollectionViaProveedor", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'ContDiotTiposTerceros' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathContDiotTiposTercerosCollectionViaProveedor() As IPrefetchPathElement
+			Get
+				Dim relations As IRelationCollection = New RelationCollection()
+				relations.Add(CatLugaresDeCompraEntity.Relations.ProveedorEntityUsingIdLugarCompra, "__CatLugaresDeCompraEntity__", String.Empty, JoinHint.None)
+				relations.Add(ProveedorEntity.Relations.ContDiotTiposTercerosEntityUsingIdcontdiottiposterceros)
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection(), _
+					CatLugaresDeCompraEntity.Relations.ProveedorEntityUsingIdLugarCompra, _
+					CType(Integralab.ORM.EntityType.CatLugaresDeCompraEntity, Integer), CType(Integralab.ORM.EntityType.ContDiotTiposTercerosEntity, Integer), 0, Nothing, Nothing, relations, "ContDiotTiposTercerosCollectionViaProveedor", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
 			End Get
 		End Property
 	
@@ -1571,6 +1721,52 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				_alwaysFetchMcgcatCompradoresdeGanadoCollectionViaCabRegCom = value
+			End Set	
+		End Property
+	
+		''' <summary>Retrieves all related entities of type 'ContDiotTiposOperacionEntity' Imports a relation of type 'm:n'.</summary>
+		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiContDiotTiposOperacionCollectionViaProveedor()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope.</remarks>
+		Public Overridable ReadOnly Property [ContDiotTiposOperacionCollectionViaProveedor]() As Integralab.ORM.CollectionClasses.ContDiotTiposOperacionCollection
+			Get
+				Return GetMultiContDiotTiposOperacionCollectionViaProveedor(False)
+			End Get
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for ContDiotTiposOperacionCollectionViaProveedor. When set to true, ContDiotTiposOperacionCollectionViaProveedor is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time ContDiotTiposOperacionCollectionViaProveedor is accessed. You can always execute
+		''' a forced fetch by calling GetMultiContDiotTiposOperacionCollectionViaProveedor(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchContDiotTiposOperacionCollectionViaProveedor As Boolean
+			Get
+				Return _alwaysFetchContDiotTiposOperacionCollectionViaProveedor
+			End Get
+			Set
+				_alwaysFetchContDiotTiposOperacionCollectionViaProveedor = value
+			End Set	
+		End Property
+	
+		''' <summary>Retrieves all related entities of type 'ContDiotTiposTercerosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiContDiotTiposTercerosCollectionViaProveedor()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope.</remarks>
+		Public Overridable ReadOnly Property [ContDiotTiposTercerosCollectionViaProveedor]() As Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection
+			Get
+				Return GetMultiContDiotTiposTercerosCollectionViaProveedor(False)
+			End Get
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for ContDiotTiposTercerosCollectionViaProveedor. When set to true, ContDiotTiposTercerosCollectionViaProveedor is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time ContDiotTiposTercerosCollectionViaProveedor is accessed. You can always execute
+		''' a forced fetch by calling GetMultiContDiotTiposTercerosCollectionViaProveedor(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchContDiotTiposTercerosCollectionViaProveedor As Boolean
+			Get
+				Return _alwaysFetchContDiotTiposTercerosCollectionViaProveedor
+			End Get
+			Set
+				_alwaysFetchContDiotTiposTercerosCollectionViaProveedor = value
 			End Set	
 		End Property
 	

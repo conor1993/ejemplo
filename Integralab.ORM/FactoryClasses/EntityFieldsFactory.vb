@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:50
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:25
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -221,6 +221,12 @@ Namespace Integralab.ORM.FactoryClasses
 				Case Integralab.ORM.EntityType.ConMesEntity
 					fieldsToReturn = New EntityFields(CInt(ConMesFieldIndex.AmountOfFields), inheritanceProvider, fieldProvider.GetFieldIndexes("ConMesEntity"))
 					CreateConMesEntityFields( fieldsToReturn)
+				Case Integralab.ORM.EntityType.ContDiotTiposOperacionEntity
+					fieldsToReturn = New EntityFields(CInt(ContDiotTiposOperacionFieldIndex.AmountOfFields), inheritanceProvider, fieldProvider.GetFieldIndexes("ContDiotTiposOperacionEntity"))
+					CreateContDiotTiposOperacionEntityFields( fieldsToReturn)
+				Case Integralab.ORM.EntityType.ContDiotTiposTercerosEntity
+					fieldsToReturn = New EntityFields(CInt(ContDiotTiposTercerosFieldIndex.AmountOfFields), inheritanceProvider, fieldProvider.GetFieldIndexes("ContDiotTiposTercerosEntity"))
+					CreateContDiotTiposTercerosEntityFields( fieldsToReturn)
 				Case Integralab.ORM.EntityType.ControlTurnoEntity
 					fieldsToReturn = New EntityFields(CInt(ControlTurnoFieldIndex.AmountOfFields), inheritanceProvider, fieldProvider.GetFieldIndexes("ControlTurnoEntity"))
 					CreateControlTurnoEntityFields( fieldsToReturn)
@@ -897,6 +903,8 @@ Namespace Integralab.ORM.FactoryClasses
 		Friend Shared Function CreateFields(entityName As String) As IEntityFieldCore()
 			Dim toReturn As IEntityFieldCore() = Nothing
 			Select Case entityName
+
+
 
 
 
@@ -2152,6 +2160,28 @@ Namespace Integralab.ORM.FactoryClasses
 			Dim i As Integer
 			For i=0 To CInt(ConMesFieldIndex.AmountOfFields) - 1
 				fieldsToFill(i) = EntityFieldFactory.Create( CType(i, ConMesFieldIndex))
+			Next
+		End Sub
+		
+
+
+		''' <summary>Creates a complete EntityFields instance for the ContDiotTiposOperacionEntity.</summary>
+		''' <param name="fieldsToFill">the fields object to fill</param>
+		Private Shared Sub CreateContDiotTiposOperacionEntityFields(fieldsToFill As IEntityFields)
+			Dim i As Integer
+			For i=0 To CInt(ContDiotTiposOperacionFieldIndex.AmountOfFields) - 1
+				fieldsToFill(i) = EntityFieldFactory.Create( CType(i, ContDiotTiposOperacionFieldIndex))
+			Next
+		End Sub
+		
+
+
+		''' <summary>Creates a complete EntityFields instance for the ContDiotTiposTercerosEntity.</summary>
+		''' <param name="fieldsToFill">the fields object to fill</param>
+		Private Shared Sub CreateContDiotTiposTercerosEntityFields(fieldsToFill As IEntityFields)
+			Dim i As Integer
+			For i=0 To CInt(ContDiotTiposTercerosFieldIndex.AmountOfFields) - 1
+				fieldsToFill(i) = EntityFieldFactory.Create( CType(i, ContDiotTiposTercerosFieldIndex))
 			Next
 		End Sub
 		

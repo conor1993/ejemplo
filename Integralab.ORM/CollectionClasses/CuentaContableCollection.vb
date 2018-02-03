@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:39
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:14
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -1056,6 +1056,282 @@ Namespace Integralab.ORM.CollectionClasses
 
 			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
 			Return dao.GetMultiUsingCatLugaresDeCompraCollectionViaProveedor_(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, catLugaresDeCompraInstance, prefetchPathToUse)
+		End Function
+	
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor(contDiotTiposOperacionInstance As IEntity) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor(contDiotTiposOperacionInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, 0, 0)
+		End Function
+		
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor(contDiotTiposOperacionInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor(contDiotTiposOperacionInstance, maxNumberOfItemsToReturn, sortClauses, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="pageNumber">The page number to retrieve.</param>
+		''' <param name="pageSize">The page size of the page to retrieve.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor(contDiotTiposOperacionInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
+			Return dao.GetMultiUsingContDiotTiposOperacionCollectionViaProveedor(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, contDiotTiposOperacionInstance, pageNumber, pageSize)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor(contDiotTiposOperacionInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor(contDiotTiposOperacionInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, prefetchPathToUse)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Overridable Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor(contDiotTiposOperacionInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, prefetchPathToUse As IPrefetchPath) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
+			Return dao.GetMultiUsingContDiotTiposOperacionCollectionViaProveedor(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, contDiotTiposOperacionInstance, prefetchPathToUse)
+		End Function
+	
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor_(contDiotTiposOperacionInstance As IEntity) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor_(contDiotTiposOperacionInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, 0, 0)
+		End Function
+		
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor_(contDiotTiposOperacionInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor_(contDiotTiposOperacionInstance, maxNumberOfItemsToReturn, sortClauses, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="pageNumber">The page number to retrieve.</param>
+		''' <param name="pageSize">The page size of the page to retrieve.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor_(contDiotTiposOperacionInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
+			Return dao.GetMultiUsingContDiotTiposOperacionCollectionViaProveedor_(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, contDiotTiposOperacionInstance, pageNumber, pageSize)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor_(contDiotTiposOperacionInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor_(contDiotTiposOperacionInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, prefetchPathToUse)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposOperacionEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Overridable Function GetMultiManyToManyUsingContDiotTiposOperacionCollectionViaProveedor_(contDiotTiposOperacionInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, prefetchPathToUse As IPrefetchPath) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
+			Return dao.GetMultiUsingContDiotTiposOperacionCollectionViaProveedor_(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, contDiotTiposOperacionInstance, prefetchPathToUse)
+		End Function
+	
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor(contDiotTiposTercerosInstance As IEntity) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor(contDiotTiposTercerosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, 0, 0)
+		End Function
+		
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor(contDiotTiposTercerosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor(contDiotTiposTercerosInstance, maxNumberOfItemsToReturn, sortClauses, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="pageNumber">The page number to retrieve.</param>
+		''' <param name="pageSize">The page size of the page to retrieve.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor(contDiotTiposTercerosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
+			Return dao.GetMultiUsingContDiotTiposTercerosCollectionViaProveedor(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, contDiotTiposTercerosInstance, pageNumber, pageSize)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor(contDiotTiposTercerosInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor(contDiotTiposTercerosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, prefetchPathToUse)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Overridable Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor(contDiotTiposTercerosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, prefetchPathToUse As IPrefetchPath) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
+			Return dao.GetMultiUsingContDiotTiposTercerosCollectionViaProveedor(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, contDiotTiposTercerosInstance, prefetchPathToUse)
+		End Function
+	
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor_(contDiotTiposTercerosInstance As IEntity) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor_(contDiotTiposTercerosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, 0, 0)
+		End Function
+		
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor_(contDiotTiposTercerosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor_(contDiotTiposTercerosInstance, maxNumberOfItemsToReturn, sortClauses, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="pageNumber">The page number to retrieve.</param>
+		''' <param name="pageSize">The page size of the page to retrieve.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor_(contDiotTiposTercerosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
+			Return dao.GetMultiUsingContDiotTiposTercerosCollectionViaProveedor_(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, contDiotTiposTercerosInstance, pageNumber, pageSize)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor_(contDiotTiposTercerosInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
+			Return GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor_(contDiotTiposTercerosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, prefetchPathToUse)
+		End Function
+
+
+		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in ContDiotTiposTercerosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Overridable Function GetMultiManyToManyUsingContDiotTiposTercerosCollectionViaProveedor_(contDiotTiposTercerosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, prefetchPathToUse As IPrefetchPath) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As CuentaContableDAO = DAOFactory.CreateCuentaContableDAO()
+			Return dao.GetMultiUsingContDiotTiposTercerosCollectionViaProveedor_(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, contDiotTiposTercerosInstance, prefetchPathToUse)
 		End Function
 	
 		''' <summary>Retrieves in this CuentaContableCollection Object all CuentaContableEntity objects which are related via a 

@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 2 de febrero de 2018 11:54:41
+' Code is generated on: viernes, 2 de febrero de 2018 16:33:16
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -66,14 +66,16 @@ Namespace Integralab.ORM.DaoClasses
 		''' <param name="entityFactoryToUse">The EntityFactory to use when creating entity objects during a GetMulti() call.</param>
 		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to return</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to return</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to return</param>
 		''' <param name="pageNumber">The page number to retrieve.</param>
 		''' <param name="pageSize">The page size of the page to retrieve.</param>
-		Public Overloads Function GetMulti(containingTransaction As ITransaction, collectionToFill As IEntityCollection, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, entityFactoryToUse As IEntityFactory, Filter As IPredicateExpression, catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, pageNumber As Integer, pageSize As Integer) As Boolean
+		Public Overloads Function GetMulti(containingTransaction As ITransaction, collectionToFill As IEntityCollection, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, entityFactoryToUse As IEntityFactory, Filter As IPredicateExpression, catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, pageNumber As Integer, pageSize As Integer) As Boolean
 			MyBase.EntityFactoryToUse = entityFactoryToUse
 			Dim fieldsToReturn  As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.ProveedorEntity)
-			Dim selectFilter As IPredicateExpression= CreateFilterUsingForeignKeys(catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance, fieldsToReturn)
+			Dim selectFilter As IPredicateExpression= CreateFilterUsingForeignKeys(catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance, fieldsToReturn)
 			If Not Filter Is Nothing Then
 				' add contents to select filter, with AND
 				selectFilter.AddWithAnd(Filter)
@@ -909,12 +911,14 @@ selectFilter.Add(New FieldCompareValuePredicate(mcomCotizacionCompraProveedorIns
 		''' </summary>
 		''' <param name="containingTransaction">A containing transaction, if caller is added to a transaction, or Nothing if not.</param>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to delete</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to delete</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to delete</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to delete</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to delete</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function DeleteMulti(containingTransaction As ITransaction, catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Integer
+		Public Overloads Function DeleteMulti(containingTransaction As ITransaction, catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Integer
 			Dim fields As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.ProveedorEntity)
-			Dim deleteFilter As IPredicateExpression = CreateFilterUsingForeignKeys(catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance, fields)
+			Dim deleteFilter As IPredicateExpression = CreateFilterUsingForeignKeys(catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance, fields)
 			Return MyBase.DeleteMulti(containingTransaction, deleteFilter)
 		End Function
 
@@ -926,12 +930,14 @@ selectFilter.Add(New FieldCompareValuePredicate(mcomCotizacionCompraProveedorIns
 		''' <param name="entityWithNewValues">IEntity instance which holds the new values for the matching entities to update. Only changed fields are taken into account</param>
 		''' <param name="containingTransaction">A containing transaction, if caller is added to a transaction, or Nothing if not.</param>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects to update</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects to update</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects to update</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to update</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects to update</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function UpdateMulti(entityWithNewValues As IEntity, containingTransaction As ITransaction, catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Integer
+		Public Overloads Function UpdateMulti(entityWithNewValues As IEntity, containingTransaction As ITransaction, catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity) As Integer
 			Dim fields As IEntityFields = EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.ProveedorEntity)
-			Dim updateFilter As IPredicateExpression = CreateFilterUsingForeignKeys(catLugaresDeCompraInstance, cuentaContableInstance, cuentaContable_Instance, fields)
+			Dim updateFilter As IPredicateExpression = CreateFilterUsingForeignKeys(catLugaresDeCompraInstance, contDiotTiposOperacionInstance, contDiotTiposTercerosInstance, cuentaContableInstance, cuentaContable_Instance, fields)
 			Return MyBase.UpdateMulti(entityWithNewValues, containingTransaction, updateFilter)
 		End Function
 	
@@ -958,15 +964,23 @@ selectFilter.Add(New FieldCompareValuePredicate(mcomCotizacionCompraProveedorIns
 		''' Creates a PredicateExpression which should be used as a filter when any combination of available foreign keys is specified.
 		''' </summary>
 		''' <param name="catLugaresDeCompraInstance">CatLugaresDeCompraEntity instance to use as a filter for the ProveedorEntity objects</param>
+		''' <param name="contDiotTiposOperacionInstance">ContDiotTiposOperacionEntity instance to use as a filter for the ProveedorEntity objects</param>
+		''' <param name="contDiotTiposTercerosInstance">ContDiotTiposTercerosEntity instance to use as a filter for the ProveedorEntity objects</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the ProveedorEntity objects</param>
 		''' <param name="fieldsToReturn">IEntityFields implementation which forms the definition of the fieldset of the target entity.</param>
 		''' <returns>A ready to use PredicateExpression based on the passed in foreign key value holders.</returns>
-		Private Function CreateFilterUsingForeignKeys(catLugaresDeCompraInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, fieldsToReturn As IEntityFields) As IPredicateExpression
+		Private Function CreateFilterUsingForeignKeys(catLugaresDeCompraInstance As IEntity, contDiotTiposOperacionInstance As IEntity, contDiotTiposTercerosInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, fieldsToReturn As IEntityFields) As IPredicateExpression
 			Dim selectFilter As IPredicateExpression = New PredicateExpression()
 			
 			If Not catLugaresDeCompraInstance Is Nothing Then
 				selectFilter.Add(New FieldCompareValuePredicate(fieldsToReturn(CInt(ProveedorFieldIndex.IdLugarCompra)), ComparisonOperator.Equal, CType(catLugaresDeCompraInstance, CatLugaresDeCompraEntity).IdLugarCompra))
+			End If
+			If Not contDiotTiposOperacionInstance Is Nothing Then
+				selectFilter.Add(New FieldCompareValuePredicate(fieldsToReturn(CInt(ProveedorFieldIndex.Idcontdiottiposoperacion)), ComparisonOperator.Equal, CType(contDiotTiposOperacionInstance, ContDiotTiposOperacionEntity).CodDiot))
+			End If
+			If Not contDiotTiposTercerosInstance Is Nothing Then
+				selectFilter.Add(New FieldCompareValuePredicate(fieldsToReturn(CInt(ProveedorFieldIndex.Idcontdiottiposterceros)), ComparisonOperator.Equal, CType(contDiotTiposTercerosInstance, ContDiotTiposTercerosEntity).CodDiot))
 			End If
 			If Not cuentaContableInstance Is Nothing Then
 				selectFilter.Add(New FieldCompareValuePredicate(fieldsToReturn(CInt(ProveedorFieldIndex.CuentaContId)), ComparisonOperator.Equal, CType(cuentaContableInstance, CuentaContableEntity).Codigo))

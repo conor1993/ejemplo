@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:43
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:18
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -393,6 +393,18 @@ Namespace Integralab.ORM.FactoryClasses
 		''' <returns>the new DAO object ready to use for ConMes Entities</returns>
 		Public Shared Function CreateConMesDAO() As ConMesDAO
 			Return New ConMesDAO()
+		End Function
+
+		''' <summary>Creates a new ContDiotTiposOperacionDAO object</summary>
+		''' <returns>the new DAO object ready to use for ContDiotTiposOperacion Entities</returns>
+		Public Shared Function CreateContDiotTiposOperacionDAO() As ContDiotTiposOperacionDAO
+			Return New ContDiotTiposOperacionDAO()
+		End Function
+
+		''' <summary>Creates a new ContDiotTiposTercerosDAO object</summary>
+		''' <returns>the new DAO object ready to use for ContDiotTiposTerceros Entities</returns>
+		Public Shared Function CreateContDiotTiposTercerosDAO() As ContDiotTiposTercerosDAO
+			Return New ContDiotTiposTercerosDAO()
 		End Function
 
 		''' <summary>Creates a new ControlTurnoDAO object</summary>

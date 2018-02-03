@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:50
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:25
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -5590,6 +5590,186 @@ Namespace Integralab.ORM.FactoryClasses
 		Public Overridable ReadOnly Property ForEntityName() As String Implements IEntityFactory.ForEntityName
 			Get 
 				Return "ConMesEntity"
+			End Get
+		End Property
+
+#Region "Included Code"
+
+#End Region
+	End Class
+
+	
+	''' <summary>
+	''' Factory to create new, empty ContDiotTiposOperacionEntity objects.
+	''' </summary>
+#If CF Then
+	<SD.LLBLGen.Pro.ORMSupportClasses.Serializable()> _
+	Public Class ContDiotTiposOperacionEntityFactory 
+#Else
+	<Serializable()> _
+	Public Class ContDiotTiposOperacionEntityFactory 
+#End If
+		Implements IEntityFactory
+
+		''' <summary>CTor</summary>
+		Public Sub New()
+		End Sub
+
+		''' <summary>Creates a new, empty ContDiotTiposOperacionEntity object.</summary>
+		''' <returns>A new, empty ContDiotTiposOperacionEntity object.</returns>
+		Public Overridable Overloads Function Create() As IEntity Implements IEntityFactory.Create
+			Dim toReturn As IEntity = New ContDiotTiposOperacionEntity()
+			
+			' __LLBLGENPRO_USER_CODE_REGION_START CreateNewContDiotTiposOperacion
+			' __LLBLGENPRO_USER_CODE_REGION_END		
+			Return toReturn
+
+		End Function
+		
+		
+		''' <summary>Creates a new ContDiotTiposOperacionEntity instance but uses a special constructor which will set the Fields object of the new
+		''' IEntity instance to the passed in fields object. Implement this method to support multi-type in single table inheritance.</summary>
+		''' <param name="fields">Populated IEntityFields object for the new IEntity to create</param>
+		''' <returns>Fully created and populated (due to the IEntityFields object) IEntity object</returns>
+		Public Overridable Overloads Function Create(fields As IEntityFields) As IEntity Implements IEntityFactory.Create
+			Dim toReturn As IEntity = Create()
+			toReturn.Fields = fields
+			
+			' __LLBLGENPRO_USER_CODE_REGION_START CreateNewContDiotTiposOperacionUsingFields
+			' __LLBLGENPRO_USER_CODE_REGION_END		
+			Return toReturn
+		End Function
+
+
+		''' <summary>Creates, using the generated EntityFieldsFactory, the IEntityFields object for the entity to create. This method is used
+		''' by internal code to create the fields object to store fetched data. </summary>
+		''' <returns>Empty IEntityFields object.</returns>
+		Public Overridable Function CreateFields() As IEntityFields Implements IEntityFactory.CreateFields
+			Return EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.ContDiotTiposOperacionEntity)
+		End Function
+		
+		''' <summary>Creates the hierarchy fields For the entity To which this factory belongs.</summary>
+		''' <returns>IEntityFields Object With the fields of all the entities In teh hierarchy of this entity Or the fields of this entity If
+		''' the entity isn't in a hierarchy.</returns>
+		Public Overridable Function CreateHierarchyFields() As IEntityFields Implements IEntityFactory.CreateHierarchyFields
+			Return Me.CreateFields()
+		End Function
+		
+		''' <summary>Creates the relations collection To the entity To Join all targets so this entity can be fetched. </summary>
+		''' <returns>null If the entity isn't in a hierarchy of type TargetPerEntity, otherwise the relations collection needed to
+		''' Join all targets together To fetch all subtypes of this entity And this entity itself</returns>
+		Public Overridable Function  CreateHierarchyRelations() As IRelationCollection Implements IEntityFactory.CreateHierarchyRelations
+			Return Nothing
+		End Function
+
+		''' <summary>This method retrieves, using the InheritanceInfoprovider, the factory For the entity represented by the values passed In.</summary>
+		''' <param name="fieldValues">Field values read from the db, To determine which factory To Return, based On the field values passed In.</param>
+		''' <param name="entityFieldStartIndexesPerEntity">indexes into values where per entity type their own fields start.</param>
+		''' <returns>the factory For the entity which Is represented by the values passed In.</returns>
+		Public Overridable Function GetEntityFactory(fieldValues As Object(), entityFieldStartIndexesPerEntity As Dictionary(Of String, Integer)) As IEntityFactory Implements IEntityFactory.GetEntityFactory
+			Return Me
+		End Function
+				
+		''' <summary>Creates a New entity collection For the entity of this factory.</summary>
+		''' <returns>ready To use New entity collection, typed.</returns>
+		Public Overridable Function CreateEntityCollection() As IEntityCollection Implements IEntityFactory.CreateEntityCollection
+			Return New ContDiotTiposOperacionCollection()
+		End Function
+	
+		''' <summary>returns the name of the entity this factory Is For, e.g. "EmployeeEntity"</summary>
+		Public Overridable ReadOnly Property ForEntityName() As String Implements IEntityFactory.ForEntityName
+			Get 
+				Return "ContDiotTiposOperacionEntity"
+			End Get
+		End Property
+
+#Region "Included Code"
+
+#End Region
+	End Class
+
+	
+	''' <summary>
+	''' Factory to create new, empty ContDiotTiposTercerosEntity objects.
+	''' </summary>
+#If CF Then
+	<SD.LLBLGen.Pro.ORMSupportClasses.Serializable()> _
+	Public Class ContDiotTiposTercerosEntityFactory 
+#Else
+	<Serializable()> _
+	Public Class ContDiotTiposTercerosEntityFactory 
+#End If
+		Implements IEntityFactory
+
+		''' <summary>CTor</summary>
+		Public Sub New()
+		End Sub
+
+		''' <summary>Creates a new, empty ContDiotTiposTercerosEntity object.</summary>
+		''' <returns>A new, empty ContDiotTiposTercerosEntity object.</returns>
+		Public Overridable Overloads Function Create() As IEntity Implements IEntityFactory.Create
+			Dim toReturn As IEntity = New ContDiotTiposTercerosEntity()
+			
+			' __LLBLGENPRO_USER_CODE_REGION_START CreateNewContDiotTiposTerceros
+			' __LLBLGENPRO_USER_CODE_REGION_END		
+			Return toReturn
+
+		End Function
+		
+		
+		''' <summary>Creates a new ContDiotTiposTercerosEntity instance but uses a special constructor which will set the Fields object of the new
+		''' IEntity instance to the passed in fields object. Implement this method to support multi-type in single table inheritance.</summary>
+		''' <param name="fields">Populated IEntityFields object for the new IEntity to create</param>
+		''' <returns>Fully created and populated (due to the IEntityFields object) IEntity object</returns>
+		Public Overridable Overloads Function Create(fields As IEntityFields) As IEntity Implements IEntityFactory.Create
+			Dim toReturn As IEntity = Create()
+			toReturn.Fields = fields
+			
+			' __LLBLGENPRO_USER_CODE_REGION_START CreateNewContDiotTiposTercerosUsingFields
+			' __LLBLGENPRO_USER_CODE_REGION_END		
+			Return toReturn
+		End Function
+
+
+		''' <summary>Creates, using the generated EntityFieldsFactory, the IEntityFields object for the entity to create. This method is used
+		''' by internal code to create the fields object to store fetched data. </summary>
+		''' <returns>Empty IEntityFields object.</returns>
+		Public Overridable Function CreateFields() As IEntityFields Implements IEntityFactory.CreateFields
+			Return EntityFieldsFactory.CreateEntityFieldsObject(Integralab.ORM.EntityType.ContDiotTiposTercerosEntity)
+		End Function
+		
+		''' <summary>Creates the hierarchy fields For the entity To which this factory belongs.</summary>
+		''' <returns>IEntityFields Object With the fields of all the entities In teh hierarchy of this entity Or the fields of this entity If
+		''' the entity isn't in a hierarchy.</returns>
+		Public Overridable Function CreateHierarchyFields() As IEntityFields Implements IEntityFactory.CreateHierarchyFields
+			Return Me.CreateFields()
+		End Function
+		
+		''' <summary>Creates the relations collection To the entity To Join all targets so this entity can be fetched. </summary>
+		''' <returns>null If the entity isn't in a hierarchy of type TargetPerEntity, otherwise the relations collection needed to
+		''' Join all targets together To fetch all subtypes of this entity And this entity itself</returns>
+		Public Overridable Function  CreateHierarchyRelations() As IRelationCollection Implements IEntityFactory.CreateHierarchyRelations
+			Return Nothing
+		End Function
+
+		''' <summary>This method retrieves, using the InheritanceInfoprovider, the factory For the entity represented by the values passed In.</summary>
+		''' <param name="fieldValues">Field values read from the db, To determine which factory To Return, based On the field values passed In.</param>
+		''' <param name="entityFieldStartIndexesPerEntity">indexes into values where per entity type their own fields start.</param>
+		''' <returns>the factory For the entity which Is represented by the values passed In.</returns>
+		Public Overridable Function GetEntityFactory(fieldValues As Object(), entityFieldStartIndexesPerEntity As Dictionary(Of String, Integer)) As IEntityFactory Implements IEntityFactory.GetEntityFactory
+			Return Me
+		End Function
+				
+		''' <summary>Creates a New entity collection For the entity of this factory.</summary>
+		''' <returns>ready To use New entity collection, typed.</returns>
+		Public Overridable Function CreateEntityCollection() As IEntityCollection Implements IEntityFactory.CreateEntityCollection
+			Return New ContDiotTiposTercerosCollection()
+		End Function
+	
+		''' <summary>returns the name of the entity this factory Is For, e.g. "EmployeeEntity"</summary>
+		Public Overridable ReadOnly Property ForEntityName() As String Implements IEntityFactory.ForEntityName
+			Get 
+				Return "ContDiotTiposTercerosEntity"
 			End Get
 		End Property
 
@@ -25722,6 +25902,10 @@ Namespace Integralab.ORM.FactoryClasses
 					factoryToUse = New ConLotSacEntityFactory()
 				Case Integralab.ORM.EntityType.ConMesEntity
 					factoryToUse = New ConMesEntityFactory()
+				Case Integralab.ORM.EntityType.ContDiotTiposOperacionEntity
+					factoryToUse = New ContDiotTiposOperacionEntityFactory()
+				Case Integralab.ORM.EntityType.ContDiotTiposTercerosEntity
+					factoryToUse = New ContDiotTiposTercerosEntityFactory()
 				Case Integralab.ORM.EntityType.ControlTurnoEntity
 					factoryToUse = New ControlTurnoEntityFactory()
 				Case Integralab.ORM.EntityType.CostoIndirectoEntity

@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:43
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:18
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -1188,6 +1188,28 @@ Namespace Integralab.ORM
 		[NumYear]
 		[NumMes]
 		[Abierto]
+		AmountOfFields
+	End Enum
+
+
+	''' <summary>
+	''' Index enum to fast-access EntityFields in the IEntityFields collection for the entity: ContDiotTiposOperacion.
+	''' </summary>
+	Public Enum ContDiotTiposOperacionFieldIndex
+		[CodDiot]
+		[ClaveHacienda]
+		[Descripcion]
+		AmountOfFields
+	End Enum
+
+
+	''' <summary>
+	''' Index enum to fast-access EntityFields in the IEntityFields collection for the entity: ContDiotTiposTerceros.
+	''' </summary>
+	Public Enum ContDiotTiposTercerosFieldIndex
+		[CodDiot]
+		[ClaveHacienda]
+		[Descripcion]
 		AmountOfFields
 	End Enum
 
@@ -4677,6 +4699,8 @@ Namespace Integralab.ORM
 		[AcumComKilAnterior]
 		[PrMeat]
 		[PrPuntoVenta]
+		[Idcontdiottiposterceros]
+		[Idcontdiottiposoperacion]
 		AmountOfFields
 	End Enum
 
@@ -7826,6 +7850,8 @@ Namespace Integralab.ORM
 		ConfiguracionLecturaEtiquetaEntity
 		ConLotSacEntity
 		ConMesEntity
+		ContDiotTiposOperacionEntity
+		ContDiotTiposTercerosEntity
 		ControlTurnoEntity
 		CostoIndirectoEntity
 		CostoProductoEntity

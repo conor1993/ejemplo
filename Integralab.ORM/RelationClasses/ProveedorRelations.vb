@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 11:54:43
+' // Code is generated on: viernes, 2 de febrero de 2018 16:33:18
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -255,6 +255,36 @@ Namespace Integralab.ORM.RelationClasses
 				relation.StartEntityIsPkSide = False
 				relation.AddEntityFieldPair(EntityFieldFactory.Create(CatLugaresDeCompraFieldIndex.IdLugarCompra), EntityFieldFactory.Create(ProveedorFieldIndex.IdLugarCompra))
 				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CatLugaresDeCompraEntity", False)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ProveedorEntity", True)
+				Return relation
+			End Get
+		End Property
+	
+		''' <summary>Returns a new IEntityRelation Object, between ProveedorEntity and ContDiotTiposOperacionEntity over the m:1 relation they have, using the relation between the fields:
+		''' Proveedor.Idcontdiottiposoperacion - ContDiotTiposOperacion.CodDiot
+		''' </summary>
+		Public Overridable  ReadOnly Property ContDiotTiposOperacionEntityUsingIdcontdiottiposoperacion() As IEntityRelation
+			Get
+
+				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+				relation.StartEntityIsPkSide = False
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(ContDiotTiposOperacionFieldIndex.CodDiot), EntityFieldFactory.Create(ProveedorFieldIndex.Idcontdiottiposoperacion))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ContDiotTiposOperacionEntity", False)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ProveedorEntity", True)
+				Return relation
+			End Get
+		End Property
+	
+		''' <summary>Returns a new IEntityRelation Object, between ProveedorEntity and ContDiotTiposTercerosEntity over the m:1 relation they have, using the relation between the fields:
+		''' Proveedor.Idcontdiottiposterceros - ContDiotTiposTerceros.CodDiot
+		''' </summary>
+		Public Overridable  ReadOnly Property ContDiotTiposTercerosEntityUsingIdcontdiottiposterceros() As IEntityRelation
+			Get
+
+				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+				relation.StartEntityIsPkSide = False
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(ContDiotTiposTercerosFieldIndex.CodDiot), EntityFieldFactory.Create(ProveedorFieldIndex.Idcontdiottiposterceros))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ContDiotTiposTercerosEntity", False)
 				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ProveedorEntity", True)
 				Return relation
 			End Get

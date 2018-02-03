@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 2 de febrero de 2018 11:54:43
+' Code is generated on: viernes, 2 de febrero de 2018 16:33:18
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -53,7 +53,7 @@ Namespace Integralab.ORM.HelperClasses
 
 		''' <summary>Method which initializes the internal datastores</summary>
 		Private Sub Init()
-			MyBase.InitClass( (284 + 92))
+			MyBase.InitClass( (286 + 92))
 			InitAcumuladoCuentasContablesEntityInfos()
 			InitAlmacenEntityInfos()
 			InitAlmacenCatalogoEntityInfos()
@@ -116,6 +116,8 @@ Namespace Integralab.ORM.HelperClasses
 			InitConfiguracionLecturaEtiquetaEntityInfos()
 			InitConLotSacEntityInfos()
 			InitConMesEntityInfos()
+			InitContDiotTiposOperacionEntityInfos()
+			InitContDiotTiposTercerosEntityInfos()
 			InitControlTurnoEntityInfos()
 			InitCostoIndirectoEntityInfos()
 			InitCostoProductoEntityInfos()
@@ -1303,6 +1305,18 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("ConMesEntity", "NumYear", GetType(System.String), True, False, False, False, CInt(ConMesFieldIndex.NumYear), 4, 0, 0)
 			MyBase.AddElementFieldInfo("ConMesEntity", "NumMes", GetType(System.String), True, False, False, False, CInt(ConMesFieldIndex.NumMes), 2, 0, 0)
 			MyBase.AddElementFieldInfo("ConMesEntity", "Abierto", GetType(System.String), False, False, False, False, CInt(ConMesFieldIndex.Abierto), 1, 0, 0)
+		End Sub
+		''' <summary>Inits ContDiotTiposOperacionEntity's FieldInfo objects</summary>
+		Private Sub InitContDiotTiposOperacionEntityInfos()
+			MyBase.AddElementFieldInfo("ContDiotTiposOperacionEntity", "CodDiot", GetType(System.Int32), True, False, True, False, CInt(ContDiotTiposOperacionFieldIndex.CodDiot), 0, 0, 10)
+			MyBase.AddElementFieldInfo("ContDiotTiposOperacionEntity", "ClaveHacienda", GetType(System.Int32), False, False, False, False, CInt(ContDiotTiposOperacionFieldIndex.ClaveHacienda), 0, 0, 10)
+			MyBase.AddElementFieldInfo("ContDiotTiposOperacionEntity", "Descripcion", GetType(System.String), False, False, False, False, CInt(ContDiotTiposOperacionFieldIndex.Descripcion), 50, 0, 0)
+		End Sub
+		''' <summary>Inits ContDiotTiposTercerosEntity's FieldInfo objects</summary>
+		Private Sub InitContDiotTiposTercerosEntityInfos()
+			MyBase.AddElementFieldInfo("ContDiotTiposTercerosEntity", "CodDiot", GetType(System.Int32), True, False, True, False, CInt(ContDiotTiposTercerosFieldIndex.CodDiot), 0, 0, 10)
+			MyBase.AddElementFieldInfo("ContDiotTiposTercerosEntity", "ClaveHacienda", GetType(System.Int32), False, False, False, False, CInt(ContDiotTiposTercerosFieldIndex.ClaveHacienda), 0, 0, 10)
+			MyBase.AddElementFieldInfo("ContDiotTiposTercerosEntity", "Descripcion", GetType(System.String), False, False, False, False, CInt(ContDiotTiposTercerosFieldIndex.Descripcion), 30, 0, 0)
 		End Sub
 		''' <summary>Inits ControlTurnoEntity's FieldInfo objects</summary>
 		Private Sub InitControlTurnoEntityInfos()
@@ -3927,6 +3941,8 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("ProveedorEntity", "AcumComKilAnterior", GetType(System.Decimal), False, False, False, True, CInt(ProveedorFieldIndex.AcumComKilAnterior), 0, 4, 19)
 			MyBase.AddElementFieldInfo("ProveedorEntity", "PrMeat", GetType(System.Boolean), False, False, False, False, CInt(ProveedorFieldIndex.PrMeat), 0, 0, 0)
 			MyBase.AddElementFieldInfo("ProveedorEntity", "PrPuntoVenta", GetType(System.Boolean), False, False, False, False, CInt(ProveedorFieldIndex.PrPuntoVenta), 0, 0, 0)
+			MyBase.AddElementFieldInfo("ProveedorEntity", "Idcontdiottiposterceros", GetType(System.Int32), False, True, False, True, CInt(ProveedorFieldIndex.Idcontdiottiposterceros), 0, 0, 10)
+			MyBase.AddElementFieldInfo("ProveedorEntity", "Idcontdiottiposoperacion", GetType(System.Int32), False, True, False, True, CInt(ProveedorFieldIndex.Idcontdiottiposoperacion), 0, 0, 10)
 		End Sub
 		''' <summary>Inits ProveedorAvanzadoEntity's FieldInfo objects</summary>
 		Private Sub InitProveedorAvanzadoEntityInfos()
