@@ -52,8 +52,7 @@ Public Class FrmAperturaLoteCorte2
             LoteCorte.Estatus = "A"
             LoteCorte.Func = "A"
             LoteCorte.NumOpc = 1
-
-            ''nuevos datos -------------------------------
+            ''nuevos datos ----------------------------------------------------------------------------------------------------------------------------------
             LoteCorte.Nopiezas = txtNoPiezas.Text
             LoteCorte.Producto = CmbTipoGanado.SelectedValue
             LoteCorte.Unidad = txtUnidad.Text

@@ -75,6 +75,10 @@ Partial Class CompCatProveedor
         Me.TxtBeneficiario = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label47 = New System.Windows.Forms.Label()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.cmbOperacion = New System.Windows.Forms.ComboBox()
+        Me.cmbTercero = New System.Windows.Forms.ComboBox()
         Me.Label45 = New System.Windows.Forms.Label()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.TxtNoCuenta = New System.Windows.Forms.TextBox()
@@ -135,10 +139,6 @@ Partial Class CompCatProveedor
         Me.LblEstatus = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
-        Me.cmbTercero = New System.Windows.Forms.ComboBox()
-        Me.cmbOperacion = New System.Windows.Forms.ComboBox()
-        Me.Label46 = New System.Windows.Forms.Label()
-        Me.Label47 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.grpTipoPersona.SuspendLayout()
         Me.TabControl4.SuspendLayout()
@@ -506,7 +506,7 @@ Partial Class CompCatProveedor
         'mtbRFC
         '
         Me.mtbRFC.Location = New System.Drawing.Point(124, 36)
-        Me.mtbRFC.Mask = ">LLLL-000000-AAA"
+        Me.mtbRFC.Mask = ">LLLL-000000-AA1"
         Me.mtbRFC.Name = "mtbRFC"
         Me.mtbRFC.Size = New System.Drawing.Size(97, 20)
         Me.mtbRFC.TabIndex = 1
@@ -791,6 +791,40 @@ Partial Class CompCatProveedor
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Datos Avanzados"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label47
+        '
+        Me.Label47.AutoSize = True
+        Me.Label47.Location = New System.Drawing.Point(8, 247)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(83, 13)
+        Me.Label47.TabIndex = 55
+        Me.Label47.Text = "Tipo Operacion:"
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Location = New System.Drawing.Point(12, 225)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(81, 13)
+        Me.Label46.TabIndex = 54
+        Me.Label46.Text = "Tipos Terceros:"
+        '
+        'cmbOperacion
+        '
+        Me.cmbOperacion.FormattingEnabled = True
+        Me.cmbOperacion.Location = New System.Drawing.Point(98, 244)
+        Me.cmbOperacion.Name = "cmbOperacion"
+        Me.cmbOperacion.Size = New System.Drawing.Size(121, 21)
+        Me.cmbOperacion.TabIndex = 53
+        '
+        'cmbTercero
+        '
+        Me.cmbTercero.FormattingEnabled = True
+        Me.cmbTercero.Location = New System.Drawing.Point(98, 217)
+        Me.cmbTercero.Name = "cmbTercero"
+        Me.cmbTercero.Size = New System.Drawing.Size(121, 21)
+        Me.cmbTercero.TabIndex = 52
         '
         'Label45
         '
@@ -1446,40 +1480,6 @@ Partial Class CompCatProveedor
         Me.MEAToolBar1.ShowToolTips = True
         Me.MEAToolBar1.Size = New System.Drawing.Size(50, 682)
         Me.MEAToolBar1.TabIndex = 0
-        '
-        'cmbTercero
-        '
-        Me.cmbTercero.FormattingEnabled = True
-        Me.cmbTercero.Location = New System.Drawing.Point(98, 217)
-        Me.cmbTercero.Name = "cmbTercero"
-        Me.cmbTercero.Size = New System.Drawing.Size(121, 21)
-        Me.cmbTercero.TabIndex = 52
-        '
-        'cmbOperacion
-        '
-        Me.cmbOperacion.FormattingEnabled = True
-        Me.cmbOperacion.Location = New System.Drawing.Point(98, 244)
-        Me.cmbOperacion.Name = "cmbOperacion"
-        Me.cmbOperacion.Size = New System.Drawing.Size(121, 21)
-        Me.cmbOperacion.TabIndex = 53
-        '
-        'Label46
-        '
-        Me.Label46.AutoSize = True
-        Me.Label46.Location = New System.Drawing.Point(12, 225)
-        Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(81, 13)
-        Me.Label46.TabIndex = 54
-        Me.Label46.Text = "Tipos Terceros:"
-        '
-        'Label47
-        '
-        Me.Label47.AutoSize = True
-        Me.Label47.Location = New System.Drawing.Point(8, 247)
-        Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(83, 13)
-        Me.Label47.TabIndex = 55
-        Me.Label47.Text = "Tipo Operacion:"
         '
         'CompCatProveedor
         '
