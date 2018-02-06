@@ -264,6 +264,7 @@ Partial Public MustInherit Class ColleccionBase(Of TipoEntity As {OC.EntityBase,
 #Region "Miembros"
     Private ordenar As New OrdenarClass(Of ColleccionBase(Of TipoEntity, TipoCollection, TipoEntidad))
     Protected coleccion As New TipoCollection
+
 #End Region
 
 #Region "Datos Componente"

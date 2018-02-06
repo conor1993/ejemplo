@@ -62,7 +62,7 @@ Public Class FrmConfigContabilidad
             'Me.txtISR.Text = CDec(dsConfig.Tables("ConfigContable").Rows(0)("ISR")).ToString("N2")
             'Else
             Using ad As New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand("PaContUsrConfigContabilidad", _
-                                    New SqlClient.SqlConnection(IntegraLab.ORM.HelperClasses.DbUtils.ActualConnectionString)))
+                                    New SqlClient.SqlConnection(Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)))
                 ad.SelectCommand.CommandType = CommandType.StoredProcedure
                 With ad.SelectCommand.Parameters
                     .Add("@Func", SqlDbType.Char).Value = "C"
