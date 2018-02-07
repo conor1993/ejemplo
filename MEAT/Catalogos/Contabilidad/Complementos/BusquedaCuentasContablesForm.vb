@@ -272,11 +272,12 @@ Public Class BusquedaCuentasContablesForm
 
             If Me.chkAfe.CheckState <> CheckState.Indeterminate Then
                 If Me.chkAfe.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.AfectableCad = True)
+                    Filtro.Add(HC.VwContCuentasFields.AfectableCad = false)
                 Else
-                    Filtro.Add(HC.VwContCuentasFields.AfectableCad = False)
+                    Filtro.Add(HC.VwContCuentasFields.AfectableCad = True)
                 End If
             End If
+
 
             If Me.chkBan.CheckState <> CheckState.Indeterminate Then
                 If Me.chkBan.Checked = True Then
