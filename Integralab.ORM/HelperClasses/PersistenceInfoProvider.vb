@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 16:33:25
+' // Code is generated on: miércoles, 7 de febrero de 2018 11:23:33
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -4753,7 +4753,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits UsrCxpfacturasCabEntity's mappings</summary>
         Private Sub InitUsrCxpfacturasCabEntityMappings()
-            MyBase.AddElementMapping("UsrCxpfacturasCabEntity", "", "dbo", "usrCXPFacturasCab", 30)
+            MyBase.AddElementMapping("UsrCxpfacturasCabEntity", "", "dbo", "usrCXPFacturasCab", 31)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "EmpresaId", "EmpresaId", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "IdProveedor", "IdProveedor", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 1)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "NoFactura", "NoFactura", False, CInt(SqlDbType.VarChar), 40, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -4784,6 +4784,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "IdPoliza", "IdPoliza", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 27)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "Uuid", "UUID", True, CInt(SqlDbType.VarChar), 40, 0, 0, False, "", Nothing, GetType(System.String), 28)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "Ieps", "Ieps", True, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 29)
+            MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "Ivaflete", "Ivaflete", True, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 30)
         End Sub
         ''' <summary>Inits UsrCxpfacturasDetEntity's mappings</summary>
         Private Sub InitUsrCxpfacturasDetEntityMappings()

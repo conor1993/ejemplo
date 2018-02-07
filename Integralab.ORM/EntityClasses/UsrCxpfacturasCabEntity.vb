@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de febrero de 2018 16:33:23
+' // Code is generated on: miércoles, 7 de febrero de 2018 11:23:30
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -729,6 +729,7 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -940,6 +941,9 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("Ieps", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Ivaflete", fieldHashtable)
 		End Sub
 
 
@@ -1692,6 +1696,24 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(UsrCxpfacturasCabFieldIndex.Ieps, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Ivaflete property of the Entity UsrCxpfacturasCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrCXPFacturasCab"."Ivaflete"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Money, 19, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Ivaflete]() As Nullable(Of System.Decimal)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(UsrCxpfacturasCabFieldIndex.Ivaflete, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Decimal))
+			End Get
+			Set
+				SetNewFieldValue(CType(UsrCxpfacturasCabFieldIndex.Ivaflete, Integer), value)
 			End Set
 		End Property
 	

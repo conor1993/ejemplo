@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 2 de febrero de 2018 16:33:18
+' Code is generated on: miércoles, 7 de febrero de 2018 11:23:26
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -4514,6 +4514,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("UsrCxpfacturasCabEntity", "IdPoliza", GetType(System.Int32), False, False, False, True, CInt(UsrCxpfacturasCabFieldIndex.IdPoliza), 0, 0, 10)
 			MyBase.AddElementFieldInfo("UsrCxpfacturasCabEntity", "Uuid", GetType(System.String), False, False, False, True, CInt(UsrCxpfacturasCabFieldIndex.Uuid), 40, 0, 0)
 			MyBase.AddElementFieldInfo("UsrCxpfacturasCabEntity", "Ieps", GetType(System.Decimal), False, False, False, True, CInt(UsrCxpfacturasCabFieldIndex.Ieps), 0, 4, 19)
+			MyBase.AddElementFieldInfo("UsrCxpfacturasCabEntity", "Ivaflete", GetType(System.Decimal), False, False, False, True, CInt(UsrCxpfacturasCabFieldIndex.Ivaflete), 0, 4, 19)
 		End Sub
 		''' <summary>Inits UsrCxpfacturasDetEntity's FieldInfo objects</summary>
 		Private Sub InitUsrCxpfacturasDetEntityInfos()
