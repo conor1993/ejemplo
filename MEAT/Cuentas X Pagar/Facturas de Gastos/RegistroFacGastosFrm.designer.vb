@@ -22,70 +22,78 @@ Partial Class RegistroFacGastosFrm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.chkPagada = New System.Windows.Forms.CheckBox
-        Me.txtPoliza = New System.Windows.Forms.TextBox
-        Me.txtCheque = New System.Windows.Forms.TextBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.LblPolizaDiaria = New System.Windows.Forms.Label
-        Me.TxtTotal = New System.Windows.Forms.TextBox
-        Me.TxtAnticipo = New System.Windows.Forms.TextBox
-        Me.txtIva = New System.Windows.Forms.TextBox
-        Me.txtSubtotal = New System.Windows.Forms.TextBox
-        Me.txtObservaciones = New System.Windows.Forms.TextBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.DtpFechaVencimiento = New System.Windows.Forms.DateTimePicker
-        Me.txtDiasPlazo = New System.Windows.Forms.TextBox
-        Me.DtpFechaFactura = New System.Windows.Forms.DateTimePicker
-        Me.TxtFactura = New System.Windows.Forms.TextBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.CmbProveedor = New System.Windows.Forms.ComboBox
-        Me.DtpFechaCaptura = New System.Windows.Forms.DateTimePicker
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.lblEmpresa = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.DgvCuentas = New System.Windows.Forms.DataGridView
-        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.chkPagada = New System.Windows.Forms.CheckBox()
+        Me.txtPoliza = New System.Windows.Forms.TextBox()
+        Me.txtCheque = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.LblPolizaDiaria = New System.Windows.Forms.Label()
+        Me.TxtTotal = New System.Windows.Forms.TextBox()
+        Me.TxtAnticipo = New System.Windows.Forms.TextBox()
+        Me.txtIva = New System.Windows.Forms.TextBox()
+        Me.txtSubtotal = New System.Windows.Forms.TextBox()
+        Me.txtObservaciones = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.DtpFechaVencimiento = New System.Windows.Forms.DateTimePicker()
+        Me.txtDiasPlazo = New System.Windows.Forms.TextBox()
+        Me.DtpFechaFactura = New System.Windows.Forms.DateTimePicker()
+        Me.TxtFactura = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.CmbProveedor = New System.Windows.Forms.ComboBox()
+        Me.DtpFechaCaptura = New System.Windows.Forms.DateTimePicker()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.lblEmpresa = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.DgvCuentas = New System.Windows.Forms.DataGridView()
+        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TmProveedor = New System.Windows.Forms.Timer(Me.components)
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.txtTasaIva = New System.Windows.Forms.TextBox
-        Me.TxtTasaISR = New System.Windows.Forms.TextBox
-        Me.TxtTasaRetIVA = New System.Windows.Forms.TextBox
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.TxtISR = New System.Windows.Forms.TextBox
-        Me.txtRetIva = New System.Windows.Forms.TextBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.txtSumaCargo = New System.Windows.Forms.TextBox
-        Me.txtSumaAbono = New System.Windows.Forms.TextBox
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.Label22 = New System.Windows.Forms.Label
-        Me.Txtconcepto = New System.Windows.Forms.TextBox
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.txtTasaIva = New System.Windows.Forms.TextBox()
+        Me.TxtTasaISR = New System.Windows.Forms.TextBox()
+        Me.TxtTasaRetIVA = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TxtISR = New System.Windows.Forms.TextBox()
+        Me.txtRetIva = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txtSumaCargo = New System.Windows.Forms.TextBox()
+        Me.txtSumaAbono = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Txtconcepto = New System.Windows.Forms.TextBox()
+        Me.ckbFletes = New System.Windows.Forms.CheckBox()
+        Me.ckbHonorarios = New System.Windows.Forms.CheckBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.TxtIVAFlete = New System.Windows.Forms.TextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.TxtIVAFlete1 = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.UUID = New System.Windows.Forms.MaskedTextBox()
         CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -181,7 +189,7 @@ Partial Class RegistroFacGastosFrm
         'TxtTotal
         '
         Me.TxtTotal.Enabled = False
-        Me.TxtTotal.Location = New System.Drawing.Point(629, 280)
+        Me.TxtTotal.Location = New System.Drawing.Point(629, 307)
         Me.TxtTotal.Name = "TxtTotal"
         Me.TxtTotal.Size = New System.Drawing.Size(98, 20)
         Me.TxtTotal.TabIndex = 14
@@ -189,7 +197,7 @@ Partial Class RegistroFacGastosFrm
         '
         'TxtAnticipo
         '
-        Me.TxtAnticipo.Location = New System.Drawing.Point(629, 253)
+        Me.TxtAnticipo.Location = New System.Drawing.Point(629, 280)
         Me.TxtAnticipo.Name = "TxtAnticipo"
         Me.TxtAnticipo.Size = New System.Drawing.Size(98, 20)
         Me.TxtAnticipo.TabIndex = 13
@@ -215,7 +223,7 @@ Partial Class RegistroFacGastosFrm
         'txtObservaciones
         '
         Me.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtObservaciones.Location = New System.Drawing.Point(181, 312)
+        Me.txtObservaciones.Location = New System.Drawing.Point(181, 377)
         Me.txtObservaciones.MaxLength = 250
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
@@ -225,7 +233,7 @@ Partial Class RegistroFacGastosFrm
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(74, 313)
+        Me.Label12.Location = New System.Drawing.Point(74, 378)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(81, 13)
         Me.Label12.TabIndex = 119
@@ -234,7 +242,7 @@ Partial Class RegistroFacGastosFrm
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(548, 283)
+        Me.Label11.Location = New System.Drawing.Point(548, 310)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(34, 13)
         Me.Label11.TabIndex = 118
@@ -243,7 +251,7 @@ Partial Class RegistroFacGastosFrm
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(548, 256)
+        Me.Label10.Location = New System.Drawing.Point(548, 283)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(48, 13)
         Me.Label10.TabIndex = 117
@@ -396,7 +404,7 @@ Partial Class RegistroFacGastosFrm
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 586)
+        Me.mtb.Size = New System.Drawing.Size(50, 652)
         Me.mtb.TabIndex = 102
         '
         'lblEmpresa
@@ -488,7 +496,7 @@ Partial Class RegistroFacGastosFrm
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(295, 150)
+        Me.Label14.Location = New System.Drawing.Point(308, 147)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(54, 13)
         Me.Label14.TabIndex = 134
@@ -497,24 +505,26 @@ Partial Class RegistroFacGastosFrm
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(294, 178)
+        Me.Label15.Location = New System.Drawing.Point(309, 216)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(55, 13)
         Me.Label15.TabIndex = 135
         Me.Label15.Text = "Tasa ISR:"
+        Me.Label15.Visible = False
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(294, 204)
+        Me.Label16.Location = New System.Drawing.Point(309, 188)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(74, 13)
         Me.Label16.TabIndex = 136
         Me.Label16.Text = "Tasa Ret IVA:"
+        Me.Label16.Visible = False
         '
         'txtTasaIva
         '
-        Me.txtTasaIva.Location = New System.Drawing.Point(376, 147)
+        Me.txtTasaIva.Location = New System.Drawing.Point(389, 144)
         Me.txtTasaIva.Name = "txtTasaIva"
         Me.txtTasaIva.Size = New System.Drawing.Size(80, 20)
         Me.txtTasaIva.TabIndex = 6
@@ -522,19 +532,21 @@ Partial Class RegistroFacGastosFrm
         '
         'TxtTasaISR
         '
-        Me.TxtTasaISR.Location = New System.Drawing.Point(376, 175)
+        Me.TxtTasaISR.Location = New System.Drawing.Point(389, 213)
         Me.TxtTasaISR.Name = "TxtTasaISR"
         Me.TxtTasaISR.Size = New System.Drawing.Size(80, 20)
         Me.TxtTasaISR.TabIndex = 7
         Me.TxtTasaISR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TxtTasaISR.Visible = False
         '
         'TxtTasaRetIVA
         '
-        Me.TxtTasaRetIVA.Location = New System.Drawing.Point(376, 201)
+        Me.TxtTasaRetIVA.Location = New System.Drawing.Point(389, 185)
         Me.TxtTasaRetIVA.Name = "TxtTasaRetIVA"
         Me.TxtTasaRetIVA.Size = New System.Drawing.Size(80, 20)
         Me.TxtTasaRetIVA.TabIndex = 8
         Me.TxtTasaRetIVA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TxtTasaRetIVA.Visible = False
         '
         'Label17
         '
@@ -575,7 +587,7 @@ Partial Class RegistroFacGastosFrm
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.DgvCuentas)
-        Me.GroupBox1.Location = New System.Drawing.Point(77, 356)
+        Me.GroupBox1.Location = New System.Drawing.Point(77, 433)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(691, 165)
         Me.GroupBox1.TabIndex = 144
@@ -585,7 +597,7 @@ Partial Class RegistroFacGastosFrm
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label20)
-        Me.GroupBox2.Location = New System.Drawing.Point(80, 545)
+        Me.GroupBox2.Location = New System.Drawing.Point(77, 604)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(688, 36)
         Me.GroupBox2.TabIndex = 145
@@ -622,7 +634,7 @@ Partial Class RegistroFacGastosFrm
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(548, 309)
+        Me.Label21.Location = New System.Drawing.Point(548, 336)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(37, 13)
         Me.Label21.TabIndex = 148
@@ -631,7 +643,7 @@ Partial Class RegistroFacGastosFrm
         'TextBox1
         '
         Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(629, 306)
+        Me.TextBox1.Location = New System.Drawing.Point(629, 333)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(97, 20)
         Me.TextBox1.TabIndex = 15
@@ -640,7 +652,7 @@ Partial Class RegistroFacGastosFrm
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(74, 260)
+        Me.Label22.Location = New System.Drawing.Point(74, 325)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(56, 13)
         Me.Label22.TabIndex = 149
@@ -649,18 +661,99 @@ Partial Class RegistroFacGastosFrm
         'Txtconcepto
         '
         Me.Txtconcepto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Txtconcepto.Location = New System.Drawing.Point(181, 257)
+        Me.Txtconcepto.Location = New System.Drawing.Point(181, 322)
         Me.Txtconcepto.MaxLength = 250
         Me.Txtconcepto.Multiline = True
         Me.Txtconcepto.Name = "Txtconcepto"
         Me.Txtconcepto.Size = New System.Drawing.Size(334, 43)
         Me.Txtconcepto.TabIndex = 150
         '
+        'ckbFletes
+        '
+        Me.ckbFletes.AutoSize = True
+        Me.ckbFletes.Location = New System.Drawing.Point(285, 240)
+        Me.ckbFletes.Name = "ckbFletes"
+        Me.ckbFletes.Size = New System.Drawing.Size(54, 17)
+        Me.ckbFletes.TabIndex = 151
+        Me.ckbFletes.Text = "Fletes"
+        Me.ckbFletes.UseVisualStyleBackColor = True
+        '
+        'ckbHonorarios
+        '
+        Me.ckbHonorarios.AutoSize = True
+        Me.ckbHonorarios.Location = New System.Drawing.Point(285, 164)
+        Me.ckbHonorarios.Name = "ckbHonorarios"
+        Me.ckbHonorarios.Size = New System.Drawing.Size(77, 17)
+        Me.ckbHonorarios.TabIndex = 152
+        Me.ckbHonorarios.Text = "Honorarios"
+        Me.ckbHonorarios.UseVisualStyleBackColor = True
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(309, 260)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(53, 13)
+        Me.Label23.TabIndex = 153
+        Me.Label23.Text = "IVA Flete:"
+        Me.Label23.Visible = False
+        '
+        'TxtIVAFlete
+        '
+        Me.TxtIVAFlete.Location = New System.Drawing.Point(389, 257)
+        Me.TxtIVAFlete.Name = "TxtIVAFlete"
+        Me.TxtIVAFlete.Size = New System.Drawing.Size(80, 20)
+        Me.TxtIVAFlete.TabIndex = 154
+        Me.TxtIVAFlete.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TxtIVAFlete.Visible = False
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(548, 257)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(53, 13)
+        Me.Label24.TabIndex = 155
+        Me.Label24.Text = "IVA Flete:"
+        '
+        'TxtIVAFlete1
+        '
+        Me.TxtIVAFlete1.Location = New System.Drawing.Point(629, 254)
+        Me.TxtIVAFlete1.Name = "TxtIVAFlete1"
+        Me.TxtIVAFlete1.Size = New System.Drawing.Size(100, 20)
+        Me.TxtIVAFlete1.TabIndex = 157
+        Me.TxtIVAFlete1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(74, 287)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(34, 13)
+        Me.Label25.TabIndex = 158
+        Me.Label25.Text = "UUID"
+        '
+        'UUID
+        '
+        Me.UUID.Location = New System.Drawing.Point(181, 284)
+        Me.UUID.Mask = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+        Me.UUID.Name = "UUID"
+        Me.UUID.Size = New System.Drawing.Size(214, 20)
+        Me.UUID.TabIndex = 160
+        '
         'RegistroFacGastosFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(792, 586)
+        Me.ClientSize = New System.Drawing.Size(792, 652)
+        Me.Controls.Add(Me.UUID)
+        Me.Controls.Add(Me.Label25)
+        Me.Controls.Add(Me.TxtIVAFlete1)
+        Me.Controls.Add(Me.Label24)
+        Me.Controls.Add(Me.TxtIVAFlete)
+        Me.Controls.Add(Me.Label23)
+        Me.Controls.Add(Me.ckbHonorarios)
+        Me.Controls.Add(Me.ckbFletes)
         Me.Controls.Add(Me.Txtconcepto)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.TextBox1)
@@ -784,4 +877,12 @@ Partial Class RegistroFacGastosFrm
     Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents Txtconcepto As System.Windows.Forms.TextBox
+    Friend WithEvents ckbFletes As System.Windows.Forms.CheckBox
+    Friend WithEvents ckbHonorarios As System.Windows.Forms.CheckBox
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents TxtIVAFlete As System.Windows.Forms.TextBox
+    Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents TxtIVAFlete1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents UUID As System.Windows.Forms.MaskedTextBox
 End Class

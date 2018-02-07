@@ -186,6 +186,9 @@ Public Class FacturasCabCXPClass
             Entity.ImporteRetIva = value
         End Set
     End Property
+
+
+
     Public Property Estatus() As EstatusFacturasEnum
         Get
             Return CType(Entity.Estatus, EstatusFacturasEnum)
@@ -667,7 +670,7 @@ End Class
 
 Public Class FacturaCabCXPColeccion
     Inherits ColleccionBase(Of EC.UsrCxpfacturasCabEntity, CC.UsrCxpfacturasCabCollection, FacturasCabCXPClass)
-    Dim sort As New SortExpression(New SortClause(HC.FacturasClientesCabFields.FechaFactura, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending))
+    Dim sort As New SortExpression(New SortClause(HC.UsrCxpfacturasCabFields.FechaFactura, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending))
     Public Overloads Function Obtener() As Integer
         Try
             Me.Clear()
@@ -684,7 +687,7 @@ Public Class FacturaCabCXPColeccion
         Try
             Me.Clear()
             Dim rel As New SD.LLBLGen.Pro.ORMSupportClasses.RelationCollection
-            
+
             Dim filtro As New SD.LLBLGen.Pro.ORMSupportClasses.PredicateExpression
             If NoFactura <> "" Then
                 filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = NoFactura)
@@ -694,16 +697,16 @@ Public Class FacturaCabCXPColeccion
                 rel.Add(EC.ProveedorEntity.Relations.ProveedorAvanzadoEntityUsingCodigo)
                 filtro.Add(Integralab.ORM.HelperClasses.ProveedorAvanzadoFields.CodigoTipoProveedor = IdTipoProveedor)
             End If
-            If IdProveedor <> 0 Then
-                '  rel.Add(EC.UsrCxpfacturasCabEntity.Relations.ProveedorEntityUsingIdProveedor)
+            'If IdProveedor <> 0 Then
+            '    '  rel.Add(EC.UsrCxpfacturasCabEntity.Relations.ProveedorEntityUsingIdProveedor)
 
-                '  
-                filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = IdProveedor)
-            End If
+            '    '  
+            '    filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = IdProveedor)
+            'End If
             If Gastos Then
                 filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.Gastos = True)
             End If
-            'filtro.Add(HC.UsrCxpfacturasCabFields.Gastos = True)
+            filtro.Add(HC.UsrCxpfacturasCabFields.Gastos = True)
             coleccion.GetMulti(filtro, 0, sort)
             Rellenar()
             Return Count
