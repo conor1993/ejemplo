@@ -928,91 +928,8 @@ Public Class FrmCapturaProdTerminado
                     Exit Sub
                 End If
 
-                Me.txtPiezas.Clear()
+                buscarcortes()
 
-                Dim TablaProductos As New DataSet
-
-                Productos = New ClasesNegocio.ProductosClass
-                'TablaProductos = Productos.Obtener(CInt(Me.txtCodSubCorte.Text), "", 0, 7)
-
-                Dim cadena As String = "Select 	IdPreCorte,	" & _
-                                       "        (Select Descripcion " & _
-                                       "        From MSCCatProductos" & _
-                                       "		Where IdProducto=IdPreCorte) as PreCorte," & _
-                                       "        Cp.IdProducto as IdCorte, Descripcion, DescripcionCorta,'',MaximoPiezasxCaja," & _
-                                       "        Case	When Estatus = 1 then 'VIGENTE'	" & _
-                                       "                when  Estatus = 0 then 'CANCELADO'" & _
-                                       "	    End as Estatus,	NombreIngles, CodigoBarra,Cp.ValorAgregado,cp.ConHueso " & _
-                                       "FROM	MSCCatProductos Cp left join MSCCortesPreCortes Cpc " & _
-                                       "        on Cpc.IdCorte=Cp.IdProducto " & _
-                                       "WHERE	(IdCorte in (Select IdCorte	" & _
-                                       "                      From	MSCCortesPreCortes  Inner join " & _
-                                       "                            MSCCatProductos  on MSCCortesPreCortes.IdCorte=MSCCatProductos.IdProducto) " & _
-                                       "        OR Cp.ValorAgregado = 1) AND Estatus = 1 AND Cp.IdProducto = " & _
-                                       Me.txtCodSubCorte.Text.Trim
-
-                'Dim cadena As String = "Select IdPreCorte, (Select Descripcion From MSCCatProductos " & _
-                '                       "Where IdProducto=IdPreCorte) as PreCorte, IdCorte,Descripcion, " & _
-                '                       "DescripcionCorta,'', MaximoPiezasxCaja,Case When Estatus = 1 then 'VIGENTE' " & _
-                '                       "when  Estatus = 0 then 'CANCELADO' End as Estatus,NombreIngles,CodigoBarra " & _
-                '                       "From MSCCortesPreCortes Cpc Inner join MSCCatProductos Cp on Cpc.IdCorte=Cp.IdProducto " & _
-                '                       "WHERE Cp.IdProducto = " & Me.txtCodSubCorte.Text.Trim
-
-                Dim ad As New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand(cadena, New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)))
-
-                Try
-                    ad.SelectCommand.Connection.Open()
-
-                    ad.Fill(TablaProductos)
-                Catch ex As Exception
-
-                End Try
-
-                If TablaProductos.Tables(0).Rows.Count = 0 Then
-                    MsgBox("No se encuentra un producto con ese codigo", MsgBoxStyle.Exclamation, "Aviso")
-                    Exit Sub
-                End If
-
-                If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("NombreIngles")) Then
-                    nombreIngles = ""
-                Else
-                    nombreIngles = TablaProductos.Tables(0).Rows(0)("NombreIngles")
-                End If
-
-                Me.txtCodSubCorte.Text = TablaProductos.Tables(0).Rows(0)("IdCorte")
-
-                If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("Descripcion")) Then
-                    Me.txtSubCorte.Text = ""
-                Else
-                    Me.txtSubCorte.Text = TablaProductos.Tables(0).Rows(0)("Descripcion")
-                End If
-
-                Me.txtPiezas.Text = TablaProductos.Tables(0).Rows(0)("MaximoPiezasxCaja")
-
-                If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("IdPrecorte")) Then
-                    Me.txtCodCorte.Text = ""
-                Else
-                    Me.txtCodCorte.Text = TablaProductos.Tables(0).Rows(0)("IdPrecorte")
-                End If
-
-                If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("PreCorte")) Then
-                    Me.txtCorte.Text = ""
-                Else
-                    Me.txtCorte.Text = TablaProductos.Tables(0).Rows(0)("PreCorte")
-                End If
-
-                If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("DescripcionCorta")) Then
-                    Me.CveProduto = ""
-                Else
-                    Me.CveProduto = TablaProductos.Tables(0).Rows(0)("DescripcionCorta")
-                End If
-
-                Me.valorAgregado = TablaProductos.Tables(0).Rows(0)("ValorAgregado")
-                Me.conHueso = TablaProductos.Tables(0).Rows(0)("ConHueso")
-                Me.prodSeleccionado = True
-
-                ObtenerDiasCaducidad()
-                Me.txtPiezas.Focus()
             Catch ex As Exception
 
             End Try
@@ -1021,6 +938,94 @@ Public Class FrmCapturaProdTerminado
         If Not IsNumeric(e.KeyChar) And Not e.KeyChar = Chr(8) Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub buscarcortes()
+        Me.txtPiezas.Clear()
+
+        Dim TablaProductos As New DataSet
+
+        Productos = New ClasesNegocio.ProductosClass
+        'TablaProductos = Productos.Obtener(CInt(Me.txtCodSubCorte.Text), "", 0, 7)
+
+        Dim cadena As String = "Select 	IdPreCorte,	" & _
+                               "        (Select Descripcion " & _
+                               "        From MSCCatProductos" & _
+                               "		Where IdProducto=IdPreCorte) as PreCorte," & _
+                               "        Cp.IdProducto as IdCorte, Descripcion, DescripcionCorta,'',MaximoPiezasxCaja," & _
+                               "        Case	When Estatus = 1 then 'VIGENTE'	" & _
+                               "                when  Estatus = 0 then 'CANCELADO'" & _
+                               "	    End as Estatus,	NombreIngles, CodigoBarra,Cp.ValorAgregado,cp.ConHueso " & _
+                               "FROM	MSCCatProductos Cp left join MSCCortesPreCortes Cpc " & _
+                               "        on Cpc.IdCorte=Cp.IdProducto " & _
+                               "WHERE	(IdCorte in (Select IdCorte	" & _
+                               "                      From	MSCCortesPreCortes  Inner join " & _
+                               "                            MSCCatProductos  on MSCCortesPreCortes.IdCorte=MSCCatProductos.IdProducto) " & _
+                               "        OR Cp.ValorAgregado = 1) AND Estatus = 1 AND Cp.IdProducto = " & _
+                               Me.txtCodSubCorte.Text.Trim
+
+        'Dim cadena As String = "Select IdPreCorte, (Select Descripcion From MSCCatProductos " & _
+        '                       "Where IdProducto=IdPreCorte) as PreCorte, IdCorte,Descripcion, " & _
+        '                       "DescripcionCorta,'', MaximoPiezasxCaja,Case When Estatus = 1 then 'VIGENTE' " & _
+        '                       "when  Estatus = 0 then 'CANCELADO' End as Estatus,NombreIngles,CodigoBarra " & _
+        '                       "From MSCCortesPreCortes Cpc Inner join MSCCatProductos Cp on Cpc.IdCorte=Cp.IdProducto " & _
+        '                       "WHERE Cp.IdProducto = " & Me.txtCodSubCorte.Text.Trim
+
+        Dim ad As New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand(cadena, New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)))
+
+        Try
+            ad.SelectCommand.Connection.Open()
+
+            ad.Fill(TablaProductos)
+        Catch ex As Exception
+
+        End Try
+
+        If TablaProductos.Tables(0).Rows.Count = 0 Then
+            MsgBox("No se encuentra un producto con ese codigo", MsgBoxStyle.Exclamation, "Aviso")
+            Exit Sub
+        End If
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("NombreIngles")) Then
+            nombreIngles = ""
+        Else
+            nombreIngles = TablaProductos.Tables(0).Rows(0)("NombreIngles")
+        End If
+
+        Me.txtCodSubCorte.Text = TablaProductos.Tables(0).Rows(0)("IdCorte")
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("Descripcion")) Then
+            Me.txtSubCorte.Text = ""
+        Else
+            Me.txtSubCorte.Text = TablaProductos.Tables(0).Rows(0)("Descripcion")
+        End If
+
+        Me.txtPiezas.Text = TablaProductos.Tables(0).Rows(0)("MaximoPiezasxCaja")
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("IdPrecorte")) Then
+            Me.txtCodCorte.Text = ""
+        Else
+            Me.txtCodCorte.Text = TablaProductos.Tables(0).Rows(0)("IdPrecorte")
+        End If
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("PreCorte")) Then
+            Me.txtCorte.Text = ""
+        Else
+            Me.txtCorte.Text = TablaProductos.Tables(0).Rows(0)("PreCorte")
+        End If
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("DescripcionCorta")) Then
+            Me.CveProduto = ""
+        Else
+            Me.CveProduto = TablaProductos.Tables(0).Rows(0)("DescripcionCorta")
+        End If
+
+        Me.valorAgregado = TablaProductos.Tables(0).Rows(0)("ValorAgregado")
+        Me.conHueso = TablaProductos.Tables(0).Rows(0)("ConHueso")
+        Me.prodSeleccionado = True
+
+        ObtenerDiasCaducidad()
+        Me.txtPiezas.Focus()
     End Sub
 
     Private Sub txtPiezas_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPiezas.GotFocus
@@ -1278,7 +1283,8 @@ Public Class FrmCapturaProdTerminado
                     Me.txtDiasCad.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmDiasCad.Index).Value
                     Me.dtpFechaCaducidad.Value = CDate(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmFechaCorte.Index).Value).AddDays(CInt(Me.txtDiasCad.Text))
                     Me.txtProveedor.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmIntroductor.Index).Value
-
+                    Me.txtCodSubCorte.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmproducto.Index).Value
+                    buscarcortes()
 
                 Else
                     For Each control As Control In Me.Controls
