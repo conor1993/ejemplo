@@ -388,6 +388,7 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.clmproducto.HeaderText = "clmproducto"
         Me.clmproducto.Name = "clmproducto"
         Me.clmproducto.ReadOnly = True
+        Me.clmproducto.Visible = False
         '
         '_960BusquasedaLotesDeCortes
         '

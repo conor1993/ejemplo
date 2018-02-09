@@ -283,6 +283,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtCodSubCorte.AcceptsReturn = True
         Me.txtCodSubCorte.BackColor = System.Drawing.SystemColors.Window
         Me.txtCodSubCorte.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtCodSubCorte.Enabled = False
         Me.txtCodSubCorte.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCodSubCorte.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtCodSubCorte.Location = New System.Drawing.Point(102, 141)
