@@ -431,13 +431,19 @@ Namespace AlmacenGeneral
                                           ByVal direccion As DireccionEnum, ByVal afectarCosto As Boolean) As Boolean
 
             'se comento para vender sin existencia
-            If Not ClasesNegocio.ControladorGanadera.ObtenerVtaSinExistencia Then
-                If direccion = DireccionEnum.SALIDAS AndAlso Not CantidadExistencia >= cantidad Then
-                    Throw New Exception("No hay sufiente producto " & Me.Producto.Descripcion & " solo se dispone de " & Me.CantidadExistencia & _
-                                            " " & Me.Producto.UnidadMedida.DescCorta)
-                    Return False
+
+            If direccion = DireccionEnum.SALIDAS Then
+                If Not ClasesNegocio.ControladorGanadera.ObtenerVtaSinExistencia Then
+                    If direccion = DireccionEnum.SALIDAS AndAlso Not CantidadExistencia >= cantidad Then
+                        Throw New Exception("No hay sufiente producto " & Me.Producto.Descripcion & " solo se dispone de " & Me.CantidadExistencia & _
+                                                " " & Me.Producto.UnidadMedida.DescCorta)
+                        Return False
+
+
+                    End If
                 End If
             End If
+
 
 
 

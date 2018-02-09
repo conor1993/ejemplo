@@ -271,8 +271,8 @@ Public Class BusquedaCuentasContablesForm
             Dim Filtro As New OC.PredicateExpression
 
             If Me.chkAfe.CheckState <> CheckState.Indeterminate Then
-                If Me.chkAfe.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.AfectableCad = false)
+                If Me.chkAfe.Checked = True Or Me.chkAfe.Checked = False Then
+                    Filtro.Add(HC.VwContCuentasFields.AfectableCad = True)
                 Else
                     Filtro.Add(HC.VwContCuentasFields.AfectableCad = True)
                 End If
