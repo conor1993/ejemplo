@@ -1425,8 +1425,11 @@ Public Class MFacRegFacturasVentas
 
 
                     With row
- 
-                        Concepto = New CFDI.ComprobanteConcepto(.Cells(clmproductoserv.Index).Value.ToString(), .Cells(clmunidadsat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(KilosEmbarcados.Index).Value), "kl", .Cells(Descripcion.Index).EditedFormattedValue.ToString(), CDec(.Cells(Precios.Index).Value), CDec(.Cells(ImporteEmbarcado.Index).Value))
+
+                        Dim CveProdServ = DirectCast([Enum].Parse(GetType(CFDI.c_ClaveProdServ), .Cells(clmproductoserv.Index).Value.ToString()), CFDI.c_ClaveProdServ)
+                        Dim CveUnidadS = DirectCast([Enum].Parse(GetType(CFDI.c_ClaveUnidad), .Cells(clmunidadsat.Index).Value.ToString()), CFDI.c_ClaveUnidad)
+
+                        Concepto = New CFDI.ComprobanteConcepto(CveProdServ, CveUnidadS, String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(KilosEmbarcados.Index).Value), "kl", .Cells(Descripcion.Index).EditedFormattedValue.ToString(), CDec(.Cells(Precios.Index).Value), CDec(.Cells(ImporteEmbarcado.Index).Value))
 
                         Dim ComprobanteImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
                         'If CDec(.Cells(clmIVA.Index).Value) > 0 Then
