@@ -35,6 +35,7 @@ Public Class FrmCapturaProdTerminado
     Private mostarMensajes As Boolean = True
     Private CveProduto As String
     Private numcaja As Integer
+    Private precioxkilo As Decimal
 #End Region
 
 #Region "Metodos"
@@ -605,6 +606,10 @@ Public Class FrmCapturaProdTerminado
             LoteCorte.Cvecomprador = 0
             LoteCorte.Cvelugcom = 0
             LoteCorte.Observacioneslote = ""
+            ''-------------------------------------------   datos nuevos de precio por kilo
+            LoteCorte.Precioxkilo = 0D
+            LoteCorte.Precioxkilogasto = 0D
+            LoteCorte.Precioxkilototal = 0D
 
             If Not LoteCorte.Guardar(Trans) Then
                 Trans.Rollback()
@@ -643,7 +648,7 @@ Public Class FrmCapturaProdTerminado
                 .IdPoliza = ""
                 .Kilos = CDec(Me.txtPeso.Text)
                 .Piezas = CInt(Me.txtPiezas.Text)
-                .AgregarDetalle(CInt(Me.txtCodSubCorte.Text), .Kilos, .Piezas, 0D, 0D)
+                .AgregarDetalle(CInt(Me.txtCodSubCorte.Text), .Kilos, .Piezas, precioxkilo, 0D)
 
                 .Guardar(Trans)
             End With
@@ -692,9 +697,9 @@ Public Class FrmCapturaProdTerminado
             corte.Save()
             Trans.Commit()
 
-            If Controlador.Configuracion.Produccion.ImprimirEtiquetasCortes Then
-                Imprimir()
-            End If
+            'If Controlador.Configuracion.Produccion.ImprimirEtiquetasCortes Then
+            '    Imprimir()
+            'End If
 
             Dim Etiquetas As DataSet = LoteCorteDetalle.Obtener(Me.txtLoteCorte.Text.Trim)
 
@@ -1284,6 +1289,14 @@ Public Class FrmCapturaProdTerminado
                     Me.dtpFechaCaducidad.Value = CDate(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmFechaCorte.Index).Value).AddDays(CInt(Me.txtDiasCad.Text))
                     Me.txtProveedor.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmIntroductor.Index).Value
                     Me.txtCodSubCorte.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmproducto.Index).Value
+
+                    If Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.precioxkilototal.Index).Value IsNot DBNull.Value Then
+                        precioxkilo = Convert.ToDecimal(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.precioxkilototal.Index).Value)
+                    Else
+                        precioxkilo = 0
+                    End If
+
+
                     buscarcortes()
 
                 Else

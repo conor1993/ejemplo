@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 8 de febrero de 2018 08:45:14
+' // Code is generated on: jueves, 8 de febrero de 2018 12:25:16
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -6089,6 +6089,7 @@ Namespace Integralab.ORM
 		[TotalPzas]
 		[Producto]
 		[Descripcion]
+		[Precioxkilototal]
 		AmountOfFields
 	End Enum
 

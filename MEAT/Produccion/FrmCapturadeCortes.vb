@@ -603,7 +603,10 @@ Public Class FrmCapturadeCortes
             LoteCorte.Cvecomprador = 0
             LoteCorte.Cvelugcom = 0
             LoteCorte.Observacioneslote = ""
-
+            ''-------------------------------------------   datos nuevos de precio por kilo
+            LoteCorte.Precioxkilo = 0D
+            LoteCorte.Precioxkilogasto = 0D
+            LoteCorte.Precioxkilototal = 0D
 
             If Not LoteCorte.Guardar(Trans) Then
                 Trans.Rollback()
