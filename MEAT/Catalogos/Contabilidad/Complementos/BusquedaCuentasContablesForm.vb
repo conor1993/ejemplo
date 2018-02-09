@@ -287,13 +287,13 @@ Public Class BusquedaCuentasContablesForm
                 End If
             End If
 
-            If Me.chkDep.CheckState <> CheckState.Indeterminate Then
-                If Me.chkDep.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.DepartamentalizableCad = Me.chkDep.Checked)
-                Else
-                    Filtro.Add(HC.VwContCuentasFields.DepartamentalizableCad = chkDep.Checked)
-                End If
-            End If
+            'If Me.chkDep.CheckState <> CheckState.Indeterminate Then
+            '    If Me.chkDep.Checked = True Then
+            '        Filtro.Add(HC.VwContCuentasFields.DepartamentalizableCad = Me.chkDep.Checked)
+            '    Else
+            '        Filtro.Add(HC.VwContCuentasFields.DepartamentalizableCad = chkDep.Checked)
+            '    End If
+            'End If
 
             If Me.chkIna.CheckState <> CheckState.Indeterminate Then
                 If Me.chkIna.Checked = True Then

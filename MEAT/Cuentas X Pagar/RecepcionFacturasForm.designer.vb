@@ -22,73 +22,75 @@ Partial Class RecepcionFacturasForm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.lblEmpresa = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.DtpFechaCaptura = New System.Windows.Forms.DateTimePicker
-        Me.CmbProveedor = New System.Windows.Forms.ComboBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.TxtFactura = New System.Windows.Forms.TextBox
-        Me.DtpFechaFactura = New System.Windows.Forms.DateTimePicker
-        Me.txtDiasPlazo = New System.Windows.Forms.TextBox
-        Me.DtpFechaVencimiento = New System.Windows.Forms.DateTimePicker
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.txtObservaciones = New System.Windows.Forms.TextBox
-        Me.LblPolizaDiaria = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.txtCheque = New System.Windows.Forms.TextBox
-        Me.txtPoliza = New System.Windows.Forms.TextBox
-        Me.chkPagada = New System.Windows.Forms.CheckBox
-        Me.TxtTotal = New System.Windows.Forms.TextBox
-        Me.TxtAnticipo = New System.Windows.Forms.TextBox
-        Me.txtIva = New System.Windows.Forms.TextBox
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.DgvRecepciones = New System.Windows.Forms.DataGridView
-        Me.Agregar = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.Folio = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaRecepcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaRetiro = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NombreProducto = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CantidadProducto = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FolioOrden = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.lblEmpresa = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.DtpFechaCaptura = New System.Windows.Forms.DateTimePicker()
+        Me.CmbProveedor = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TxtFactura = New System.Windows.Forms.TextBox()
+        Me.DtpFechaFactura = New System.Windows.Forms.DateTimePicker()
+        Me.txtDiasPlazo = New System.Windows.Forms.TextBox()
+        Me.DtpFechaVencimiento = New System.Windows.Forms.DateTimePicker()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtObservaciones = New System.Windows.Forms.TextBox()
+        Me.LblPolizaDiaria = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txtCheque = New System.Windows.Forms.TextBox()
+        Me.txtPoliza = New System.Windows.Forms.TextBox()
+        Me.chkPagada = New System.Windows.Forms.CheckBox()
+        Me.TxtTotal = New System.Windows.Forms.TextBox()
+        Me.TxtAnticipo = New System.Windows.Forms.TextBox()
+        Me.txtIva = New System.Windows.Forms.TextBox()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.DgvRecepciones = New System.Windows.Forms.DataGridView()
         Me.TmProveedor = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.TxtSubtotal = New System.Windows.Forms.TextBox
-        Me.chkServicio = New System.Windows.Forms.CheckBox
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.txtConcepto = New System.Windows.Forms.TextBox
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.GrpCuentas = New System.Windows.Forms.GroupBox
-        Me.txtSumaCargo = New System.Windows.Forms.TextBox
-        Me.DgvCuentas = New System.Windows.Forms.DataGridView
-        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.TxtSubtotal = New System.Windows.Forms.TextBox()
+        Me.chkServicio = New System.Windows.Forms.CheckBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtConcepto = New System.Windows.Forms.TextBox()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.GrpCuentas = New System.Windows.Forms.GroupBox()
+        Me.TxtSumaAbono = New System.Windows.Forms.TextBox()
+        Me.txtSumaCargo = New System.Windows.Forms.TextBox()
+        Me.DgvCuentas = New System.Windows.Forms.DataGridView()
+        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Agregar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.IdRecepcionOrdenCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Folio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaRecepcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaRetiro = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantidadProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FolioOrden = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DgvRecepciones, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GrpCuentas.SuspendLayout()
@@ -392,7 +394,7 @@ Partial Class RecepcionFacturasForm
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(74, 250)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(601, 176)
+        Me.GroupBox2.Size = New System.Drawing.Size(671, 176)
         Me.GroupBox2.TabIndex = 100
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Recepciones"
@@ -402,7 +404,7 @@ Partial Class RecepcionFacturasForm
         Me.DgvRecepciones.AllowUserToAddRows = False
         Me.DgvRecepciones.AllowUserToDeleteRows = False
         Me.DgvRecepciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvRecepciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Agregar, Me.Folio, Me.FechaRecepcion, Me.FechaRetiro, Me.NombreProducto, Me.CantidadProducto, Me.Precio, Me.Importe, Me.FolioOrden})
+        Me.DgvRecepciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Agregar, Me.IdRecepcionOrdenCompra, Me.Folio, Me.FechaRecepcion, Me.FechaRetiro, Me.NombreProducto, Me.CantidadProducto, Me.Precio, Me.Importe, Me.FolioOrden})
         Me.DgvRecepciones.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvRecepciones.Location = New System.Drawing.Point(3, 16)
         Me.DgvRecepciones.MultiSelect = False
@@ -410,84 +412,8 @@ Partial Class RecepcionFacturasForm
         Me.DgvRecepciones.RowHeadersVisible = False
         Me.DgvRecepciones.RowHeadersWidth = 20
         Me.DgvRecepciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvRecepciones.Size = New System.Drawing.Size(595, 157)
+        Me.DgvRecepciones.Size = New System.Drawing.Size(665, 157)
         Me.DgvRecepciones.TabIndex = 0
-        '
-        'Agregar
-        '
-        Me.Agregar.HeaderText = "Agregar"
-        Me.Agregar.Name = "Agregar"
-        Me.Agregar.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Agregar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Agregar.Width = 60
-        '
-        'Folio
-        '
-        Me.Folio.HeaderText = "Folio"
-        Me.Folio.Name = "Folio"
-        Me.Folio.ReadOnly = True
-        '
-        'FechaRecepcion
-        '
-        DataGridViewCellStyle1.Format = "d"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.FechaRecepcion.DefaultCellStyle = DataGridViewCellStyle1
-        Me.FechaRecepcion.HeaderText = "Fecha"
-        Me.FechaRecepcion.Name = "FechaRecepcion"
-        Me.FechaRecepcion.ReadOnly = True
-        '
-        'FechaRetiro
-        '
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.FechaRetiro.DefaultCellStyle = DataGridViewCellStyle2
-        Me.FechaRetiro.HeaderText = "Fecha Retiro"
-        Me.FechaRetiro.Name = "FechaRetiro"
-        Me.FechaRetiro.ReadOnly = True
-        Me.FechaRetiro.Visible = False
-        '
-        'NombreProducto
-        '
-        Me.NombreProducto.HeaderText = "Producto"
-        Me.NombreProducto.Name = "NombreProducto"
-        Me.NombreProducto.ReadOnly = True
-        Me.NombreProducto.Visible = False
-        '
-        'CantidadProducto
-        '
-        Me.CantidadProducto.DataPropertyName = "Cantidad"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.CantidadProducto.DefaultCellStyle = DataGridViewCellStyle3
-        Me.CantidadProducto.HeaderText = "Cantidad"
-        Me.CantidadProducto.Name = "CantidadProducto"
-        Me.CantidadProducto.ReadOnly = True
-        '
-        'Precio
-        '
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Precio.HeaderText = "Precio"
-        Me.Precio.Name = "Precio"
-        Me.Precio.ReadOnly = True
-        Me.Precio.Visible = False
-        '
-        'Importe
-        '
-        Me.Importe.DataPropertyName = "Total"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.Importe.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Importe.HeaderText = "Importe"
-        Me.Importe.Name = "Importe"
-        '
-        'FolioOrden
-        '
-        Me.FolioOrden.HeaderText = "Folio O.C."
-        Me.FolioOrden.Name = "FolioOrden"
-        Me.FolioOrden.ReadOnly = True
-        Me.FolioOrden.Width = 120
         '
         'TmProveedor
         '
@@ -564,20 +490,29 @@ Partial Class RecepcionFacturasForm
         '
         'GrpCuentas
         '
+        Me.GrpCuentas.Controls.Add(Me.TxtSumaAbono)
         Me.GrpCuentas.Controls.Add(Me.txtSumaCargo)
         Me.GrpCuentas.Controls.Add(Me.DgvCuentas)
         Me.GrpCuentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GrpCuentas.Location = New System.Drawing.Point(71, 432)
         Me.GrpCuentas.Name = "GrpCuentas"
-        Me.GrpCuentas.Size = New System.Drawing.Size(601, 161)
+        Me.GrpCuentas.Size = New System.Drawing.Size(674, 161)
         Me.GrpCuentas.TabIndex = 145
         Me.GrpCuentas.TabStop = False
         Me.GrpCuentas.Text = "Cuentas Contables a Cargar el Servicio"
         '
+        'TxtSumaAbono
+        '
+        Me.TxtSumaAbono.Enabled = False
+        Me.TxtSumaAbono.Location = New System.Drawing.Point(566, 137)
+        Me.TxtSumaAbono.Name = "TxtSumaAbono"
+        Me.TxtSumaAbono.Size = New System.Drawing.Size(100, 20)
+        Me.TxtSumaAbono.TabIndex = 2
+        '
         'txtSumaCargo
         '
         Me.txtSumaCargo.Enabled = False
-        Me.txtSumaCargo.Location = New System.Drawing.Point(472, 137)
+        Me.txtSumaCargo.Location = New System.Drawing.Point(462, 137)
         Me.txtSumaCargo.Name = "txtSumaCargo"
         Me.txtSumaCargo.Size = New System.Drawing.Size(100, 20)
         Me.txtSumaCargo.TabIndex = 1
@@ -591,7 +526,7 @@ Partial Class RecepcionFacturasForm
         Me.DgvCuentas.Name = "DgvCuentas"
         Me.DgvCuentas.RowHeadersVisible = False
         Me.DgvCuentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvCuentas.Size = New System.Drawing.Size(595, 117)
+        Me.DgvCuentas.Size = New System.Drawing.Size(663, 117)
         Me.DgvCuentas.TabIndex = 0
         '
         'ClmCtaMayor
@@ -642,7 +577,91 @@ Partial Class RecepcionFacturasForm
         Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle7
         Me.ClmAbono.HeaderText = "Abono"
         Me.ClmAbono.Name = "ClmAbono"
-        Me.ClmAbono.Visible = False
+        '
+        'Agregar
+        '
+        Me.Agregar.HeaderText = "Agregar"
+        Me.Agregar.Name = "Agregar"
+        Me.Agregar.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Agregar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Agregar.Width = 60
+        '
+        'IdRecepcionOrdenCompra
+        '
+        Me.IdRecepcionOrdenCompra.HeaderText = "RecepcionOrdenCompra"
+        Me.IdRecepcionOrdenCompra.Name = "IdRecepcionOrdenCompra"
+        Me.IdRecepcionOrdenCompra.Visible = False
+        '
+        'Folio
+        '
+        Me.Folio.HeaderText = "Folio"
+        Me.Folio.Name = "Folio"
+        Me.Folio.ReadOnly = True
+        '
+        'FechaRecepcion
+        '
+        DataGridViewCellStyle1.Format = "d"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.FechaRecepcion.DefaultCellStyle = DataGridViewCellStyle1
+        Me.FechaRecepcion.HeaderText = "Fecha"
+        Me.FechaRecepcion.Name = "FechaRecepcion"
+        Me.FechaRecepcion.ReadOnly = True
+        '
+        'FechaRetiro
+        '
+        DataGridViewCellStyle2.Format = "d"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.FechaRetiro.DefaultCellStyle = DataGridViewCellStyle2
+        Me.FechaRetiro.HeaderText = "Fecha Retiro"
+        Me.FechaRetiro.Name = "FechaRetiro"
+        Me.FechaRetiro.ReadOnly = True
+        Me.FechaRetiro.Visible = False
+        '
+        'NombreProducto
+        '
+        Me.NombreProducto.HeaderText = "Producto"
+        Me.NombreProducto.Name = "NombreProducto"
+        Me.NombreProducto.ReadOnly = True
+        Me.NombreProducto.Visible = False
+        '
+        'CantidadProducto
+        '
+        Me.CantidadProducto.DataPropertyName = "Cantidad"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.CantidadProducto.DefaultCellStyle = DataGridViewCellStyle3
+        Me.CantidadProducto.HeaderText = "Cantidad"
+        Me.CantidadProducto.Name = "CantidadProducto"
+        Me.CantidadProducto.ReadOnly = True
+        '
+        'Precio
+        '
+        DataGridViewCellStyle4.Format = "C2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        Me.Precio.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Precio.Visible = False
+        '
+        'Importe
+        '
+        Me.Importe.DataPropertyName = "Total"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.Importe.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Importe.HeaderText = "Importe"
+        Me.Importe.Name = "Importe"
+        Me.Importe.ReadOnly = True
+        Me.Importe.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'FolioOrden
+        '
+        Me.FolioOrden.HeaderText = "Folio O.C."
+        Me.FolioOrden.Name = "FolioOrden"
+        Me.FolioOrden.ReadOnly = True
+        Me.FolioOrden.Width = 120
         '
         'RecepcionFacturasForm
         '
@@ -740,7 +759,22 @@ Partial Class RecepcionFacturasForm
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents TxtSubtotal As System.Windows.Forms.TextBox
     Friend WithEvents chkServicio As System.Windows.Forms.CheckBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents txtConcepto As System.Windows.Forms.TextBox
+    Friend WithEvents mtb As MEAToolBar.MEAToolBar
+    Friend WithEvents GrpCuentas As System.Windows.Forms.GroupBox
+    Friend WithEvents DgvCuentas As System.Windows.Forms.DataGridView
+    Friend WithEvents txtSumaCargo As System.Windows.Forms.TextBox
+    Friend WithEvents TxtSumaAbono As System.Windows.Forms.TextBox
+    Friend WithEvents ClmCtaMayor As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSubCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSssCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Agregar As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents IdRecepcionOrdenCompra As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Folio As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FechaRecepcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FechaRetiro As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -749,17 +783,4 @@ Partial Class RecepcionFacturasForm
     Friend WithEvents Precio As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Importe As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FolioOrden As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents txtConcepto As System.Windows.Forms.TextBox
-    Friend WithEvents mtb As MEAToolBar.MEAToolBar
-    Friend WithEvents GrpCuentas As System.Windows.Forms.GroupBox
-    Friend WithEvents DgvCuentas As System.Windows.Forms.DataGridView
-    Friend WithEvents txtSumaCargo As System.Windows.Forms.TextBox
-    Friend WithEvents ClmCtaMayor As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSubCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSssCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -41,6 +41,8 @@ Public Class FrmConfigContabilidad
         ConfigConta.PorcISR = CDbl(Me.txtISR.Text)
         ConfigConta.PorcIVA = CDbl(Me.txtIVA.Text)
         ConfigConta.PorcRetencion = CDbl(Me.txtTasaRetenida.Text)
+        ConfigConta.IVAFlete = CDbl(Me.txtFlete.Text)
+
         If ConfigConta.Guardar() Then
             MessageBox.Show("Se guardo configuración de contabilidad", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else

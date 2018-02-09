@@ -109,7 +109,7 @@ Public Class RecepcionFacturasForm
         Me.TxtFactura.Clear()
         Me.chkPagada.Checked = False
         'Me.ChkAgregarRecepciones.Checked = False
-        Me.TxtSubtotal.Text = ""
+        Me.TxtSubtotal.Clear
         Me.txtIva.Clear()
         Me.TxtAnticipo.Text = ""
         Me.TxtTotal.Clear()
@@ -221,10 +221,10 @@ Public Class RecepcionFacturasForm
         Me.TxtFactura.Text = Fact.NoFactura
         Me.DtpFechaFactura.Value = Me.Fact.FechaFactura
         Me.DtpFechaVencimiento.Value = Me.Fact.FechaVencimiento
-        Me.txtSubtotal.Text = Me.Fact.SubTotal.ToString("C2")
-        Me.txtIva.Text = Me.Fact.Iva.ToString("C2")
-        Me.TxtAnticipo.Text = Me.Fact.Anticipo.ToString("C2")
-        Me.TxtTotal.Text = Me.Fact.Total.ToString("C2")
+        Me.TxtSubtotal.Text = Me.Fact.SubTotal
+        Me.txtIva.Text = Me.Fact.Iva
+        Me.TxtAnticipo.Text = Me.Fact.Anticipo
+        Me.TxtTotal.Text = Me.Fact.Total
         Me.txtObservaciones.Text = Me.Fact.Observaciones
         Me.txtConcepto.Text = Me.Fact.Concepto
         Select Case (Me.Fact.Estatus)
@@ -270,6 +270,17 @@ Public Class RecepcionFacturasForm
                 Return False
             End If
         End If
+        If Me.DgvCuentas.Rows.Count <= 1 Then
+            MsgBox("No ha relacionado las Cuentas Contables a Afectar.", MsgBoxStyle.Exclamation, "Aviso")
+            Return False
+        End If
+        If Not CDec(Me.TxtSumaAbono.Text) = CDec(Me.txtSumaCargo.Text) Then
+            MsgBox("Las Sumas del Cargo y del Abono deben ser Equivalentes", MsgBoxStyle.Exclamation, "Aviso")
+            Return False
+        ElseIf Not CDec(Me.TxtSumaAbono.Text) = CDec(Me.TxtTotal.Text) Then
+            MsgBox("El importe de las Sumas de Cargos y Abonos debe ser Igual al Importe Total...", , "Aviso")
+            Return False
+        End If
         If Me.txtSumaCargo.Text <> Me.TxtTotal.Text Then
             MsgBox("La Suma de el (los) Cargo(s) no Coinciden con el Total de la Factura", MsgBoxStyle.Exclamation, "Error")
             Return False
@@ -285,7 +296,7 @@ Public Class RecepcionFacturasForm
                 If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
                     Dim Rec As New IntegraLab.ORM.EntityClasses.RecepcionOrdenCompraEntity
                     Dim FD As New IntegraLab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity
-                    If Rec.FetchUsingPK(Me.DgvRecepciones.Rows(i).Cells("Folio").Value) Then
+                    If Rec.FetchUsingPK(Me.DgvRecepciones.Rows(i).Cells("IdRecepcionOrdenCompra").Value) Then
                         Rec.Facturada = True
                         Rec.NoFactura = Me.TxtFactura.Text
                         Recepciones.Add(Rec)
@@ -293,7 +304,7 @@ Public Class RecepcionFacturasForm
                     FD.EmpresaId = Controlador.Sesion.Empndx
                     FD.IdProveedor = Me.CmbProveedor.SelectedValue
                     FD.NoFactura = Me.TxtFactura.Text
-                    FD.IdRecepcionOrdenCompra = Me.DgvRecepciones.Rows(i).Cells("Folio").Value
+                    FD.IdRecepcionOrdenCompra = Me.DgvRecepciones.Rows(i).Cells("IdRecepcionOrdenCompra").Value
                     Me.FactDetRecep.Add(FD)
                 End If
             Next
@@ -359,10 +370,12 @@ Public Class RecepcionFacturasForm
                         For i As Integer = 0 To Recep.Count - 1
                             Me.DgvRecepciones.Rows.Add()
                             Me.DgvRecepciones.Rows(i).Cells("Folio").Value = Recep(i).FolioRecepcionOrdenCompra
+                            Me.DgvRecepciones.Rows(i).Cells("IdRecepcionOrdenCompra").Value = Recep(i).IdOrdenCompra
                             Me.DgvRecepciones.Rows(i).Cells("FechaRecepcion").Value = Recep(i).FechaRecepcion
                             Me.DgvRecepciones.Rows(i).Cells("FolioOrden").Value = Recep(i).OrdenCompra.FolioOrdenCompra
                             Me.DgvRecepciones.Rows(i).Cells("CantidadProducto").Value = Recep(i).Cantidad
                             Me.DgvRecepciones.Rows(i).Cells("Importe").Value = Recep(i).Total.ToString("C2")
+
                         Next
                     End If
                 Else
@@ -489,27 +502,27 @@ Public Class RecepcionFacturasForm
                 If Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value > 0 Then
                     FacturaDet.Importe = Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value
                     FacturaDet.CarAbo = "C"
-                    'ElseIf Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value > 0 Then
-                    '    Det.Importe = Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value
-                    '    Det.CargoOAbono = "A"
+                ElseIf Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value > 0 Then
+                    FacturaDet.Importe = Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value
+                    FacturaDet.CarAbo = "A"
                 End If
                 Me.FactDet.Add(FacturaDet)
                 'Me.Factura.Detalles.Add(Det)
             End If
         Next
         'Cuenta a abono del proveedor
-        Dim prov As New CN.ProveedorCollectionClass
-        prov.Obtener(CType(Me.CmbProveedor.SelectedValue, Integer))
-        If prov.Count > 0 Then
-            Dim FacturaDet As New EC.UsrCxpfacturasDetEntity
-            FacturaDet.EmpresaId = Me.Fact.EmpresaId
-            FacturaDet.NoFactura = Me.Fact.NoFactura
-            FacturaDet.IdProveedor = Me.Fact.IdProveedor
-            FacturaDet.CuentaContableId = prov(0).CuentaContable2.Codigo
-            FacturaDet.CarAbo = "A"
-            FacturaDet.Importe = Me.Fact.Total
-            Me.FactDet.Add(FacturaDet)
-        End If
+        'Dim prov As New CN.ProveedorCollectionClass
+        'prov.Obtener(CType(Me.CmbProveedor.SelectedValue, Integer))
+        'If prov.Count > 0 Then
+        '    Dim FacturaDet As New EC.UsrCxpfacturasDetEntity
+        '    FacturaDet.EmpresaId = Me.Fact.EmpresaId
+        '    FacturaDet.NoFactura = Me.Fact.NoFactura
+        '    FacturaDet.IdProveedor = Me.Fact.IdProveedor
+        '    FacturaDet.CuentaContableId = prov(0).CuentaContable2.Codigo
+        '    FacturaDet.CarAbo = "A"
+        '    FacturaDet.Importe = Me.Fact.Total
+        '    Me.FactDet.Add(FacturaDet)
+        'End If
         FactDet.SaveMulti()
         'End If
     End Sub
@@ -982,12 +995,22 @@ Public Class RecepcionFacturasForm
     'End Sub
 
     Private Sub CmbProveedor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbProveedor.SelectedIndexChanged
+        If CmbProveedor.SelectedValue Is Nothing Then
+            Return
+        End If
         Try
             If SelProveedor = False Then
                 Exit Sub
             End If
+            Dim Prov As New CN.ProveedorCollectionClass
+            Dim Pr As CN.ProveedorClass = Prov.Obtener(Me.CmbProveedor.SelectedValue)
+            If Me.CmbProveedor.SelectedValue > 0 Then
+                Me.DgvCuentas.Rows.Clear()
+                RellenarGridCuentas(Pr.CuentaContable2)
+            End If
             If Me.CmbProveedor.SelectedValue > 0 Then
                 Me.DgvRecepciones.Rows.Clear()
+                'Me.DgvCuentas.Rows.Clear()
                 If chkServicio.Checked Then
                     ObtenerRecepcionesServicio()
                     Dim confi As New CN.ConfiguracionCtasCtrolColeccion
@@ -998,6 +1021,7 @@ Public Class RecepcionFacturasForm
                     End If
                 Else
                     ObtenerRecepcionesCompra()
+                    'RellenarGridCuentas(Pr.CuentaContable2)
                 End If
             End If
         Catch ex As Exception
@@ -1072,18 +1096,21 @@ Public Class RecepcionFacturasForm
         If e.ColumnIndex = Me.Agregar.Index Then
             If CBool(Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value) Then
                 Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = False
+                'Exit Sub
             Else
                 Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = True
+
             End If
-            'Re = New IntegraLab.ORM.EntityClasses.RecepcionesNewEntity
+            'Re = New Integralab.ORM.EntityClasses.RecepcionesNewEntity
             Me.Subtotal = 0
             For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
                 If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
                     '  If Re.FetchUsingPK(Controlador.Sesion.Empndx, Me.DgvRecepciones.Rows(i).Cells("Folio").Value) Then
                     If Editar = False Then
                         'Dim total As Decimal
-                        ' total = Re.Precio * Re.Cantidad
-                        Subtotal = Subtotal + Decimal.Parse(Me.DgvRecepciones.Rows(i).Cells("Importe").Value.ToString)
+                        'Total = Re.Precio * Re.Cantidad
+                        Subtotal = Subtotal + Me.DgvRecepciones.Rows(i).Cells("Importe").Value
+                        'Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Subtotal
                     End If
                     'End If
                 End If
@@ -1098,7 +1125,10 @@ Public Class RecepcionFacturasForm
                 Me.TxtTotal.Enabled = False
             End If
             If Editar = False Then
-                Me.TxtSubtotal.Text = Subtotal.ToString("C2")
+                If TxtSubtotal.Text = "" Then
+                    Me.TxtSubtotal.Text = Subtotal.ToString("C2")
+                End If
+
             End If
         End If
     End Sub
@@ -1207,13 +1237,20 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Private Sub DgvCuentas_CellValueChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellValueChanged
-        Dim Tot As Decimal = 0
-        If e.ColumnIndex = Me.ClmCargo.Index Then
-            For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
-                Tot += Decimal.Parse(Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value.ToString)
-            Next
-            Me.txtSumaCargo.Text = Tot.ToString("C2")
-        End If
+        Dim SumaCargo As Decimal = 0
+        Dim SumaAbono As Decimal = 0
+        'If e.ColumnIndex = Me.ClmCargo.Index Then
+        '    For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+        '        Tot += Decimal.Parse(Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value.ToString)
+        '    Next
+        '    Me.txtSumaCargo.Text = Tot.ToString("C2")
+        'End If
+        For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+            SumaCargo = SumaCargo + Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value
+            SumaAbono = SumaAbono + Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value
+        Next
+        Me.txtSumaCargo.Text = SumaCargo.ToString("C2")
+        Me.TxtSumaAbono.Text = SumaAbono.ToString("C2")
     End Sub
 
     Private Sub DgvCuentas_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DgvCuentas.KeyDown
@@ -1261,10 +1298,6 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Private Sub txtObservaciones_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtObservaciones.TextChanged
-
-    End Sub
-
-    Private Sub DgvCuentas_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentClick
 
     End Sub
 
