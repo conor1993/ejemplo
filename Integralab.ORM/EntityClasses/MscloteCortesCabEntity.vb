@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: miércoles, 7 de febrero de 2018 11:23:29
+' // Code is generated on: jueves, 8 de febrero de 2018 12:25:20
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -568,6 +568,9 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
+
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -776,6 +779,15 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("Importe", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Precioxkilo", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Precioxkilogasto", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Precioxkilototal", fieldHashtable)
 		End Sub
 
 
@@ -1572,6 +1584,60 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Importe, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Precioxkilo property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Precioxkilo"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Money, 19, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Precioxkilo]() As Nullable(Of System.Decimal)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Precioxkilo, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Decimal))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Precioxkilo, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Precioxkilogasto property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Precioxkilogasto"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Money, 19, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Precioxkilogasto]() As Nullable(Of System.Decimal)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Precioxkilogasto, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Decimal))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Precioxkilogasto, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Precioxkilototal property of the Entity MscloteCortesCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MSCLoteCortesCab"."Precioxkilototal"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Money, 19, 4, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Precioxkilototal]() As Nullable(Of System.Decimal)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MscloteCortesCabFieldIndex.Precioxkilototal, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Decimal))
+			End Get
+			Set
+				SetNewFieldValue(CType(MscloteCortesCabFieldIndex.Precioxkilototal, Integer), value)
 			End Set
 		End Property
 	

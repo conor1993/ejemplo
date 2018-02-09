@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: miércoles, 7 de febrero de 2018 11:23:33
+' Code is generated on: jueves, 8 de febrero de 2018 12:25:24
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -13038,6 +13038,24 @@ Namespace Integralab.ORM.HelperClasses
 				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Importe), EntityField)
 			End Get
 		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Precioxkilo field instance</summary>
+		Public Shared ReadOnly Property [Precioxkilo] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Precioxkilo), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Precioxkilogasto field instance</summary>
+		Public Shared ReadOnly Property [Precioxkilogasto] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Precioxkilogasto), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MscloteCortesCabEntity.Precioxkilototal field instance</summary>
+		Public Shared ReadOnly Property [Precioxkilototal] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MscloteCortesCabFieldIndex.Precioxkilototal), EntityField)
+			End Get
+		End Property
 	End Class
 	''' <summary>Field Creation Class for entity MscloteCortesDetEntity</summary>
 	Public Class MscloteCortesDetFields
@@ -23072,6 +23090,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [Descripcion] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(VwBusquedaLoteCortesFieldIndex.Descripcion), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new VwBusquedaLoteCortesTypedView.Precioxkilototal field instance</summary>
+		Public Shared ReadOnly Property [Precioxkilototal] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(VwBusquedaLoteCortesFieldIndex.Precioxkilototal), EntityField)
 			End Get
 		End Property
 	End Class
