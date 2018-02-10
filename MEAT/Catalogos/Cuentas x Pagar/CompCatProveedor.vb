@@ -1485,7 +1485,7 @@ Public Class CompCatProveedor
                 rfc = mtbRFC.Text
             End If
             mtbRFC.Text = ""
-            mtbRFC.Mask = ">LLLL-000000-AA0"
+            mtbRFC.Mask = ">LLLL-000000-AAA"
             mtbRFC.Text = rfc
         End If
     End Sub
@@ -1499,7 +1499,7 @@ Public Class CompCatProveedor
                 rfc = mtbRFC.Text
             End If
             mtbRFC.Text = ""
-            mtbRFC.Mask = ">LLL-000000-AA0"
+            mtbRFC.Mask = ">LLL-000000-AAA"
             mtbRFC.Text = rfc
         End If
     End Sub
