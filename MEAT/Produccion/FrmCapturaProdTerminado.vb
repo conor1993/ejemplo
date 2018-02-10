@@ -36,6 +36,8 @@ Public Class FrmCapturaProdTerminado
     Private CveProduto As String
     Private numcaja As Integer
     Private precioxkilo As Decimal
+    Private kilosrecividos As Decimal
+    Private kilostot As Decimal
 #End Region
 
 #Region "Metodos"
@@ -559,13 +561,8 @@ Public Class FrmCapturaProdTerminado
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
 
         Try
-            'Dim ventana As New frmAgregarFolioReferencia
 
-            'ventana.StartPosition = FormStartPosition.CenterScreen
-
-            'If ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-            '    LoteCorteDetalle.FolioEtiquetaReferencia = ventana.txtFolioReferencia.Text
-            'End If
+            txtKilosCanales.Text = Convert.ToDecimal(txtKilosCanales.Text) + Convert.ToDecimal(txtPeso.Text)
 
             Dim Consecutivo As Integer
             Dim movAlmacen As New MovimientoAlmacenClass
@@ -1077,9 +1074,19 @@ Public Class FrmCapturaProdTerminado
             numcaja = txtcajas.Text
             ''nuevo modo de guardar----------------------------------------
 
+
+            If kilosrecividos < (numcaja * txtPeso.Text) Then
+                MsgBox("El monto de kilos ingresados es mayor al monto de kilos recibidos en", MsgBoxStyle.Exclamation, "Aviso")
+                Exit Sub
+            End If
+
+
+
             For i As Integer = 1 To numcaja
                 Me.Guardar()
             Next
+
+
 
             Me.txtPeso.Text = "0"
 
@@ -1297,6 +1304,11 @@ Public Class FrmCapturaProdTerminado
                     End If
 
 
+                    If Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmKilosRecibidos().Index).Value IsNot DBNull.Value Then
+                        kilosrecividos = Convert.ToDecimal(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmKilosRecibidos().Index).Value)
+                    Else
+                        kilosrecividos = 0
+                    End If
                     buscarcortes()
 
                 Else

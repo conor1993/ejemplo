@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: jueves, 8 de febrero de 2018 12:25:16
+' Code is generated on: viernes, 9 de febrero de 2018 17:51:04
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -4993,6 +4993,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "Producto", GetType(System.Int32), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.Producto), 0, 0, 10)
 			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "Descripcion", GetType(System.String), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.Descripcion), 100, 0, 0)
 			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "Precioxkilototal", GetType(System.Decimal), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.Precioxkilototal), 0, 4, 19)
+			MyBase.AddElementFieldInfo("VwBusquedaLoteCortesTypedView", "KilosRecibidos", GetType(System.Decimal), False, False, True, False, CInt(VwBusquedaLoteCortesFieldIndex.KilosRecibidos), 0, 4, 19)
 		End Sub
 		''' <summary>Inits View's FieldInfo objects</summary>
 		Private Sub InitVwBusquedaMovimientosAlmacenTypedViewInfos()
