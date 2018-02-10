@@ -862,7 +862,7 @@ Public Class RegistroFacGastosFrm
                 For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
                     SumaCargo = SumaCargo + Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value
                     SumaAbono = SumaAbono + Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value
-                Next            
+                Next
                 Me.txtSumaCargo.Text = SumaCargo.ToString("C2")
                 Me.txtSumaAbono.Text = SumaAbono.ToString("C2")
             End If

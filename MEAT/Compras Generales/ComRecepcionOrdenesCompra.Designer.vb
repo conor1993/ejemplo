@@ -22,108 +22,108 @@ Partial Class ComRecepcionOrdenesCompra
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.txtFolioRecepcion = New System.Windows.Forms.TextBox
-        Me.txtFolioOrden = New System.Windows.Forms.TextBox
-        Me.txtTipoCambio = New System.Windows.Forms.TextBox
-        Me.txtNoFactura = New System.Windows.Forms.TextBox
-        Me.DtpFecha = New System.Windows.Forms.DateTimePicker
-        Me.Mtb = New MEAToolBar.MEAToolBar
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.Label23 = New System.Windows.Forms.Label
-        Me.txtSumaRecibidas = New System.Windows.Forms.TextBox
-        Me.txtSumaOrdenada = New System.Windows.Forms.TextBox
-        Me.txtSumaRecibir = New System.Windows.Forms.TextBox
-        Me.dgvDetalleOrdenCompra = New System.Windows.Forms.DataGridView
-        Me.AlmacenC = New ClasesNegocio.AlmacenCollectionClass
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.txtObservaciones = New System.Windows.Forms.TextBox
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.txtTotal = New System.Windows.Forms.TextBox
-        Me.txtIVA = New System.Windows.Forms.TextBox
-        Me.txtSubTotal = New System.Windows.Forms.TextBox
-        Me.txtDescuento = New System.Windows.Forms.TextBox
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.txtImporteTotal = New System.Windows.Forms.TextBox
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.cmbAlmacen = New System.Windows.Forms.ComboBox
-        Me.cmbProveedor = New System.Windows.Forms.ComboBox
-        Me.ProveedorC = New ClasesNegocio.ProveedorCollectionClass
-        Me.cmbMoneda = New System.Windows.Forms.ComboBox
-        Me.MonedaTC = New ClasesNegocio.TipoMonedaCollectionClass
-        Me.cmbSucursal = New System.Windows.Forms.ComboBox
-        Me.SucursalC = New ClasesNegocio.SucursalCollectionClass
-        Me.cmbPlaza = New System.Windows.Forms.ComboBox
-        Me.PlazaC = New ClasesNegocio.PlazaCollectionClass
-        Me.RecepcionOrdenCompraDetC = New ClasesNegocio.RecepcionOrdenCompraDetCollectionClass
-        Me.RecepcionOrdenCompraC = New ClasesNegocio.RecepcionOrdenCompraCollectionClass
-        Me.lblEstatus = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtFolioRecepcion = New System.Windows.Forms.TextBox()
+        Me.txtFolioOrden = New System.Windows.Forms.TextBox()
+        Me.txtTipoCambio = New System.Windows.Forms.TextBox()
+        Me.txtNoFactura = New System.Windows.Forms.TextBox()
+        Me.DtpFecha = New System.Windows.Forms.DateTimePicker()
+        Me.Mtb = New MEAToolBar.MEAToolBar()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.txtSumaRecibidas = New System.Windows.Forms.TextBox()
+        Me.txtSumaOrdenada = New System.Windows.Forms.TextBox()
+        Me.txtSumaRecibir = New System.Windows.Forms.TextBox()
+        Me.dgvDetalleOrdenCompra = New System.Windows.Forms.DataGridView()
+        Me.AlmacenC = New ClasesNegocio.AlmacenCollectionClass()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtObservaciones = New System.Windows.Forms.TextBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.txtIVA = New System.Windows.Forms.TextBox()
+        Me.txtSubTotal = New System.Windows.Forms.TextBox()
+        Me.txtDescuento = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txtImporteTotal = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cmbAlmacen = New System.Windows.Forms.ComboBox()
+        Me.cmbProveedor = New System.Windows.Forms.ComboBox()
+        Me.ProveedorC = New ClasesNegocio.ProveedorCollectionClass()
+        Me.cmbMoneda = New System.Windows.Forms.ComboBox()
+        Me.MonedaTC = New ClasesNegocio.TipoMonedaCollectionClass()
+        Me.cmbSucursal = New System.Windows.Forms.ComboBox()
+        Me.SucursalC = New ClasesNegocio.SucursalCollectionClass()
+        Me.cmbPlaza = New System.Windows.Forms.ComboBox()
+        Me.PlazaC = New ClasesNegocio.PlazaCollectionClass()
+        Me.RecepcionOrdenCompraDetC = New ClasesNegocio.RecepcionOrdenCompraDetCollectionClass()
+        Me.RecepcionOrdenCompraC = New ClasesNegocio.RecepcionOrdenCompraCollectionClass()
+        Me.lblEstatus = New System.Windows.Forms.Label()
         Me.Tmplaza = New System.Windows.Forms.Timer(Me.components)
         Me.TmSucursal = New System.Windows.Forms.Timer(Me.components)
         Me.TmProveedor = New System.Windows.Forms.Timer(Me.components)
-        Me.GrpImportesPesos = New System.Windows.Forms.GroupBox
-        Me.txtTotalPesos = New System.Windows.Forms.TextBox
-        Me.txtIvaPesos = New System.Windows.Forms.TextBox
-        Me.txtSubTotalPesos = New System.Windows.Forms.TextBox
-        Me.txtDescuentoPesos = New System.Windows.Forms.TextBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.txtImportePesos = New System.Windows.Forms.TextBox
-        Me.Label22 = New System.Windows.Forms.Label
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.dgvOrdenCompra = New System.Windows.Forms.DataGridView
-        Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmFolioOrdenCompra = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSubTotal = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmDescuentoOrden = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmIVAOrden = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmTotal = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmMoneda = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmIdOrdenCompra = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmIVAPor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSucursal = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.dgvFamilias = New System.Windows.Forms.DataGridView
-        Me.clmIdAlmacen = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmIdFamilia = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox
-        Me.clmIdProducto = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmProducto = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmUM = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmAlmacen = New System.Windows.Forms.DataGridViewComboBoxColumn
-        Me.clmRecibir = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCantOrdenada = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCantRecibida = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmPrecio = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmDescuento = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmIva = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmIdDetalle = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmEstatusRecepcion = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.GrpImportesPesos = New System.Windows.Forms.GroupBox()
+        Me.txtTotalPesos = New System.Windows.Forms.TextBox()
+        Me.txtIvaPesos = New System.Windows.Forms.TextBox()
+        Me.txtSubTotalPesos = New System.Windows.Forms.TextBox()
+        Me.txtDescuentoPesos = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.txtImportePesos = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.dgvOrdenCompra = New System.Windows.Forms.DataGridView()
+        Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFolioOrdenCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSubTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmDescuentoOrden = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIVAOrden = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmMoneda = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIdOrdenCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIVAPor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSucursal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvFamilias = New System.Windows.Forms.DataGridView()
+        Me.clmIdAlmacen = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIdFamilia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.clmIdProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmUM = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmAlmacen = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.clmRecibir = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCantOrdenada = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCantRecibida = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmPrecio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmDescuento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIdDetalle = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmEstatusRecepcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvDetalleOrdenCompra, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -142,7 +142,7 @@ Partial Class ComRecepcionOrdenesCompra
         Me.Label17.ForeColor = System.Drawing.Color.White
         Me.Label17.Location = New System.Drawing.Point(50, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(908, 29)
+        Me.Label17.Size = New System.Drawing.Size(906, 29)
         Me.Label17.TabIndex = 4
         Me.Label17.Text = "RECEPCIÓN DE ORDENES DE COMPRAS"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -363,8 +363,8 @@ Partial Class ComRecepcionOrdenesCompra
         Me.dgvDetalleOrdenCompra.AllowUserToDeleteRows = False
         Me.dgvDetalleOrdenCompra.AllowUserToResizeRows = False
         Me.dgvDetalleOrdenCompra.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvDetalleOrdenCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetalleOrdenCompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIdProducto, Me.clmProducto, Me.ClmUM, Me.clmAlmacen, Me.clmRecibir, Me.clmCantOrdenada, Me.clmCantRecibida, Me.clmPrecio, Me.clmDescuento, Me.clmIva, Me.clmImporte, Me.clmIdDetalle, Me.clmEstatusRecepcion})
         Me.dgvDetalleOrdenCompra.Enabled = False
@@ -425,7 +425,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtTotal
         '
         Me.txtTotal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotal.Location = New System.Drawing.Point(87, 123)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
@@ -436,7 +436,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtIVA
         '
         Me.txtIVA.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtIVA.Location = New System.Drawing.Point(87, 97)
         Me.txtIVA.Name = "txtIVA"
         Me.txtIVA.ReadOnly = True
@@ -447,7 +447,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtSubTotal
         '
         Me.txtSubTotal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSubTotal.Location = New System.Drawing.Point(87, 71)
         Me.txtSubTotal.Name = "txtSubTotal"
         Me.txtSubTotal.ReadOnly = True
@@ -458,7 +458,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtDescuento
         '
         Me.txtDescuento.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDescuento.Location = New System.Drawing.Point(87, 45)
         Me.txtDescuento.Name = "txtDescuento"
         Me.txtDescuento.ReadOnly = True
@@ -505,7 +505,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtImporteTotal
         '
         Me.txtImporteTotal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtImporteTotal.Location = New System.Drawing.Point(87, 19)
         Me.txtImporteTotal.Name = "txtImporteTotal"
         Me.txtImporteTotal.ReadOnly = True
@@ -712,7 +712,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtTotalPesos
         '
         Me.txtTotalPesos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotalPesos.Location = New System.Drawing.Point(87, 123)
         Me.txtTotalPesos.Name = "txtTotalPesos"
         Me.txtTotalPesos.ReadOnly = True
@@ -723,7 +723,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtIvaPesos
         '
         Me.txtIvaPesos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtIvaPesos.Location = New System.Drawing.Point(87, 97)
         Me.txtIvaPesos.Name = "txtIvaPesos"
         Me.txtIvaPesos.ReadOnly = True
@@ -734,7 +734,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtSubTotalPesos
         '
         Me.txtSubTotalPesos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSubTotalPesos.Location = New System.Drawing.Point(87, 71)
         Me.txtSubTotalPesos.Name = "txtSubTotalPesos"
         Me.txtSubTotalPesos.ReadOnly = True
@@ -745,7 +745,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtDescuentoPesos
         '
         Me.txtDescuentoPesos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDescuentoPesos.Location = New System.Drawing.Point(87, 45)
         Me.txtDescuentoPesos.Name = "txtDescuentoPesos"
         Me.txtDescuentoPesos.ReadOnly = True
@@ -792,7 +792,7 @@ Partial Class ComRecepcionOrdenesCompra
         'txtImportePesos
         '
         Me.txtImportePesos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtImportePesos.Location = New System.Drawing.Point(87, 19)
         Me.txtImportePesos.Name = "txtImportePesos"
         Me.txtImportePesos.ReadOnly = True
@@ -1092,7 +1092,7 @@ Partial Class ComRecepcionOrdenesCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(958, 620)
+        Me.ClientSize = New System.Drawing.Size(956, 620)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.dgvFamilias)
         Me.Controls.Add(Me.GroupBox3)
