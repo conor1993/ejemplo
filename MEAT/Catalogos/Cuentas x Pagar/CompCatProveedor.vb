@@ -1296,17 +1296,12 @@ Public Class CompCatProveedor
     End Function
 
     'Funcion que me valida la forma de un RFC
-<<<<<<< HEAD
+
     Function ValidateRFC(ByVal RFC As String) As Boolean
         Dim RFCRegex As New System.Text.RegularExpressions.Regex("^[a-zA-Z]{3,4}(\d{6})((\D|\d){3})?$")
         Dim RFCMatch As System.Text.RegularExpressions.Match = RFCRegex.Match(RFC)
         Return RFCMatch.Success
-=======
-    Function ValidateRFC(ByVal RFC As String) As Boolean
-        Dim RFCRegex As New System.Text.RegularExpressions.Regex("^[a-zA-Z]{3,4}(\d{6})((\D|\d){3})?$")
-        Dim RFCMatch As System.Text.RegularExpressions.Match = RFCRegex.Match(RFC)
-        Return RFCMatch.Success
->>>>>>> a62fe67c42a6a394792af56d7e8136e4278f4309
+
     End Function
 
     'FUNCION QUE VALIDA UNA PAGINA WEB
