@@ -1204,6 +1204,7 @@ Public Class ComRecepcionOrdenesCompra
                 Me.dgvDetalleOrdenCompra.Enabled = True
                 Me.dgvDetalleOrdenCompra.ReadOnly = False
                 Me.dgvOrdenCompra.Enabled = True
+
             Else
                 Me.txtObservaciones.Enabled = False
                 Me.dgvDetalleOrdenCompra.Enabled = False

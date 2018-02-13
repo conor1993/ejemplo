@@ -303,21 +303,21 @@ Public Class BusquedaCuentasContablesForm
                 End If
             End If
 
-            If Me.chkPre.CheckState <> CheckState.Indeterminate Then
-                If Me.chkPre.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.PresupuestoCad = Me.chkPre.Checked)
-                Else
-                    Filtro.Add(HC.VwContCuentasFields.PresupuestoCad = Me.chkPre.Checked)
-                End If
-            End If
+            'If Me.chkPre.CheckState <> CheckState.Indeterminate Then
+            '    If Me.chkPre.Checked = True Then
+            '        Filtro.Add(HC.VwContCuentasFields.PresupuestoCad = Me.chkPre.Checked)
+            '    Else
+            '        Filtro.Add(HC.VwContCuentasFields.PresupuestoCad = Me.chkPre.Checked)
+            '    End If
+            'End If
 
-            If Me.chkRes.CheckState <> CheckState.Indeterminate Then
-                If Me.chkRes.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.ResultadosCad = Me.chkRes.Checked)
-                Else
-                    Filtro.Add(HC.VwContCuentasFields.ResultadosCad = Me.chkRes.Checked)
-                End If
-            End If
+            'If Me.chkRes.CheckState <> CheckState.Indeterminate Then
+            '    If Me.chkRes.Checked = True Then
+            '        Filtro.Add(HC.VwContCuentasFields.ResultadosCad = Me.chkRes.Checked)
+            '    Else
+            '        Filtro.Add(HC.VwContCuentasFields.ResultadosCad = Me.chkRes.Checked)
+            '    End If
+            'End If
 
             If Not Me.rdbAcr.Checked = True And Me.rdbDeu.Checked Then
                 Filtro.Add(HC.VwContCuentasFields.NaturalezaCad = Chr(ClasesNegocio.CuentaContableNaturalezaEnum.DEUDORA))
