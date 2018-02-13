@@ -93,6 +93,12 @@ Public Class FrmAperturaLoteCorte2
                 LoteCorte.Nofactura = txtNoFactura.Text
                 LoteCorte.Importe = txtImporte.Text
 
+                ''----------------------------------------  calculo de  kilos    
+
+                LoteCorte.Precioxkilo = calcularprecioxkilo(Convert.ToDecimal(txtKilosRecibidos.Text), Convert.ToDecimal(txtImporte.Text))
+                LoteCorte.Precioxkilogasto = calcularprecioxkilo(Convert.ToDecimal(txtKilosRecibidos.Text), Convert.ToDecimal(txtTotal.Text))
+                LoteCorte.Precioxkilototal = LoteCorte.Precioxkilo + LoteCorte.Precioxkilogasto
+
                 If Not LoteCorte.Guardar(Trans) Then
                     Trans.Rollback()
                     Return 0
@@ -610,4 +616,15 @@ Public Class FrmAperturaLoteCorte2
         calcularManual()
 
     End Sub
+
+    Private Function calcularprecioxkilo(kilos As Decimal, importe As Decimal) As Decimal
+        Dim Resultado As Decimal
+        Resultado = 0
+        If importe <> 0 Then
+            Resultado = importe / kilos
+        End If
+
+        Return Resultado
+    End Function
+
 End Class
