@@ -1727,7 +1727,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Name = "AperturaDeLoteDeCortes2ToolStripMenuItem"
         Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Size = New System.Drawing.Size(292, 22)
-        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Text = "Registro de producto de terceros"
+        Me.AperturaDeLoteDeCortes2ToolStripMenuItem.Text = "Compra de productos de terceros"
         '
         'ProducciónToolStripMenuItem
         '
