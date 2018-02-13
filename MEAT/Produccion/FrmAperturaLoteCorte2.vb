@@ -66,6 +66,12 @@ Public Class FrmAperturaLoteCorte2
                 LoteCorte.FechaCorte = Me.dtpFechaLoteCorte.Value
                 LoteCorte.FechaFapsa = Me.dtpFechaSacrificio.Value
                 LoteCorte.IdCliente = 0
+                Dim diasCant As Integer
+                If String.IsNullOrEmpty(Me.txtDiasCaducidad.Text) Then
+                    diasCant = 0
+                Else
+                    diasCant = CInt(Me.txtDiasCaducidad.Text)
+                End If
                 LoteCorte.DiasCad = Me.txtDiasCaducidad.Text
                 LoteCorte.FechaCad = Me.dtpFechaCaducidad.Value
                 LoteCorte.Observaciones = Me.txtObservaciones.Text
@@ -221,20 +227,20 @@ Public Class FrmAperturaLoteCorte2
         Try
             Dim Mensaje As New System.Text.StringBuilder()
 
-            If Me.txtNoPiezas.Text.Trim = "" Then Mensaje.AppendLine("*No piezas")
-            If Me.txtKilosRecibidos.Text.Trim = "" Then Mensaje.AppendLine("*Kilos recibidos")
-            If Me.txtNoFactura.Text.Trim = "" Then Mensaje.AppendLine("*No de factura")
-            If Me.txtImporte.Text.Trim = "" Then Mensaje.AppendLine("*El importe")
+            If Me.txtNoPiezas.Text.Trim = "" Then Mensaje.AppendLine("* No piezas")
+            If Me.txtKilosRecibidos.Text.Trim = "" Then Mensaje.AppendLine("* Kilos recibidos")
+            If Me.txtNoFactura.Text.Trim = "" Then Mensaje.AppendLine("* No de factura")
+            If Me.txtImporte.Text.Trim = "" Then Mensaje.AppendLine("* El importe")
             'If Me.CmbTipoGanado.SelectedValue Is Nothing Then Mensaje.AppendLine("*Poblacion")
-            If Me.CmbTipoGanado.SelectedValue Is Nothing Then Mensaje.AppendLine("*Producto")
-            If Me.txtUnidad.Text.Trim = "" Then Mensaje.AppendLine("*La unidad")
+            If Me.CmbTipoGanado.SelectedValue Is Nothing Then Mensaje.AppendLine("* Producto")
+            If Me.txtUnidad.Text.Trim = "" Then Mensaje.AppendLine("* La unidad")
             If Me.txtConductor.Text.Trim = "" Then Mensaje.AppendLine("*El conductor")
-            If Me.txtPlacas.Text.Trim = "" Then Mensaje.AppendLine("*Las placas")
-            If Me.cmbProveedor.SelectedValue Is Nothing Then Mensaje.AppendLine("* el proveedor")
-            If Me.CmbLugarCompra.SelectedValue Is Nothing Then Mensaje.AppendLine("* el lugar de compra")
-            If Me.cmbComprador.SelectedValue Is Nothing Then Mensaje.AppendLine("* el comprador")
-            If Me.txtobserbacioneslote.Text.Trim = "" Then Mensaje.AppendLine("* la obserbacion")
-            If Me.txtDiasCaducidad.Text.Trim = "0" Then Mensaje.AppendLine("* días de caducidad")
+            If Me.txtPlacas.Text.Trim = "" Then Mensaje.AppendLine("* Las placas")
+            If Me.cmbProveedor.SelectedValue Is Nothing Then Mensaje.AppendLine("* El proveedor")
+            If Me.CmbLugarCompra.SelectedValue Is Nothing Then Mensaje.AppendLine("* El lugar de compra")
+            If Me.cmbComprador.SelectedValue Is Nothing Then Mensaje.AppendLine("* El comprador")
+            If Me.txtobserbacioneslote.Text.Trim = "" Then Mensaje.AppendLine("* La obserbacion")
+            If Me.txtDiasCaducidad.Text.Trim = "0" Or String.IsNullOrEmpty(Me.txtDiasCaducidad.Text.Trim) Then Mensaje.AppendLine("* Días de caducidad")
 
             If Mensaje.ToString() <> String.Empty Then
 
