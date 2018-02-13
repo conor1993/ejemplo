@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: miércoles, 7 de febrero de 2018 11:23:33
+' // Code is generated on: jueves, 8 de febrero de 2018 12:25:23
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -7046,6 +7046,12 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Nofactura"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Nofactura"))
 				Case MscloteCortesCabFieldIndex.Importe
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Importe"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Importe"))
+				Case MscloteCortesCabFieldIndex.Precioxkilo
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Precioxkilo"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Precioxkilo"))
+				Case MscloteCortesCabFieldIndex.Precioxkilogasto
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Precioxkilogasto"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Precioxkilogasto"))
+				Case MscloteCortesCabFieldIndex.Precioxkilototal
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MscloteCortesCabEntity", "Precioxkilototal"), persistenceProvider.GetFieldPersistenceInfo("MscloteCortesCabEntity", "Precioxkilototal"))
 
 			End Select
 			Return fieldToReturn
@@ -12181,6 +12187,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaLoteCortesTypedView", "Producto"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaLoteCortesTypedView", "Producto"))
 				Case VwBusquedaLoteCortesFieldIndex.Descripcion
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaLoteCortesTypedView", "Descripcion"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaLoteCortesTypedView", "Descripcion"))
+				Case VwBusquedaLoteCortesFieldIndex.Precioxkilototal
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaLoteCortesTypedView", "Precioxkilototal"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaLoteCortesTypedView", "Precioxkilototal"))
 			End Select
 
 			Return fieldToReturn

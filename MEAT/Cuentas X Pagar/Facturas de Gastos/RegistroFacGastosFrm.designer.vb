@@ -23,8 +23,8 @@ Partial Class RegistroFacGastosFrm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblEstatus = New System.Windows.Forms.Label()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.chkPagada = New System.Windows.Forms.CheckBox()
@@ -385,7 +385,7 @@ Partial Class RegistroFacGastosFrm
         Me.mtb.HabilitarBorrar = True
         Me.mtb.HabilitarBuscar = True
         Me.mtb.HabilitarCancelar = True
-        Me.mtb.HabilitarEditar = True
+        Me.mtb.HabilitarEditar = False
         Me.mtb.HabilitarGuardar = True
         Me.mtb.HabilitarImprimir = True
         Me.mtb.HabilitarLimpiar = True
@@ -396,7 +396,7 @@ Partial Class RegistroFacGastosFrm
         Me.mtb.MostrarBorrar = True
         Me.mtb.MostrarBuscar = True
         Me.mtb.MostrarCancelar = True
-        Me.mtb.MostrarEditar = True
+        Me.mtb.MostrarEditar = False
         Me.mtb.MostrarGuardar = True
         Me.mtb.MostrarImprimir = False
         Me.mtb.MostrarLimpiar = True
@@ -404,7 +404,7 @@ Partial Class RegistroFacGastosFrm
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 652)
+        Me.mtb.Size = New System.Drawing.Size(50, 706)
         Me.mtb.TabIndex = 102
         '
         'lblEmpresa
@@ -437,7 +437,7 @@ Partial Class RegistroFacGastosFrm
         Me.DgvCuentas.Name = "DgvCuentas"
         Me.DgvCuentas.RowHeadersVisible = False
         Me.DgvCuentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvCuentas.Size = New System.Drawing.Size(685, 146)
+        Me.DgvCuentas.Size = New System.Drawing.Size(663, 146)
         Me.DgvCuentas.TabIndex = 0
         '
         'ClmCtaMayor
@@ -473,19 +473,19 @@ Partial Class RegistroFacGastosFrm
         '
         'ClmCargo
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle1
         Me.ClmCargo.HeaderText = "Cargo"
         Me.ClmCargo.Name = "ClmCargo"
         '
         'ClmAbono
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle2
         Me.ClmAbono.HeaderText = "Abono"
         Me.ClmAbono.Name = "ClmAbono"
         '
@@ -589,7 +589,7 @@ Partial Class RegistroFacGastosFrm
         Me.GroupBox1.Controls.Add(Me.DgvCuentas)
         Me.GroupBox1.Location = New System.Drawing.Point(77, 433)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(691, 165)
+        Me.GroupBox1.Size = New System.Drawing.Size(669, 165)
         Me.GroupBox1.TabIndex = 144
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cuentas Contables"
@@ -597,7 +597,7 @@ Partial Class RegistroFacGastosFrm
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label20)
-        Me.GroupBox2.Location = New System.Drawing.Point(77, 604)
+        Me.GroupBox2.Location = New System.Drawing.Point(91, 649)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(688, 36)
         Me.GroupBox2.TabIndex = 145
@@ -616,7 +616,7 @@ Partial Class RegistroFacGastosFrm
         'txtSumaCargo
         '
         Me.txtSumaCargo.Enabled = False
-        Me.txtSumaCargo.Location = New System.Drawing.Point(551, 527)
+        Me.txtSumaCargo.Location = New System.Drawing.Point(551, 601)
         Me.txtSumaCargo.Name = "txtSumaCargo"
         Me.txtSumaCargo.Size = New System.Drawing.Size(85, 20)
         Me.txtSumaCargo.TabIndex = 146
@@ -625,7 +625,7 @@ Partial Class RegistroFacGastosFrm
         'txtSumaAbono
         '
         Me.txtSumaAbono.Enabled = False
-        Me.txtSumaAbono.Location = New System.Drawing.Point(643, 527)
+        Me.txtSumaAbono.Location = New System.Drawing.Point(650, 601)
         Me.txtSumaAbono.Name = "txtSumaAbono"
         Me.txtSumaAbono.Size = New System.Drawing.Size(85, 20)
         Me.txtSumaAbono.TabIndex = 147
@@ -720,7 +720,7 @@ Partial Class RegistroFacGastosFrm
         '
         Me.TxtIVAFlete1.Location = New System.Drawing.Point(629, 254)
         Me.TxtIVAFlete1.Name = "TxtIVAFlete1"
-        Me.TxtIVAFlete1.Size = New System.Drawing.Size(100, 20)
+        Me.TxtIVAFlete1.Size = New System.Drawing.Size(97, 20)
         Me.TxtIVAFlete1.TabIndex = 157
         Me.TxtIVAFlete1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -745,7 +745,7 @@ Partial Class RegistroFacGastosFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(792, 652)
+        Me.ClientSize = New System.Drawing.Size(792, 706)
         Me.Controls.Add(Me.UUID)
         Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.TxtIVAFlete1)

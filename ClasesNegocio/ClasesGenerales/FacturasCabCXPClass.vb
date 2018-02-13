@@ -122,7 +122,7 @@ Public Class FacturasCabCXPClass
 
     Public Property Ieps() As Decimal
         Get
-            Return Entity.Ieps
+            Return Entity.Ieps.Value
         End Get
         Set(ByVal value As Decimal)
             Entity.Ieps = value
@@ -184,6 +184,15 @@ Public Class FacturasCabCXPClass
         End Get
         Set(ByVal value As Decimal)
             Entity.ImporteRetIva = value
+        End Set
+    End Property
+
+    Public Property Ivaflete() As Decimal?
+        Get
+            Return Entity.Ivaflete.Value
+        End Get
+        Set(ByVal value As Decimal?)
+            Entity.Ivaflete = value
         End Set
     End Property
 

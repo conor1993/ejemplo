@@ -1,9 +1,10 @@
 Imports CN = ClasesNegocio
-Imports HC = IntegraLab.ORM.HelperClasses
-Imports TC = IntegraLab.ORM.TypedViewClasses
+Imports HC = Integralab.ORM.HelperClasses
+Imports TC = Integralab.ORM.TypedViewClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports CC = Integralab.ORM.CollectionClasses
 Imports EC = Integralab.ORM.EntityClasses
+Imports System.Data.SqlClient
 
 '///////////////// CUENTAS CONTABLES  ///////////////////////       
 
@@ -72,6 +73,18 @@ Public Class CatCuentaContableForm
         Me.MostrarCuentas()
 
         dtCuentas = CC.CuentaContableCollection.GetMultiAsDataTable(Nothing, 0, Nothing)
+        Try
+            Dim FormasPago As DataSet = New DataSet
+            Dim queryString As String = "SELECT CodAgrupador, CodAgrupador+'.- '+NombreCuenta as agrupador FROM eCtSATCatCuentas"
+            Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
+            adapter.Fill(FormasPago)
+            Me.cmbAgrupacionSAT.DataSource = FormasPago.Tables(0)
+            Me.cmbAgrupacionSAT.DisplayMember = "agrupador"
+            Me.cmbAgrupacionSAT.ValueMember = "CodAgrupador"
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        Me.cmbAgrupacionSAT.SelectedItem = Nothing
     End Sub
 #End Region
 
@@ -88,6 +101,7 @@ Public Class CatCuentaContableForm
         'Me.btnCtaS.Enabled = True
         Me.BtnQuitarCtaE.Enabled = True
         'Me.BtnQuitarCtaS.Enabled = True
+        Me.cmbAgrupacionSAT.Enabled = True
     End Sub
 
     Public Sub Lectura() Implements InterfaceForm.Lectura
@@ -100,6 +114,7 @@ Public Class CatCuentaContableForm
         ' Me.btnCtaS.Enabled = False
         Me.BtnQuitarCtaE.Enabled = False
         'Me.BtnQuitarCtaS.Enabled = False
+        Me.cmbAgrupacionSAT.Enabled = False
     End Sub
 
     Public Sub Limpiar() Implements InterfaceForm.Limpiar
@@ -132,6 +147,7 @@ Public Class CatCuentaContableForm
             Me.txtCtaE.Text = "No Definida.."
             Me.txtCtaC.Text = ""
             Me.txtCtaC.Visible = False
+            Me.cmbAgrupacionSAT.SelectedItem = Nothing
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
@@ -194,6 +210,7 @@ Public Class CatCuentaContableForm
         chkResultados.Checked = Cuenta.Resultado
         Me.cmbTitulo.SelectedValue = Cuenta.TitulodeEstadoFinanciero
         Me.cmbSubTitulo.SelectedValue = Cuenta.SubTitulodeEstadoFinanciero
+        Me.cmbAgrupacionSAT.SelectedValue = Cuenta.CodAgrupSAT
     End Sub
 
     Public Function Validar() As String Implements InterfaceForm.Validar

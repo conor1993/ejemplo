@@ -90,6 +90,8 @@ Partial Class CatCuentaContableForm
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cmbAgrupacionSAT = New System.Windows.Forms.ComboBox()
         Me.gpo.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -118,9 +120,9 @@ Partial Class CatCuentaContableForm
         Me.gpo.Controls.Add(Me.Label7)
         Me.gpo.Controls.Add(Me.Txtfiltro)
         Me.gpo.Controls.Add(Me.cmbEstatus)
-        Me.gpo.Location = New System.Drawing.Point(53, 214)
+        Me.gpo.Location = New System.Drawing.Point(53, 236)
         Me.gpo.Name = "gpo"
-        Me.gpo.Size = New System.Drawing.Size(859, 335)
+        Me.gpo.Size = New System.Drawing.Size(859, 313)
         Me.gpo.TabIndex = 3
         Me.gpo.TabStop = False
         Me.gpo.Text = "Cuentas Contables Registradas"
@@ -184,7 +186,7 @@ Partial Class CatCuentaContableForm
         Me.TabControl1.Location = New System.Drawing.Point(11, 75)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(847, 254)
+        Me.TabControl1.Size = New System.Drawing.Size(847, 232)
         Me.TabControl1.TabIndex = 24
         '
         'TabPage1
@@ -193,7 +195,7 @@ Partial Class CatCuentaContableForm
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(839, 228)
+        Me.TabPage1.Size = New System.Drawing.Size(839, 206)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Cuentas"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -217,7 +219,7 @@ Partial Class CatCuentaContableForm
         Me.dgv.RowHeadersVisible = False
         Me.dgv.RowHeadersWidth = 25
         Me.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgv.Size = New System.Drawing.Size(830, 222)
+        Me.dgv.Size = New System.Drawing.Size(830, 200)
         Me.dgv.TabIndex = 0
         '
         'clmCodigo
@@ -450,6 +452,8 @@ Partial Class CatCuentaContableForm
         '
         Me.pan.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pan.Controls.Add(Me.cmbAgrupacionSAT)
+        Me.pan.Controls.Add(Me.Label14)
         Me.pan.Controls.Add(Me.gpClasificador)
         Me.pan.Controls.Add(Me.txtSSSCta)
         Me.pan.Controls.Add(Me.txtSSCta)
@@ -469,7 +473,7 @@ Partial Class CatCuentaContableForm
         Me.pan.Controls.Add(Me.txtNombre)
         Me.pan.Location = New System.Drawing.Point(55, 33)
         Me.pan.Name = "pan"
-        Me.pan.Size = New System.Drawing.Size(858, 175)
+        Me.pan.Size = New System.Drawing.Size(858, 197)
         Me.pan.TabIndex = 2
         '
         'gpClasificador
@@ -822,6 +826,23 @@ Partial Class CatCuentaContableForm
         '
         Me.PrintDialog1.UseEXDialog = True
         '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(7, 166)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(88, 13)
+        Me.Label14.TabIndex = 17
+        Me.Label14.Text = "Agrupacion SAT:"
+        '
+        'cmbAgrupacionSAT
+        '
+        Me.cmbAgrupacionSAT.FormattingEnabled = True
+        Me.cmbAgrupacionSAT.Location = New System.Drawing.Point(137, 166)
+        Me.cmbAgrupacionSAT.Name = "cmbAgrupacionSAT"
+        Me.cmbAgrupacionSAT.Size = New System.Drawing.Size(472, 21)
+        Me.cmbAgrupacionSAT.TabIndex = 18
+        '
         'CatCuentaContableForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -920,4 +941,6 @@ Partial Class CatCuentaContableForm
     Friend WithEvents cmbTitulo As System.Windows.Forms.ComboBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
+    Friend WithEvents cmbAgrupacionSAT As System.Windows.Forms.ComboBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
 End Class

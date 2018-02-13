@@ -80,6 +80,15 @@ Public Class ConfiguracionContableClass
             Entity.FechaCierreDiarioBanco = value
         End Set
     End Property
+
+    Public Property IVAFlete() As Decimal
+        Get
+            Return Entity.Ivaflete
+        End Get
+        Set(ByVal value As Decimal)
+            Entity.Ivaflete = value
+        End Set
+    End Property
 #End Region
 
 #Region "Metodos"
@@ -113,7 +122,7 @@ Public Class ConfiguracionContableClass
                     .Add("@IVA", SqlDbType.Money).Value = Me.PorcIVA
                     .Add("@ISR", SqlDbType.Money).Value = Me.PorcISR
                     .Add("@TasaRetencion", SqlDbType.Money).Value = Me.PorcRetencion
-                    .Add("@Flete", SqlDbType.Money).Value = 0
+                    .Add("@Flete", SqlDbType.Money).Value = Me.IVAFlete
                     .Add("@MostrarDomicilio", SqlDbType.Bit).Value = Me.MostrarDomicilio
                 End With
                 ad.SelectCommand.CommandTimeout = 30
@@ -133,7 +142,7 @@ Public Class ConfiguracionContableClass
                     .Add("@IVA", SqlDbType.Money).Value = Me.PorcIVA
                     .Add("@ISR", SqlDbType.Money).Value = Me.PorcISR
                     .Add("@TasaRetencion", SqlDbType.Money).Value = Me.PorcRetencion
-                    .Add("@Flete", SqlDbType.Money).Value = 0
+                    .Add("@Flete", SqlDbType.Money).Value = Me.IVAFlete
                     .Add("@MostrarDomicilio", SqlDbType.Bit).Value = Me.MostrarDomicilio
                 End With
 

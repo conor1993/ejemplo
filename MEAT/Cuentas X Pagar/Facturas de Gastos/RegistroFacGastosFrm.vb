@@ -214,9 +214,9 @@ Public Class RegistroFacGastosFrm
             Me.Factura.TasaISR = Me.TxtTasaISR.Text
             Me.Factura.TasaRetIva = Me.TxtTasaRetIVA.Text
         End If
-        'If ckbFletes.Checked = True Then
-
-        'End If
+        If ckbFletes.Checked = True Then
+            Me.Factura.IvaFlete = Me.TxtIVAFlete1.Text
+        End If
     End Sub
 
     Private Function Validar() As Boolean
@@ -275,6 +275,27 @@ Public Class RegistroFacGastosFrm
     End Sub
 
     Private Sub ObtenerValores()
+
+        'If Factura.Ivaflete <> 0 Then
+        '    ckbFletes.Checked = True
+        '    Dim Conf As New CC.UsrConfigContabilidadCollection
+        '    Conf.GetMulti(Nothing)
+        '    Me.TxtIVAFlete.Text = CInt(Conf(0).Ivaflete)
+        '    TxtIVAFlete1.Text = Me.Factura.Ivaflete.ToString("C2")
+
+        'ElseIf Factura.TasaISR <> 0 And Factura.TasaRetIva <> 0 Then
+        '    ckbHonorarios.Checked = True
+        '    Dim Conf As New CC.UsrConfigContabilidadCollection
+        '    Conf.GetMulti(Nothing)
+        '    Me.TxtTasaISR.Text = CInt(Conf(0).Isr)
+        '    Me.TxtTasaRetIVA.Text = CInt(Conf(0).TasaRetencion)
+        '    TxtTasaISR.Text = Me.Factura.TasaISR.ToString("C2")
+        '    TxtTasaRetIVA.Text = Me.Factura.TasaRetIva.ToString("C2")
+        'Else
+        '    TxtIVAFlete1.Text = 0
+        '    TxtTasaISR.Text = 0
+        '    TxtTasaRetIVA.Text = 0
+        'End If
         Me.CmbProveedor.SelectedValue = Me.Factura.Proveedor.Codigo
         Me.TxtFactura.Text = Me.Factura.NoFactura
         Me.DtpFechaFactura.Value = Factura.FechaFactura
@@ -285,18 +306,74 @@ Public Class RegistroFacGastosFrm
         Me.TxtAnticipo.Text = Factura.Anticipo.ToString("C2")
         Me.TxtISR.Text = Me.Factura.ImporteIsr
         Me.txtRetIva.Text = Me.Factura.ImporteRetIva
-        Me.txtSubtotal.Text = Me.Factura.Subtotal
+        Me.txtSubtotal.Text = Me.Factura.Subtotal.ToString("C2")
         Me.txtObservaciones.Text = Me.Factura.Observaciones
         Me.TxtTasaISR.Text = Me.Factura.TasaISR
         Me.txtTasaIva.Text = Me.Factura.TasaIva
-        Me.txtRetIva.Text = Me.Factura.TasaRetIva
+        Me.TxtTasaRetIVA.Text = Me.Factura.TasaRetIva
         Me.txtSumaAbono.Text = Me.Factura.Total.ToString("C2")
         Me.txtSumaCargo.Text = Me.Factura.Total.ToString("C2")
-        Me.TxtTasaISR.Text = Me.Factura.TasaISR.ToString
-        Me.txtTasaIva.Text = Me.Factura.TasaIva.ToString
+        Me.TxtTasaISR.Text = Me.Factura.TasaISR.ToString("C2")
+        Me.txtTasaIva.Text = Me.Factura.TasaIva.ToString("C2")
         Me.TxtTasaRetIVA.Text = Me.Factura.TasaRetIva.ToString
         Me.Txtconcepto.Text = Me.Factura.Concepto
         Me.UUID.Text = Me.Factura.UUID
+        If Factura.Ivaflete <> 0 Then
+            ckbFletes.Checked = True
+            Dim Conf As New CC.UsrConfigContabilidadCollection
+            Conf.GetMulti(Nothing)
+            Me.TxtIVAFlete.Text = CInt(Conf(0).Ivaflete)
+            TxtIVAFlete1.Text = Me.Factura.Ivaflete.ToString("C2")
+
+        ElseIf Factura.TasaISR <> 0 And Factura.TasaRetIva <> 0 Then
+            ckbHonorarios.Checked = True
+            Dim Conf As New CC.UsrConfigContabilidadCollection
+            Conf.GetMulti(Nothing)
+            Me.TxtTasaISR.Text = CInt(Conf(0).Isr)
+            Me.TxtTasaRetIVA.Text = CInt(Conf(0).TasaRetencion)
+            TxtTasaISR.Text = Me.Factura.TasaISR.ToString("C2")
+            TxtTasaRetIVA.Text = Me.Factura.TasaRetIva.ToString("C2")
+        Else
+            TxtIVAFlete1.Text = 0
+            TxtTasaISR.Text = 0
+            TxtTasaRetIVA.Text = 0
+        End If
+        'If TxtIVAFlete1.Text = Me.Factura.Ivaflete.ToString("C2") Then
+        '    ckbFletes.Checked = True
+        '    Dim Conf As New CC.UsrConfigContabilidadCollection
+        '    Conf.GetMulti(Nothing)
+        '    Me.TxtIVAFlete.Text = CInt(Conf(0).Ivaflete)
+        '    TxtIVAFlete1.Text = Me.Factura.Ivaflete.ToString("C2")
+
+        'ElseIf TxtTasaISR.Text = Me.Factura.TasaISR.ToString("C2") Or TxtTasaRetIVA.Text = Me.Factura.TasaRetIva.ToString("C2") Then
+        '    ckbHonorarios.Checked = True
+        '    Dim Conf As New CC.UsrConfigContabilidadCollection
+        '    Conf.GetMulti(Nothing)
+        '    Me.TxtTasaISR.Text = CInt(Conf(0).Isr)
+        '    Me.TxtTasaRetIVA.Text = CInt(Conf(0).TasaRetencion)
+        '    TxtTasaISR.Text = Me.Factura.TasaISR.ToString("C2")
+        '    TxtTasaRetIVA.Text = Me.Factura.TasaRetIva.ToString("C2")
+        'Else
+        '    TxtIVAFlete1.Text = 0
+        '    TxtTasaISR.Text = 0
+        '    TxtTasaRetIVA.Text = 0
+        'End If
+        'If TxtTasaISR.Text = Me.Factura.TasaISR.ToString("C2") Or TxtTasaRetIVA.Text = Me.Factura.TasaRetIva.ToString("C2") Then
+        '    ckbHonorarios.Checked = True
+
+        'Else
+
+        'End If
+
+        'If TxtIVAFlete.Text IsNot Nothing Then
+        '    TxtIVAFlete.Text = 0.ToString("C2")
+        'Else
+        '    Me.TxtIVAFlete.Text = Me.Factura.Ivaflete
+        'End If
+        'Me.TxtIVAFlete.Text = Me.Factura.Ivaflete
+        'Me.TxtIVAFlete1.Text = Me.Factura.Ivaflete
+
+
     End Sub
 
     Private Sub ObtenerDetalle()
@@ -350,23 +427,28 @@ Public Class RegistroFacGastosFrm
                 Me.TxtIVAFlete1.Text = ((CDec(Me.txtSubtotal.Text) * CDec(Me.TxtIVAFlete.Text)) / 100).ToString("C2")
                 If ckbHonorarios.Checked = True Then
                     Me.TxtIVAFlete.Text = 0.ToString("C2")
-                    Me.TxtTotal.Text = ((CDec(Me.txtSubtotal.Text) + CDec(Me.txtIva.Text)) - CDec(Me.txtRetIva.Text) - CDec(Me.TxtISR.Text) - CDec(Me.TxtAnticipo.Text)).ToString("C2")
+                    Me.TxtTotal.Text = ((CDec(txtSubtotal.Text) + CDec(txtIva.Text) + CDec(TxtIVAFlete1.Text)) - (CDec(TxtISR.Text) + CDec(txtRetIva.Text) + CDec(TxtAnticipo.Text))).ToString("C2")
+                    'Me.TxtTotal.Text = ((CDec(Me.txtSubtotal.Text) + CDec(Me.txtIva.Text)) - CDec(Me.txtRetIva.Text) - CDec(Me.TxtISR.Text) - CDec(Me.TxtAnticipo.Text)).ToString("C2")
 
 
                 ElseIf ckbFletes.Checked = True Then
                     Me.TxtTasaRetIVA.Text = 0.ToString("C2")
                     Me.TxtTasaISR.Text = 0.ToString("C2")
-                    Me.TxtTotal.Text = ((CDec(Me.txtSubtotal.Text) + CDec(Me.txtIva.Text)) + CDec(Me.TxtIVAFlete1.Text) - CDec(Me.TxtAnticipo.Text)).ToString("C2")
+                    Me.TxtTotal.Text = ((CDec(txtSubtotal.Text) + CDec(txtIva.Text) + CDec(TxtIVAFlete1.Text)) - (CDec(TxtISR.Text) + CDec(txtRetIva.Text) + CDec(TxtAnticipo.Text))).ToString("C2")
+                    'Me.TxtTotal.Text = ((CDec(Me.txtSubtotal.Text) + CDec(Me.txtIva.Text)) + CDec(Me.TxtIVAFlete1.Text) - CDec(Me.TxtAnticipo.Text)).ToString("C2")
                 Else
                     ckbFletes.Checked = False And ckbHonorarios.Checked = False
                     Me.TxtTasaRetIVA.Text = 0.ToString("C2")
                     Me.TxtTasaISR.Text = 0.ToString("C2")
                     Me.TxtIVAFlete.Text = 0.ToString("C2")
-                    Me.TxtTotal.Text = ((CDec(Me.txtSubtotal.Text) + CDec(Me.txtIva.Text)) - CDec(Me.TxtAnticipo.Text)).ToString("C2")
+                    Me.TxtTotal.Text = ((CDec(txtSubtotal.Text) + CDec(txtIva.Text) + CDec(TxtIVAFlete1.Text)) - (CDec(TxtISR.Text) + CDec(txtRetIva.Text) + CDec(TxtAnticipo.Text))).ToString("C2")
+                    'Me.TxtTotal.Text = ((CDec(Me.txtSubtotal.Text) + CDec(Me.txtIva.Text)) - CDec(Me.TxtAnticipo.Text)).ToString("C2")
                 End If
 
             End If
+
         End If
+
     End Sub
 
     Private Sub SugerirPorcentajes()
@@ -375,6 +457,7 @@ Public Class RegistroFacGastosFrm
         Me.txtTasaIva.Text = CInt(Conf(0).Iva)
         Me.TxtTasaISR.Text = CInt(Conf(0).Isr)
         Me.TxtTasaRetIVA.Text = CInt(Conf(0).TasaRetencion)
+        Me.TxtIVAFlete.Text = CInt(Conf(0).Ivaflete)
     End Sub
 #End Region
 
@@ -399,7 +482,7 @@ Public Class RegistroFacGastosFrm
             MtbEstados.StateNuevo = "011010001"
             MtbEstados.StateGuardar = "100100001"
             MtbEstados.StateBorrar = "100100001"
-            MtbEstados.StateEditar = "001010001"
+
             MtbEstados.StateImprimir = ""
             MtbEstados.StateSalir = ""
             Me.mtb.Buttons(0).ToolTipText = "Busca las Facturas Registradas."
@@ -408,7 +491,7 @@ Public Class RegistroFacGastosFrm
             Me.mtb.Buttons(5).ToolTipText = "Crea una nueva Factura."
             Me.mtb.Buttons(6).ToolTipText = "Guarda la Factura o los cambios que se le hayan Realizado."
             Me.mtb.Buttons(7).ToolTipText = "Cambia el estatus de la Factura a Inactiva."
-            Me.mtb.Buttons(8).ToolTipText = "Permite Modificar la Factura."
+
             ' Me.mtb.Buttons(10).ToolTipText = "Imprime las Ciudades Registradas."
             Me.mtb.Buttons(12).ToolTipText = "Cierra la Ventana Ignorando los cambios que no hayan sido Guardados."
 
@@ -514,9 +597,9 @@ Public Class RegistroFacGastosFrm
         Deshabilitar()
     End Sub
 
-    Private Sub mtb_ClickEditar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickEditar
-        Habilitar()
-    End Sub
+    'Private Sub mtb_ClickEditar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickEditar
+
+    'End Sub
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
         Dim Tran As New HC.Transaction(IsolationLevel.ReadCommitted, "Fac")
@@ -526,8 +609,8 @@ Public Class RegistroFacGastosFrm
                 AgregarDetalles()
                 If Factura.Guardar(Tran) Then
                     For Each Det As CN.FacturasDetalleCXPClass In FacDet
-                        'Tran.Add(Det)
-                        Det.Guardar(Tran)
+                        Tran.Add(Det)
+                        'Det.Guardar(Tran)
                     Next
                     Tran.Commit()
                     MsgBox("La Factura se ha Guardado Satisfactoriamente...", MsgBoxStyle.Exclamation, "Aviso")
@@ -779,7 +862,7 @@ Public Class RegistroFacGastosFrm
                 For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
                     SumaCargo = SumaCargo + Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value
                     SumaAbono = SumaAbono + Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value
-                Next            
+                Next
                 Me.txtSumaCargo.Text = SumaCargo.ToString("C2")
                 Me.txtSumaAbono.Text = SumaAbono.ToString("C2")
             End If
@@ -834,8 +917,9 @@ Public Class RegistroFacGastosFrm
             TxtTasaISR.Visible = False
             Label16.Visible = False
             TxtTasaRetIVA.Visible = False
-            TxtTasaISR.Text = 0.ToString("C2")
-            TxtTasaRetIVA.Text = 0.ToString("C2")
+            'TxtTasaISR.Text = 0.ToString("C2")
+            'TxtTasaRetIVA.Text = 0.ToString("C2")
+
 
         End If
 
@@ -849,7 +933,8 @@ Public Class RegistroFacGastosFrm
         Else
             Label23.Visible = False
             TxtIVAFlete.Visible = False
-            TxtIVAFlete.Text = 0.ToString("C2")
+            'TxtIVAFlete.Text = 0.ToString("C2")
+
         End If
     End Sub
 

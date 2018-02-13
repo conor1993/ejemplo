@@ -271,8 +271,8 @@ Public Class BusquedaCuentasContablesForm
             Dim Filtro As New OC.PredicateExpression
 
             If Me.chkAfe.CheckState <> CheckState.Indeterminate Then
-                If Me.chkAfe.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.AfectableCad = false)
+                If Me.chkAfe.Checked = True Or Me.chkAfe.Checked = False Then
+                    Filtro.Add(HC.VwContCuentasFields.AfectableCad = True)
                 Else
                     Filtro.Add(HC.VwContCuentasFields.AfectableCad = True)
                 End If
@@ -287,13 +287,13 @@ Public Class BusquedaCuentasContablesForm
                 End If
             End If
 
-            If Me.chkDep.CheckState <> CheckState.Indeterminate Then
-                If Me.chkDep.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.DepartamentalizableCad = Me.chkDep.Checked)
-                Else
-                    Filtro.Add(HC.VwContCuentasFields.DepartamentalizableCad = chkDep.Checked)
-                End If
-            End If
+            'If Me.chkDep.CheckState <> CheckState.Indeterminate Then
+            '    If Me.chkDep.Checked = True Then
+            '        Filtro.Add(HC.VwContCuentasFields.DepartamentalizableCad = Me.chkDep.Checked)
+            '    Else
+            '        Filtro.Add(HC.VwContCuentasFields.DepartamentalizableCad = chkDep.Checked)
+            '    End If
+            'End If
 
             If Me.chkIna.CheckState <> CheckState.Indeterminate Then
                 If Me.chkIna.Checked = True Then
@@ -303,21 +303,21 @@ Public Class BusquedaCuentasContablesForm
                 End If
             End If
 
-            If Me.chkPre.CheckState <> CheckState.Indeterminate Then
-                If Me.chkPre.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.PresupuestoCad = Me.chkPre.Checked)
-                Else
-                    Filtro.Add(HC.VwContCuentasFields.PresupuestoCad = Me.chkPre.Checked)
-                End If
-            End If
+            'If Me.chkPre.CheckState <> CheckState.Indeterminate Then
+            '    If Me.chkPre.Checked = True Then
+            '        Filtro.Add(HC.VwContCuentasFields.PresupuestoCad = Me.chkPre.Checked)
+            '    Else
+            '        Filtro.Add(HC.VwContCuentasFields.PresupuestoCad = Me.chkPre.Checked)
+            '    End If
+            'End If
 
-            If Me.chkRes.CheckState <> CheckState.Indeterminate Then
-                If Me.chkRes.Checked = True Then
-                    Filtro.Add(HC.VwContCuentasFields.ResultadosCad = Me.chkRes.Checked)
-                Else
-                    Filtro.Add(HC.VwContCuentasFields.ResultadosCad = Me.chkRes.Checked)
-                End If
-            End If
+            'If Me.chkRes.CheckState <> CheckState.Indeterminate Then
+            '    If Me.chkRes.Checked = True Then
+            '        Filtro.Add(HC.VwContCuentasFields.ResultadosCad = Me.chkRes.Checked)
+            '    Else
+            '        Filtro.Add(HC.VwContCuentasFields.ResultadosCad = Me.chkRes.Checked)
+            '    End If
+            'End If
 
             If Not Me.rdbAcr.Checked = True And Me.rdbDeu.Checked Then
                 Filtro.Add(HC.VwContCuentasFields.NaturalezaCad = Chr(ClasesNegocio.CuentaContableNaturalezaEnum.DEUDORA))
