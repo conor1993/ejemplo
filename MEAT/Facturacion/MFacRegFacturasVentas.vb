@@ -1194,6 +1194,7 @@ Public Class MFacRegFacturasVentas
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+
     End Sub
 
     Public Function Guardar(ByVal Trans As HC.Transaction, ByVal Estatus As String) As Boolean
@@ -1793,6 +1794,7 @@ Public Class MFacRegFacturasVentas
             MEAToolBar1_ClickCancelar(sender, New ToolBarButtonClickEventArgs(MEAToolBar1.Buttons("tbbtnCancelar")), Cancelar)
             Cancelar = True
         End If
+
     End Sub
 
     Private Sub dgvDetalleConcentrado_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalleConcentrado.CellEndEdit

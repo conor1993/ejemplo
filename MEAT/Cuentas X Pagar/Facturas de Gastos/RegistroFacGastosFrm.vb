@@ -619,7 +619,7 @@ Public Class RegistroFacGastosFrm
                 If Factura.Guardar(Tran) Then
                     For Each Det As CN.FacturasDetalleCXPClass In FacDet
                         Tran.Add(Det)
-                        'Det.Guardar(Tran)
+                        Det.Guardar(Tran)
                     Next
                     Tran.Commit()
                     MsgBox("La Factura se ha Guardado Satisfactoriamente...", MsgBoxStyle.Exclamation, "Aviso")
