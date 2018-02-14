@@ -79,6 +79,7 @@ Public Class FrmAperturaLoteCorte2
                 LoteCorte.Func = "A"
                 LoteCorte.NumOpc = 1
                 ''nuevos datos ----------------------------------------------------------------------------------------------------------------------------------
+
                 LoteCorte.Nopiezas = txtNoPiezas.Text
                 LoteCorte.Producto = CmbTipoGanado.SelectedValue
                 LoteCorte.Unidad = txtUnidad.Text
@@ -93,7 +94,7 @@ Public Class FrmAperturaLoteCorte2
                 LoteCorte.Nofactura = txtNoFactura.Text
                 LoteCorte.Importe = txtImporte.Text
 
-                ''----------------------------------------  calculo de  kilos    
+                ''-------------------------------------------  calculo de  kilos------------------------------------------------------------------
 
                 LoteCorte.Precioxkilo = calcularprecioxkilo(Convert.ToDecimal(txtKilosRecibidos.Text), Convert.ToDecimal(txtImporte.Text))
                 LoteCorte.Precioxkilogasto = calcularprecioxkilo(Convert.ToDecimal(txtKilosRecibidos.Text), Convert.ToDecimal(txtTotal.Text))
