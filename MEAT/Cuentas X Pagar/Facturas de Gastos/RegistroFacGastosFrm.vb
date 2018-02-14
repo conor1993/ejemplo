@@ -215,7 +215,9 @@ Public Class RegistroFacGastosFrm
             Me.Factura.TasaRetIva = Me.TxtTasaRetIVA.Text
         End If
         If ckbFletes.Checked = True Then
-            Me.Factura.IvaFlete = Me.TxtIVAFlete1.Text
+            Me.Factura.Ivaflete = Me.TxtIVAFlete1.Text
+        Else
+            Me.Factura.Ivaflete = 0
         End If
     End Sub
 
@@ -554,18 +556,24 @@ Public Class RegistroFacGastosFrm
     Private Sub mtb_ClickBorrar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar
         'Es posible cancelar siempre y cuando no tenga cheques vigentes 
         If Me.Factura.Estatus <> ClasesNegocio.EstatusFacturasEnum.CANCELADA Then
-            Dim pag As New CN.PagosProveedoresColeccionClass
-            pag.Obtener(Me.Factura.IdProveedor, Factura.NoFactura, Controlador.Sesion.Empndx, True)
-            If pag.Count = 0 Then
-                Factura.Estatus = ClasesNegocio.EstatusFacturasEnum.CANCELADA
-                If Factura.Guardar() Then
-                    MsgBox("La Factura fue cancelada satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
+            If Me.Factura.Contabilizada = "S" Then
+                MsgBox("La Factura no puede ser cancelada ya que se encuentra provisionada en una poliza de pasivos, verifique porfavor...")
+                Limpiar()
+            Else
+                Dim pag As New CN.PagosProveedoresColeccionClass
+                pag.Obtener(Me.Factura.IdProveedor, Factura.NoFactura, Controlador.Sesion.Empndx, True)
+                If pag.Count = 0 Then
+                    Factura.Estatus = ClasesNegocio.EstatusFacturasEnum.CANCELADA
+                    If Factura.Guardar() Then
+                        MsgBox("La Factura fue cancelada satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
+                        Limpiar()
+                    End If
+                Else
+                    MsgBox("No es posible Cancelar la factura hay cheques emitidos")
                     Limpiar()
                 End If
-            Else
-                MsgBox("No es posible Cancelar la factura hay cheques emitidos")
-                Limpiar()
             End If
+           
         Else
             MsgBox("La Factura ya está cancelada...")
             Limpiar()
@@ -585,6 +593,7 @@ Public Class RegistroFacGastosFrm
             Dim Facturas_ As New CN.FacturaCabCXPColeccion
             Facturas_.Obtener(Busqueda.Factura, Busqueda.ProveedorID)
             If Facturas_.Count = 1 Then
+                Me.Limpiar()
                 Me.Factura = Facturas_(0)
                 ObtenerValores()
                 ObtenerDetalle()
