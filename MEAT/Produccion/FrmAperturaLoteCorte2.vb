@@ -199,10 +199,10 @@ Public Class FrmAperturaLoteCorte2
         'DgvConceptoGastos.Rows.Clear()
         'DgvConceptoGastos.DataSource = Nothing
 
-        proveedores.Obtener(CondicionEnum.ACTIVOS)
-        Me.clmproovedor.DataSource = proveedores
-        Me.clmproovedor.DisplayMember = "RazonSocial"
-        Me.clmproovedor.ValueMember = "Codigo"
+        'proveedores.Obtener(CondicionEnum.ACTIVOS)
+        'Me.clmproovedor.DataSource = proveedores
+        'Me.clmproovedor.DisplayMember = "RazonSocial"
+        'Me.clmproovedor.ValueMember = "Codigo"
 
         dtpFechaPago.Value = DateTime.Now
         txtNoFactura.Text = ""
@@ -342,12 +342,22 @@ Public Class FrmAperturaLoteCorte2
             clmcmbConceptoGasto.ValueMember = "IdConceptoGasto"
             clmcmbConceptoGasto.DataSource = ConceptosGasto
 
-            proveedores.Obtener(CondicionEnum.ACTIVOS)
+            'proveedores.Obtener(CondicionEnum.ACTIVOS)
 
             Dim query As String = "SELECT PrIdProveedor Codigo, PrRazSocial RazonSocial, ISNULL(EsdeGanado, 0) EsdeGanado" &
             " FROM MCatCompProveedores " &
             " WHERE(PrEstatus = 1 And ISNULL(EsdeGanado, 0) > 0) " &
             " ORDER BY PrRazSocial "
+
+            'Me.cmbProveedor.DataSource = proveedores
+            Me.cmbProveedor.DisplayMember = "RazonSocial"
+            Me.cmbProveedor.ValueMember = "Codigo"
+            Me.cmbProveedor.SelectedIndex = -1
+
+            'proveedores.Obtener(CondicionEnum.ACTIVOS)
+            'Me.clmproovedor.DataSource = proveedores
+            Me.clmproovedor.DisplayMember = "RazonSocial"
+            Me.clmproovedor.ValueMember = "Codigo"
 
             Dim tb As New DataTable
             Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
@@ -356,18 +366,27 @@ Public Class FrmAperturaLoteCorte2
                 sqlCon.Open()
                 adp.Fill(tb)
                 cmbProveedor.DataSource = tb
+
+                
                 sqlCon.Close()
             End Using
 
-            'Me.cmbProveedor.DataSource = proveedores
-            Me.cmbProveedor.DisplayMember = "RazonSocial"
-            Me.cmbProveedor.ValueMember = "Codigo"
-            Me.cmbProveedor.SelectedIndex = -1
+            query = "SELECT PrIdProveedor Codigo, PrRazSocial RazonSocial, ISNULL(EsdeGanado, 0) EsdeGanado" &
+                " FROM MCatCompProveedores " &
+                " WHERE PrEstatus = 1 " &
+                " ORDER BY PrRazSocial "
 
-            proveedores.Obtener(CondicionEnum.ACTIVOS)
-            Me.clmproovedor.DataSource = proveedores
-            Me.clmproovedor.DisplayMember = "RazonSocial"
-            Me.clmproovedor.ValueMember = "Codigo"
+            Using sqlcom As New SqlCommand(query, sqlCon)
+                tb = New DataTable
+                Dim adp As New SqlDataAdapter(sqlcom)
+                sqlCon.Open()
+                adp.Fill(tb)
+                clmproovedor.DataSource = tb
+
+
+                sqlCon.Close()
+            End Using
+
 
             Return True
         Catch ex As Exception
