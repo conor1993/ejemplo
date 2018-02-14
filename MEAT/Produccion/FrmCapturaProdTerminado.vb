@@ -1075,10 +1075,10 @@ Public Class FrmCapturaProdTerminado
             ''nuevo modo de guardar----------------------------------------
 
 
-            If kilosrecividos < (numcaja * txtPeso.Text) Then
-                MsgBox("El monto de kilos ingresados es mayor al monto de kilos recibidos en", MsgBoxStyle.Exclamation, "Aviso")
-                Exit Sub
-            End If
+            'If kilosrecividos < (numcaja * txtPeso.Text) Then
+            '    MsgBox("El monto de kilos ingresados es mayor al monto de kilos recibidos en", MsgBoxStyle.Exclamation, "Aviso")
+            '    Exit Sub
+            'End If
 
 
             For i As Integer = 1 To numcaja
