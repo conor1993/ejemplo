@@ -114,7 +114,7 @@ Public Class ReportedeEstadodeCuenta
         End If
     End Sub
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
+
     Private Sub bdWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles bdWorker.DoWork
         If e.Argument.length = 5 Then
             Utilerias.RunControlException(Controlador, "ReporteSaldosClientesAcumulados", New Object() {CType(sender, BackgroundWorker), CType(e.Argument(0), Boolean), CType(e.Argument(1), Integer), CType(e.Argument(2), Integer), CType(e.Argument(3), Date), CType(e.Argument(4), Date)})
