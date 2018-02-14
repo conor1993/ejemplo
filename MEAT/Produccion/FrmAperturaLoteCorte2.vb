@@ -644,7 +644,7 @@ Public Class FrmAperturaLoteCorte2
             Resultado = importe / kilos
         End If
 
-        Return Resultado
+        Return Math.Round(Resultado, 4)
     End Function
 
 End Class
