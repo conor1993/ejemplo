@@ -23,8 +23,8 @@ Partial Class CatCuentaContableForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gpo = New System.Windows.Forms.GroupBox()
         Me.txtSSSCtaBusq = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -58,6 +58,8 @@ Partial Class CatCuentaContableForm
         Me.cmbEstatus = New System.Windows.Forms.ComboBox()
         Me.Condiciones = New Integra.Clases.CondicionesClass()
         Me.pan = New System.Windows.Forms.Panel()
+        Me.cmbAgrupacionSAT = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.gpClasificador = New System.Windows.Forms.GroupBox()
         Me.cmbSubTitulo = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -90,8 +92,6 @@ Partial Class CatCuentaContableForm
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.cmbAgrupacionSAT = New System.Windows.Forms.ComboBox()
         Me.gpo.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -265,9 +265,9 @@ Partial Class CatCuentaContableForm
         '
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DataPropertyName = "SaldoAñoAnterior"
-        DataGridViewCellStyle5.Format = "C2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.HeaderText = "Saldo del Año Anterior"
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.Name = "SaldoAñoAnteriorDataGridViewTextBoxColumn"
         Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.ReadOnly = True
@@ -277,9 +277,9 @@ Partial Class CatCuentaContableForm
         '
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DataPropertyName = "SaldoInicioEjercicio"
-        DataGridViewCellStyle6.Format = "C2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.HeaderText = "Saldo de Inicio del Ejercicio"
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.Name = "SaldoInicioEjercicioDataGridViewTextBoxColumn"
         Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.ReadOnly = True
@@ -320,7 +320,7 @@ Partial Class CatCuentaContableForm
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(839, 228)
+        Me.TabPage2.Size = New System.Drawing.Size(839, 206)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "+ . . ."
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -475,6 +475,23 @@ Partial Class CatCuentaContableForm
         Me.pan.Name = "pan"
         Me.pan.Size = New System.Drawing.Size(858, 197)
         Me.pan.TabIndex = 2
+        '
+        'cmbAgrupacionSAT
+        '
+        Me.cmbAgrupacionSAT.FormattingEnabled = True
+        Me.cmbAgrupacionSAT.Location = New System.Drawing.Point(137, 166)
+        Me.cmbAgrupacionSAT.Name = "cmbAgrupacionSAT"
+        Me.cmbAgrupacionSAT.Size = New System.Drawing.Size(472, 21)
+        Me.cmbAgrupacionSAT.TabIndex = 18
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(7, 166)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(88, 13)
+        Me.Label14.TabIndex = 17
+        Me.Label14.Text = "Agrupacion SAT:"
         '
         'gpClasificador
         '
@@ -825,23 +842,6 @@ Partial Class CatCuentaContableForm
         'PrintDialog1
         '
         Me.PrintDialog1.UseEXDialog = True
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(7, 166)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(88, 13)
-        Me.Label14.TabIndex = 17
-        Me.Label14.Text = "Agrupacion SAT:"
-        '
-        'cmbAgrupacionSAT
-        '
-        Me.cmbAgrupacionSAT.FormattingEnabled = True
-        Me.cmbAgrupacionSAT.Location = New System.Drawing.Point(137, 166)
-        Me.cmbAgrupacionSAT.Name = "cmbAgrupacionSAT"
-        Me.cmbAgrupacionSAT.Size = New System.Drawing.Size(472, 21)
-        Me.cmbAgrupacionSAT.TabIndex = 18
         '
         'CatCuentaContableForm
         '

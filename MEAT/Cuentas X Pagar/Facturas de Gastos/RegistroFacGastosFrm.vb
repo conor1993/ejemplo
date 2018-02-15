@@ -12,6 +12,9 @@ Public Class RegistroFacGastosFrm
     Dim SumaCargo As Decimal
     Dim SumaAbono As Decimal
     Dim Buscar As Boolean = False
+    Dim Poliza As CN.PolizaClass
+    Public Shared valor As Decimal
+
 
 #Region "Métodos"
     Private Sub RellenarGridCuentas(ByVal Cta As ClasesNegocio.CuentaContableClass)
@@ -35,6 +38,7 @@ Public Class RegistroFacGastosFrm
                         Else
                             If Not Me.DgvCuentas.Rows(i - 1).Cells("ClmDescripcion").Value = "" Then
                                 Me.DgvCuentas.Rows.Add()
+                                Me.DgvCuentas.Rows(i).Cells("clmIDCuenta").Value = Cta.Codigo
                                 Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                                 Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
                                 Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
@@ -44,6 +48,7 @@ Public Class RegistroFacGastosFrm
                                 Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
                                 Me.DgvCuentas.Rows.Add()
                             Else
+                                Me.DgvCuentas.Rows(i - 1).Cells("clmIDCuenta").Value = Cta.Codigo
                                 Me.DgvCuentas.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                                 Me.DgvCuentas.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
                                 Me.DgvCuentas.Rows(i - 1).Cells("ClmSsbCta").Value = Cta.SSubCuenta
@@ -56,6 +61,7 @@ Public Class RegistroFacGastosFrm
                         End If
                     Else
                         Me.DgvCuentas.Rows.Add()
+                        Me.DgvCuentas.Rows(i).Cells("clmIDCuenta").Value = Cta.Codigo
                         Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                         Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
                         Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
@@ -82,6 +88,7 @@ Public Class RegistroFacGastosFrm
             Dim i As Integer = Me.DgvCuentas.Rows.Count
             Me.DgvCuentas.Rows.Add()
             If Cargo Then
+                Me.DgvCuentas.Rows(i).Cells("clmIDCuenta").Value = Cta.Codigo
                 Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                 Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
                 Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
@@ -90,6 +97,7 @@ Public Class RegistroFacGastosFrm
                 Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Importe.ToString("C2")
                 Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
             Else
+                Me.DgvCuentas.Rows(i).Cells("clmIDCuenta").Value = Cta.Codigo
                 Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                 Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
                 Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
@@ -607,6 +615,22 @@ Public Class RegistroFacGastosFrm
             If Validar() Then
                 PasarValores()
                 AgregarDetalles()
+                For i As Integer = 0 To Me.dgvDistribuciondeGastos.Rows.Count - 1
+                    If Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = 0 Then
+                        Exit For
+                    End If
+                    Dim Gastos As New CN.GastosDepartamentosClass
+                    Gastos.IdCuentaContable = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value
+                    Gastos.IdSucursal = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value
+                    Gastos.IdMetodoProrrateo = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value
+                    Gastos.Importe = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value
+                    Gastos.IdPoliza = Poliza.Codigo
+                    Gastos.Porcentaje = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value
+                    If Not Gastos.Guardar(Tran) Then
+                        Tran.Rollback()
+                        Cancelar = True
+                    End If
+                Next
                 If Factura.Guardar(Tran) Then
                     For Each Det As CN.FacturasDetalleCXPClass In FacDet
                         Tran.Add(Det)
@@ -798,9 +822,50 @@ Public Class RegistroFacGastosFrm
 
     Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
         Try
+
+            Select Case e.ColumnIndex
+                Case Me.ClmCargo.Index
+                    Dim Cuenta As New CN.CuentaContableClass
+                    Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value)
+                    If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+
+                        Dim Ventana As New frmDistribuciondeGastos
+                        frmDistribuciondeGastos.valor = Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value()
+                        If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+                            Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+                            For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
+                                Me.dgvDistribuciondeGastos.Rows.Add()
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmCuentaContablePri.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+
+                            Next
+                        End If
+                    End If
+                Case Me.ClmAbono.Index
+                    Dim Cuenta As New CN.CuentaContableClass
+                    If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+                        Dim Ventana As New frmDistribuciondeGastos
+                        frmDistribuciondeGastos.valor = Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value()
+                        If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+                            Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+                            For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
+                                Me.dgvDistribuciondeGastos.Rows.Add()
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmCuentaContablePri.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+                            Next
+                        End If
+                    End If
+            End Select
             If e.ColumnIndex = Me.ClmCargo.Index Or e.ColumnIndex = Me.ClmAbono.Index Then
                 SumaCargo = 0
                 SumaAbono = 0
+
                 If Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value <> "" Or Not IsNumeric(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
                     Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("C2")
                 Else

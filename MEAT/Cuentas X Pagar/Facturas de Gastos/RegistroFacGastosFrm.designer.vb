@@ -23,8 +23,8 @@ Partial Class RegistroFacGastosFrm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblEstatus = New System.Windows.Forms.Label()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.chkPagada = New System.Windows.Forms.CheckBox()
@@ -59,13 +59,6 @@ Partial Class RegistroFacGastosFrm
         Me.lblEmpresa = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.DgvCuentas = New System.Windows.Forms.DataGridView()
-        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TmProveedor = New System.Windows.Forms.Timer(Me.components)
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -94,9 +87,25 @@ Partial Class RegistroFacGastosFrm
         Me.TxtIVAFlete1 = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.UUID = New System.Windows.Forms.MaskedTextBox()
+        Me.dgvDistribuciondeGastos = New System.Windows.Forms.DataGridView()
+        Me.clmIDCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCuentaContablePri = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSucursal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmMetodoProrrateo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmPorcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.dgvDistribuciondeGastos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblEstatus
@@ -404,7 +413,7 @@ Partial Class RegistroFacGastosFrm
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 706)
+        Me.mtb.Size = New System.Drawing.Size(50, 724)
         Me.mtb.TabIndex = 102
         '
         'lblEmpresa
@@ -431,63 +440,14 @@ Partial Class RegistroFacGastosFrm
         Me.DgvCuentas.AllowUserToAddRows = False
         Me.DgvCuentas.AllowUserToDeleteRows = False
         Me.DgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono})
+        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIDCuenta, Me.clmCuentaContablePri, Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono})
         Me.DgvCuentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvCuentas.Location = New System.Drawing.Point(3, 16)
         Me.DgvCuentas.Name = "DgvCuentas"
         Me.DgvCuentas.RowHeadersVisible = False
         Me.DgvCuentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvCuentas.Size = New System.Drawing.Size(663, 146)
+        Me.DgvCuentas.Size = New System.Drawing.Size(663, 143)
         Me.DgvCuentas.TabIndex = 0
-        '
-        'ClmCtaMayor
-        '
-        Me.ClmCtaMayor.HeaderText = "Cta. Mayor"
-        Me.ClmCtaMayor.Name = "ClmCtaMayor"
-        Me.ClmCtaMayor.Width = 85
-        '
-        'ClmSubCta
-        '
-        Me.ClmSubCta.HeaderText = "Sub Cta."
-        Me.ClmSubCta.Name = "ClmSubCta"
-        Me.ClmSubCta.Width = 75
-        '
-        'ClmSsbCta
-        '
-        Me.ClmSsbCta.HeaderText = "Ssb Cta."
-        Me.ClmSsbCta.Name = "ClmSsbCta"
-        Me.ClmSsbCta.Width = 75
-        '
-        'ClmSssCta
-        '
-        Me.ClmSssCta.HeaderText = "Sss Cta."
-        Me.ClmSssCta.Name = "ClmSssCta"
-        Me.ClmSssCta.Width = 75
-        '
-        'ClmDescripcion
-        '
-        Me.ClmDescripcion.HeaderText = "Descripción"
-        Me.ClmDescripcion.Name = "ClmDescripcion"
-        Me.ClmDescripcion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ClmDescripcion.Width = 150
-        '
-        'ClmCargo
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle1
-        Me.ClmCargo.HeaderText = "Cargo"
-        Me.ClmCargo.Name = "ClmCargo"
-        '
-        'ClmAbono
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle2
-        Me.ClmAbono.HeaderText = "Abono"
-        Me.ClmAbono.Name = "ClmAbono"
         '
         'TmProveedor
         '
@@ -589,7 +549,7 @@ Partial Class RegistroFacGastosFrm
         Me.GroupBox1.Controls.Add(Me.DgvCuentas)
         Me.GroupBox1.Location = New System.Drawing.Point(77, 433)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(669, 165)
+        Me.GroupBox1.Size = New System.Drawing.Size(669, 162)
         Me.GroupBox1.TabIndex = 144
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cuentas Contables"
@@ -597,7 +557,7 @@ Partial Class RegistroFacGastosFrm
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label20)
-        Me.GroupBox2.Location = New System.Drawing.Point(91, 649)
+        Me.GroupBox2.Location = New System.Drawing.Point(80, 676)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(688, 36)
         Me.GroupBox2.TabIndex = 145
@@ -741,11 +701,108 @@ Partial Class RegistroFacGastosFrm
         Me.UUID.Size = New System.Drawing.Size(214, 20)
         Me.UUID.TabIndex = 160
         '
+        'dgvDistribuciondeGastos
+        '
+        Me.dgvDistribuciondeGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDistribuciondeGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSucursal, Me.clmMetodoProrrateo, Me.clmCuentaContable, Me.clmImporte, Me.clmPorcentaje})
+        Me.dgvDistribuciondeGastos.Location = New System.Drawing.Point(83, 598)
+        Me.dgvDistribuciondeGastos.Name = "dgvDistribuciondeGastos"
+        Me.dgvDistribuciondeGastos.Size = New System.Drawing.Size(435, 72)
+        Me.dgvDistribuciondeGastos.TabIndex = 161
+        Me.dgvDistribuciondeGastos.Visible = False
+        '
+        'clmIDCuenta
+        '
+        Me.clmIDCuenta.HeaderText = "ID Cuenta Contable"
+        Me.clmIDCuenta.Name = "clmIDCuenta"
+        Me.clmIDCuenta.Visible = False
+        '
+        'clmCuentaContablePri
+        '
+        Me.clmCuentaContablePri.HeaderText = "Cuenta Contable"
+        Me.clmCuentaContablePri.Name = "clmCuentaContablePri"
+        Me.clmCuentaContablePri.Visible = False
+        '
+        'ClmCtaMayor
+        '
+        Me.ClmCtaMayor.HeaderText = "Cta. Mayor"
+        Me.ClmCtaMayor.Name = "ClmCtaMayor"
+        Me.ClmCtaMayor.Width = 85
+        '
+        'ClmSubCta
+        '
+        Me.ClmSubCta.HeaderText = "Sub Cta."
+        Me.ClmSubCta.Name = "ClmSubCta"
+        Me.ClmSubCta.Width = 75
+        '
+        'ClmSsbCta
+        '
+        Me.ClmSsbCta.HeaderText = "Ssb Cta."
+        Me.ClmSsbCta.Name = "ClmSsbCta"
+        Me.ClmSsbCta.Width = 75
+        '
+        'ClmSssCta
+        '
+        Me.ClmSssCta.HeaderText = "Sss Cta."
+        Me.ClmSssCta.Name = "ClmSssCta"
+        Me.ClmSssCta.Width = 75
+        '
+        'ClmDescripcion
+        '
+        Me.ClmDescripcion.HeaderText = "Descripción"
+        Me.ClmDescripcion.Name = "ClmDescripcion"
+        Me.ClmDescripcion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ClmDescripcion.Width = 150
+        '
+        'ClmCargo
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle7.Format = "C2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle7
+        Me.ClmCargo.HeaderText = "Cargo"
+        Me.ClmCargo.Name = "ClmCargo"
+        '
+        'ClmAbono
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle8.Format = "C2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle8
+        Me.ClmAbono.HeaderText = "Abono"
+        Me.ClmAbono.Name = "ClmAbono"
+        '
+        'clmSucursal
+        '
+        Me.clmSucursal.HeaderText = "Sucursal"
+        Me.clmSucursal.Name = "clmSucursal"
+        '
+        'clmMetodoProrrateo
+        '
+        Me.clmMetodoProrrateo.HeaderText = "Metodo Prorrateo"
+        Me.clmMetodoProrrateo.Name = "clmMetodoProrrateo"
+        '
+        'clmCuentaContable
+        '
+        Me.clmCuentaContable.HeaderText = "Cuenta Contable"
+        Me.clmCuentaContable.Name = "clmCuentaContable"
+        '
+        'clmImporte
+        '
+        Me.clmImporte.HeaderText = "Importe"
+        Me.clmImporte.Name = "clmImporte"
+        '
+        'clmPorcentaje
+        '
+        Me.clmPorcentaje.HeaderText = "Porcentaje"
+        Me.clmPorcentaje.Name = "clmPorcentaje"
+        '
         'RegistroFacGastosFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(792, 706)
+        Me.ClientSize = New System.Drawing.Size(792, 724)
+        Me.Controls.Add(Me.dgvDistribuciondeGastos)
         Me.Controls.Add(Me.UUID)
         Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.TxtIVAFlete1)
@@ -812,6 +869,7 @@ Partial Class RegistroFacGastosFrm
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.dgvDistribuciondeGastos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -868,13 +926,6 @@ Partial Class RegistroFacGastosFrm
     Friend WithEvents txtSumaAbono As System.Windows.Forms.TextBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents ClmCtaMayor As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSubCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSssCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents Txtconcepto As System.Windows.Forms.TextBox
     Friend WithEvents ckbFletes As System.Windows.Forms.CheckBox
@@ -885,4 +936,19 @@ Partial Class RegistroFacGastosFrm
     Friend WithEvents TxtIVAFlete1 As System.Windows.Forms.TextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents UUID As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents dgvDistribuciondeGastos As System.Windows.Forms.DataGridView
+    Friend WithEvents clmIDCuenta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmCuentaContablePri As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmCtaMayor As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSubCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSssCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmSucursal As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmMetodoProrrateo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmCuentaContable As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmPorcentaje As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

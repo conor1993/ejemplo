@@ -603,22 +603,22 @@ Public Class CatCuentaContableForm
     '    End Try
     'End Sub
 
-    'Private Sub Txtfiltro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Txtfiltro.KeyPress
-    '    'If e.KeyChar = Chr(13) Then
-    '    '    ' Me.BuscarCuentas()
-    '    'End If
-    '    Try
-    '        If e.KeyChar = Chr(13) Then
-    '            Me.MostrarCuentas()
-    '        Else
-    '            If Me.Txtfiltro.Text.Length >= 3 Then
-    '                Me.MostrarCuentas()
-    '            End If
-    '        End If
-    '    Catch ex As Exception
-    '        MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '    End Try
-    'End Sub
+    Private Sub Txtfiltro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Txtfiltro.KeyPress
+        If e.KeyChar = Chr(13) Then
+            Me.BuscarCuentas()
+        End If
+        Try
+            If e.KeyChar = Chr(13) Then
+                Me.MostrarCuentas()
+            Else
+                If Me.Txtfiltro.Text.Length >= 1 Then
+                    Me.MostrarCuentas()
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
     Private Sub cmbNaturazleza_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbNaturazleza.SelectedIndexChanged
         'Me.BuscarCuentas()
@@ -1007,4 +1007,5 @@ Public Class CatCuentaContableForm
         buscacuentaSsscta()
     End Sub
     ''----------------------------------------------------------------------------------------------------
+
 End Class
