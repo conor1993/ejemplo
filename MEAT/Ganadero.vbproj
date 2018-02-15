@@ -13,7 +13,7 @@
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
     <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>JSLogo32.ico</ApplicationIcon>
@@ -37,7 +37,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\MEAT\1.0.60.60\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\MEAT\1.0.63.63\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -52,8 +52,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>60</ApplicationRevision>
-    <ApplicationVersion>1.0.60.60</ApplicationVersion>
+    <ApplicationRevision>63</ApplicationRevision>
+    <ApplicationVersion>1.0.63.63</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -1904,6 +1904,12 @@
       <DependentUpon>FrmCapturaProdTerminado.vb</DependentUpon>
     </Compile>
     <Compile Include="Produccion\FrmCapturaProdTerminado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produccion\FrmConsAperturaLote2.designer.vb">
+      <DependentUpon>FrmConsAperturaLote2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\FrmConsAperturaLote2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Produccion\Frmproduccionselecciondepuertos.Designer.vb">
@@ -4318,6 +4324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Produccion\FrmCapturaProdTerminado.resx">
       <DependentUpon>FrmCapturaProdTerminado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion\FrmConsAperturaLote2.resx">
+      <DependentUpon>FrmConsAperturaLote2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produccion\Frmproduccionselecciondepuertos.resx">
       <DependentUpon>Frmproduccionselecciondepuertos.vb</DependentUpon>

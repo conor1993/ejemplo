@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 8 de febrero de 2018 12:25:26
+' // Code is generated on: viernes, 9 de febrero de 2018 17:51:13
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -63,6 +63,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		Private _columnProducto As DataColumn
 		Private _columnDescripcion As DataColumn
 		Private _columnPrecioxkilototal As DataColumn
+		Private _columnKilosRecibidos As DataColumn
 		
 		' __LLBLGENPRO_USER_CODE_REGION_START AdditionalMembers
 		' __LLBLGENPRO_USER_CODE_REGION_END
@@ -74,7 +75,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' <summary>
 		''' The amount of fields in the resultset.
 		''' </summary>
-		Private Const AmountOfFields As Integer = 15
+		Private Const AmountOfFields As Integer = 16
 #End Region
 		
 		''' <summary>
@@ -359,6 +360,11 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnPrecioxkilototal.ReadOnly = True
 			_columnPrecioxkilototal.Caption = "Precioxkilototal"
 			Me.Columns.Add(_columnPrecioxkilototal)
+
+			_columnKilosRecibidos = New DataColumn("KilosRecibidos", GetType(System.Decimal), Nothing, MappingType.Element)
+			_columnKilosRecibidos.ReadOnly = True
+			_columnKilosRecibidos.Caption = "KilosRecibidos"
+			Me.Columns.Add(_columnKilosRecibidos)
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitClass
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -384,6 +390,7 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnProducto = Me.Columns("Producto")
 			_columnDescripcion = Me.Columns("Descripcion")
 			_columnPrecioxkilototal = Me.Columns("Precioxkilototal")
+			_columnKilosRecibidos = Me.Columns("KilosRecibidos")
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitMembers
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -461,6 +468,10 @@ Namespace Integralab.ORM.TypedViewClasses
 			fieldHashtable = New Hashtable()
 
 			_fieldsCustomProperties.Add("Precioxkilototal", fieldHashtable)
+			
+			fieldHashtable = New Hashtable()
+
+			_fieldsCustomProperties.Add("KilosRecibidos", fieldHashtable)
 			
 		End Sub
 
@@ -691,6 +702,15 @@ Namespace Integralab.ORM.TypedViewClasses
 		ReadOnly Friend Property PrecioxkilototalColumn As DataColumn
 			Get 
 				Return _columnPrecioxkilototal 
+			End Get
+		End Property
+    
+		''' <summary>
+		''' Returns the column Object belonging to the TypedView field KilosRecibidos
+		''' </summary>
+		ReadOnly Friend Property KilosRecibidosColumn As DataColumn
+			Get 
+				Return _columnKilosRecibidos 
 			End Get
 		End Property
     
@@ -1317,6 +1337,45 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' </summary>
     	Public Sub SetPrecioxkilototalNull() 
 			Me(_parent.PrecioxkilototalColumn) = System.Convert.DBNull
+		End Sub
+
+	
+
+		''' <summary>
+		''' Gets / sets the value of the TypedView field KilosRecibidos<br/><br/>
+		''' 
+		''' </summary>
+		''' <remarks>
+		''' Mapped on view field: "VwBusquedaLoteCortes"."KilosRecibidos"<br/>
+		''' View field characteristics (type, precision, scale, length): Money, 19, 4, 0
+		''' </remarks>
+		Public Property [KilosRecibidos]() As System.Decimal
+			Get 
+				If IsKilosRecibidosNull() Then
+					' return default value for this type.
+					Return CType(TypeDefaultValue.GetDefaultValue(GetType(System.Decimal)), System.Decimal)
+				Else
+					Return CType(Me(_parent.KilosRecibidosColumn), System.Decimal)
+				End If
+			End Get
+			Set 
+				Me(_parent.KilosRecibidosColumn) = Value
+			End Set
+		End Property
+
+		''' <summary>
+		''' Returns True if the TypedView field KilosRecibidos is NULL, False otherwise.
+		''' </summary>
+		Public Function IsKilosRecibidosNull() As Boolean
+			Return IsNull(_parent.KilosRecibidosColumn)
+		End Function
+
+		''' <summary>
+		''' Sets the TypedView field KilosRecibidos to NULL. Not recommended a typed view should be used
+		''' as a readonly Object.
+		''' </summary>
+    	Public Sub SetKilosRecibidosNull() 
+			Me(_parent.KilosRecibidosColumn) = System.Convert.DBNull
 		End Sub
 
 	

@@ -11,7 +11,7 @@ Imports Integralab
 Public Class MFacRegFacturasVentas
 
 #Region "Miembros"
-    Dim FacturaCabecero As New FacturasClass
+
     Dim ClientesCol As ClientesIntroductoresColeccion
     Dim ProductosGenCol As ProductoCollectionClass
     Dim ConF As New CC.ConfiguracionFacturaCollection
@@ -1197,7 +1197,7 @@ Public Class MFacRegFacturasVentas
     End Sub
 
     Public Function Guardar(ByVal Trans As HC.Transaction, ByVal Estatus As String) As Boolean
-
+        Dim FacturaCabecero As New FacturasClass
         Dim ControlFD As Integralab.FactDigital.ControladorFactDigital
         Dim ConStr As String
         If File.Exists(Application.StartupPath + "\\cx.dat") Then
@@ -1213,6 +1213,7 @@ Public Class MFacRegFacturasVentas
 
         Dim TransG As New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
         Try
+
             If Not validar() Then
                 Return False
                 Exit Function
@@ -1288,26 +1289,31 @@ Public Class MFacRegFacturasVentas
                 For i As Integer = 0 To Me.dgvDetalleConcentrado.RowCount - 1
                     If Not Me.dgvDetalle.Rows(i).IsNewRow Then
                         Dim FacturasDetalle As New FacturasDetalleClass
- 
-                            FacturasDetalle.Descripcion = Me.dgvDetalle.Rows(i).Cells(Me.Descripcion.Index).Value.ToString
+
+                        FacturasDetalle.Descripcion = Me.dgvDetalle.Rows(i).Cells(Me.Descripcion.Index).Value.ToString
 
                         FacturasDetalle.PrecioUnitario = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.Precios.Index).Value, Decimal)
                         FacturasDetalle.CantidadxProducto = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.KilosEmbarcados.Index).Value, Decimal)
                         FacturasDetalle.PorcentajeIVA = CType(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.ImporteEmbarcado.Index).Value, Decimal)
                         FacturasDetalle.Renglon = i
                         FacturasDetalle.Servicios = "N"
-                        FacturasDetalle.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
+                        FacturasDetalle.TipoFactura = TipoFacturaEnum.FACTURACION_DE_EMBARQUE
                         FacturasDetalle.Estatus = "V"
                         FacturasDetalle.CveProductoServ = CStr(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmproductoserv.Index).Value)
                         FacturasDetalle.CveUnidad = CStr(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmunidadsat.Index).Value)
                         FacturasDetalle.IVA = CDec(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.clmiva.Index).Value)
                         FacturasDetalle.Total = CDec(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.ImporteFacturado.Index).Value)
                         FacturasDetalle.Subtotal = CDec(Me.dgvDetalleConcentrado.Rows(i).Cells(Me.ImporteFacturado.Index).Value)
-                            FacturasDetalle.Unidad = "kl"
-                            'guardar el detalle
-                            Controlador.RealizarFacturasdeVentaenDetalle(FacturasDetalle, Me.txtFolioFactura.Text, Trans)
-                        End If
+                        FacturasDetalle.Unidad = "kl"
+                        'guardar el detalle
+                        Controlador.RealizarFacturasdeVentaenDetalle(FacturasDetalle, Me.txtFolioFactura.Text, Trans)
+                    End If
                 Next
+
+
+                Dim emb As New EC.MfacEmbarquesCabEntity(Me.txtFolioEmbarque.Text)
+                emb.Estatus = "F"
+                emb.Save()
 
                 TransG.Commit()
 

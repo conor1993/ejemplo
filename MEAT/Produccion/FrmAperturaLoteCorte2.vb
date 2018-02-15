@@ -4,6 +4,7 @@ Imports EC = Integralab.ORM.EntityClasses
 Imports CC = Integralab.ORM.CollectionClasses
 Imports TC = Integralab.ORM.TypedViewClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
+Imports System.Data.SqlClient
 
 
 
@@ -12,19 +13,25 @@ Public Class FrmAperturaLoteCorte2
     Dim TipoGanado As New TipoGanadoColecttionClass
     Dim proveedores As New ProveedorCollectionClass
 
-
     Private Sub MEAToolBar1_ButtonClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs) Handles MEAToolBar1.ButtonClick
         Select Case e.Button.Text
             Case "Guardar"
                 If (Not Validar()) Then
                     Exit Sub
                 End If
-                If Not Guardar() Then
+                Dim guardarResult As Byte
+                guardarResult = Guardar()
+                If guardarResult = 0 Then
                     MessageBox.Show("No se pudo generar Lote de Corte", "ERP FLEXI", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Else
+                    'Me.Limpiar()
+                ElseIf guardarResult = 1 Then
                     MessageBox.Show("Se genero lote de corte con folio  : " & Me.txtLoteCorte.Text, "ERP FLEXI", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    AbrirNuevo()
+                    'Me.Limpiar()
+                ElseIf guardarResult = 2 Then
+                    MessageBox.Show("No es posible modificar la compra de producto", "Acción inválida", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
-                Me.Limpiar()
+
             Case "Buscar"
                 If Not Buscar() Then
                     MessageBox.Show("No se encuentran lotes de corte disponibles", "ERP FLEXI", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -35,97 +42,119 @@ Public Class FrmAperturaLoteCorte2
                 End If
             Case "Salir"
                 Me.Close()
+            Case "Nuevo"
+                AbrirNuevo()
+
         End Select
     End Sub
-    Private Function Guardar() As Boolean
-        Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
-        Try
 
-            Dim LoteCorte As New CortesClass
-            LoteCorte.LoteSacrificio = Me.txtFolioSacrificio.Text
-            LoteCorte.FechaCorte = Me.dtpFechaLoteCorte.Value
-            LoteCorte.FechaFapsa = Me.dtpFechaSacrificio.Value
-            LoteCorte.IdCliente = 0
-            LoteCorte.DiasCad = Me.txtDiasCaducidad.Text
-            LoteCorte.FechaCad = Me.dtpFechaCaducidad.Value
-            LoteCorte.Observaciones = Me.txtObservaciones.Text
-            LoteCorte.Estatus = "A"
-            LoteCorte.Func = "A"
-            LoteCorte.NumOpc = 1
-            ''nuevos datos ----------------------------------------------------------------------------------------------------------------------------------
-            LoteCorte.Nopiezas = txtNoPiezas.Text
-            LoteCorte.Producto = CmbTipoGanado.SelectedValue
-            LoteCorte.Unidad = txtUnidad.Text
-            LoteCorte.Conductor = txtConductor.Text
-            LoteCorte.Placas = txtPlacas.Text
-            LoteCorte.Horaviaje = txtHorasViaje.Text
-            LoteCorte.Idproveedor = cmbProveedor.SelectedValue
-            LoteCorte.Cvelugcom = CmbLugarCompra.SelectedValue
-            LoteCorte.Cvecomprador = cmbComprador.SelectedValue
-            LoteCorte.Observacioneslote = txtobserbacioneslote.Text
-            LoteCorte.KilosRecibidos = txtKilosRecibidos.Text
-            LoteCorte.Nofactura = txtNoFactura.Text
-            LoteCorte.Importe = txtImporte.Text
-            ''----------------------------------------  calculo de  kilos    
+    Private Function AbrirNuevo()
+        Dim ventana As Form = New FrmAperturaLoteCorte2
+        ventana.Icon = Me.Icon
+        ventana.StartPosition = FormStartPosition.CenterScreen
+        ventana.Show()
+        Me.Close()
+    End Function
 
-            LoteCorte.Precioxkilo = calcularprecioxkilo(Convert.ToDecimal(txtKilosRecibidos.Text), Convert.ToDecimal(txtImporte.Text))
-            LoteCorte.Precioxkilogasto = calcularprecioxkilo(Convert.ToDecimal(txtKilosRecibidos.Text), Convert.ToDecimal(txtTotal.Text))
-            LoteCorte.Precioxkilototal = LoteCorte.Precioxkilo + LoteCorte.Precioxkilogasto
+    Private Function Guardar() As Byte
+        If txtLoteCorte.Text = "0" Then
+            Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
+            Try
 
-            If Not LoteCorte.Guardar(Trans) Then
-                Trans.Rollback()
-                Return False
-            End If
+                Dim LoteCorte As New CortesClass
+                LoteCorte.LoteSacrificio = Me.txtFolioSacrificio.Text
+                LoteCorte.FechaCorte = Me.dtpFechaLoteCorte.Value
+                LoteCorte.FechaFapsa = Me.dtpFechaSacrificio.Value
+                LoteCorte.IdCliente = 0
+                Dim diasCant As Integer
+                If String.IsNullOrEmpty(Me.txtDiasCaducidad.Text) Then
+                    diasCant = 0
+                Else
+                    diasCant = CInt(Me.txtDiasCaducidad.Text)
+                End If
+                LoteCorte.DiasCad = Me.txtDiasCaducidad.Text
+                LoteCorte.FechaCad = Me.dtpFechaCaducidad.Value
+                LoteCorte.Observaciones = Me.txtObservaciones.Text
+                LoteCorte.Estatus = "A"
+                LoteCorte.Func = "A"
+                LoteCorte.NumOpc = 1
+                ''nuevos datos ----------------------------------------------------------------------------------------------------------------------------------
+
+                LoteCorte.Nopiezas = txtNoPiezas.Text
+                LoteCorte.Producto = CmbTipoGanado.SelectedValue
+                LoteCorte.Unidad = txtUnidad.Text
+                LoteCorte.Conductor = txtConductor.Text
+                LoteCorte.Placas = txtPlacas.Text
+                LoteCorte.Horaviaje = txtHorasViaje.Text
+                LoteCorte.Idproveedor = cmbProveedor.SelectedValue
+                LoteCorte.Cvelugcom = CmbLugarCompra.SelectedValue
+                LoteCorte.Cvecomprador = cmbComprador.SelectedValue
+                LoteCorte.Observacioneslote = txtobserbacioneslote.Text
+                LoteCorte.KilosRecibidos = txtKilosRecibidos.Text
+                LoteCorte.Nofactura = txtNoFactura.Text
+                LoteCorte.Importe = txtImporte.Text
+
+                ''-------------------------------------------  calculo de  kilos------------------------------------------------------------------
+
+                LoteCorte.Precioxkilo = calcularprecioxkilo(Convert.ToDecimal(txtKilosRecibidos.Text), Convert.ToDecimal(txtImporte.Text))
+                LoteCorte.Precioxkilogasto = calcularprecioxkilo(Convert.ToDecimal(txtKilosRecibidos.Text), Convert.ToDecimal(txtTotal.Text))
+                LoteCorte.Precioxkilototal = LoteCorte.Precioxkilo + LoteCorte.Precioxkilogasto
+
+                If Not LoteCorte.Guardar(Trans) Then
+                    Trans.Rollback()
+                    Return 0
+                End If
 
 
-            Dim Gastos As New ClasesNegocio.GastoTransporteClass(LoteCorte.LoteCorte)
-            If Not Gastos.Folio.Equals("") Then
-                If DgvConceptoGastos.Rows.Count > 1 Then
-                    Gastos.Folio = LoteCorte.LoteCorte
-                    Gastos.FechaRecepcion = LoteCorte.FechaCorte
-                    Gastos.ImporteTotal = CDec(Me.txtTotal.Text.Replace("$", ""))
-                    Gastos.IVA = CDec(Me.txtIVA.Text.Replace("$", ""))
+                Dim Gastos As New ClasesNegocio.GastoTransporteClass(LoteCorte.LoteCorte)
+                If Not Gastos.Folio.Equals("") Then
+                    If DgvConceptoGastos.Rows.Count > 1 Then
+                        Gastos.Folio = LoteCorte.LoteCorte
+                        Gastos.FechaRecepcion = LoteCorte.FechaCorte
+                        Gastos.ImporteTotal = CDec(Me.txtTotal.Text.Replace("$", ""))
+                        Gastos.IVA = CDec(Me.txtIVA.Text.Replace("$", ""))
 
-                    'If Gastos.Detalle.Count = DgvConceptoGastos.RowCount Then
-                    For Each Fila As DataGridViewRow In DgvConceptoGastos.Rows
-                        If Not Fila.IsNewRow Then
-                            Dim gastoDetalle As New ClasesNegocio.GastoTransporteDetalleClass()
-                            gastoDetalle.Folio = Gastos.Folio
-                            gastoDetalle.Renglon = (Fila.Index + 1)
-                            gastoDetalle.IdGasto = Fila.Cells(clmcmbConceptoGasto.Index).Value
-                            gastoDetalle.PorcentajeIva = Fila.Cells(clmtxtIva.Index).Value
-                            gastoDetalle.ImporteGasto = Fila.Cells(clmtxtImporteGasto.Index).Value
-                            gastoDetalle.Nofactura = Fila.Cells(clmfactura.Index).Value
-                            gastoDetalle.CodProveedor = Fila.Cells(clmproovedor.Index).Value
-                            gastoDetalle.Retencion = Fila.Cells(clmretencion.Index).Value
-                            Gastos.Detalle.Add(gastoDetalle)
+                        'If Gastos.Detalle.Count = DgvConceptoGastos.RowCount Then
+                        For Each Fila As DataGridViewRow In DgvConceptoGastos.Rows
+                            If Not Fila.IsNewRow Then
+                                Dim gastoDetalle As New ClasesNegocio.GastoTransporteDetalleClass()
+                                gastoDetalle.Folio = Gastos.Folio
+                                gastoDetalle.Renglon = (Fila.Index + 1)
+                                gastoDetalle.IdGasto = Fila.Cells(clmcmbConceptoGasto.Index).Value
+                                gastoDetalle.PorcentajeIva = Fila.Cells(clmtxtIva.Index).Value
+                                gastoDetalle.ImporteGasto = Fila.Cells(clmtxtImporteGasto.Index).Value
+                                gastoDetalle.Nofactura = Fila.Cells(clmfactura.Index).Value
+                                gastoDetalle.CodProveedor = Fila.Cells(clmproovedor.Index).Value
+                                gastoDetalle.Retencion = Fila.Cells(clmretencion.Index).Value
+                                Gastos.Detalle.Add(gastoDetalle)
+                            End If
+                        Next
+                        'End If
+
+                        If Not Gastos.Guardar(Trans) Then
+                            Trans.Rollback()
+                            Return 0
                         End If
-                    Next
-                    'End If
 
-                    If Not Gastos.Guardar(Trans) Then
-                        Trans.Rollback()
-                        Return False
                     End If
+
 
                 End If
 
 
-            End If
-
-
-            Me.txtLoteCorte.Text = LoteCorte.LoteCorte
-            Trans.Commit()
-            Return True
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "ERP FLEXI", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Trans.Rollback()
-            Return False
-        End Try
-
-
+                Me.txtLoteCorte.Text = LoteCorte.LoteCorte
+                Trans.Commit()
+                Return 1
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "ERP FLEXI", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Trans.Rollback()
+                Return 0
+            End Try
+        Else
+            Return 2
+        End If
     End Function
-    Private Function Limpiar() As Boolean
+    Public Function Limpiar() As Boolean
         Me.txtLoteCorte.Text = 0
         Me.txtFolioSacrificio.Text = ""
 
@@ -146,9 +175,36 @@ Public Class FrmAperturaLoteCorte2
         CmbTipoGanado.Text = "Seleccione un Tipo de ganado..."
         CmbTipoGanado.SelectedIndex = -1
 
-        TxtFolio.Text = ""
-        DgvConceptoGastos.Rows.Clear()
-        DgvConceptoGastos.DataSource = Nothing
+
+        'TxtFolio.Text = ""
+        'DgvConceptoGastos.DataSource = ""
+
+        'DgvConceptoGastos.Rows.Clear()
+
+        For Each row As DataGridViewRow In DgvConceptoGastos.Rows
+            'If row.Cells(0).Value Is Nothing Then
+            Try
+                DgvConceptoGastos.Rows.Remove(row)
+            Catch
+            End Try
+
+            'lista.Add(row.Index)
+            'End If
+        Next
+
+        'For i As Integer = 0 To DgvConceptoGastos.RowCount - 1
+        '    DgvConceptoGastos.Rows.Remove(Me.DgvConceptoGastos.Rows(i))
+
+        'Next
+
+        'DgvConceptoGastos.Rows.Clear()
+        'DgvConceptoGastos.DataSource = Nothing
+
+        'proveedores.Obtener(CondicionEnum.ACTIVOS)
+        'Me.clmproovedor.DataSource = proveedores
+        'Me.clmproovedor.DisplayMember = "RazonSocial"
+        'Me.clmproovedor.ValueMember = "Codigo"
+
         dtpFechaPago.Value = DateTime.Now
         txtNoFactura.Text = ""
         txtDiasDeCredito.Text = ""
@@ -167,26 +223,31 @@ Public Class FrmAperturaLoteCorte2
 
     End Function
     Private Function Buscar() As Boolean
+        Dim LCorteCons = New FrmConsAperturaLote2
+        LCorteCons.FormPrincipal = Me
+        LCorteCons.Show()
 
-
+        Return True
     End Function
 
     Private Function Validar() As Boolean
         Try
             Dim Mensaje As New System.Text.StringBuilder()
 
-            If Me.txtNoPiezas.Text.Trim = "" Then Mensaje.AppendLine("*No piezas")
-            If Me.txtKilosRecibidos.Text.Trim = "" Then Mensaje.AppendLine("*Kilos recibidos")
-            If Me.txtNoFactura.Text.Trim = "" Then Mensaje.AppendLine("*No de factura")
-            If Me.txtImporte.Text.Trim = "" Then Mensaje.AppendLine("*El importe")
-            If Me.CmbTipoGanado.SelectedValue Is Nothing Then Mensaje.AppendLine("*Poblacion")
-            If Me.txtUnidad.Text.Trim = "" Then Mensaje.AppendLine("*La unidad")
+            If Me.txtNoPiezas.Text.Trim = "" Then Mensaje.AppendLine("* No piezas")
+            If Me.txtKilosRecibidos.Text.Trim = "" Then Mensaje.AppendLine("* Kilos recibidos")
+            If Me.txtNoFactura.Text.Trim = "" Then Mensaje.AppendLine("* No de factura")
+            If Me.txtImporte.Text.Trim = "" Then Mensaje.AppendLine("* El importe")
+            'If Me.CmbTipoGanado.SelectedValue Is Nothing Then Mensaje.AppendLine("*Poblacion")
+            If Me.CmbTipoGanado.SelectedValue Is Nothing Then Mensaje.AppendLine("* Producto")
+            If Me.txtUnidad.Text.Trim = "" Then Mensaje.AppendLine("* La unidad")
             If Me.txtConductor.Text.Trim = "" Then Mensaje.AppendLine("*El conductor")
-            If Me.txtPlacas.Text.Trim = "" Then Mensaje.AppendLine("*Las placas")
-            If Me.cmbProveedor.SelectedValue Is Nothing Then Mensaje.AppendLine("* el proveedor")
-            If Me.cmbProveedor.SelectedValue Is Nothing Then Mensaje.AppendLine("* el lugar de compra")
-            If Me.cmbComprador.SelectedValue Is Nothing Then Mensaje.AppendLine("* el comprador")
-            If Me.txtobserbacioneslote.Text.Trim = "" Then Mensaje.AppendLine("* la obserbacion")
+            If Me.txtPlacas.Text.Trim = "" Then Mensaje.AppendLine("* Las placas")
+            If Me.cmbProveedor.SelectedValue Is Nothing Then Mensaje.AppendLine("* El proveedor")
+            If Me.CmbLugarCompra.SelectedValue Is Nothing Then Mensaje.AppendLine("* El lugar de compra")
+            If Me.cmbComprador.SelectedValue Is Nothing Then Mensaje.AppendLine("* El comprador")
+            If Me.txtobserbacioneslote.Text.Trim = "" Then Mensaje.AppendLine("* La obserbacion")
+            If Me.txtDiasCaducidad.Text.Trim = "0" Or String.IsNullOrEmpty(Me.txtDiasCaducidad.Text.Trim) Then Mensaje.AppendLine("* Días de caducidad")
 
             If Mensaje.ToString() <> String.Empty Then
 
@@ -228,13 +289,14 @@ Public Class FrmAperturaLoteCorte2
     Private Sub txtDiasCaducidad_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDiasCaducidad.KeyPress
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
+
         ElseIf Char.IsControl(e.KeyChar) Then
             e.Handled = False
         Else
             e.Handled = True
         End If
         If e.KeyChar = Chr(13) Then
-            'Me.dtpFechaCaducidad.Value = Me.dtpFechaCaducidad. + Me.txtDiasCaducidad.Text
+            'ENTER
             Me.txtObservaciones.Focus()
         End If
     End Sub
@@ -242,6 +304,7 @@ Public Class FrmAperturaLoteCorte2
     Private Sub FrmAperturaLoteCorte_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Limpiar()
         LlenaComboBox()
+        tabControl.TabPages.Remove(tbDatosPago)
 
     End Sub
     Private Function LlenaComboBox() As Boolean
@@ -280,17 +343,50 @@ Public Class FrmAperturaLoteCorte2
             clmcmbConceptoGasto.ValueMember = "IdConceptoGasto"
             clmcmbConceptoGasto.DataSource = ConceptosGasto
 
-            proveedores.Obtener(CondicionEnum.ACTIVOS)
-            Me.cmbProveedor.DataSource = proveedores
+            'proveedores.Obtener(CondicionEnum.ACTIVOS)
+
+            Dim query As String = "SELECT PrIdProveedor Codigo, PrRazSocial RazonSocial, ISNULL(EsdeGanado, 0) EsdeGanado" &
+            " FROM MCatCompProveedores " &
+            " WHERE(PrEstatus = 1 And ISNULL(EsdeGanado, 0) > 0) " &
+            " ORDER BY PrRazSocial "
+
+            'Me.cmbProveedor.DataSource = proveedores
             Me.cmbProveedor.DisplayMember = "RazonSocial"
             Me.cmbProveedor.ValueMember = "Codigo"
             Me.cmbProveedor.SelectedIndex = -1
 
-            proveedores.Obtener(CondicionEnum.ACTIVOS)
-            Me.clmproovedor.DataSource = proveedores
+            'proveedores.Obtener(CondicionEnum.ACTIVOS)
+            'Me.clmproovedor.DataSource = proveedores
             Me.clmproovedor.DisplayMember = "RazonSocial"
             Me.clmproovedor.ValueMember = "Codigo"
 
+            Dim tb As New DataTable
+            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            Using sqlcom As New SqlCommand(query, sqlCon)
+                Dim adp As New SqlDataAdapter(sqlcom)
+                sqlCon.Open()
+                adp.Fill(tb)
+                cmbProveedor.DataSource = tb
+
+                
+                sqlCon.Close()
+            End Using
+
+            query = "SELECT PrIdProveedor Codigo, PrRazSocial RazonSocial, ISNULL(EsdeGanado, 0) EsdeGanado" &
+                " FROM MCatCompProveedores " &
+                " WHERE PrEstatus = 1 " &
+                " ORDER BY PrRazSocial "
+
+            Using sqlcom As New SqlCommand(query, sqlCon)
+                tb = New DataTable
+                Dim adp As New SqlDataAdapter(sqlcom)
+                sqlCon.Open()
+                adp.Fill(tb)
+                clmproovedor.DataSource = tb
+
+
+                sqlCon.Close()
+            End Using
 
 
             Return True
@@ -309,12 +405,12 @@ Public Class FrmAperturaLoteCorte2
             DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N2")
         End If
     End Sub
-    Public Sub calcular()
+    Public Sub calcular(Optional ByVal forzarCalculo As Boolean = False)
         Dim sumaSubTotal As Decimal, sumaIVA As Decimal
         sumaIVA = 0
         sumaSubTotal = 0
         For Each row As DataGridViewRow In DgvConceptoGastos.Rows
-            If Not row.IsNewRow Then
+            If Not row.IsNewRow Or forzarCalculo = True Then
                 sumaIVA += Math.Round(CDec(row.Cells(clmtxtImporteGasto.Index).Value) * (CDec(row.Cells(clmtxtIva.Index).Value) / 100), 2)
                 sumaSubTotal += Math.Round(CDec(row.Cells(clmtxtImporteGasto.Index).Value), 2)
             End If
@@ -324,7 +420,61 @@ Public Class FrmAperturaLoteCorte2
         txtTotal.Text = (sumaIVA + sumaSubTotal).ToString("N2")
     End Sub
 
+    Public Sub calcularManual()
+        Dim sumaSubTotal As Decimal, sumaIVA As Decimal
+        sumaIVA = 0
+        sumaSubTotal = 0
 
+        Dim importeInt As Double
+        Dim importeIVAInt As Double
+
+        For i As Integer = 0 To DgvConceptoGastos.Rows.Count - 1
+            Dim row As DataGridViewRow = DgvConceptoGastos.Rows(i)
+            If Not row.IsNewRow Then
+                If DgvConceptoGastos.Rows(i).Cells("clmtxtImporteGasto").Value Is Nothing Then
+                    importeInt = 0
+                Else
+                    importeInt = CDec(DgvConceptoGastos.Rows(i).Cells("clmtxtImporteGasto").Value.ToString())
+                End If
+
+                If DgvConceptoGastos.Rows(i).Cells("clmtxtIva").Value Is Nothing Then
+                    importeIVAInt = 0
+                Else
+                    importeIVAInt = CDec(DgvConceptoGastos.Rows(i).Cells("clmtxtIva").Value.ToString())
+                End If
+
+                sumaIVA += Math.Round(importeInt * (importeIVAInt / 100), 2)
+                sumaSubTotal += Math.Round(importeInt, 2)
+            End If
+
+        Next
+
+        'For Each row As DataGridViewRow In DgvConceptoGastos.Rows
+        '    If Not row.IsNewRow Then
+        '        sumaIVA += Math.Round(CDec(DgvConceptoGastos.Rows(0).Cells("clmtxtImporteGasto").Value.ToString()) * (CDec(DgvConceptoGastos.Rows(0).Cells("clmtxtIva").Value.ToString()) / 100), 2)
+        '        sumaSubTotal += Math.Round(CDec(DgvConceptoGastos.Rows(0).Cells("clmtxtImporteGasto").Value.ToString()), 2)
+        '    End If
+        'Next
+
+        txtSubTotal.Text = sumaSubTotal.ToString("N2")
+        txtIVA.Text = sumaIVA.ToString("N2")
+        txtTotal.Text = (sumaIVA + sumaSubTotal).ToString("N2")
+
+        Dim importe As Decimal
+        If (String.IsNullOrEmpty(txtImporte.Text)) Then
+            importe = 0
+        Else
+            importe = CDec(txtImporte.Text.Replace(",", ""))
+        End If
+
+
+        'Long.TryParse(txtImporte.Text.Replace(",", ""), 0)
+
+        Dim totales As Decimal = sumaIVA + sumaSubTotal + importe
+
+        txtTotalTotal.Text = totales.ToString("N2")
+
+    End Sub
     Private Sub DgvConceptoGastos_RowValidating(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvConceptoGastos.RowValidating
         'If clmcmbConceptoGasto.Index = e.ColumnIndex or Then
         'MessageBox.Show(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -398,6 +548,8 @@ Public Class FrmAperturaLoteCorte2
 
         If catgasto.AplicaIVA Then
             Me.DgvConceptoGastos.CurrentRow.Cells(clmtxtIva.Index).Value = catgasto.PorcentajeIVA.ToString("N2")
+        Else
+            Me.DgvConceptoGastos.CurrentRow.Cells(clmtxtIva.Index).Value = Nothing
         End If
 
     End Sub
@@ -432,15 +584,6 @@ Public Class FrmAperturaLoteCorte2
         End If
     End Sub
 
-    Private Sub txtImporte_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtImporte.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
-    End Sub
 
     Private Sub txtHorasViaje_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtHorasViaje.KeyPress
         If Char.IsDigit(e.KeyChar) Then
@@ -452,6 +595,48 @@ Public Class FrmAperturaLoteCorte2
         End If
     End Sub
 
+    Private Sub txtImporte_Leave(sender As System.Object, e As System.EventArgs) Handles txtImporte.Leave
+        'txtImporte.Text = Format(Val(Replace(txtImporte.Text, ",", "")), "#,###,###")
+
+        Dim importe As Integer = Replace(txtImporte.Text, ",", "")
+        txtImporte.Text = importe.ToString("N2")
+    End Sub
+
+    Private Sub txtDiasCaducidad_KeyUp(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles txtDiasCaducidad.KeyUp
+        e.Handled = False
+        Dim date1 As DateTime = dtpFechaSacrificio.Value
+        '(Not True)
+        Dim dateAdd = If(Double.TryParse(txtDiasCaducidad.Text.ToString(), 0) = True, CDbl(txtDiasCaducidad.Text.ToString()), 0)
+        date1 = date1.AddDays(dateAdd)
+        dtpFechaCaducidad.Value = date1
+    End Sub
+
+    'Private Sub btnCalculo_Click(sender As System.Object, e As System.EventArgs) Handles btnCalculo.Click
+    '    calcular(True)
+    'End Sub
+
+    Private Sub txtImporte_KeyUp(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles txtImporte.KeyUp
+
+        calcularManual()
+    End Sub
+
+    Private Sub txtImporte_KeyPress_1(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtImporte.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            'calcularManual()
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            'txtImporte.Text = Format(CDec(txtImporte.Text), "C")
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtTotal_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtTotal.TextChanged
+        calcularManual()
+
+    End Sub
+
     Private Function calcularprecioxkilo(kilos As Decimal, importe As Decimal) As Decimal
         Dim Resultado As Decimal
         Resultado = 0
@@ -459,7 +644,7 @@ Public Class FrmAperturaLoteCorte2
             Resultado = importe / kilos
         End If
 
-        Return Resultado
+        Return Math.Round(Resultado, 4)
     End Function
 
 End Class

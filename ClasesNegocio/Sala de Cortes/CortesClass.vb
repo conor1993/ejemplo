@@ -385,7 +385,9 @@ Public Class CortesClass
 
     Public Overloads Function Guardar(ByRef trans As Integralab.ORM.HelperClasses.Transaction) As Boolean
         Try
-            If SPA.UspMscloteCortesCab(LoteSacrificio, FechaCorte, IdCliente, FechaCad, DiasCad, TotalPzas, TotalKgs, ConsecEtiquetas, Observaciones, Estatus, FechaCierre, FechaCancela, MotivoCancela, FechaCaptura, IdUsuarioCancela, ObservacionesCancela, FolCorPza, FechaFapsa, Nopiezas, Producto, Unidad, Conductor, Placas, Horaviaje, Idproveedor, Cvelugcom, Cvecomprador, Observacioneslote, KilosRecibidos, Nofactura, Importe, Precioxkilo, Precioxkilogasto, Precioxkilototal, Func, NumOpc, LoteCorte, trans) = 0 Then
+            If SPA.UspMscloteCortesCab(LoteSacrificio, FechaCorte, IdCliente, FechaCad, DiasCad, TotalPzas, TotalKgs, ConsecEtiquetas, Observaciones, Estatus, FechaCierre, FechaCancela, MotivoCancela, FechaCaptura, IdUsuarioCancela,
+                                       ObservacionesCancela, FolCorPza, FechaFapsa, Nopiezas, Producto, Unidad, Conductor, Placas, Horaviaje, Idproveedor, Cvelugcom, Cvecomprador, Observacioneslote, KilosRecibidos, Nofactura,
+                                       Importe, Precioxkilo, Precioxkilogasto, Precioxkilototal, Func, NumOpc, LoteCorte, trans) = 0 Then
                 MsgBox("Error al guardar información de lote de corte", MsgBoxStyle.Critical, "Error")
                 Return False
             End If
@@ -393,6 +395,15 @@ Public Class CortesClass
             Return True
         Catch ex As Exception
             MsgBox("Error al guardar información de lote de corte", MsgBoxStyle.Critical, "Error")
+            'MsgBox(ex.Message + "LoteSacrificio: " + LoteSacrificio.ToString() + " FechaCorte: " + FechaCorte.ToString() + " IdCliente: " + IdCliente.ToString() + " DiasCad: " &
+            '       DiasCad.ToString() + " TotalPzas: " + TotalPzas.ToString() + " TotalKgs: " + TotalKgs.ToString() + " ConsecEtiquetas: " + ConsecEtiquetas.ToString() + " Observaciones: " + Observaciones.ToString() &
+            '       " Estatus: " + Estatus.ToString() + " FechaCierre: " + FechaCierre.ToString() + " FechaCancela: " + FechaCancela.ToString() + " MotivoCancela: " + MotivoCancela.ToString() + " FechaCaptura: " &
+            '       FechaCaptura.ToString() + " IdUsuarioCancela: " + IdUsuarioCancela.ToString() + " ObservacionesCancela: " + ObservacionesCancela.ToString() + " FolCorPza: " + FolCorPza.ToString() &
+            '       " FechaFapsa: " + FechaFapsa.ToString() + " Nopiezas: " + Nopiezas.ToString() + " Producto: " + Producto.ToString() &
+            '       " Unidad: " + Unidad.ToString() + " Conductor: " + Conductor.ToString() + " Placas: " + Placas.ToString() + Conductor.ToString() + " Horaviaje: " + Horaviaje.ToString() + " Idproveedor: " + Idproveedor.ToString() &
+            '       " Cvelugcom: " + Cvelugcom.ToString() + " Cvecomprador: " + Cvecomprador.ToString() + " Observacioneslote: " + Observacioneslote.ToString() + " KilosRecibidos: " + KilosRecibidos.ToString() + " Nofactura: " + Nofactura.ToString() &
+            '       " Importe: " + Importe.ToString() + " Precioxkilo: " + Math.Round(CDbl(Precioxkilo)).ToString() + " Precioxkilogasto: " + Math.Round(CDbl(Precioxkilogasto)).ToString() + " Func: " + Func.ToString() &
+            '       " NumOpc: " + NumOpc.ToString() + " LoteCorte: " + LoteCorte.ToString(), MsgBoxStyle.Critical, "Error")
             Return False
         End Try
     End Function

@@ -256,7 +256,7 @@ Public Class frmFacturacionEspecial
 
 
 
-                        Concepto = New CFDI.ComprobanteConcepto(CveProdServ, CveUnidadS, String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
+                        Concepto = New CFDI.ComprobanteConcepto(CveProdServ, .Cells(clmUnidadSat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
 
 
 
@@ -1889,6 +1889,7 @@ Public Class frmFacturacionEspecial
     End Sub
 
     Public Sub llenarUnidadesSAT()
+  
         Dim connetionString As String = Nothing
         Dim connection As SqlConnection
         Dim command As SqlCommand

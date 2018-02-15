@@ -994,7 +994,7 @@ Partial Class MFacRegEmbarques
         '
         'Etiqueta
         '
-        Me.Etiqueta.DataPropertyName = "codigobarra"
+        Me.Etiqueta.DataPropertyName = "IdFolioEtiqueta"
         Me.Etiqueta.HeaderText = "Etiqueta"
         Me.Etiqueta.Name = "Etiqueta"
         '

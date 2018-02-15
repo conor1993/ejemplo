@@ -57,6 +57,7 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.clmPiezas = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmproducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.precioxkilototal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmKilosRecibidos = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gbFechas.SuspendLayout()
         CType(Me.DgvLotes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbResultadoBusqueda.SuspendLayout()
@@ -175,7 +176,7 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.DgvLotes.AllowUserToDeleteRows = False
         Me.DgvLotes.AllowUserToResizeRows = False
         Me.DgvLotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvLotes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmLoteCorte, Me.clmLoteSacrificio, Me.clmIntroductor, Me.cmlKilos, Me.clmFechaCorte, Me.clmTipoLote, Me.clmEstatus, Me.clmDiasCad, Me.clmPiezas, Me.clmproducto, Me.precioxkilototal})
+        Me.DgvLotes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmLoteCorte, Me.clmLoteSacrificio, Me.clmIntroductor, Me.cmlKilos, Me.clmFechaCorte, Me.clmTipoLote, Me.clmEstatus, Me.clmDiasCad, Me.clmPiezas, Me.clmproducto, Me.precioxkilototal, Me.clmKilosRecibidos})
         Me.DgvLotes.Location = New System.Drawing.Point(6, 19)
         Me.DgvLotes.MultiSelect = False
         Me.DgvLotes.Name = "DgvLotes"
@@ -399,6 +400,13 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.precioxkilototal.ReadOnly = True
         Me.precioxkilototal.Visible = False
         '
+        'clmKilosRecibidos
+        '
+        Me.clmKilosRecibidos.DataPropertyName = "KilosRecibidos"
+        Me.clmKilosRecibidos.HeaderText = "KilosRecibidos"
+        Me.clmKilosRecibidos.Name = "clmKilosRecibidos"
+        Me.clmKilosRecibidos.ReadOnly = True
+        '
         '_960BusquasedaLotesDeCortes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -467,4 +475,5 @@ Partial Class _960BusquasedaLotesDeCortes
     Friend WithEvents clmPiezas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmproducto As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents precioxkilototal As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmKilosRecibidos As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
