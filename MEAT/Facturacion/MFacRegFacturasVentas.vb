@@ -238,7 +238,6 @@ Public Class MFacRegFacturasVentas
     '            Return False
     '        End If
     '        'Fact = FacturasCab.Obtener(Me.txtFolioFactura.Text, Me.txtCodigoCliente.Text)
-
     '        'cabecero de factura
     '        Imp.Escribe(Fact.Tables(0).Rows(0)("Nombre"), ConF(0).Campo1X, ConF(0).Campo1Y) ' nombre del cliente
     '        Imp.Escribe(Fact.Tables(0).Rows(0)("NoFactura"), ConF(0).Campo6X, ConF(0).Campo6Y) 'Folio de Factura
