@@ -1,10 +1,12 @@
 Imports CN = ClasesNegocio
 Imports HC = IntegraLab.ORM.HelperClasses
 
+
 Public Class PolizaDiario
     Dim Poliza As CN.PolizaClass
     Dim RegistrosDetalle As Integer = 0
     'Dim EstadoForma As String = "Nuevo"
+    Public Shared valor As Decimal
     Private Sub PolizaDiario_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'Me.lblEmpresa.Text = Controlador.Sesion.MiEmpresa.Empnom
         ' Barra de botones de la ToolBar...
@@ -274,6 +276,9 @@ Public Class PolizaDiario
                     Gastos.IdMetodoProrrateo = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value
                     Gastos.Importe = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value
                     Gastos.IdPoliza = Poliza.Codigo
+                    Gastos.Porcentaje = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value
+                    Gastos.FechaPolizas = Me.DtpFecha.Value
+
                     If Not Gastos.Guardar(Trans) Then
                         Trans.Rollback()
                         Cancelar = True
@@ -396,7 +401,9 @@ Public Class PolizaDiario
                     Dim Cuenta As New CN.CuentaContableClass
                     Cuenta.Obtener(Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value)
                     If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+                        'valor = Me.dgvPoliza.CurrentRow.Cells(e.ColumnIndex).Value
                         Dim Ventana As New frmDistribuciondeGastos
+                        frmDistribuciondeGastos.valor = Me.dgvPoliza.CurrentRow.Cells(Me.CargoDataGridViewTextBoxColumn.Index).Value()
                         If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                             Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
                             For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
@@ -405,6 +412,7 @@ Public Class PolizaDiario
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
                             Next
                         End If
                     End If
@@ -414,7 +422,9 @@ Public Class PolizaDiario
                     Dim Cuenta As New CN.CuentaContableClass
                     Cuenta.Obtener(Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value)
                     If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+
                         Dim Ventana As New frmDistribuciondeGastos
+                        frmDistribuciondeGastos.valor = Me.dgvPoliza.CurrentRow.Cells(Me.AbonoDataGridViewTextBoxColumn.Index).Value()
                         If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                             Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
                             For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
@@ -423,6 +433,7 @@ Public Class PolizaDiario
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
                             Next
                         End If
                     End If
