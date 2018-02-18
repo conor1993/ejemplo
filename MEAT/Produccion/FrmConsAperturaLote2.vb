@@ -132,7 +132,7 @@ Public Class FrmConsAperturaLote2
                     If String.IsNullOrEmpty(Rs(18).ToString()) = (Not True) Then
                         FormPrincipal.cmbComprador.SelectedValue = CInt(Rs(18).ToString())
                     End If
-                    FormPrincipal.txtobserbacioneslote.Text = Rs(19).ToString()
+                    'FormPrincipal.txtobserbacioneslote.Text = Rs(19).ToString()
 
                     Rs.Close()
                     'Llenamos los detalles el cual alimentamos de la tabla DetGasTrans
@@ -159,9 +159,26 @@ Public Class FrmConsAperturaLote2
                     FormPrincipal.DgvConceptoGastos.ReadOnly = True
                     FormPrincipal.MEAToolBar1.MostrarNuevo = True
                     FormPrincipal.MEAToolBar1.HabilitarNuevo = True
-
-
                     sqlCon.Close()
+
+
+                    'Llenado de grid de Productos 
+                    sqlCon.Open()
+                    cadenaConsulta = "EXEC Usp_MSCLoteCortesCon 3, '{0}', '{1}', '{2}', '{3}'"
+                    cadenaConsulta = String.Format(cadenaConsulta, ID_LoteCorte, String.Empty, String.Empty, String.Empty)
+
+                    sqlcomDetalle = New SqlCommand(cadenaConsulta, sqlCon)
+
+                    adp = New SqlDataAdapter(sqlcomDetalle)
+                    tb = New DataTable
+                    adp.Fill(tb)
+
+                    FormPrincipal.gridProductos.DataSource = tb
+                    FormPrincipal.gridProductos.Refresh()
+                    FormPrincipal.gridProductos.AllowUserToAddRows = False
+                    FormPrincipal.gridProductos.ReadOnly = True
+                    sqlCon.Close()
+
                     Me.Close()
 
 
