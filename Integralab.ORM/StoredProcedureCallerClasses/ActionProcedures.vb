@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 9 de febrero de 2018 17:51:11
+' // Code is generated on: domingo, 18 de febrero de 2018 11:55:46
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -14408,9 +14408,9 @@ precioxkilototal As System.Decimal, func As System.String, numOpc As System.Int3
 			parameters(29) = New SqlParameter("@KilosRecibidos", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, kilosRecibidos)
 			parameters(30) = New SqlParameter("@Nofactura", SqlDbType.Char, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, nofactura)
 			parameters(31) = New SqlParameter("@Importe", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, importe)
-			parameters(32) = New SqlParameter("@precioxkilo", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilo)
-			parameters(33) = New SqlParameter("@precioxkilogasto", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilogasto)
-			parameters(34) = New SqlParameter("@precioxkilototal", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilototal)
+			parameters(32) = New SqlParameter("@precioxkilo", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilo)
+			parameters(33) = New SqlParameter("@precioxkilogasto", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilogasto)
+			parameters(34) = New SqlParameter("@precioxkilototal", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilototal)
 			parameters(35) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
 			parameters(36) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 			parameters(0) = new SqlParameter("@IdLoteCorte", SqlDbType.VarChar, 9, ParameterDirection.InputOutput, True, 0, 0, "",  DataRowVersion.Current, idLoteCorte)
@@ -14504,9 +14504,9 @@ precioxkilototal As System.Decimal, func As System.String, numOpc As System.Int3
 			parameters(29) = New SqlParameter("@KilosRecibidos", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, kilosRecibidos)
 			parameters(30) = New SqlParameter("@Nofactura", SqlDbType.Char, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, nofactura)
 			parameters(31) = New SqlParameter("@Importe", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, importe)
-			parameters(32) = New SqlParameter("@precioxkilo", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilo)
-			parameters(33) = New SqlParameter("@precioxkilogasto", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilogasto)
-			parameters(34) = New SqlParameter("@precioxkilototal", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilototal)
+			parameters(32) = New SqlParameter("@precioxkilo", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilo)
+			parameters(33) = New SqlParameter("@precioxkilogasto", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilogasto)
+			parameters(34) = New SqlParameter("@precioxkilototal", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilototal)
 			parameters(35) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
 			parameters(36) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 			parameters(0) = new SqlParameter("@IdLoteCorte", SqlDbType.VarChar, 9, ParameterDirection.InputOutput, True, 0, 0, "",  DataRowVersion.Current, idLoteCorte)
@@ -14604,9 +14604,9 @@ precioxkilototal As System.Decimal, func As System.String, numOpc As System.Int3
 			parameters(29) = New SqlParameter("@KilosRecibidos", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, kilosRecibidos)
 			parameters(30) = New SqlParameter("@Nofactura", SqlDbType.Char, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, nofactura)
 			parameters(31) = New SqlParameter("@Importe", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, importe)
-			parameters(32) = New SqlParameter("@precioxkilo", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilo)
-			parameters(33) = New SqlParameter("@precioxkilogasto", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilogasto)
-			parameters(34) = New SqlParameter("@precioxkilototal", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilototal)
+			parameters(32) = New SqlParameter("@precioxkilo", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilo)
+			parameters(33) = New SqlParameter("@precioxkilogasto", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilogasto)
+			parameters(34) = New SqlParameter("@precioxkilototal", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilototal)
 			parameters(35) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
 			parameters(36) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 			parameters(0) = new SqlParameter("@IdLoteCorte", SqlDbType.VarChar, 9, ParameterDirection.InputOutput, True, 0, 0, "",  DataRowVersion.Current, idLoteCorte)
@@ -14701,9 +14701,9 @@ precioxkilototal As System.Decimal, func As System.String, numOpc As System.Int3
 			parameters(29) = New SqlParameter("@KilosRecibidos", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, kilosRecibidos)
 			parameters(30) = New SqlParameter("@Nofactura", SqlDbType.Char, 20, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, nofactura)
 			parameters(31) = New SqlParameter("@Importe", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, importe)
-			parameters(32) = New SqlParameter("@precioxkilo", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilo)
-			parameters(33) = New SqlParameter("@precioxkilogasto", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilogasto)
-			parameters(34) = New SqlParameter("@precioxkilototal", SqlDbType.Decimal, 0, ParameterDirection.Input, True, 18, 0, "",  DataRowVersion.Current, precioxkilototal)
+			parameters(32) = New SqlParameter("@precioxkilo", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilo)
+			parameters(33) = New SqlParameter("@precioxkilogasto", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilogasto)
+			parameters(34) = New SqlParameter("@precioxkilototal", SqlDbType.Money, 0, ParameterDirection.Input, True, 19, 4, "",  DataRowVersion.Current, precioxkilototal)
 			parameters(35) = New SqlParameter("@Func", SqlDbType.Char, 1, ParameterDirection.Input, True, 0, 0, "",  DataRowVersion.Current, func)
 			parameters(36) = New SqlParameter("@NumOpc", SqlDbType.Int, 0, ParameterDirection.Input, True, 10, 0, "",  DataRowVersion.Current, numOpc)
 			parameters(0) = new SqlParameter("@IdLoteCorte", SqlDbType.VarChar, 9, ParameterDirection.InputOutput, True, 0, 0, "",  DataRowVersion.Current, idLoteCorte)
