@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: domingo, 18 de febrero de 2018 11:55:45
+' // Code is generated on: domingo, 18 de febrero de 2018 17:52:59
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -12191,6 +12191,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaLoteCortesTypedView", "Precioxkilototal"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaLoteCortesTypedView", "Precioxkilototal"))
 				Case VwBusquedaLoteCortesFieldIndex.KilosRecibidos
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaLoteCortesTypedView", "KilosRecibidos"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaLoteCortesTypedView", "KilosRecibidos"))
+				Case VwBusquedaLoteCortesFieldIndex.Nopiezas
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaLoteCortesTypedView", "Nopiezas"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaLoteCortesTypedView", "Nopiezas"))
 			End Select
 
 			Return fieldToReturn

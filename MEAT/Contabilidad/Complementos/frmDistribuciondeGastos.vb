@@ -6,54 +6,144 @@ Imports System.Data.SqlClient
 
 
 Public Class frmDistribuciondeGastos
-    Public Shared valor As Decimal
-
+    Public Shared valor As Integer
+    Public Shared idpoliza As Integer
+    Public Shared idsucursal As Integer
+    Public Shared idmetodoprorrateo As Integer
+    Public Shared idcuentacontable As Integer
+    Public Shared importe As Decimal
+    Public Shared ptjimporte As Decimal
+    Public Shared conteo As Integer
+#Region "propiedades publicas"
     Public Property valor1 As Decimal
         Get
             Return valor
         End Get
         Set(value As Decimal)
-            valor = valor
+            valor = value
         End Set
     End Property
-    Private Sub frmDistribuciondeGastos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Try
-        '    If PolizaDiario.txtPoliza.Text <> "" Then
-        '        Try
-        '            Dim sucursal As DataSet = New DataSet
-        '            Dim queryString As String = "select * from MCatGenSucursales"
-        '            Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
-        '            adapter.Fill(sucursal)
-        '            'For i As Integer = 0 To dgvMetodos.Rows.Count - 1
-        '            Me.dgvMetodos.Rows(0).Cells(clmSucursal.Index + 1).Value.DataSource = sucursal.Tables(0)
-        '            Me.dgvMetodos.Rows(0).Cells(clmSucursal.Index + 1).Value.DisplayMember = "SCDescripcionCorta"
-        '            Me.dgvMetodos.Rows(0).Cells(clmSucursal.Index + 1).Value.ValueMember = "SCldSucursal"
-        '            'Next
-        '        Catch ex As Exception
-        '            MessageBox.Show(ex.Message)
-        '        End Try
-        '        Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
-        '        'Try
-        '        '    Dim FormasPago As DataSet = New DataSet
-        '        '    Dim queryString As String = "select Nom_Depto, det.Porcentaje from GastosDepartamentos as a join usrContCuentas on  IdCuentaContable= codigo join MetodoDet  as det   on IdMetodoProrrateo= Cod_Metodo join usrContPolizas as d  on d.Codigo = IdPoliza join MetodoCab as cab on cab.Codigo = det.Cod_Metodo join CatDeptos on Cve_Depto = Cod_CentroCosto where IdPoliza= 18"
-        '        '    Dim adapter As SqlDataAdapter = New SqlDataAdapter(queryString, HC.DbUtils.ActualConnectionString)
-        '        '    adapter.Fill(FormasPago)
-        '        '    Me.CmbClaveSAT.DataSource = FormasPago.Tables(0)
-        '        '    Me.CmbClaveSAT.DisplayMember = "clavesat"
-        '        '    Me.CmbClaveSAT.ValueMember = "clave"
-        '        'Catch ex As Exception
-        '        '    MessageBox.Show(ex.Message)
-        '        'End Try
-        '    Else
-        '        Controlador.LlenarComboSucursales(clmSucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
-        '        Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
-        '    End If
-        Controlador.LlenarComboSucursales(clmSucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
-        Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
+    Public Property poliza As Integer
+        Get
+            Return idpoliza
+        End Get
+        Set(value As Integer)
+            idpoliza = value
+        End Set
+    End Property
+    Public Property sucursal As Integer
+        Get
+            Return idsucursal
+        End Get
+        Set(value As Integer)
+            idsucursal = value
+        End Set
+    End Property
+    Public Property metodo As Integer
+        Get
+            Return idmetodoprorrateo
+        End Get
+        Set(value As Integer)
+            idmetodoprorrateo = value
+        End Set
+    End Property
+    Public Property cuenta As Integer
+        Get
+            Return idcuentacontable
+        End Get
+        Set(value As Integer)
+            idcuentacontable = value
+        End Set
+    End Property
+    Public Property importe1 As Decimal
+        Get
+            Return importe
+        End Get
+        Set(value As Decimal)
+            importe = value
+        End Set
+    End Property
+    Public Property porcentaje As Decimal
+        Get
+            Return ptjimporte
+        End Get
+        Set(value As Decimal)
+            ptjimporte = value
+        End Set
+    End Property
+    Public Property filas As Integer
+        Get
+            Return conteo
+        End Get
+        Set(value As Integer)
+            conteo = value
+        End Set
+    End Property
+#End Region
 
-        'Catch ex As Exception
-        '    MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End Try
+
+    Private Sub frmDistribuciondeGastos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Try
+            If idpoliza <> 0 Then
+                Controlador.LlenarComboSucursales(clmSucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
+                Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
+                For i As Integer = 0 To conteo - 1
+                    dgvMetodos.Rows.Add()
+                    dgvMetodos.Rows(i).Cells(clmSucursal.Index).Value = idsucursal
+                    dgvMetodos.Rows(i).Cells(clmMetodoProrrateo.Index).Value = idmetodoprorrateo
+                    dgvMetodos.Rows(i).Cells(clmImporte.Index).Value = valor1
+                    'dgvMetodos.Rows.Add()
+                Next
+                Dim Metodo As New CN.MetodoProrrateoClass
+                    Metodo.Obtener(Me.dgvMetodos.CurrentRow.Cells(Me.clmMetodoProrrateo.Index).Value)
+                    Me.dgvDetalledeProrrateo.AutoGenerateColumns = False
+                    Me.dgvDetalledeProrrateo.DataSource = Metodo.Detalle
+
+                    'If e.ColumnIndex < Me.clmImporte.Index Then
+                    '    If Me.dgvMetodos.Rows(e.RowIndex).Cells(Me.clmMetodoProrrateo.Index).Value = 0 Then
+                    '        Exit Sub
+                    '    Else
+                Dim total As Decimal
+                total = valor1 / (dgvMetodos.Rows.Count - 1)
+
+                For i As Integer = 1 To dgvMetodos.Rows.Count - 1
+                    If i <= 0 Then
+
+                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
+                    Else
+                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
+
+                    End If
+                Next
+                Dim Porcentaje As Decimal = 0
+                Dim Importe As Decimal = 0
+
+                For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
+                    Porcentaje = Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmPorcentaje.Index).Value
+                    Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = (total * Porcentaje) / 100
+
+                Next
+                    'End If
+
+                    'End If
+                    Dim Sumaimporte As Decimal = 0
+                    Dim Sumaporentaje As Decimal = 0
+                    For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
+                        Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
+                        Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
+                    Next
+                    Me.txtImporte.Text = Sumaimporte.ToString("C2")
+                Me.txtPorcentaje.Text = Sumaporentaje.ToString("N1")
+
+                Else
+
+                    Controlador.LlenarComboSucursales(clmSucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
+                    Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
+                End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Private Sub dgvDetalledeProrrateo_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalledeProrrateo.CellEndEdit
@@ -106,9 +196,9 @@ Public Class frmDistribuciondeGastos
                 Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
                 Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
             Next
-            Sumaporentaje = Sumaporentaje / 100
+
             Me.txtImporte.Text = Sumaimporte.ToString("C2")
-            Me.txtPorcentaje.Text = Sumaporentaje.ToString("P")
+            Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -158,9 +248,8 @@ Public Class frmDistribuciondeGastos
                 Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
                 Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
             Next
-            Sumaporentaje = Sumaporentaje / 100
             Me.txtImporte.Text = Sumaimporte.ToString("C2")
-            Me.txtPorcentaje.Text = Sumaporentaje.ToString("P1")
+            Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

@@ -12,10 +12,10 @@ Public Class GastosDepartamentosClass
 
     End Sub
 
-    'Sub New(ByVal Codigo As Integer, ByVal Ejercicio As Short)
-    '    'MyBase.New()
-    '    Entity = New EC.GastosDepartamentosEntity(
-    'End Sub
+    Sub New(ByVal Codigo As Integer, ByVal Ejercicio As Short)
+        'MyBase.New()
+        Entity = New EC.GastosDepartamentosEntity
+    End Sub
 
     Sub New(ByVal entidad As EC.GastosDepartamentosEntity)
         'MyBase.New()

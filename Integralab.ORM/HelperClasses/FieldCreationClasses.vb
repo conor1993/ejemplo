@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: domingo, 18 de febrero de 2018 11:55:45
+' Code is generated on: domingo, 18 de febrero de 2018 17:53:00
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -23102,6 +23102,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [KilosRecibidos] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(VwBusquedaLoteCortesFieldIndex.KilosRecibidos), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new VwBusquedaLoteCortesTypedView.Nopiezas field instance</summary>
+		Public Shared ReadOnly Property [Nopiezas] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(VwBusquedaLoteCortesFieldIndex.Nopiezas), EntityField)
 			End Get
 		End Property
 	End Class

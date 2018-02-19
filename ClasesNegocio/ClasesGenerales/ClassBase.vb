@@ -23,7 +23,6 @@ Partial Public MustInherit Class ClassBase(Of TipoEntity As {OC.EntityBase, New}
 #End Region
 
 
-
 #Region "Datos ITransactionalElement"
     Private WithEvents m_Transaccion As HC.Transaction
 
