@@ -378,7 +378,7 @@ Partial Class _960BusquasedaLotesDeCortes
         '
         'clmPiezas
         '
-        Me.clmPiezas.DataPropertyName = "TotalPzas"
+        Me.clmPiezas.DataPropertyName = "Nopiezas"
         Me.clmPiezas.HeaderText = "Piezas"
         Me.clmPiezas.Name = "clmPiezas"
         Me.clmPiezas.ReadOnly = True

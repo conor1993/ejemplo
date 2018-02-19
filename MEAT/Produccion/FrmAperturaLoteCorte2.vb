@@ -82,7 +82,7 @@ Public Class FrmAperturaLoteCorte2
                 ''nuevos datos ----------------------------------------------------------------------------------------------------------------------------------
 
                 LoteCorte.Nopiezas = txtNoPiezas.Text
-                LoteCorte.Producto = Nothing 'CmbTipoGanado.SelectedValue
+                LoteCorte.Producto = 0 'CmbTipoGanado.SelectedValue
                 LoteCorte.Unidad = txtUnidad.Text
                 LoteCorte.Conductor = txtConductor.Text
                 LoteCorte.Placas = txtPlacas.Text

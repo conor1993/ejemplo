@@ -386,7 +386,7 @@ Public Class CortesClass
     Public Overloads Function Guardar(ByRef trans As Integralab.ORM.HelperClasses.Transaction) As Boolean
         Try
             If SPA.UspMscloteCortesCab(LoteSacrificio, FechaCorte, IdCliente, FechaCad, DiasCad, TotalPzas, TotalKgs, ConsecEtiquetas, Observaciones, Estatus, FechaCierre, FechaCancela, MotivoCancela, FechaCaptura, IdUsuarioCancela,
-                                       ObservacionesCancela, FolCorPza, FechaFapsa, Nopiezas, Nothing, Unidad, Conductor, Placas, Horaviaje, Idproveedor, Cvelugcom, Cvecomprador, Observacioneslote, KilosRecibidos, Nofactura,
+                                       ObservacionesCancela, FolCorPza, FechaFapsa, Nopiezas, Producto, Unidad, Conductor, Placas, Horaviaje, Idproveedor, Cvelugcom, Cvecomprador, Observacioneslote, KilosRecibidos, Nofactura,
                                        Importe, Precioxkilo, Precioxkilogasto, Precioxkilototal, Func, NumOpc, LoteCorte, trans) = 0 Then
                 MsgBox("Error al guardar información de lote de corte", MsgBoxStyle.Critical, "Error")
                 Return False
