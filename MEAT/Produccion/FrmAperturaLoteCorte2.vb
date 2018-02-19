@@ -368,7 +368,7 @@ Public Class FrmAperturaLoteCorte2
                 adp.Fill(tb)
                 cmbProveedor.DataSource = tb
 
-                
+
                 sqlCon.Close()
             End Using
 

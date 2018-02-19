@@ -47,6 +47,13 @@ Public Class FrmConsAperturaLote2
 
             sqlCon.Open()
             adp.Fill(tb)
+            'If tb.Rows.Count > 0 Then
+            '    tb.Clear()
+            '    cadenaConsulta = "consulta"
+            '    sqlcom = New SqlCommand(cadenaConsulta, sqlCon)
+            'End If
+
+
 
             Me.dvgAperturaLotes.DataSource = tb
         Catch ex As Exception

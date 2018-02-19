@@ -1,11 +1,13 @@
 Imports CN = ClasesNegocio
 Imports HC = IntegraLab.ORM.HelperClasses
+Imports System.Data.SqlClient
 
 
 Public Class PolizaDiario
     Dim Poliza As CN.PolizaClass
     Dim RegistrosDetalle As Integer = 0
     'Dim EstadoForma As String = "Nuevo"
+    Dim gastos As CN.GastosDepartamentosClass
     Public Shared valor As Decimal
     Private Sub PolizaDiario_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'Me.lblEmpresa.Text = Controlador.Sesion.MiEmpresa.Empnom
@@ -125,8 +127,30 @@ Public Class PolizaDiario
                 dgvPoliza.DataSource = Poliza.Detalles2
                 ObtenerTotal()
                 Me.txtConcepto.Enabled = False
-            Else
-                Cancelar = True
+                Dim idpoliza As Integer = Ventana.DgvPolizas.SelectedRows(0).Cells(Ventana.clmCodigo.Index).Value
+                gastos = New CN.GastosDepartamentosClass
+
+                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+
+                Try
+
+                    Dim cadenaConsulta As String = "Select IdPoliza,IdSucursal,IdMetodoProrrateo,IdCuentaContable,gastos.Importe,Ptj_Importe from GastosDepartamentos as gastos join usrContPolizas on Codigo=IdPoliza where IdPoliza={0} and  Codigo={1}"
+                    cadenaConsulta = String.Format(cadenaConsulta, idpoliza, CodPoliza)
+
+                    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                    Dim adp As New SqlDataAdapter(sqlcom)
+
+                    Dim tb As New DataTable
+
+                    sqlCon.Open()
+                    adp.Fill(tb)
+                    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+                    Me.dgvDistribuciondeGastos.DataSource = tb
+                Catch ex As Exception
+
+                End Try
+
+
             End If
 
             'If EstadoForma = "Buscando" And Me.txtPoliza.Text <> "" Then
@@ -225,6 +249,7 @@ Public Class PolizaDiario
 
         Dim Trans As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
         Try
+            'Dim Trans As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
             If txtConcepto.Text = "" Then
                 MessageBox.Show("Introduzca el concepto de la poliza", "Faltan Datos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Cancelar = True
@@ -289,7 +314,7 @@ Public Class PolizaDiario
                 Limpiar()
                 Me.txtConcepto.Enabled = False
             End If
-           
+
 
         Catch ex As Exception
             Trans.Rollback()
@@ -325,6 +350,7 @@ Public Class PolizaDiario
         Me.txtTotalCargo.Text = 0D
         Me.dgvPoliza.DataSource = Nothing
         Me.lblEstatus.Visible = False
+        Me.dgvDistribuciondeGastos.DataSource = Nothing
     End Sub
 
 
@@ -403,7 +429,20 @@ Public Class PolizaDiario
                     If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
                         'valor = Me.dgvPoliza.CurrentRow.Cells(e.ColumnIndex).Value
                         Dim Ventana As New frmDistribuciondeGastos
-                        frmDistribuciondeGastos.valor = Me.dgvPoliza.CurrentRow.Cells(Me.CargoDataGridViewTextBoxColumn.Index).Value()
+
+                        'Me.dgvDistribuciondeGastos.Rows.Add()
+                        frmDistribuciondeGastos.valor = Me.dgvPoliza.CurrentRow.Cells(Me.CargoDataGridViewTextBoxColumn.Index).Value
+                        For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
+
+                            frmDistribuciondeGastos.idpoliza = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmIdPoliza.Index).Value
+                            frmDistribuciondeGastos.idsucursal = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value
+                            frmDistribuciondeGastos.idmetodoprorrateo = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value
+                            frmDistribuciondeGastos.idcuentacontable = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmIdCuentaContable.Index).Value
+                            frmDistribuciondeGastos.importe = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value
+                            frmDistribuciondeGastos.ptjimporte = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value
+                        Next
+
+                        frmDistribuciondeGastos.conteo = Me.dgvDistribuciondeGastos.Rows.Count - 1
                         If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                             Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
                             For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
@@ -537,5 +576,5 @@ Public Class PolizaDiario
         End If
     End Sub
 
-   
+
 End Class

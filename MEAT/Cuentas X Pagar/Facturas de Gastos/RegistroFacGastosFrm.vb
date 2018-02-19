@@ -1,20 +1,21 @@
 Imports CN = ClasesNegocio
-Imports HC = IntegraLab.ORM.HelperClasses
-Imports CC = IntegraLab.ORM.CollectionClasses
-Imports EC = IntegraLab.ORM.EntityClasses
+Imports HC = Integralab.ORM.HelperClasses
+Imports CC = Integralab.ORM.CollectionClasses
+Imports EC = Integralab.ORM.EntityClasses
+Imports System.Data.SqlClient
 
 Public Class RegistroFacGastosFrm
-
+    Dim Poliza As CN.PolizaClass
     Private Proveedores As New ClasesNegocio.ProveedorCollectionClass
     Private Factura As CN.FacturasCabCXPClass
     Private FacDet As CN.FacturaDetalleCXPColeccion
+    'Dim Poliza As CN.PolizaClass
     Dim UltimaTeclaProveedor As Date
     Dim SumaCargo As Decimal
     Dim SumaAbono As Decimal
     Dim Buscar As Boolean = False
-    Dim Poliza As CN.PolizaClass
+    Dim gastos As CN.GastosDepartamentosClass
     Public Shared valor As Decimal
-
 
 #Region "Métodos"
     Private Sub RellenarGridCuentas(ByVal Cta As ClasesNegocio.CuentaContableClass)
@@ -140,6 +141,8 @@ Public Class RegistroFacGastosFrm
         TxtIVAFlete.Text = 0.0
         TxtIVAFlete1.Text = 0.ToString("C2")
         Me.UUID.Text = ""
+        Me.dgvDistribuciondeGastos.Rows.Clear()
+
     End Sub
 
     Public Sub Habilitar()
@@ -279,7 +282,7 @@ Public Class RegistroFacGastosFrm
                     Det.CargoOAbono = "A"
                 End If
                 Me.FacDet.Add(Det)
-                'Me.Factura.Detalles.Add(Det)
+                Me.Factura.Detalles.Add(Det)
             End If
         Next
     End Sub
@@ -333,7 +336,10 @@ Public Class RegistroFacGastosFrm
             Dim Conf As New CC.UsrConfigContabilidadCollection
             Conf.GetMulti(Nothing)
             Me.TxtIVAFlete.Text = CInt(Conf(0).Ivaflete)
-            TxtIVAFlete1.Text = Me.Factura.Ivaflete.ToString("C2")
+            Dim ivaFlete As Decimal = Me.Factura.Ivaflete.ToString()
+            ivaFlete = ivaFlete.ToString("N2")
+            TxtIVAFlete1.Text = ivaFlete
+            ''TxtIVAFlete1.Text = Me.Factura.Ivaflete.ToString("C2")
 
         ElseIf Factura.TasaISR <> 0 And Factura.TasaRetIva <> 0 Then
             ckbHonorarios.Checked = True
@@ -581,7 +587,7 @@ Public Class RegistroFacGastosFrm
                     Limpiar()
                 End If
             End If
-           
+
         Else
             MsgBox("La Factura ya está cancelada...")
             Limpiar()
@@ -606,6 +612,48 @@ Public Class RegistroFacGastosFrm
                 ObtenerValores()
                 ObtenerDetalle()
             End If
+
+            'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+
+            'Try
+
+            '    Dim cadenaConsulta As String = "insert into GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) values ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10})"
+            '    cadenaConsulta = String.Format(cadenaConsulta, Nothing, clmSucursal, clmMetodoProrrateo, clmCuentaContable, clmPorcentaje, clmImporte, DtpFechaFactura.Text, )
+
+            '    '    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+            '    '    Dim adp As New SqlDataAdapter(sqlcom)
+
+            '    '    Dim tb As New DataTable
+
+            '    '    sqlCon.Open()
+            '    '    adp.Fill(tb)
+            '    '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+            '    '    Me.dgvDistribuciondeGastos.DataSource = tb
+            'Catch ex As Exception
+
+            'End Try
+            'Dim idpoliza As Integer
+            'gastos = New CN.GastosDepartamentosClass
+
+            'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+
+            'Try
+
+            '    Dim cadenaConsulta As String = "Select IdPoliza,IdSucursal,IdMetodoProrrateo,IdCuentaContable,gastos.Importe,Ptj_Importe from GastosDepartamentos as gastos join usrContPolizas on Codigo=IdPoliza where IdPoliza={0} and  Codigo={1}"
+            '    cadenaConsulta = String.Format(cadenaConsulta, idpoliza, 7)
+
+            '    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+            '    Dim adp As New SqlDataAdapter(sqlcom)
+
+            '    Dim tb As New DataTable
+
+            '    sqlCon.Open()
+            '    adp.Fill(tb)
+            '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+            '    Me.dgvDistribuciondeGastos.DataSource = tb
+            'Catch ex As Exception
+
+            'End Try
         End If
     End Sub
 
@@ -614,38 +662,47 @@ Public Class RegistroFacGastosFrm
         Deshabilitar()
     End Sub
 
-    'Private Sub mtb_ClickEditar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickEditar
-
-    'End Sub
-
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
+
         Dim Tran As New HC.Transaction(IsolationLevel.ReadCommitted, "Fac")
+
+        Dim Trans As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
         Try
             If Validar() Then
                 PasarValores()
                 AgregarDetalles()
-                For i As Integer = 0 To Me.dgvDistribuciondeGastos.Rows.Count - 1
-                    If Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = 0 Then
-                        Exit For
-                    End If
-                    Dim Gastos As New CN.GastosDepartamentosClass
-                    Gastos.IdCuentaContable = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value
-                    Gastos.IdSucursal = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value
-                    Gastos.IdMetodoProrrateo = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value
-                    Gastos.Importe = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value
-                    Gastos.IdPoliza = Poliza.Codigo
-                    Gastos.Porcentaje = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value
-                    If Not Gastos.Guardar(Tran) Then
-                        Tran.Rollback()
-                        Cancelar = True
-                    End If
-                Next
+
+
+                
                 If Factura.Guardar(Tran) Then
                     For Each Det As CN.FacturasDetalleCXPClass In FacDet
                         Tran.Add(Det)
-                        'Det.Guardar(Tran)
+                        Det.Guardar(Tran)
                     Next
+                    
                     Tran.Commit()
+                    Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                    Try
+                        For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
+                            Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10})"
+                            cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value, CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value), DtpFechaFactura.Text, 0, Factura.NoFactura, Factura.IdProveedor, Factura.IdEmpresa)
+                            Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                            Dim adp As New SqlDataAdapter(sqlcom)
+
+                            '    Dim tb As New DataTable
+
+                            'sqlCon.Open()
+                            '    adp.Fill(tb)
+                            '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+                            '    Me.dgvDistribuciondeGastos.DataSource = tb
+                            sqlCon.Open()
+                            sqlcom.ExecuteNonQuery()
+                            sqlCon.Close()
+
+                        Next
+                    Catch ex As Exception
+
+                    End Try
                     MsgBox("La Factura se ha Guardado Satisfactoriamente...", MsgBoxStyle.Exclamation, "Aviso")
                     Limpiar()
                     Deshabilitar()
@@ -661,13 +718,16 @@ Public Class RegistroFacGastosFrm
             Cancelar = True
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
-    End Sub
+End Sub
 
-    Private Sub mtb_ClickLimpiar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickLimpiar
+
+
+
+Private Sub mtb_ClickLimpiar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickLimpiar
         Limpiar()
     End Sub
-
-    Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickNuevo
+    
+Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickNuevo
         Try
             Me.CmbProveedor.DataSource = Proveedores
             Me.CmbProveedor.DisplayMember = "RazonSocial"
@@ -686,7 +746,6 @@ Public Class RegistroFacGastosFrm
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-
     Private Sub mtb_ClickSalir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickSalir
         Me.Close()
     End Sub
@@ -719,6 +778,9 @@ Public Class RegistroFacGastosFrm
         End Try
 
     End Sub
+
+
+
 
     Private Sub TxtFactura_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtFactura.KeyPress
         If e.KeyChar = Chr(13) Then
@@ -844,7 +906,8 @@ Public Class RegistroFacGastosFrm
                             Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
                             For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
                                 Me.dgvDistribuciondeGastos.Rows.Add()
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmCuentaContablePri.Index).Value
+
+                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
@@ -855,6 +918,7 @@ Public Class RegistroFacGastosFrm
                     End If
                 Case Me.ClmAbono.Index
                     Dim Cuenta As New CN.CuentaContableClass
+                    Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value)
                     If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
                         Dim Ventana As New frmDistribuciondeGastos
                         frmDistribuciondeGastos.valor = Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value()
