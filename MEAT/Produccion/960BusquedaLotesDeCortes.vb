@@ -92,8 +92,16 @@ Public Class _960BusquasedaLotesDeCortes
     End Sub
 
     Private Sub DgvLotes_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DgvLotes.DoubleClick
+
         If Me.DgvLotes.SelectedRows.Count > 0 Then
-            Me.DialogResult = Windows.Forms.DialogResult.OK
+            Dim Estatus As String = DgvLotes.SelectedRows.Item(0).Cells(clmEstatus.Index).Value
+            If Estatus <> "C" And Estatus <> "CERRADO" Then
+                Me.DialogResult = Windows.Forms.DialogResult.OK
+            Else
+                MessageBox.Show("No es posible seleccionar un Lote de Corte que ya ha sido cerrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            End If
+
+
         Else
             MessageBox.Show("Seleccione un Lote de Corte", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
