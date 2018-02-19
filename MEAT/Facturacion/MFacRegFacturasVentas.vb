@@ -238,7 +238,6 @@ Public Class MFacRegFacturasVentas
     '            Return False
     '        End If
     '        'Fact = FacturasCab.Obtener(Me.txtFolioFactura.Text, Me.txtCodigoCliente.Text)
-
     '        'cabecero de factura
     '        Imp.Escribe(Fact.Tables(0).Rows(0)("Nombre"), ConF(0).Campo1X, ConF(0).Campo1Y) ' nombre del cliente
     '        Imp.Escribe(Fact.Tables(0).Rows(0)("NoFactura"), ConF(0).Campo6X, ConF(0).Campo6Y) 'Folio de Factura
@@ -1194,6 +1193,7 @@ Public Class MFacRegFacturasVentas
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+
     End Sub
 
     Public Function Guardar(ByVal Trans As HC.Transaction, ByVal Estatus As String) As Boolean
@@ -1793,6 +1793,7 @@ Public Class MFacRegFacturasVentas
             MEAToolBar1_ClickCancelar(sender, New ToolBarButtonClickEventArgs(MEAToolBar1.Buttons("tbbtnCancelar")), Cancelar)
             Cancelar = True
         End If
+
     End Sub
 
     Private Sub dgvDetalleConcentrado_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalleConcentrado.CellEndEdit

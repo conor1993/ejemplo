@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 9 de febrero de 2018 17:51:11
+' // Code is generated on: domingo, 18 de febrero de 2018 17:53:00
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -5277,7 +5277,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits View's mappings</summary>
         Private Sub InitVwBusquedaLoteCortesTypedViewMappings()
-            MyBase.AddElementMapping("VwBusquedaLoteCortesTypedView", "", "dbo", "VwBusquedaLoteCortes", 16)
+            MyBase.AddElementMapping("VwBusquedaLoteCortesTypedView", "", "dbo", "VwBusquedaLoteCortes", 17)
             MyBase.AddElementFieldMapping("VwBusquedaLoteCortesTypedView", "LoteCorte", "LoteCorte", False, CInt(SqlDbType.Char), 10, 0, 0, False, String.Empty, Nothing, GetType(System.String), 0)
             MyBase.AddElementFieldMapping("VwBusquedaLoteCortesTypedView", "LoteSacrificio", "LoteSacrificio", False, CInt(SqlDbType.VarChar), 11, 0, 0, False, String.Empty, Nothing, GetType(System.String), 1)
             MyBase.AddElementFieldMapping("VwBusquedaLoteCortesTypedView", "FechaCorte", "FechaCorte", False, CInt(SqlDbType.DateTime), 0, 0, 0, False, String.Empty, Nothing, GetType(System.DateTime), 2)
@@ -5294,6 +5294,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("VwBusquedaLoteCortesTypedView", "Descripcion", "Descripcion", False, CInt(SqlDbType.VarChar), 100, 0, 0, False, String.Empty, Nothing, GetType(System.String), 13)
             MyBase.AddElementFieldMapping("VwBusquedaLoteCortesTypedView", "Precioxkilototal", "precioxkilototal", False, CInt(SqlDbType.Money), 0, 4, 19, False, String.Empty, Nothing, GetType(System.Decimal), 14)
             MyBase.AddElementFieldMapping("VwBusquedaLoteCortesTypedView", "KilosRecibidos", "KilosRecibidos", False, CInt(SqlDbType.Money), 0, 4, 19, False, String.Empty, Nothing, GetType(System.Decimal), 15)
+            MyBase.AddElementFieldMapping("VwBusquedaLoteCortesTypedView", "Nopiezas", "Nopiezas", False, CInt(SqlDbType.Int), 0, 0, 10, False, String.Empty, Nothing, GetType(System.Int32), 16)
         End Sub
         ''' <summary>Inits View's mappings</summary>
         Private Sub InitVwBusquedaMovimientosAlmacenTypedViewMappings()

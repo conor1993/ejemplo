@@ -394,16 +394,16 @@ Public Class CortesClass
 
             Return True
         Catch ex As Exception
-            MsgBox("Error al guardar información de lote de corte", MsgBoxStyle.Critical, "Error")
-            'MsgBox(ex.Message + "LoteSacrificio: " + LoteSacrificio.ToString() + " FechaCorte: " + FechaCorte.ToString() + " IdCliente: " + IdCliente.ToString() + " DiasCad: " &
-            '       DiasCad.ToString() + " TotalPzas: " + TotalPzas.ToString() + " TotalKgs: " + TotalKgs.ToString() + " ConsecEtiquetas: " + ConsecEtiquetas.ToString() + " Observaciones: " + Observaciones.ToString() &
-            '       " Estatus: " + Estatus.ToString() + " FechaCierre: " + FechaCierre.ToString() + " FechaCancela: " + FechaCancela.ToString() + " MotivoCancela: " + MotivoCancela.ToString() + " FechaCaptura: " &
-            '       FechaCaptura.ToString() + " IdUsuarioCancela: " + IdUsuarioCancela.ToString() + " ObservacionesCancela: " + ObservacionesCancela.ToString() + " FolCorPza: " + FolCorPza.ToString() &
-            '       " FechaFapsa: " + FechaFapsa.ToString() + " Nopiezas: " + Nopiezas.ToString() + " Producto: " + Producto.ToString() &
-            '       " Unidad: " + Unidad.ToString() + " Conductor: " + Conductor.ToString() + " Placas: " + Placas.ToString() + Conductor.ToString() + " Horaviaje: " + Horaviaje.ToString() + " Idproveedor: " + Idproveedor.ToString() &
-            '       " Cvelugcom: " + Cvelugcom.ToString() + " Cvecomprador: " + Cvecomprador.ToString() + " Observacioneslote: " + Observacioneslote.ToString() + " KilosRecibidos: " + KilosRecibidos.ToString() + " Nofactura: " + Nofactura.ToString() &
-            '       " Importe: " + Importe.ToString() + " Precioxkilo: " + Math.Round(CDbl(Precioxkilo)).ToString() + " Precioxkilogasto: " + Math.Round(CDbl(Precioxkilogasto)).ToString() + " Func: " + Func.ToString() &
-            '       " NumOpc: " + NumOpc.ToString() + " LoteCorte: " + LoteCorte.ToString(), MsgBoxStyle.Critical, "Error")
+            'MsgBox("Error al guardar información de lote de corte", MsgBoxStyle.Critical, "Error")
+            MsgBox(ex.Message + "LoteSacrificio: " + LoteSacrificio.ToString() + " FechaCorte: " + FechaCorte.ToString() + " IdCliente: " + IdCliente.ToString() + " DiasCad: " &
+                   DiasCad.ToString() + " TotalPzas: " + TotalPzas.ToString() + " TotalKgs: " + TotalKgs.ToString() + " ConsecEtiquetas: " + ConsecEtiquetas.ToString() + " Observaciones: " + Observaciones.ToString() &
+                   " Estatus: " + Estatus.ToString() + " FechaCierre: " + FechaCierre.ToString() + " FechaCancela: " + FechaCancela.ToString() + " MotivoCancela: " + MotivoCancela.ToString() + " FechaCaptura: " &
+                   FechaCaptura.ToString() + " IdUsuarioCancela: " + IdUsuarioCancela.ToString() + " ObservacionesCancela: " + ObservacionesCancela.ToString() + " FolCorPza: " + FolCorPza.ToString() &
+                   " FechaFapsa: " + FechaFapsa.ToString() + " Nopiezas: " + Nopiezas.ToString() + " Producto: " + Producto.ToString() &
+                   " Unidad: " + Unidad.ToString() + " Conductor: " + Conductor.ToString() + " Placas: " + Placas.ToString() + Conductor.ToString() + " Horaviaje: " + Horaviaje.ToString() + " Idproveedor: " + Idproveedor.ToString() &
+                   " Cvelugcom: " + Cvelugcom.ToString() + " Cvecomprador: " + Cvecomprador.ToString() + " Observacioneslote: " + Observacioneslote.ToString() + " KilosRecibidos: " + KilosRecibidos.ToString() + " Nofactura: " + Nofactura.ToString() &
+                   " Importe: " + Importe.ToString() + " Precioxkilo: " + Math.Round(CDbl(Precioxkilo)).ToString() + " Precioxkilogasto: " + Math.Round(CDbl(Precioxkilogasto)).ToString() + " Func: " + Func.ToString() &
+                   " NumOpc: " + NumOpc.ToString() + " LoteCorte: " + LoteCorte.ToString(), MsgBoxStyle.Critical, "Error")
             Return False
         End Try
     End Function

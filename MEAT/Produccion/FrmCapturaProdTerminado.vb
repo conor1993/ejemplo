@@ -1,7 +1,7 @@
 Imports ClasesNegocio
-Imports HC = Integralab.ORM.HelperClasses
-Imports CC = Integralab.ORM.CollectionClasses
-Imports EC = Integralab.ORM.EntityClasses
+Imports HC = IntegraLab.ORM.HelperClasses
+Imports CC = IntegraLab.ORM.CollectionClasses
+Imports EC = IntegraLab.ORM.EntityClasses
 
 Imports BC = BarcodeLib
 Imports BRC = BarCode
@@ -10,6 +10,7 @@ Imports System.Drawing.Text
 
 Imports System
 Imports System.IO.Ports
+Imports System.Data.SqlClient
 
 Public Class FrmCapturaProdTerminado
 
@@ -608,6 +609,53 @@ Public Class FrmCapturaProdTerminado
             LoteCorte.Precioxkilogasto = 0D
             LoteCorte.Precioxkilototal = 0D
 
+            Dim CantPzas As Decimal = 0
+            Dim CantKgrs As Decimal = 0
+            Dim KilosRecibidos As Decimal = 0
+            Dim Nopiezas As Decimal = 0
+            Dim NoBultos As Decimal = 0
+            Dim NoCajas As Decimal = txtcajas.Text
+
+            Dim cadenaConsulta As String = "SELECT SUM(t2.CantPzas) CantPzas, SUM(t2.CantKgrs) CantKgrs, MAX(t1.KilosRecibidos) KilosRecibidos, MAX(Nopiezas) Nopiezas, Count(t2.LoteCorte) NoBultos " &
+                                                " FROM  MSCLoteCortesCab t1 " &
+                                                 " INNER JOIN MSCLoteCortesDet t2 ON t1.LoteCorte = t2.LoteCorte " &
+                                                " WHERE t1.LoteCorte = '{0}' AND t2.Estatus = 1 AND ISNULL(t2.IdFolioEmbarque, '') = '' "
+            cadenaConsulta = String.Format(cadenaConsulta, LoteCorte.LoteCorte)
+            'If(dtpFechaInicio.Enabled = True, Me.dtpFechaInicio.Value.ToShortDateString, String.Empty)
+            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            Using sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                sqlCon.Open()
+                'Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                Dim adp As New SqlDataAdapter(sqlcom)
+                Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
+                Rs.Read()
+
+                CantPzas = Rs(0).ToString()
+                CantKgrs = Rs(1).ToString()
+                KilosRecibidos = Rs(2).ToString()
+                Nopiezas = Rs(3).ToString()
+                NoBultos = Rs(4).ToString()
+
+                If NoBultos > KilosRecibidos Then
+                    Trans.Rollback()
+                    MessageBox.Show("Los kilos registrados exceden los kilos comprados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+
+                If (NoBultos + NoCajas) > Nopiezas Then
+                    Trans.Rollback()
+                    MessageBox.Show("Las piezas registradas exceden las piezas compradas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
+                'LoteCorte.TotalPzas
+
+                'FormPrincipal.txtFolioSacrificio.Text = Rs(2).ToString()
+                Rs.Close()
+                sqlCon.Close()
+
+            End Using
+
+
             If Not LoteCorte.Guardar(Trans) Then
                 Trans.Rollback()
                 Return False
@@ -645,6 +693,7 @@ Public Class FrmCapturaProdTerminado
                 .IdPoliza = ""
                 .Kilos = CDec(Me.txtPeso.Text)
                 .Piezas = CInt(Me.txtPiezas.Text)
+                'Modificar
                 .AgregarDetalle(CInt(Me.txtCodSubCorte.Text), .Kilos, .Piezas, precioxkilo, 0D)
 
                 .Guardar(Trans)
@@ -661,7 +710,7 @@ Public Class FrmCapturaProdTerminado
             Else
                 corte.IdCorte = 0
             End If
-
+            'Modificar 
             corte.IdProducto = CInt(Me.txtCodSubCorte.Text)
             corte.CantKgrs = CDec(Me.txtPeso.Text)
             corte.CantPzas = CInt(Me.txtPiezas.Text)
@@ -790,16 +839,22 @@ Public Class FrmCapturaProdTerminado
         Try
             Dim Piezas, Kilos As Decimal
 
-            For i As Integer = 0 To Me.dgvEtiquetas.Rows.Count - 1
+            Dim totalEtiquetas = Me.dgvEtiquetas.Rows.Count
+
+            For i As Integer = 0 To totalEtiquetas - 1
                 With Me.dgvEtiquetas.Rows(i)
                     Piezas += .Cells(Me.CantPzas.Index).Value
                     Kilos += .Cells(Me.CantKgrs.Index).Value
                 End With
             Next
 
-            Me.txtTotEti.Text = Me.dgvEtiquetas.Rows.Count - 1
+            Me.txtTotEti.Text = totalEtiquetas
             Me.txtTotPzas.Text = Piezas.ToString("N3")
             Me.txtTotKgrs.Text = Kilos.ToString("N3")
+
+            Me.txtPiezasCanales.Text = totalEtiquetas
+            Me.txtKilosCanales.Text = Kilos.ToString("N3")
+
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
@@ -942,7 +997,7 @@ Public Class FrmCapturaProdTerminado
         End If
     End Sub
 
-    Private Sub buscarcortes()
+    Private Sub buscarcortes(Optional ByVal id_producto As String = "0")
         Me.txtPiezas.Clear()
 
         Dim TablaProductos As New DataSet
@@ -950,21 +1005,24 @@ Public Class FrmCapturaProdTerminado
         Productos = New ClasesNegocio.ProductosClass
         'TablaProductos = Productos.Obtener(CInt(Me.txtCodSubCorte.Text), "", 0, 7)
 
-        Dim cadena As String = "Select 	IdPreCorte,	" & _
-                               "        (Select Descripcion " & _
-                               "        From MSCCatProductos" & _
-                               "		Where IdProducto=IdPreCorte) as PreCorte," & _
-                               "        Cp.IdProducto as IdCorte, Descripcion, DescripcionCorta,'',MaximoPiezasxCaja," & _
-                               "        Case	When Estatus = 1 then 'VIGENTE'	" & _
-                               "                when  Estatus = 0 then 'CANCELADO'" & _
-                               "	    End as Estatus,	NombreIngles, CodigoBarra,Cp.ValorAgregado,cp.ConHueso " & _
-                               "FROM	MSCCatProductos Cp left join MSCCortesPreCortes Cpc " & _
-                               "        on Cpc.IdCorte=Cp.IdProducto " & _
-                               "WHERE	(IdCorte in (Select IdCorte	" & _
-                               "                      From	MSCCortesPreCortes  Inner join " & _
-                               "                            MSCCatProductos  on MSCCortesPreCortes.IdCorte=MSCCatProductos.IdProducto) " & _
-                               "        OR Cp.ValorAgregado = 1) AND Estatus = 1 AND Cp.IdProducto = " & _
-                               Me.txtCodSubCorte.Text.Trim
+        'Dim cadena As String = "Select 	IdPreCorte,	" & _
+        '                       "        (Select Descripcion " & _
+        '                       "        From MSCCatProductos" & _
+        '                       "		Where IdProducto=IdPreCorte) as PreCorte," & _
+        '                       "        Cp.IdProducto as IdCorte, Descripcion, DescripcionCorta,'',MaximoPiezasxCaja," & _
+        '                       "        Case	When Estatus = 1 then 'VIGENTE'	" & _
+        '                       "                when  Estatus = 0 then 'CANCELADO'" & _
+        '                       "	    End as Estatus,	NombreIngles, CodigoBarra,Cp.ValorAgregado,cp.ConHueso " & _
+        '                       "FROM	MSCCatProductos Cp left join MSCCortesPreCortes Cpc " & _
+        '                       "        on Cpc.IdCorte=Cp.IdProducto " & _
+        '                       "WHERE	(IdCorte in (Select IdCorte	" & _
+        '                       "                      From	MSCCortesPreCortes  Inner join " & _
+        '                       "                            MSCCatProductos  on MSCCortesPreCortes.IdCorte=MSCCatProductos.IdProducto) " & _
+        '                       "        OR Cp.ValorAgregado = 1) AND Estatus = 1 AND Cp.IdProducto = " & _
+        '                       Me.txtCodSubCorte.Text.Trim
+
+        Dim cadena As String = "exec Usp_MSCLoteCortesCon 4, '{0}' , '{1}', '', ''"
+        cadena = String.Format(cadena, Me.txtLoteCorte.Text, id_producto)
 
         'Dim cadena As String = "Select IdPreCorte, (Select Descripcion From MSCCatProductos " & _
         '                       "Where IdProducto=IdPreCorte) as PreCorte, IdCorte,Descripcion, " & _
@@ -972,7 +1030,7 @@ Public Class FrmCapturaProdTerminado
         '                       "when  Estatus = 0 then 'CANCELADO' End as Estatus,NombreIngles,CodigoBarra " & _
         '                       "From MSCCortesPreCortes Cpc Inner join MSCCatProductos Cp on Cpc.IdCorte=Cp.IdProducto " & _
         '                       "WHERE Cp.IdProducto = " & Me.txtCodSubCorte.Text.Trim
-
+        'Modificar
         Dim ad As New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand(cadena, New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)))
 
         Try
@@ -1024,7 +1082,7 @@ Public Class FrmCapturaProdTerminado
 
         Me.valorAgregado = TablaProductos.Tables(0).Rows(0)("ValorAgregado")
         Me.conHueso = TablaProductos.Tables(0).Rows(0)("ConHueso")
-        Me.prodSeleccionado = True
+        'Me.prodSeleccionado = True
 
         ObtenerDiasCaducidad()
         Me.txtPiezas.Focus()
@@ -1054,7 +1112,7 @@ Public Class FrmCapturaProdTerminado
                 Exit Sub
             End If
 
-            If Not IsNumeric(Me.txtPiezas.Text) Then 'OrElse Not (CInt(Me.txtPiezas.Text) > 0 AndAlso CInt(Me.txtPiezas.Text) < 40) Then
+            If Not IsNumeric(Me.txtPiezas.Text) OrElse Not (CInt(Me.txtPiezas.Text) > 0) Then 'OrElse Not (CInt(Me.txtPiezas.Text) > 0 AndAlso CInt(Me.txtPiezas.Text) < 40) Then
                 MsgBox("Debe ingresar las piezas", MsgBoxStyle.Exclamation, "Aviso")
                 'MsgBox("Las piezas deben estar en el rango de 2 a 15", MsgBoxStyle.Exclamation, "Aviso")
                 Exit Sub
@@ -1080,15 +1138,20 @@ Public Class FrmCapturaProdTerminado
             '    Exit Sub
             'End If
 
-
+            Dim saveResult As Boolean
             For i As Integer = 1 To numcaja
-                Me.Guardar()
+                saveResult = Me.Guardar()
             Next
 
 
 
             Me.txtPeso.Text = "0"
+            Me.txtPiezas.Text = "0"
+            Me.txtcajas.Text = "0"
 
+            If saveResult = True Then
+                Me.txtcajas.Focus()
+            End If
             'If Me.Guardar() Then
             '    Me.txtCodSubCorte.Focus()
             'End If
@@ -1153,7 +1216,7 @@ Public Class FrmCapturaProdTerminado
                     Else
                         nombreIngles = TablaProductos.Tables(0).Rows(Consultas.dgvCortes.SelectedRows(0).Index)("NombreIngles")
                     End If
-
+                    'Modificar los dos txtCodSubCorte txtSubCorte
                     Me.txtCodSubCorte.Text = Consultas.dgvCortes.CurrentRow.Cells("Codigo").Value
                     Me.txtSubCorte.Text = Consultas.dgvCortes.CurrentRow.Cells("Descripcion").Value
                     Me.txtPiezas.Text = Consultas.dgvCortes.CurrentRow.Cells("Piezas").Value
@@ -1177,7 +1240,7 @@ Public Class FrmCapturaProdTerminado
                     End If
 
                     Me.valorAgregado = TablaProductos.Tables(0).Rows(Consultas.dgvCortes.CurrentRow.Index)("ValorAgregado")
-                    Me.prodSeleccionado = True
+                    'Me.prodSeleccionado = True
 
                     ObtenerDiasCaducidad()
 
@@ -1271,7 +1334,6 @@ Public Class FrmCapturaProdTerminado
 #Region "Form"
     Private Sub FrmCapturaProdTerminado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            Dim idproducto As String
             Controlador.Configuracion.ActualizarProduccion()
 
             If Controlador.Configuracion.Produccion.Entidad.IsNew Then
@@ -1294,7 +1356,10 @@ Public Class FrmCapturaProdTerminado
                     Me.txtDiasCad.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmDiasCad.Index).Value
                     Me.dtpFechaCaducidad.Value = CDate(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmFechaCorte.Index).Value).AddDays(CInt(Me.txtDiasCad.Text))
                     Me.txtProveedor.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmIntroductor.Index).Value
-                    Me.txtCodSubCorte.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmproducto.Index).Value
+                    'Me.txtCodSubCorte.Text = Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmproducto.Index).Value
+
+                    Me.txtKilosRegistrar.Text = CDec(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmKilosRecibidos.Index).Value).ToString("N3")
+                    Me.txtPiezasRegistrar.Text = CDec(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmPiezas.Index).Value).ToString("N3")
 
                     If Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.precioxkilototal.Index).Value IsNot DBNull.Value Then
                         precioxkilo = Convert.ToDecimal(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.precioxkilototal.Index).Value)
@@ -1308,7 +1373,28 @@ Public Class FrmCapturaProdTerminado
                     Else
                         kilosrecividos = 0
                     End If
-                    buscarcortes()
+
+                    Dim query As String = "exec Usp_MSCLoteCortesCon 4, '{0}' , '', '', ''"
+                    query = String.Format(query, Me.txtLoteCorte.Text, "")
+                    Me.cmbCortes.DisplayMember = "Descripcion"
+                    Me.cmbCortes.ValueMember = "IdCorte"
+                    'Me.cmbCortes.SelectedIndex = -1
+
+                    Dim tb As New DataTable
+                    Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                    Using sqlcom As New SqlCommand(query, sqlCon)
+                        Dim adp As New SqlDataAdapter(sqlcom)
+                        sqlCon.Open()
+                        adp.Fill(tb)
+                        cmbCortes.DataSource = tb
+                        'If cmbCortes.Items.Count > 0 Then
+                        '    Me.cmbCortes.SelectedIndex = 0
+                        'End If
+
+                        sqlCon.Close()
+                    End Using
+
+                    buscarcortes("0")
 
                 Else
                     For Each control As Control In Me.Controls
@@ -1474,6 +1560,13 @@ Public Class FrmCapturaProdTerminado
     End Sub
 
     Private Sub CmdImprimir_Click(sender As System.Object, e As System.EventArgs) Handles CmdImprimir.Click
+
+    End Sub
+
+    Private Sub cmbCortes_SelectedValueChanged(sender As System.Object, e As System.EventArgs) Handles cmbCortes.SelectedValueChanged
+        If Me.cmbCortes.SelectedValue <> Nothing Then
+            Me.buscarcortes(Me.cmbCortes.SelectedValue.ToString())
+        End If
 
     End Sub
 End Class

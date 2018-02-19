@@ -940,8 +940,6 @@ Public Class frmFacturacionEspecial
             Me.CmbCliente.DataSource = ClientesCol
 
 
-
-
             'cargar productos
             'ProductosGenCol = New ProductoCollectionClass
             ''ProductosGenCol.ObtenerColeccion()

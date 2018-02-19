@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 9 de febrero de 2018 17:51:13
+' // Code is generated on: domingo, 18 de febrero de 2018 17:53:02
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -64,6 +64,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		Private _columnDescripcion As DataColumn
 		Private _columnPrecioxkilototal As DataColumn
 		Private _columnKilosRecibidos As DataColumn
+		Private _columnNopiezas As DataColumn
 		
 		' __LLBLGENPRO_USER_CODE_REGION_START AdditionalMembers
 		' __LLBLGENPRO_USER_CODE_REGION_END
@@ -75,7 +76,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' <summary>
 		''' The amount of fields in the resultset.
 		''' </summary>
-		Private Const AmountOfFields As Integer = 16
+		Private Const AmountOfFields As Integer = 17
 #End Region
 		
 		''' <summary>
@@ -365,6 +366,11 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnKilosRecibidos.ReadOnly = True
 			_columnKilosRecibidos.Caption = "KilosRecibidos"
 			Me.Columns.Add(_columnKilosRecibidos)
+
+			_columnNopiezas = New DataColumn("Nopiezas", GetType(System.Int32), Nothing, MappingType.Element)
+			_columnNopiezas.ReadOnly = True
+			_columnNopiezas.Caption = "Nopiezas"
+			Me.Columns.Add(_columnNopiezas)
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitClass
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -391,6 +397,7 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnDescripcion = Me.Columns("Descripcion")
 			_columnPrecioxkilototal = Me.Columns("Precioxkilototal")
 			_columnKilosRecibidos = Me.Columns("KilosRecibidos")
+			_columnNopiezas = Me.Columns("Nopiezas")
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitMembers
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -472,6 +479,10 @@ Namespace Integralab.ORM.TypedViewClasses
 			fieldHashtable = New Hashtable()
 
 			_fieldsCustomProperties.Add("KilosRecibidos", fieldHashtable)
+			
+			fieldHashtable = New Hashtable()
+
+			_fieldsCustomProperties.Add("Nopiezas", fieldHashtable)
 			
 		End Sub
 
@@ -711,6 +722,15 @@ Namespace Integralab.ORM.TypedViewClasses
 		ReadOnly Friend Property KilosRecibidosColumn As DataColumn
 			Get 
 				Return _columnKilosRecibidos 
+			End Get
+		End Property
+    
+		''' <summary>
+		''' Returns the column Object belonging to the TypedView field Nopiezas
+		''' </summary>
+		ReadOnly Friend Property NopiezasColumn As DataColumn
+			Get 
+				Return _columnNopiezas 
 			End Get
 		End Property
     
@@ -1376,6 +1396,45 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' </summary>
     	Public Sub SetKilosRecibidosNull() 
 			Me(_parent.KilosRecibidosColumn) = System.Convert.DBNull
+		End Sub
+
+	
+
+		''' <summary>
+		''' Gets / sets the value of the TypedView field Nopiezas<br/><br/>
+		''' 
+		''' </summary>
+		''' <remarks>
+		''' Mapped on view field: "VwBusquedaLoteCortes"."Nopiezas"<br/>
+		''' View field characteristics (type, precision, scale, length): Int, 10, 0, 0
+		''' </remarks>
+		Public Property [Nopiezas]() As System.Int32
+			Get 
+				If IsNopiezasNull() Then
+					' return default value for this type.
+					Return CType(TypeDefaultValue.GetDefaultValue(GetType(System.Int32)), System.Int32)
+				Else
+					Return CType(Me(_parent.NopiezasColumn), System.Int32)
+				End If
+			End Get
+			Set 
+				Me(_parent.NopiezasColumn) = Value
+			End Set
+		End Property
+
+		''' <summary>
+		''' Returns True if the TypedView field Nopiezas is NULL, False otherwise.
+		''' </summary>
+		Public Function IsNopiezasNull() As Boolean
+			Return IsNull(_parent.NopiezasColumn)
+		End Function
+
+		''' <summary>
+		''' Sets the TypedView field Nopiezas to NULL. Not recommended a typed view should be used
+		''' as a readonly Object.
+		''' </summary>
+    	Public Sub SetNopiezasNull() 
+			Me(_parent.NopiezasColumn) = System.Convert.DBNull
 		End Sub
 
 	
