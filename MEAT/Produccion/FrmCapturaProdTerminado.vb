@@ -1228,8 +1228,14 @@ Public Class FrmCapturaProdTerminado
 
             If ID_Producto > 0 Then
                 MsgBox("Se han registrado exitosamente el total de kgs en cada producto, a continuación se procederá a cerrar los cortes", MsgBoxStyle.Information, "AVISO")
-                Me.Enabled = False
-                Me.txtCerrado.Visible = True
+                'Me.Enabled = False
+                Me.txtcajas.Enabled = False
+                Me.txtPiezas.Enabled = False
+                Me.txtPeso.Enabled = False
+                Me.chkActivarLectura.Enabled = False
+                Me.dgvEtiquetas.Enabled = False
+
+                Me.txtCerrado.Show()
             End If
 
             If saveResult = True Then
