@@ -615,15 +615,15 @@ Public Class FrmCapturaProdTerminado
             Dim Nopiezas As Decimal = 0
             'Dim NoBultos As Decimal = 0
             Dim NoCajas As Decimal = txtcajas.Text
-
+            'If(dtpFechaInicio.Enabled = True, Me.dtpFechaInicio.Value.ToShortDateString, String.Empty)
             Dim query As String = "exec Usp_MSCLoteCortesCon 5, '{0}' , '{1}', '', ''"
             query = String.Format(query, Me.txtLoteCorte.Text, Me.cmbCortes.SelectedValue.ToString())
-            'If(dtpFechaInicio.Enabled = True, Me.dtpFechaInicio.Value.ToShortDateString, String.Empty)
+
             Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
             Using sqlcom As New SqlCommand(query, sqlCon)
                 sqlCon.Open()
                 'Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
-                Dim adp As New SqlDataAdapter(sqlcom)
+                'Dim adp As New SqlDataAdapter(sqlcom)
                 Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
                 Rs.Read()
 
@@ -652,7 +652,7 @@ Public Class FrmCapturaProdTerminado
                 sqlCon.Close()
 
             End Using
-           
+
 
             If Not LoteCorte.Guardar(Trans) Then
                 Trans.Rollback()
@@ -847,11 +847,11 @@ Public Class FrmCapturaProdTerminado
             Next
 
             Me.txtTotEti.Text = totalEtiquetas
-            Me.txtTotPzas.Text = Piezas.ToString("N3")
-            Me.txtTotKgrs.Text = Kilos.ToString("N3")
+            'Me.txtTotPzas.Text = Piezas.ToString("N3")
+            'Me.txtTotKgrs.Text = Kilos.ToString("N3")
 
-            Me.txtPiezasCanales.Text = totalEtiquetas
-            Me.txtKilosCanales.Text = Kilos.ToString("N3")
+            'Me.txtPiezasCanales.Text = totalEtiquetas
+            'Me.txtKilosCanales.Text = Kilos.ToString("N3")
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
@@ -1037,8 +1037,9 @@ Public Class FrmCapturaProdTerminado
             ad.Fill(TablaProductos)
         Catch ex As Exception
 
-        End Try
 
+        End Try
+        'Mee
         If TablaProductos.Tables(0).Rows.Count = 0 Then
             MsgBox("No se encuentra un producto con ese codigo", MsgBoxStyle.Exclamation, "Aviso")
             Exit Sub
@@ -1078,11 +1079,62 @@ Public Class FrmCapturaProdTerminado
             Me.CveProduto = TablaProductos.Tables(0).Rows(0)("DescripcionCorta")
         End If
 
+        'Me.txtKilosRegistrar.Text = CDec(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmKilosRecibidos.Index).Value).ToString("N3")
+        'Me.txtPiezasRegistrar.Text = CDec(Ventana.DgvLotes.SelectedRows(0).Cells(Ventana.clmPiezas.Index).Value).ToString("N3")
+
         Me.valorAgregado = TablaProductos.Tables(0).Rows(0)("ValorAgregado")
         Me.conHueso = TablaProductos.Tables(0).Rows(0)("ConHueso")
         'Me.prodSeleccionado = True
 
         ObtenerDiasCaducidad()
+
+
+        '------
+        TablaProductos.Clear()
+        TablaProductos = New DataSet
+
+        cadena = "exec Usp_MSCLoteCortesCon 5, '{0}' , '{1}', '', ''"
+        cadena = String.Format(cadena, Me.txtLoteCorte.Text, id_producto)
+
+        ad = New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand(cadena, New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)))
+        Try
+            ad.SelectCommand.Connection.Open()
+
+            ad.Fill(TablaProductos)
+        Catch ex As Exception
+
+
+        End Try
+        'Obtenemos datos del formulario
+        If TablaProductos.Tables(0).Rows.Count = 0 Then
+            MsgBox("No se encuentra un producto con ese codigo", MsgBoxStyle.Exclamation, "Aviso")
+            Exit Sub
+        End If
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("CantPzas")) Then
+            Me.txtPiezasCanales.Text = ""
+        Else
+            Me.txtPiezasCanales.Text = TablaProductos.Tables(0).Rows(0)("CantPzas")
+        End If
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("CantKgrs")) Then
+            Me.txtKilosCanales.Text = ""
+        Else
+            Me.txtKilosCanales.Text = TablaProductos.Tables(0).Rows(0)("CantKgrs")
+        End If
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("KilosRecibidos")) Then
+            Me.txtKilosRegistrar.Text = ""
+        Else
+            Me.txtKilosRegistrar.Text = TablaProductos.Tables(0).Rows(0)("KilosRecibidos")
+        End If
+
+        If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("NoPiezas")) Then
+            Me.txtPiezasRegistrar.Text = ""
+        Else
+            Me.txtPiezasRegistrar.Text = TablaProductos.Tables(0).Rows(0)("NoPiezas")
+        End If
+
         Me.txtPiezas.Focus()
     End Sub
 
@@ -1142,14 +1194,43 @@ Public Class FrmCapturaProdTerminado
                 If saveResult = False Then
                     Exit For
                 End If
-                'Mee
+
             Next
+            Dim ID_Producto As Integer = 0
+            Dim transaction As SqlTransaction
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                connection.Open()
+                Dim command As SqlCommand = connection.CreateCommand()
+                transaction = connection.BeginTransaction("SampleTransaction")
+                command.Connection = connection
+                command.Transaction = transaction
+                Dim query As String = "exec Usp_MSCLoteCortesCon 6, '{0}', '', '', ''"
+                Try
+                    query = String.Format(query, Me.txtLoteCorte.Text)
+                    command.CommandText = query
+                    command.ExecuteNonQuery()
 
+                    Dim Rs As SqlDataReader = command.ExecuteReader()
+                    Rs.Read()
+                    ID_Producto = Rs(0).ToString()
+                    Rs.Close()
+                    command.Transaction.Commit()
+                    connection.Close()
+                Catch ex As Exception
+                    command.Transaction.Rollback()
+                End Try
 
+            End Using
 
             Me.txtPeso.Text = "0"
             Me.txtPiezas.Text = "0"
             Me.txtcajas.Text = "0"
+
+            If ID_Producto > 0 Then
+                MsgBox("Se han registrado exitosamente el total de kgs en cada producto, a continuación se procederá a cerrar los cortes", MsgBoxStyle.Information, "AVISO")
+                Me.Enabled = False
+                Me.txtCerrado.Visible = True
+            End If
 
             If saveResult = True Then
                 Me.txtcajas.Focus()
@@ -1381,7 +1462,7 @@ Public Class FrmCapturaProdTerminado
                     Me.cmbCortes.DisplayMember = "Descripcion"
                     Me.cmbCortes.ValueMember = "IdCorte"
                     'Me.cmbCortes.SelectedIndex = -1
-
+                    Dim ID_Producto As Integer = 0
                     Dim tb As New DataTable
                     Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                     Using sqlcom As New SqlCommand(query, sqlCon)
@@ -1389,6 +1470,12 @@ Public Class FrmCapturaProdTerminado
                         sqlCon.Open()
                         adp.Fill(tb)
                         cmbCortes.DataSource = tb
+                        If tb.Rows.Count > 0 Then
+                            ID_Producto = CInt(tb.Rows(0)("IdCorte"))
+                        End If
+
+                        'Mee
+                        'tb.Ta()
                         'If cmbCortes.Items.Count > 0 Then
                         '    Me.cmbCortes.SelectedIndex = 0
                         'End If
@@ -1396,7 +1483,7 @@ Public Class FrmCapturaProdTerminado
                         sqlCon.Close()
                     End Using
 
-                    buscarcortes("0")
+                    buscarcortes(ID_Producto)
 
                 Else
                     For Each control As Control In Me.Controls
@@ -1448,7 +1535,7 @@ Public Class FrmCapturaProdTerminado
 
             Dim detcanalcorte As New DetCanalACorteColeccion
 
-            Me.txtPiezasCanales.Text = detcanalcorte.Obtener(Me.txtLoteCorte.Text)
+            'Me.txtPiezasCanales.Text = detcanalcorte.Obtener(Me.txtLoteCorte.Text)
 
             Dim Kilos As Decimal = 0
 
@@ -1456,7 +1543,7 @@ Public Class FrmCapturaProdTerminado
                 Kilos += detcanalcorte(i).KgrsEnCorte
             Next
 
-            Me.txtKilosCanales.Text = Kilos.ToString("N2")
+            'Me.txtKilosCanales.Text = Kilos.ToString("N2")
 
             Sumar()
 
@@ -1568,6 +1655,9 @@ Public Class FrmCapturaProdTerminado
     Private Sub cmbCortes_SelectedValueChanged(sender As System.Object, e As System.EventArgs) Handles cmbCortes.SelectedValueChanged
         If Me.cmbCortes.SelectedValue <> Nothing Then
             Me.buscarcortes(Me.cmbCortes.SelectedValue.ToString())
+            'exec Usp_MSCLoteCortesCon 5, '190218051' , '2', '', ''
+
+
         End If
 
     End Sub
