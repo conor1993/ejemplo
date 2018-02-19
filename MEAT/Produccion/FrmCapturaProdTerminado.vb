@@ -613,17 +613,14 @@ Public Class FrmCapturaProdTerminado
             Dim CantKgrs As Decimal = 0
             Dim KilosRecibidos As Decimal = 0
             Dim Nopiezas As Decimal = 0
-            Dim NoBultos As Decimal = 0
+            'Dim NoBultos As Decimal = 0
             Dim NoCajas As Decimal = txtcajas.Text
 
-            Dim cadenaConsulta As String = "SELECT SUM(t2.CantPzas) CantPzas, SUM(t2.CantKgrs) CantKgrs, MAX(t1.KilosRecibidos) KilosRecibidos, MAX(Nopiezas) Nopiezas, Count(t2.LoteCorte) NoBultos " &
-                                                " FROM  MSCLoteCortesCab t1 " &
-                                                 " INNER JOIN MSCLoteCortesDet t2 ON t1.LoteCorte = t2.LoteCorte " &
-                                                " WHERE t1.LoteCorte = '{0}' AND t2.Estatus = 1 AND ISNULL(t2.IdFolioEmbarque, '') = '' "
-            cadenaConsulta = String.Format(cadenaConsulta, LoteCorte.LoteCorte)
+            Dim query As String = "exec Usp_MSCLoteCortesCon 5, '{0}' , '{1}', '', ''"
+            query = String.Format(query, Me.txtLoteCorte.Text, Me.cmbCortes.SelectedValue.ToString())
             'If(dtpFechaInicio.Enabled = True, Me.dtpFechaInicio.Value.ToShortDateString, String.Empty)
             Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-            Using sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+            Using sqlcom As New SqlCommand(query, sqlCon)
                 sqlCon.Open()
                 'Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
                 Dim adp As New SqlDataAdapter(sqlcom)
@@ -634,15 +631,16 @@ Public Class FrmCapturaProdTerminado
                 CantKgrs = Rs(1).ToString()
                 KilosRecibidos = Rs(2).ToString()
                 Nopiezas = Rs(3).ToString()
-                NoBultos = Rs(4).ToString()
+                'NoBultos = Rs(4).ToString()
 
-                If NoBultos > KilosRecibidos Then
+
+                If (CantKgrs + LoteCorte.TotalKgs) > KilosRecibidos Then
                     Trans.Rollback()
                     MessageBox.Show("Los kilos registrados exceden los kilos comprados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Return False
                 End If
 
-                If (NoBultos + NoCajas) > Nopiezas Then
+                If (CantPzas + LoteCorte.TotalPzas) > Nopiezas Then
                     Trans.Rollback()
                     MessageBox.Show("Las piezas registradas exceden las piezas compradas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Return False
@@ -654,7 +652,7 @@ Public Class FrmCapturaProdTerminado
                 sqlCon.Close()
 
             End Using
-
+           
 
             If Not LoteCorte.Guardar(Trans) Then
                 Trans.Rollback()
@@ -1141,6 +1139,10 @@ Public Class FrmCapturaProdTerminado
             Dim saveResult As Boolean
             For i As Integer = 1 To numcaja
                 saveResult = Me.Guardar()
+                If saveResult = False Then
+                    Exit For
+                End If
+                'Mee
             Next
 
 
