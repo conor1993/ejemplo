@@ -564,6 +564,7 @@ Public Class FrmCapturaProdTerminado
         Try
 
             txtKilosCanales.Text = Convert.ToDecimal(txtKilosCanales.Text) + Convert.ToDecimal(txtPeso.Text)
+            txtPiezasCanales.Text = Convert.ToDecimal(txtPiezasCanales.Text) + Convert.ToDecimal(txtPiezas.Text)
 
             Dim Consecutivo As Integer
             Dim movAlmacen As New MovimientoAlmacenClass
@@ -1228,8 +1229,14 @@ Public Class FrmCapturaProdTerminado
 
             If ID_Producto > 0 Then
                 MsgBox("Se han registrado exitosamente el total de kgs en cada producto, a continuación se procederá a cerrar los cortes", MsgBoxStyle.Information, "AVISO")
-                Me.Enabled = False
-                Me.txtCerrado.Visible = True
+                'Me.Enabled = False
+                Me.txtcajas.Enabled = False
+                Me.txtPiezas.Enabled = False
+                Me.txtPeso.Enabled = False
+                Me.chkActivarLectura.Enabled = False
+                Me.dgvEtiquetas.Enabled = False
+
+                Me.txtCerrado.Show()
             End If
 
             If saveResult = True Then
@@ -1513,8 +1520,8 @@ Public Class FrmCapturaProdTerminado
             Dim loteCab As New ClasesNegocio.CortesClass(Me.txtLoteCorte.Text.Trim())
             dtpFechaCaducidad.Value = loteCab.FechaCad
             txtDiasCad.Text = loteCab.DiasCad.ToString()
-            txtKilosCanales.Text = loteCab.TotalKgs.ToString("N3")
-            txtPiezasCanales.Text = loteCab.TotalPzas.ToString()
+            'txtKilosCanales.Text = loteCab.TotalKgs.ToString("N3")
+            'txtPiezasCanales.Text = loteCab.TotalPzas.ToString()
 
 
 
