@@ -3,15 +3,23 @@ Imports CC = IntegraLab.ORM.CollectionClasses
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports EC = IntegraLab.ORM.EntityClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
+Imports System.Data.SqlClient
+Imports IntegraLab.CFDF
+Imports System.IO
+Imports IntegraLab
+
 Imports System.Text
+
 
 Public Class FrmNotaCredito
     Dim Nota As NotaCreditoCabClass
     Dim Clientes As CC.MfacCatClientesCollection
     Dim Conceptos As CC.CatTipNotasCollection
     Dim Estado As FormState
-    Dim FacturasCab As New FacturasClientesCabClass
-    Dim FacturasDet As New FacurasClientesDetClass
+    Dim FacturaCabecero As FacturasClass
+    Dim ClientesCol As ClientesIntroductoresColeccion
+    'Dim FacturasCab As New FacturasClientesCabClass
+    'Dim FacturasDet As New FacurasClientesDetClass
 
 
     Private Sub FrmNotaCredito_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -212,59 +220,38 @@ Public Class FrmNotaCredito
         Dim ColeccionDetalle As New System.ComponentModel.BindingList(Of NotaCreditoDetClass)
         Estado = FormState.Buscar
         Dim Consulta As New FrmConFacturas
+        'Dim DomFiscalCte As DomicilioClienteClass
+        'DomFiscalCte = DirectCast(DirectCast(DomicilioFiscalClass.SelectedRow.ListObject, Object), DomicilioClienteClass)
 
-        If Consulta.ShowDialog = Windows.Forms.DialogResult.OK Then
-            'Me.dgvDetalleConcentrado.Rows.Clear()
-            'Me.lvEmbarques.Items.Clear()
-            Dim Folio As String = Consulta.DgvFacturas.CurrentRow.Cells("Factura").Value
+        Dim Consultas As New frmBusquedaFacturas
+        Dim Clientes As New ClientesIntroductoresClass
+        Dim ListaSalidas As New List(Of String)
+        Dim i As Integer = 0
+        Dim Poliza As New PolizaClass
+        Dim PolizaDet As New PolizaDetalleClass
 
-            'If Not DBNull.Value.Equals(Consulta.DgvFacturas.CurrentRow.Cells("IdFolioEmbarque").Value) Then
-            '    For i As Integer = 0 To Consulta.DgvFacturas.Rows.Count - 1
-            '        If Folio = Consulta.DgvFacturas.Rows(i).Cells("Factura").Value Then
-            '            Me.lvEmbarques.Items.Add(Consulta.DgvFacturas.Rows(i).Cells("IdFolioEmbarque").Value)
-            '        End If
-            '    Next
-            'End If
+        Dim DomicilioFiscal As CFDI.UbicacionFiscal
+        Consultas.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
+        If Consultas.ShowDialog = Windows.Forms.DialogResult.OK Then
 
-            Dim IdCliente As Integer = CInt(Consulta.DgvFacturas.CurrentRow.Cells("IdCliente").Value)
-            Me.FacturasCab = New FacturasClientesCabClass(Controlador.Configuracion.FacturaFolios.StaLetraSerie, Folio)
+            FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
+            Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
+            Clientes.Obtener(FacturaCabecero.CveCliente)
 
-            Me.txtFolioFactura.Text = FacturasCab.NoFactura
-            Me.txtCliente.Text = Consulta.DgvFacturas.CurrentRow.Cells("Cliente").Value
-            Me.txtCodigoCliente.Text = FacturasCab.IdCliente
-            'Me.dtFechaFactura.Text = FacturasCab.FechaFactura
-            'Me.dtpFechaVencimiento.Text = FacturasCab.FechaVencimiento
-            'Me.rdContado.Checked = FacturasCab.Contado
-            'Me.rdCredito.Checked = FacturasCab.Credito
-            Me.txtSubTotal.Text = FacturasCab.SubTotal.ToString("C2")
-            Me.txtIVA.Text = FacturasCab.IVA.ToString("C2")
-            Me.txtTotal.Text = FacturasCab.Total.ToString("C2")
-            Me.txtObservaciones.Text = FacturasCab.Observaciones
-            'Me.CmbClientesVarios.SelectedValue = FacturasCab.IdClienteCargo
-        Else
-            Return False
+            txtCodigoCliente.Text = FacturaCabecero.CveCliente
+            txtCliente.Text = Clientes.RazonSocial
+            txtRFC.Text = Clientes.RFC
+            txtCalle.Text = Clientes.Domicilio
+            txtColonia.Text = Clientes.Colonia
+            TxtCP.Text = Clientes.CodigoPostal
+            txtEstado.Text = DomicilioFiscal.estado
+
+
+
         End If
 
-        'If Busqueda.ShowDialog() = Windows.Forms.DialogResult.OK Then
-        '    GridModo(False)
-        '    Nota = CType(Busqueda.DgvNotas.SelectedRows(0).DataBoundItem, NotaCreditoCabClass)
-        '    txtFolio.Text = Nota.FolNota
-        '    DtpFecha.Value = Nota.FechaNota
-        '    CmbCliente.SelectedValue = Nota.IdCliente
-        '    'cmbConcepto.SelectedValue = Nota.IdConcepto
-        '    'txtElaboro.Text = Nota.Elaboro
-        '    'txtAutorizo.Text = Nota.Autorizo
-        '    txtObservaciones.Text = Nota.Observaciones
-        '    txtTotal.Text = Nota.Total
-        '    lblEstatus.Visible = True
-        '    lblEstatus.Text = Nota.EstatusDescripcion.ToString().Replace("_", " ")
 
-        '    For Each detalleNota As EC.NotaCreditoDetEntity In Nota.Detalle
-        '        ColeccionDetalle.Add(New NotaCreditoDetClass(detalleNota))
-        '    Next
-        '    dgvFacturas.DataSource = ColeccionDetalle
-        '    Return True
-        'End If
+
 
     End Function
 

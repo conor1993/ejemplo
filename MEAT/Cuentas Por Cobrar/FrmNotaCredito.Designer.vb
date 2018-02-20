@@ -718,6 +718,7 @@ Partial Class FrmNotaCredito
         Me.PerformLayout()
 
     End Sub
+    Friend WithEvents lvEmbarques As System.Windows.Forms.ListView
     Friend WithEvents mtb As MEAToolBar.MEAToolBar
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
