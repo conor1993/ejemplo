@@ -564,6 +564,7 @@ Public Class FrmCapturaProdTerminado
         Try
 
             txtKilosCanales.Text = Convert.ToDecimal(txtKilosCanales.Text) + Convert.ToDecimal(txtPeso.Text)
+            txtPiezasCanales.Text = Convert.ToDecimal(txtPiezasCanales.Text) + Convert.ToDecimal(txtPiezas.Text)
 
             Dim Consecutivo As Integer
             Dim movAlmacen As New MovimientoAlmacenClass
@@ -1519,8 +1520,8 @@ Public Class FrmCapturaProdTerminado
             Dim loteCab As New ClasesNegocio.CortesClass(Me.txtLoteCorte.Text.Trim())
             dtpFechaCaducidad.Value = loteCab.FechaCad
             txtDiasCad.Text = loteCab.DiasCad.ToString()
-            txtKilosCanales.Text = loteCab.TotalKgs.ToString("N3")
-            txtPiezasCanales.Text = loteCab.TotalPzas.ToString()
+            'txtKilosCanales.Text = loteCab.TotalKgs.ToString("N3")
+            'txtPiezasCanales.Text = loteCab.TotalPzas.ToString()
 
 
 
