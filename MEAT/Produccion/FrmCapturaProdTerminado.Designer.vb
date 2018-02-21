@@ -23,14 +23,14 @@ Partial Class FrmCapturaProdTerminado
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmCapturaProdTerminado))
-        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvEtiquetas = New System.Windows.Forms.DataGridView()
         Me.IdFolioEtiqueta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -106,6 +106,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtKilosRegistrar = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cmbCortes = New System.Windows.Forms.ComboBox()
+        Me.txtCerrado = New System.Windows.Forms.TextBox()
         CType(Me.dgvEtiquetas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Frame2.SuspendLayout()
         Me.gpbCanales.SuspendLayout()
@@ -119,36 +120,36 @@ Partial Class FrmCapturaProdTerminado
         Me.dgvEtiquetas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvEtiquetas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle43
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvEtiquetas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.dgvEtiquetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvEtiquetas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdFolioEtiqueta, Me.IdCorte, Me.Nom_Corte, Me.IdProducto, Me.Nom_SubCorte, Me.CantPzas, Me.CantKgrs})
-        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle46.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvEtiquetas.DefaultCellStyle = DataGridViewCellStyle46
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvEtiquetas.DefaultCellStyle = DataGridViewCellStyle18
         Me.dgvEtiquetas.Location = New System.Drawing.Point(12, 253)
         Me.dgvEtiquetas.MultiSelect = False
         Me.dgvEtiquetas.Name = "dgvEtiquetas"
         Me.dgvEtiquetas.ReadOnly = True
-        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle47.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvEtiquetas.RowHeadersDefaultCellStyle = DataGridViewCellStyle47
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvEtiquetas.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
         Me.dgvEtiquetas.RowHeadersVisible = False
         Me.dgvEtiquetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvEtiquetas.Size = New System.Drawing.Size(994, 330)
@@ -190,8 +191,8 @@ Partial Class FrmCapturaProdTerminado
         '
         'CantPzas
         '
-        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.CantPzas.DefaultCellStyle = DataGridViewCellStyle44
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.CantPzas.DefaultCellStyle = DataGridViewCellStyle16
         Me.CantPzas.HeaderText = "Piezas"
         Me.CantPzas.Name = "CantPzas"
         Me.CantPzas.ReadOnly = True
@@ -199,10 +200,10 @@ Partial Class FrmCapturaProdTerminado
         '
         'CantKgrs
         '
-        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle45.Format = "N3"
-        DataGridViewCellStyle45.NullValue = Nothing
-        Me.CantKgrs.DefaultCellStyle = DataGridViewCellStyle45
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle17.Format = "N3"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.CantKgrs.DefaultCellStyle = DataGridViewCellStyle17
         Me.CantKgrs.HeaderText = "Kilos"
         Me.CantKgrs.Name = "CantKgrs"
         Me.CantKgrs.ReadOnly = True
@@ -248,7 +249,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtPeso.Name = "txtPeso"
         Me.txtPeso.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtPeso.Size = New System.Drawing.Size(161, 50)
-        Me.txtPeso.TabIndex = 7
+        Me.txtPeso.TabIndex = 62
         Me.txtPeso.Text = "0.000"
         Me.txtPeso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -264,7 +265,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtPiezas.Name = "txtPiezas"
         Me.txtPiezas.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtPiezas.Size = New System.Drawing.Size(81, 50)
-        Me.txtPiezas.TabIndex = 6
+        Me.txtPiezas.TabIndex = 61
         Me.txtPiezas.Text = "0"
         Me.txtPiezas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -282,6 +283,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtSubCorte.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtSubCorte.Size = New System.Drawing.Size(377, 44)
         Me.txtSubCorte.TabIndex = 4
+        Me.txtSubCorte.Visible = False
         '
         'txtCodSubCorte
         '
@@ -296,7 +298,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtCodSubCorte.Name = "txtCodSubCorte"
         Me.txtCodSubCorte.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtCodSubCorte.Size = New System.Drawing.Size(65, 26)
-        Me.txtCodSubCorte.TabIndex = 3
+        Me.txtCodSubCorte.TabIndex = 58
         Me.txtCodSubCorte.Text = "0"
         Me.txtCodSubCorte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -313,7 +315,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtCorte.Name = "txtCorte"
         Me.txtCorte.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtCorte.Size = New System.Drawing.Size(416, 26)
-        Me.txtCorte.TabIndex = 1
+        Me.txtCorte.TabIndex = 57
         '
         'txtCodCorte
         '
@@ -414,6 +416,7 @@ Partial Class FrmCapturaProdTerminado
         'Frame2
         '
         Me.Frame2.BackColor = System.Drawing.SystemColors.Control
+        Me.Frame2.Controls.Add(Me.txtCerrado)
         Me.Frame2.Controls.Add(Me.txtTotKgrs)
         Me.Frame2.Controls.Add(Me.txtTotPzas)
         Me.Frame2.Controls.Add(Me.txtTotEti)
@@ -645,7 +648,7 @@ Partial Class FrmCapturaProdTerminado
         Me.dtpFechaCorte.Location = New System.Drawing.Point(102, 76)
         Me.dtpFechaCorte.Name = "dtpFechaCorte"
         Me.dtpFechaCorte.Size = New System.Drawing.Size(130, 26)
-        Me.dtpFechaCorte.TabIndex = 72
+        Me.dtpFechaCorte.TabIndex = 56
         '
         'dtpFechaCaducidad
         '
@@ -847,7 +850,7 @@ Partial Class FrmCapturaProdTerminado
         Me.chkActivarLectura.Location = New System.Drawing.Point(556, 178)
         Me.chkActivarLectura.Name = "chkActivarLectura"
         Me.chkActivarLectura.Size = New System.Drawing.Size(80, 50)
-        Me.chkActivarLectura.TabIndex = 92
+        Me.chkActivarLectura.TabIndex = 63
         Me.chkActivarLectura.Text = "Lectura de Peso Desactivada"
         Me.chkActivarLectura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.chkActivarLectura.UseVisualStyleBackColor = True
@@ -898,8 +901,8 @@ Partial Class FrmCapturaProdTerminado
         '
         'DataGridViewTextBoxColumn6
         '
-        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle48
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle20
         Me.DataGridViewTextBoxColumn6.HeaderText = "Piezas"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -907,10 +910,10 @@ Partial Class FrmCapturaProdTerminado
         '
         'DataGridViewTextBoxColumn7
         '
-        DataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle49.Format = "N2"
-        DataGridViewCellStyle49.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle49
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle21.Format = "N2"
+        DataGridViewCellStyle21.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle21
         Me.DataGridViewTextBoxColumn7.HeaderText = "Kilos"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -933,7 +936,7 @@ Partial Class FrmCapturaProdTerminado
         Me.chkTipoCorte.Location = New System.Drawing.Point(642, 179)
         Me.chkTipoCorte.Name = "chkTipoCorte"
         Me.chkTipoCorte.Size = New System.Drawing.Size(92, 51)
-        Me.chkTipoCorte.TabIndex = 94
+        Me.chkTipoCorte.TabIndex = 64
         Me.chkTipoCorte.Text = "Fresco"
         Me.chkTipoCorte.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.chkTipoCorte.UseVisualStyleBackColor = False
@@ -946,7 +949,7 @@ Partial Class FrmCapturaProdTerminado
         Me.chkEdadGanado.Location = New System.Drawing.Point(740, 178)
         Me.chkEdadGanado.Name = "chkEdadGanado"
         Me.chkEdadGanado.Size = New System.Drawing.Size(66, 50)
-        Me.chkEdadGanado.TabIndex = 96
+        Me.chkEdadGanado.TabIndex = 65
         Me.chkEdadGanado.Text = "-30"
         Me.chkEdadGanado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.chkEdadGanado.UseVisualStyleBackColor = False
@@ -1000,7 +1003,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtcajas.Name = "txtcajas"
         Me.txtcajas.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtcajas.Size = New System.Drawing.Size(81, 50)
-        Me.txtcajas.TabIndex = 99
+        Me.txtcajas.TabIndex = 60
         Me.txtcajas.Text = "0"
         Me.txtcajas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -1011,12 +1014,12 @@ Partial Class FrmCapturaProdTerminado
         Me.txtPiezasRegistrar.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtPiezasRegistrar.Enabled = False
         Me.txtPiezasRegistrar.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtPiezasRegistrar.Location = New System.Drawing.Point(417, 48)
+        Me.txtPiezasRegistrar.Location = New System.Drawing.Point(357, 48)
         Me.txtPiezasRegistrar.MaxLength = 0
         Me.txtPiezasRegistrar.Name = "txtPiezasRegistrar"
         Me.txtPiezasRegistrar.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtPiezasRegistrar.Size = New System.Drawing.Size(100, 20)
-        Me.txtPiezasRegistrar.TabIndex = 18
+        Me.txtPiezasRegistrar.TabIndex = 54
         Me.txtPiezasRegistrar.Text = "0"
         Me.txtPiezasRegistrar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -1029,9 +1032,9 @@ Partial Class FrmCapturaProdTerminado
         Me.Label7.Location = New System.Drawing.Point(216, 52)
         Me.Label7.Name = "Label7"
         Me.Label7.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label7.Size = New System.Drawing.Size(203, 13)
+        Me.Label7.Size = New System.Drawing.Size(138, 13)
         Me.Label7.TabIndex = 19
-        Me.Label7.Text = "Total de Piezas/Cajas/Bultos a registrar : "
+        Me.Label7.Text = "Total de Piezas a registrar : "
         '
         'txtKilosRegistrar
         '
@@ -1040,12 +1043,12 @@ Partial Class FrmCapturaProdTerminado
         Me.txtKilosRegistrar.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtKilosRegistrar.Enabled = False
         Me.txtKilosRegistrar.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtKilosRegistrar.Location = New System.Drawing.Point(659, 48)
+        Me.txtKilosRegistrar.Location = New System.Drawing.Point(596, 48)
         Me.txtKilosRegistrar.MaxLength = 0
         Me.txtKilosRegistrar.Name = "txtKilosRegistrar"
         Me.txtKilosRegistrar.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtKilosRegistrar.Size = New System.Drawing.Size(105, 20)
-        Me.txtKilosRegistrar.TabIndex = 100
+        Me.txtKilosRegistrar.TabIndex = 55
         Me.txtKilosRegistrar.Text = "0"
         Me.txtKilosRegistrar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -1055,7 +1058,7 @@ Partial Class FrmCapturaProdTerminado
         Me.Label8.BackColor = System.Drawing.SystemColors.Control
         Me.Label8.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label8.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label8.Location = New System.Drawing.Point(532, 52)
+        Me.Label8.Location = New System.Drawing.Point(469, 52)
         Me.Label8.Name = "Label8"
         Me.Label8.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label8.Size = New System.Drawing.Size(129, 13)
@@ -1070,7 +1073,19 @@ Partial Class FrmCapturaProdTerminado
         Me.cmbCortes.Location = New System.Drawing.Point(173, 141)
         Me.cmbCortes.Name = "cmbCortes"
         Me.cmbCortes.Size = New System.Drawing.Size(416, 28)
-        Me.cmbCortes.TabIndex = 102
+        Me.cmbCortes.TabIndex = 59
+        '
+        'txtCerrado
+        '
+        Me.txtCerrado.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.txtCerrado.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCerrado.Location = New System.Drawing.Point(82, 0)
+        Me.txtCerrado.Name = "txtCerrado"
+        Me.txtCerrado.Size = New System.Drawing.Size(113, 26)
+        Me.txtCerrado.TabIndex = 102
+        Me.txtCerrado.Text = "Cerrado"
+        Me.txtCerrado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtCerrado.Visible = False
         '
         'FrmCapturaProdTerminado
         '
@@ -1215,4 +1230,5 @@ Partial Class FrmCapturaProdTerminado
     Public WithEvents txtKilosRegistrar As System.Windows.Forms.TextBox
     Public WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents cmbCortes As System.Windows.Forms.ComboBox
+    Friend WithEvents txtCerrado As System.Windows.Forms.TextBox
 End Class

@@ -1233,7 +1233,7 @@ Namespace Integralab.ORM.EntityClasses
 			_fieldsCustomProperties.Add("Origen", fieldHashtable)
 			fieldHashtable = New Dictionary(Of String, String)()
 
-			_fieldsCustomProperties.Add("NumCtaPago", fieldHashtable)
+            '_fieldsCustomProperties.Add("NumCtaPago", fieldHashtable)
 		End Sub
 
 
