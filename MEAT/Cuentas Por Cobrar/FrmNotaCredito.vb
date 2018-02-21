@@ -244,15 +244,70 @@ Public Class FrmNotaCredito
             txtCalle.Text = Clientes.Domicilio
             txtColonia.Text = Clientes.Colonia
             TxtCP.Text = Clientes.CodigoPostal
-            txtEstado.Text = DomicilioFiscal.estado
+            txtEstado.Text = Clientes.IdEstado
+            TxtLocalidad.Text = Clientes.IdPoblacion
+            txtMunicipio.Text = Clientes.Ciudad.ToString
+            UsoCFDI.Text = FacturaCabecero.UsoCfdi
+            CmbFormaPago.Text = FacturaCabecero.FormaPago
+            CmbMetodoPago.Text = FacturaCabecero.MetodoPago
+            'UsoCFDI = [Enum].Parse(GetType(CFDI.c_UsoCFDI), FacturaCabecero.UsoCfdi)
 
-
+            '******* LLENAR GRID  *********
+            llenarGrid()
 
         End If
 
 
 
 
+    End Function
+
+    Public Function llenarGrid() As Boolean
+        Dim i As Integer = 0
+
+        dgvFacturas.AllowUserToAddRows = False
+        For Each Detalle As FacturasDetalleClass In FacturaCabecero.Detalles
+            Dim Producto As New ProductoClass
+
+            Me.dgvFacturas.Rows.Add()
+            If Detalle.IdProducto = 0 And Detalle.Descripcion = "" Then
+                Exit For
+            End If
+            If Detalle.IdProducto > 0 Then
+                'Me.dgvFacturas.Rows(i).Cells(Me.clmCodigo.Index).Value = Detalle.IdProducto
+                Producto.Obtener(Detalle.IdProducto)
+                'Me.dgvFacturas.Rows.Add()
+                'Me.dgvFacturas.Rows(i).Cells(Me.clmDescripcion.Index).Value = Producto.Descripcion
+
+            End If
+            Me.dgvFacturas.Rows(i).Cells(Me.clmDescripcion.Index).Value = Detalle.Descripcion
+            Me.dgvFacturas.Rows(i).Cells(Me.clmUnidad.Index).Value = Detalle.Unidad
+            Me.dgvFacturas.Rows(i).Cells(Me.clmClaveProdSAT.Index).Value = Detalle.CveProdServ
+            Me.dgvFacturas.Rows(i).Cells(Me.clmUnidadSAT.Index).Value = Detalle.CveUnidad
+
+            'If Detalle.IVA > 0 Then
+            '    Me.dgvFacturas.Rows(i).Cells(Me.clmConIVA.Index).Value = True
+            'Else
+            '    Me.dgvFacturas.Rows(i).Cells(Me.clmConIVA.Index).Value = False
+            'End If
+            'If (Detalle.ImporteVenta > 0) Then
+            '    Me.dgvFacturas.Rows(i).Cells(Me.clmIva.Index).Value = Detalle.ImporteVenta.ToString
+            'Else
+            '    Me.dgvFacturas.Rows(i).Cells(Me.clmIva.Index).Value = " "
+            'End If
+
+            Me.dgvFacturas.Rows(i).Cells(Me.clmImporte.Index).Value = Detalle.PrecioUnitario
+            Me.dgvFacturas.Rows(i).Cells(Me.clmCantidad.Index).Value = Detalle.CantidadxProducto
+            Me.dgvFacturas.Rows(i).Cells(Me.clmFactura.Index).Value = Detalle.FolFactura
+            Me.dgvFacturas.Rows(i).Cells(Me.clmTotal.Index).Value = Detalle.CantidadxProducto * Detalle.PrecioUnitario
+            Me.dgvFacturas.Rows(i).Cells(Me.clmTotalFactura.Index).Value = Detalle.Total
+
+            'Me.dgvFacturas.Rows(i).Cells(Me.clmImporte.Index).Value = Detalle.CantidadxProducto * Detalle.PrecioUnitario
+            i = i + 1
+        Next
+
+
+        Return True
     End Function
 
     Public Function Cancelar() As Boolean

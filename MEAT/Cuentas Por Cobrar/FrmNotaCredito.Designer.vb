@@ -23,9 +23,9 @@ Partial Class FrmNotaCredito
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim Appearance16 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance17 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance18 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -50,11 +50,26 @@ Partial Class FrmNotaCredito
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvFacturas = New System.Windows.Forms.DataGridView()
+        Me.clmChecado = New Infragistics.Win.UltraDataGridView.UltraCheckEditorColumn(Me.components)
+        Me.clmCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmUnidadSAT = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmClaveProdSAT = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmTotalFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSaldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmTotalNotas = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtCodigoCliente = New System.Windows.Forms.TextBox()
         Me.txtRFC = New System.Windows.Forms.TextBox()
         Me.lblRFC = New System.Windows.Forms.Label()
         Me.LblClaveCliente = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.txtEstado = New System.Windows.Forms.TextBox()
         Me.lblEstado = New System.Windows.Forms.Label()
         Me.txtMunicipio = New System.Windows.Forms.TextBox()
@@ -80,21 +95,6 @@ Partial Class FrmNotaCredito
         Me.txtSubTotal = New System.Windows.Forms.TextBox()
         Me.lblIVA = New System.Windows.Forms.Label()
         Me.lblSubTotal = New System.Windows.Forms.Label()
-        Me.clmChecado = New Infragistics.Win.UltraDataGridView.UltraCheckEditorColumn(Me.components)
-        Me.clmCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmUnidadSAT = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmClaveProdSAT = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmTotalFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmSaldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmTotalNotas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.GroupBox3.SuspendLayout()
         CType(Me.dgvFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -289,6 +289,124 @@ Partial Class FrmNotaCredito
         Me.dgvFacturas.Size = New System.Drawing.Size(811, 225)
         Me.dgvFacturas.TabIndex = 97
         '
+        'clmChecado
+        '
+        Me.clmChecado.CheckedAppearance = Appearance4
+        Me.clmChecado.DataPropertyName = "Seleccionado"
+        Me.clmChecado.DefaultNewRowValue = 0
+        Me.clmChecado.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.[Default]
+        Me.clmChecado.FillWeight = 6.0!
+        Me.clmChecado.HeaderText = " "
+        Me.clmChecado.HotTrackingAppearance = Appearance5
+        Me.clmChecado.IndeterminateAppearance = Appearance6
+        Me.clmChecado.Name = "clmChecado"
+        Me.clmChecado.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.clmChecado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.clmChecado.Visible = False
+        '
+        'clmCantidad
+        '
+        Me.clmCantidad.FillWeight = 6.0!
+        Me.clmCantidad.HeaderText = "Cantidad"
+        Me.clmCantidad.Name = "clmCantidad"
+        Me.clmCantidad.ReadOnly = True
+        '
+        'clmUnidadSAT
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.Format = "d"
+        Me.clmUnidadSAT.DefaultCellStyle = DataGridViewCellStyle1
+        Me.clmUnidadSAT.FillWeight = 12.0!
+        Me.clmUnidadSAT.HeaderText = "Unidad SAT"
+        Me.clmUnidadSAT.Name = "clmUnidadSAT"
+        Me.clmUnidadSAT.ReadOnly = True
+        '
+        'clmEstatus
+        '
+        Me.clmEstatus.FillWeight = 6.0!
+        Me.clmEstatus.HeaderText = "Estatus"
+        Me.clmEstatus.Name = "clmEstatus"
+        Me.clmEstatus.ReadOnly = True
+        Me.clmEstatus.Visible = False
+        '
+        'clmUnidad
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = "0"
+        Me.clmUnidad.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clmUnidad.FillWeight = 7.0!
+        Me.clmUnidad.HeaderText = "Unidad"
+        Me.clmUnidad.Name = "clmUnidad"
+        Me.clmUnidad.ReadOnly = True
+        '
+        'clmClaveProdSAT
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = "0"
+        Me.clmClaveProdSAT.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clmClaveProdSAT.FillWeight = 19.0!
+        Me.clmClaveProdSAT.HeaderText = "Productos / Servicios SAT"
+        Me.clmClaveProdSAT.Name = "clmClaveProdSAT"
+        Me.clmClaveProdSAT.ReadOnly = True
+        '
+        'clmDescripcion
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "C2"
+        DataGridViewCellStyle4.NullValue = "0"
+        Me.clmDescripcion.DefaultCellStyle = DataGridViewCellStyle4
+        Me.clmDescripcion.FillWeight = 30.0!
+        Me.clmDescripcion.HeaderText = "Descripcion"
+        Me.clmDescripcion.Name = "clmDescripcion"
+        '
+        'clmImporte
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle5
+        Me.clmImporte.FillWeight = 11.0!
+        Me.clmImporte.HeaderText = "Prec Unitario"
+        Me.clmImporte.Name = "clmImporte"
+        '
+        'clmIva
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.clmIva.DefaultCellStyle = DataGridViewCellStyle6
+        Me.clmIva.FillWeight = 9.0!
+        Me.clmIva.HeaderText = "Importe"
+        Me.clmIva.Name = "clmIva"
+        '
+        'clmFactura
+        '
+        Me.clmFactura.HeaderText = "factura"
+        Me.clmFactura.Name = "clmFactura"
+        Me.clmFactura.Visible = False
+        '
+        'clmTotal
+        '
+        Me.clmTotal.HeaderText = "total"
+        Me.clmTotal.Name = "clmTotal"
+        Me.clmTotal.Visible = False
+        '
+        'clmTotalFactura
+        '
+        Me.clmTotalFactura.HeaderText = "totalfactura"
+        Me.clmTotalFactura.Name = "clmTotalFactura"
+        Me.clmTotalFactura.Visible = False
+        '
+        'clmSaldo
+        '
+        Me.clmSaldo.HeaderText = "Saldo"
+        Me.clmSaldo.Name = "clmSaldo"
+        Me.clmSaldo.Visible = False
+        '
+        'clmTotalNotas
+        '
+        Me.clmTotalNotas.HeaderText = "Total Notas"
+        Me.clmTotalNotas.Name = "clmTotalNotas"
+        Me.clmTotalNotas.Visible = False
+        '
         'txtCodigoCliente
         '
         Me.txtCodigoCliente.Location = New System.Drawing.Point(67, 19)
@@ -347,6 +465,13 @@ Partial Class FrmNotaCredito
         Me.GroupBox1.TabIndex = 104
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cliente"
+        '
+        'txtCliente
+        '
+        Me.txtCliente.Location = New System.Drawing.Point(147, 18)
+        Me.txtCliente.Name = "txtCliente"
+        Me.txtCliente.Size = New System.Drawing.Size(377, 20)
+        Me.txtCliente.TabIndex = 116
         '
         'txtEstado
         '
@@ -552,135 +677,6 @@ Partial Class FrmNotaCredito
         Me.lblSubTotal.TabIndex = 117
         Me.lblSubTotal.Text = "SubTotal:"
         '
-        'clmChecado
-        '
-        Me.clmChecado.CheckedAppearance = Appearance16
-        Me.clmChecado.DataPropertyName = "Seleccionado"
-        Me.clmChecado.DefaultNewRowValue = 0
-        Me.clmChecado.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.[Default]
-        Me.clmChecado.FillWeight = 6.0!
-        Me.clmChecado.HeaderText = " "
-        Me.clmChecado.HotTrackingAppearance = Appearance17
-        Me.clmChecado.IndeterminateAppearance = Appearance18
-        Me.clmChecado.Name = "clmChecado"
-        Me.clmChecado.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.clmChecado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.clmChecado.Visible = False
-        '
-        'clmCantidad
-        '
-        Me.clmCantidad.FillWeight = 6.0!
-        Me.clmCantidad.HeaderText = "Cantidad"
-        Me.clmCantidad.Name = "clmCantidad"
-        Me.clmCantidad.ReadOnly = True
-        '
-        'clmUnidadSAT
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.Format = "d"
-        Me.clmUnidadSAT.DefaultCellStyle = DataGridViewCellStyle1
-        Me.clmUnidadSAT.FillWeight = 12.0!
-        Me.clmUnidadSAT.HeaderText = "Unidad SAT"
-        Me.clmUnidadSAT.Name = "clmUnidadSAT"
-        Me.clmUnidadSAT.ReadOnly = True
-        '
-        'clmEstatus
-        '
-        Me.clmEstatus.FillWeight = 6.0!
-        Me.clmEstatus.HeaderText = "Estatus"
-        Me.clmEstatus.Name = "clmEstatus"
-        Me.clmEstatus.ReadOnly = True
-        Me.clmEstatus.Visible = False
-        '
-        'clmUnidad
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = "0"
-        Me.clmUnidad.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clmUnidad.FillWeight = 7.0!
-        Me.clmUnidad.HeaderText = "Unidad"
-        Me.clmUnidad.Name = "clmUnidad"
-        Me.clmUnidad.ReadOnly = True
-        '
-        'clmClaveProdSAT
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = "0"
-        Me.clmClaveProdSAT.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clmClaveProdSAT.FillWeight = 19.0!
-        Me.clmClaveProdSAT.HeaderText = "Productos / Servicios SAT"
-        Me.clmClaveProdSAT.Name = "clmClaveProdSAT"
-        Me.clmClaveProdSAT.ReadOnly = True
-        '
-        'clmDescripcion
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = "0"
-        Me.clmDescripcion.DefaultCellStyle = DataGridViewCellStyle4
-        Me.clmDescripcion.FillWeight = 30.0!
-        Me.clmDescripcion.HeaderText = "Descripcion"
-        Me.clmDescripcion.Name = "clmDescripcion"
-        '
-        'clmImporte
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = "0"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle5
-        Me.clmImporte.FillWeight = 11.0!
-        Me.clmImporte.HeaderText = "Prec Unitario"
-        Me.clmImporte.Name = "clmImporte"
-        '
-        'clmIva
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = "0"
-        Me.clmIva.DefaultCellStyle = DataGridViewCellStyle6
-        Me.clmIva.FillWeight = 9.0!
-        Me.clmIva.HeaderText = "Importe"
-        Me.clmIva.Name = "clmIva"
-        '
-        'clmFactura
-        '
-        Me.clmFactura.HeaderText = "factura"
-        Me.clmFactura.Name = "clmFactura"
-        Me.clmFactura.Visible = False
-        '
-        'clmTotal
-        '
-        Me.clmTotal.HeaderText = "total"
-        Me.clmTotal.Name = "clmTotal"
-        Me.clmTotal.Visible = False
-        '
-        'clmTotalFactura
-        '
-        Me.clmTotalFactura.HeaderText = "totalfactura"
-        Me.clmTotalFactura.Name = "clmTotalFactura"
-        Me.clmTotalFactura.Visible = False
-        '
-        'clmSaldo
-        '
-        Me.clmSaldo.HeaderText = "Saldo"
-        Me.clmSaldo.Name = "clmSaldo"
-        Me.clmSaldo.Visible = False
-        '
-        'clmTotalNotas
-        '
-        Me.clmTotalNotas.HeaderText = "Total Notas"
-        Me.clmTotalNotas.Name = "clmTotalNotas"
-        Me.clmTotalNotas.Visible = False
-        '
-        'txtCliente
-        '
-        Me.txtCliente.Location = New System.Drawing.Point(147, 18)
-        Me.txtCliente.Name = "txtCliente"
-        Me.txtCliente.Size = New System.Drawing.Size(377, 20)
-        Me.txtCliente.TabIndex = 116
-        '
         'FrmNotaCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -767,6 +763,7 @@ Partial Class FrmNotaCredito
     Friend WithEvents txtSubTotal As System.Windows.Forms.TextBox
     Friend WithEvents lblIVA As System.Windows.Forms.Label
     Friend WithEvents lblSubTotal As System.Windows.Forms.Label
+    Friend WithEvents txtCliente As System.Windows.Forms.TextBox
     Friend WithEvents clmChecado As Infragistics.Win.UltraDataGridView.UltraCheckEditorColumn
     Friend WithEvents clmCantidad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmUnidadSAT As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -781,5 +778,4 @@ Partial Class FrmNotaCredito
     Friend WithEvents clmTotalFactura As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmSaldo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmTotalNotas As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents txtCliente As System.Windows.Forms.TextBox
 End Class
