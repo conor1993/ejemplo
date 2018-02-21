@@ -3,13 +3,24 @@ Imports CC = IntegraLab.ORM.CollectionClasses
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports EC = IntegraLab.ORM.EntityClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
+Imports System.Data.SqlClient
+Imports IntegraLab.CFDF
+Imports System.IO
+Imports IntegraLab
+
 Imports System.Text
+
 
 Public Class FrmNotaCredito
     Dim Nota As NotaCreditoCabClass
     Dim Clientes As CC.MfacCatClientesCollection
     Dim Conceptos As CC.CatTipNotasCollection
     Dim Estado As FormState
+    Dim FacturaCabecero As FacturasClass
+    Dim ClientesCol As ClientesIntroductoresColeccion
+    'Dim FacturasCab As New FacturasClientesCabClass
+    'Dim FacturasDet As New FacurasClientesDetClass
+
 
     Private Sub FrmNotaCredito_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Utilerias.RunControlException(Me, "InicializarForma")
@@ -33,15 +44,15 @@ Public Class FrmNotaCredito
 
         Clientes = New CC.MfacCatClientesCollection
         Clientes.GetMulti(HC.MfacCatClientesFields.Estatus = 1, 0, New OC.SortExpression(New OC.SortClause(HC.MfacCatClientesFields.Nombre, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending)))
-        Me.CmbCliente.ValueMember = "IdCliente"
-        Me.CmbCliente.DisplayMember = "Nombre"
-        Me.CmbCliente.DataSource = Clientes
+        'Me.CmbCliente.ValueMember = "IdCliente"
+        'Me.CmbCliente.DisplayMember = "Nombre"
+        'Me.CmbCliente.DataSource = Clientes
 
-        Conceptos = New CC.CatTipNotasCollection
-        Conceptos.GetMulti(Nothing)
-        Me.cmbConcepto.ValueMember = "CveTipNota"
-        Me.cmbConcepto.DisplayMember = "NomTipNota"
-        Me.cmbConcepto.DataSource = Conceptos
+        'Conceptos = New CC.CatTipNotasCollection
+        'Conceptos.GetMulti(Nothing)
+        'Me.cmbConcepto.ValueMember = "CveTipNota"
+        'Me.cmbConcepto.DisplayMember = "NomTipNota"
+        'Me.cmbConcepto.DataSource = Conceptos
 
         dgvFacturas.AutoGenerateColumns = False
         Limpiar()
@@ -49,57 +60,38 @@ Public Class FrmNotaCredito
     End Sub
 
     Private Sub Habilitar()
-        Me.CmbCliente.Enabled = True
-        Me.cmbConcepto.Enabled = True
-        Me.txtAutorizo.Enabled = True
+        'Me.CmbCliente.Enabled = True
+        'Me.cmbConcepto.Enabled = True
+        'Me.txtAutorizo.Enabled = True
         Me.txtObservaciones.Enabled = True
-        Me.txtFolio.Enabled = True
+        Me.txtFolioFactura.Enabled = True
     End Sub
 
     Private Sub DesHabilitar()
-        Me.CmbCliente.Enabled = False
-        Me.cmbConcepto.Enabled = False
-        Me.txtAutorizo.Enabled = False
+        'Me.CmbCliente.Enabled = False
+        'Me.cmbConcepto.Enabled = False
+        'Me.txtAutorizo.Enabled = False
         Me.txtObservaciones.Enabled = False
-        Me.txtFolio.Enabled = False
+        Me.txtFolioFactura.Enabled = False
     End Sub
 
     Private Sub GridModo(ByVal Nuevo As Boolean)
         If Nuevo = True Then
             clmChecado.Visible = True
-            clmFechaFactura.HeaderText = "Fecha"
-            clmFechaFactura.DataPropertyName = "FechaFactura"
             clmEstatus.DataPropertyName = "Estatus"
             clmEstatus.Width = 70
-            clmTotalFactura.ValueType = GetType(Decimal)
-            clmTotalFactura.HeaderText = "Total Fact."
-            clmTotalFactura.DataPropertyName = "Total"
-            clmTotalNotas.Visible = True
-            clmSaldo.Visible = True
             clmImporte.DataPropertyName = ""
             clmImporte.ReadOnly = False
             clmIva.DataPropertyName = ""
             clmIva.ReadOnly = False
-            clmTotal.DataPropertyName = ""
-            clmTotal.ReadOnly = False
         Else
             clmChecado.Visible = False
-            clmFechaFactura.ValueType = GetType(Date)
-            clmFechaFactura.HeaderText = "Fecha de Aplicacion"
-            clmFechaFactura.DataPropertyName = "FecAplica"
             clmEstatus.DataPropertyName = "EstatusDescripcion"
             clmEstatus.Width = 100
-            clmTotalFactura.ValueType = GetType(String)
-            clmTotalFactura.HeaderText = "Folio de Pago"
-            clmTotalFactura.DataPropertyName = "FolPago"
-            clmTotalNotas.Visible = False
-            clmSaldo.Visible = False
             clmImporte.DataPropertyName = "SubTotal"
             clmImporte.ReadOnly = True
             clmIva.DataPropertyName = "ImpteIVA"
             clmIva.ReadOnly = True
-            clmTotal.DataPropertyName = "Total"
-            clmTotal.ReadOnly = True
         End If
     End Sub
 
@@ -108,18 +100,10 @@ Public Class FrmNotaCredito
 
         Me.Validate()
 
-        If Not Me.CmbCliente.SelectedIndex > -1 Then
-            Mensaje.AppendLine("Cliente")
-        End If
+        'If Not Me.CmbCliente.SelectedIndex > -1 Then
+        '    Mensaje.AppendLine("Cliente")
+        'End If
 
-        If Not Me.cmbConcepto.SelectedIndex > -1 Then
-            Me.cmbConcepto.SelectedIndex = -1
-            Mensaje.AppendLine("Concepto")
-        End If
-
-        If Me.txtAutorizo.Text.Trim = String.Empty Then
-            Mensaje.AppendLine("Autorizó")
-        End If
 
         Dim Seleccion As Boolean = False
 
@@ -146,20 +130,20 @@ Public Class FrmNotaCredito
     Private Function ValidarRenglon(ByVal RowIndex As Integer) As Boolean
         If dgvFacturas.Rows(RowIndex).Cells(clmChecado.Index).Value Then
             Dim NotasAnteriores As Decimal = 0D
-            Dim SaldoFactura As Decimal = dgvFacturas.Rows(RowIndex).Cells(clmSaldo.Index).Value
+            'Dim SaldoFactura As Decimal = dgvFacturas.Rows(RowIndex).Cells(clmSaldo.Index).Value
             Dim TotalNotaDetalle As Decimal = 0D
 
-            If IsNumeric(dgvFacturas.Rows(RowIndex).Cells(clmTotalNotas.Index).Value) Then
-                NotasAnteriores = dgvFacturas.Rows(RowIndex).Cells(clmTotalNotas.Index).Value
-            End If
+            'If IsNumeric(dgvFacturas.Rows(RowIndex).Cells(clmTotalNotas.Index).Value) Then
+            '    NotasAnteriores = dgvFacturas.Rows(RowIndex).Cells(clmTotalNotas.Index).Value
+            'End If
 
-            If IsNumeric(dgvFacturas.Rows(RowIndex).Cells(clmTotal.Index).Value) Then
-                TotalNotaDetalle = Decimal.Parse(dgvFacturas.Rows(RowIndex).Cells(clmTotal.Index).Value)
-            End If
+            'If IsNumeric(dgvFacturas.Rows(RowIndex).Cells(clmTotal.Index).Value) Then
+            '    TotalNotaDetalle = Decimal.Parse(dgvFacturas.Rows(RowIndex).Cells(clmTotal.Index).Value)
+            'End If
 
-            If TotalNotaDetalle > SaldoFactura - NotasAnteriores Then
-                Return False
-            End If
+            'If TotalNotaDetalle > SaldoFactura - NotasAnteriores Then
+            '    Return False
+            'End If
             Return True
         Else
             Return True
@@ -170,11 +154,13 @@ Public Class FrmNotaCredito
         Dim FolNota As String
         Dim ValorMaximo As Object
 
-        Nota.IdCliente = Integer.Parse(CmbCliente.SelectedValue)
+        'Nota.IdCliente = Integer.Parse(CmbCliente.SelectedValue)
         Nota.FechaNota = DtpFecha.Value
-        Nota.IdConcepto = Integer.Parse(cmbConcepto.SelectedValue)
-        Nota.Elaboro = txtElaboro.Text.Trim
-        Nota.Autorizo = txtAutorizo.Text.Trim
+
+
+        'Nota.IdConcepto = Integer.Parse(cmbConcepto.SelectedValue)
+        'Nota.Elaboro = txtElaboro.Text.Trim
+        'Nota.Autorizo = txtAutorizo.Text.Trim
         Nota.Observaciones = txtObservaciones.Text.Trim
         Nota.Estatus = 1
 
@@ -194,15 +180,15 @@ Public Class FrmNotaCredito
                 If Renglon.Cells(clmChecado.Index).Value Then
                     Dim Iva As Decimal = Decimal.Parse(Renglon.Cells(clmIva.Index).Value)
                     Dim Importe As Decimal = Decimal.Parse(Renglon.Cells(clmImporte.Index).Value)
-                    Dim Total As Decimal = Decimal.Parse(Renglon.Cells(clmTotal.Index).Value)
-                    Dim NoFactura As String = Renglon.Cells(clmFactura.Index).Value.ToString().Trim()
+                    'Dim Total As Decimal = Decimal.Parse(Renglon.Cells(clmTotal.Index).Value)
+                    'Dim NoFactura As String = Renglon.Cells(clmFactura.Index).Value.ToString().Trim()
                     Dim DetalleNotaCredito As New EC.NotaCreditoDetEntity()
 
                     DetalleNotaCredito.FolNota = FolNota
-                    DetalleNotaCredito.FolFactura = NoFactura
+                    'DetalleNotaCredito.FolFactura = NoFactura
                     DetalleNotaCredito.SubTotal = Importe
                     DetalleNotaCredito.ImpteIva = Iva
-                    DetalleNotaCredito.Total = Total
+                    'DetalleNotaCredito.Total = Total
                     DetalleNotaCredito.Estatus = NotaCreditoEnum.VIGENTE
                     DetalleNotaCredito.Cheque = String.Empty
                     DetalleNotaCredito.OrigenCta = String.Empty
@@ -229,30 +215,99 @@ Public Class FrmNotaCredito
     End Function
 
     Public Function Buscar() As Boolean
+
         Dim Busqueda As New FrmBusquedaNotaCredito()
         Dim ColeccionDetalle As New System.ComponentModel.BindingList(Of NotaCreditoDetClass)
         Estado = FormState.Buscar
+        Dim Consulta As New FrmConFacturas
+        'Dim DomFiscalCte As DomicilioClienteClass
+        'DomFiscalCte = DirectCast(DirectCast(DomicilioFiscalClass.SelectedRow.ListObject, Object), DomicilioClienteClass)
 
-        If Busqueda.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            GridModo(False)
-            Nota = CType(Busqueda.DgvNotas.SelectedRows(0).DataBoundItem, NotaCreditoCabClass)
-            txtFolio.Text = Nota.FolNota
-            DtpFecha.Value = Nota.FechaNota
-            CmbCliente.SelectedValue = Nota.IdCliente
-            cmbConcepto.SelectedValue = Nota.IdConcepto
-            txtElaboro.Text = Nota.Elaboro
-            txtAutorizo.Text = Nota.Autorizo
-            txtObservaciones.Text = Nota.Observaciones
-            txtTotal.Text = Nota.Total
-            lblEstatus.Visible = True
-            lblEstatus.Text = Nota.EstatusDescripcion.ToString().Replace("_", " ")
+        Dim Consultas As New frmBusquedaFacturas
+        Dim Clientes As New ClientesIntroductoresClass
+        Dim ListaSalidas As New List(Of String)
+        Dim i As Integer = 0
+        Dim Poliza As New PolizaClass
+        Dim PolizaDet As New PolizaDetalleClass
 
-            For Each detalleNota As EC.NotaCreditoDetEntity In Nota.Detalle
-                ColeccionDetalle.Add(New NotaCreditoDetClass(detalleNota))
-            Next
-            dgvFacturas.DataSource = ColeccionDetalle
-            Return True
+        Dim DomicilioFiscal As CFDI.UbicacionFiscal
+        Consultas.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
+        If Consultas.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+            FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
+            Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
+            Clientes.Obtener(FacturaCabecero.CveCliente)
+
+            txtCodigoCliente.Text = FacturaCabecero.CveCliente
+            txtCliente.Text = Clientes.RazonSocial
+            txtRFC.Text = Clientes.RFC
+            txtCalle.Text = Clientes.Domicilio
+            txtColonia.Text = Clientes.Colonia
+            TxtCP.Text = Clientes.CodigoPostal
+            txtEstado.Text = Clientes.IdEstado
+            TxtLocalidad.Text = Clientes.IdPoblacion
+            txtMunicipio.Text = Clientes.Ciudad.ToString
+            UsoCFDI.Text = FacturaCabecero.UsoCfdi
+            CmbFormaPago.Text = FacturaCabecero.FormaPago
+            CmbMetodoPago.Text = FacturaCabecero.MetodoPago
+            'UsoCFDI = [Enum].Parse(GetType(CFDI.c_UsoCFDI), FacturaCabecero.UsoCfdi)
+
+            '******* LLENAR GRID  *********
+            llenarGrid()
+
         End If
+
+
+
+
+    End Function
+
+    Public Function llenarGrid() As Boolean
+        Dim i As Integer = 0
+
+        dgvFacturas.AllowUserToAddRows = False
+        For Each Detalle As FacturasDetalleClass In FacturaCabecero.Detalles
+            Dim Producto As New ProductoClass
+
+            Me.dgvFacturas.Rows.Add()
+            If Detalle.IdProducto = 0 And Detalle.Descripcion = "" Then
+                Exit For
+            End If
+            If Detalle.IdProducto > 0 Then
+                'Me.dgvFacturas.Rows(i).Cells(Me.clmCodigo.Index).Value = Detalle.IdProducto
+                Producto.Obtener(Detalle.IdProducto)
+                'Me.dgvFacturas.Rows.Add()
+                'Me.dgvFacturas.Rows(i).Cells(Me.clmDescripcion.Index).Value = Producto.Descripcion
+
+            End If
+            Me.dgvFacturas.Rows(i).Cells(Me.clmDescripcion.Index).Value = Detalle.Descripcion
+            Me.dgvFacturas.Rows(i).Cells(Me.clmUnidad.Index).Value = Detalle.Unidad
+            Me.dgvFacturas.Rows(i).Cells(Me.clmClaveProdSAT.Index).Value = Detalle.CveProdServ
+            Me.dgvFacturas.Rows(i).Cells(Me.clmUnidadSAT.Index).Value = Detalle.CveUnidad
+
+            'If Detalle.IVA > 0 Then
+            '    Me.dgvFacturas.Rows(i).Cells(Me.clmConIVA.Index).Value = True
+            'Else
+            '    Me.dgvFacturas.Rows(i).Cells(Me.clmConIVA.Index).Value = False
+            'End If
+            'If (Detalle.ImporteVenta > 0) Then
+            '    Me.dgvFacturas.Rows(i).Cells(Me.clmIva.Index).Value = Detalle.ImporteVenta.ToString
+            'Else
+            '    Me.dgvFacturas.Rows(i).Cells(Me.clmIva.Index).Value = " "
+            'End If
+
+            Me.dgvFacturas.Rows(i).Cells(Me.clmImporte.Index).Value = Detalle.PrecioUnitario
+            Me.dgvFacturas.Rows(i).Cells(Me.clmCantidad.Index).Value = Detalle.CantidadxProducto
+            Me.dgvFacturas.Rows(i).Cells(Me.clmFactura.Index).Value = Detalle.FolFactura
+            Me.dgvFacturas.Rows(i).Cells(Me.clmTotal.Index).Value = Detalle.CantidadxProducto * Detalle.PrecioUnitario
+            Me.dgvFacturas.Rows(i).Cells(Me.clmTotalFactura.Index).Value = Detalle.Total
+
+            'Me.dgvFacturas.Rows(i).Cells(Me.clmImporte.Index).Value = Detalle.CantidadxProducto * Detalle.PrecioUnitario
+            i = i + 1
+        Next
+
+
+        Return True
     End Function
 
     Public Function Cancelar() As Boolean
@@ -282,15 +337,15 @@ Public Class FrmNotaCredito
 
     Private Function Limpiar() As Boolean
         Estado = FormState.Limpiar
-        Me.txtFolio.Text = ""
+        Me.txtFolioFactura.Text = ""
         Me.txtObservaciones.Text = ""
         Me.txtTotal.Text = 0.0
-        Me.CmbCliente.SelectedIndex = -1
-        Me.cmbConcepto.SelectedIndex = -1
+        'Me.CmbCliente.SelectedIndex = -1
+        'Me.cmbConcepto.SelectedIndex = -1
         Me.lblEstatus.Visible = False
         Me.DtpFecha.Value = Now
-        Me.txtElaboro.Text = ""
-        Me.txtAutorizo.Text = ""
+        'Me.txtElaboro.Text = ""
+        'Me.txtAutorizo.Text = ""
         Me.dgvFacturas.DataSource = Nothing
         Return True
     End Function
@@ -299,11 +354,11 @@ Public Class FrmNotaCredito
         Estado = FormState.Nuevo
         GridModo(True)
         Nota = New NotaCreditoCabClass
-        clmFechaFactura.DataPropertyName = "FechaFactura"
-        Me.txtFolio.Focus()
+        'clmFechaFactura.DataPropertyName = "FechaFactura"
+        Me.txtFolioFactura.Focus()
         Limpiar()
         Habilitar()
-        Me.txtElaboro.Text = Controlador.Sesion.MiUsuario.Usrnomcom
+        'Me.txtElaboro.Text = Controlador.Sesion.MiUsuario.Usrnomcom
         Return True
     End Function
 
@@ -356,19 +411,19 @@ Public Class FrmNotaCredito
 
     End Sub
 
-    Private Sub CmbCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CmbCliente.KeyPress
-        If e.KeyChar = Chr(13) Then
-            Me.cmbConcepto.Focus()
-        End If
-    End Sub
+    'Private Sub CmbCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+    '    If e.KeyChar = Chr(13) Then
+    '        Me.cmbConcepto.Focus()
+    '    End If
+    'End Sub
 
-    Private Sub cmbConcepto_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbConcepto.KeyPress
-        If e.KeyChar = Chr(13) Then
-            Me.txtAutorizo.Focus()
-        End If
-    End Sub
+    'Private Sub cmbConcepto_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+    '    If e.KeyChar = Chr(13) Then
+    '        Me.txtAutorizo.Focus()
+    '    End If
+    'End Sub
 
-    Private Sub txtAutorizo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtAutorizo.KeyPress
+    Private Sub txtAutorizo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If e.KeyChar = Chr(13) Then
             Me.txtObservaciones.Focus()
         End If
@@ -380,10 +435,10 @@ Public Class FrmNotaCredito
         End If
     End Sub
 
-    Private Sub CmbCliente_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbCliente.SelectedIndexChanged
+    Private Sub CmbCliente_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         Try
             If Estado = FormState.Nuevo Or Estado = FormState.Guardar Or Estado = FormState.Limpiar Then
-                Dim Filtro As New OC.PredicateExpression(HC.FacturasClientesCabFields.IdClienteCargo = Me.CmbCliente.SelectedValue And (HC.FacturasClientesCabFields.Estatus = "V" Or HC.FacturasClientesCabFields.Estatus = "A"))
+                Dim Filtro As New OC.PredicateExpression(HC.FacturasClientesCabFields.IdClienteCargo = Me.txtCodigoCliente And (HC.FacturasClientesCabFields.Estatus = "V" Or HC.FacturasClientesCabFields.Estatus = "A"))
                 Dim dtFacturas As DataTable = CC.FacturasClientesCabCollection.GetMultiAsDataTable(Filtro, 0, Nothing)
                 dtFacturas.Columns.Add("Seleccionado", GetType(Boolean))
                 dtFacturas.Columns.Add("Saldo", GetType(Decimal))
@@ -427,7 +482,7 @@ Public Class FrmNotaCredito
                         dgvFacturas.Rows(i).Cells(clmIva.Index).ReadOnly = True
                         dgvFacturas.Rows(i).Cells(clmTotal.Index).ReadOnly = True
                     Next
-                    Me.cmbConcepto.Focus()
+                    'Me.cmbConcepto.Focus()
                 Else
                     Me.dgvFacturas.DataSource = Nothing
                 End If
@@ -457,7 +512,7 @@ Public Class FrmNotaCredito
         End Try
     End Sub
 
-    Private Sub clmChecado_ValidateCheckState1(ByVal sender As Object, ByVal e As Infragistics.Win.ValidateCheckStateEventArgs) Handles clmChecado.ValidateCheckState
+    Private Sub clmChecado_ValidateCheckState1(ByVal sender As Object, ByVal e As Infragistics.Win.ValidateCheckStateEventArgs)
         Try
             Dim Resultado As Boolean = Not CBool(e.NewCheckState)
             dgvFacturas.CurrentRow.Cells(clmImporte.Index).ReadOnly = Resultado
@@ -560,4 +615,5 @@ Public Class FrmNotaCredito
             End If
         End If
     End Sub
+
 End Class
