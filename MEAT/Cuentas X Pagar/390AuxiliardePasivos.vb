@@ -111,29 +111,31 @@ Public Class _390AuxiliardePasivos
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Guardar")
         Try
+
             Dim FacturasCab As CN.FacturasCabCXPClass
             Dim NoFactura As String
             Dim IdProveedor As Integer
             Dim Encuentra As Boolean = False
             For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
-                ' If Me.DgvFacturas.Rows(i).Cells(Me.ClmFechaContable.Index).Value Is Nothing Then
-                Encuentra = True
-                NoFactura = Trim(Me.DgvFacturas.Rows(i).Cells(Me.ClmNoFactura.Index).Value)
-                IdProveedor = Me.DgvFacturas.Rows(i).Cells(Me.clmIdProveedor.Index).Value
-                FacturasCab = New CN.FacturasCabCXPClass(Controlador.Sesion.Empndx, IdProveedor, NoFactura)
-                FacturasCab.FechaContabilizacion = Me.dtpFechaCorte.Value
-                '   FacturasCab.Contabilizada = "S"
-                If Not FacturasCab.Guardar(Trans) Then
-                    Trans.Rollback()
-                    Cancelar = True
+                If DgvFacturas.Rows(i).Cells(check.Index).Value = True Then
+                    ' If Me.DgvFacturas.Rows(i).Cells(Me.ClmFechaContable.Index).Value Is Nothing Then
+                    Encuentra = True
+                    NoFactura = Trim(Me.DgvFacturas.Rows(i).Cells(Me.ClmNoFactura.Index).Value)
+                    IdProveedor = Me.DgvFacturas.Rows(i).Cells(Me.clmIdProveedor.Index).Value
+                    FacturasCab = New CN.FacturasCabCXPClass(Controlador.Sesion.Empndx, IdProveedor, NoFactura)
+                    FacturasCab.FechaContabilizacion = Me.dtpFechaCorte.Value
+                    '   FacturasCab.Contabilizada = "S"
+                    If Not FacturasCab.Guardar(Trans) Then
+                        Trans.Rollback()
+                        Cancelar = True
+                    End If
+                    'End If
                 End If
-                'End If
             Next
-
             If Encuentra Then
                 Trans.Commit()
                 MessageBox.Show("Se han contabilizado las facturas", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Limpiar()
+                Refresh()
             Else
                 MessageBox.Show("No existen facturas para contabilizar a esta fecha", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Cancelar = True
@@ -184,5 +186,18 @@ Public Class _390AuxiliardePasivos
 
     Private Sub mtb_ClickSalir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickSalir
         Close()
+    End Sub
+
+    Private Sub mtb_ClickLimpiar(sender As System.Object, e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As System.Boolean) Handles mtb.ClickLimpiar
+        Limpiar()
+    End Sub
+
+    Private Sub DgvFacturas_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvFacturas.CellContentClick
+        If DgvFacturas.CurrentRow.Cells(check.Index).Value = False Then
+            DgvFacturas.CurrentRow.Cells(check.Index).Value = True
+        Else
+            DgvFacturas.CurrentRow.Cells(check.Index).Value = False
+
+        End If
     End Sub
 End Class
