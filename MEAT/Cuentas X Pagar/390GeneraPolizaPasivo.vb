@@ -1,8 +1,9 @@
 Imports CN = ClasesNegocio
-Imports SPR = IntegraLab.ORM.StoredProcedureCallerClasses.RetrievalProcedures
-Imports CC = IntegraLab.ORM.CollectionClasses
-Imports EC = IntegraLab.ORM.EntityClasses
-Imports HC = IntegraLab.ORM.HelperClasses
+Imports SPR = Integralab.ORM.StoredProcedureCallerClasses.RetrievalProcedures
+Imports CC = Integralab.ORM.CollectionClasses
+Imports EC = Integralab.ORM.EntityClasses
+Imports HC = Integralab.ORM.HelperClasses
+Imports System.Data.SqlClient
 
 Public Class _390GeneraPolizaPasivo
     Dim Proveedores As CN.ProveedorCollectionClass
@@ -42,7 +43,7 @@ Public Class _390GeneraPolizaPasivo
             Me.CmbProveedor.DataSource = Proveedores
             Me.CmbProveedor.DisplayMember = "RazonSocial"
 
-            tiposproveedores = New CN.TipoProveedorCollectionClass
+            TiposProveedores = New CN.TipoProveedorCollectionClass
             Me.TiposProveedores.Obtener(ClasesNegocio.EstatusEnum.ACTIVO, True)
             Me.DgvFacturas.AutoGenerateColumns = False
 
@@ -64,6 +65,8 @@ Public Class _390GeneraPolizaPasivo
         Me.dtpFechaConta.Value = Now
         txtAbono.Text = ""
         txtCargo.Text = ""
+        dgvGastos.DataSource = Nothing
+
     End Sub
 
     Private Sub CmbProveedor_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CmbProveedor.KeyPress
@@ -87,11 +90,17 @@ Public Class _390GeneraPolizaPasivo
         Dim Abono As Decimal = 0D
 
         For i As Integer = 0 To DgvFacturas.Rows.Count - 1
-            With DgvFacturas.Rows(i)
-                Cargo += .Cells(Me.clmCargo.Index).Value
-                Abono += .Cells(Me.clmAbono.Index).Value
-            End With
+            If DgvFacturas.Rows(i).Cells(check.Index).Value = True Then
+                Cargo = Cargo + DgvFacturas.Rows(i).Cells(clmCargo.Index).Value
+                Abono = Abono + DgvFacturas.Rows(i).Cells(clmAbono.Index).Value
+
+                'With DgvFacturas.Rows(i)
+                '    Cargo += .Cells(Me.clmCargo.Index).Value
+                '    Abono += .Cells(Me.clmAbono.Index).Value
+                'End With
+            End If
         Next
+
 
         txtCargo.Text = Cargo.ToString("C2")
         txtAbono.Text = Abono.ToString("C2")
@@ -110,10 +119,46 @@ Public Class _390GeneraPolizaPasivo
             If Poliza.Rows.Count > 0 Then
                 Me.DgvFacturas.AutoGenerateColumns = False
                 Me.DgvFacturas.DataSource = Poliza
-                Sumar()
+                'Sumar()
+                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                If CmbProveedor.SelectedValue = 0 Then
+                    Try
+                        Dim cadenaConsulta As String = "select gdfg.IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,gdfg.Estatus,Factura,Idprovedor from GastosDepartamentalesFG as gdfg join usrCXPFacturasCab on NoFactura=Factura and IdProveedor= Idprovedor"
+                        cadenaConsulta = String.Format(cadenaConsulta)
+                        Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                        Dim adp As New SqlDataAdapter(sqlcom)
+
+                        Dim tb As New DataTable
+
+                        sqlCon.Open()
+                        adp.Fill(tb)
+                        Me.dgvGastos.AutoGenerateColumns = False
+                        Me.dgvGastos.DataSource = tb
+                    Catch ex As Exception
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                Else
+                    Try
+                        Dim cadenaConsulta As String = "select gdfg.IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,gdfg.Estatus,Factura,Idprovedor from GastosDepartamentalesFG as gdfg join usrCXPFacturasCab on NoFactura=Factura and IdProveedor= Idprovedor where IdProveedor={0}"
+                        cadenaConsulta = String.Format(cadenaConsulta, CmbProveedor.SelectedValue)
+
+                        Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                        Dim adp As New SqlDataAdapter(sqlcom)
+
+                        Dim tb As New DataTable
+
+                        sqlCon.Open()
+                        adp.Fill(tb)
+                        Me.dgvGastos.AutoGenerateColumns = False
+                        Me.dgvGastos.DataSource = tb
+                    Catch ex As Exception
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
             Else
                 MessageBox.Show("No se encontraron Facturas contabilizadas a esta fecha del proveedor seleccionado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
+
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -122,89 +167,194 @@ Public Class _390GeneraPolizaPasivo
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Guardar")
         Try
+            
 
             If Me.DgvFacturas.Rows.Count > 0 Then
-                Poliza = New CN.PolizaClass
+                For j As Integer = 0 To DgvFacturas.Rows.Count - 1
+                    If DgvFacturas.Rows(j).Cells(check.Index).Value = True Then
+                        Poliza = New CN.PolizaClass
 
-                Poliza.Concepto = "POLIZA DE PASIVOS AL: " & Me.dtpFechaConta.Value
-                Poliza.EmpresaId = Controlador.Sesion.MiEmpresa.Empndx
-                Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
-                Poliza.FechaCaptura = Now
-                Poliza.FechaPoliza = Me.dtpFechaConta.Value
-                Poliza.Origen = ClasesNegocio.PolizaOrigenEnum.CUENTASxPAGAR
-                Poliza.TipoCambio = 1
-                Poliza.TipoPoliza = ClasesNegocio.PolizaTipoPolizaEnum.DIARIO
-                Poliza.TipoError = ClasesNegocio.ErroresPolizaEnum.NINGUNO
-                Poliza.Importe = CDec(Me.txtCargo.Text)
+                        Poliza.Concepto = "POLIZA DE PASIVOS AL: " & Me.dtpFechaConta.Value
+                        Poliza.EmpresaId = Controlador.Sesion.MiEmpresa.Empndx
+                        Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
+                        Poliza.FechaCaptura = Now
+                        Poliza.FechaPoliza = Me.dtpFechaConta.Value
+                        Poliza.Origen = ClasesNegocio.PolizaOrigenEnum.CUENTASxPAGAR
+                        Poliza.TipoCambio = 1
+                        Poliza.TipoPoliza = ClasesNegocio.PolizaTipoPolizaEnum.DIARIO
+                        Poliza.TipoError = ClasesNegocio.ErroresPolizaEnum.NINGUNO
+                        Poliza.Importe = CDec(Me.txtCargo.Text)
 
-                If Me.txtCargo.Text <> Me.txtAbono.Text Then
-                    If MessageBox.Show("¡La Poliza esta Descuadrada!, ¿Aun asi desea Guardarla?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
-                        Cancelar = True
-                        Exit Sub
-                    End If
-                    Poliza.TipoError = ClasesNegocio.ErroresPolizaEnum.POLIZA_DESCUADRADA
-                    Poliza.Importe = 0
-                End If
-
-                Dim PolizaDet As CN.PolizaDetalleClass
-                For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
-                    With Me.DgvFacturas.Rows(i)
-                        PolizaDet = New CN.PolizaDetalleClass
-                        PolizaDet.IdCuentaContable = .Cells(Me.clmCodigo.Index).Value
-                        If Not .Cells(Me.clmCargo.Index).Value = 0 Then
-                            PolizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
-                            PolizaDet.Importe = .Cells(Me.clmCargo.Index).Value
-                        Else
-                            PolizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
-                            PolizaDet.Importe = .Cells(Me.clmAbono.Index).Value
+                        If Me.txtCargo.Text <> Me.txtAbono.Text Then
+                            If MessageBox.Show("¡La Poliza esta Descuadrada!, ¿Aun asi desea Guardarla?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
+                                Cancelar = True
+                                Exit Sub
+                            End If
+                            Poliza.TipoError = ClasesNegocio.ErroresPolizaEnum.POLIZA_DESCUADRADA
+                            Poliza.Importe = 0
                         End If
-                    End With
-                    PolizaDet.Posicion = i + 1
-                    Poliza.Detalles2.Add(PolizaDet)
+
+                        Dim PolizaDet As CN.PolizaDetalleClass
+                        For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
+                            If DgvFacturas.Rows(i).Cells(check.Index).Value = True Then
+                                With Me.DgvFacturas.Rows(i)
+                                    PolizaDet = New CN.PolizaDetalleClass
+                                    PolizaDet.IdCuentaContable = .Cells(Me.clmCodigo.Index).Value
+                                    If Not .Cells(Me.clmCargo.Index).Value = 0 Then
+                                        PolizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
+                                        PolizaDet.Importe = .Cells(Me.clmCargo.Index).Value
+                                    Else
+                                        PolizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
+                                        PolizaDet.Importe = .Cells(Me.clmAbono.Index).Value
+                                    End If
+                                End With
+                                PolizaDet.Posicion = i + 1
+                                Poliza.Detalles2.Add(PolizaDet)
+                            End If
+                            'With Me.DgvFacturas.Rows(i)
+                            '    PolizaDet = New CN.PolizaDetalleClass
+                            '    PolizaDet.IdCuentaContable = .Cells(Me.clmCodigo.Index).Value
+                            '    If Not .Cells(Me.clmCargo.Index).Value = 0 Then
+                            '        PolizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
+                            '        PolizaDet.Importe = .Cells(Me.clmCargo.Index).Value
+                            '    Else
+                            '        PolizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
+                            '        PolizaDet.Importe = .Cells(Me.clmAbono.Index).Value
+                            '    End If
+                            'End With
+                            'PolizaDet.Posicion = i + 1
+                            'Poliza.Detalles2.Add(PolizaDet)
+                        Next
+                    End If
                 Next
 
-                If Not Poliza.Guardar2(Trans) Then
-                    Trans.Rollback()
-                    MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-
-                FacturasCabCol = New CN.FacturaCabCXPColeccion
-                Dim Contabilizada As Char = "N"
-                Dim IdProveedor As Integer = -1
-                If Me.CmbProveedor.SelectedIndex > 0 Then
-                    IdProveedor = Me.CmbProveedor.SelectedValue
-                End If
-                FacturasCabCol.Obtener(Controlador.Sesion.Empndx, Me.dtpFechaConta.Value.ToShortDateString, Contabilizada, IdProveedor)
-                If FacturasCabCol.Count > 0 Then
-                    For Each fac As CN.FacturasCabCXPClass In FacturasCabCol
-                        fac.IdPoliza = Poliza.Codigo
-                        fac.Contabilizada = "S"
-                        If Not fac.Guardar(Trans) Then
+                        If Not Poliza.Guardar2(Trans) Then
                             Trans.Rollback()
                             MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             Exit Sub
                         End If
-                    Next
-                Else
-                    Trans.Rollback()
-                    MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
+
+                        FacturasCabCol = New CN.FacturaCabCXPColeccion
+                        Dim Contabilizada As Char = "N"
+                        Dim IdProveedor As Integer = -1
+                        If Me.CmbProveedor.SelectedIndex > 0 Then
+                            IdProveedor = Me.CmbProveedor.SelectedValue
+                        End If
+                        FacturasCabCol.Obtener(Controlador.Sesion.Empndx, Me.dtpFechaConta.Value.ToShortDateString, Contabilizada, IdProveedor)
+                        If FacturasCabCol.Count > 0 Then
+                            For Each fac As CN.FacturasCabCXPClass In FacturasCabCol
+                                fac.IdPoliza = Poliza.Codigo
+                                fac.Contabilizada = "S"
+                                If Not fac.Guardar(Trans) Then
+                                    Trans.Rollback()
+                                    MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    Exit Sub
+                                End If
+                            Next
+                        Else
+                            Trans.Rollback()
+                            MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Exit Sub
+                        End If
+
+
+                      
+                    
+                For i As Integer = 0 To Me.dgvGastos.Rows.Count - 1
+                    If dgvGastos.Rows(i).Cells(chkb.Index).Value = True Then
+                        If Me.dgvGastos.Rows(i).Cells(Me.Importe.Index).Value = 0 Then
+                            Exit For
+                        End If
+                        Dim Gastos As New CN.GastosDepartamentosClass
+                        Gastos.IdCuentaContable = Me.dgvGastos.Rows(i).Cells(Me.Cuenta.Index).Value
+                        Gastos.IdSucursal = Me.dgvGastos.Rows(i).Cells(Me.IdSucursal.Index).Value
+                        Gastos.IdMetodoProrrateo = Me.dgvGastos.Rows(i).Cells(Me.IdMetodo.Index).Value
+                        Gastos.Importe = Me.dgvGastos.Rows(i).Cells(Me.Importe.Index).Value
+                        Gastos.IdPoliza = Poliza.Codigo
+                        Gastos.Porcentaje = Me.dgvGastos.Rows(i).Cells(Me.Ptj_Importe.Index).Value
+                        Gastos.FechaPolizas = Me.dtpFechaConta.Value
+
+                        If Not Gastos.Guardar(Trans) Then
+                            Trans.Rollback()
+                            Cancelar = True
+                        End If
+                    End If
+
+                Next
                 Trans.Commit()
                 MessageBox.Show("Se generó la poliza de pasivo con el folio: " & Poliza.NumeroPoliza, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Limpiar()
             Else
                 MessageBox.Show("No hay datos a guardar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End If
+
         Catch ex As Exception
             Trans.Rollback()
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
     End Sub
 
 
     Private Sub mtb_ClickSalir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickSalir
         Close()
+    End Sub
+
+    Private Sub mtb_ClickLimpiar(sender As System.Object, e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As System.Boolean) Handles mtb.ClickLimpiar
+        Limpiar()
+    End Sub
+
+    Private Sub DgvFacturas_CellClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvFacturas.CellClick
+        If DgvFacturas.CurrentRow.Cells(check.Index).Value = False Then
+
+            DgvFacturas.CurrentRow.Cells(check.Index).Value = True
+
+            If DgvFacturas.Rows.Count > 0 Then
+                If DgvFacturas.Rows.Count > 1 Then
+                    'Dim ID_ProductoDet As Integer
+                    For Each Fila As DataGridViewRow In DgvFacturas.Rows
+                        For i As Integer = 0 To dgvGastos.Rows.Count - 1
+                            If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
+                                DgvFacturas.Rows(i).Cells(check.Index).Value = True
+                                Sumar()
+                                For j As Integer = 0 To dgvGastos.Rows.Count - 1
+                                    If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value And DgvFacturas.CurrentRow.Cells(IdProveedor.Index).Value = dgvGastos.Rows(j).Cells(IdProveedorFG.Index).Value Then
+                                        dgvGastos.Rows(j).Cells(chkb.Index).Value = True
+                                    End If
+                                Next
+                            End If
+                        Next
+                    Next
+
+                End If
+            End If
+
+        Else
+
+            DgvFacturas.CurrentRow.Cells(check.Index).Value = False
+            If DgvFacturas.Rows.Count > 0 Then
+                If DgvFacturas.Rows.Count > 1 Then
+                    'Dim ID_ProductoDet As Integer
+                    For Each Fila As DataGridViewRow In DgvFacturas.Rows
+                        For i As Integer = 0 To dgvGastos.Rows.Count - 1
+                            If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
+                                DgvFacturas.Rows(i).Cells(check.Index).Value = False
+                                Sumar()
+                                For j As Integer = 0 To dgvGastos.Rows.Count - 1
+                                    If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value Then
+                                        dgvGastos.Rows(j).Cells(chkb.Index).Value = False
+                                    End If
+                                Next
+                            End If
+                        Next
+                    Next
+
+                End If
+            End If
+
+        End If
+
+
+
     End Sub
 End Class
