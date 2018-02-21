@@ -52,7 +52,7 @@ Public Class FrmConsAperturaLote2
             '    cadenaConsulta = "consulta"
             '    sqlcom = New SqlCommand(cadenaConsulta, sqlCon)
             'End If
-
+            sqlCon.Close()
 
 
             Me.dvgAperturaLotes.DataSource = tb

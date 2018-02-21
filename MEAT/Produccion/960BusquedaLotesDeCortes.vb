@@ -1,7 +1,9 @@
-Imports TC = Integralab.ORM.TypedViewClasses
-Imports HC = Integralab.ORM.HelperClasses
+Imports TC = IntegraLab.ORM.TypedViewClasses
+Imports HC = IntegraLab.ORM.HelperClasses
 Imports CN = ClasesNegocio
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
+Imports System.Data.SqlClient
+
 Public Class _960BusquasedaLotesDeCortes
     Dim Introductores As New CN.ClientesIntroductoresColeccion
 
@@ -31,6 +33,41 @@ Public Class _960BusquasedaLotesDeCortes
 
     Private Sub Buscar()
         Try
+            'Dim query As String = "SELECT  dbo.MSCLoteCortesCab.LoteCorte, dbo.MSCLoteCortesCab.LoteSacrificio, dbo.MSCLoteCortesCab.FechaCorte, dbo.MSCLoteCortesCab.IdCliente, " &
+            '          " ISNULL(dbo.MFacCatClientes.Nombre, '') AS Introductor, dbo.MSCLoteCortesCab.TotalKgs, " &
+            '          " CASE dbo.MSCLoteCortesCab.Estatus WHEN 'A' THEN 'ABIERTO' WHEN 'C' THEN 'CERRADO' WHEN 'X' THEN 'CANCELADO' END AS EstatusCad, " &
+            '          " dbo.MSCLoteCortesCab.Estatus, dbo.MSCLoteCortesCab.DiasCad, " &
+            '          " CASE WHEN dbo.MSCLoteCortesCab.EsReproceso = 1 THEN 'REPROCESO' ELSE 'PRODUCCION' END AS TipoLote, dbo.MSCLoteCortesCab.EsReproceso, " &
+            '          " dbo.MSCLoteCortesCab.TotalPzas, MSCLoteCortesCab.Producto, prod.Descripcion, dbo.MSCLoteCortesCab.precioxkilototal, dbo.MSCLoteCortesCab.KilosRecibidos, Nopiezas " &
+            '          " FROM	dbo.MSCLoteCortesCab LEFT OUTER JOIN " &
+            '          " dbo.MFacCatClientes ON dbo.MSCLoteCortesCab.IdCliente = dbo.MFacCatClientes.IdCliente " &
+            '          " left outer join  MSCCatProductos as prod on prod.IdProducto = MSCLoteCortesCab.Producto "
+
+            ''LoteCorte LIKE '%%'
+            'query = String.Format(query, Me.txtLoteCorte.Text)
+            'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            'Dim sqlcom As New SqlCommand(query, sqlCon)
+            'Dim adp As New SqlDataAdapter(sqlcom)
+
+            'Dim tb As New DataTable
+
+            'sqlCon.Open()
+            'adp.Fill(tb)
+
+            'sqlCon.Close()
+
+            'Me.DgvLotes.AutoGenerateColumns = False
+
+
+            'If DgvLotes.RowCount > 0 Then
+            '    Me.DgvLotes.DataSource = tb
+            'Else
+            '    MessageBox.Show("No existen Lotes de Cortes Abiertos a la fecha especificada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            'End If
+
+            '----
+
+
             Dim Vista As New TC.VwBusquedaLoteCortesTypedView
             Dim Filtro As New OC.PredicateExpression
 
@@ -62,6 +99,7 @@ Public Class _960BusquasedaLotesDeCortes
                     End If
                 End If
             End If
+
 
             Vista.Fill(0, Nothing, False, Filtro)
 

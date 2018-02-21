@@ -36,16 +36,6 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtnAceptar = New System.Windows.Forms.Button()
         Me.DgvLotes = New System.Windows.Forms.DataGridView()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.gbResultadoBusqueda = New System.Windows.Forms.GroupBox()
-        Me.mtb = New MEAToolBar.MEAToolBar()
-        Me.chkFecha = New System.Windows.Forms.CheckBox()
-        Me.gbEstatus = New System.Windows.Forms.GroupBox()
-        Me.chkCerrado = New System.Windows.Forms.CheckBox()
-        Me.chkVigentes = New System.Windows.Forms.CheckBox()
-        Me.chkReproceso = New System.Windows.Forms.CheckBox()
-        Me.chkProduccion = New System.Windows.Forms.CheckBox()
-        Me.gbTipoLote = New System.Windows.Forms.GroupBox()
         Me.clmLoteCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmLoteSacrificio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmIntroductor = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,6 +48,16 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.clmproducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.precioxkilototal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmKilosRecibidos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.gbResultadoBusqueda = New System.Windows.Forms.GroupBox()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.chkFecha = New System.Windows.Forms.CheckBox()
+        Me.gbEstatus = New System.Windows.Forms.GroupBox()
+        Me.chkCerrado = New System.Windows.Forms.CheckBox()
+        Me.chkVigentes = New System.Windows.Forms.CheckBox()
+        Me.chkReproceso = New System.Windows.Forms.CheckBox()
+        Me.chkProduccion = New System.Windows.Forms.CheckBox()
+        Me.gbTipoLote = New System.Windows.Forms.GroupBox()
         Me.gbFechas.SuspendLayout()
         CType(Me.DgvLotes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbResultadoBusqueda.SuspendLayout()
@@ -186,135 +186,6 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.DgvLotes.Size = New System.Drawing.Size(898, 408)
         Me.DgvLotes.TabIndex = 0
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(889, 576)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 12
-        Me.Button1.Text = "Cancelar"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'gbResultadoBusqueda
-        '
-        Me.gbResultadoBusqueda.Controls.Add(Me.DgvLotes)
-        Me.gbResultadoBusqueda.Location = New System.Drawing.Point(54, 137)
-        Me.gbResultadoBusqueda.Name = "gbResultadoBusqueda"
-        Me.gbResultadoBusqueda.Size = New System.Drawing.Size(910, 433)
-        Me.gbResultadoBusqueda.TabIndex = 10
-        Me.gbResultadoBusqueda.TabStop = False
-        Me.gbResultadoBusqueda.Text = "Resultado Busqueda"
-        '
-        'mtb
-        '
-        Me.mtb.ButtonSize = New System.Drawing.Size(50, 50)
-        Me.mtb.Dock = System.Windows.Forms.DockStyle.Left
-        Me.mtb.DropDownArrows = True
-        Me.mtb.HabilitarBorrar = True
-        Me.mtb.HabilitarBuscar = True
-        Me.mtb.HabilitarCancelar = True
-        Me.mtb.HabilitarEditar = True
-        Me.mtb.HabilitarGuardar = True
-        Me.mtb.HabilitarImprimir = True
-        Me.mtb.HabilitarLimpiar = True
-        Me.mtb.HabilitarNuevo = True
-        Me.mtb.HabilitarSalir = True
-        Me.mtb.ImageButtonSize = MEAToolBar.MEAToolBar.ImageButtonSizeEnum.de32
-        Me.mtb.Location = New System.Drawing.Point(0, 0)
-        Me.mtb.MostrarBorrar = False
-        Me.mtb.MostrarBuscar = True
-        Me.mtb.MostrarCancelar = False
-        Me.mtb.MostrarEditar = False
-        Me.mtb.MostrarGuardar = False
-        Me.mtb.MostrarImprimir = False
-        Me.mtb.MostrarLimpiar = True
-        Me.mtb.MostrarNuevo = False
-        Me.mtb.MostrarSalir = True
-        Me.mtb.Name = "mtb"
-        Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 611)
-        Me.mtb.TabIndex = 0
-        '
-        'chkFecha
-        '
-        Me.chkFecha.AutoSize = True
-        Me.chkFecha.Location = New System.Drawing.Point(716, 35)
-        Me.chkFecha.Name = "chkFecha"
-        Me.chkFecha.Size = New System.Drawing.Size(103, 17)
-        Me.chkFecha.TabIndex = 8
-        Me.chkFecha.Text = "Filtrar Por Fecha"
-        Me.chkFecha.UseVisualStyleBackColor = True
-        '
-        'gbEstatus
-        '
-        Me.gbEstatus.Controls.Add(Me.chkCerrado)
-        Me.gbEstatus.Controls.Add(Me.chkVigentes)
-        Me.gbEstatus.Location = New System.Drawing.Point(498, 35)
-        Me.gbEstatus.Name = "gbEstatus"
-        Me.gbEstatus.Size = New System.Drawing.Size(212, 45)
-        Me.gbEstatus.TabIndex = 6
-        Me.gbEstatus.TabStop = False
-        Me.gbEstatus.Text = "Estatus"
-        '
-        'chkCerrado
-        '
-        Me.chkCerrado.AutoSize = True
-        Me.chkCerrado.Checked = True
-        Me.chkCerrado.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCerrado.Location = New System.Drawing.Point(92, 19)
-        Me.chkCerrado.Name = "chkCerrado"
-        Me.chkCerrado.Size = New System.Drawing.Size(79, 17)
-        Me.chkCerrado.TabIndex = 1
-        Me.chkCerrado.Text = "CERRADO"
-        Me.chkCerrado.UseVisualStyleBackColor = True
-        '
-        'chkVigentes
-        '
-        Me.chkVigentes.AutoSize = True
-        Me.chkVigentes.Checked = True
-        Me.chkVigentes.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkVigentes.Location = New System.Drawing.Point(6, 19)
-        Me.chkVigentes.Name = "chkVigentes"
-        Me.chkVigentes.Size = New System.Drawing.Size(80, 17)
-        Me.chkVigentes.TabIndex = 0
-        Me.chkVigentes.Text = "VIGENTES"
-        Me.chkVigentes.UseVisualStyleBackColor = True
-        '
-        'chkReproceso
-        '
-        Me.chkReproceso.AutoSize = True
-        Me.chkReproceso.Checked = True
-        Me.chkReproceso.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkReproceso.Location = New System.Drawing.Point(110, 19)
-        Me.chkReproceso.Name = "chkReproceso"
-        Me.chkReproceso.Size = New System.Drawing.Size(93, 17)
-        Me.chkReproceso.TabIndex = 1
-        Me.chkReproceso.Text = "REPROCESO"
-        Me.chkReproceso.UseVisualStyleBackColor = True
-        '
-        'chkProduccion
-        '
-        Me.chkProduccion.AutoSize = True
-        Me.chkProduccion.Checked = True
-        Me.chkProduccion.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkProduccion.Location = New System.Drawing.Point(6, 19)
-        Me.chkProduccion.Name = "chkProduccion"
-        Me.chkProduccion.Size = New System.Drawing.Size(98, 17)
-        Me.chkProduccion.TabIndex = 0
-        Me.chkProduccion.Text = "PRODUCCIÓN"
-        Me.chkProduccion.UseVisualStyleBackColor = True
-        '
-        'gbTipoLote
-        '
-        Me.gbTipoLote.Controls.Add(Me.chkProduccion)
-        Me.gbTipoLote.Controls.Add(Me.chkReproceso)
-        Me.gbTipoLote.Location = New System.Drawing.Point(498, 86)
-        Me.gbTipoLote.Name = "gbTipoLote"
-        Me.gbTipoLote.Size = New System.Drawing.Size(212, 45)
-        Me.gbTipoLote.TabIndex = 7
-        Me.gbTipoLote.TabStop = False
-        Me.gbTipoLote.Text = "Tipo Lote"
-        '
         'clmLoteCorte
         '
         Me.clmLoteCorte.DataPropertyName = "LoteCorte"
@@ -406,6 +277,135 @@ Partial Class _960BusquasedaLotesDeCortes
         Me.clmKilosRecibidos.HeaderText = "KilosRecibidos"
         Me.clmKilosRecibidos.Name = "clmKilosRecibidos"
         Me.clmKilosRecibidos.ReadOnly = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(889, 576)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 12
+        Me.Button1.Text = "Cancelar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'gbResultadoBusqueda
+        '
+        Me.gbResultadoBusqueda.Controls.Add(Me.DgvLotes)
+        Me.gbResultadoBusqueda.Location = New System.Drawing.Point(54, 137)
+        Me.gbResultadoBusqueda.Name = "gbResultadoBusqueda"
+        Me.gbResultadoBusqueda.Size = New System.Drawing.Size(910, 433)
+        Me.gbResultadoBusqueda.TabIndex = 10
+        Me.gbResultadoBusqueda.TabStop = False
+        Me.gbResultadoBusqueda.Text = "Resultado Busqueda"
+        '
+        'mtb
+        '
+        Me.mtb.ButtonSize = New System.Drawing.Size(50, 50)
+        Me.mtb.Dock = System.Windows.Forms.DockStyle.Left
+        Me.mtb.DropDownArrows = True
+        Me.mtb.HabilitarBorrar = True
+        Me.mtb.HabilitarBuscar = True
+        Me.mtb.HabilitarCancelar = True
+        Me.mtb.HabilitarEditar = True
+        Me.mtb.HabilitarGuardar = True
+        Me.mtb.HabilitarImprimir = True
+        Me.mtb.HabilitarLimpiar = True
+        Me.mtb.HabilitarNuevo = True
+        Me.mtb.HabilitarSalir = True
+        Me.mtb.ImageButtonSize = MEAToolBar.MEAToolBar.ImageButtonSizeEnum.de32
+        Me.mtb.Location = New System.Drawing.Point(0, 0)
+        Me.mtb.MostrarBorrar = False
+        Me.mtb.MostrarBuscar = True
+        Me.mtb.MostrarCancelar = False
+        Me.mtb.MostrarEditar = False
+        Me.mtb.MostrarGuardar = False
+        Me.mtb.MostrarImprimir = False
+        Me.mtb.MostrarLimpiar = True
+        Me.mtb.MostrarNuevo = False
+        Me.mtb.MostrarSalir = True
+        Me.mtb.Name = "mtb"
+        Me.mtb.ShowToolTips = True
+        Me.mtb.Size = New System.Drawing.Size(50, 611)
+        Me.mtb.TabIndex = 0
+        '
+        'chkFecha
+        '
+        Me.chkFecha.AutoSize = True
+        Me.chkFecha.Location = New System.Drawing.Point(716, 35)
+        Me.chkFecha.Name = "chkFecha"
+        Me.chkFecha.Size = New System.Drawing.Size(103, 17)
+        Me.chkFecha.TabIndex = 8
+        Me.chkFecha.Text = "Filtrar Por Fecha"
+        Me.chkFecha.UseVisualStyleBackColor = True
+        '
+        'gbEstatus
+        '
+        Me.gbEstatus.Controls.Add(Me.chkCerrado)
+        Me.gbEstatus.Controls.Add(Me.chkVigentes)
+        Me.gbEstatus.Location = New System.Drawing.Point(498, 35)
+        Me.gbEstatus.Name = "gbEstatus"
+        Me.gbEstatus.Size = New System.Drawing.Size(212, 45)
+        Me.gbEstatus.TabIndex = 6
+        Me.gbEstatus.TabStop = False
+        Me.gbEstatus.Text = "Estatus"
+        '
+        'chkCerrado
+        '
+        Me.chkCerrado.AutoSize = True
+        Me.chkCerrado.Checked = True
+        Me.chkCerrado.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkCerrado.Location = New System.Drawing.Point(92, 19)
+        Me.chkCerrado.Name = "chkCerrado"
+        Me.chkCerrado.Size = New System.Drawing.Size(79, 17)
+        Me.chkCerrado.TabIndex = 1
+        Me.chkCerrado.Text = "CERRADO"
+        Me.chkCerrado.UseVisualStyleBackColor = True
+        '
+        'chkVigentes
+        '
+        Me.chkVigentes.AutoSize = True
+        Me.chkVigentes.Checked = True
+        Me.chkVigentes.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkVigentes.Location = New System.Drawing.Point(6, 19)
+        Me.chkVigentes.Name = "chkVigentes"
+        Me.chkVigentes.Size = New System.Drawing.Size(80, 17)
+        Me.chkVigentes.TabIndex = 0
+        Me.chkVigentes.Text = "ABIERTOS"
+        Me.chkVigentes.UseVisualStyleBackColor = True
+        '
+        'chkReproceso
+        '
+        Me.chkReproceso.AutoSize = True
+        Me.chkReproceso.Checked = True
+        Me.chkReproceso.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkReproceso.Location = New System.Drawing.Point(110, 19)
+        Me.chkReproceso.Name = "chkReproceso"
+        Me.chkReproceso.Size = New System.Drawing.Size(93, 17)
+        Me.chkReproceso.TabIndex = 1
+        Me.chkReproceso.Text = "REPROCESO"
+        Me.chkReproceso.UseVisualStyleBackColor = True
+        '
+        'chkProduccion
+        '
+        Me.chkProduccion.AutoSize = True
+        Me.chkProduccion.Checked = True
+        Me.chkProduccion.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkProduccion.Location = New System.Drawing.Point(6, 19)
+        Me.chkProduccion.Name = "chkProduccion"
+        Me.chkProduccion.Size = New System.Drawing.Size(98, 17)
+        Me.chkProduccion.TabIndex = 0
+        Me.chkProduccion.Text = "PRODUCCIÓN"
+        Me.chkProduccion.UseVisualStyleBackColor = True
+        '
+        'gbTipoLote
+        '
+        Me.gbTipoLote.Controls.Add(Me.chkProduccion)
+        Me.gbTipoLote.Controls.Add(Me.chkReproceso)
+        Me.gbTipoLote.Location = New System.Drawing.Point(498, 86)
+        Me.gbTipoLote.Name = "gbTipoLote"
+        Me.gbTipoLote.Size = New System.Drawing.Size(212, 45)
+        Me.gbTipoLote.TabIndex = 7
+        Me.gbTipoLote.TabStop = False
+        Me.gbTipoLote.Text = "Tipo Lote"
         '
         '_960BusquasedaLotesDeCortes
         '
