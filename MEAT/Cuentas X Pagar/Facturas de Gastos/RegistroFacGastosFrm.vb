@@ -671,15 +671,12 @@ Public Class RegistroFacGastosFrm
             If Validar() Then
                 PasarValores()
                 AgregarDetalles()
-
-
                 
                 If Factura.Guardar(Tran) Then
                     For Each Det As CN.FacturasDetalleCXPClass In FacDet
                         Tran.Add(Det)
                         Det.Guardar(Tran)
                     Next
-                    
                     Tran.Commit()
                     Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                     Try
@@ -703,6 +700,8 @@ Public Class RegistroFacGastosFrm
                     Catch ex As Exception
 
                     End Try
+
+                    sqlCon.Close()
                     MsgBox("La Factura se ha Guardado Satisfactoriamente...", MsgBoxStyle.Exclamation, "Aviso")
                     Limpiar()
                     Deshabilitar()

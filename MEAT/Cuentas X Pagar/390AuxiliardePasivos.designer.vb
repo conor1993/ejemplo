@@ -22,26 +22,27 @@ Partial Class _390AuxiliardePasivos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.lblEmpresa = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.DgvFacturas = New System.Windows.Forms.DataGridView
-        Me.dtpFechaCorte = New System.Windows.Forms.DateTimePicker
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.CmbProveedor = New System.Windows.Forms.ComboBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.ClmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmFechaCaptura = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmFechaFactura = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmFechaContable = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmIdProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.lblEmpresa = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DgvFacturas = New System.Windows.Forms.DataGridView()
+        Me.check = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ClmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmFechaCaptura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmFechaFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmFechaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIdProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dtpFechaCorte = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CmbProveedor = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DgvFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -125,13 +126,79 @@ Partial Class _390AuxiliardePasivos
         Me.DgvFacturas.AllowUserToDeleteRows = False
         Me.DgvFacturas.AllowUserToResizeRows = False
         Me.DgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmNoFactura, Me.ClmFechaCaptura, Me.ClmFechaFactura, Me.clmImporte, Me.ClmFechaContable, Me.clmIdProveedor})
+        Me.DgvFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.check, Me.ClmNoFactura, Me.ClmFechaCaptura, Me.ClmFechaFactura, Me.clmImporte, Me.ClmFechaContable, Me.clmIdProveedor})
         Me.DgvFacturas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvFacturas.Location = New System.Drawing.Point(3, 16)
         Me.DgvFacturas.Name = "DgvFacturas"
         Me.DgvFacturas.RowHeadersVisible = False
         Me.DgvFacturas.Size = New System.Drawing.Size(602, 282)
         Me.DgvFacturas.TabIndex = 0
+        '
+        'check
+        '
+        Me.check.Frozen = True
+        Me.check.HeaderText = ""
+        Me.check.Name = "check"
+        Me.check.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.check.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.check.Width = 20
+        '
+        'ClmNoFactura
+        '
+        Me.ClmNoFactura.DataPropertyName = "NoFactura"
+        Me.ClmNoFactura.Frozen = True
+        Me.ClmNoFactura.HeaderText = "Factura"
+        Me.ClmNoFactura.Name = "ClmNoFactura"
+        '
+        'ClmFechaCaptura
+        '
+        Me.ClmFechaCaptura.DataPropertyName = "FechaCaptura"
+        DataGridViewCellStyle4.Format = "d"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.ClmFechaCaptura.DefaultCellStyle = DataGridViewCellStyle4
+        Me.ClmFechaCaptura.Frozen = True
+        Me.ClmFechaCaptura.HeaderText = "Fecha Captura"
+        Me.ClmFechaCaptura.Name = "ClmFechaCaptura"
+        Me.ClmFechaCaptura.Width = 120
+        '
+        'ClmFechaFactura
+        '
+        Me.ClmFechaFactura.DataPropertyName = "FechaFactura"
+        DataGridViewCellStyle5.Format = "d"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.ClmFechaFactura.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ClmFechaFactura.Frozen = True
+        Me.ClmFechaFactura.HeaderText = "Fecha Factura"
+        Me.ClmFechaFactura.Name = "ClmFechaFactura"
+        Me.ClmFechaFactura.Width = 120
+        '
+        'clmImporte
+        '
+        Me.clmImporte.DataPropertyName = "Importe"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle6
+        Me.clmImporte.Frozen = True
+        Me.clmImporte.HeaderText = "Importe"
+        Me.clmImporte.Name = "clmImporte"
+        Me.clmImporte.Width = 120
+        '
+        'ClmFechaContable
+        '
+        Me.ClmFechaContable.DataPropertyName = "FechaContabilizacion"
+        Me.ClmFechaContable.Frozen = True
+        Me.ClmFechaContable.HeaderText = "Fecha Contable"
+        Me.ClmFechaContable.Name = "ClmFechaContable"
+        Me.ClmFechaContable.Width = 120
+        '
+        'clmIdProveedor
+        '
+        Me.clmIdProveedor.DataPropertyName = "IdProveedor"
+        Me.clmIdProveedor.Frozen = True
+        Me.clmIdProveedor.HeaderText = "IdProvedor"
+        Me.clmIdProveedor.Name = "clmIdProveedor"
+        Me.clmIdProveedor.Visible = False
         '
         'dtpFechaCorte
         '
@@ -167,63 +234,6 @@ Partial Class _390AuxiliardePasivos
         Me.Label1.TabIndex = 110
         Me.Label1.Text = "Proveedor:"
         '
-        'ClmNoFactura
-        '
-        Me.ClmNoFactura.DataPropertyName = "NoFactura"
-        Me.ClmNoFactura.Frozen = True
-        Me.ClmNoFactura.HeaderText = "Factura"
-        Me.ClmNoFactura.Name = "ClmNoFactura"
-        '
-        'ClmFechaCaptura
-        '
-        Me.ClmFechaCaptura.DataPropertyName = "FechaCaptura"
-        DataGridViewCellStyle1.Format = "d"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.ClmFechaCaptura.DefaultCellStyle = DataGridViewCellStyle1
-        Me.ClmFechaCaptura.Frozen = True
-        Me.ClmFechaCaptura.HeaderText = "Fecha Captura"
-        Me.ClmFechaCaptura.Name = "ClmFechaCaptura"
-        Me.ClmFechaCaptura.Width = 120
-        '
-        'ClmFechaFactura
-        '
-        Me.ClmFechaFactura.DataPropertyName = "FechaFactura"
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ClmFechaFactura.DefaultCellStyle = DataGridViewCellStyle2
-        Me.ClmFechaFactura.Frozen = True
-        Me.ClmFechaFactura.HeaderText = "Fecha Factura"
-        Me.ClmFechaFactura.Name = "ClmFechaFactura"
-        Me.ClmFechaFactura.Width = 120
-        '
-        'clmImporte
-        '
-        Me.clmImporte.DataPropertyName = "Importe"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clmImporte.Frozen = True
-        Me.clmImporte.HeaderText = "Importe"
-        Me.clmImporte.Name = "clmImporte"
-        Me.clmImporte.Width = 120
-        '
-        'ClmFechaContable
-        '
-        Me.ClmFechaContable.DataPropertyName = "FechaContabilizacion"
-        Me.ClmFechaContable.Frozen = True
-        Me.ClmFechaContable.HeaderText = "Fecha Contable"
-        Me.ClmFechaContable.Name = "ClmFechaContable"
-        Me.ClmFechaContable.Width = 120
-        '
-        'clmIdProveedor
-        '
-        Me.clmIdProveedor.DataPropertyName = "IdProveedor"
-        Me.clmIdProveedor.Frozen = True
-        Me.clmIdProveedor.HeaderText = "IdProvedor"
-        Me.clmIdProveedor.Name = "clmIdProveedor"
-        Me.clmIdProveedor.Visible = False
-        '
         '_390AuxiliardePasivos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -257,6 +267,7 @@ Partial Class _390AuxiliardePasivos
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents CmbProveedor As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents check As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents ClmNoFactura As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmFechaCaptura As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmFechaFactura As System.Windows.Forms.DataGridViewTextBoxColumn
