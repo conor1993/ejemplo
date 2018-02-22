@@ -72,9 +72,9 @@ Partial Class FrmRecepciondeGanado
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtLeerPeso = New wclTextBoxSerial.TextBoxSerial()
         Me.chkBascula = New System.Windows.Forms.CheckBox()
-        Me.txtCabezasHembra = New Integralab.Controles.TextBoxMejorado()
+        Me.txtCabezasHembra = New IntegraLab.Controles.TextBoxMejorado()
         Me.txtObservaciones = New System.Windows.Forms.TextBox()
-        Me.txtCabezasMachos = New Integralab.Controles.TextBoxMejorado()
+        Me.txtCabezasMachos = New IntegraLab.Controles.TextBoxMejorado()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.CmbTipoGanado = New System.Windows.Forms.ComboBox()
@@ -665,7 +665,7 @@ Partial Class FrmRecepciondeGanado
         Me.txtCabezasHembra.Size = New System.Drawing.Size(72, 20)
         Me.txtCabezasHembra.TabIndex = 2
         Me.txtCabezasHembra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtCabezasHembra.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtCabezasHembra.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
         Me.txtCabezasHembra.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtCabezasHembra.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -693,7 +693,7 @@ Partial Class FrmRecepciondeGanado
         Me.txtCabezasMachos.Size = New System.Drawing.Size(72, 20)
         Me.txtCabezasMachos.TabIndex = 1
         Me.txtCabezasMachos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtCabezasMachos.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtCabezasMachos.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
         Me.txtCabezasMachos.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtCabezasMachos.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '

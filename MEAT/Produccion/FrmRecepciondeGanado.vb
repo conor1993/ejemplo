@@ -520,7 +520,7 @@ Public Class FrmRecepciondeGanado
             Me.txtPlacas.Text = Me.RecepcionGanado.Placas
             Me.txtHorasViaje.Text = Me.RecepcionGanado.HorasViaje.ToString("N2")
 
-            Me.cmbProveedor.SelectedValue = Me.RecepcionGanado.IdProveedor
+            'Me.cmbProveedor.SelectedValue = Me.RecepcionGanado.IdProveedor
 
             Me.CmbLugarCompra.SelectedValue = Me.RecepcionGanado.CveLugarCompra
             Me.cmbComprador.SelectedValue = Me.RecepcionGanado.CveCompradorGanado
@@ -536,7 +536,7 @@ Public Class FrmRecepciondeGanado
 
 
 
-            Dim Gastos As New ClasesNegocio.GastoTransporteClass()
+            Dim Gastos As New ClasesNegocio.GastoTransporteClass
             Gastos.Obtener(RecepcionGanado.LoteRecepcion)
             txtSubTotal.Text = (Gastos.ImporteTotal - Gastos.IVA).ToString("N2")
             txtIVA.Text = Gastos.IVA.ToString("N2")
@@ -1062,13 +1062,13 @@ Public Class FrmRecepciondeGanado
             clmcmbConceptoGasto.ValueMember = "IdConceptoGasto"
             clmcmbConceptoGasto.DataSource = ConceptosGasto
 
-            'Dim proveedores As New CC.ProveedorCollection
-            'proveedores.GetMulti(HC.ProveedorFields.EsdeGanado = 1 And HC.ProveedorFields.Estatus = 1, 0, New SortExpression(New SortClause(HC.ProveedorFields.RazonSocial, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending)))
-            ''llena combo proveedores
-            'Me.cmbProveedor.DataSource = proveedores
-            'Me.cmbProveedor.DisplayMember = "RazonSocial"
-            'Me.cmbProveedor.ValueMember = "Codigo"
-            'Me.cmbProveedor.SelectedIndex = -1
+            Dim proveedores As New CC.ProveedorCollection
+            proveedores.GetMulti(HC.ProveedorFields.EsdeGanado = 1 And HC.ProveedorFields.Estatus = 1, 0, New SortExpression(New SortClause(HC.ProveedorFields.RazonSocial, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending)))
+            'llena combo proveedores
+            Me.cmbProveedor.DataSource = proveedores
+            Me.cmbProveedor.DisplayMember = "RazonSocial"
+            Me.cmbProveedor.ValueMember = "Codigo"
+            Me.cmbProveedor.SelectedIndex = -1
 
             Application.DoEvents()
 
