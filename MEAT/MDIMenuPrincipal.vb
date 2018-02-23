@@ -562,11 +562,11 @@ Public Class MDIMenuPrincipal
         Abrir(My.Forms.PolizaDiario)
     End Sub
 
-    Private Sub GeneraciónDeArchivoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GeneraciónDeArchivoToolStripMenuItem.Click
+    Private Sub GeneraciónDeArchivoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Abrir(GeneraArchivoFacturasForm)
     End Sub
 
-    Private Sub ProgramaciónDePagosDeFacturasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProgramaciónDePagosDeFacturasToolStripMenuItem.Click
+    Private Sub ProgramaciónDePagosDeFacturasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Abrir(AutorizaPagosForm)
     End Sub
 
@@ -1531,5 +1531,17 @@ Public Class MDIMenuPrincipal
 
     Private Sub CapturaDeProductoTerminadoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles CapturaDeProductoTerminadoToolStripMenuItem.Click
         Abrir(FrmCapturaProdTerminado)
+    End Sub
+
+    Private Sub ProgramaciónDePagosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
+        Abrir(AutorizaPagosForm)
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItem1.Click
+        Abrir(GeneraArchivoFacturasForm)
+    End Sub
+
+    Private Sub ProgramaciónDePagosToolStripMenuItem_Click_1(sender As System.Object, e As System.EventArgs) Handles ProgramaciónDePagosToolStripMenuItem.Click
+        Abrir(AutorizaPagosForm)
     End Sub
 End Class
