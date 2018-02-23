@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MEAT", "MEAT.vdproj", "{82A8438B-2B9E-4C9F-9CC8-D82CEC7E363C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82A8438B-2B9E-4C9F-9CC8-D82CEC7E363C}.Debug|Default.ActiveCfg = Debug
+		{82A8438B-2B9E-4C9F-9CC8-D82CEC7E363C}.Debug|Default.Build.0 = Debug
+		{82A8438B-2B9E-4C9F-9CC8-D82CEC7E363C}.Release|Default.ActiveCfg = Release
+		{82A8438B-2B9E-4C9F-9CC8-D82CEC7E363C}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
