@@ -42,10 +42,6 @@ Partial Class FrmRecepciondeGanado
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.DgvConceptoGastos = New System.Windows.Forms.DataGridView()
-        Me.clmcmbConceptoGasto = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.clmtxtIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmtxtImporteGasto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmRenglon = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtSubTotal = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -103,6 +99,13 @@ Partial Class FrmRecepciondeGanado
         Me.txtLoteRecepcion = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SerialPort = New System.IO.Ports.SerialPort(Me.components)
+        Me.clmcmbConceptoGasto = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.clmtxtIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmtxtImporteGasto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmRenglon = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Retencion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Factura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.proveedor = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.tabControl.SuspendLayout()
         Me.tbOtrosGastos.SuspendLayout()
@@ -150,7 +153,7 @@ Partial Class FrmRecepciondeGanado
         Me.Label17.ForeColor = System.Drawing.Color.White
         Me.Label17.Location = New System.Drawing.Point(50, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(649, 32)
+        Me.Label17.Size = New System.Drawing.Size(743, 32)
         Me.Label17.TabIndex = 47
         Me.Label17.Text = "Recepción de Animales a Sacrificio o en Pie / Materia Prima"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -207,7 +210,7 @@ Partial Class FrmRecepciondeGanado
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(53, 30)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(637, 749)
+        Me.GroupBox1.Size = New System.Drawing.Size(706, 749)
         Me.GroupBox1.TabIndex = 49
         Me.GroupBox1.TabStop = False
         '
@@ -269,7 +272,7 @@ Partial Class FrmRecepciondeGanado
         Me.tabControl.Location = New System.Drawing.Point(10, 469)
         Me.tabControl.Name = "tabControl"
         Me.tabControl.SelectedIndex = 0
-        Me.tabControl.Size = New System.Drawing.Size(609, 274)
+        Me.tabControl.Size = New System.Drawing.Size(678, 274)
         Me.tabControl.TabIndex = 99
         '
         'tbOtrosGastos
@@ -282,7 +285,7 @@ Partial Class FrmRecepciondeGanado
         Me.tbOtrosGastos.Location = New System.Drawing.Point(4, 22)
         Me.tbOtrosGastos.Name = "tbOtrosGastos"
         Me.tbOtrosGastos.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbOtrosGastos.Size = New System.Drawing.Size(601, 248)
+        Me.tbOtrosGastos.Size = New System.Drawing.Size(670, 248)
         Me.tbOtrosGastos.TabIndex = 0
         Me.tbOtrosGastos.Text = "Otros Gastos"
         '
@@ -298,7 +301,7 @@ Partial Class FrmRecepciondeGanado
         Me.GroupBox3.Controls.Add(Me.txtTotal)
         Me.GroupBox3.Location = New System.Drawing.Point(9, 32)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(586, 204)
+        Me.GroupBox3.Size = New System.Drawing.Size(655, 204)
         Me.GroupBox3.TabIndex = 16
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Gastos de Transporte"
@@ -331,7 +334,7 @@ Partial Class FrmRecepciondeGanado
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DgvConceptoGastos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DgvConceptoGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvConceptoGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmcmbConceptoGasto, Me.clmtxtIva, Me.clmtxtImporteGasto, Me.clmRenglon})
+        Me.DgvConceptoGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmcmbConceptoGasto, Me.clmtxtIva, Me.clmtxtImporteGasto, Me.clmRenglon, Me.Retencion, Me.Factura, Me.proveedor})
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -352,51 +355,14 @@ Partial Class FrmRecepciondeGanado
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DgvConceptoGastos.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DgvConceptoGastos.RowHeadersVisible = False
-        Me.DgvConceptoGastos.Size = New System.Drawing.Size(574, 105)
+        Me.DgvConceptoGastos.Size = New System.Drawing.Size(643, 105)
         Me.DgvConceptoGastos.TabIndex = 22
-        '
-        'clmcmbConceptoGasto
-        '
-        Me.clmcmbConceptoGasto.DataPropertyName = "IdGasto"
-        Me.clmcmbConceptoGasto.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.clmcmbConceptoGasto.FillWeight = 70.0!
-        Me.clmcmbConceptoGasto.HeaderText = "Gasto"
-        Me.clmcmbConceptoGasto.Name = "clmcmbConceptoGasto"
-        Me.clmcmbConceptoGasto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'clmtxtIva
-        '
-        Me.clmtxtIva.DataPropertyName = "PorcentajeIva"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clmtxtIva.FillWeight = 10.0!
-        Me.clmtxtIva.HeaderText = "Iva %"
-        Me.clmtxtIva.Name = "clmtxtIva"
-        '
-        'clmtxtImporteGasto
-        '
-        Me.clmtxtImporteGasto.DataPropertyName = "ImporteGasto"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clmtxtImporteGasto.FillWeight = 20.0!
-        Me.clmtxtImporteGasto.HeaderText = "Importe"
-        Me.clmtxtImporteGasto.Name = "clmtxtImporteGasto"
-        '
-        'clmRenglon
-        '
-        Me.clmRenglon.DataPropertyName = "Renglon"
-        Me.clmRenglon.HeaderText = "Renglon"
-        Me.clmRenglon.Name = "clmRenglon"
-        Me.clmRenglon.Visible = False
         '
         'Label24
         '
         Me.Label24.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(385, 176)
+        Me.Label24.Location = New System.Drawing.Point(454, 176)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(34, 13)
         Me.Label24.TabIndex = 14
@@ -407,7 +373,7 @@ Partial Class FrmRecepciondeGanado
         Me.txtSubTotal.AcceptsTab = True
         Me.txtSubTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSubTotal.Enabled = False
-        Me.txtSubTotal.Location = New System.Drawing.Point(429, 129)
+        Me.txtSubTotal.Location = New System.Drawing.Point(498, 129)
         Me.txtSubTotal.Name = "txtSubTotal"
         Me.txtSubTotal.ReadOnly = True
         Me.txtSubTotal.Size = New System.Drawing.Size(152, 20)
@@ -418,7 +384,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.Label23.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(392, 154)
+        Me.Label23.Location = New System.Drawing.Point(461, 154)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(27, 13)
         Me.Label23.TabIndex = 13
@@ -428,7 +394,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.txtIVA.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtIVA.Enabled = False
-        Me.txtIVA.Location = New System.Drawing.Point(429, 151)
+        Me.txtIVA.Location = New System.Drawing.Point(498, 151)
         Me.txtIVA.Name = "txtIVA"
         Me.txtIVA.ReadOnly = True
         Me.txtIVA.Size = New System.Drawing.Size(152, 20)
@@ -439,7 +405,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.Label22.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(363, 132)
+        Me.Label22.Location = New System.Drawing.Point(432, 132)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(56, 13)
         Me.Label22.TabIndex = 12
@@ -449,7 +415,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.txtTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotal.Enabled = False
-        Me.txtTotal.Location = New System.Drawing.Point(429, 173)
+        Me.txtTotal.Location = New System.Drawing.Point(498, 173)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
         Me.txtTotal.Size = New System.Drawing.Size(152, 20)
@@ -483,7 +449,7 @@ Partial Class FrmRecepciondeGanado
         Me.tbDatosPago.Location = New System.Drawing.Point(4, 22)
         Me.tbDatosPago.Name = "tbDatosPago"
         Me.tbDatosPago.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbDatosPago.Size = New System.Drawing.Size(601, 248)
+        Me.tbDatosPago.Size = New System.Drawing.Size(670, 248)
         Me.tbDatosPago.TabIndex = 1
         Me.tbDatosPago.Text = "Datos de Pago"
         '
@@ -934,11 +900,70 @@ Partial Class FrmRecepciondeGanado
         Me.Label1.TabIndex = 31
         Me.Label1.Text = "Folio interno :"
         '
+        'clmcmbConceptoGasto
+        '
+        Me.clmcmbConceptoGasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.clmcmbConceptoGasto.DataPropertyName = "IdGasto"
+        Me.clmcmbConceptoGasto.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.clmcmbConceptoGasto.FillWeight = 125.0!
+        Me.clmcmbConceptoGasto.HeaderText = "Gasto"
+        Me.clmcmbConceptoGasto.Name = "clmcmbConceptoGasto"
+        Me.clmcmbConceptoGasto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'clmtxtIva
+        '
+        Me.clmtxtIva.DataPropertyName = "PorcentajeIva"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clmtxtIva.FillWeight = 50.0!
+        Me.clmtxtIva.HeaderText = "Iva %"
+        Me.clmtxtIva.Name = "clmtxtIva"
+        '
+        'clmtxtImporteGasto
+        '
+        Me.clmtxtImporteGasto.DataPropertyName = "ImporteGasto"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clmtxtImporteGasto.FillWeight = 50.0!
+        Me.clmtxtImporteGasto.HeaderText = "Importe"
+        Me.clmtxtImporteGasto.Name = "clmtxtImporteGasto"
+        '
+        'clmRenglon
+        '
+        Me.clmRenglon.DataPropertyName = "Renglon"
+        Me.clmRenglon.HeaderText = "Renglon"
+        Me.clmRenglon.Name = "clmRenglon"
+        Me.clmRenglon.Visible = False
+        '
+        'Retencion
+        '
+        Me.Retencion.DataPropertyName = "Retencion"
+        Me.Retencion.FillWeight = 50.0!
+        Me.Retencion.HeaderText = "Importe Retencion "
+        Me.Retencion.Name = "Retencion"
+        '
+        'Factura
+        '
+        Me.Factura.DataPropertyName = "NoFactura"
+        Me.Factura.FillWeight = 50.0!
+        Me.Factura.HeaderText = "No. Factura"
+        Me.Factura.Name = "Factura"
+        '
+        'proveedor
+        '
+        Me.proveedor.DataPropertyName = "CodProveedor"
+        Me.proveedor.FillWeight = 125.0!
+        Me.proveedor.HeaderText = "Proveedor"
+        Me.proveedor.Name = "proveedor"
+        '
         'FrmRecepciondeGanado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(699, 791)
+        Me.ClientSize = New System.Drawing.Size(793, 791)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.mtb)
@@ -1028,13 +1053,16 @@ Partial Class FrmRecepciondeGanado
     Friend WithEvents txtDiasDeCredito As System.Windows.Forms.TextBox
     Friend WithEvents txtHorasViaje As System.Windows.Forms.TextBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
-    Friend WithEvents clmcmbConceptoGasto As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents clmtxtIva As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmtxtImporteGasto As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmRenglon As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents txtImporte As System.Windows.Forms.TextBox
     Friend WithEvents txtNoFactura As System.Windows.Forms.TextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents Label33 As System.Windows.Forms.Label
     Friend WithEvents Label28 As System.Windows.Forms.Label
+    Friend WithEvents clmcmbConceptoGasto As System.Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents clmtxtIva As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmtxtImporteGasto As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmRenglon As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Retencion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Factura As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents proveedor As System.Windows.Forms.DataGridViewComboBoxColumn
 End Class
