@@ -413,7 +413,7 @@ Public Class FrmAperturaLoteCorte2
             Me.txtNoPiezas.Text = totalPiezas
 
             If Not Me.txtImporte.Text.Trim = "" Then
-                If Mensaje.ToString() <> String.Empty Then
+                If Mensaje.ToString() = String.Empty Then
                     If totaltotalDet <> CDec(txtImporte.Text) Then
                         Mensaje.AppendLine("* La suma de los totales por producto no coinciden con el total de la factura")
                     End If

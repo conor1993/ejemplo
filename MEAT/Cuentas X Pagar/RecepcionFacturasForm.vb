@@ -894,6 +894,12 @@ Public Class RecepcionFacturasForm
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
         Dim tran As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Fac")
+        If Me.chkTerceros.Checked And Me.TxtFactura.Text = String.Empty Then
+            MessageBox.Show("Debe de seleccionar una compra", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Cancelar = True
+            Return
+        End If
+
         Try
             PasarValores()
             If Me.TxtTotal.Text = "$0.00" Then
@@ -1240,7 +1246,7 @@ Public Class RecepcionFacturasForm
     Private Sub DgvRecepciones_CellContentClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvRecepciones.CellContentClick
         'MeeCell
         Try
-            If e.ColumnIndex = Me.Agregar.Index Or Me.chkTerceros.Checked Then
+            If e.ColumnIndex = Me.Agregar.Index Then
                 If CBool(Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value) Then
                     Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = False
                     'Exit Sub
@@ -1252,25 +1258,17 @@ Public Class RecepcionFacturasForm
                 Me.Subtotal = 0
                 Me.IVAA = 0
                 For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
-                    If chkTerceros.Checked Then
-                        Editar = False
-                        Me.NoFactura = Me.DgvRecepciones.Rows(e.RowIndex).Cells("Folio").Value.ToString()
-                        Me.Subtotal = Me.DgvRecepciones.Rows(e.RowIndex).Cells("Precio").Value.ToString()
-                        Me.IVAA = Me.DgvRecepciones.Rows(e.RowIndex).Cells("IVA").Value.ToString()
-                        Me.FechaFactura = Me.DgvRecepciones.Rows(e.RowIndex).Cells("FechaRecepcion").Value.ToString()
-                        Me.Observaciones = Me.DgvRecepciones.Rows(e.RowIndex).Cells("clmObservaciones").Value.ToString()
-                    Else
-                        If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
-                            '  If Re.FetchUsingPK(Controlador.Sesion.Empndx, Me.DgvRecepciones.Rows(i).Cells("Folio").Value) Then
-                            If Editar = False Then
-                                'Dim total As Decimal
-                                'Total = Re.Precio * Re.Cantidad
-                                Subtotal = Subtotal + Me.DgvRecepciones.Rows(i).Cells("Precio").Value
-                                IVAA = IVAA + Me.DgvRecepciones.Rows(i).Cells("IVA").Value
-                                'Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Subtotal
-                            End If
-                            'End If
+                    
+                    If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
+                        '  If Re.FetchUsingPK(Controlador.Sesion.Empndx, Me.DgvRecepciones.Rows(i).Cells("Folio").Value) Then
+                        If Editar = False Then
+                            'Dim total As Decimal
+                            'Total = Re.Precio * Re.Cantidad
+                            Subtotal = Subtotal + Me.DgvRecepciones.Rows(i).Cells("Precio").Value
+                            IVAA = IVAA + Me.DgvRecepciones.Rows(i).Cells("IVA").Value
+                            'Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Subtotal
                         End If
+                        'End If
                     End If
 
                 Next
@@ -1575,6 +1573,7 @@ Public Class RecepcionFacturasForm
 
     Private Sub chkTerceros_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkTerceros.CheckedChanged
         If chkTerceros.Checked Then
+            Me.grRecepciones.Text = "Recepciones"
             Me.DgvRecepciones.Columns("Agregar").Visible = False
             Me.DgvRecepciones.Columns("FolioOrden").Visible = False
             Me.DgvRecepciones.Columns("CantidadProducto").Visible = False
@@ -1591,6 +1590,7 @@ Public Class RecepcionFacturasForm
             refreshInfo()
 
         Else
+            Me.grRecepciones.Text = "Materia prima y/o Productos de terceros"
             Me.DgvRecepciones.Columns("Agregar").Visible = True
             Me.DgvRecepciones.Columns("FolioOrden").Visible = True
             Me.DgvRecepciones.Columns("CantidadProducto").Visible = True
@@ -1604,5 +1604,80 @@ Public Class RecepcionFacturasForm
             refreshInfo()
         End If
 
+    End Sub
+
+    Private Sub DgvRecepciones_CellClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvRecepciones.CellClick
+        Try
+            If Me.chkTerceros.Checked Then
+                If CBool(Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value) Then
+                    Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = False
+                    'Exit Sub
+                Else
+                    Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = True
+
+                End If
+                'Re = New Integralab.ORM.EntityClasses.RecepcionesNewEntity
+                Me.Subtotal = 0
+                Me.IVAA = 0
+                For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
+                    Editar = False
+                    Me.NoFactura = Me.DgvRecepciones.Rows(e.RowIndex).Cells("Folio").Value.ToString()
+                    Me.Subtotal = Me.DgvRecepciones.Rows(e.RowIndex).Cells("Precio").Value.ToString()
+                    Me.IVAA = Me.DgvRecepciones.Rows(e.RowIndex).Cells("IVA").Value.ToString()
+                    Me.FechaFactura = Me.DgvRecepciones.Rows(e.RowIndex).Cells("FechaRecepcion").Value.ToString()
+                    Me.Observaciones = Me.DgvRecepciones.Rows(e.RowIndex).Cells("clmObservaciones").Value.ToString()
+                Next
+                If Subtotal = 0 Then
+                    Me.TxtSubtotal.Enabled = True
+                    Me.txtIva.Enabled = True
+                    Me.TxtTotal.Enabled = True
+                    Me.txtISR.Enabled = True
+                    Me.txtIVAFlete1.Enabled = True
+                    Me.txtRetIVA.Enabled = True
+                    Editar = True
+                Else
+                    Me.TxtSubtotal.Enabled = False
+                    Me.txtIva.Enabled = False
+                    Me.TxtTotal.Enabled = False
+                    Me.txtISR.Enabled = False
+                    Me.txtIVAFlete1.Enabled = False
+                    Me.txtRetIVA.Enabled = False
+                    'Me.txtIva.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                    'If Me.DgvRecepciones.Rows(1).Cells("").Value > 0 Then
+
+                    'End If
+                    'Me.txtISR.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                    'Me.txtRetIVA.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                    'Me.txtIVAFlete1.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+
+
+                End If
+                If Editar = False Then
+                    'If TxtSubtotal.Text = "" Then
+                    If Me.chkTerceros.Checked Then
+                        Me.TxtFactura.Text = Me.NoFactura
+                        Me.DtpFechaFactura.Value = Me.FechaFactura
+                        Me.txtObservaciones.Text = Me.Observaciones
+                    End If
+
+                    Me.TxtSubtotal.Text = Subtotal.ToString("C2")
+                    Me.txtIva.Text = IVAA.ToString("C2")
+                    Me.txtISR.Text = 0.ToString("C2")
+                    Me.txtIVAFlete1.Text = 0.ToString("C2")
+                    Me.txtRetIVA.Text = 0.ToString("C2")
+                    'End If
+                Else
+                    Me.TxtSubtotal.Text = 0.ToString("C2")
+                    Me.txtIva.Text = 0.ToString("C2")
+                    Me.txtISR.Text = 0.ToString("C2")
+                    Me.txtIVAFlete1.Text = 0.ToString("C2")
+                    Me.txtRetIVA.Text = 0.ToString("C2")
+                    Me.TxtTotal.Text = 0.ToString("C2")
+
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
