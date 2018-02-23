@@ -1,0 +1,7 @@
+<RepecionFacturas>
+	<Querys>
+		<Query Name="CompraTerceros">
+			SELECT * FROM MComOrdenCompra;
+		</Query>
+	<Querys>
+</RepecionFacturas>
