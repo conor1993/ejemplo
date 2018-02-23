@@ -208,6 +208,7 @@ Public Class FrmAperturaLoteCorte2
                     transaction = connection.BeginTransaction("SampleTransaction")
                     command.Connection = connection
                     command.Transaction = transaction
+                    Dim actualizarTipo As Byte = 1
                     Dim query As String = ""
 
                     Try
@@ -225,10 +226,11 @@ Public Class FrmAperturaLoteCorte2
                                     PrecioXKiloDet = Fila.Cells(clmPrecioXKiloDet.Index).Value.Replace(",", "")
                                     TotalDet = Fila.Cells(clmTotalDet.Index).Value.Replace(",", "")
                                     'EXEC Usp_MSCLoteCortesSave 1, '140218035' , '2', '2.65', '3.25', '4.2568'
-                                    query = "EXEC Usp_MSCLoteCortesSave 1, '{0}', {1}, {2}, {3}, {4}, {5}"
-                                    query = String.Format(query, LoteCorte.LoteCorte, ID_ProductoDet, KilosRecibidosDet, NoPiezasDet, PrecioXKiloDet, TotalDet)
+                                    query = "EXEC Usp_MSCLoteCortesSave 1, '{0}', {1}, {2}, {3}, {4}, {5}, {6}"
+                                    query = String.Format(query, LoteCorte.LoteCorte, ID_ProductoDet, KilosRecibidosDet, NoPiezasDet, PrecioXKiloDet, TotalDet, actualizarTipo)
                                     command.CommandText = query
                                     command.ExecuteNonQuery()
+                                    actualizarTipo = 0
                                 End If
                             Next
                             command.Transaction.Commit()

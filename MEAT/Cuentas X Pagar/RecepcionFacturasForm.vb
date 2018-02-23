@@ -1,7 +1,10 @@
 Imports CN = ClasesNegocio
 Imports HC = IntegraLab.ORM.HelperClasses
-Imports EC = Integralab.ORM.EntityClasses
-Imports CC = Integralab.ORM.CollectionClasses
+Imports EC = IntegraLab.ORM.EntityClasses
+Imports CC = IntegraLab.ORM.CollectionClasses
+Imports System.Xml
+Imports System.IO
+Imports System.Data.SqlClient
 
 Public Class RecepcionFacturasForm
 
@@ -9,16 +12,22 @@ Public Class RecepcionFacturasForm
     Private RecepSer As IntegraLab.ORM.CollectionClasses.OrdenServicioCollection
     Private Recepciones As IntegraLab.ORM.CollectionClasses.RecepcionOrdenCompraCollection
     Private Fact As New IntegraLab.ORM.EntityClasses.UsrCxpfacturasCabEntity
-    Private FactDet As Integralab.ORM.CollectionClasses.UsrCxpfacturasDetCollection
-    Private FactDetRecep As Integralab.ORM.CollectionClasses.UsrCxpfacturasDetRecepcionesCollection
+    Private FactDet As IntegraLab.ORM.CollectionClasses.UsrCxpfacturasDetCollection
+    Private FactDetRecep As IntegraLab.ORM.CollectionClasses.UsrCxpfacturasDetRecepcionesCollection
     Dim Total As Decimal
     Dim Subtotal As Decimal
     Dim IVAA As Decimal
+    Dim NoFactura As String
+    Dim FechaFactura As Date
+    Dim Observaciones As String
     'Dim Re As IntegraLab.ORM.EntityClasses.RecepcionesNewEntity
     Dim Editar As Boolean = False
     Dim UltimaTeclaProveedor As DateTime
     Dim SelProveedor As Boolean
     Dim ConfigCont As EC.UsrConfigContabilidadEntity
+
+    Dim Carpeta As String = "XML"
+    Dim NombreDelFichero As String = "RecepcionFacturas"
 
     'Private Sub RecepcionFacturasForm_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
     '    If e.Control Then
@@ -89,7 +98,7 @@ Public Class RecepcionFacturasForm
                 Me.CmbProveedor.ValueMember = "Codigo"
                 Me.CmbProveedor.DataSource = Proveedores
                 Me.CmbProveedor.DisplayMember = "RazonSocial"
-            End If            
+            End If
             Limpiar()
             Deshabilitar()
             'Fact.Estatus = EstatusFacturasEnum.VIGENTE
@@ -101,9 +110,13 @@ Public Class RecepcionFacturasForm
     End Sub
 
 #Region "Métodos"
-    Public Sub Limpiar()
-        Me.CmbProveedor.SelectedIndex = -1
-        Me.CmbProveedor.Text = "Seleccione un Proveedor..."
+    Public Sub Limpiar(Optional ByVal NoOmitir As Boolean = True)
+        If NoOmitir = True Then
+            Me.CmbProveedor.SelectedIndex = -1
+            Me.CmbProveedor.Text = "Seleccione un Proveedor..."
+            Me.chkTerceros.Checked = False
+        End If
+
         Me.txtCheque.Clear()
         Me.txtPoliza.Clear()
         Me.txtDiasPlazo.Text = ""
@@ -134,7 +147,6 @@ Public Class RecepcionFacturasForm
         Me.txtIVAFlete.Text = ""
         Me.txtTasaRetIVA.Text = ""
         Me.txtTasaISR.Text = ""
-
     End Sub
 
     Public Sub Habilitar()
@@ -162,6 +174,8 @@ Public Class RecepcionFacturasForm
         Me.txtRetIVA.Enabled = True
         Me.txtIVAFlete1.Enabled = True
         Me.MtxtUUID.Enabled = True
+
+        Me.chkTerceros.Enabled = True
         'Me.txtTasaIVA.Enabled = True
     End Sub
 
@@ -189,6 +203,8 @@ Public Class RecepcionFacturasForm
         Me.txtRetIVA.Enabled = False
         Me.txtIVAFlete1.Enabled = False
         Me.MtxtUUID.Enabled = False
+
+        Me.chkTerceros.Enabled = False
         ' Me.txtTasaIVA.Enabled = False
     End Sub
 
@@ -300,11 +316,11 @@ Public Class RecepcionFacturasForm
     Public Function Validar() As Boolean
         If Me.Fact.IsNew Then
             If Me.TxtFactura.Text = "" Then
-                MsgBox("Agregue información a el No. de Factura...", MsgBoxStyle.Exclamation, "Aviso")
+                MsgBox("El campo Folio Factura es obligatorio...", MsgBoxStyle.Exclamation, "Aviso")
                 Return False
             Else
-                Dim Facturas As New Integralab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
-                Facturas.GetMulti(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text And Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
+                Dim Facturas As New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
+                Facturas.GetMulti(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text And IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
                 If Facturas.Count > 0 Then
                     MsgBox("El número de Factura ya fue registrado, ingrese otro...")
                     Me.TxtFactura.Focus()
@@ -317,10 +333,10 @@ Public Class RecepcionFacturasForm
             Return False
         End If
         If Me.Fact.IsNew Then
-            Dim facts As New Integralab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
+            Dim facts As New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
             Dim filtro As New SD.LLBLGen.Pro.ORMSupportClasses.PredicateExpression
-            filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text)
-            filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
+            filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text)
+            filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
             facts.GetMulti(filtro)
             If facts.Count > 0 Then
                 MsgBox("La Factura ya fue Registrada...", MsgBoxStyle.Exclamation, "Aviso")
@@ -347,12 +363,12 @@ Public Class RecepcionFacturasForm
 
     Public Sub AgregarRecepcionesCompra()
         Try
-            Recepciones = New Integralab.ORM.CollectionClasses.RecepcionOrdenCompraCollection
-            FactDetRecep = New Integralab.ORM.CollectionClasses.UsrCxpfacturasDetRecepcionesCollection
+            Recepciones = New IntegraLab.ORM.CollectionClasses.RecepcionOrdenCompraCollection
+            FactDetRecep = New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasDetRecepcionesCollection
             For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
                 If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
-                    Dim Rec As New Integralab.ORM.EntityClasses.RecepcionOrdenCompraEntity
-                    Dim FD As New Integralab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity
+                    Dim Rec As New IntegraLab.ORM.EntityClasses.RecepcionOrdenCompraEntity
+                    Dim FD As New IntegraLab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity
                     If Rec.FetchUsingPK(Me.DgvRecepciones.Rows(i).Cells("IdRecepcionOrdenCompra").Value) Then
                         Rec.Facturada = True
                         Rec.NoFactura = Me.TxtFactura.Text
@@ -372,12 +388,12 @@ Public Class RecepcionFacturasForm
 
     Public Sub AgregarRecepcionesServicio()
         Try
-            RecepSer = New Integralab.ORM.CollectionClasses.OrdenServicioCollection
-            FactDetRecep = New Integralab.ORM.CollectionClasses.UsrCxpfacturasDetRecepcionesCollection
+            RecepSer = New IntegraLab.ORM.CollectionClasses.OrdenServicioCollection
+            FactDetRecep = New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasDetRecepcionesCollection
             For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
                 If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
-                    Dim Rec As New Integralab.ORM.EntityClasses.OrdenServicioEntity
-                    Dim FD As New Integralab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity
+                    Dim Rec As New IntegraLab.ORM.EntityClasses.OrdenServicioEntity
+                    Dim FD As New IntegraLab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity
                     If Rec.FetchUsingPK(Me.DgvRecepciones.Rows(i).Cells("Folio").Value) Then
                         Rec.FolioFactura = Me.TxtFactura.Text
                         RecepSer.Add(Rec)
@@ -409,6 +425,36 @@ Public Class RecepcionFacturasForm
         End If
         Return True
     End Function
+
+    Function ObtenerComprasTerceros() As Boolean
+        Try
+            If CmbProveedor.SelectedIndex = -1 Then
+                MessageBox.Show("Antes debe seleccionar un proveedor.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return False
+            End If
+
+            Dim Proveedor As ClasesNegocio.ProveedorClass = Me.CmbProveedor.SelectedItem
+            Me.txtDiasPlazo.Text = Proveedor.DiasCredito.ToString
+
+
+            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+
+            Dim query = "EXEC Usp_MSCLoteCorteTercerosCon 1, {0}, '{1}'"
+            query = String.Format(query, Me.CmbProveedor.SelectedValue, String.Empty)
+
+            Dim sqlcom As SqlCommand = New SqlCommand(query, sqlCon)
+            Dim adp As New SqlDataAdapter(sqlcom)
+            Dim tb As New DataTable
+            adp.Fill(tb)
+            'tb.Select()
+
+            DgvRecepciones.DataSource = tb
+
+        Catch ex As Exception
+
+        End Try
+    End Function
+
 
     Function ObtenerRecepcionesCompra() As Boolean
         Try
@@ -468,6 +514,31 @@ Public Class RecepcionFacturasForm
             End If
         End If
     End Sub
+
+    Public Function xmlRead(Tipo As String, nombre As String) As String
+        Try
+
+            Dim ficheroXML As String = Path.Combine(Carpeta, NombreDelFichero)
+            'ficheroXML = Server.MapPath("Divide.xml")
+            Dim doc As Xml.XmlDocument = New XmlDocument()
+            If File.Exists(ficheroXML) Then
+                doc.Load(ficheroXML)
+            End If
+
+            ' Lectura del nodo principal
+            Dim nodoPrincipal As Xml.XmlNode = doc.SelectSingleNode(Carpeta)
+            Dim nodoActual As Xml.XmlNode = nodoPrincipal.SelectSingleNode(Tipo + "s")
+            Dim valor As Xml.XmlNode = nodoActual.SelectSingleNode(Tipo + "[@Name= '" + nombre + "']")
+
+            'Dim valor As Xml.XmlNode = NodoActualHijo.SelectSingleNode(nombre + "[@type='M']")
+
+            Return Convert.ToString(valor)
+        Catch ex As Exception
+
+            Return ""
+
+        End Try
+    End Function
 
     Private Function CuentasRepetidas(ByVal cta As CN.CuentaContableClass) As Boolean
         Try
@@ -590,7 +661,7 @@ Public Class RecepcionFacturasForm
         Dim loConf As EC.UsrConfigContabilidadEntity
 
         Using ad As New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand("PaContUsrConfigContabilidad", _
-                                New SqlClient.SqlConnection(Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)))
+                                New SqlClient.SqlConnection(IntegraLab.ORM.HelperClasses.DbUtils.ActualConnectionString)))
             ad.SelectCommand.CommandType = CommandType.StoredProcedure
             With ad.SelectCommand.Parameters
                 .Add("@Func", SqlDbType.Char).Value = "C"
@@ -643,13 +714,13 @@ Public Class RecepcionFacturasForm
                 'Me.Fact.IdMotivoCancelacion = Ventana.Motivo.Codigo
                 Me.Fact.FechaCancelacion = Now
                 Fact.Estatus = CN.EstatusFacturasEnum.CANCELADA
-                Recepciones = New Integralab.ORM.CollectionClasses.RecepcionOrdenCompraCollection
-                Recepciones.GetMulti(Integralab.ORM.HelperClasses.RecepcionOrdenCompraFields.NoFactura = Me.Fact.NoFactura)
-                For Each Rec As Integralab.ORM.EntityClasses.RecepcionOrdenCompraEntity In Recepciones
+                Recepciones = New IntegraLab.ORM.CollectionClasses.RecepcionOrdenCompraCollection
+                Recepciones.GetMulti(IntegraLab.ORM.HelperClasses.RecepcionOrdenCompraFields.NoFactura = Me.Fact.NoFactura)
+                For Each Rec As IntegraLab.ORM.EntityClasses.RecepcionOrdenCompraEntity In Recepciones
                     Rec.NoFactura = ""
                     Rec.Facturada = False
                 Next
-                Dim tran As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "FacCan")
+                Dim tran As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "FacCan")
                 Try
                     tran.Add(Fact)
                     If Fact.Save Then
@@ -714,7 +785,7 @@ Public Class RecepcionFacturasForm
         Dim Busqueda As New BusquedaFacturasForm
         Busqueda.EsDeGastos = False
         If Busqueda.ShowDialog = Windows.Forms.DialogResult.OK Then
-            Dim Facturas_ As New Integralab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
+            Dim Facturas_ As New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
             Facturas_.GetMulti(HC.UsrCxpfacturasCabFields.NoFactura = Busqueda.Factura And HC.UsrCxpfacturasCabFields.IdProveedor = Busqueda.ProveedorID)
             If Facturas_.Count = 1 Then
                 Me.Fact = Facturas_(0)
@@ -822,7 +893,7 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
-        Dim tran As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Fac")
+        Dim tran As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Fac")
         Try
             PasarValores()
             If Me.TxtTotal.Text = "$0.00" Then
@@ -831,12 +902,13 @@ Public Class RecepcionFacturasForm
             If Editar = False Then
                 If Me.chkServicio.Checked Then
                     AgregarRecepcionesServicio()
-                    For Each Det As Integralab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity In FactDetRecep
+                    For Each Det As IntegraLab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity In FactDetRecep
                         Fact.UsrCxpfacturasDetRecepciones.Add(Det)
                     Next
                 Else
+                    'Mee
                     AgregarRecepcionesCompra()
-                    For Each Det As Integralab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity In FactDetRecep
+                    For Each Det As IntegraLab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity In FactDetRecep
                         Fact.UsrCxpfacturasDetRecepciones.Add(Det)
                     Next
                 End If
@@ -927,7 +999,7 @@ Public Class RecepcionFacturasForm
     Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickNuevo
         Limpiar()
         Habilitar()
-        Fact = New Integralab.ORM.EntityClasses.UsrCxpfacturasCabEntity
+        Fact = New IntegraLab.ORM.EntityClasses.UsrCxpfacturasCabEntity
         Me.FactDet = New CC.UsrCxpfacturasDetCollection
         Fact.TasaIva = ConfigCont.Iva
         Fact.Estatus = CN.EstatusFacturasEnum.VIGENTE
@@ -947,10 +1019,10 @@ Public Class RecepcionFacturasForm
                 MsgBox("Agregue Información a el No. de Factura. . . ")
                 TxtFactura.Focus()
             Else
-                Dim facturas As New Integralab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
+                Dim facturas As New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
                 Dim filtro As New SD.LLBLGen.Pro.ORMSupportClasses.PredicateExpression
-                filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text)
-                filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
+                filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text)
+                filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
                 facturas.GetMulti(filtro)
                 If facturas.Count > 0 Then
                     MsgBox("El número de Factura ya fue registrado...")
@@ -1052,39 +1124,54 @@ Public Class RecepcionFacturasForm
     '    End If
     'End Sub
 
-    Private Sub CmbProveedor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbProveedor.SelectedIndexChanged
+    Function refreshInfo() As Boolean
         If CmbProveedor.SelectedValue Is Nothing Then
-            Return
+            Return False
         End If
         Try
             If SelProveedor = False Then
-                Exit Sub
+                Exit Function
             End If
             Dim Prov As New CN.ProveedorCollectionClass
             Dim Pr As CN.ProveedorClass = Prov.Obtener(Me.CmbProveedor.SelectedValue)
+
             If Me.CmbProveedor.SelectedValue > 0 Then
+                'Limpiar Grid Cuentas Contablees y lo llenamos 
+                'MeeRefresh
                 Me.DgvCuentas.Rows.Clear()
                 RellenarGridCuentas(Pr.CuentaContable2)
-            End If
-            If Me.CmbProveedor.SelectedValue > 0 Then
-                Me.DgvRecepciones.Rows.Clear()
-                'Me.DgvCuentas.Rows.Clear()
-                If chkServicio.Checked Then
-                    ObtenerRecepcionesServicio()
-                    Dim confi As New CN.ConfiguracionCtasCtrolColeccion
-                    If confi.Obtener(24) > 0 Then
-                        Me.RellenarGridCuentas(confi(0).CuentaContable)
-                    Else
-                        MessageBox.Show("No se ha configurado la cuenta para el IVA de Fletes." + vbNewLine + "Captúrelo desde Catálogos - Contabilidad - Cuentas de control.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
+
+                'Limpiar GridRecepciones y procedemos a llenarlo
+                'Me.DgvRecepciones.Rows.Clear()
+                Me.DgvRecepciones.DataSource = Nothing
+                If Me.chkTerceros.Checked Then
+                    'MeeGuardar
+                    ObtenerComprasTerceros()
                 Else
-                    ObtenerRecepcionesCompra()
-                    'RellenarGridCuentas(Pr.CuentaContable2)
+                    If chkServicio.Checked Then
+                        ObtenerRecepcionesServicio()
+                        Dim confi As New CN.ConfiguracionCtasCtrolColeccion
+                        If confi.Obtener(24) > 0 Then
+                            Me.RellenarGridCuentas(confi(0).CuentaContable)
+                        Else
+                            MessageBox.Show("No se ha configurado la cuenta para el IVA de Fletes." + vbNewLine + "Captúrelo desde Catálogos - Contabilidad - Cuentas de control.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End If
+                    Else
+                        ObtenerRecepcionesCompra()
+                        'RellenarGridCuentas(Pr.CuentaContable2)
+                    End If
                 End If
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
         End Try
+        Return True
+    End Function
+
+
+    Private Sub CmbProveedor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbProveedor.SelectedIndexChanged
+        Me.refreshInfo()
 
     End Sub
 
@@ -1151,73 +1238,95 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Private Sub DgvRecepciones_CellContentClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvRecepciones.CellContentClick
-        If e.ColumnIndex = Me.Agregar.Index Then
-            If CBool(Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value) Then
-                Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = False
-                'Exit Sub
-            Else
-                Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = True
+        'MeeCell
+        Try
+            If e.ColumnIndex = Me.Agregar.Index Or Me.chkTerceros.Checked Then
+                If CBool(Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value) Then
+                    Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = False
+                    'Exit Sub
+                Else
+                    Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = True
 
-            End If
-            'Re = New Integralab.ORM.EntityClasses.RecepcionesNewEntity
-            Me.Subtotal = 0
-            Me.IVAA = 0
-            For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
-                If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
-                    '  If Re.FetchUsingPK(Controlador.Sesion.Empndx, Me.DgvRecepciones.Rows(i).Cells("Folio").Value) Then
-                    If Editar = False Then
-                        'Dim total As Decimal
-                        'Total = Re.Precio * Re.Cantidad
-                        Subtotal = Subtotal + Me.DgvRecepciones.Rows(i).Cells("Precio").Value
-                        IVAA = IVAA + Me.DgvRecepciones.Rows(i).Cells("IVA").Value
-                        'Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Subtotal
-                    End If
-                    'End If
                 End If
-            Next
-            If Subtotal = 0 Then
-                Me.TxtSubtotal.Enabled = True
-                Me.txtIva.Enabled = True
-                Me.TxtTotal.Enabled = True
-                Me.txtISR.Enabled = True
-                Me.txtIVAFlete1.Enabled = True
-                Me.txtRetIVA.Enabled = True
-                Editar = True
-            Else
-                Me.TxtSubtotal.Enabled = False
-                Me.txtIva.Enabled = False
-                Me.TxtTotal.Enabled = False
-                Me.txtISR.Enabled = False
-                Me.txtIVAFlete1.Enabled = False
-                Me.txtRetIVA.Enabled = False
-                'Me.txtIva.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                'If Me.DgvRecepciones.Rows(1).Cells("").Value > 0 Then
+                'Re = New Integralab.ORM.EntityClasses.RecepcionesNewEntity
+                Me.Subtotal = 0
+                Me.IVAA = 0
+                For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
+                    If chkTerceros.Checked Then
+                        Editar = False
+                        Me.NoFactura = Me.DgvRecepciones.Rows(e.RowIndex).Cells("Folio").Value.ToString()
+                        Me.Subtotal = Me.DgvRecepciones.Rows(e.RowIndex).Cells("Precio").Value.ToString()
+                        Me.IVAA = Me.DgvRecepciones.Rows(e.RowIndex).Cells("IVA").Value.ToString()
+                        Me.FechaFactura = Me.DgvRecepciones.Rows(e.RowIndex).Cells("FechaRecepcion").Value.ToString()
+                        Me.Observaciones = Me.DgvRecepciones.Rows(e.RowIndex).Cells("clmObservaciones").Value.ToString()
+                    Else
+                        If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
+                            '  If Re.FetchUsingPK(Controlador.Sesion.Empndx, Me.DgvRecepciones.Rows(i).Cells("Folio").Value) Then
+                            If Editar = False Then
+                                'Dim total As Decimal
+                                'Total = Re.Precio * Re.Cantidad
+                                Subtotal = Subtotal + Me.DgvRecepciones.Rows(i).Cells("Precio").Value
+                                IVAA = IVAA + Me.DgvRecepciones.Rows(i).Cells("IVA").Value
+                                'Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Subtotal
+                            End If
+                            'End If
+                        End If
+                    End If
 
-                'End If
-                'Me.txtISR.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                'Me.txtRetIVA.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                'Me.txtIVAFlete1.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                Next
+                If Subtotal = 0 Then
+                    Me.TxtSubtotal.Enabled = True
+                    Me.txtIva.Enabled = True
+                    Me.TxtTotal.Enabled = True
+                    Me.txtISR.Enabled = True
+                    Me.txtIVAFlete1.Enabled = True
+                    Me.txtRetIVA.Enabled = True
+                    Editar = True
+                Else
+                    Me.TxtSubtotal.Enabled = False
+                    Me.txtIva.Enabled = False
+                    Me.TxtTotal.Enabled = False
+                    Me.txtISR.Enabled = False
+                    Me.txtIVAFlete1.Enabled = False
+                    Me.txtRetIVA.Enabled = False
+                    'Me.txtIva.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                    'If Me.DgvRecepciones.Rows(1).Cells("").Value > 0 Then
+
+                    'End If
+                    'Me.txtISR.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                    'Me.txtRetIVA.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                    'Me.txtIVAFlete1.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
 
 
+                End If
+                If Editar = False Then
+                    'If TxtSubtotal.Text = "" Then
+                    If Me.chkTerceros.Checked Then
+                        Me.TxtFactura.Text = Me.NoFactura
+                        Me.DtpFechaFactura.Value = Me.FechaFactura
+                        Me.txtObservaciones.Text = Me.Observaciones
+                    End If
+
+                    Me.TxtSubtotal.Text = Subtotal.ToString("C2")
+                    Me.txtIva.Text = IVAA.ToString("C2")
+                    Me.txtISR.Text = 0.ToString("C2")
+                    Me.txtIVAFlete1.Text = 0.ToString("C2")
+                    Me.txtRetIVA.Text = 0.ToString("C2")
+                    'End If
+                Else
+                    Me.TxtSubtotal.Text = 0.ToString("C2")
+                    Me.txtIva.Text = 0.ToString("C2")
+                    Me.txtISR.Text = 0.ToString("C2")
+                    Me.txtIVAFlete1.Text = 0.ToString("C2")
+                    Me.txtRetIVA.Text = 0.ToString("C2")
+                    Me.TxtTotal.Text = 0.ToString("C2")
+
+                End If
             End If
-            If Editar = False Then
-                'If TxtSubtotal.Text = "" Then
-                Me.TxtSubtotal.Text = Subtotal.ToString("C2")
-                Me.txtIva.Text = IVAA.ToString("C2")
-                Me.txtISR.Text = 0.ToString("C2")
-                Me.txtIVAFlete1.Text = 0.ToString("C2")
-                Me.txtRetIVA.Text = 0.ToString("C2")
-                'End If
-            Else
-                Me.TxtSubtotal.Text = 0.ToString("C2")
-                Me.txtIva.Text = 0.ToString("C2")
-                Me.txtISR.Text = 0.ToString("C2")
-                Me.txtIVAFlete1.Text = 0.ToString("C2")
-                Me.txtRetIVA.Text = 0.ToString("C2")
-                Me.TxtTotal.Text = 0.ToString("C2")
+        Catch ex As Exception
 
-            End If
-        End If
+        End Try
+        
     End Sub
 
     Private Sub DgvRecepciones_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvRecepciones.CellEndEdit
@@ -1307,6 +1416,7 @@ Public Class RecepcionFacturasForm
                     Me.RellenarGridCuentas(confi(0).CuentaContable)
                 Else
                     MessageBox.Show("No se ha configurado la cuenta para el IVA de Fletes." + vbNewLine + "Captúrelo desde Catálogos - Contabilidad - Cuentas de control.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    chkServicio.Checked = False
                 End If
             Else
                 ObtenerRecepcionesCompra()
@@ -1394,6 +1504,15 @@ Public Class RecepcionFacturasForm
 
     Private Sub ckbFlete_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckbFlete.CheckedChanged
         If ckbFlete.Checked = True Then
+            Dim confi As New CN.ConfiguracionCtasCtrolColeccion
+            If confi.Obtener(24) > 0 Then
+                Me.RellenarGridCuentas(confi(0).CuentaContable)
+            Else
+                MessageBox.Show("No se ha configurado la cuenta para el IVA de Fletes." + vbNewLine + "Captúrelo desde Catálogos - Contabilidad - Cuentas de control.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                ckbFlete.Checked = False
+                Return
+            End If
+
             Label21.Visible = True
             txtIVAFlete.Visible = True
             ckbHonorarios.Checked = False
@@ -1415,7 +1534,7 @@ Public Class RecepcionFacturasForm
             Label21.Visible = False
             txtIVAFlete.Visible = False
             Me.txtIVAFlete1.Text = 0.ToString("C2")
-    'TxtIVAFlete.Text = 0.ToString("C2")
+            'TxtIVAFlete.Text = 0.ToString("C2")
 
         End If
     End Sub
@@ -1440,7 +1559,7 @@ Public Class RecepcionFacturasForm
 
                 Me.TxtTotal.Text = (((Subtotal + CDec(Me.txtIva.Text)) - (CDec(Me.txtISR.Text) + CDec(Me.txtRetIVA.Text))).ToString("C2") - CDec(Me.TxtAnticipo.Text)).ToString("C2")
                 'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-        End If
+            End If
 
         Else
             Label22.Visible = False
@@ -1452,5 +1571,38 @@ Public Class RecepcionFacturasForm
 
 
         End If
+    End Sub
+
+    Private Sub chkTerceros_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkTerceros.CheckedChanged
+        If chkTerceros.Checked Then
+            Me.DgvRecepciones.Columns("Agregar").Visible = False
+            Me.DgvRecepciones.Columns("FolioOrden").Visible = False
+            Me.DgvRecepciones.Columns("CantidadProducto").Visible = False
+            Me.DgvRecepciones.AutoGenerateColumns = False
+
+            Me.TxtFactura.Enabled = False
+            Me.DtpFechaFactura.Enabled = False
+
+            'Me.chkServicio.Checked = False
+            'Me.chkServicio.Enabled = False
+            Limpiar(False)
+            'Dim query As String = xmlRead("Query", "CompraTerceros")
+            'query = ""
+            refreshInfo()
+
+        Else
+            Me.DgvRecepciones.Columns("Agregar").Visible = True
+            Me.DgvRecepciones.Columns("FolioOrden").Visible = True
+            Me.DgvRecepciones.Columns("CantidadProducto").Visible = True
+            Me.DgvRecepciones.AutoGenerateColumns = False
+
+            Me.TxtFactura.Enabled = True
+            Me.DtpFechaFactura.Enabled = True
+            'Me.chkServicio.Checked = True
+            'Me.chkServicio.Enabled = True
+            Limpiar(False)
+            refreshInfo()
+        End If
+
     End Sub
 End Class
