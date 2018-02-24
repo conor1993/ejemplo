@@ -404,11 +404,7 @@ Partial Class FrmAperturaLoteCorte2
         DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DgvConceptoGastos.DefaultCellStyle = DataGridViewCellStyle14
-<<<<<<< HEAD
         Me.DgvConceptoGastos.Location = New System.Drawing.Point(6, 22)
-=======
-        Me.DgvConceptoGastos.Location = New System.Drawing.Point(-13, 19)
->>>>>>> 60d233cf36c5e8cddf9e3a9a487cf12838e662dc
         Me.DgvConceptoGastos.MultiSelect = False
         Me.DgvConceptoGastos.Name = "DgvConceptoGastos"
         DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -585,7 +581,7 @@ Partial Class FrmAperturaLoteCorte2
         Me.txtNoPiezas.Size = New System.Drawing.Size(96, 20)
         Me.txtNoPiezas.TabIndex = 58
         Me.txtNoPiezas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtNoPiezas.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtNoPiezas.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
         Me.txtNoPiezas.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtNoPiezas.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         Me.txtNoPiezas.Visible = False

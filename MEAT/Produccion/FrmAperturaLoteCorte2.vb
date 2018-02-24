@@ -989,8 +989,4 @@ Public Class FrmAperturaLoteCorte2
 
         'End If
     End Sub
-
-    Private Sub DgvConceptoGastos_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvConceptoGastos.CellContentClick
-
-    End Sub
 End Class
