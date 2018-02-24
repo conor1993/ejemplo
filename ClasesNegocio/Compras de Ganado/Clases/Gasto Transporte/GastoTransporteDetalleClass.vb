@@ -118,11 +118,11 @@ Public Class GastoTransporteDetalleClass
         End Set
     End Property
 
-    Public Property CodProveedor() As Integer
+    Public Property CodProveedor() As Integer?
         Get
             Return Entity.CodProveedor
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Integer?)
             Entity.CodProveedor = value
         End Set
     End Property

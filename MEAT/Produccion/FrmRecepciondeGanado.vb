@@ -1,9 +1,10 @@
 Imports ClasesNegocio
-Imports HC = IntegraLab.ORM.HelperClasses
-Imports EC = IntegraLab.ORM.EntityClasses
-Imports CC = IntegraLab.ORM.CollectionClasses
+Imports HC = Integralab.ORM.HelperClasses
+Imports EC = Integralab.ORM.EntityClasses
+Imports CC = Integralab.ORM.CollectionClasses
 Imports SD.LLBLGen.Pro.ORMSupportClasses
 Imports System.IO
+Imports System.Data.SqlClient
 
 Public Class FrmRecepciondeGanado
     Dim WithEvents RecepcionGanado As RecepcionGanadoClass
@@ -175,6 +176,9 @@ Public Class FrmRecepciondeGanado
                             gastoDetalle.IdGasto = Fila.Cells(clmcmbConceptoGasto.Index).Value
                             gastoDetalle.PorcentajeIva = Fila.Cells(clmtxtIva.Index).Value
                             gastoDetalle.ImporteGasto = Fila.Cells(clmtxtImporteGasto.Index).Value
+                            gastoDetalle.CodProveedor = Fila.Cells(proveedor.Index).Value
+                            gastoDetalle.Nofactura = Fila.Cells(Factura.Index).Value
+                            gastoDetalle.Retencion = Fila.Cells(Retencion.Index).Value
                             Gastos.Detalle.Add(gastoDetalle)
                         End If
                     Next
@@ -520,7 +524,7 @@ Public Class FrmRecepciondeGanado
             Me.txtPlacas.Text = Me.RecepcionGanado.Placas
             Me.txtHorasViaje.Text = Me.RecepcionGanado.HorasViaje.ToString("N2")
 
-            'Me.cmbProveedor.SelectedValue = Me.RecepcionGanado.IdProveedor
+            Me.cmbProveedor.SelectedValue = Me.RecepcionGanado.IdProveedor
 
             Me.CmbLugarCompra.SelectedValue = Me.RecepcionGanado.CveLugarCompra
             Me.cmbComprador.SelectedValue = Me.RecepcionGanado.CveCompradorGanado
@@ -534,10 +538,29 @@ Public Class FrmRecepciondeGanado
             HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
             Dim recepGanadoIDe As New ClasesNegocio.RecepcionGanadoClass(RecepcionGanado.LoteRecepcion)
 
-
-
             Dim Gastos As New ClasesNegocio.GastoTransporteClass
             Gastos.Obtener(RecepcionGanado.LoteRecepcion)
+            'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            'Try
+
+            '    Dim cadenaConsulta As String = "select Fol_Recep, Cve_Renglon,Cve_Gasto,Ptj_Iva,Impte_Gasto,Retencion,NoFactura,CodProveedor from DetGasTrans join  usrProdRecepcionGanado on LoteRecepcion= Fol_Recep where LoteRecepcion={0}"
+            '    cadenaConsulta = String.Format(cadenaConsulta, RecepcionGanado.LoteRecepcion)
+            '    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+            '    Dim adp As New SqlDataAdapter(sqlcom)
+            '    Dim tb As New DataTable
+
+            '    sqlCon.Open()
+            '    adp.Fill(tb)
+            '    Me.DgvConceptoGastos.AutoGenerateColumns = False
+            '    Me.DgvConceptoGastos.DataSource = tb
+            '    sqlCon.Close()
+
+
+            'Catch ex As Exception
+
+            'End Try
+
+
             txtSubTotal.Text = (Gastos.ImporteTotal - Gastos.IVA).ToString("N2")
             txtIVA.Text = Gastos.IVA.ToString("N2")
             txtTotal.Text = Gastos.ImporteTotal.ToString("N2")
@@ -670,7 +693,7 @@ Public Class FrmRecepciondeGanado
                         Limpiar(False)
                         Deshabilitar()
                         HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
-                        
+
                     Else
                         HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
                     End If
@@ -1030,7 +1053,7 @@ Public Class FrmRecepciondeGanado
 
             CargaPantalla = False
 
-            Introductores.Obtener(True)
+            Introductores.Obtener()
             Me.cmbIntroductor.DataSource = Introductores
             Me.cmbIntroductor.DisplayMember = "Nombre"
             Me.cmbIntroductor.ValueMember = "Codigo"
@@ -1069,6 +1092,11 @@ Public Class FrmRecepciondeGanado
             Me.cmbProveedor.DisplayMember = "RazonSocial"
             Me.cmbProveedor.ValueMember = "Codigo"
             Me.cmbProveedor.SelectedIndex = -1
+            'llenar combo de datagrid
+            Me.proveedor.DataSource = proveedores
+            Me.proveedor.DisplayMember = "RazonSocial"
+            Me.proveedor.ValueMember = "Codigo"
+
 
             Application.DoEvents()
 
@@ -1197,7 +1225,7 @@ Public Class FrmRecepciondeGanado
 
 
         End If
-     
+
 
     End Sub
 
@@ -1273,7 +1301,7 @@ Public Class FrmRecepciondeGanado
 
     End Sub
 
-  
+
 
     Private Sub DgvConceptoGastos_KeyDown(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles DgvConceptoGastos.KeyDown
         If e.KeyCode = Keys.Delete Then
