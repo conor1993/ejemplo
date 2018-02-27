@@ -65,6 +65,33 @@ Public Class FrmRecepciondeGanado
     Private Function Guardar() As Boolean
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
         Try
+            If DgvConceptoGastos.Rows.Count > 1 Then
+                Dim Mensaje As String = ""
+                Dim Importe As String
+                Dim NoFactura As String
+                Dim ID_Proveedor As String
+
+                For Each Fila As DataGridViewRow In DgvConceptoGastos.Rows
+                    If Not Fila.IsNewRow Then
+                        Importe = Fila.Cells(clmtxtImporteGasto.Index).Value
+                        NoFactura = Fila.Cells(Factura.Index).Value
+                        ID_Proveedor = CInt(Fila.Cells(proveedor.Index).Value)
+
+                        If ID_Proveedor Is Nothing Or
+                            ID_Proveedor = 0 Or
+                            (String.IsNullOrEmpty(NoFactura)) Or
+                            (String.IsNullOrEmpty(Importe) Or CDec(Importe) <= 0) Then
+                            Mensaje = "Verifique que la información ingresada en la Sección de Gastos de compra sea correcta"
+                        End If
+                    End If
+                Next
+                If Not String.IsNullOrEmpty(Mensaje) Then
+                    MsgBox(Mensaje, MsgBoxStyle.Exclamation, "Aviso")
+                    Trans.Rollback()
+                    Return False
+                End If
+            End If
+
             Dim Folio As New FoliosClass
             Folio.Codigo = CodigodeFolios.RecepcionGanadoPie
             Folio.Año = Now.Year
@@ -108,9 +135,9 @@ Public Class FrmRecepciondeGanado
 
             ''falta total de kilos y el importe por kilo
 
-            RecepcionGanado.DiasCredito = IIf(txtDiasDeCredito.Text.Trim().Equals(""), 0, txtDiasDeCredito.Text.Trim())
-            RecepcionGanado.FechaPago = dtpFechaPago.Value
-            RecepcionGanado.NumFactura = txtNoFactura.Text.Trim()
+            'RecepcionGanado.DiasCredito = IIf(txtDiasDeCredito.Text.Trim().Equals(""), 0, txtDiasDeCredito.Text.Trim())
+            'RecepcionGanado.FechaPago = dtpFechaPago.Value
+            'RecepcionGanado.NumFactura = txtNoFactura.Text.Trim()
 
             Dim fechanull As DateTime?
             fechanull = Nothing
@@ -276,9 +303,9 @@ Public Class FrmRecepciondeGanado
             TxtFolio.Text = ""
             DgvConceptoGastos.Rows.Clear()
             DgvConceptoGastos.DataSource = Nothing
-            dtpFechaPago.Value = DateTime.Now
+            'dtpFechaPago.Value = DateTime.Now
             txtNoFactura.Text = ""
-            txtDiasDeCredito.Text = ""
+            'txtDiasDeCredito.Text = ""
             txtHorasViaje.Text = ""
             Me.mtb.sbCambiarEstadoBotones("Nuevo")
             DgvConceptoGastos.AllowUserToAddRows = True
@@ -321,9 +348,9 @@ Public Class FrmRecepciondeGanado
             txtSubTotal.Text = "0.00"
             txtIVA.Text = "0.00"
             txtTotal.Text = "0.00"
-            dtpFechaPago.Value = DateTime.Now
+            'dtpFechaPago.Value = DateTime.Now
             txtNoFactura.Text = ""
-            txtDiasDeCredito.Text = ""
+            'txtDiasDeCredito.Text = ""
             txtHorasViaje.Text = ""
             txtImporte.Text = ""
             DgvConceptoGastos.AllowUserToAddRows = True
@@ -355,9 +382,12 @@ Public Class FrmRecepciondeGanado
         Me.cmbComprador.Enabled = True
         Me.cmbProveedor.Enabled = True
         Me.CmbLugarCompra.Enabled = True
-        For Each ctl As Control In tabControl.Controls
-            ctl.Enabled = True
-        Next
+        'Correciones Dorantes
+        'For Each ctl As Control In fieldGastos
+        '    ctl.Enabled = True
+        'Next
+        fieldGastos.Enabled = True
+
         Me.txtHorasViaje.Enabled = True
         txtNoFactura.Enabled = True
         txtImporte.Enabled = True
@@ -387,9 +417,12 @@ Public Class FrmRecepciondeGanado
         Me.cmbComprador.Enabled = False
         Me.cmbProveedor.Enabled = False
         Me.CmbLugarCompra.Enabled = False
-        For Each ctl As Control In tabControl.Controls
-            ctl.Enabled = False
-        Next
+        'Correciones Dorantes
+        'For Each ctl As Control In tabControl.Controls
+        '    ctl.Enabled = False
+        'Next
+        fieldGastos.Enabled = False
+
         Me.txtHorasViaje.Enabled = False
         txtNoFactura.Enabled = False
         txtImporte.Enabled = False
@@ -531,9 +564,9 @@ Public Class FrmRecepciondeGanado
             Me.txtObservaciones.Text = Me.RecepcionGanado.Observaciones
             Me.txtCantCabezas.Text = Me.RecepcionGanado.CantCabezas
             Me.CmbTipoGanado.SelectedValue = Me.RecepcionGanado.TipoGanado.IdTipoGanado
-            Me.dtpFechaPago.Value = Me.RecepcionGanado.FechaPago
+            'Me.dtpFechaPago.Value = Me.RecepcionGanado.FechaPago
             Me.txtNoFactura.Text = Me.RecepcionGanado.NumFactura
-            txtDiasDeCredito.Text = Me.RecepcionGanado.DiasCredito.ToString()
+            'txtDiasDeCredito.Text = Me.RecepcionGanado.DiasCredito.ToString()
 
             HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
             Dim recepGanadoIDe As New ClasesNegocio.RecepcionGanadoClass(RecepcionGanado.LoteRecepcion)
@@ -660,6 +693,7 @@ Public Class FrmRecepciondeGanado
                     End If
                 End If
             Else
+
                 If Not Me.txtKilos2daPasada.Text > 0 Then
                     MsgBox("Ingrese la cantidad de Kilos de la Segunda pesada para poder guardar", MsgBoxStyle.Exclamation, "Aviso")
                     Cancelar = True
@@ -1087,15 +1121,33 @@ Public Class FrmRecepciondeGanado
 
             Dim proveedores As New CC.ProveedorCollection
             proveedores.GetMulti(HC.ProveedorFields.EsdeGanado = 1 And HC.ProveedorFields.Estatus = 1, 0, New SortExpression(New SortClause(HC.ProveedorFields.RazonSocial, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending)))
+
             'llena combo proveedores
             Me.cmbProveedor.DataSource = proveedores
             Me.cmbProveedor.DisplayMember = "RazonSocial"
             Me.cmbProveedor.ValueMember = "Codigo"
             Me.cmbProveedor.SelectedIndex = -1
             'llenar combo de datagrid
-            Me.proveedor.DataSource = proveedores
+            'Me.proveedor.DataSource = proveedores
             Me.proveedor.DisplayMember = "RazonSocial"
             Me.proveedor.ValueMember = "Codigo"
+
+
+
+            Dim Query As String = "SELECT PrIdProveedor Codigo, PrRazSocial RazonSocial, ISNULL(EsdeGanado, 0) EsdeGanado" &
+                " FROM MCatCompProveedores " &
+                " WHERE PrEstatus = 1 " &
+                " ORDER BY PrRazSocial "
+
+            Dim tb As New DataTable
+            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            Using sqlcom As New SqlCommand(query, sqlCon)
+                Dim adp As New SqlDataAdapter(sqlcom)
+                sqlCon.Open()
+                adp.Fill(tb)
+                proveedor.DataSource = tb
+                sqlCon.Close()
+            End Using
 
 
             Application.DoEvents()
@@ -1153,8 +1205,8 @@ Public Class FrmRecepciondeGanado
             End If
 
             Dim proveedor As New ClasesNegocio.ProveedorClass(CInt(cmbProveedor.SelectedValue))
-            txtDiasDeCredito.Text = proveedor.DiasCredito.ToString()
-            dtpFechaPago.Value = DateTime.Now.AddDays(proveedor.DiasCredito)
+            'txtDiasDeCredito.Text = proveedor.DiasCredito.ToString()
+            'dtpFechaPago.Value = DateTime.Now.AddDays(proveedor.DiasCredito)
 
             Application.DoEvents()
             If bandera Then
@@ -1230,6 +1282,21 @@ Public Class FrmRecepciondeGanado
     End Sub
 
     Private Sub combo_SelectedIndexChanged(sender As Object, e As EventArgs)
+        'Dim cb As ComboBox = CType(sender, ComboBox)
+        ''Dim item As String = cb.Text
+        ''If item IsNot Nothing Then MessageBox.Show(item)+
+        'Dim catgasto As ClasesNegocio.ConceptoGastosTransporteClass
+        'If TypeOf cb.SelectedValue Is ClasesNegocio.ConceptoGastosTransporteClass Then
+        '    catgasto = New ClasesNegocio.ConceptoGastosTransporteClass(CInt(CType(cb.SelectedValue, ClasesNegocio.ConceptoGastosTransporteClass).IdConceptoGasto))
+        'Else
+        '    catgasto = New ClasesNegocio.ConceptoGastosTransporteClass(CInt(cb.SelectedValue))
+        'End If
+
+        'If catgasto.AplicaIVA Then
+        '    Me.DgvConceptoGastos.CurrentRow.Cells(clmtxtIva.Index).Value = catgasto.PorcentajeIVA.ToString("N2")
+        'End If
+
+        'Correcciones Dorantes
         Dim cb As ComboBox = CType(sender, ComboBox)
         'Dim item As String = cb.Text
         'If item IsNot Nothing Then MessageBox.Show(item)+
@@ -1241,7 +1308,9 @@ Public Class FrmRecepciondeGanado
         End If
 
         If catgasto.AplicaIVA Then
-            Me.DgvConceptoGastos.CurrentRow.Cells(clmtxtIva.Index).Value = catgasto.PorcentajeIVA.ToString("N2")
+            Me.DgvConceptoGastos.CurrentRow.Cells(clmtxtIva.Index).Value = catgasto.PorcentajeIVA.ToString("N4")
+        Else
+            Me.DgvConceptoGastos.CurrentRow.Cells(clmtxtIva.Index).Value = Nothing
         End If
 
     End Sub
@@ -1253,29 +1322,49 @@ Public Class FrmRecepciondeGanado
     Private Sub DgvConceptoGastos_RowValidating(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvConceptoGastos.RowValidating
         'If clmcmbConceptoGasto.Index = e.ColumnIndex or Then
         'MessageBox.Show(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        'If DgvConceptoGastos.Rows(e.RowIndex).IsNewRow Then
+        '    e.Cancel = False
+        '    Return
+        'End If
+
+        'If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit) Is Nothing Then
+        '    e.Cancel = True
+        '    MessageBox.Show("Seleccione un concepto...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'End If
+        ' End If
+        'If clmtxtImporteGasto.Index = e.ColumnIndex Then
+        'If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit).ToString().Equals("") Then
+        '    e.Cancel = True
+        '    MessageBox.Show("Se debe ingresar el importe...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'End If
+
+        ' End If
+
         If DgvConceptoGastos.Rows(e.RowIndex).IsNewRow Then
             e.Cancel = False
             Return
         End If
 
-        If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit) Is Nothing Then
-            e.Cancel = True
-            MessageBox.Show("Seleccione un concepto...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
         ' End If
-        'If clmtxtImporteGasto.Index = e.ColumnIndex Then
-        If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit).ToString().Equals("") Then
-            e.Cancel = True
-            MessageBox.Show("Se debe ingresar el importe...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
+        If clmtxtImporteGasto.Index = e.ColumnIndex Then
+            If DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Commit).ToString().Equals("") Then
+                e.Cancel = True
+                MessageBox.Show("Se debe ingresar el importe...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
 
-        ' End If
+        End If
     End Sub
 
     Private Sub DgvConceptoGastos_CellEndEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvConceptoGastos.CellEndEdit
-        If e.ColumnIndex = clmtxtImporteGasto.Index Or e.ColumnIndex = clmtxtIva.Index Then
-            DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N2")
-            calcular()
+        If e.ColumnIndex = clmtxtImporteGasto.Index Or e.ColumnIndex = clmtxtIva.Index Or e.ColumnIndex = Retencion.Index Then
+            Dim importeAux As Decimal = 0.0
+            If Not String.IsNullOrEmpty(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+                importeAux = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N4")
+            End If
+            DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = importeAux
+            If e.ColumnIndex <> Retencion.Index Then
+                calcular()
+            End If
         End If
     End Sub
 
@@ -1292,6 +1381,18 @@ Public Class FrmRecepciondeGanado
         txtSubTotal.Text = sumaSubTotal.ToString("N2")
         txtIVA.Text = sumaIVA.ToString("N2")
         txtTotal.Text = (sumaIVA + sumaSubTotal).ToString("N2")
+
+
+        Dim importe As Decimal
+        If (String.IsNullOrEmpty(txtImporte.Text)) Then
+            importe = 0
+        Else
+            importe = CDec(txtImporte.Text.Replace(",", ""))
+        End If
+
+        Dim totales As Decimal = sumaIVA + sumaSubTotal + importe
+
+        txtTotalTotal.Text = totales.ToString("N4")
     End Sub
 
     Private Sub txtNoFactura_TextChanged(sender As System.Object, e As System.EventArgs)
@@ -1313,4 +1414,7 @@ Public Class FrmRecepciondeGanado
         End If
     End Sub
 
+    Private Sub txtImporte_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtImporte.KeyUp
+        calcular()
+    End Sub
 End Class
