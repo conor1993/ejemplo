@@ -142,6 +142,7 @@ Public Class RegistroFacGastosFrm
         TxtIVAFlete1.Text = 0.ToString("C2")
         Me.UUID.Text = ""
         Me.dgvDistribuciondeGastos.Rows.Clear()
+        Me.dgvdistribuciongastosdet.Rows.Clear()
 
     End Sub
 
@@ -681,6 +682,8 @@ Public Class RegistroFacGastosFrm
                     Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                     Try
                         For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
+
+
                             Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10})"
                             cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value, CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value), DtpFechaFactura.Text, 0, Factura.NoFactura, Factura.IdProveedor, Factura.IdEmpresa)
                             Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
@@ -697,11 +700,38 @@ Public Class RegistroFacGastosFrm
                             sqlCon.Close()
 
                         Next
+                       
                     Catch ex As Exception
 
                     End Try
+                    Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                    Try
+                        For i As Integer = 0 To dgvdistribuciongastosdet.Rows.Count - 1
+                            Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje) values({0},{1},{2},{3},{4},{5})"
+                            cadenaConsulta = String.Format(cadenaConsulta, dgvdistribuciongastosdet.Rows(i).Cells(sucursal1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Prorrateo1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Cuenta1.Index).Value, Factura.NoFactura, dgvdistribuciongastosdet.Rows(i).Cells(cod_centro.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(idporcentaje.Index).Value)
+
+                            Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCone)
+                            Dim adp As New SqlDataAdapter(sqlcom)
+
+                            'Dim tb As New DataTable
+
+                            'sqlCon.Open()
+                            '    adp.Fill(tb)
+                            '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+                            '    Me.dgvDistribuciondeGastos.DataSource = tb
+                            sqlCone.Open()
+                            sqlcom.ExecuteNonQuery()
+                            sqlCone.Close()
+
+
+                        Next
+                    Catch ex As Exception
+                        MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+                    End Try
 
                     sqlCon.Close()
+                    sqlCone.Close()
+
                     MsgBox("La Factura se ha Guardado Satisfactoriamente...", MsgBoxStyle.Exclamation, "Aviso")
                     Limpiar()
                     Deshabilitar()
@@ -911,7 +941,14 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
-
+                                For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
+                                    Me.dgvdistribuciongastosdet.Rows.Add()
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.sucursal1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
+                                Next
                             Next
                         End If
                     End If
@@ -930,6 +967,14 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+                                For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
+                                    Me.dgvdistribuciongastosdet.Rows.Add()
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.sucursal1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmSucursal.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmMetodoProrrateo.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
+                                Next
                             Next
                         End If
                     End If

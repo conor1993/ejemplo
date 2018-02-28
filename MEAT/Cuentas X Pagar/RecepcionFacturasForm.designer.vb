@@ -186,7 +186,7 @@ Partial Class RecepcionFacturasForm
         'CmbProveedor
         '
         Me.CmbProveedor.FormattingEnabled = True
-        Me.CmbProveedor.Location = New System.Drawing.Point(151, 60)
+        Me.CmbProveedor.Location = New System.Drawing.Point(148, 60)
         Me.CmbProveedor.Name = "CmbProveedor"
         Me.CmbProveedor.Size = New System.Drawing.Size(320, 21)
         Me.CmbProveedor.TabIndex = 0

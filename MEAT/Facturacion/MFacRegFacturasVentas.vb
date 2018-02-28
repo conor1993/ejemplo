@@ -172,6 +172,7 @@ Public Class MFacRegFacturasVentas
                 Me.Precios.DataPropertyName = "PrecioxKgr"
                 Me.ImporteFacturado.DataPropertyName = "ImporteFacturado"
                 Me.ImporteEmbarcado.DataPropertyName = "ImporteEmbarcado"
+                Me.clmproductoserv.DataPropertyName = ""
                 'Dim TablaFactura As DataSet = FacturasCab.Consulta(Me.txtFolioFactura.Text, 2)
                 'dgvDetalle.DataSource = TablaFactura.Tables(0)
                 'Me.Etiqueta.DataPropertyName = "IdFolioEtiqueta"
@@ -806,6 +807,7 @@ Public Class MFacRegFacturasVentas
     Private Sub ObtenerEmbarque(Optional ByVal SelConfiguracionFactura As Boolean = True)
         Dim RenglonesEnEmbarque As Integer = 0
 
+
         Try
             If SelConfiguracionFactura Then
 
@@ -928,6 +930,28 @@ Public Class MFacRegFacturasVentas
                         Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.ImporteFacturado.Index).Value = Importe
                         Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.KilosFacturados.Index).Value = TablaEmbarque2.Tables(0).Rows(j)("KilosFacturar")
                         Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.clmPiezas.Index).Value = TablaEmbarque2.Tables(0).Rows(j)("Piezas")
+                        Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.clmunidadsat.DisplayIndex).Value = "28"
+                        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                        'Try
+
+                        '    Dim cadenaConsulta As String = "select Fol_Recep, Cve_Renglon,Cve_Gasto,Ptj_Iva,Impte_Gasto,Retencion,NoFactura,CodProveedor from DetGasTrans join  usrProdRecepcionGanado on LoteRecepcion= Fol_Recep where LoteRecepcion={0}"
+                        '    'cadenaConsulta = String.Format(cadenaConsulta, RecepcionGanado.LoteRecepcion)
+                        '    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                        '    Dim adp As New SqlDataAdapter(sqlcom)
+                        '    Dim tb As New DataTable
+
+                        '    sqlCon.Open()
+                        '    adp.Fill(tb)
+                        '    Me.DgvConceptoGastos.AutoGenerateColumns = False
+                        '    Me.DgvConceptoGastos.DataSource = tb
+                        '    sqlCon.Close()
+
+
+                        'Catch ex As Exception
+
+                        'End Try
+                        'Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.clmproductoserv.DisplayIndex).Value = 
+
                         cont += 1
                     End If
                     'Me.dgvDetalleConcentrado.DataSource = TablaEmbarque2.Tables(0)
