@@ -797,6 +797,7 @@ Public Class CuentaContableClass
                             item.NomCuenta = Entity.NomCuenta
                             item.SaldoAnoAnt = Entity.SaldoAnoAnt
                             item.SaldoIniEjerc = Entity.SaldoIniEjerc
+                            item.CodAgrupSat = Entity.CodAgrupSat
                         End If
                         item.BooDepta = Entity.BooDepta
                         item.BooInactiva = Entity.BooInactiva

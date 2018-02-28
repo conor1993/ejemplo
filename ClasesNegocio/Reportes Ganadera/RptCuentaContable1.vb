@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class RptCuentaContable
+Public Class RptCuentaContable1
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class RptCuentaContable
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "RptCuentaContable.rpt"
+            Return "RptCuentaContable1.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class RptCuentaContable
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "ClasesNegocio.RptCuentaContable.rpt"
+            Return "ClasesNegocio.RptCuentaContable1.rpt"
         End Get
         Set
             'Do nothing
@@ -118,7 +118,7 @@ Public Class RptCuentaContable
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedRptCuentaContable
+Public Class CachedRptCuentaContable1
     Inherits Component
     Implements ICachedReport
     
@@ -160,7 +160,7 @@ Public Class CachedRptCuentaContable
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As RptCuentaContable = New RptCuentaContable()
+        Dim rpt As RptCuentaContable1 = New RptCuentaContable1()
         rpt.Site = Me.Site
         Return rpt
     End Function

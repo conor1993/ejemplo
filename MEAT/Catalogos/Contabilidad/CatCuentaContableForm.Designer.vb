@@ -33,16 +33,6 @@ Partial Class CatCuentaContableForm
         Me.txtSCtaBusq = New System.Windows.Forms.TextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.dgv = New System.Windows.Forms.DataGridView()
-        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombreCuentaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NaturalezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Afectable = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InactivaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CuentasContable = New ClasesNegocio.CuentaContableCollectionClass()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.BtnQuitarCtaE = New System.Windows.Forms.Button()
         Me.btnCtaE = New System.Windows.Forms.Button()
@@ -92,15 +82,25 @@ Partial Class CatCuentaContableForm
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreCuentaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NaturalezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Afectable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InactivaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuentasContable = New ClasesNegocio.CuentaContableCollectionClass()
         Me.gpo.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
-        CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         Me.pan.SuspendLayout()
         Me.gpClasificador.SuspendLayout()
         Me.gpoCaracteristicas.SuspendLayout()
         Me.gpoNaturaleza.SuspendLayout()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gpo
@@ -199,117 +199,6 @@ Partial Class CatCuentaContableForm
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Cuentas"
         Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'dgv
-        '
-        Me.dgv.AllowUserToAddRows = False
-        Me.dgv.AllowUserToDeleteRows = False
-        Me.dgv.AllowUserToResizeRows = False
-        Me.dgv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgv.AutoGenerateColumns = False
-        Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigo, Me.NombreCuentaDataGridViewTextBoxColumn, Me.CuentaContableDataGridViewTextBoxColumn, Me.NaturalezaDataGridViewTextBoxColumn, Me.SaldoAñoAnteriorDataGridViewTextBoxColumn, Me.SaldoInicioEjercicioDataGridViewTextBoxColumn, Me.Afectable, Me.InactivaDataGridViewTextBoxColumn})
-        Me.dgv.DataSource = Me.CuentasContable
-        Me.dgv.Location = New System.Drawing.Point(3, 6)
-        Me.dgv.MultiSelect = False
-        Me.dgv.Name = "dgv"
-        Me.dgv.ReadOnly = True
-        Me.dgv.RowHeadersVisible = False
-        Me.dgv.RowHeadersWidth = 25
-        Me.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgv.Size = New System.Drawing.Size(830, 200)
-        Me.dgv.TabIndex = 0
-        '
-        'clmCodigo
-        '
-        Me.clmCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.clmCodigo.DataPropertyName = "Codigo"
-        Me.clmCodigo.Frozen = True
-        Me.clmCodigo.HeaderText = "Código"
-        Me.clmCodigo.Name = "clmCodigo"
-        Me.clmCodigo.ReadOnly = True
-        Me.clmCodigo.Visible = False
-        '
-        'NombreCuentaDataGridViewTextBoxColumn
-        '
-        Me.NombreCuentaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.NombreCuentaDataGridViewTextBoxColumn.DataPropertyName = "NombreCuenta"
-        Me.NombreCuentaDataGridViewTextBoxColumn.Frozen = True
-        Me.NombreCuentaDataGridViewTextBoxColumn.HeaderText = "Nombre de Cuenta"
-        Me.NombreCuentaDataGridViewTextBoxColumn.Name = "NombreCuentaDataGridViewTextBoxColumn"
-        Me.NombreCuentaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NombreCuentaDataGridViewTextBoxColumn.Width = 111
-        '
-        'CuentaContableDataGridViewTextBoxColumn
-        '
-        Me.CuentaContableDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.CuentaContableDataGridViewTextBoxColumn.DataPropertyName = "CuentaContable"
-        Me.CuentaContableDataGridViewTextBoxColumn.Frozen = True
-        Me.CuentaContableDataGridViewTextBoxColumn.HeaderText = "Cuenta Contable"
-        Me.CuentaContableDataGridViewTextBoxColumn.Name = "CuentaContableDataGridViewTextBoxColumn"
-        Me.CuentaContableDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CuentaContableDataGridViewTextBoxColumn.Width = 102
-        '
-        'NaturalezaDataGridViewTextBoxColumn
-        '
-        Me.NaturalezaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.NaturalezaDataGridViewTextBoxColumn.DataPropertyName = "Naturaleza"
-        Me.NaturalezaDataGridViewTextBoxColumn.HeaderText = "Naturaleza"
-        Me.NaturalezaDataGridViewTextBoxColumn.Name = "NaturalezaDataGridViewTextBoxColumn"
-        Me.NaturalezaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NaturalezaDataGridViewTextBoxColumn.Width = 83
-        '
-        'SaldoAñoAnteriorDataGridViewTextBoxColumn
-        '
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DataPropertyName = "SaldoAñoAnterior"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.HeaderText = "Saldo del Año Anterior"
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.Name = "SaldoAñoAnteriorDataGridViewTextBoxColumn"
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.Width = 93
-        '
-        'SaldoInicioEjercicioDataGridViewTextBoxColumn
-        '
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DataPropertyName = "SaldoInicioEjercicio"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.HeaderText = "Saldo de Inicio del Ejercicio"
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.Name = "SaldoInicioEjercicioDataGridViewTextBoxColumn"
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.Width = 112
-        '
-        'Afectable
-        '
-        Me.Afectable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Afectable.DataPropertyName = "Afectable"
-        Me.Afectable.HeaderText = "Afectable"
-        Me.Afectable.Name = "Afectable"
-        Me.Afectable.ReadOnly = True
-        Me.Afectable.Width = 77
-        '
-        'InactivaDataGridViewTextBoxColumn
-        '
-        Me.InactivaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.InactivaDataGridViewTextBoxColumn.DataPropertyName = "Inactiva"
-        Me.InactivaDataGridViewTextBoxColumn.HeaderText = "Inactiva"
-        Me.InactivaDataGridViewTextBoxColumn.Name = "InactivaDataGridViewTextBoxColumn"
-        Me.InactivaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.InactivaDataGridViewTextBoxColumn.Width = 70
-        '
-        'CuentasContable
-        '
-        Me.CuentasContable.AllowEdit = True
-        Me.CuentasContable.AllowNew = True
-        Me.CuentasContable.AllowRemove = True
-        Me.CuentasContable.Name = Nothing
-        Me.CuentasContable.RaiseListChangedEvents = True
         '
         'TabPage2
         '
@@ -843,6 +732,117 @@ Partial Class CatCuentaContableForm
         '
         Me.PrintDialog1.UseEXDialog = True
         '
+        'dgv
+        '
+        Me.dgv.AllowUserToAddRows = False
+        Me.dgv.AllowUserToDeleteRows = False
+        Me.dgv.AllowUserToResizeRows = False
+        Me.dgv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgv.AutoGenerateColumns = False
+        Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigo, Me.NombreCuentaDataGridViewTextBoxColumn, Me.CuentaContableDataGridViewTextBoxColumn, Me.NaturalezaDataGridViewTextBoxColumn, Me.SaldoAñoAnteriorDataGridViewTextBoxColumn, Me.SaldoInicioEjercicioDataGridViewTextBoxColumn, Me.Afectable, Me.InactivaDataGridViewTextBoxColumn})
+        Me.dgv.DataSource = Me.CuentasContable
+        Me.dgv.Location = New System.Drawing.Point(3, 6)
+        Me.dgv.MultiSelect = False
+        Me.dgv.Name = "dgv"
+        Me.dgv.ReadOnly = True
+        Me.dgv.RowHeadersVisible = False
+        Me.dgv.RowHeadersWidth = 25
+        Me.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgv.Size = New System.Drawing.Size(830, 200)
+        Me.dgv.TabIndex = 0
+        '
+        'clmCodigo
+        '
+        Me.clmCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.clmCodigo.DataPropertyName = "Codigo"
+        Me.clmCodigo.Frozen = True
+        Me.clmCodigo.HeaderText = "Código"
+        Me.clmCodigo.Name = "clmCodigo"
+        Me.clmCodigo.ReadOnly = True
+        Me.clmCodigo.Visible = False
+        '
+        'NombreCuentaDataGridViewTextBoxColumn
+        '
+        Me.NombreCuentaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.NombreCuentaDataGridViewTextBoxColumn.DataPropertyName = "NombreCuenta"
+        Me.NombreCuentaDataGridViewTextBoxColumn.Frozen = True
+        Me.NombreCuentaDataGridViewTextBoxColumn.HeaderText = "Nombre de Cuenta"
+        Me.NombreCuentaDataGridViewTextBoxColumn.Name = "NombreCuentaDataGridViewTextBoxColumn"
+        Me.NombreCuentaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NombreCuentaDataGridViewTextBoxColumn.Width = 111
+        '
+        'CuentaContableDataGridViewTextBoxColumn
+        '
+        Me.CuentaContableDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.CuentaContableDataGridViewTextBoxColumn.DataPropertyName = "CuentaContable"
+        Me.CuentaContableDataGridViewTextBoxColumn.Frozen = True
+        Me.CuentaContableDataGridViewTextBoxColumn.HeaderText = "Cuenta Contable"
+        Me.CuentaContableDataGridViewTextBoxColumn.Name = "CuentaContableDataGridViewTextBoxColumn"
+        Me.CuentaContableDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CuentaContableDataGridViewTextBoxColumn.Width = 102
+        '
+        'NaturalezaDataGridViewTextBoxColumn
+        '
+        Me.NaturalezaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.NaturalezaDataGridViewTextBoxColumn.DataPropertyName = "Naturaleza"
+        Me.NaturalezaDataGridViewTextBoxColumn.HeaderText = "Naturaleza"
+        Me.NaturalezaDataGridViewTextBoxColumn.Name = "NaturalezaDataGridViewTextBoxColumn"
+        Me.NaturalezaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NaturalezaDataGridViewTextBoxColumn.Width = 83
+        '
+        'SaldoAñoAnteriorDataGridViewTextBoxColumn
+        '
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DataPropertyName = "SaldoAñoAnterior"
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.HeaderText = "Saldo del Año Anterior"
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.Name = "SaldoAñoAnteriorDataGridViewTextBoxColumn"
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SaldoAñoAnteriorDataGridViewTextBoxColumn.Width = 93
+        '
+        'SaldoInicioEjercicioDataGridViewTextBoxColumn
+        '
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DataPropertyName = "SaldoInicioEjercicio"
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.HeaderText = "Saldo de Inicio del Ejercicio"
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.Name = "SaldoInicioEjercicioDataGridViewTextBoxColumn"
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SaldoInicioEjercicioDataGridViewTextBoxColumn.Width = 112
+        '
+        'Afectable
+        '
+        Me.Afectable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Afectable.DataPropertyName = "Afectable"
+        Me.Afectable.HeaderText = "Afectable"
+        Me.Afectable.Name = "Afectable"
+        Me.Afectable.ReadOnly = True
+        Me.Afectable.Width = 77
+        '
+        'InactivaDataGridViewTextBoxColumn
+        '
+        Me.InactivaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.InactivaDataGridViewTextBoxColumn.DataPropertyName = "Inactiva"
+        Me.InactivaDataGridViewTextBoxColumn.HeaderText = "Inactiva"
+        Me.InactivaDataGridViewTextBoxColumn.Name = "InactivaDataGridViewTextBoxColumn"
+        Me.InactivaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.InactivaDataGridViewTextBoxColumn.Width = 70
+        '
+        'CuentasContable
+        '
+        Me.CuentasContable.AllowEdit = True
+        Me.CuentasContable.AllowNew = True
+        Me.CuentasContable.AllowRemove = True
+        Me.CuentasContable.Name = Nothing
+        Me.CuentasContable.RaiseListChangedEvents = True
+        '
         'CatCuentaContableForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -861,7 +861,6 @@ Partial Class CatCuentaContableForm
         Me.gpo.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
-        CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
         Me.pan.ResumeLayout(False)
@@ -872,6 +871,7 @@ Partial Class CatCuentaContableForm
         Me.gpoCaracteristicas.PerformLayout()
         Me.gpoNaturaleza.ResumeLayout(False)
         Me.gpoNaturaleza.PerformLayout()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
