@@ -541,6 +541,7 @@ Public Class CatCuentaContableForm
     '    txtSSCta.Text = "0000"
     '    txtSSSCta.Text = "0000"
     'End Sub
+
 #End Region
 
     'Private Sub txtNombre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress
