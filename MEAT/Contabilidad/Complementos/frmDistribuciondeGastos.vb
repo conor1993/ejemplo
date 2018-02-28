@@ -96,7 +96,7 @@ Public Class frmDistribuciondeGastos
                 Next
                 Dim Metodo As New CN.MetodoProrrateoClass
                     Metodo.Obtener(Me.dgvMetodos.CurrentRow.Cells(Me.clmMetodoProrrateo.Index).Value)
-                    Me.dgvDetalledeProrrateo.AutoGenerateColumns = False
+                Me.dgvDetalledeProrrateo.AutoGenerateColumns = True
                     Me.dgvDetalledeProrrateo.DataSource = Metodo.Detalle
 
                     'If e.ColumnIndex < Me.clmImporte.Index Then
@@ -148,7 +148,7 @@ Public Class frmDistribuciondeGastos
 
     Private Sub dgvDetalledeProrrateo_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalledeProrrateo.CellEndEdit
         Try
-            If e.ColumnIndex = 1 Then
+            If e.ColumnIndex = 2 Then
                 Dim total As Integer
 
                 total = valor1 / (dgvMetodos.Rows.Count - 1)
@@ -166,7 +166,7 @@ Public Class frmDistribuciondeGastos
                     Porcentaje = Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmPorcentaje.Index).Value
                     Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = ((total * Porcentaje) / 100).ToString("C2")
                 Next
-            ElseIf e.ColumnIndex = 2 Then
+            ElseIf e.ColumnIndex = 3 Then
                 Dim total As Integer
 
                 total = (CDec(PolizaDiario.dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)) / (dgvMetodos.Rows.Count - 1)
@@ -256,8 +256,14 @@ Public Class frmDistribuciondeGastos
     End Sub
 
     Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
+        If txtPorcentaje.Text <> 100 Then
+            MsgBox("El porcentaje de asignacion debe ser igual al 100% Favor de verificar", MsgBoxStyle.Critical)
+            Exit Sub
+        Else
+            Me.DialogResult = Windows.Forms.DialogResult.OK
+        End If
 
-        Me.DialogResult = Windows.Forms.DialogResult.OK
+
 
     End Sub
 
