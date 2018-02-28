@@ -55,13 +55,6 @@ Partial Class FrmAperturaLoteCorte2
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.DgvConceptoGastos = New System.Windows.Forms.DataGridView()
-        Me.clmcmbConceptoGasto = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.clmtxtIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmtxtImporteGasto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmRenglon = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmretencion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmfactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmproovedor = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtSubTotal = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -70,7 +63,7 @@ Partial Class FrmAperturaLoteCorte2
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.txtNoPiezas = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtNoPiezas = New Integralab.Controles.TextBoxMejorado()
         Me.txtObservaciones = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtKilosRecibidos = New System.Windows.Forms.TextBox()
@@ -111,6 +104,13 @@ Partial Class FrmAperturaLoteCorte2
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.txtImporte = New System.Windows.Forms.TextBox()
+        Me.clmcmbConceptoGasto = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.clmtxtIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmtxtImporteGasto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmRenglon = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmretencion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmfactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmproovedor = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.gridProductos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -240,8 +240,8 @@ Partial Class FrmAperturaLoteCorte2
         '
         Me.gridProductos.AllowUserToResizeRows = False
         Me.gridProductos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gridProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.gridProductos.BackgroundColor = System.Drawing.SystemColors.ControlLight
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -382,8 +382,8 @@ Partial Class FrmAperturaLoteCorte2
         Me.DgvConceptoGastos.AllowUserToDeleteRows = False
         Me.DgvConceptoGastos.AllowUserToResizeRows = False
         Me.DgvConceptoGastos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvConceptoGastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DgvConceptoGastos.BackgroundColor = System.Drawing.SystemColors.ControlLight
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -404,7 +404,7 @@ Partial Class FrmAperturaLoteCorte2
         DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DgvConceptoGastos.DefaultCellStyle = DataGridViewCellStyle14
-        Me.DgvConceptoGastos.Location = New System.Drawing.Point(-13, 19)
+        Me.DgvConceptoGastos.Location = New System.Drawing.Point(6, 22)
         Me.DgvConceptoGastos.MultiSelect = False
         Me.DgvConceptoGastos.Name = "DgvConceptoGastos"
         DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -418,70 +418,6 @@ Partial Class FrmAperturaLoteCorte2
         Me.DgvConceptoGastos.RowHeadersVisible = False
         Me.DgvConceptoGastos.Size = New System.Drawing.Size(681, 121)
         Me.DgvConceptoGastos.TabIndex = 47
-        '
-        'clmcmbConceptoGasto
-        '
-        Me.clmcmbConceptoGasto.DataPropertyName = "Cve_Gasto"
-        Me.clmcmbConceptoGasto.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.clmcmbConceptoGasto.FillWeight = 60.9137!
-        Me.clmcmbConceptoGasto.HeaderText = "Gasto"
-        Me.clmcmbConceptoGasto.Name = "clmcmbConceptoGasto"
-        Me.clmcmbConceptoGasto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'clmtxtIva
-        '
-        Me.clmtxtIva.DataPropertyName = "Ptj_Iva"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "N2"
-        Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle10
-        Me.clmtxtIva.FillWeight = 41.20361!
-        Me.clmtxtIva.HeaderText = "Iva %"
-        Me.clmtxtIva.Name = "clmtxtIva"
-        '
-        'clmtxtImporteGasto
-        '
-        Me.clmtxtImporteGasto.DataPropertyName = "Impte_Gasto"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "N2"
-        DataGridViewCellStyle11.NullValue = Nothing
-        Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle11
-        Me.clmtxtImporteGasto.FillWeight = 58.29942!
-        Me.clmtxtImporteGasto.HeaderText = "Importe"
-        Me.clmtxtImporteGasto.Name = "clmtxtImporteGasto"
-        '
-        'clmRenglon
-        '
-        Me.clmRenglon.DataPropertyName = "Renglon"
-        Me.clmRenglon.HeaderText = "Renglon"
-        Me.clmRenglon.Name = "clmRenglon"
-        Me.clmRenglon.Visible = False
-        '
-        'clmretencion
-        '
-        Me.clmretencion.DataPropertyName = "Retencion"
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle12.Format = "N2"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.clmretencion.DefaultCellStyle = DataGridViewCellStyle12
-        Me.clmretencion.FillWeight = 71.38745!
-        Me.clmretencion.HeaderText = "Importe Retención"
-        Me.clmretencion.Name = "clmretencion"
-        '
-        'clmfactura
-        '
-        Me.clmfactura.DataPropertyName = "NoFactura"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.clmfactura.DefaultCellStyle = DataGridViewCellStyle13
-        Me.clmfactura.FillWeight = 80.54513!
-        Me.clmfactura.HeaderText = "No factura"
-        Me.clmfactura.Name = "clmfactura"
-        '
-        'clmproovedor
-        '
-        Me.clmproovedor.DataPropertyName = "CodProveedor"
-        Me.clmproovedor.FillWeight = 87.6507!
-        Me.clmproovedor.HeaderText = "Proveedor"
-        Me.clmproovedor.Name = "clmproovedor"
         '
         'Label24
         '
@@ -848,6 +784,7 @@ Partial Class FrmAperturaLoteCorte2
         Me.lblEstatus.Size = New System.Drawing.Size(104, 24)
         Me.lblEstatus.TabIndex = 29
         Me.lblEstatus.Text = "ESTATUS"
+        Me.lblEstatus.Visible = False
         '
         'txtPlacas
         '
@@ -953,6 +890,70 @@ Partial Class FrmAperturaLoteCorte2
         Me.txtImporte.TabIndex = 33
         Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'clmcmbConceptoGasto
+        '
+        Me.clmcmbConceptoGasto.DataPropertyName = "Cve_Gasto"
+        Me.clmcmbConceptoGasto.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.clmcmbConceptoGasto.FillWeight = 60.9137!
+        Me.clmcmbConceptoGasto.HeaderText = "Gasto"
+        Me.clmcmbConceptoGasto.Name = "clmcmbConceptoGasto"
+        Me.clmcmbConceptoGasto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'clmtxtIva
+        '
+        Me.clmtxtIva.DataPropertyName = "Ptj_Iva"
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle10.Format = "N2"
+        Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle10
+        Me.clmtxtIva.FillWeight = 41.20361!
+        Me.clmtxtIva.HeaderText = "Iva %"
+        Me.clmtxtIva.Name = "clmtxtIva"
+        '
+        'clmtxtImporteGasto
+        '
+        Me.clmtxtImporteGasto.DataPropertyName = "Impte_Gasto"
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle11.Format = "N4"
+        DataGridViewCellStyle11.NullValue = Nothing
+        Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle11
+        Me.clmtxtImporteGasto.FillWeight = 58.29942!
+        Me.clmtxtImporteGasto.HeaderText = "Importe"
+        Me.clmtxtImporteGasto.Name = "clmtxtImporteGasto"
+        '
+        'clmRenglon
+        '
+        Me.clmRenglon.DataPropertyName = "Renglon"
+        Me.clmRenglon.HeaderText = "Renglon"
+        Me.clmRenglon.Name = "clmRenglon"
+        Me.clmRenglon.Visible = False
+        '
+        'clmretencion
+        '
+        Me.clmretencion.DataPropertyName = "Retencion"
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle12.Format = "N2"
+        DataGridViewCellStyle12.NullValue = Nothing
+        Me.clmretencion.DefaultCellStyle = DataGridViewCellStyle12
+        Me.clmretencion.FillWeight = 71.38745!
+        Me.clmretencion.HeaderText = "Importe Retención"
+        Me.clmretencion.Name = "clmretencion"
+        '
+        'clmfactura
+        '
+        Me.clmfactura.DataPropertyName = "NoFactura"
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.clmfactura.DefaultCellStyle = DataGridViewCellStyle13
+        Me.clmfactura.FillWeight = 80.54513!
+        Me.clmfactura.HeaderText = "No factura"
+        Me.clmfactura.Name = "clmfactura"
+        '
+        'clmproovedor
+        '
+        Me.clmproovedor.DataPropertyName = "CodProveedor"
+        Me.clmproovedor.FillWeight = 87.6507!
+        Me.clmproovedor.HeaderText = "Proveedor"
+        Me.clmproovedor.Name = "clmproovedor"
+        '
         'FrmAperturaLoteCorte2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1032,13 +1033,6 @@ Partial Class FrmAperturaLoteCorte2
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents txtTotalTotal As System.Windows.Forms.TextBox
     Friend WithEvents txtTotales As System.Windows.Forms.Label
-    Friend WithEvents clmcmbConceptoGasto As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents clmtxtIva As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmtxtImporteGasto As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmRenglon As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmretencion As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmfactura As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmproovedor As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents gridProductos As System.Windows.Forms.DataGridView
@@ -1049,4 +1043,11 @@ Partial Class FrmAperturaLoteCorte2
     Friend WithEvents clmPrecioXKiloDet As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmTotalDet As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmIDDet As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmcmbConceptoGasto As System.Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents clmtxtIva As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmtxtImporteGasto As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmRenglon As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmretencion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmfactura As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmproovedor As System.Windows.Forms.DataGridViewComboBoxColumn
 End Class

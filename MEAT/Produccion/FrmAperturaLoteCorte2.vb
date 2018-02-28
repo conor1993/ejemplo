@@ -420,6 +420,32 @@ Public Class FrmAperturaLoteCorte2
                 End If
             End If
 
+            'Validando datos de gastos de transporte
+            If DgvConceptoGastos.Rows.Count > 1 Then
+                Dim Importe As String
+                Dim NoFactura As String
+                Dim ID_Proveedor As String
+
+                For Each Fila As DataGridViewRow In DgvConceptoGastos.Rows
+                    If Not Fila.IsNewRow Then
+                        Importe = Fila.Cells(clmtxtImporteGasto.Index).Value
+                        NoFactura = Fila.Cells(clmfactura.Index).Value
+                        ID_Proveedor = CInt(Fila.Cells(clmproovedor.Index).Value)
+
+                        If ID_Proveedor Is Nothing Or
+                            ID_Proveedor = 0 Or
+                            (String.IsNullOrEmpty(NoFactura)) Or
+                            (String.IsNullOrEmpty(Importe) Or CDec(Importe) <= 0) Then
+                            Mensaje.AppendLine("* Verifique que la información ingresada en la Sección de Gastos de compra sea correcta")
+                        End If
+                    End If
+                Next
+            Else
+                Mensaje.AppendLine("* Favor de capturar los Gastos de Compra")
+            End If
+
+            'Validando datos de gastos de transporte End
+
             If Mensaje.ToString() <> String.Empty Then
                 Mensaje.Insert(0, New System.Text.StringBuilder().AppendLine("Debe especificar los siguientes datos correctamente:"))
                 'Throw New Exception(Mensaje.ToString())
@@ -580,12 +606,15 @@ Public Class FrmAperturaLoteCorte2
     End Function
 
     Private Sub DgvConceptoGastos_CellEndEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvConceptoGastos.CellEndEdit
-        If e.ColumnIndex = clmtxtImporteGasto.Index Or e.ColumnIndex = clmtxtIva.Index Then
-            DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N4")
-            calcular()
-        End If
-        If e.ColumnIndex = clmretencion.Index Then
-            DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N4")
+        If e.ColumnIndex = clmtxtImporteGasto.Index Or e.ColumnIndex = clmtxtIva.Index Or e.ColumnIndex = clmretencion.Index Then
+            Dim importeAux As Decimal = 0.0
+            If Not String.IsNullOrEmpty(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+                importeAux = CDec(DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("N4")
+            End If
+            DgvConceptoGastos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = importeAux
+            If e.ColumnIndex <> clmretencion.Index Then
+                calcular()
+            End If
         End If
     End Sub
     Public Sub calcular(Optional ByVal forzarCalculo As Boolean = False)
@@ -988,9 +1017,5 @@ Public Class FrmAperturaLoteCorte2
         '    End If
 
         'End If
-    End Sub
-
-    Private Sub DgvConceptoGastos_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvConceptoGastos.CellContentClick
-
     End Sub
 End Class
