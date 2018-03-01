@@ -171,7 +171,7 @@ Partial Class frmDistribuciondeGastos
         Me.clmPorcentaje.DataPropertyName = "Porcentaje"
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = "0"
+        DataGridViewCellStyle2.NullValue = "00"
         Me.clmPorcentaje.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmPorcentaje.HeaderText = "Porcentaje"
         Me.clmPorcentaje.Name = "clmPorcentaje"

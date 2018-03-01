@@ -146,66 +146,7 @@ Public Class frmDistribuciondeGastos
 
     End Sub
 
-    Private Sub dgvDetalledeProrrateo_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalledeProrrateo.CellEndEdit
-        Try
-            If e.ColumnIndex = 2 Then
-                Dim total As Integer
-
-                total = valor1 / (dgvMetodos.Rows.Count - 1)
-                For i As Integer = 1 To dgvMetodos.Rows.Count - 1
-                    If i <= 0 Then
-
-                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
-                    Else
-                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
-
-                    End If
-                Next
-                Dim Porcentaje As Decimal = 0
-                For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
-                    Porcentaje = Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmPorcentaje.Index).Value
-                    Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = ((total * Porcentaje) / 100).ToString("C2")
-                Next
-            ElseIf e.ColumnIndex = 3 Then
-                Dim total As Integer
-
-                total = (CDec(PolizaDiario.dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)) / (dgvMetodos.Rows.Count - 1)
-                For i As Integer = 1 To dgvMetodos.Rows.Count - 1
-                    If i <= 0 Then
-
-                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
-                    Else
-                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
-
-                    End If
-                Next
-                Dim Porcentaje As Decimal = 0
-                Dim Importe As Decimal = 0
-                Importe = Me.dgvDetalledeProrrateo.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
-                For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
-                    Porcentaje = CDec((Importe * 100) / total)
-                    Me.dgvDetalledeProrrateo.Rows(e.RowIndex).Cells(Me.clmPorcentaje.Index).Value = Porcentaje
-                Next
-            Else
-                Exit Sub
-            End If
-
-            Dim Sumaimporte As Decimal = 0
-            Dim Sumaporentaje As Decimal = 0
-            For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
-                Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
-                Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
-            Next
-
-            Me.txtImporte.Text = Sumaimporte.ToString("C2")
-            Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-
+   
     Private Sub dgvMetodos_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvMetodos.CellEndEdit
 
         Try
@@ -267,4 +208,80 @@ Public Class frmDistribuciondeGastos
 
     End Sub
 
+    'Private Sub dgvMetodos_CellEnter(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvMetodos.CellEnter
+    '    If e.ColumnIndex = Me.clmPorcentaje.Index Then
+    '        If String.IsNullOrEmpty(Me.dgvDetalledeProrrateo.Rows(e.RowIndex).Cells("clmPorcentaje").Value) Then
+    '            Me.dgvDetalledeProrrateo.Rows(e.RowIndex).Cells("clmPorcentaje").Value = 0D
+    '        End If
+    '    End If
+    'End Sub
+
+    'Private Sub dgvDetalledeProrrateo_KeyUp(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles dgvDetalledeProrrateo.KeyUp
+    '    If e.KeyCode = Keys.Enter Then
+    '        Dim test As Integer = 0
+    '        'If String.IsNullOrEmpty(Me.dgvDetalledeProrrateo.Rows(e.RowIndex).Cells("clmPorcentaje").Value) Then
+    '        '    Me.dgvDetalledeProrrateo.Rows(e.RowIndex).Cells("clmPorcentaje").Value = 0D
+    '        'End If
+    '    End If
+    'End Sub
+
+    Private Sub dgvDetalledeProrrateo_CellEndEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalledeProrrateo.CellEndEdit
+        Try
+            If e.ColumnIndex = 2 Then
+
+                Dim total As Integer
+
+                total = valor1 / (dgvMetodos.Rows.Count - 1)
+                For i As Integer = 1 To dgvMetodos.Rows.Count - 1
+                    If i <= 0 Then
+
+                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
+                    Else
+                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
+                    End If
+                Next
+                Dim Porcentaje As Decimal = 0
+                For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
+
+                    Porcentaje = Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmPorcentaje.Index).Value
+                    Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = ((total * Porcentaje) / 100).ToString("C2")
+                Next
+            ElseIf e.ColumnIndex = 3 Then
+                Dim total As Integer
+
+                total = valor1 / (dgvMetodos.Rows.Count - 1)
+                For i As Integer = 1 To dgvMetodos.Rows.Count - 1
+                    If i <= 0 Then
+
+                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
+                    Else
+                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
+
+                    End If
+                Next
+                Dim Porcentaje As Decimal = 0
+                Dim Importe As Decimal = 0
+                Importe = Me.dgvDetalledeProrrateo.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+                For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
+                    Porcentaje = CDec((Importe * 100) / total)
+                    Me.dgvDetalledeProrrateo.Rows(e.RowIndex).Cells(Me.clmPorcentaje.Index).Value = Porcentaje
+                Next
+            Else
+                Exit Sub
+            End If
+
+            Dim Sumaimporte As Decimal = 0
+            Dim Sumaporentaje As Decimal = 0
+            For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
+                Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
+                Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
+            Next
+
+            Me.txtImporte.Text = Sumaimporte.ToString("C2")
+            Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

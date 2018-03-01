@@ -93,7 +93,12 @@ Public Class MetodoProrrateoDetalleClass
 
     Public Property Porcentaje() As Decimal
         Get
-            Return Entity.Porcentaje
+            Try
+                Return Entity.Porcentaje
+            Catch ex As Exception
+                Dim integra As Integer = 1
+            End Try
+
         End Get
         Set(ByVal value As Decimal)
             Entity.Porcentaje = value
