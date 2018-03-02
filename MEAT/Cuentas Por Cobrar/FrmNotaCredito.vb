@@ -1150,7 +1150,7 @@ Public Class FrmNotaCredito
 
             If Consultas.ShowDialog = Windows.Forms.DialogResult.OK Then
 
-                FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
+                'FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
                 Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
                 'Me.dgvDetalle.AutoGenerateColumns = False
                 'Me.dgvDetalle.DataSource = FacturaCabecero.Detalles
