@@ -250,6 +250,11 @@ Public Class CatCuentaContableForm
             Cuenta.TitulodeEstadoFinanciero = Me.cmbTitulo.SelectedValue
             Cuenta.SubTitulodeEstadoFinanciero = Me.cmbSubTitulo.SelectedValue
             Cuenta.CuentaPadre = CuentaPadre
+
+            If (cmbAgrupacionSAT.SelectedIndex <> 0) Then
+                Cuenta.CodAgrupSAT = cmbAgrupacionSAT.SelectedValue
+            End If
+
             Cadena = Nothing
         End If
         Return Cadena
@@ -377,17 +382,26 @@ Public Class CatCuentaContableForm
 
     Private Sub mtb_ClickImprimir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickImprimir
         Try
-            Cursor = Cursors.WaitCursor
 
-            Dim Reporte As New CN.RptCuentaContable
-            Reporte.SetDataSource(Me.dgv.DataSource)
 
-            Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
-            Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
-            Reporte.SetParameterValue("Modulo", "Catalogos\Contabilidad\Cuentas Contables")
-            Dim pre As New ClasesNegocio.PreVisualizarForm
-            pre.Reporte = Reporte
-            pre.ShowDialog()
+            Dim datos As New DataSet
+            Dim query = "EXEC  rptcuentascontables 1"
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim adapter As New SqlDataAdapter()
+                adapter.SelectCommand = New SqlCommand(query, connection)
+                adapter.Fill(datos)
+            End Using
+
+
+            ' Dim Reporte As New CN.RptCuentaContable
+            'Reporte.SetDataSource(Me.dgv.DataSource)
+            'Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
+            'Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
+            'Reporte.SetParameterValue("Modulo", "Catalogos\Contabilidad\Cuentas Contables")
+            'Dim pre As New ClasesNegocio.PreVisualizarForm
+            'pre.Reporte = Reporte
+            'pre.ShowDialog()
+
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         Finally
@@ -541,6 +555,7 @@ Public Class CatCuentaContableForm
     '    txtSSCta.Text = "0000"
     '    txtSSSCta.Text = "0000"
     'End Sub
+
 #End Region
 
     'Private Sub txtNombre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress

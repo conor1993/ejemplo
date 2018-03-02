@@ -2271,6 +2271,17 @@
       <DependentUpon>rptSolicitudProd.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes Ganadera\DsCuentascontablesrpt.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsCuentascontablesrpt.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes Ganadera\RptCuentaContable1.vb">
+      <DependentUpon>RptCuentaContable1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reportes Ganadera\DsClientes.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2399,11 +2410,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCotizacionOrdenServicios.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reportes Ganadera\DsCuentaContable.Designer.vb">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DsCuentaContable.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Reportes Ganadera\dsOrdenServicios.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2437,12 +2443,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptConfiguracionCtaCtrl.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reportes Ganadera\RptCuentaContable.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RptCuentaContable.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\Contabilidad\DSConceptoDeFlujos.Designer.vb">
@@ -3520,6 +3520,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSolicitudProd.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes Ganadera\RptCuentaContable1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCuentaContable1.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes Ganadera\CrRecepcionOrdenCompra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrRecepcionOrdenCompra.vb</LastGenOutput>
@@ -3543,10 +3547,6 @@
     <EmbeddedResource Include="Reportes Ganadera\RptConfiguracionCtaCtrl.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptConfiguracionCtaCtrl.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes Ganadera\RptCuentaContable.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RptCuentaContable.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Contabilidad\RptFlujos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -5201,16 +5201,16 @@
     <None Include="Reportes Ganadera\dsCotizacionOrdenServicios.xss">
       <DependentUpon>dsCotizacionOrdenServicios.xsd</DependentUpon>
     </None>
-    <None Include="Reportes Ganadera\DsCuentaContable.xsc">
-      <DependentUpon>DsCuentaContable.xsd</DependentUpon>
+    <None Include="Reportes Ganadera\DsCuentascontablesrpt.xsc">
+      <DependentUpon>DsCuentascontablesrpt.xsd</DependentUpon>
     </None>
-    <None Include="Reportes Ganadera\DsCuentaContable.xsd">
+    <None Include="Reportes Ganadera\DsCuentascontablesrpt.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsCuentaContable.Designer.vb</LastGenOutput>
+      <LastGenOutput>DsCuentascontablesrpt.Designer.vb</LastGenOutput>
     </None>
-    <None Include="Reportes Ganadera\DsCuentaContable.xss">
-      <DependentUpon>DsCuentaContable.xsd</DependentUpon>
+    <None Include="Reportes Ganadera\DsCuentascontablesrpt.xss">
+      <DependentUpon>DsCuentascontablesrpt.xsd</DependentUpon>
     </None>
     <None Include="Reportes Ganadera\dsOrdenServicios.xsc">
       <DependentUpon>dsOrdenServicios.xsd</DependentUpon>

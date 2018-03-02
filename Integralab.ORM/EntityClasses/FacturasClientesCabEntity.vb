@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: domingo, 18 de febrero de 2018 17:52:58
+' // Code is generated on: viernes, 2 de marzo de 2018 10:17:32
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -1233,7 +1233,7 @@ Namespace Integralab.ORM.EntityClasses
 			_fieldsCustomProperties.Add("Origen", fieldHashtable)
 			fieldHashtable = New Dictionary(Of String, String)()
 
-            '_fieldsCustomProperties.Add("NumCtaPago", fieldHashtable)
+			_fieldsCustomProperties.Add("NumCtaPago", fieldHashtable)
 		End Sub
 
 
