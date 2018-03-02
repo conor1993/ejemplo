@@ -1150,6 +1150,18 @@
     <Compile Include="Agrojs - Control de Che Dev\frmRegistroPagosChequesDevueltos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Cuentas Por Cobrar\frmBusquedaNotas.designer.vb">
+      <DependentUpon>frmBusquedaNotas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Cuentas Por Cobrar\frmBusquedaNotas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cuentas Por Cobrar\frmTipoNota.designer.vb">
+      <DependentUpon>frmTipoNota.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Cuentas Por Cobrar\frmTipoNota.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Engorda\Formulas\frmProgramacionFormulas.Designer.vb">
       <DependentUpon>frmProgramacionFormulas.vb</DependentUpon>
     </Compile>
@@ -3853,6 +3865,12 @@
     <EmbeddedResource Include="Agrojs - Control de Che Dev\frmRegistroPagosChequesDevueltos.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmRegistroPagosChequesDevueltos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cuentas Por Cobrar\frmBusquedaNotas.resx">
+      <DependentUpon>frmBusquedaNotas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cuentas Por Cobrar\frmTipoNota.resx">
+      <DependentUpon>frmTipoNota.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engorda\Formulas\frmProgramacionFormulas.resx">
       <SubType>Designer</SubType>

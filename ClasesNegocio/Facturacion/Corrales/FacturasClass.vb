@@ -43,6 +43,7 @@ Public Class FacturasClass
             Me.Estatus = Entidad.Status
             Me.SubTotal = Entidad.SubTotal
             Me.TipoFactura = Entidad.TipoFactu
+            Me.TipoComprobante = Entidad.TipoComprobante
             Me.IsNew = True
             Me.IsDirty = Entidad.IsDirty
         End If
