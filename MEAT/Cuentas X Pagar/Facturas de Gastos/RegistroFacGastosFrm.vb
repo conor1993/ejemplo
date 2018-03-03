@@ -706,7 +706,7 @@ Public Class RegistroFacGastosFrm
                     End Try
                     Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                     Try
-                        For i As Integer = 0 To dgvdistribuciongastosdet.Rows.Count - 1
+                        For i As Integer = 0 To (dgvdistribuciongastosdet.Rows.Count - 2)
                             Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje) values({0},{1},{2},{3},{4},{5})"
                             cadenaConsulta = String.Format(cadenaConsulta, dgvdistribuciongastosdet.Rows(i).Cells(sucursal1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Prorrateo1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Cuenta1.Index).Value, Factura.NoFactura, dgvdistribuciongastosdet.Rows(i).Cells(cod_centro.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(idporcentaje.Index).Value)
 
@@ -933,7 +933,7 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
                         frmDistribuciondeGastos.valor = Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value()
                         If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                             Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
-                            For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
+                            For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 2)
                                 Me.dgvDistribuciondeGastos.Rows.Add()
 
                                 Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value

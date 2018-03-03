@@ -307,6 +307,8 @@ Partial Public Class DsCuentascontablesrpt
         
         Private columnsubtitulos As Global.System.Data.DataColumn
         
+        Private columnAfectable As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -439,6 +441,14 @@ Partial Public Class DsCuentascontablesrpt
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AfectableColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAfectable
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -475,9 +485,9 @@ Partial Public Class DsCuentascontablesrpt
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AdddatasetcuentascontablesRow(ByVal codigo As String, ByVal Cta As String, ByVal SubCta As String, ByVal SSubCta As String, ByVal SSSubCta As String, ByVal NomCuenta As String, ByVal Naturaleza As String, ByVal CodAgrupSAT As String, ByVal titulos As String, ByVal titulo As String, ByVal subtitulo As String, ByVal subtitulos As String) As datasetcuentascontablesRow
+        Public Overloads Function AdddatasetcuentascontablesRow(ByVal codigo As String, ByVal Cta As String, ByVal SubCta As String, ByVal SSubCta As String, ByVal SSSubCta As String, ByVal NomCuenta As String, ByVal Naturaleza As String, ByVal CodAgrupSAT As String, ByVal titulos As String, ByVal titulo As String, ByVal subtitulo As String, ByVal subtitulos As String, ByVal Afectable As String) As datasetcuentascontablesRow
             Dim rowdatasetcuentascontablesRow As datasetcuentascontablesRow = CType(Me.NewRow,datasetcuentascontablesRow)
-            Dim columnValuesArray() As Object = New Object() {codigo, Cta, SubCta, SSubCta, SSSubCta, NomCuenta, Naturaleza, CodAgrupSAT, titulos, titulo, subtitulo, subtitulos}
+            Dim columnValuesArray() As Object = New Object() {codigo, Cta, SubCta, SSubCta, SSSubCta, NomCuenta, Naturaleza, CodAgrupSAT, titulos, titulo, subtitulo, subtitulos, Afectable}
             rowdatasetcuentascontablesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdatasetcuentascontablesRow)
             Return rowdatasetcuentascontablesRow
@@ -512,6 +522,7 @@ Partial Public Class DsCuentascontablesrpt
             Me.columntitulo = MyBase.Columns("titulo")
             Me.columnsubtitulo = MyBase.Columns("subtitulo")
             Me.columnsubtitulos = MyBase.Columns("subtitulos")
+            Me.columnAfectable = MyBase.Columns("Afectable")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -541,6 +552,8 @@ Partial Public Class DsCuentascontablesrpt
             MyBase.Columns.Add(Me.columnsubtitulo)
             Me.columnsubtitulos = New Global.System.Data.DataColumn("subtitulos", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnsubtitulos)
+            Me.columnAfectable = New Global.System.Data.DataColumn("Afectable", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAfectable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -875,6 +888,22 @@ Partial Public Class DsCuentascontablesrpt
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Afectable() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabledatasetcuentascontables.AfectableColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Afectable' de la tabla 'datasetcuentascontables' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabledatasetcuentascontables.AfectableColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IscodigoNull() As Boolean
             Return Me.IsNull(Me.tabledatasetcuentascontables.codigoColumn)
         End Function
@@ -1015,6 +1044,18 @@ Partial Public Class DsCuentascontablesrpt
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetsubtitulosNull()
             Me(Me.tabledatasetcuentascontables.subtitulosColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAfectableNull() As Boolean
+            Return Me.IsNull(Me.tabledatasetcuentascontables.AfectableColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAfectableNull()
+            Me(Me.tabledatasetcuentascontables.AfectableColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

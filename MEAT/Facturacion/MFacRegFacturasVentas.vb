@@ -1682,38 +1682,21 @@ Public Class MFacRegFacturasVentas
     End Sub
 
     Private Sub MEAToolBar1_ClickBorrar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickBorrar
-        Dim Vigentes As Boolean = False
-        Me.Estado = FormState.Borrar
-        Cancelar = True
 
-        For Each Pago As PagosDeClientesClass In FacturasCab.Pagos
-            If Pago.Estatus = EstatusChar.VIGENTE Then
-                Vigentes = True
-                Exit For
-            End If
-        Next
 
-        If Vigentes Then
-            MessageBox.Show("La Factura tiene pagos vigentes, no es posible cancelarla", "Aviso", MessageBoxButtons.OK)
-        ElseIf MessageBox.Show("¿Esta seguro de cancelar esta factura?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.Yes Then
-            If Cancelacion() Then
-                Cancelar = False
-                MessageBox.Show("Se Canceló Factura " & Me.txtFolioFactura.Text, "Aviso", MessageBoxButtons.OK)
-                Me.Limpiar()
-                Deshabilitar()
-                Me.MEAToolBar1.sbCambiarEstadoBotones("Cancelar")
-            End If
-        End If
+
+
     End Sub
 
     Private Sub MEAToolBar1_ClickBuscar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickBuscar
-        Me.Estado = FormState.Buscar
-        Cancelar = Not Buscar()
-        Deshabilitar()
 
-        If Not Cancelar Then
-            ultcmbDomiciliosFiscales.Enabled = True
-        End If
+            Me.Estado = FormState.Buscar
+            Cancelar = Not Buscar()
+            Deshabilitar()
+
+            If Not Cancelar Then
+                ultcmbDomiciliosFiscales.Enabled = True
+            End If
     End Sub
 
     Private Sub MEAToolBar1_ClickCancelar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickCancelar
