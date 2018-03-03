@@ -125,6 +125,9 @@ Partial Class FrmNotaCredito
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtUUID = New System.Windows.Forms.TextBox()
+        Me.btnRelacion = New System.Windows.Forms.Button()
+        Me.txtRelacion = New System.Windows.Forms.TextBox()
+        Me.lblRelacion = New System.Windows.Forms.Label()
         Me.GroupBox3.SuspendLayout()
         CType(Me.dgvCuentasContables, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,7 +166,7 @@ Partial Class FrmNotaCredito
         Me.MEAToolBar1.MostrarSalir = True
         Me.MEAToolBar1.Name = "MEAToolBar1"
         Me.MEAToolBar1.ShowToolTips = True
-        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 661)
+        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 693)
         Me.MEAToolBar1.TabIndex = 62
         '
         'Label17
@@ -200,7 +203,7 @@ Partial Class FrmNotaCredito
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(8, 235)
+        Me.Label5.Location = New System.Drawing.Point(8, 262)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(76, 13)
         Me.Label5.TabIndex = 72
@@ -209,7 +212,7 @@ Partial Class FrmNotaCredito
         'txtObservaciones
         '
         Me.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtObservaciones.Location = New System.Drawing.Point(98, 235)
+        Me.txtObservaciones.Location = New System.Drawing.Point(98, 263)
         Me.txtObservaciones.MaxLength = 150
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
@@ -269,7 +272,7 @@ Partial Class FrmNotaCredito
         Me.GroupBox3.Controls.Add(Me.dgvCuentasContables)
         Me.GroupBox3.Controls.Add(Me.dgvDetalle)
         Me.GroupBox3.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.GroupBox3.Location = New System.Drawing.Point(10, 319)
+        Me.GroupBox3.Location = New System.Drawing.Point(10, 346)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(973, 282)
         Me.GroupBox3.TabIndex = 98
@@ -479,7 +482,7 @@ Partial Class FrmNotaCredito
         '
         'txtCodigoCliente
         '
-        Me.txtCodigoCliente.Location = New System.Drawing.Point(99, 67)
+        Me.txtCodigoCliente.Location = New System.Drawing.Point(99, 87)
         Me.txtCodigoCliente.Name = "txtCodigoCliente"
         Me.txtCodigoCliente.Size = New System.Drawing.Size(65, 20)
         Me.txtCodigoCliente.TabIndex = 100
@@ -487,7 +490,7 @@ Partial Class FrmNotaCredito
         'txtRFC
         '
         Me.txtRFC.Enabled = False
-        Me.txtRFC.Location = New System.Drawing.Point(99, 123)
+        Me.txtRFC.Location = New System.Drawing.Point(99, 150)
         Me.txtRFC.Name = "txtRFC"
         Me.txtRFC.Size = New System.Drawing.Size(101, 20)
         Me.txtRFC.TabIndex = 99
@@ -495,7 +498,7 @@ Partial Class FrmNotaCredito
         'lblRFC
         '
         Me.lblRFC.AutoSize = True
-        Me.lblRFC.Location = New System.Drawing.Point(8, 129)
+        Me.lblRFC.Location = New System.Drawing.Point(8, 156)
         Me.lblRFC.Name = "lblRFC"
         Me.lblRFC.Size = New System.Drawing.Size(43, 13)
         Me.lblRFC.TabIndex = 103
@@ -504,7 +507,7 @@ Partial Class FrmNotaCredito
         'LblClaveCliente
         '
         Me.LblClaveCliente.AutoSize = True
-        Me.LblClaveCliente.Location = New System.Drawing.Point(8, 70)
+        Me.LblClaveCliente.Location = New System.Drawing.Point(8, 90)
         Me.LblClaveCliente.Name = "LblClaveCliente"
         Me.LblClaveCliente.Size = New System.Drawing.Size(45, 13)
         Me.LblClaveCliente.TabIndex = 102
@@ -512,7 +515,7 @@ Partial Class FrmNotaCredito
         '
         'lblUsoCFDI
         '
-        Me.lblUsoCFDI.Location = New System.Drawing.Point(8, 155)
+        Me.lblUsoCFDI.Location = New System.Drawing.Point(8, 182)
         Me.lblUsoCFDI.Name = "lblUsoCFDI"
         Me.lblUsoCFDI.Size = New System.Drawing.Size(99, 17)
         Me.lblUsoCFDI.TabIndex = 109
@@ -521,7 +524,7 @@ Partial Class FrmNotaCredito
         'cmbUsoCFDI
         '
         Me.cmbUsoCFDI.FormattingEnabled = True
-        Me.cmbUsoCFDI.Location = New System.Drawing.Point(98, 151)
+        Me.cmbUsoCFDI.Location = New System.Drawing.Point(98, 178)
         Me.cmbUsoCFDI.Name = "cmbUsoCFDI"
         Me.cmbUsoCFDI.Size = New System.Drawing.Size(515, 21)
         Me.cmbUsoCFDI.TabIndex = 110
@@ -530,7 +533,7 @@ Partial Class FrmNotaCredito
         '
         Me.dtpFechaVencimiento.Enabled = False
         Me.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaVencimiento.Location = New System.Drawing.Point(312, 39)
+        Me.dtpFechaVencimiento.Location = New System.Drawing.Point(312, 59)
         Me.dtpFechaVencimiento.Name = "dtpFechaVencimiento"
         Me.dtpFechaVencimiento.Size = New System.Drawing.Size(88, 20)
         Me.dtpFechaVencimiento.TabIndex = 119
@@ -539,7 +542,7 @@ Partial Class FrmNotaCredito
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(202, 42)
+        Me.Label18.Location = New System.Drawing.Point(202, 62)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(104, 13)
         Me.Label18.TabIndex = 121
@@ -548,7 +551,7 @@ Partial Class FrmNotaCredito
         'dtFechaFactura
         '
         Me.dtFechaFactura.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtFechaFactura.Location = New System.Drawing.Point(99, 39)
+        Me.dtFechaFactura.Location = New System.Drawing.Point(99, 59)
         Me.dtFechaFactura.Name = "dtFechaFactura"
         Me.dtFechaFactura.Size = New System.Drawing.Size(88, 20)
         Me.dtFechaFactura.TabIndex = 118
@@ -557,7 +560,7 @@ Partial Class FrmNotaCredito
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 41)
+        Me.Label4.Location = New System.Drawing.Point(7, 61)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(43, 13)
         Me.Label4.TabIndex = 120
@@ -621,7 +624,7 @@ Partial Class FrmNotaCredito
         Me.ultcmbDomiciliosFiscales.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.ultcmbDomiciliosFiscales.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.ultcmbDomiciliosFiscales.DisplayMember = "Domicilio"
-        Me.ultcmbDomiciliosFiscales.Location = New System.Drawing.Point(158, 134)
+        Me.ultcmbDomiciliosFiscales.Location = New System.Drawing.Point(158, 156)
         Me.ultcmbDomiciliosFiscales.Name = "ultcmbDomiciliosFiscales"
         Me.ultcmbDomiciliosFiscales.Size = New System.Drawing.Size(514, 22)
         Me.ultcmbDomiciliosFiscales.TabIndex = 126
@@ -631,7 +634,7 @@ Partial Class FrmNotaCredito
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(66, 138)
+        Me.Label3.Location = New System.Drawing.Point(66, 160)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 13)
         Me.Label3.TabIndex = 127
@@ -639,6 +642,9 @@ Partial Class FrmNotaCredito
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblRelacion)
+        Me.GroupBox1.Controls.Add(Me.txtRelacion)
+        Me.GroupBox1.Controls.Add(Me.btnRelacion)
         Me.GroupBox1.Controls.Add(Me.CmbCliente)
         Me.GroupBox1.Controls.Add(Me.txtDireccion)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -672,7 +678,7 @@ Partial Class FrmNotaCredito
         Me.GroupBox1.Controls.Add(Me.txtRFC)
         Me.GroupBox1.Location = New System.Drawing.Point(59, 39)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1002, 610)
+        Me.GroupBox1.Size = New System.Drawing.Size(1002, 642)
         Me.GroupBox1.TabIndex = 128
         Me.GroupBox1.TabStop = False
         '
@@ -681,7 +687,7 @@ Partial Class FrmNotaCredito
         Me.CmbCliente.DisplayMember = "Nombre"
         Me.CmbCliente.FormattingEnabled = True
         Me.CmbCliente.ItemHeight = 13
-        Me.CmbCliente.Location = New System.Drawing.Point(201, 66)
+        Me.CmbCliente.Location = New System.Drawing.Point(201, 86)
         Me.CmbCliente.Name = "CmbCliente"
         Me.CmbCliente.Size = New System.Drawing.Size(412, 21)
         Me.CmbCliente.TabIndex = 129
@@ -690,7 +696,7 @@ Partial Class FrmNotaCredito
         'txtDireccion
         '
         Me.txtDireccion.Enabled = False
-        Me.txtDireccion.Location = New System.Drawing.Point(98, 209)
+        Me.txtDireccion.Location = New System.Drawing.Point(98, 236)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(483, 20)
         Me.txtDireccion.TabIndex = 129
@@ -698,7 +704,7 @@ Partial Class FrmNotaCredito
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(9, 212)
+        Me.Label2.Location = New System.Drawing.Point(9, 239)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(58, 13)
         Me.Label2.TabIndex = 130
@@ -716,7 +722,7 @@ Partial Class FrmNotaCredito
         Me.GroupBox2.Controls.Add(Me.Label16)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.GroupBox2.Location = New System.Drawing.Point(801, 198)
+        Me.GroupBox2.Location = New System.Drawing.Point(801, 225)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(182, 119)
         Me.GroupBox2.TabIndex = 174
@@ -809,7 +815,7 @@ Partial Class FrmNotaCredito
         Me.gbFacturar.Controls.Add(Me.OptProductos)
         Me.gbFacturar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbFacturar.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.gbFacturar.Location = New System.Drawing.Point(645, 198)
+        Me.gbFacturar.Location = New System.Drawing.Point(645, 224)
         Me.gbFacturar.Name = "gbFacturar"
         Me.gbFacturar.Size = New System.Drawing.Size(150, 55)
         Me.gbFacturar.TabIndex = 172
@@ -849,7 +855,7 @@ Partial Class FrmNotaCredito
         Me.GroupBox4.Controls.Add(Me.rdContado)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.GroupBox4.Location = New System.Drawing.Point(645, 257)
+        Me.GroupBox4.Location = New System.Drawing.Point(645, 284)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(150, 60)
         Me.GroupBox4.TabIndex = 173
@@ -892,7 +898,7 @@ Partial Class FrmNotaCredito
         Me.gbFormaPago.Controls.Add(Me.cmbformadepago)
         Me.gbFormaPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbFormaPago.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.gbFormaPago.Location = New System.Drawing.Point(645, 42)
+        Me.gbFormaPago.Location = New System.Drawing.Point(645, 68)
         Me.gbFormaPago.Name = "gbFormaPago"
         Me.gbFormaPago.Size = New System.Drawing.Size(338, 135)
         Me.gbFormaPago.TabIndex = 129
@@ -963,7 +969,7 @@ Partial Class FrmNotaCredito
         'txtDiasCredito
         '
         Me.txtDiasCredito.Enabled = False
-        Me.txtDiasCredito.Location = New System.Drawing.Point(554, 178)
+        Me.txtDiasCredito.Location = New System.Drawing.Point(554, 205)
         Me.txtDiasCredito.Name = "txtDiasCredito"
         Me.txtDiasCredito.ReadOnly = True
         Me.txtDiasCredito.Size = New System.Drawing.Size(59, 20)
@@ -972,7 +978,7 @@ Partial Class FrmNotaCredito
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(477, 181)
+        Me.Label14.Location = New System.Drawing.Point(477, 208)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(72, 13)
         Me.Label14.TabIndex = 171
@@ -981,7 +987,7 @@ Partial Class FrmNotaCredito
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(9, 181)
+        Me.Label6.Location = New System.Drawing.Point(9, 208)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(51, 13)
         Me.Label6.TabIndex = 169
@@ -990,7 +996,7 @@ Partial Class FrmNotaCredito
         'CmbClientesVarios
         '
         Me.CmbClientesVarios.FormattingEnabled = True
-        Me.CmbClientesVarios.Location = New System.Drawing.Point(98, 178)
+        Me.CmbClientesVarios.Location = New System.Drawing.Point(98, 205)
         Me.CmbClientesVarios.Name = "CmbClientesVarios"
         Me.CmbClientesVarios.Size = New System.Drawing.Size(312, 21)
         Me.CmbClientesVarios.TabIndex = 168
@@ -998,7 +1004,7 @@ Partial Class FrmNotaCredito
         '
         'txtlugarexpedicion
         '
-        Me.txtlugarexpedicion.Location = New System.Drawing.Point(315, 125)
+        Me.txtlugarexpedicion.Location = New System.Drawing.Point(315, 152)
         Me.txtlugarexpedicion.MaxLength = 200
         Me.txtlugarexpedicion.Name = "txtlugarexpedicion"
         Me.txtlugarexpedicion.Size = New System.Drawing.Size(298, 20)
@@ -1018,7 +1024,7 @@ Partial Class FrmNotaCredito
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Label19.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label19.Location = New System.Drawing.Point(208, 128)
+        Me.Label19.Location = New System.Drawing.Point(208, 155)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(109, 13)
         Me.Label19.TabIndex = 161
@@ -1033,11 +1039,40 @@ Partial Class FrmNotaCredito
         Me.txtUUID.Size = New System.Drawing.Size(377, 20)
         Me.txtUUID.TabIndex = 167
         '
+        'btnRelacion
+        '
+        Me.btnRelacion.Location = New System.Drawing.Point(483, 36)
+        Me.btnRelacion.Name = "btnRelacion"
+        Me.btnRelacion.Size = New System.Drawing.Size(112, 20)
+        Me.btnRelacion.TabIndex = 175
+        Me.btnRelacion.Text = "Agregar Relación"
+        Me.btnRelacion.UseVisualStyleBackColor = True
+        '
+        'txtRelacion
+        '
+        Me.txtRelacion.BackColor = System.Drawing.SystemColors.Window
+        Me.txtRelacion.Enabled = False
+        Me.txtRelacion.Location = New System.Drawing.Point(99, 36)
+        Me.txtRelacion.Name = "txtRelacion"
+        Me.txtRelacion.ReadOnly = True
+        Me.txtRelacion.Size = New System.Drawing.Size(377, 20)
+        Me.txtRelacion.TabIndex = 177
+        '
+        'lblRelacion
+        '
+        Me.lblRelacion.AutoSize = True
+        Me.lblRelacion.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.lblRelacion.Location = New System.Drawing.Point(7, 39)
+        Me.lblRelacion.Name = "lblRelacion"
+        Me.lblRelacion.Size = New System.Drawing.Size(79, 13)
+        Me.lblRelacion.TabIndex = 178
+        Me.lblRelacion.Text = "Relacion CFDI:"
+        '
         'FrmNotaCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1120, 661)
+        Me.ClientSize = New System.Drawing.Size(1120, 693)
         Me.Controls.Add(Me.ultcmbDomiciliosFiscales)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label17)
@@ -1150,4 +1185,7 @@ Partial Class FrmNotaCredito
     Friend WithEvents clmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmCodigoCuenta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CmbCliente As System.Windows.Forms.ComboBox
+    Friend WithEvents txtRelacion As System.Windows.Forms.TextBox
+    Friend WithEvents btnRelacion As System.Windows.Forms.Button
+    Friend WithEvents lblRelacion As System.Windows.Forms.Label
 End Class

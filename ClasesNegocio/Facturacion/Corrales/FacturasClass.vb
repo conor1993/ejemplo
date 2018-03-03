@@ -44,6 +44,7 @@ Public Class FacturasClass
             Me.SubTotal = Entidad.SubTotal
             Me.TipoFactura = Entidad.TipoFactu
             Me.TipoComprobante = Entidad.TipoComprobante
+            Me.RelacionCfdi = Entidad.RelacionCfdi
             Me.IsNew = True
             Me.IsDirty = Entidad.IsDirty
         End If

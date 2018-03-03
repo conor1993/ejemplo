@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 2 de marzo de 2018 10:17:34
+' Code is generated on: viernes, 2 de marzo de 2018 16:12:43
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -1310,6 +1310,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [TipoComprobante] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(CabFacturasFieldIndex.TipoComprobante), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new CabFacturasEntity.RelacionCfdi field instance</summary>
+		Public Shared ReadOnly Property [RelacionCfdi] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(CabFacturasFieldIndex.RelacionCfdi), EntityField)
 			End Get
 		End Property
 	End Class

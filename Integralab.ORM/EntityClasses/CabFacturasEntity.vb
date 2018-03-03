@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de marzo de 2018 10:17:33
+' // Code is generated on: viernes, 2 de marzo de 2018 16:12:41
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -695,6 +695,7 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -914,6 +915,9 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("TipoComprobante", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("RelacionCfdi", fieldHashtable)
 		End Sub
 
 
@@ -1742,6 +1746,26 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(CabFacturasFieldIndex.TipoComprobante, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The RelacionCfdi property of the Entity CabFacturas<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "CabFacturas"."RelacionCFDI"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Text, 0, 0, 2147483647<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [RelacionCfdi]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(CabFacturasFieldIndex.RelacionCfdi, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(CabFacturasFieldIndex.RelacionCfdi, Integer), value)
 			End Set
 		End Property
 	

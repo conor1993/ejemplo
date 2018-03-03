@@ -8,6 +8,15 @@ Public Class frmBusquedaNotas
     Dim Renglones As Integer
 
     Public busquedaNotas As Boolean = False
+    Dim frmPrincipal As FrmNotaCredito
+    Public Property FormPrincipal As FrmNotaCredito
+        Get
+            Return (frmPrincipal)
+        End Get
+        Set(ByVal value As FrmNotaCredito)
+            frmPrincipal = value
+        End Set
+    End Property
 
 #Region "Metodos"
     Public Sub Inicializar_Forma()
@@ -105,6 +114,9 @@ Public Class frmBusquedaNotas
 
     Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
         Me.DialogResult = Windows.Forms.DialogResult.OK
+        If busquedaNotas = False Then
+            frmPrincipal.btnRelacion.Enabled = False
+        End If
     End Sub
 
     Private Sub btnCancelar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
@@ -188,6 +200,9 @@ Public Class frmBusquedaNotas
     Private Sub dgvFacturasCabecero_CellContentDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvFacturasCabecero.CellContentDoubleClick
         If e.RowIndex >= 0 Then
             Me.DialogResult = Windows.Forms.DialogResult.OK
+            If busquedaNotas = False Then
+                frmPrincipal.btnRelacion.Enabled = False
+            End If
         End If
     End Sub
 End Class

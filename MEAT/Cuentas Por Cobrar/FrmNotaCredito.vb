@@ -48,10 +48,10 @@ Public Class FrmNotaCredito
         Me.txtDescuento.Enabled = True
         'cmbUsoCFDI.Enabled = False
         cmbUsoCFDI.Enabled = False
-        'Mee
         gbFacturar.Enabled = True
         txtUUID.Enabled = True
         dgvCuentasContables.Enabled = True
+        Me.btnRelacion.Enabled = True
     End Sub
 
     Private Sub Deshabilitar()
@@ -78,6 +78,7 @@ Public Class FrmNotaCredito
         gbFacturar.Enabled = False
         txtUUID.Enabled = False
         dgvCuentasContables.Enabled = False
+        Me.btnRelacion.Enabled = False
     End Sub
 
     Private Function Limpiar() As Boolean
@@ -131,6 +132,182 @@ Public Class FrmNotaCredito
         ultcmbDomiciliosFiscales.Value = Nothing
 
     End Function
+
+
+    Sub buscarCFDI()
+        Try
+            Dim Consultas As New frmBusquedaNotas
+            Consultas.busquedaNotas = True
+            Consultas.FormPrincipal = Me
+            Consultas.Text = "Busqueda de facturas"
+            Dim Clientes As New ClientesIntroductoresClass
+            Dim ListaSalidas As New List(Of String)
+            Dim i As Integer = 0
+            Dim Poliza As New PolizaClass
+            Dim PolizaDet As New PolizaDetalleClass
+
+            Consultas.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
+
+            If Consultas.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+                FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
+
+                'Me.dgvDetalle.AutoGenerateColumns = False
+                'Me.dgvDetalle.DataSource = FacturaCabecero.Detalles
+                Clientes.Obtener(FacturaCabecero.CveCliente)
+                Me.txtCodigoCliente.Text = FacturaCabecero.CveCliente
+                Me.CmbCliente.Text = Clientes.Nombre
+                Me.txtlugarexpedicion.Text = FacturaCabecero.LugarExpedicion
+
+                'cmbUsoCFDI.SelectedValue = FacturaCabecero.UsoCfdi
+                cmbUsoCFDI.SelectedValue = "G02"
+                txtRFC.Text = Clientes.RFC
+                'txtObservaciones.Text = Me.FacturaCabecero.ob
+                Me.cmbformadepago.SelectedValue = Me.FacturaCabecero.FormaPago
+                Me.cmbmetododepago.SelectedValue = Me.FacturaCabecero.MetodoPago
+                Me.txtNumCta.Text = Me.FacturaCabecero.NumCta
+                Me.txtSubTotal.Text = Me.FacturaCabecero.ImporteSubTotal.ToString("N2")
+                Me.txtDescuento.Text = Me.FacturaCabecero.ImporteDescuento.ToString("N2")
+                Me.txtIVA.Text = Me.FacturaCabecero.ImporteIVA.ToString("N2")
+
+                Me.txtTotal.Text = (Me.FacturaCabecero.ImporteSubTotal + Me.FacturaCabecero.ImporteIVA).ToString("N2")
+                If btnRelacion.Enabled = False Then
+                    Me.txtUUID.Text = Me.FacturaCabecero.Uuid
+                    Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
+                Else
+                    Me.txtRelacion.Text = Me.FacturaCabecero.Uuid
+                End If
+
+                Me.txtObservaciones.Text = Me.FacturaCabecero.Observaciones
+                Me.txtDireccion.Text = Me.FacturaCabecero.Direccion
+                If Me.FacturaCabecero.DiasCredito > 0 Then
+                    rdCredito.Checked = True
+                Else
+                    rdContado.Checked = True
+                End If
+                Me.txtDiasCredito.Text = Me.FacturaCabecero.DiasCredito.ToString()
+                Me.lblEstatus.Visible = True
+
+                Buscarr = True
+
+                'If FacturaCabecero.Estatus = EstatusFacturasEnum.ABONADA Then
+                '    Me.lblEstatus.Text = "ABONADA"
+                'End If
+
+                'If FacturaCabecero.Estatus = EstatusFacturasEnum.CANCELADA Then
+                '    Me.lblEstatus.Text = "CANCELADA"
+                'End If
+                'If FacturaCabecero.Estatus = EstatusFacturasEnum.PAGADA Then
+                '    Me.lblEstatus.Text = "PAGADA"
+                'End If
+                'If FacturaCabecero.Estatus = EstatusFacturasEnum.VIGENTE Then
+                '    Me.lblEstatus.Text = "VIGENTE"
+                'End If
+                If FacturaCabecero.Estatus = "V" Then
+                    lblEstatus.Text = "VIGENTE"
+                ElseIf FacturaCabecero.Estatus = "C" Then
+                    lblEstatus.Text = "CANCELADA"
+                End If
+
+                If btnRelacion.Enabled = False Then
+                    'llenar datos del grid de detalle               
+                    dgvDetalle.AllowUserToAddRows = False
+                    For Each Detalle As FacturasDetalleClass In FacturaCabecero.Detalles
+                        Dim Producto As New ProductoClass
+                        Me.clmDescripcionEspecial.Visible = True
+                        Me.clmProductoDes.Visible = False
+                        If Detalle.IdProducto = 0 And Detalle.Descripcion = "" Then
+                            Exit For
+                        End If
+                        If Detalle.IdProducto > 0 Then
+                            Me.dgvDetalle.Rows(i).Cells(Me.clmCodigo.Index).Value = Detalle.IdProducto
+                            Producto.Obtener(Detalle.IdProducto)
+                            Me.dgvDetalle.Rows.Add()
+                            Me.dgvDetalle.Rows(i).Cells(Me.clmDescripcionEspecial.Index).Value = Producto.Descripcion
+                            Me.dgvDetalle.Rows(i).Cells(Me.clmUnidad.Index).Value = Producto.UnidadMedida.Descripcion
+                            Me.clmCodigo.Visible = True
+                            Me.clmUnidad.Visible = True
+                            OptProductos.Checked = True
+                        Else
+                            Me.dgvDetalle.Rows.Add()
+                            Me.dgvDetalle.Rows(i).Cells(Me.clmDescripcionEspecial.Index).Value = Detalle.Descripcion
+                            Me.clmCodigo.Visible = False
+                            Me.clmUnidad.Visible = False
+                            OptExternos.Checked = True
+                        End If
+                        Me.dgvDetalle.Rows(i).Cells(Me.clmProductoServicio.Index).Value = Detalle.CveProductoServ
+                        Me.dgvDetalle.Rows(i).Cells(Me.clmUnidadSat.Index).Value = Detalle.CveUnidad
+                        If Detalle.IVA > 0 Then
+                            Me.dgvDetalle.Rows(i).Cells(Me.clmConIVA.Index).Value = True
+                        Else
+                            Me.dgvDetalle.Rows(i).Cells(Me.clmConIVA.Index).Value = False
+                        End If
+                        Me.dgvDetalle.Rows(i).Cells(Me.clmIVA.Index).Value = Detalle.IVA
+                        Me.dgvDetalle.Rows(i).Cells(Me.clmIVAdecimales.Index).Value = Detalle.IVA
+                        Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = Detalle.Total
+                        Me.dgvDetalle.Rows(i).Cells(Me.clmImporteDecimales.Index).Value = Detalle.Total
+
+
+                        Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value = Detalle.CantidadxProducto
+                        Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value = Detalle.PrecioUnitario
+                        'Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = Detalle.CantidadxProducto * Detalle.PrecioUnitario
+                        i = i + 1
+                    Next
+
+                    'llenar detalle de poliza
+                    i = 0
+
+                    dgvCuentasContables.AllowUserToAddRows = False
+                    If Poliza.Obtener(FacturaCabecero.FolPoliza) Then
+                        PolizaACancelar = Poliza.NumeroPoliza
+                        For Each DetallePol As PolizaDetalleClass In Poliza.Detalles2
+                            Me.dgvCuentasContables.Rows.Add()
+                            Me.dgvCuentasContables.Rows(i).Cells(Me.clmCtaMayor.Index).Value = DetallePol.Cta
+                            Me.dgvCuentasContables.Rows(i).Cells(Me.clmSubCta.Index).Value = DetallePol.SCta
+                            Me.dgvCuentasContables.Rows(i).Cells(Me.clmSSubCta.Index).Value = DetallePol.SSCta
+                            Me.dgvCuentasContables.Rows(i).Cells(Me.clmSSSubCta.Index).Value = DetallePol.SSSCta
+                            Me.dgvCuentasContables.Rows(i).Cells(Me.clmDescripcion.Index).Value = DetallePol.CuentaContable.NombreCuenta
+                            Me.dgvCuentasContables.Rows(i).Cells(Me.clmCodigoCuenta.Index).Value = DetallePol.CuentaContable.Codigo
+                            If DetallePol.Operacion2 = PolizaOperacionEnum2.C Then
+                                Me.dgvCuentasContables.Rows(i).Cells(Me.clmCargo.Index).Value = DetallePol.Importe
+                                Me.dgvCuentasContables.Rows(i).Cells(Me.clmAbono.Index).Value = CDec(0)
+                            Else
+                                Me.dgvCuentasContables.Rows(i).Cells(Me.clmAbono.Index).Value = DetallePol.Importe
+                                Me.dgvCuentasContables.Rows(i).Cells(Me.clmCargo.Index).Value = CDec(0)
+                            End If
+                            i = i + 1
+                        Next
+                    End If
+                End If
+
+                calcular()
+
+                'datos para el combo de domicilios fiscales
+                Me.ultcmbDomiciliosFiscales.DataSource = Clientes.DomiciliosFiscales
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("IdCliente").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("IdRenglon").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("IdPoblacion").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("Entidad").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("Contenedor").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("EsPrincipal").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("IndiceEnContenedor").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("Seleccionado").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("Cliente").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("Transaction").Hidden = True
+                Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("ParticipatesInTransaction").Hidden = True
+
+                If Clientes.DomiciliosFiscales.Count = 1 Then
+                    ultcmbDomiciliosFiscales.Rows(0).Selected = True
+                End If
+            Else
+
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 
     Public Function validar() As Boolean
         Try
@@ -195,19 +372,19 @@ Public Class FrmNotaCredito
         '----------------------------------------------------
         '   Inicia codigo agregado para generar el CFDI
         '----------------------------------------------------
-        Dim ControlFD As Integralab.FactDigital.ControladorFactDigital
+        Dim ControlFD As IntegraLab.FactDigital.ControladorFactDigital
         Dim ConStr As String
         If File.Exists(Application.StartupPath + "\\cx.dat") Then
-            ConStr = Integralab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
+            ConStr = IntegraLab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
         Else
             Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
         End If
-        ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
+        ControlFD = New IntegraLab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
 
         Try
             Dim DomicilioFiscal As CFDI.UbicacionFiscal
             Dim RegimenFiscalEmisor As New List(Of CFDI.ComprobanteEmisorRegimenFiscal)
-            Dim ExpedidoEn As New Integralab.CFDI.Ubicacion("MEXICO")
+            Dim ExpedidoEn As New IntegraLab.CFDI.Ubicacion("MEXICO")
 
 
             If EsParaPDF Then
@@ -351,8 +528,16 @@ Public Class FrmNotaCredito
             Dim metodoPago = DirectCast([Enum].Parse(GetType(CFDI.c_MetodoPago), cmbmetododepago.SelectedValue.ToString()), CFDI.c_MetodoPago)
             Comprobante = New CFDI.Comprobante(Emisor, Receptor, Conceptos, ComprobanteImpuestos, dtFechaFactura.Value, "", formaPago, "", "", _
                       Math.Round(CDec(txtSubTotal.Text.Trim()), 2, MidpointRounding.AwayFromZero), Math.Round(CDec(txtTotal.Text.Trim()), 2, MidpointRounding.AwayFromZero), CFDI.c_TipoDeComprobante.E, metodoPago, txtlugarexpedicion.Tag.ToString())
-            'Dim relacionados As Relacion = 
-            'Comprobante.CfdiRelacionados.CfdiRelacionado = "ygtu"
+
+
+            'Dim uuidsRelacion() As String = {"test"}
+            If Not String.IsNullOrEmpty(Me.txtRelacion.Text) Then
+                Comprobante.CfdiRelacionados = New CFDI.ComprobanteCfdiRelacionados()
+                Comprobante.CfdiRelacionados.TipoRelacion = "01"
+                Dim uuidsRelation = New String(Me.txtRelacion.Text.ToString())
+                Comprobante.CfdiRelacionados.CfdiRelacionado = uuidsRelation ' New CFDI.ComprobanteCfdiRelacionadosCfdiRelacionado()  uuidsRelacion
+            End If
+            
             'Mee
 
             With Comprobante
@@ -406,21 +591,21 @@ Public Class FrmNotaCredito
     End Function
 
     Public Function Guardar(ByVal Trans As HC.Transaction, ByVal Estatus As String) As Boolean
-
-        Dim ControlFD As Integralab.FactDigital.ControladorFactDigital
+        'Mee
+        Dim ControlFD As IntegraLab.FactDigital.ControladorFactDigital
         Dim ConStr As String
         If File.Exists(Application.StartupPath + "\\cx.dat") Then
-            ConStr = Integralab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
+            ConStr = IntegraLab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
         Else
             Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
         End If
-        ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
+        ControlFD = New IntegraLab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
 
         Cursor = Cursors.WaitCursor
         MEAToolBar1.Enabled = False
         Application.DoEvents()
 
-        Dim TransG As New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
+        Dim TransG As New Gentle.Framework.Transaction(IntegraLab.FactDigital.ControladorFactDigital.Conexion)
         Try
 
             If Not validar() Then
@@ -562,7 +747,7 @@ Public Class FrmNotaCredito
                 FacturaCabecero.FormaPago = CStr(cmbformadepago.SelectedValue)
                 FacturaCabecero.MetodoPago = CStr(cmbmetododepago.SelectedValue)
                 FacturaCabecero.NumCta = CStr(txtNumCta.Text.Trim())
-                FacturaCabecero.UUID = cfdi.UUID.ToString()
+                FacturaCabecero.Uuid = cfdi.UUID.ToString()
                 FacturaCabecero.UsoCfdi = CStr(cmbUsoCFDI.SelectedValue)
                 FacturaCabecero.Observaciones = txtObservaciones.Text
                 FacturaCabecero.Direccion = txtDireccion.Text
@@ -1052,16 +1237,16 @@ Public Class FrmNotaCredito
 
             ''Componente de facturacion 3.3
             Dim TransG As Gentle.Framework.Transaction
-            Dim ControlFD As Integralab.FactDigital.ControladorFactDigital
+            Dim ControlFD As IntegraLab.FactDigital.ControladorFactDigital
             Dim ConStr As String
             If File.Exists(Application.StartupPath + "\\cx.dat") Then
-                ConStr = Integralab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
+                ConStr = IntegraLab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
             Else
                 Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
             End If
             'Dim TransG As New Gentle.Framework.Transaction(IntegraLab.FactDigital.ControladorFactDigital.Conexion)
-            ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
-            TransG = New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
+            ControlFD = New IntegraLab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
+            TransG = New Gentle.Framework.Transaction(IntegraLab.FactDigital.ControladorFactDigital.Conexion)
 
             ControlFD.CancelarCFDI(txtUUID.Text, DateTime.Now, TransG)
 
@@ -1139,7 +1324,9 @@ Public Class FrmNotaCredito
     Private Sub MEAToolBar1_ClickBuscar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickBuscar
         Try
             Dim Consultas As New frmBusquedaNotas
-            Consultas.busquedaNotas = True
+            Consultas.FormPrincipal = Me
+            Consultas.busquedaNotas = False
+            Consultas.Text = "Busqueda de Notas de Credito"
             Dim Clientes As New ClientesIntroductoresClass
             Dim ListaSalidas As New List(Of String)
             Dim i As Integer = 0
@@ -1150,7 +1337,7 @@ Public Class FrmNotaCredito
 
             If Consultas.ShowDialog = Windows.Forms.DialogResult.OK Then
 
-                'FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
+                FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
                 Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
                 'Me.dgvDetalle.AutoGenerateColumns = False
                 'Me.dgvDetalle.DataSource = FacturaCabecero.Detalles
@@ -1361,14 +1548,14 @@ Public Class FrmNotaCredito
             'Me.Imprimir(CType(ultcmbDomiciliosFiscales.SelectedRow.ListObject, DomicilioClienteClass), conRFC)
             If Buscarr = True Then
                 Try
-                    Dim ControlFD As Integralab.FactDigital.ControladorFactDigital
+                    Dim ControlFD As IntegraLab.FactDigital.ControladorFactDigital
                     Dim ConStr As String
                     If File.Exists(Application.StartupPath + "\\cx.dat") Then
-                        ConStr = Integralab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
+                        ConStr = IntegraLab.FactDigital.ControladorFactDigital.Decrypt(File.ReadAllText(Application.StartupPath + "\\cx.dat"))
                     Else
                         Throw New Exception("No se ha configurado la conexión a la base de datos de la factura digital.")
                     End If
-                    ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
+                    ControlFD = New IntegraLab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
 
                     ControlFD.GeneraCFDI_PDF(txtUUID.Text, True)
 
@@ -1390,13 +1577,25 @@ Public Class FrmNotaCredito
     End Sub
 
     Private Sub MEAToolBar1_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickNuevo
+        'Me.Limpiar()
+        'Habilitar()
+        'Me.Enabled = False
+        'Dim frmTipoNota = New frmTipoNota()
+        'frmTipoNota.FormPrincipal = Me
+        'frmTipoNota.Show()
+
+
         Me.Limpiar()
         Habilitar()
-        Me.Enabled = False
-        'Mee
-        Dim frmTipoNota = New frmTipoNota()
-        frmTipoNota.FormPrincipal = Me
-        frmTipoNota.Show()
+        Me.GroupBox1.Enabled = True
+        Me.rdContado.Checked = True
+        FacturaCabecero = New FacturasClass
+        Me.txtlugarexpedicion.Text = Controlador.Sesion.MiEmpresa.EmpCodigoPostal.Trim() + "-" + Controlador.Sesion.MiEmpresa.EmpMunicipio + ", " + Controlador.Sesion.MiEmpresa.EmpEstado + ", MEXICO"
+        Me.txtlugarexpedicion.Tag = Controlador.Sesion.MiEmpresa.EmpCodigoPostal.Trim()
+        cmbUsoCFDI.SelectedValue = "P01"
+        cmbmetododepago.SelectedValue = "G02"
+        cmbformadepago.SelectedValue = "99"
+        txtCodigoCliente.Focus()
 
         'Me.GroupBox1.Enabled = True
         'Me.rdContado.Checked = True
@@ -2104,5 +2303,9 @@ Public Class FrmNotaCredito
 
     Private Sub dgvDetalle_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalle.CellContentClick
 
+    End Sub
+
+    Private Sub btnRelacion_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnRelacion.MouseClick
+        Me.buscarCFDI()
     End Sub
 End Class

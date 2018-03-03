@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de marzo de 2018 10:17:34
+' // Code is generated on: viernes, 2 de marzo de 2018 16:12:43
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -675,7 +675,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits CabFacturasEntity's mappings</summary>
         Private Sub InitCabFacturasEntityMappings()
-            MyBase.AddElementMapping("CabFacturasEntity", "", "dbo", "CabFacturas", 32)
+            MyBase.AddElementMapping("CabFacturasEntity", "", "dbo", "CabFacturas", 33)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FolFactura", "Fol_Factura", False, CInt(SqlDbType.Char), 8, 0, 0, False, "", Nothing, GetType(System.String), 0)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FecFactura", "Fec_Factura", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 1)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FecCaptura", "Fec_Captura", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 2)
@@ -708,6 +708,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("CabFacturasEntity", "Direccion", "Direccion", False, CInt(SqlDbType.NVarChar), 200, 0, 0, False, "", Nothing, GetType(System.String), 29)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "Observaciones", "Observaciones", False, CInt(SqlDbType.NVarChar), 500, 0, 0, False, "", Nothing, GetType(System.String), 30)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "TipoComprobante", "TipoComprobante", True, CInt(SqlDbType.Char), 1, 0, 0, False, "", Nothing, GetType(System.String), 31)
+            MyBase.AddElementFieldMapping("CabFacturasEntity", "RelacionCfdi", "RelacionCFDI", True, CInt(SqlDbType.Text), 2147483647, 0, 0, False, "", Nothing, GetType(System.String), 32)
         End Sub
         ''' <summary>Inits CabGasTransEntity's mappings</summary>
         Private Sub InitCabGasTransEntityMappings()

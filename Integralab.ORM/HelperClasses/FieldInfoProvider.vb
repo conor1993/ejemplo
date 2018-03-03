@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: viernes, 2 de marzo de 2018 10:17:27
+' Code is generated on: viernes, 2 de marzo de 2018 16:12:28
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -694,6 +694,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "Direccion", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.Direccion), 200, 0, 0)
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "Observaciones", GetType(System.String), False, False, False, False, CInt(CabFacturasFieldIndex.Observaciones), 500, 0, 0)
 			MyBase.AddElementFieldInfo("CabFacturasEntity", "TipoComprobante", GetType(System.String), False, False, False, True, CInt(CabFacturasFieldIndex.TipoComprobante), 1, 0, 0)
+			MyBase.AddElementFieldInfo("CabFacturasEntity", "RelacionCfdi", GetType(System.String), False, False, False, True, CInt(CabFacturasFieldIndex.RelacionCfdi), 2147483647, 0, 0)
 		End Sub
 		''' <summary>Inits CabGasTransEntity's FieldInfo objects</summary>
 		Private Sub InitCabGasTransEntityInfos()
