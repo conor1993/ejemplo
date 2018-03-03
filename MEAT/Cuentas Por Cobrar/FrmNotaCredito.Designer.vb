@@ -23,12 +23,12 @@ Partial Class FrmNotaCredito
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -92,6 +92,9 @@ Partial Class FrmNotaCredito
         Me.ultcmbDomiciliosFiscales = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblRelacion = New System.Windows.Forms.Label()
+        Me.txtRelacion = New System.Windows.Forms.TextBox()
+        Me.btnRelacion = New System.Windows.Forms.Button()
         Me.CmbCliente = New System.Windows.Forms.ComboBox()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -125,9 +128,6 @@ Partial Class FrmNotaCredito
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtUUID = New System.Windows.Forms.TextBox()
-        Me.btnRelacion = New System.Windows.Forms.Button()
-        Me.txtRelacion = New System.Windows.Forms.TextBox()
-        Me.lblRelacion = New System.Windows.Forms.Label()
         Me.GroupBox3.SuspendLayout()
         CType(Me.dgvCuentasContables, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -271,7 +271,7 @@ Partial Class FrmNotaCredito
         Me.GroupBox3.Controls.Add(Me.txtSumaCargo)
         Me.GroupBox3.Controls.Add(Me.dgvCuentasContables)
         Me.GroupBox3.Controls.Add(Me.dgvDetalle)
-        Me.GroupBox3.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.GroupBox3.ForeColor = System.Drawing.SystemColors.Desktop
         Me.GroupBox3.Location = New System.Drawing.Point(10, 346)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(973, 282)
@@ -344,18 +344,18 @@ Partial Class FrmNotaCredito
         '
         'clmCargo
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N2"
-        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N2"
+        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle1
         Me.clmCargo.FillWeight = 13.0!
         Me.clmCargo.HeaderText = "Cargo"
         Me.clmCargo.Name = "clmCargo"
         '
         'clmAbono
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N2"
-        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmAbono.FillWeight = 13.0!
         Me.clmAbono.HeaderText = "Abono"
         Me.clmAbono.Name = "clmAbono"
@@ -426,27 +426,27 @@ Partial Class FrmNotaCredito
         '
         'clmCantidad
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "N2"
-        Me.clmCantidad.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        Me.clmCantidad.DefaultCellStyle = DataGridViewCellStyle3
         Me.clmCantidad.FillWeight = 6.0!
         Me.clmCantidad.HeaderText = "Cantidad"
         Me.clmCantidad.Name = "clmCantidad"
         '
         'clmPrecio
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "N2"
-        Me.clmPrecio.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N2"
+        Me.clmPrecio.DefaultCellStyle = DataGridViewCellStyle4
         Me.clmPrecio.FillWeight = 9.0!
         Me.clmPrecio.HeaderText = "Precio"
         Me.clmPrecio.Name = "clmPrecio"
         '
         'clmIVA
         '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "N2"
-        Me.clmIVA.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        Me.clmIVA.DefaultCellStyle = DataGridViewCellStyle5
         Me.clmIVA.FillWeight = 8.0!
         Me.clmIVA.HeaderText = "IVA"
         Me.clmIVA.Name = "clmIVA"
@@ -459,9 +459,9 @@ Partial Class FrmNotaCredito
         '
         'clmImporte
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "N2"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle6
         Me.clmImporte.FillWeight = 12.0!
         Me.clmImporte.HeaderText = "Importe"
         Me.clmImporte.Name = "clmImporte"
@@ -681,6 +681,35 @@ Partial Class FrmNotaCredito
         Me.GroupBox1.Size = New System.Drawing.Size(1002, 642)
         Me.GroupBox1.TabIndex = 128
         Me.GroupBox1.TabStop = False
+        '
+        'lblRelacion
+        '
+        Me.lblRelacion.AutoSize = True
+        Me.lblRelacion.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.lblRelacion.Location = New System.Drawing.Point(7, 39)
+        Me.lblRelacion.Name = "lblRelacion"
+        Me.lblRelacion.Size = New System.Drawing.Size(79, 13)
+        Me.lblRelacion.TabIndex = 178
+        Me.lblRelacion.Text = "Relacion CFDI:"
+        '
+        'txtRelacion
+        '
+        Me.txtRelacion.BackColor = System.Drawing.SystemColors.Window
+        Me.txtRelacion.Enabled = False
+        Me.txtRelacion.Location = New System.Drawing.Point(99, 36)
+        Me.txtRelacion.Name = "txtRelacion"
+        Me.txtRelacion.ReadOnly = True
+        Me.txtRelacion.Size = New System.Drawing.Size(377, 20)
+        Me.txtRelacion.TabIndex = 177
+        '
+        'btnRelacion
+        '
+        Me.btnRelacion.Location = New System.Drawing.Point(483, 36)
+        Me.btnRelacion.Name = "btnRelacion"
+        Me.btnRelacion.Size = New System.Drawing.Size(112, 20)
+        Me.btnRelacion.TabIndex = 175
+        Me.btnRelacion.Text = "Agregar Relación"
+        Me.btnRelacion.UseVisualStyleBackColor = True
         '
         'CmbCliente
         '
@@ -1038,35 +1067,6 @@ Partial Class FrmNotaCredito
         Me.txtUUID.ReadOnly = True
         Me.txtUUID.Size = New System.Drawing.Size(377, 20)
         Me.txtUUID.TabIndex = 167
-        '
-        'btnRelacion
-        '
-        Me.btnRelacion.Location = New System.Drawing.Point(483, 36)
-        Me.btnRelacion.Name = "btnRelacion"
-        Me.btnRelacion.Size = New System.Drawing.Size(112, 20)
-        Me.btnRelacion.TabIndex = 175
-        Me.btnRelacion.Text = "Agregar Relación"
-        Me.btnRelacion.UseVisualStyleBackColor = True
-        '
-        'txtRelacion
-        '
-        Me.txtRelacion.BackColor = System.Drawing.SystemColors.Window
-        Me.txtRelacion.Enabled = False
-        Me.txtRelacion.Location = New System.Drawing.Point(99, 36)
-        Me.txtRelacion.Name = "txtRelacion"
-        Me.txtRelacion.ReadOnly = True
-        Me.txtRelacion.Size = New System.Drawing.Size(377, 20)
-        Me.txtRelacion.TabIndex = 177
-        '
-        'lblRelacion
-        '
-        Me.lblRelacion.AutoSize = True
-        Me.lblRelacion.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.lblRelacion.Location = New System.Drawing.Point(7, 39)
-        Me.lblRelacion.Name = "lblRelacion"
-        Me.lblRelacion.Size = New System.Drawing.Size(79, 13)
-        Me.lblRelacion.TabIndex = 178
-        Me.lblRelacion.Text = "Relacion CFDI:"
         '
         'FrmNotaCredito
         '

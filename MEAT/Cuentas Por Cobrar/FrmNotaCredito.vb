@@ -97,6 +97,7 @@ Public Class FrmNotaCredito
         Me.txtSumaAbono.Text = "0"
         Me.dgvDetalle.Rows.Clear()
         Me.dgvCuentasContables.Rows.Clear()
+        Me.txtRelacion.Text = ""
         'Me.ProductosVistaC.Obtener(CondicionEnum.ACTIVOS)
         'Me.clmProductoDes.DisplayMember = "Descripcion"
         'Me.clmProductoDes.ValueMember = "Codigo"
@@ -532,10 +533,61 @@ Public Class FrmNotaCredito
 
             'Dim uuidsRelacion() As String = {"test"}
             If Not String.IsNullOrEmpty(Me.txtRelacion.Text) Then
-                Comprobante.CfdiRelacionados = New CFDI.ComprobanteCfdiRelacionados()
-                Comprobante.CfdiRelacionados.TipoRelacion = "01"
-                Dim uuidsRelation = New String(Me.txtRelacion.Text.ToString())
-                Comprobante.CfdiRelacionados.CfdiRelacionado = uuidsRelation ' New CFDI.ComprobanteCfdiRelacionadosCfdiRelacionado()  uuidsRelacion
+
+                Dim Relacion As New CFDI.ComprobanteCfdiRelacionadosCfdiRelacionado
+                Dim RelacionList(1) As CFDI.ComprobanteCfdiRelacionadosCfdiRelacionado
+
+
+                Relacion.UUID = Me.txtRelacion.Text.ToString()
+                RelacionList(0) = Relacion
+
+                Dim tipoRelacion As New CFDI.c_TipoRelacion
+
+                Dim Relaciones As New CFDI.ComprobanteCfdiRelacionados
+                Relaciones.CfdiRelacionado = RelacionList
+                Relaciones.TipoRelacion = tipoRelacion._01
+
+                Comprobante.CfdiRelacionados = Relaciones
+
+
+
+                'Relacion.TipoRelacion = "01"
+
+
+
+                'Relaciones.CfdiRelacionado = Me.txtRelacion.Text.ToString()
+
+                'Comprobante.CfdiRelacionados = Relaciones
+                'Comprobante.CfdiRelacionados.TipoRelacion = "01"
+                'Comprobante.CfdiRelacionados.TipoRelacion = "01"
+                Dim i As Integer = 1
+
+                'Dim uuidsRelation() As String = {Me.txtRelacion.Text.ToString()}
+
+                'Dim Relacion1 = New CFDI.ComprobanteCfdiRelacionadosCfdiRelacionado()
+                'Relacion1 = Me.txtRelacion.Text.ToString()
+
+
+
+
+                'Dim uuidsRelationCast = New CFDI.ComprobanteCfdiRelacionadosCfdiRelacionado()
+
+                ''Dim uuidsRelation = New String() {Me.txtRelacion.Text.ToString()}
+
+                ''uuidsRelationCast = uuidsRelation
+
+                'Comprobante.CfdiRelacionados = New CFDI.ComprobanteCfdiRelacionados()
+                'Comprobante.CfdiRelacionados = uuidsRelationCast
+
+                'Comprobante.CfdiRelacionados.TipoRelacion = "01"
+
+
+
+
+                ''Dim uuidsRelation = New String(Me.txtRelacion.Text.ToString())
+                ''{"No se puede convertir un objeto de tipo 'System.String[]' al tipo 'IntegraLab.CFDI.ComprobanteCfdiRelacionadosCfdiRelacionado[]'."}
+                ''Dim uuidsRelation = New String(Me.txtRelacion.Text.ToString())
+                'Comprobante.CfdiRelacionados.CfdiRelacionado = uuidsRelationCast ' New CFDI.ComprobanteCfdiRelacionadosCfdiRelacionado()  uuidsRelacion
             End If
             
             'Mee
@@ -609,6 +661,9 @@ Public Class FrmNotaCredito
         Try
 
             If Not validar() Then
+                Cursor = Cursors.Default
+                MEAToolBar1.Enabled = True
+                Application.DoEvents()
                 Return False
                 Exit Function
             End If
@@ -624,6 +679,7 @@ Public Class FrmNotaCredito
             'Return False
             'DomFiscalCte.Obtener(CmbCliente.SelectedValue, )
             'DomFiscalCte = DirectCast(ultcmbDomiciliosFiscales.SelectedRow.cell, DomicilioClienteClass)
+            FacturaCabecero = New FacturasClass
             If Estatus = "V" Then
                 Dim Folio As New FoliosClass 'variable para la clase de folio
                 'Dim FacturasDetalleCol As New CN.FacturasDetalleCollectionClass ' para crear la coleccion de detalle
@@ -670,7 +726,7 @@ Public Class FrmNotaCredito
 
                 'folio de la factura
                 FacturaCabecero.NoFactura = "F" & Folio.Consecutivo.ToString("0000000")
-
+                FacturaCabecero.TipoComprobante = "E"
                 'guardar poliza
                 Dim Poliza As New PolizaClass
 
@@ -730,7 +786,7 @@ Public Class FrmNotaCredito
                 'guardar facturas
                 'asignar datos a la factura
                 'asignar datos a cabecero de factura
-
+                'Mee
                 Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
                 FacturaCabecero.FechaFactura = Me.dtFechaFactura.Value
                 FacturaCabecero.FechaVencimiento = Me.dtpFechaVencimiento.Value
@@ -751,6 +807,8 @@ Public Class FrmNotaCredito
                 FacturaCabecero.UsoCfdi = CStr(cmbUsoCFDI.SelectedValue)
                 FacturaCabecero.Observaciones = txtObservaciones.Text
                 FacturaCabecero.Direccion = txtDireccion.Text
+
+
 
                 'guardar cabecero
                 Controlador.RealizarFacturasdeVenta(FacturaCabecero, Now, ClasesNegocio.TipoFacturaEnum.FACTURACION_ESPECIAL, Trans)
@@ -794,7 +852,7 @@ Public Class FrmNotaCredito
                 Procesar.Start()
                 Trans.Commit()
                 Cursor.Current = Cursors.Default
-                MessageBox.Show("La Factura de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("La Nota de Crédito de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 FacturaCabecero.Estatus = "C"
                 Controlador.RealizarFacturasdeVenta(FacturaCabecero, Now, ClasesNegocio.TipoFacturaEnum.FACTURACION_DE_VENTA_DE_CORRAL, Trans)
@@ -896,7 +954,7 @@ Public Class FrmNotaCredito
             End If
 
             If ConF(0).Campo12X = 0 Or ConF(0).Campo12Y = 0 Or ConF(0).Campo13X = 0 Or ConF(0).Campo13Y = 0 Or ConF(0).Campo14X = 0 Or ConF(0).Campo14Y = 0 Or ConF(0).Campo15X = 0 Or ConF(0).Campo15Y = 0 Then
-                MessageBox.Show("Configure las coordenas de impresión del subtotal, iva, total e importe con letra de la factura", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Configure las coordenas de impresión del subtotal, iva, total e importe con letra de la Nota de Crédito", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Return False
                 Exit Function
             End If
@@ -1199,7 +1257,7 @@ Public Class FrmNotaCredito
             If FacturaCabecero.Estatus = "P" Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se puede cancelar la factura: " & Me.txtFolioFactura.Text & " por que se encuentra pagada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtFolioFactura.Text & " por que se encuentra pagada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
 
@@ -1207,7 +1265,7 @@ Public Class FrmNotaCredito
             If FacturaCabecero.Estatus = "A" Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se puede cancelar la factura: " & Me.txtFolioFactura.Text & " por que se encuentra abonada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtFolioFactura.Text & " por que se encuentra abonada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
 
@@ -1215,12 +1273,12 @@ Public Class FrmNotaCredito
             If FacturaCabecero.Estatus = "C" Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se puede cancelar la factura: " & Me.txtFolioFactura.Text & " por que se encuentra cancelada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtFolioFactura.Text & " por que se encuentra cancelada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
 
 
-            Dim result As Integer = MessageBox.Show("¿Desea cancelar la factura?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+            Dim result As Integer = MessageBox.Show("¿Desea cancelar la Nota de Crédito?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
 
             If result = DialogResult.No Then
                 Trans.Rollback()
@@ -1310,7 +1368,7 @@ Public Class FrmNotaCredito
             Cursor = Cursors.Default
             Me.Limpiar()
             MEAToolBar1.Enabled = True
-            MessageBox.Show("Se ha cancelado la Factura:" & Me.txtFolioFactura.Text, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Se ha cancelado la Nota de Crédito:" & Me.txtFolioFactura.Text, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             Cursor = Cursors.Default
             MEAToolBar1.Enabled = True
