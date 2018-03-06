@@ -92,6 +92,7 @@ Partial Class FrmNotaCredito
         Me.ultcmbDomiciliosFiscales = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtFolioRelacion = New System.Windows.Forms.TextBox()
         Me.lblRelacion = New System.Windows.Forms.Label()
         Me.txtRelacion = New System.Windows.Forms.TextBox()
         Me.btnRelacion = New System.Windows.Forms.Button()
@@ -642,6 +643,7 @@ Partial Class FrmNotaCredito
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtFolioRelacion)
         Me.GroupBox1.Controls.Add(Me.lblRelacion)
         Me.GroupBox1.Controls.Add(Me.txtRelacion)
         Me.GroupBox1.Controls.Add(Me.btnRelacion)
@@ -682,6 +684,14 @@ Partial Class FrmNotaCredito
         Me.GroupBox1.TabIndex = 128
         Me.GroupBox1.TabStop = False
         '
+        'txtFolioRelacion
+        '
+        Me.txtFolioRelacion.Location = New System.Drawing.Point(609, 36)
+        Me.txtFolioRelacion.Name = "txtFolioRelacion"
+        Me.txtFolioRelacion.Size = New System.Drawing.Size(100, 20)
+        Me.txtFolioRelacion.TabIndex = 179
+        Me.txtFolioRelacion.Visible = False
+        '
         'lblRelacion
         '
         Me.lblRelacion.AutoSize = True
@@ -695,7 +705,6 @@ Partial Class FrmNotaCredito
         'txtRelacion
         '
         Me.txtRelacion.BackColor = System.Drawing.SystemColors.Window
-        Me.txtRelacion.Enabled = False
         Me.txtRelacion.Location = New System.Drawing.Point(99, 36)
         Me.txtRelacion.Name = "txtRelacion"
         Me.txtRelacion.ReadOnly = True
@@ -1188,4 +1197,5 @@ Partial Class FrmNotaCredito
     Friend WithEvents txtRelacion As System.Windows.Forms.TextBox
     Friend WithEvents btnRelacion As System.Windows.Forms.Button
     Friend WithEvents lblRelacion As System.Windows.Forms.Label
+    Friend WithEvents txtFolioRelacion As System.Windows.Forms.TextBox
 End Class

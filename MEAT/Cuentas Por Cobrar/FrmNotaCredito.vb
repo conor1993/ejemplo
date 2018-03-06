@@ -98,6 +98,7 @@ Public Class FrmNotaCredito
         Me.dgvDetalle.Rows.Clear()
         Me.dgvCuentasContables.Rows.Clear()
         Me.txtRelacion.Text = ""
+        Me.txtFolioRelacion.Text = ""
         'Me.ProductosVistaC.Obtener(CondicionEnum.ACTIVOS)
         'Me.clmProductoDes.DisplayMember = "Descripcion"
         'Me.clmProductoDes.ValueMember = "Codigo"
@@ -138,9 +139,9 @@ Public Class FrmNotaCredito
     Sub buscarCFDI()
         Try
             Dim Consultas As New frmBusquedaNotas
-            Consultas.busquedaNotas = True
+            Consultas.busquedaNotas = False
             Consultas.FormPrincipal = Me
-            Consultas.Text = "Busqueda de facturas"
+            Consultas.Text = "Busqueda de Facturas"
             Dim Clientes As New ClientesIntroductoresClass
             Dim ListaSalidas As New List(Of String)
             Dim i As Integer = 0
@@ -177,6 +178,7 @@ Public Class FrmNotaCredito
                     Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
                 Else
                     Me.txtRelacion.Text = Me.FacturaCabecero.Uuid
+                    Me.txtFolioRelacion.Text = Me.FacturaCabecero.FolFactura
                 End If
 
                 Me.txtObservaciones.Text = Me.FacturaCabecero.Observaciones
@@ -548,8 +550,7 @@ Public Class FrmNotaCredito
                 Relaciones.TipoRelacion = tipoRelacion._01
 
                 Comprobante.CfdiRelacionados = Relaciones
-
-
+                FacturaCabecero.RelacionCfdi = Me.txtRelacion.Text.ToString() '"I-" & Me.txtFolioRelacion.Text.ToString()
 
                 'Relacion.TipoRelacion = "01"
 
@@ -1383,7 +1384,7 @@ Public Class FrmNotaCredito
         Try
             Dim Consultas As New frmBusquedaNotas
             Consultas.FormPrincipal = Me
-            Consultas.busquedaNotas = False
+            Consultas.busquedaNotas = True
             Consultas.Text = "Busqueda de Notas de Credito"
             Dim Clientes As New ClientesIntroductoresClass
             Dim ListaSalidas As New List(Of String)
@@ -1397,6 +1398,7 @@ Public Class FrmNotaCredito
 
                 FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
                 Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
+                Me.txtRelacion.Text = FacturaCabecero.RelacionCfdi
                 'Me.dgvDetalle.AutoGenerateColumns = False
                 'Me.dgvDetalle.DataSource = FacturaCabecero.Detalles
                 Clientes.Obtener(FacturaCabecero.CveCliente)

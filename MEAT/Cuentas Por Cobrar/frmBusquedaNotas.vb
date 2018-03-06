@@ -60,15 +60,25 @@ Public Class frmBusquedaNotas
 
             Me.dgvFacturasCabecero.DataSource = Nothing
             Me.dgvFacturasDetalle.DataSource = Nothing
-            If IsNothing(cmbClientes.SelectedValue) Then
-                Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, 0, Estatus, TipoFactura)
-            Else
-                Dim cliente As ClasesNegocio.ClientesIntroductoresClass
-                cliente = Me.cmbClientes.SelectedValue
-                Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura)
+            If busquedaNotas = False Then
+                If IsNothing(cmbClientes.SelectedValue) Then
+                    Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, 0, Estatus, TipoFactura)
+                Else
+                    Dim cliente As ClasesNegocio.ClientesIntroductoresClass
+                    cliente = Me.cmbClientes.SelectedValue
+                    Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura)
+                End If
             End If
-
-
+            
+            If busquedaNotas = True Then
+                If IsNothing(cmbClientes.SelectedValue) Then
+                    Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, 0, Estatus, TipoFactura, "E")
+                Else
+                    Dim cliente As ClasesNegocio.ClientesIntroductoresClass
+                    cliente = Me.cmbClientes.SelectedValue
+                    Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura, "E")
+                End If
+            End If
 
         Catch ex As Exception
             dgvFacturasDetalle.DataSource = Nothing
@@ -100,6 +110,9 @@ Public Class frmBusquedaNotas
         clientes.Obtener(ClasesNegocio.CondicionEstatusEnum.ACTIVO)
         cmbClientes.DataSource = clientes
         cmbClientes.SelectedIndex = -1
+        If busquedaNotas Then
+            Me.Text = "Busqueda de Notas de Credito"
+        End If
     End Sub
     Private Sub Acciones_Menu(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar, mtb.ClickBuscar, mtb.ClickCancelar, mtb.ClickEditar, mtb.ClickGuardar, mtb.ClickImprimir, mtb.ClickLimpiar, mtb.ClickNuevo, mtb.ClickSalir
         Utilerias.RunControlException(Me, e.Button.Text)
@@ -114,7 +127,7 @@ Public Class frmBusquedaNotas
 
     Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
         Me.DialogResult = Windows.Forms.DialogResult.OK
-        If busquedaNotas = False Then
+        If busquedaNotas = True Then
             frmPrincipal.btnRelacion.Enabled = False
         End If
     End Sub
@@ -200,7 +213,7 @@ Public Class frmBusquedaNotas
     Private Sub dgvFacturasCabecero_CellContentDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvFacturasCabecero.CellContentDoubleClick
         If e.RowIndex >= 0 Then
             Me.DialogResult = Windows.Forms.DialogResult.OK
-            If busquedaNotas = False Then
+            If busquedaNotas = True Then
                 frmPrincipal.btnRelacion.Enabled = False
             End If
         End If

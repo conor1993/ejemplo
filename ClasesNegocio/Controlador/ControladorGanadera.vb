@@ -2189,21 +2189,58 @@ Partial Public Class ControladorGanadera
         Next
     End Function
 
+    Public Function ObtenerFacturasDeVenta(Optional ByVal Folio As String = "", Optional ByVal Fechas As RangoFechas = Nothing, Optional ByVal Cliente As Integer = 0, Optional ByVal Estatus As EstatusChar = EstatusChar.TODOS, Optional ByVal TipoFactura As TipoFacturaEnum = TipoFacturaEnum.VENTA_DE_PRODUCTO, Optional ByVal TipoComprobante As String = "I") As FacturasCollectionClass
+        Dim Filtro As OC.PredicateExpression = FiltroFacturasdeVenta(TipoFactura, Folio, Fechas, Cliente, Estatus, TipoComprobante)
+        Return ObtenerFacturasdeVentayCorrales(Filtro)
+    End Function
+
+
+    Public Function ObtenerFacturasdeVentasParaAuxiliarContable(ByVal FechaContable As Date, Optional ByVal TipoFactura As TipoFacturaEnum = TipoFacturaEnum.VENTA_DE_PRODUCTO) As FacturasCollectionClass
+        Dim Filtro As New OC.PredicateExpression
+        Filtro.Add(HC.CabFacturasFields.FecConta <= FechaContable.ToShortDateString Or HC.CabFacturasFields.FecConta = DBNull.Value)
+        Filtro.Add(HC.CabFacturasFields.Status <> "C")
+        Filtro.Add(HC.CabFacturasFields.StaFacturacion = "N")
+        Filtro.Add(HC.CabFacturasFields.TipoFactu = TipoFactura)
+        Return ObtenerFacturasdeVentayCorrales(Filtro)
+    End Function
+
+    Private Function ObtenerFacturasdeVentayCorrales(ByRef Filtro As OC.PredicateExpression, Optional ByVal Relaciones As OC.RelationCollection = Nothing) As FacturasCollectionClass
+        Dim FacturasVentaColeccion As New CC.CabFacturasCollection
+        Dim FacturasVenta As New FacturasCollectionClass
+        Dim Ordenamiento As New OC.SortExpression(New OC.SortClause(HC.CabFacturasFields.FolFactura, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
+
+        FacturasVentaColeccion.GetMulti(Filtro, 0, Ordenamiento, Relaciones)
+
+        If Not FacturasVentaColeccion.Count > 0 Then
+            Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.GENERAL, 2, "No se encontraton facturas para esta opcion")
+        Else
+            For Each FacturaVenta As EC.CabFacturasEntity In FacturasVentaColeccion
+                FacturasVenta.Add(FacturaVenta)
+            Next
+        End If
+        Return FacturasVenta
+    End Function
+
     Private Function FiltroFacturasdeVenta( _
     ByVal TipoFactura As TipoFacturaEnum, _
     Optional ByVal Folio As String = "", _
     Optional ByVal Fechas As RangoFechas = Nothing, _
     Optional ByVal Cliente As Integer = 0, _
-    Optional ByVal Estatus As EstatusChar = EstatusChar.TODOS) _
+    Optional ByVal Estatus As EstatusChar = EstatusChar.TODOS, _
+    Optional ByVal TipoComprobante As String = "I") _
     As OC.PredicateExpression
+
         Dim Filtro As New OC.PredicateExpression
         Dim Relaciones As New OC.RelationCollection
 
         Filtro.Add(HC.CabFacturasFields.TipoFactu = TipoFactura)
 
+        Filtro.Add(HC.CabFacturasFields.TipoComprobante = TipoComprobante)
+
         If Folio.Trim <> String.Empty Then
             'Folio = IIf(Folio(0) = "R", Folio.Substring(1), Folio)
-            Filtro.Add(HC.CabFacturasFields.FolFactura = Folio)
+            Filtro.Add(HC.CabFacturasFields.FolFactura = Folio Or HC.CabFacturasFields.Uuid = Folio)
+            'Filtro.Add(HC.CabFacturasFields.Uuid = Folio)
         Else
             If Fechas IsNot Nothing Then
                 If Fechas.FechaInicial.HasValue Then
@@ -2238,37 +2275,6 @@ Partial Public Class ControladorGanadera
 
         End If
         Return Filtro
-    End Function
-
-    Public Function ObtenerFacturasDeVenta(Optional ByVal Folio As String = "", Optional ByVal Fechas As RangoFechas = Nothing, Optional ByVal Cliente As Integer = 0, Optional ByVal Estatus As EstatusChar = EstatusChar.TODOS, Optional ByVal TipoFactura As TipoFacturaEnum = TipoFacturaEnum.VENTA_DE_PRODUCTO) As FacturasCollectionClass
-        Dim Filtro As OC.PredicateExpression = FiltroFacturasdeVenta(TipoFactura, Folio, Fechas, Cliente, Estatus)
-        Return ObtenerFacturasdeVentayCorrales(Filtro)
-    End Function
-
-    Public Function ObtenerFacturasdeVentasParaAuxiliarContable(ByVal FechaContable As Date, Optional ByVal TipoFactura As TipoFacturaEnum = TipoFacturaEnum.VENTA_DE_PRODUCTO) As FacturasCollectionClass
-        Dim Filtro As New OC.PredicateExpression
-        Filtro.Add(HC.CabFacturasFields.FecConta <= FechaContable.ToShortDateString Or HC.CabFacturasFields.FecConta = DBNull.Value)
-        Filtro.Add(HC.CabFacturasFields.Status <> "C")
-        Filtro.Add(HC.CabFacturasFields.StaFacturacion = "N")
-        Filtro.Add(HC.CabFacturasFields.TipoFactu = TipoFactura)
-        Return ObtenerFacturasdeVentayCorrales(Filtro)
-    End Function
-
-    Private Function ObtenerFacturasdeVentayCorrales(ByRef Filtro As OC.PredicateExpression, Optional ByVal Relaciones As OC.RelationCollection = Nothing) As FacturasCollectionClass
-        Dim FacturasVentaColeccion As New CC.CabFacturasCollection
-        Dim FacturasVenta As New FacturasCollectionClass
-        Dim Ordenamiento As New OC.SortExpression(New OC.SortClause(HC.CabFacturasFields.FolFactura, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
-
-        FacturasVentaColeccion.GetMulti(Filtro, 0, Ordenamiento, Relaciones)
-
-        If Not FacturasVentaColeccion.Count > 0 Then
-            Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.GENERAL, 2, "No se encontraton facturas para esta opcion")
-        Else
-            For Each FacturaVenta As EC.CabFacturasEntity In FacturasVentaColeccion
-                FacturasVenta.Add(FacturaVenta)
-            Next
-        End If
-        Return FacturasVenta
     End Function
 
     Public Function ObtenerPagosChequesDevueltos(ByVal FechaInicial As Nullable(Of Date), ByVal FechaFinal As Nullable(Of Date), ByVal Vigentes As Boolean, ByVal Cancelados As Boolean, ByVal IdCliente As Nullable(Of Integer), Optional ByVal Folio As String = Nothing, Optional ByVal NoCheque As String = Nothing, Optional ByVal Observaciones As String = Nothing) As PagoCheDevueltoCabCollectionClass
