@@ -930,6 +930,9 @@ Public Class MFacRegFacturasVentas
                         Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.ImporteFacturado.Index).Value = Importe
                         Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.KilosFacturados.Index).Value = TablaEmbarque2.Tables(0).Rows(j)("KilosFacturar")
                         Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.clmPiezas.Index).Value = TablaEmbarque2.Tables(0).Rows(j)("Piezas")
+
+                        Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.clmproductoserv.Index).Value = TablaEmbarque2.Tables(0).Rows(j)("Claveproserv")
+
                         Me.dgvDetalleConcentrado.Rows(cont).Cells(Me.clmunidadsat.DisplayIndex).Value = "28"
                         Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                         'Try
