@@ -13,7 +13,7 @@
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
     <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>JSLogo32.ico</ApplicationIcon>
@@ -1041,6 +1041,12 @@
     </Compile>
     <Compile Include="Compras Generales\Reportes\dsPresupuestos.vb">
       <DependentUpon>dsPresupuestos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\Complementos\frmDistribuciondeGastosconsulta.Designer.vb">
+      <DependentUpon>frmDistribuciondeGastosconsulta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\Complementos\frmDistribuciondeGastosconsulta.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Contabilidad\Complementos\frmDistribuciondeGastos.Designer.vb">
       <DependentUpon>frmDistribuciondeGastos.vb</DependentUpon>
@@ -3792,6 +3798,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\Contabilidad\Complementos\FrmBusquedaCuentasfiscales.resx">
       <DependentUpon>FrmBusquedaCuentasfiscales.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Complementos\frmDistribuciondeGastosconsulta.resx">
+      <DependentUpon>frmDistribuciondeGastosconsulta.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\Complementos\frmDistribuciondeGastos.resx">

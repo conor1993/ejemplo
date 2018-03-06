@@ -597,6 +597,7 @@ Public Class RegistroFacGastosFrm
 
     Private Sub mtb_ClickBuscar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBuscar
         Buscar = True
+
         Me.CmbProveedor.DataSource = Proveedores
         Me.CmbProveedor.DisplayMember = "RazonSocial"
         Me.CmbProveedor.ValueMember = "Codigo"
@@ -613,7 +614,7 @@ Public Class RegistroFacGastosFrm
                 ObtenerValores()
                 ObtenerDetalle()
             End If
-
+            Me.DgvCuentas.Enabled = True
             'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
 
             'Try
@@ -666,7 +667,6 @@ Public Class RegistroFacGastosFrm
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
 
         Dim Tran As New HC.Transaction(IsolationLevel.ReadCommitted, "Fac")
-
         Dim Trans As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
         Try
             If Validar() Then
@@ -689,12 +689,12 @@ Public Class RegistroFacGastosFrm
                             Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
                             Dim adp As New SqlDataAdapter(sqlcom)
 
-                            '    Dim tb As New DataTable
-
+                            'Dim tb As New DataTable
                             'sqlCon.Open()
                             '    adp.Fill(tb)
                             '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
                             '    Me.dgvDistribuciondeGastos.DataSource = tb
+
                             sqlCon.Open()
                             sqlcom.ExecuteNonQuery()
                             sqlCon.Close()
@@ -714,7 +714,6 @@ Public Class RegistroFacGastosFrm
                             Dim adp As New SqlDataAdapter(sqlcom)
 
                             'Dim tb As New DataTable
-
                             'sqlCon.Open()
                             '    adp.Fill(tb)
                             '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
@@ -1131,32 +1130,25 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
     End Sub
 
     Private Sub DgvCuentas_CellContentDoubleClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentDoubleClick
-        Dim Cuenta As New CN.CuentaContableClass
-        Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value)
-        If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
 
-            Dim Ventana As New frmDistribuciondeGastos
-            frmDistribuciondeGastos.valor = Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value()
-            If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-                Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
-                For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 2)
-                    Me.dgvDistribuciondeGastos.Rows.Add()
 
-                    Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
-                    Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
-                    Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
-                    Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
-                    Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
-                    For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
-                        Me.dgvdistribuciongastosdet.Rows.Add()
-                        Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.sucursal1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value
-                        Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value
-                        Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
-                        Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
-                        Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
-                    Next
-                Next
+        Try
+            If Buscar Then
+                Dim Cuenta As New CN.CuentaContableClass
+                Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value)
+                If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+
+                    Dim Ventana As New frmDistribuciondeGastosconsulta
+                    frmDistribuciondeGastosconsulta.factura = TxtFactura.Text
+                    If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+                    End If
+                End If
             End If
-        End If
+        Catch ex As Exception
+
+        End Try
+
+
     End Sub
 End Class
