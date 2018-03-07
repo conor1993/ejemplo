@@ -33,6 +33,17 @@ Partial Class _390GeneraPolizaPasivo
         Me.txtCargo = New System.Windows.Forms.TextBox()
         Me.txtAbono = New System.Windows.Forms.TextBox()
         Me.DgvFacturas = New System.Windows.Forms.DataGridView()
+        Me.check = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.IdProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSSSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dtpFechaConta = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.CmbProveedor = New System.Windows.Forms.ComboBox()
@@ -49,17 +60,6 @@ Partial Class _390GeneraPolizaPasivo
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdProveedorFG = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.check = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.IdProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmSSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmSSSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DgvFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvGastos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,6 +179,92 @@ Partial Class _390GeneraPolizaPasivo
         Me.DgvFacturas.Size = New System.Drawing.Size(807, 272)
         Me.DgvFacturas.TabIndex = 0
         '
+        'check
+        '
+        Me.check.HeaderText = ""
+        Me.check.Name = "check"
+        Me.check.Width = 20
+        '
+        'IdProveedor
+        '
+        Me.IdProveedor.DataPropertyName = "IdProveedor"
+        Me.IdProveedor.HeaderText = "IdProveedor"
+        Me.IdProveedor.Name = "IdProveedor"
+        Me.IdProveedor.Visible = False
+        '
+        'NoFactura
+        '
+        Me.NoFactura.DataPropertyName = "NoFactura"
+        Me.NoFactura.HeaderText = "Factura"
+        Me.NoFactura.Name = "NoFactura"
+        Me.NoFactura.Width = 75
+        '
+        'clmCodigo
+        '
+        Me.clmCodigo.DataPropertyName = "CuentaContableId"
+        Me.clmCodigo.HeaderText = "Código"
+        Me.clmCodigo.Name = "clmCodigo"
+        Me.clmCodigo.Width = 50
+        '
+        'clmCta
+        '
+        Me.clmCta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmCta.DataPropertyName = "Cta"
+        Me.clmCta.HeaderText = "Cta"
+        Me.clmCta.Name = "clmCta"
+        Me.clmCta.Width = 48
+        '
+        'clmSubCuenta
+        '
+        Me.clmSubCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmSubCuenta.DataPropertyName = "SubCta"
+        Me.clmSubCuenta.HeaderText = "Sub Cuenta"
+        Me.clmSubCuenta.Name = "clmSubCuenta"
+        Me.clmSubCuenta.Width = 88
+        '
+        'clmSSubCta
+        '
+        Me.clmSSubCta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmSSubCta.DataPropertyName = "SSubCta"
+        Me.clmSSubCta.HeaderText = "SSub Cuenta"
+        Me.clmSSubCta.Name = "clmSSubCta"
+        Me.clmSSubCta.Width = 95
+        '
+        'clmSSSubCuenta
+        '
+        Me.clmSSSubCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmSSSubCuenta.DataPropertyName = "SSSubCta"
+        Me.clmSSSubCuenta.HeaderText = "SSSub Cuenta"
+        Me.clmSSSubCuenta.Name = "clmSSSubCuenta"
+        Me.clmSSSubCuenta.Width = 102
+        '
+        'clmNombre
+        '
+        Me.clmNombre.DataPropertyName = "NomCuenta"
+        Me.clmNombre.HeaderText = "Nombre"
+        Me.clmNombre.Name = "clmNombre"
+        Me.clmNombre.Width = 125
+        '
+        'clmCargo
+        '
+        Me.clmCargo.DataPropertyName = "Cargo"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle1
+        Me.clmCargo.HeaderText = "Cargo"
+        Me.clmCargo.Name = "clmCargo"
+        '
+        'clmAbono
+        '
+        Me.clmAbono.DataPropertyName = "Abono"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clmAbono.HeaderText = "Abono"
+        Me.clmAbono.Name = "clmAbono"
+        '
         'dtpFechaConta
         '
         Me.dtpFechaConta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
@@ -292,92 +378,6 @@ Partial Class _390GeneraPolizaPasivo
         Me.IdProveedorFG.DataPropertyName = "Idprovedor"
         Me.IdProveedorFG.HeaderText = "IdProveedor"
         Me.IdProveedorFG.Name = "IdProveedorFG"
-        '
-        'check
-        '
-        Me.check.HeaderText = ""
-        Me.check.Name = "check"
-        Me.check.Width = 20
-        '
-        'IdProveedor
-        '
-        Me.IdProveedor.DataPropertyName = "IdProveedor"
-        Me.IdProveedor.HeaderText = "IdProveedor"
-        Me.IdProveedor.Name = "IdProveedor"
-        Me.IdProveedor.Visible = False
-        '
-        'NoFactura
-        '
-        Me.NoFactura.DataPropertyName = "NoFactura"
-        Me.NoFactura.HeaderText = "Factura"
-        Me.NoFactura.Name = "NoFactura"
-        Me.NoFactura.Width = 75
-        '
-        'clmCodigo
-        '
-        Me.clmCodigo.DataPropertyName = "CuentaContableId"
-        Me.clmCodigo.HeaderText = "Código"
-        Me.clmCodigo.Name = "clmCodigo"
-        Me.clmCodigo.Width = 50
-        '
-        'clmCta
-        '
-        Me.clmCta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmCta.DataPropertyName = "Cta"
-        Me.clmCta.HeaderText = "Cta"
-        Me.clmCta.Name = "clmCta"
-        Me.clmCta.Width = 48
-        '
-        'clmSubCuenta
-        '
-        Me.clmSubCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmSubCuenta.DataPropertyName = "SubCta"
-        Me.clmSubCuenta.HeaderText = "Sub Cuenta"
-        Me.clmSubCuenta.Name = "clmSubCuenta"
-        Me.clmSubCuenta.Width = 88
-        '
-        'clmSSubCta
-        '
-        Me.clmSSubCta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmSSubCta.DataPropertyName = "SSubCta"
-        Me.clmSSubCta.HeaderText = "SSub Cuenta"
-        Me.clmSSubCta.Name = "clmSSubCta"
-        Me.clmSSubCta.Width = 95
-        '
-        'clmSSSubCuenta
-        '
-        Me.clmSSSubCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmSSSubCuenta.DataPropertyName = "SSSubCta"
-        Me.clmSSSubCuenta.HeaderText = "SSSub Cuenta"
-        Me.clmSSSubCuenta.Name = "clmSSSubCuenta"
-        Me.clmSSSubCuenta.Width = 102
-        '
-        'clmNombre
-        '
-        Me.clmNombre.DataPropertyName = "NomCuenta"
-        Me.clmNombre.HeaderText = "Nombre"
-        Me.clmNombre.Name = "clmNombre"
-        Me.clmNombre.Width = 125
-        '
-        'clmCargo
-        '
-        Me.clmCargo.DataPropertyName = "Cargo"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle1
-        Me.clmCargo.HeaderText = "Cargo"
-        Me.clmCargo.Name = "clmCargo"
-        '
-        'clmAbono
-        '
-        Me.clmAbono.DataPropertyName = "Abono"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clmAbono.HeaderText = "Abono"
-        Me.clmAbono.Name = "clmAbono"
         '
         '_390GeneraPolizaPasivo
         '

@@ -313,16 +313,22 @@ Public Class _390GeneraPolizaPasivo
                 If DgvFacturas.Rows.Count > 1 Then
                     'Dim ID_ProductoDet As Integer
                     For Each Fila As DataGridViewRow In DgvFacturas.Rows
+
                         For i As Integer = 0 To dgvGastos.Rows.Count - 1
-                            If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
-                                DgvFacturas.Rows(i).Cells(check.Index).Value = True
-                                Sumar()
-                                For j As Integer = 0 To dgvGastos.Rows.Count - 1
-                                    If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value And DgvFacturas.CurrentRow.Cells(IdProveedor.Index).Value = dgvGastos.Rows(j).Cells(IdProveedorFG.Index).Value Then
-                                        dgvGastos.Rows(j).Cells(chkb.Index).Value = True
-                                    End If
-                                Next
-                            End If
+                            Try
+                                If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
+                                    DgvFacturas.Rows(i).Cells(check.Index).Value = True
+                                    Sumar()
+                                    For j As Integer = 0 To dgvGastos.Rows.Count - 1
+                                        If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value And DgvFacturas.CurrentRow.Cells(IdProveedor.Index).Value = dgvGastos.Rows(j).Cells(IdProveedorFG.Index).Value Then
+                                            dgvGastos.Rows(j).Cells(chkb.Index).Value = True
+                                        End If
+                                    Next
+                                End If
+                            Catch ex As Exception
+                                Exit For
+                                'MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End Try
                         Next
                     Next
 
@@ -337,15 +343,20 @@ Public Class _390GeneraPolizaPasivo
                     'Dim ID_ProductoDet As Integer
                     For Each Fila As DataGridViewRow In DgvFacturas.Rows
                         For i As Integer = 0 To dgvGastos.Rows.Count - 1
-                            If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
-                                DgvFacturas.Rows(i).Cells(check.Index).Value = False
-                                Sumar()
-                                For j As Integer = 0 To dgvGastos.Rows.Count - 1
-                                    If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value Then
-                                        dgvGastos.Rows(j).Cells(chkb.Index).Value = False
-                                    End If
-                                Next
-                            End If
+                            Try
+                                If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
+                                    DgvFacturas.Rows(i).Cells(check.Index).Value = False
+                                    Sumar()
+                                    For j As Integer = 0 To dgvGastos.Rows.Count - 1
+                                        If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value Then
+                                            dgvGastos.Rows(j).Cells(chkb.Index).Value = False
+                                        End If
+                                    Next
+                                End If
+                            Catch ex As Exception
+                                Exit For
+
+                            End Try
                         Next
                     Next
 
