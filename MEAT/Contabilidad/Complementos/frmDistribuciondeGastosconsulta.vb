@@ -129,8 +129,8 @@ Public Class frmDistribuciondeGastosconsulta
             Me.txtImporte.Text = Sumaimporte.ToString("C2")
             Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
 
-            dgvMetodos.Enabled = True
-            dgvDetalledeProrrateo.Enabled = True
+            dgvMetodos.Enabled = False
+            dgvDetalledeProrrateo.Enabled = False
         Catch ex As Exception
 
         End Try

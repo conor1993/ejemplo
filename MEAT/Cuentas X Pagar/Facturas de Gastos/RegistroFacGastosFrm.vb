@@ -596,7 +596,7 @@ Public Class RegistroFacGastosFrm
     End Sub
 
     Private Sub mtb_ClickBuscar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBuscar
-        Buscar = True
+
 
         Me.CmbProveedor.DataSource = Proveedores
         Me.CmbProveedor.DisplayMember = "RazonSocial"
@@ -615,6 +615,7 @@ Public Class RegistroFacGastosFrm
                 ObtenerDetalle()
             End If
             Me.DgvCuentas.Enabled = True
+            Buscar = True
             'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
 
             'Try
@@ -1130,18 +1131,14 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
     End Sub
 
     Private Sub DgvCuentas_CellContentDoubleClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentDoubleClick
-
-
         Try
             If Buscar Then
                 Dim Cuenta As New CN.CuentaContableClass
                 Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value)
                 If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
-
                     Dim Ventana As New frmDistribuciondeGastosconsulta
                     frmDistribuciondeGastosconsulta.factura = TxtFactura.Text
                     If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-
                     End If
                 End If
             End If
@@ -1150,5 +1147,10 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
         End Try
 
 
+    End Sub
+
+    Private Sub limpiargrids()
+        Me.dgvDistribuciondeGastos.Rows.Clear()
+        Me.dgvdistribuciongastosdet.Rows.Clear()
     End Sub
 End Class

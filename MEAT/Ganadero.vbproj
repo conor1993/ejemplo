@@ -9,12 +9,12 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>MEAT.arranque</StartupObject>
     <RootNamespace>MEAT</RootNamespace>
-    <AssemblyName>102</AssemblyName>
+    <AssemblyName>Sistema MEAT</AssemblyName>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>false</GenerateManifests>
-    <SignManifests>false</SignManifests>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>JSLogo32.ico</ApplicationIcon>
     <TargetZone>LocalIntranet</TargetZone>
@@ -37,7 +37,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\MEAT\1.0.76.76\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\MEAT\1.0.77.77\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -52,8 +52,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>76</ApplicationRevision>
-    <ApplicationVersion>1.0.76.76</ApplicationVersion>
+    <ApplicationRevision>77</ApplicationRevision>
+    <ApplicationVersion>1.0.77.77</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -65,7 +65,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>102.xml</DocumentationFile>
+    <DocumentationFile>Sistema MEAT.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <RegisterForComInterop>false</RegisterForComInterop>
     <Optimize>false</Optimize>
@@ -79,7 +79,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>102.xml</DocumentationFile>
+    <DocumentationFile>Sistema MEAT.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <RegisterForComInterop>false</RegisterForComInterop>
     <WarningsAsErrors>
@@ -99,7 +99,7 @@
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>102.xml</DocumentationFile>
+    <DocumentationFile>Sistema MEAT.xml</DocumentationFile>
     <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -117,7 +117,7 @@
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>Migrated rules for Ganadero.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <DocumentationFile>102.xml</DocumentationFile>
+    <DocumentationFile>Sistema MEAT.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
