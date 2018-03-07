@@ -569,6 +569,7 @@ Public Class PagosaProveedoresForm
         Me.cmbBeneficiario.SelectedIndex = -1
         Me.cmbBeneficiario.Text = "Seleccione un Beneficiario..."
         Bancos.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS)
+
         Me.cmbBanco.SelectedIndex = -1
         Me.cmbBanco.Text = "Seleccione un Banco..."
         Me.cmbBeneficiario.Enabled = False

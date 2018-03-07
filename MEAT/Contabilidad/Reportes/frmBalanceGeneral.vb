@@ -229,6 +229,11 @@ Public Class frmBalanceGeneral
     End Sub
 #End Region
 
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Guardar Balance General")
 
-   
+        If Utilerias.RunControlException(Me, "Guardar", New Object() {Trans}) Is Nothing Then
+            Trans.Rollback()
+        End If
+    End Sub
 End Class
