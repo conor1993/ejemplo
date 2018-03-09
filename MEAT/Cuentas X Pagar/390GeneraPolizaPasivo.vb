@@ -164,10 +164,108 @@ Public Class _390GeneraPolizaPasivo
         End Try
     End Sub
 
+    Private Function obtenerdatasetPoliza(Poliza As ClasesNegocio.PolizaClass) As DataSet
+
+        Dim cuentac, cuentac1, cuentac2, cuentac3 As New CN.CuentaContableClass
+        Dim detalles As New CN.PolizaDetalleCollectionClass
+        detalles = Poliza.Detalles
+        Dim padre, padre1, padre2, padre3 As String
+        Dim ds As New DataSet()
+        Dim dt As New DataTable()
+        Try
+            ''--------------------------------
+            ds.Tables.Add(dt)
+            dt.Columns.Add("cta")
+            dt.Columns.Add("subcta")
+            dt.Columns.Add("ssubcta")
+            dt.Columns.Add("sssubcta")
+            dt.Columns.Add("nomcuenta1")
+            dt.Columns.Add("nomcuenta2")
+            dt.Columns.Add("nomcuenta3")
+            dt.Columns.Add("nomcuenta4")
+            dt.Columns.Add("origen")
+            dt.Columns.Add("poliza")
+            dt.Columns.Add("fecha")
+            dt.Columns.Add("importe")
+            dt.Columns.Add("cargo")
+            dt.Columns.Add("abono")
+
+            ''elemntos del tatset -------------------------------------
+
+            For Each item As CN.PolizaDetalleClass In detalles
+
+                cuentac = item.CuentaContable
+                padre = cuentac.NombreCuenta
+
+                If (cuentac.Nivel = 1) Then
+                    padre = cuentac.NombreCuenta
+                End If
+
+                If (cuentac.Nivel = 2) Then
+                    padre1 = cuentac.NombreCuenta
+                    padre = cuentac.CuentaPadre.NombreCuenta
+                End If
+
+                If (cuentac.Nivel = 3) Then
+                    padre2 = cuentac.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.NombreCuenta
+                    padre = cuentac.CuentaPadre.CuentaPadre.NombreCuenta
+                End If
+
+                If (cuentac.Nivel = 4) Then
+                    padre3 = cuentac.NombreCuenta
+                    padre2 = cuentac.CuentaPadre.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.CuentaPadre.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.CuentaPadre.CuentaPadre.NombreCuenta
+                End If
+
+                dt.Rows.Add(item.Cta, item.SCta, item.SSCta, item.SSSCta, padre, padre1, padre2, padre3, Poliza.Origen, Poliza.NumeroPoliza, Poliza.FechaPoliza, item.Importe, item.Cargo, item.Abono)
+            Next
+
+        Catch ex As Exception
+
+        End Try
+        Return ds
+    End Function
+
+    Private Function imprimir(Poliza As ClasesNegocio.PolizaClass)
+        Try
+
+            ''obtener  datos de la poliza guardada
+            Dim datos As New DataSet
+            datos = obtenerdatasetPoliza(Poliza)
+
+            ''------------------------------------
+
+            'Dim datos As New DataSet
+            'Dim query = "EXEC  rptcuentascontables 1"
+            'Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+            '    Dim adapter As New SqlDataAdapter()
+            '    adapter.SelectCommand = New SqlCommand(query, connection)
+            '    adapter.Fill(datos)
+            'End Using
+
+            Dim Reporte As New Rptpolizapasivo
+            Reporte.SetDataSource(datos.Tables(0))
+            Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
+            Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
+            Reporte.SetParameterValue("Modulo", "")
+
+            Dim pre As New ClasesNegocio.PreVisualizarForm
+            pre.Reporte = Reporte
+            pre.ShowDialog()
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        Finally
+            Cursor = Cursors.Default
+        End Try
+
+    End Function
+
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Guardar")
         Try
-            
 
             If Me.DgvFacturas.Rows.Count > 0 Then
                 For j As Integer = 0 To DgvFacturas.Rows.Count - 1
@@ -228,11 +326,21 @@ Public Class _390GeneraPolizaPasivo
                     End If
                 Next
 
-                        If Not Poliza.Guardar2(Trans) Then
-                            Trans.Rollback()
-                            MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            Exit Sub
-                        End If
+                If Not Poliza.Guardar2(Trans) Then
+                    Trans.Rollback()
+                    MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
+
+                ''---------------------------------------------------
+                ''              IMPRESIONS DE LA POLIZA
+                ''---------------------------------------------------
+
+                imprimir(Poliza)
+
+                ''---------------------------------------------------
+                ''            fin   IMPRESIONS DE LA POLIZA
+                ''---------------------------------------------------
 
                         FacturasCabCol = New CN.FacturaCabCXPColeccion
                         Dim Contabilizada As Char = "N"
@@ -282,6 +390,7 @@ Public Class _390GeneraPolizaPasivo
 
                 Next
                 Trans.Commit()
+
                 MessageBox.Show("Se generó la poliza de pasivo con el folio: " & Poliza.NumeroPoliza, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Limpiar()
             Else
@@ -368,4 +477,9 @@ Public Class _390GeneraPolizaPasivo
 
 
     End Sub
+
+
+
+
+
 End Class

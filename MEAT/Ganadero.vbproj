@@ -3289,6 +3289,17 @@
     <Compile Include="Produccion\Ventanas Auxiliares\frmAgregarFolioReferencia.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes cuentas x pagar\dtspiliza.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtspiliza.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes cuentas x pagar\Rptpolizapasivo.vb">
+      <DependentUpon>Rptpolizapasivo.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Seguridad\frmAsignarPermiso.Designer.vb">
       <DependentUpon>frmAsignarPermiso.vb</DependentUpon>
     </Compile>
@@ -5170,6 +5181,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmAgregarFolioReferencia.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes cuentas x pagar\Rptpolizapasivo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rptpolizapasivo.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Seguridad\frmAsignarPermiso.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAsignarPermiso.vb</DependentUpon>
@@ -5335,6 +5350,17 @@
       <DependentUpon>dsReporteDiariodeBancos.xsd</DependentUpon>
     </None>
     <BaseApplicationManifest Include="My Project\app.manifest" />
+    <None Include="Reportes cuentas x pagar\dtspiliza.xsc">
+      <DependentUpon>dtspiliza.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes cuentas x pagar\dtspiliza.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtspiliza.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Reportes cuentas x pagar\dtspiliza.xss">
+      <DependentUpon>dtspiliza.xsd</DependentUpon>
+    </None>
     <None Include="Resources\Cow_head_Icon_64.png" />
     <None Include="Resources\Meat.ico" />
     <None Include="Resources\Meat2.ico" />
