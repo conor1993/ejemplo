@@ -188,25 +188,38 @@ Public Class _390GeneraPolizaPasivo
             dt.Columns.Add("fecha")
             dt.Columns.Add("importe")
             dt.Columns.Add("cargo")
-            ''elemntos del tatset ------------
+            dt.Columns.Add("abono")
+
+            ''elemntos del tatset -------------------------------------
 
             For Each item As CN.PolizaDetalleClass In detalles
+
                 cuentac = item.CuentaContable
                 padre = cuentac.NombreCuenta
-                If (cuentac.CtaPadre <> "") Then
-                    cuentac1 = cuentac.CuentaPadre
-                    padre1 = cuentac1.NombreCuenta
-                    If (cuentac1.CtaPadre <> "") Then
-                        cuentac2 = cuentac1.CuentaPadre
-                        padre2 = cuentac2.NombreCuenta
-                        If (cuentac2.CtaPadre <> "") Then
-                            cuentac3 = cuentac2.CuentaPadre
-                            padre3 = cuentac3.NombreCuenta
-                        End If
-                    End If
+
+                If (cuentac.Nivel = 1) Then
+                    padre = cuentac.NombreCuenta
                 End If
-                ''-----------------------------------------
-                dt.Rows.Add(item.Cta, item.SCta, item.SSCta, item.SSSCta, padre, padre1, padre2, padre3, Poliza.Origen, Poliza.NumeroPoliza, "fecha", item.Importe)
+
+                If (cuentac.Nivel = 2) Then
+                    padre1 = cuentac.NombreCuenta
+                    padre = cuentac.CuentaPadre.NombreCuenta
+                End If
+
+                If (cuentac.Nivel = 3) Then
+                    padre2 = cuentac.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.NombreCuenta
+                    padre = cuentac.CuentaPadre.CuentaPadre.NombreCuenta
+                End If
+
+                If (cuentac.Nivel = 4) Then
+                    padre3 = cuentac.NombreCuenta
+                    padre2 = cuentac.CuentaPadre.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.CuentaPadre.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.CuentaPadre.CuentaPadre.NombreCuenta
+                End If
+
+                dt.Rows.Add(item.Cta, item.SCta, item.SSCta, item.SSSCta, padre, padre1, padre2, padre3, Poliza.Origen, Poliza.NumeroPoliza, Poliza.FechaPoliza, item.Importe, item.Cargo, item.Abono)
             Next
 
         Catch ex As Exception
