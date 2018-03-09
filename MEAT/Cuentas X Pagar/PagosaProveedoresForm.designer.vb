@@ -23,22 +23,39 @@ Partial Class PagosaProveedoresForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PagosaProveedoresForm))
-        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gpo = New System.Windows.Forms.GroupBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.DgvCuentas = New System.Windows.Forms.DataGridView()
+        Me.clmId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCuentaContablePri = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DgvFacturas = New System.Windows.Forms.DataGridView()
+        Me.ClmPagar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.clmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFechaVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Abono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSaldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmApagar = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtAbono = New Integra.Controles.TextboxDecimal()
         Me.txtCargo = New Integra.Controles.TextboxDecimal()
@@ -70,12 +87,12 @@ Partial Class PagosaProveedoresForm
         Me.lblRef = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbBeneficiario = New System.Windows.Forms.ComboBox()
-        Me.Beneficiarios = New ClasesNegocio.BeneficiarioCollectionClass()
         Me.cmbBanco = New System.Windows.Forms.ComboBox()
         Me.Bancos = New ClasesNegocio.BancosCollectionClass()
         Me.txtFolio = New System.Windows.Forms.TextBox()
         Me.txtBeneficiario = New System.Windows.Forms.TextBox()
         Me.txtBanco = New System.Windows.Forms.TextBox()
+        Me.Beneficiarios = New ClasesNegocio.BeneficiarioCollectionClass()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.pDg = New System.Windows.Forms.PrintDialog()
@@ -84,31 +101,14 @@ Partial Class PagosaProveedoresForm
         Me.ImprimirCheque = New ClasesNegocio.PrintDocumentChequeClass()
         Me.Cheques = New ClasesNegocio.ChequeCollectionClass()
         Me.TmBeneficiario = New System.Windows.Forms.Timer(Me.components)
-        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCuentaContablePri = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DgvCuentas = New System.Windows.Forms.DataGridView()
-        Me.ClmPagar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.clmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmFechaVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Abono = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmSaldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmApagar = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gpo.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgvFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.pan.SuspendLayout()
         Me.gpoCuentas.SuspendLayout()
-        CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gpo
@@ -147,6 +147,107 @@ Partial Class PagosaProveedoresForm
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(670, 256)
         Me.TableLayoutPanel1.TabIndex = 0
         '
+        'DgvCuentas
+        '
+        Me.DgvCuentas.AllowUserToAddRows = False
+        Me.DgvCuentas.AllowUserToDeleteRows = False
+        Me.DgvCuentas.BackgroundColor = System.Drawing.SystemColors.ControlLight
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvCuentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmId, Me.clmCuentaContablePri, Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono})
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvCuentas.DefaultCellStyle = DataGridViewCellStyle4
+        Me.DgvCuentas.Location = New System.Drawing.Point(3, 119)
+        Me.DgvCuentas.Name = "DgvCuentas"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvCuentas.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.DgvCuentas.RowHeadersVisible = False
+        Me.DgvCuentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DgvCuentas.Size = New System.Drawing.Size(664, 101)
+        Me.DgvCuentas.TabIndex = 1
+        '
+        'clmId
+        '
+        Me.clmId.HeaderText = "ID Cuenta Contable"
+        Me.clmId.Name = "clmId"
+        Me.clmId.Visible = False
+        '
+        'clmCuentaContablePri
+        '
+        Me.clmCuentaContablePri.HeaderText = "Cuenta Contable"
+        Me.clmCuentaContablePri.Name = "clmCuentaContablePri"
+        Me.clmCuentaContablePri.Visible = False
+        '
+        'ClmCtaMayor
+        '
+        Me.ClmCtaMayor.HeaderText = "Cta. Mayor"
+        Me.ClmCtaMayor.Name = "ClmCtaMayor"
+        Me.ClmCtaMayor.Width = 85
+        '
+        'ClmSubCta
+        '
+        Me.ClmSubCta.HeaderText = "Sub Cta."
+        Me.ClmSubCta.Name = "ClmSubCta"
+        Me.ClmSubCta.Width = 75
+        '
+        'ClmSsbCta
+        '
+        Me.ClmSsbCta.HeaderText = "Ssb Cta."
+        Me.ClmSsbCta.Name = "ClmSsbCta"
+        Me.ClmSsbCta.Width = 75
+        '
+        'ClmSssCta
+        '
+        Me.ClmSssCta.HeaderText = "Sss Cta."
+        Me.ClmSssCta.Name = "ClmSssCta"
+        Me.ClmSssCta.Width = 75
+        '
+        'ClmDescripcion
+        '
+        Me.ClmDescripcion.HeaderText = "Descripción"
+        Me.ClmDescripcion.Name = "ClmDescripcion"
+        Me.ClmDescripcion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ClmDescripcion.Width = 150
+        '
+        'ClmCargo
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.LemonChiffon
+        DataGridViewCellStyle2.Format = "C4"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.ClmCargo.HeaderText = "Cargo"
+        Me.ClmCargo.Name = "ClmCargo"
+        '
+        'ClmAbono
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle3.Format = "C4"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ClmAbono.HeaderText = "Abono"
+        Me.ClmAbono.Name = "ClmAbono"
+        '
         'DgvFacturas
         '
         Me.DgvFacturas.AllowUserToAddRows = False
@@ -158,18 +259,90 @@ Partial Class PagosaProveedoresForm
         Me.DgvFacturas.Location = New System.Drawing.Point(3, 3)
         Me.DgvFacturas.MultiSelect = False
         Me.DgvFacturas.Name = "DgvFacturas"
-        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvFacturas.RowHeadersDefaultCellStyle = DataGridViewCellStyle39
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvFacturas.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.DgvFacturas.RowHeadersVisible = False
         Me.DgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DgvFacturas.Size = New System.Drawing.Size(664, 110)
         Me.DgvFacturas.TabIndex = 0
+        '
+        'ClmPagar
+        '
+        Me.ClmPagar.HeaderText = ""
+        Me.ClmPagar.Name = "ClmPagar"
+        Me.ClmPagar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ClmPagar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.ClmPagar.Width = 50
+        '
+        'clmNoFactura
+        '
+        Me.clmNoFactura.DataPropertyName = "NoFactura"
+        Me.clmNoFactura.HeaderText = "No Factura"
+        Me.clmNoFactura.Name = "clmNoFactura"
+        Me.clmNoFactura.ReadOnly = True
+        Me.clmNoFactura.Width = 90
+        '
+        'clmFechaVencimiento
+        '
+        Me.clmFechaVencimiento.DataPropertyName = "FechaVencimiento"
+        DataGridViewCellStyle6.Format = "d"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.clmFechaVencimiento.DefaultCellStyle = DataGridViewCellStyle6
+        Me.clmFechaVencimiento.HeaderText = "Fecha Vencimiento"
+        Me.clmFechaVencimiento.Name = "clmFechaVencimiento"
+        Me.clmFechaVencimiento.ReadOnly = True
+        Me.clmFechaVencimiento.Width = 121
+        '
+        'Abono
+        '
+        Me.Abono.DataPropertyName = "ImporteAbono"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "C2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.Abono.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Abono.HeaderText = "Abono"
+        Me.Abono.Name = "Abono"
+        Me.Abono.ReadOnly = True
+        '
+        'clmTotal
+        '
+        Me.clmTotal.DataPropertyName = "ImporteTotal"
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "C2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.clmTotal.DefaultCellStyle = DataGridViewCellStyle8
+        Me.clmTotal.HeaderText = "Total"
+        Me.clmTotal.Name = "clmTotal"
+        Me.clmTotal.ReadOnly = True
+        '
+        'clmSaldo
+        '
+        Me.clmSaldo.DataPropertyName = "Saldo"
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle9.Format = "C2"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.clmSaldo.DefaultCellStyle = DataGridViewCellStyle9
+        Me.clmSaldo.HeaderText = "Saldo"
+        Me.clmSaldo.Name = "clmSaldo"
+        Me.clmSaldo.ReadOnly = True
+        '
+        'clmApagar
+        '
+        Me.clmApagar.DataPropertyName = "ImporteaPagar"
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.LemonChiffon
+        DataGridViewCellStyle10.Format = "C2"
+        DataGridViewCellStyle10.NullValue = Nothing
+        Me.clmApagar.DefaultCellStyle = DataGridViewCellStyle10
+        Me.clmApagar.HeaderText = "A pagar"
+        Me.clmApagar.Name = "clmApagar"
+        Me.clmApagar.ReadOnly = True
         '
         'Panel1
         '
@@ -519,14 +692,6 @@ Partial Class PagosaProveedoresForm
         Me.cmbBeneficiario.TabIndex = 14
         Me.cmbBeneficiario.ValueMember = "Codigo"
         '
-        'Beneficiarios
-        '
-        Me.Beneficiarios.AllowEdit = True
-        Me.Beneficiarios.AllowNew = True
-        Me.Beneficiarios.AllowRemove = True
-        Me.Beneficiarios.Name = Nothing
-        Me.Beneficiarios.RaiseListChangedEvents = True
-        '
         'cmbBanco
         '
         Me.cmbBanco.DataSource = Me.Bancos
@@ -579,6 +744,14 @@ Partial Class PagosaProveedoresForm
         Me.txtBanco.Name = "txtBanco"
         Me.txtBanco.Size = New System.Drawing.Size(100, 20)
         Me.txtBanco.TabIndex = 1
+        '
+        'Beneficiarios
+        '
+        Me.Beneficiarios.AllowEdit = True
+        Me.Beneficiarios.AllowNew = True
+        Me.Beneficiarios.AllowRemove = True
+        Me.Beneficiarios.Name = Nothing
+        Me.Beneficiarios.RaiseListChangedEvents = True
         '
         'mtb
         '
@@ -667,179 +840,6 @@ Partial Class PagosaProveedoresForm
         '
         Me.TmBeneficiario.Interval = 1000
         '
-        'ClmAbono
-        '
-        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle40.Format = "C4"
-        DataGridViewCellStyle40.NullValue = Nothing
-        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle40
-        Me.ClmAbono.HeaderText = "Abono"
-        Me.ClmAbono.Name = "ClmAbono"
-        '
-        'ClmCargo
-        '
-        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle41.BackColor = System.Drawing.Color.LemonChiffon
-        DataGridViewCellStyle41.Format = "C4"
-        DataGridViewCellStyle41.NullValue = Nothing
-        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle41
-        Me.ClmCargo.HeaderText = "Cargo"
-        Me.ClmCargo.Name = "ClmCargo"
-        '
-        'ClmDescripcion
-        '
-        Me.ClmDescripcion.HeaderText = "Descripción"
-        Me.ClmDescripcion.Name = "ClmDescripcion"
-        Me.ClmDescripcion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ClmDescripcion.Width = 150
-        '
-        'ClmSssCta
-        '
-        Me.ClmSssCta.HeaderText = "Sss Cta."
-        Me.ClmSssCta.Name = "ClmSssCta"
-        Me.ClmSssCta.Width = 75
-        '
-        'ClmSsbCta
-        '
-        Me.ClmSsbCta.HeaderText = "Ssb Cta."
-        Me.ClmSsbCta.Name = "ClmSsbCta"
-        Me.ClmSsbCta.Width = 75
-        '
-        'ClmSubCta
-        '
-        Me.ClmSubCta.HeaderText = "Sub Cta."
-        Me.ClmSubCta.Name = "ClmSubCta"
-        Me.ClmSubCta.Width = 75
-        '
-        'ClmCtaMayor
-        '
-        Me.ClmCtaMayor.HeaderText = "Cta. Mayor"
-        Me.ClmCtaMayor.Name = "ClmCtaMayor"
-        Me.ClmCtaMayor.Width = 85
-        '
-        'clmCuentaContablePri
-        '
-        Me.clmCuentaContablePri.HeaderText = "Cuenta Contable"
-        Me.clmCuentaContablePri.Name = "clmCuentaContablePri"
-        Me.clmCuentaContablePri.Visible = False
-        '
-        'clmId
-        '
-        Me.clmId.HeaderText = "ID Cuenta Contable"
-        Me.clmId.Name = "clmId"
-        Me.clmId.Visible = False
-        '
-        'DgvCuentas
-        '
-        Me.DgvCuentas.AllowUserToAddRows = False
-        Me.DgvCuentas.AllowUserToDeleteRows = False
-        Me.DgvCuentas.BackgroundColor = System.Drawing.SystemColors.ControlLight
-        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle42.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvCuentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle42
-        Me.DgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmId, Me.clmCuentaContablePri, Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono})
-        DataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvCuentas.DefaultCellStyle = DataGridViewCellStyle43
-        Me.DgvCuentas.Location = New System.Drawing.Point(3, 119)
-        Me.DgvCuentas.Name = "DgvCuentas"
-        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle44.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvCuentas.RowHeadersDefaultCellStyle = DataGridViewCellStyle44
-        Me.DgvCuentas.RowHeadersVisible = False
-        Me.DgvCuentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvCuentas.Size = New System.Drawing.Size(664, 101)
-        Me.DgvCuentas.TabIndex = 1
-        '
-        'ClmPagar
-        '
-        Me.ClmPagar.HeaderText = ""
-        Me.ClmPagar.Name = "ClmPagar"
-        Me.ClmPagar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ClmPagar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.ClmPagar.Width = 50
-        '
-        'clmNoFactura
-        '
-        Me.clmNoFactura.DataPropertyName = "NoFactura"
-        Me.clmNoFactura.HeaderText = "No Factura"
-        Me.clmNoFactura.Name = "clmNoFactura"
-        Me.clmNoFactura.ReadOnly = True
-        Me.clmNoFactura.Width = 90
-        '
-        'clmFechaVencimiento
-        '
-        Me.clmFechaVencimiento.DataPropertyName = "FechaVencimiento"
-        DataGridViewCellStyle34.Format = "d"
-        DataGridViewCellStyle34.NullValue = Nothing
-        Me.clmFechaVencimiento.DefaultCellStyle = DataGridViewCellStyle34
-        Me.clmFechaVencimiento.HeaderText = "Fecha Vencimiento"
-        Me.clmFechaVencimiento.Name = "clmFechaVencimiento"
-        Me.clmFechaVencimiento.ReadOnly = True
-        Me.clmFechaVencimiento.Width = 121
-        '
-        'Abono
-        '
-        Me.Abono.DataPropertyName = "ImporteAbono"
-        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle35.Format = "C2"
-        DataGridViewCellStyle35.NullValue = Nothing
-        Me.Abono.DefaultCellStyle = DataGridViewCellStyle35
-        Me.Abono.HeaderText = "Abono"
-        Me.Abono.Name = "Abono"
-        Me.Abono.ReadOnly = True
-        '
-        'clmTotal
-        '
-        Me.clmTotal.DataPropertyName = "ImporteTotal"
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle36.Format = "C2"
-        DataGridViewCellStyle36.NullValue = Nothing
-        Me.clmTotal.DefaultCellStyle = DataGridViewCellStyle36
-        Me.clmTotal.HeaderText = "Total"
-        Me.clmTotal.Name = "clmTotal"
-        Me.clmTotal.ReadOnly = True
-        '
-        'clmSaldo
-        '
-        Me.clmSaldo.DataPropertyName = "Saldo"
-        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle37.Format = "C2"
-        DataGridViewCellStyle37.NullValue = Nothing
-        Me.clmSaldo.DefaultCellStyle = DataGridViewCellStyle37
-        Me.clmSaldo.HeaderText = "Saldo"
-        Me.clmSaldo.Name = "clmSaldo"
-        Me.clmSaldo.ReadOnly = True
-        '
-        'clmApagar
-        '
-        Me.clmApagar.DataPropertyName = "ImporteaPagar"
-        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle38.BackColor = System.Drawing.Color.LemonChiffon
-        DataGridViewCellStyle38.Format = "C2"
-        DataGridViewCellStyle38.NullValue = Nothing
-        Me.clmApagar.DefaultCellStyle = DataGridViewCellStyle38
-        Me.clmApagar.HeaderText = "A pagar"
-        Me.clmApagar.Name = "clmApagar"
-        Me.clmApagar.ReadOnly = True
-        '
         'PagosaProveedoresForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -857,6 +857,7 @@ Partial Class PagosaProveedoresForm
         Me.gpo.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
+        CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgvFacturas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -864,7 +865,6 @@ Partial Class PagosaProveedoresForm
         Me.pan.PerformLayout()
         Me.gpoCuentas.ResumeLayout(False)
         Me.gpoCuentas.PerformLayout()
-        CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

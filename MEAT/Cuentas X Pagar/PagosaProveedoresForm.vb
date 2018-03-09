@@ -366,7 +366,16 @@ Public Class PagosaProveedoresForm
                     End If
                 End If
             End If
+        Else
+            Me.DgvFacturas.DataSource = Nothing
+            NoFacturas = False
+            Buscar = False
+            Me.DgvFacturas.Columns(3).DataPropertyName = "ImporteAbono"
+            Me.DgvFacturas.Columns(4).DataPropertyName = "ImporteTotal"
+            Me.DgvFacturas.Columns(5).DataPropertyName = "Saldo"
+            Me.DgvFacturas.Columns(6).DataPropertyName = "ImporteaPagar"
         End If
+
     End Sub
 
     Private Sub txtBeneficiario_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBeneficiario.KeyDown
@@ -850,6 +859,11 @@ Public Class PagosaProveedoresForm
 
     End Sub
     Private Sub DgvCuentas_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs)
+        Dim abono As Decimal = 0
+        If String.IsNullOrEmpty(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+            abono = Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString().Replace(",", "") ' e.RowIndex
+        End If
+
         If txtImporte.Valor > 0 Then
             If e.RowIndex > 0 Then
                 If IsNothing(Me.DgvCuentas.Rows(e.RowIndex - 1).DataBoundItem) Then
@@ -1326,4 +1340,9 @@ Public Class PagosaProveedoresForm
     Private Sub DgvFacturas_CellEndEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvFacturas.CellEndEdit
 
     End Sub
+
+    'Private Sub DgvCuentas_CellBeginEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvCuentas.CellBeginEdit
+
+
+    'End Sub
 End Class
