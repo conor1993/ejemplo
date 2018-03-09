@@ -234,7 +234,7 @@ Public Class FrmAperturaLoteCorte2
                                 End If
                             Next
                             command.Transaction.Commit()
-                        
+
                         End If
                         connection.Close()
                     Catch ex As Exception

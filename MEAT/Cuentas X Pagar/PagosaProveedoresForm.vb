@@ -2,6 +2,7 @@ Imports CN = ClasesNegocio
 Imports Integra.Clases
 Imports HC = Integralab.ORM.HelperClasses
 Imports System.Windows.Forms
+Imports System.Data.SqlClient
 
 Public Class PagosaProveedoresForm
     Implements InterfaceForm
@@ -117,14 +118,14 @@ Public Class PagosaProveedoresForm
             If IsNothing(item.Tag) And IsNothing(cheque.Cuenta) Then
                 item.Selected = True
                 txtCuenta.Text = String.Format("{0} - {1}")
-                txtSaldo.Text = (0D).ToString("C").ToString
+                txtSaldo.Text = (0D).ToString("N4").ToString
             ElseIf Not IsNothing(item.Tag) And Not IsNothing(cheque.Cuenta) Then
                 Dim tmp As CN.CuentaClass = DirectCast(item.Tag, CN.CuentaClass)
                 If tmp.Cuenta = cheque.Cuenta.Cuenta Then
                     item.Selected = True
                     Cuenta = tmp
                     txtCuenta.Text = String.Format("{0} - {1}", item.SubItems(0).Text, item.SubItems(1).Text)
-                    txtSaldo.Text = Cuenta.SaldoActual.ToString("C")
+                    txtSaldo.Text = Cuenta.SaldoActual.ToString("N4")
                 End If
             End If
         Next
@@ -196,6 +197,24 @@ Public Class PagosaProveedoresForm
             Cadena &= "* Facturas a Pagar" & vbCrLf
             Bl = True
         End If
+
+        If DgvCuentas.Rows.Count > 0 Then
+            Dim cargo As String
+            Dim abono As String
+            For Each Fila As DataGridViewRow In DgvCuentas.Rows
+                If Not Fila.IsNewRow Then
+                    cargo = Fila.Cells(ClmCargo.Index).Value
+                    abono = Fila.Cells(ClmAbono.Index).Value
+
+                    If (String.IsNullOrEmpty(cargo) Or CDec(cargo)) <= 0 And
+                        (String.IsNullOrEmpty(abono) Or CDec(abono) <= 0) Then
+                        Cadena &= "* Existen cuentas contables sin importe en el abono" & vbCrLf
+                        Exit For
+                    End If
+                End If
+            Next
+        End If
+
         If Not Bl Then
             Cadena = Nothing
             'cheque.Anticipo = chkAnticipo.Checked
@@ -268,10 +287,27 @@ Public Class PagosaProveedoresForm
     End Sub
 
     Private Sub RellenarBeneficiarios()
-        Beneficiarios.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS, True)
-        txtBeneficiario.AutoCompleteSource = AutoCompleteSource.CustomSource
-        txtBeneficiario.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        txtBeneficiario.AutoCompleteCustomSource.AddRange(Beneficiarios.Listar)
+        Dim query As String = "SELECT t1.Codigo, t1.Beneficiario " &
+  " FROM usrBanBeneficiarios t1 " &
+ " INNER JOIN MCatCompProveedores t2 ON t1.EsProveedor = t2.PrIdProveedor " &
+ " INNER JOIN usrCXPFacturasApagar t3 on t2.PrIdProveedor = t3.IdProveedor " &
+        " WHERE(t1.Estatus = 1 And t2.PrEstatus = 1 And t3.Estatus = 1) " &
+  " GROUP BY t1.Codigo, t1.Beneficiario " &
+  " ORDER BY t1.Codigo "
+        Me.cmbBeneficiario.SelectedIndex = -1
+        Dim tb As New DataTable
+        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+        Using sqlcom As New SqlCommand(query, sqlCon)
+            Dim adp As New SqlDataAdapter(sqlcom)
+            sqlCon.Open()
+            adp.Fill(tb)
+            Me.cmbBeneficiario.DataSource = tb
+            sqlCon.Close()
+        End Using
+        'Beneficiarios.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS, True)
+        'txtBeneficiario.AutoCompleteSource = AutoCompleteSource.CustomSource
+        'txtBeneficiario.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        'txtBeneficiario.AutoCompleteCustomSource.AddRange(Beneficiarios.Listar)
     End Sub
 
     Private Sub cmbBeneficiario_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbBeneficiario.KeyPress
@@ -334,10 +370,10 @@ Public Class PagosaProveedoresForm
     End Sub
 
     Private Sub txtBeneficiario_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBeneficiario.KeyDown
-        Select Case e.KeyCode
-            Case Keys.F12
-                Beneficiarios.Obtener(CN.CondicionEnum.ACTIVOS)
-        End Select
+        'Select Case e.KeyCode
+        '    Case Keys.F12
+        '        Beneficiarios.Obtener(CN.CondicionEnum.ACTIVOS)
+        'End Select
     End Sub
 
     Private Sub txtBeneficiario_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBeneficiario.TextChanged
@@ -374,7 +410,10 @@ Public Class PagosaProveedoresForm
                         ' Me.DgvCuentas.DataSource = Cuenta.CuentaContable
                         Cuen = Cuenta
                         RellenarGridCuentas(Cuenta.CuentaContable, "BCO", 0, txtImporte.Valor)
-                        txtSaldo.Text = Cuenta.SaldoActual.ToString("C")
+
+                        'txtSaldo.Text = Cuenta.SaldoActual.ToString("C")
+                        txtSaldo.Text = Cuenta.SaldoActual.ToString("N4")
+
                         txtFolio.Text = (Cuenta.FolioActual + 1).ToString
 
                         Dim tc As New CN.TipoCambioCollectionClass
@@ -456,7 +495,7 @@ Public Class PagosaProveedoresForm
     End Sub
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
-        Dim Tran As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "PagoProveedores")
+        Dim Tran As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "PagoProveedores")
         Try
             If IsNothing(Validar()) Then
                 If VerificarBalance() = 0 Then
@@ -601,7 +640,8 @@ Public Class PagosaProveedoresForm
     Private Sub txtTipoCambio_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtTipoCambio.TextChanged
         If Not bl Then
             bl = True
-            txtTipoCambio.Text = txtTipoCambio.Valor.ToString("C")
+            'txtTipoCambio.Text = txtTipoCambio.Valor.ToString("C")
+            txtTipoCambio.Text = txtTipoCambio.Valor.ToString("C2")
             bl = False
         End If
     End Sub
@@ -623,20 +663,20 @@ Public Class PagosaProveedoresForm
     '            txtImporte.Text = txtImporte.Valor.ToString("C")
     '            If Me.txtTipoCambio.Valor = 0 Then
     '                ValorGridCuentas(0, 5, txtImporte.Valor)
-    '                Me.txtAbono.Text = txtImporte.Valor.ToString("C2")
+    '                Me.txtAbono.Text = txtImporte.Valor.ToString("N4")
     '                If Me.DgvCuentas.Rows.Count > 1 Then
     '                    Me.DgvCuentas.Rows(1).Cells("ClmAbono").Value = Me.txtAbono.Text
     '                    Me.txtCargo.Text = Me.txtAbono.Text
     '                End If
     '            Else
     '                ValorGridCuentas(0, 6, txtImporte.Valor * txtTipoCambio.Valor)
-    '                Me.txtAbono.Text = (txtImporte.Valor * txtTipoCambio.Valor).ToString("C2")
+    '                Me.txtAbono.Text = (txtImporte.Valor * txtTipoCambio.Valor).ToString("N4")
     '                If Me.DgvCuentas.Rows.Count > 1 Then
     '                    Me.DgvCuentas.Rows(1).Cells("ClmCargo").Value = Me.txtAbono.Text
-    '                    Me.txtCargo.Text = Me.txtAbono.Valor.ToString("C2")
+    '                    Me.txtCargo.Text = Me.txtAbono.Valor.ToString("N4")
     '                End If
     '            End If
-    '            'Me.DgvCuentas.Rows(0).Cells("ClmAbono").Value = (txtImporte.Valor * txtTipoCambio.Valor).ToString("C2")
+    '            'Me.DgvCuentas.Rows(0).Cells("ClmAbono").Value = (txtImporte.Valor * txtTipoCambio.Valor).ToString("N4")
     '            bl = False
     '        End If
     '    End If
@@ -669,7 +709,97 @@ Public Class PagosaProveedoresForm
             End If
         End If
     End Sub
-    Private Sub DgvCuentas_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DgvCuentas.KeyDown
+
+    Private Function CuentasRepetidas(ByVal cta As CN.CuentaContableClass) As Boolean
+        Try
+            For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+                If cta.NombreCuenta = Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value Then
+                    Return True
+                End If
+            Next
+            Return False
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Function
+
+    Private Sub RellenarGridCuentas(ByVal Cta As ClasesNegocio.CuentaContableClass)
+        Try
+            Dim CtasBan As New CN.CuentaCollectionClass
+            CtasBan.Obtener(Cta.Codigo)
+            If CtasBan.Count > 0 Then
+                MsgBox("Imposible obtener la cuenta, es una Cuenta Bancaria", MsgBoxStyle.Information, "Aviso")
+            Else
+                If CuentasRepetidas(Cta) Then
+                    MsgBox("Imposible obtener la cuenta, Error de duplicidad", MsgBoxStyle.Information, "Aviso")
+                Else
+                    Dim i As Integer = Me.DgvCuentas.Rows.Count
+                    If i <> 0 Then
+                        If Me.DgvCuentas.Rows(0).Cells("ClmCtaMayor").Value = Cta.CuentaMayor And _
+                        Me.DgvCuentas.Rows(0).Cells("ClmSubCta").Value = Cta.SubCuenta And _
+                        Me.DgvCuentas.Rows(0).Cells("ClmSsbCta").Value = Cta.SSubCuenta And _
+                        Me.DgvCuentas.Rows(0).Cells("ClmSssCta").Value = Cta.SSSubCuenta And _
+                        Me.DgvCuentas.Rows(0).Cells("ClmDescripcion").Value = Cta.NombreCuenta Then
+                            MsgBox("Imposible agregar cuenta contable duplicada", MsgBoxStyle.Information, "Aviso")
+                        Else
+                            If Not Me.DgvCuentas.Rows(i - 1).Cells("ClmDescripcion").Value = "" Then
+                                Me.DgvCuentas.Rows.Add()
+                                Me.DgvCuentas.Rows(i).Cells("clmId").Value = Cta.Codigo
+                                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
+                                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
+                                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Cta.SSSubCuenta
+                                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
+                                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+                                'Me.DgvCuentas.Rows.Add()
+                            Else
+                                Me.DgvCuentas.Rows(i - 1).Cells("clmId").Value = Cta.Codigo
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmSsbCta").Value = Cta.SSubCuenta
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmSssCta").Value = Cta.SSSubCuenta
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmCargo").Value = 0
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmAbono").Value = 0
+                                'Me.DgvCuentas.Rows.Add()
+                            End If
+                        End If
+                    Else
+                        Me.DgvCuentas.Rows.Add()
+                        Me.DgvCuentas.Rows(i).Cells("clmId").Value = Cta.Codigo
+                        Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                        Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
+                        Me.DgvCuentas.Rows(i).Cells("ClmSClmCtaMayorsbCta").Value = Cta.SSubCuenta
+                        Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Cta.SSSubCuenta
+                        Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                        Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
+                        Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+                        Me.DgvCuentas.Rows.Add()
+                    End If
+                    Me.calcular()
+                    'If Me.DgvCuentas.Rows.Count > 0 Then
+                    '    For j As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+                    '        If j > 0 Then
+                    '            Me.DgvCuentas.Rows(j).Cells("ClmAbono").ReadOnly = False
+                    '        End If
+
+                    '    Next
+                    'End If
+
+                    'If Me.DgvCuentas.Rows.Count = 1 Then
+                    'For j As Integer = 0 To Me.DgvCuentas.Columns.Count - 3
+                    '    Me.DgvCuentas.Rows(0).Cells(j).ReadOnly = True
+                    'Next
+                    'End If
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    Private Sub DgvCuentas_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         'Select Case e.KeyCode
         '    Case Keys.Delete
         '        'If Me.DgvCuentas.SelectedRows.Count > 1 Then fg.Rows.Remove(fg.RowSel)
@@ -688,8 +818,38 @@ Public Class PagosaProveedoresForm
         '            End If
         '        End If
         'End Select
+
+        'If e.KeyCode = Keys.F3 Then
+        '    Try
+        '        Dim buscarCuenta As New BusquedaCuentasContablesForm
+        '        buscarCuenta.BloquearCaracteristicas = True
+        '        'ojo
+        '        'buscarCuenta.Afectables = CheckState.Checked
+        '        If buscarCuenta.ShowDialog = Windows.Forms.DialogResult.OK Then
+        '            Me.RellenarGridCuentas(buscarCuenta.CuentaContable)
+        '        End If
+        '    Catch ex As Exception
+        '        MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        '    End Try
+        'End If
+        'If e.KeyCode = Keys.Delete Then
+        '    If MsgBox("¿Desea Realmente Borrar el detalle?", MsgBoxStyle.YesNo, "Aviso") = MsgBoxResult.No Then
+        '        Exit Sub
+        '    Else
+        '        Me.DgvCuentas.Rows.Remove(Me.DgvCuentas.SelectedRows(0))
+        '        SumaCargo = 0
+        '        SumaAbono = 0
+        '        For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+        '            SumaCargo = SumaCargo + Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value
+        '            SumaAbono = SumaAbono + Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value
+        '        Next
+        '        Me.txtSumaCargo.Text = SumaCargo.ToString("C2")
+        '        Me.txtSumaAbono.Text = SumaAbono.ToString("C2")
+        '    End If
+        'End If
+
     End Sub
-    Private Sub DgvCuentas_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvCuentas.CellBeginEdit
+    Private Sub DgvCuentas_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs)
         If txtImporte.Valor > 0 Then
             If e.RowIndex > 0 Then
                 If IsNothing(Me.DgvCuentas.Rows(e.RowIndex - 1).DataBoundItem) Then
@@ -711,7 +871,7 @@ Public Class PagosaProveedoresForm
             txtImporte.Focus()
         End If
     End Sub
-    Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
+    Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
         Select Case e.ColumnIndex
             Case 0 To 3
                 Dim tmp As CN.CuentaContableClass
@@ -765,6 +925,10 @@ Public Class PagosaProveedoresForm
         End If
         Me.DgvCuentas.Rows(ren).Cells("ClmCargo").Value = Cargo
         Me.DgvCuentas.Rows(ren).Cells("ClmAbono").Value = Abono
+
+        Me.calcular()
+
+
         'r.userdata = Cta
     End Sub
 
@@ -897,9 +1061,9 @@ Public Class PagosaProveedoresForm
             End If
 
             If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
-                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("N4")
             Else
-                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("N4")
             End If
         Next
         txtPoliza.Text = Poliza.NumeroPoliza
@@ -918,7 +1082,7 @@ Public Class PagosaProveedoresForm
         PagoProv.CuentaBancaria = Cuen
         PagoProv.Proveedor = Proveedor
     End Sub
-    Private Function GuardarPago(ByVal Tr As IntegraLab.ORM.HelperClasses.Transaction) As Boolean
+    Private Function GuardarPago(ByVal Tr As Integralab.ORM.HelperClasses.Transaction) As Boolean
         Try
             For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
                 If CBool(Me.DgvFacturas.Rows(i).Cells("ClmPagar").Value) Then
@@ -930,7 +1094,7 @@ Public Class PagosaProveedoresForm
                     If Not Pago.Guardar(Tr) Then
                         Return False
                     End If
-                    Dim FacAp As New IntegraLab.ORM.EntityClasses.UsrCxpfacturasApagarEntity
+                    Dim FacAp As New Integralab.ORM.EntityClasses.UsrCxpfacturasApagarEntity
                     If FacAp.FetchUsingPK(Controlador.Sesion.Empndx, Pago.Proveedor.Codigo, Pago.NoFactura) Then
                         'FacAp.Estatus = ClasesNegocio.EstatusFacturasApagar.PAGADA
                         'FacAp.Saldo = FacAp.Saldo - Pago.Importe
@@ -967,7 +1131,8 @@ Public Class PagosaProveedoresForm
     Private Sub txtCargo_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCargo.TextChanged
         If Not bl Then
             bl = True
-            txtCargo.Text = txtCargo.Valor.ToString("C")
+            'txtCargo.Text = txtCargo.Valor.ToString("C")
+            txtCargo.Text = txtCargo.Valor.ToString("N4")
             bl = False
         End If
     End Sub
@@ -975,7 +1140,8 @@ Public Class PagosaProveedoresForm
     Private Sub txtAbono_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtAbono.TextChanged
         If Not bl Then
             bl = True
-            txtAbono.Text = txtAbono.Valor.ToString("C")
+            txtAbono.Text = txtAbono.Valor.ToString("N4")
+            'txtAbono.Text = txtAbono.Valor.ToString("C")
             bl = False
         End If
     End Sub
@@ -990,12 +1156,23 @@ Public Class PagosaProveedoresForm
                 End If
                 NoFacturas = False
                 Me.txtImporte.Text = 0
+                Me.txtSaldo.Text = 0
                 For r As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
-                    If CBool(Me.DgvFacturas.Rows(r).Cells("ClmPagar").Value) Then
+                    If CBool(Me.DgvFacturas.Rows(r).Cells("ClmPagar").Value) = True Then
                         Me.txtImporte.Text = Me.txtImporte.Text + Me.DgvFacturas.Rows(r).Cells("ClmApagar").Value
+                        Me.txtSaldo.Text = Me.txtSaldo.Text + Me.DgvFacturas.Rows(r).Cells("ClmApagar").Value
+
                         NoFacturas = True
                     End If
                 Next
+
+                Dim importeAPagar As Decimal = 0.0
+                importeAPagar = Me.txtImporte.Text.ToString()
+                importeAPagar = importeAPagar.ToString("N4")
+
+                Me.txtImporte.Text = importeAPagar
+                Me.txtSaldo.Text = importeAPagar
+                Me.calcular()
             End If
         Catch ex As Exception
 #If CONFIG = "Debug" Then
@@ -1004,6 +1181,36 @@ Public Class PagosaProveedoresForm
             MsgBox("Ocurrió un Error", MsgBoxStyle.Critical, "Error")
 #End If
         End Try
+    End Sub
+
+    Sub calcular()
+        Dim importeAPagar As Decimal = 0.0
+        importeAPagar = If(String.IsNullOrEmpty(Me.txtImporte.Text), 0, Me.txtImporte.Text.ToString())
+        'importeAPagar = importeAPagar.ToString("N4")
+
+        'importe = CDec(txtImporte.Text.Replace(",", ""))
+        If Me.DgvCuentas.Rows.Count > 0 Then
+            Try
+                Me.DgvCuentas.Rows(0).Cells("ClmCargo").Value = importeAPagar.ToString("C4")
+            Catch ex As Exception
+
+            End Try
+
+            Try
+                Me.DgvCuentas.Rows(1).Cells("ClmAbono").Value = importeAPagar.ToString("C4")
+            Catch ex As Exception
+
+            End Try
+        End If
+        If Me.DgvCuentas.Rows.Count > 0 Then
+            For j As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+                Me.DgvCuentas.Rows(j).ReadOnly = True
+                If j > 0 Then
+                    Me.DgvCuentas.Rows(j).Cells("ClmAbono").ReadOnly = False
+                End If
+
+            Next
+        End If
     End Sub
 
     Private Sub TmBeneficiario_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles TmBeneficiario.Tick
@@ -1024,11 +1231,11 @@ Public Class PagosaProveedoresForm
                 cheque.Importe = txtImporte.Valor
                 txtImporteLetra.Text = cheque.ImporteLetra.ToUpper
                 bl = True
-                txtImporte.Text = txtImporte.Valor.ToString("C")
+                txtImporte.Text = txtImporte.Valor.ToString("C4")
                 Dim abono As Decimal
                 If Me.txtTipoCambio.Valor = 0 Then
                     ValorGridCuentas(0, 5, txtImporte.Valor)
-                    Me.txtAbono.Text = txtImporte.Valor.ToString("C2")
+                    Me.txtAbono.Text = txtImporte.Valor.ToString("C4")
                     'If Me.DgvCuentas.Rows.Count > 1 Then
                     '    Me.DgvCuentas.Rows(1).Cells("ClmAbono").Value = Me.txtAbono.Text
                     '    Me.txtCargo.Text = Me.txtAbono.Text
@@ -1036,19 +1243,87 @@ Public Class PagosaProveedoresForm
                     abono = txtImporte.Valor
                 Else
                     ValorGridCuentas(0, 6, txtImporte.Valor * txtTipoCambio.Valor)
-                    Me.txtAbono.Text = (txtImporte.Valor * txtTipoCambio.Valor).ToString("C2")
+                    Me.txtAbono.Text = (txtImporte.Valor * txtTipoCambio.Valor).ToString("C4")
                     'If Me.DgvCuentas.Rows.Count > 1 Then
                     '    Me.DgvCuentas.Rows(1).Cells("ClmCargo").Value = Me.txtAbono.Text
-                    '    Me.txtCargo.Text = Me.txtAbono.Valor.ToString("C2")
+                    '    Me.txtCargo.Text = Me.txtAbono.Valor.ToString("N4")
                     'End If
                     abono = txtImporte.Valor * txtTipoCambio.Valor
                 End If
                 RellenarGridCuentas(Cuenta.CuentaContable, "BCO", 0, abono)
-                'Me.DgvCuentas.Rows(0).Cells("ClmAbono").Value = (txtImporte.Valor * txtTipoCambio.Valor).ToString("C2")
+                'Me.DgvCuentas.Rows(0).Cells("ClmAbono").Value = (txtImporte.Valor * txtTipoCambio.Valor).ToString("N4")
                 bl = False
             End If
         End If
 
     End Sub
 
+    Private Sub DgvCuentas_CellEndEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
+        Try
+            Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("C4")
+        Catch ex As Exception
+            Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0
+        End Try
+
+    End Sub
+
+    Private Sub DgvCuentas_KeyDown_1(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles DgvCuentas.KeyDown
+        'Dim i As Integer = 0
+        If e.KeyCode = Keys.Delete Then
+            'i = Me.DgvCuentas.CurrentCell.RowIndex
+            Dim isValidRow As Boolean = False
+            If Me.DgvCuentas.Rows.Count > 0 Then
+                Dim cuentaBancos As DataGridViewRow = DgvCuentas.Rows(0)
+                If Me.DgvCuentas.SelectedRows.Contains(cuentaBancos) Then
+                    MessageBox.Show("No es posible eliminar la cuenta contable de Banco.", "Aviso Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    If MessageBox.Show("Las cuentas contables seleccionadas se eliminarán de la lista ¿Desea continuar?", "Eliminar Cuentas Contables", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+                        For Each item As DataGridViewRow In Me.DgvCuentas.SelectedRows
+                            If item.IsNewRow = False Then
+                                Me.DgvCuentas.Rows.Remove(item)
+                            End If
+                        Next
+                    End If
+
+                End If
+            End If
+
+
+            'For Each item As DataGridViewRow In DgvCuentas.SelectedRows
+            '    If item.Index > 1 Then
+            '        isValidRow = True
+            '        Exit For
+            '    End If
+            'Next
+            'If isValidRow Then
+            '    DgvCuentas.SelectedRows.
+            'End If
+            'If i > 0 Then
+            '    If Not Me.DgvCuentas.Rows(i).IsNewRow Then
+            '        If MessageBox.Show("La cuenta contable se eliminará de la lista ¿Desea continuar?", "Eliminar Cuenta Contable", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+            '            Me.DgvCuentas.Rows.RemoveAt(i)
+            '        End If
+            '    End If
+            'End If
+        End If
+
+        If e.KeyCode = Keys.F3 Then
+            Try
+                Dim buscarCuenta As New BusquedaCuentasContablesForm
+                buscarCuenta.BloquearCaracteristicas = True
+                'ojo
+                'buscarCuenta.Afectables = CheckState.Checked
+                If buscarCuenta.ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Me.RellenarGridCuentas(buscarCuenta.CuentaContable)
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub DgvFacturas_CellEndEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvFacturas.CellEndEdit
+
+    End Sub
 End Class
