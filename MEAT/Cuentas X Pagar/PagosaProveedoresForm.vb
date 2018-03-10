@@ -10,6 +10,7 @@ Public Class PagosaProveedoresForm
 
 #Region " Declaraciones "
     Private WithEvents cheque As CN.ChequeClass
+    Private WithEvents Bene As CN.BeneficiarioClass
     Private seleccion As New Integra.Clases.BusquedaClass(Of CN.ChequeClass)
     Private CtasCont As New CN.CuentaContableCollectionClass
     Private Cuentas As New CN.CuentaCollectionClass
@@ -218,7 +219,18 @@ Public Class PagosaProveedoresForm
         If Not Bl Then
             Cadena = Nothing
             'cheque.Anticipo = chkAnticipo.Checked
-            cheque.Beneficiario = DirectCast(cmbBeneficiario.SelectedItem, CN.BeneficiarioClass)
+            'cheque.Beneficiario = DirectCast(cmbBeneficiario.SelectedItem, CN.BeneficiarioClass)
+            'cheque.Beneficiario = Beneficiarios.Obtener2(cmbBeneficiario.SelectedValue)
+            'Find(cmbBeneficiario.SelectedValue.ToString())
+            'Dim Bene As New ClasesNegocio.BeneficiarioClass()
+            'ClasesNegocio.BancosMovimientosTipo.RETIRO, chkEstatus
+            'Bene.ObtenerEntidad(ClasesNegocio.BeneficiarioClass.C)
+            Beneficiarios.Obtener2(cmbBeneficiario.SelectedValue, CondicionEnum.ACTIVOS)
+            cheque.Beneficiario = Beneficiarios(0)
+
+
+
+
             For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
                 If CBool(Me.DgvFacturas.Rows(i).Cells("ClmPagar").Value) Then
                     Facturas = Facturas & String.Format(" {0}", Me.DgvFacturas.Rows(i).Cells("clmNoFactura").Value)
@@ -733,6 +745,7 @@ Public Class PagosaProveedoresForm
     End Function
 
     Private Sub RellenarGridCuentas(ByVal Cta As ClasesNegocio.CuentaContableClass)
+        Dim cargoAbono As Decimal = 0
         Try
             Dim CtasBan As New CN.CuentaCollectionClass
             CtasBan.Obtener(Cta.Codigo)
@@ -759,8 +772,8 @@ Public Class PagosaProveedoresForm
                                 Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
                                 Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Cta.SSSubCuenta
                                 Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
-                                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+                                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = cargoAbono.ToString("C4")
+                                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = cargoAbono.ToString("C4")
                                 'Me.DgvCuentas.Rows.Add()
                             Else
                                 Me.DgvCuentas.Rows(i - 1).Cells("clmId").Value = Cta.Codigo
@@ -769,8 +782,8 @@ Public Class PagosaProveedoresForm
                                 Me.DgvCuentas.Rows(i - 1).Cells("ClmSsbCta").Value = Cta.SSubCuenta
                                 Me.DgvCuentas.Rows(i - 1).Cells("ClmSssCta").Value = Cta.SSSubCuenta
                                 Me.DgvCuentas.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                                Me.DgvCuentas.Rows(i - 1).Cells("ClmCargo").Value = 0
-                                Me.DgvCuentas.Rows(i - 1).Cells("ClmAbono").Value = 0
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmCargo").Value = cargoAbono.ToString("C4")
+                                Me.DgvCuentas.Rows(i - 1).Cells("ClmAbono").Value = cargoAbono.ToString("C4")
                                 'Me.DgvCuentas.Rows.Add()
                             End If
                         End If
@@ -782,8 +795,8 @@ Public Class PagosaProveedoresForm
                         Me.DgvCuentas.Rows(i).Cells("ClmSClmCtaMayorsbCta").Value = Cta.SSubCuenta
                         Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Cta.SSSubCuenta
                         Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                        Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
-                        Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+                        Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = cargoAbono.ToString("C4")
+                        Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = cargoAbono.ToString("C4")
                         Me.DgvCuentas.Rows.Add()
                     End If
                     Me.calcular()
@@ -858,64 +871,11 @@ Public Class PagosaProveedoresForm
         'End If
 
     End Sub
-    Private Sub DgvCuentas_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs)
-        Dim abono As Decimal = 0
-        If String.IsNullOrEmpty(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
-            abono = Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString().Replace(",", "") ' e.RowIndex
-        End If
+    'Private Sub DgvCuentas_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs)
 
-        If txtImporte.Valor > 0 Then
-            If e.RowIndex > 0 Then
-                If IsNothing(Me.DgvCuentas.Rows(e.RowIndex - 1).DataBoundItem) Then
-                    e.Cancel = True
-                Else
-                    If ValorGridCuentas(e.RowIndex - 1, 5) > 0 Or ValorGridCuentas(e.RowIndex - 1, 6) > 0 Then
-                        If (VerificarBalance() = 0) And ValorGridCuentas(e.RowIndex, 5) = 0 Then e.Cancel = True
-                    Else
-                        e.Cancel = True
-                    End If
-                    Select Case e.ColumnIndex
-                        Case 1, 2, 3, 4
-                            'ValorGridCuentas(e.RowIndex, e.ColumnIndex, QuitarCeros(ValorGridCuentas(e.RowIndex, e.ColumnIndex)))
-                    End Select
-                End If
-            End If
-        Else
-            e.Cancel = True
-            txtImporte.Focus()
-        End If
-    End Sub
+    'End Sub
     Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
-        Select Case e.ColumnIndex
-            Case 0 To 3
-                Dim tmp As CN.CuentaContableClass
-                ValorGridCuentas(e.RowIndex, 0, FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 0)))
-                ValorGridCuentas(e.RowIndex, 1, FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 1)))
-                ValorGridCuentas(e.RowIndex, 2, FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 2)))
-                ValorGridCuentas(e.RowIndex, 3, FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 3)))
-                tmp = CtasCont.ObtenerCuentaContable(FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 0)), FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 1)), FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 2)), FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 3)))
-                PasarCuenta(tmp, e.RowIndex)
-            Case 4
-                'Buscar Cuenta Por Nombre
-                CtasCont.Obtener(Nothing, ValorGridCuentas(e.RowIndex, 4))
-                Dim tmp As CN.CuentaContableClass = Nothing
-                Select Case CtasCont.Count
-                    Case 0
-                        tmp = CtasCont(0)
-                    Case Is > 0
-                        SelCuentaContableForm.CuentasContables = CtasCont
-                        If SelCuentaContableForm.ShowDialog = Windows.Forms.DialogResult.OK Then
-                            tmp = SelCuentaContableForm.CuentaContable
-                        End If
-                    Case Else
-                End Select
-                PasarCuenta(tmp, e.RowIndex)
-            Case 5
-                If VerificarBalance() < 0 Then
-                    ValorGridCuentas(e.RowIndex, e.ColumnIndex, 0)
-                    MessageBox.Show("La suma de los Cargos sobrepasa a la suma de los Abonos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
-        End Select
+        
     End Sub
 
     Private Sub RellenarGridCuentas(ByVal Cta As ClasesNegocio.CuentaContableClass, ByVal Id As String, ByVal Cargo As Decimal, ByVal Abono As Decimal)
@@ -937,8 +897,8 @@ Public Class PagosaProveedoresForm
             Me.DgvCuentas.Rows(ren).Cells("ClmSssCta").Value = Cta.SSSubCuenta
             Me.DgvCuentas.Rows(ren).Cells("ClmDescripcion").Value = Cta.NombreCuenta
         End If
-        Me.DgvCuentas.Rows(ren).Cells("ClmCargo").Value = Cargo
-        Me.DgvCuentas.Rows(ren).Cells("ClmAbono").Value = Abono
+        Me.DgvCuentas.Rows(ren).Cells("ClmCargo").Value = Cargo.ToString("C4")
+        Me.DgvCuentas.Rows(ren).Cells("ClmAbono").Value = Abono.ToString("C4")
 
         Me.calcular()
 
@@ -1225,6 +1185,7 @@ Public Class PagosaProveedoresForm
 
             Next
         End If
+
     End Sub
 
     Private Sub TmBeneficiario_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles TmBeneficiario.Tick
@@ -1271,6 +1232,20 @@ Public Class PagosaProveedoresForm
         End If
 
     End Sub
+    'Verifica que los abonos no sobrepase los cargos
+    Private Function VerificarBalance2() As Decimal
+        Dim Cargos As Decimal = 0
+        Dim Abonos As Decimal = 0
+        For Each r As System.Windows.Forms.DataGridViewRow In Me.DgvCuentas.Rows
+            If r.Index > -1 Then
+                Cargos += r.Cells("ClmCargo").Value
+                Abonos += r.Cells("ClmAbono").Value
+            End If
+        Next
+        txtAbono.Text = Abonos
+        txtCargo.Text = Cargos
+        Return Cargos - Abonos
+    End Function
 
     Private Sub DgvCuentas_CellEndEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
         Try
@@ -1278,6 +1253,38 @@ Public Class PagosaProveedoresForm
         Catch ex As Exception
             Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0
         End Try
+
+        Select Case e.ColumnIndex
+            Case 0 To 3
+                Dim tmp As CN.CuentaContableClass
+                ValorGridCuentas(e.RowIndex, 0, FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 0)))
+                ValorGridCuentas(e.RowIndex, 1, FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 1)))
+                ValorGridCuentas(e.RowIndex, 2, FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 2)))
+                ValorGridCuentas(e.RowIndex, 3, FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 3)))
+                tmp = CtasCont.ObtenerCuentaContable(FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 0)), FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 1)), FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 2)), FuncionesClass.PonerCeros(ValorGridCuentas(e.RowIndex, 3)))
+                PasarCuenta(tmp, e.RowIndex)
+            Case 4
+                'Buscar Cuenta Por Nombre
+                CtasCont.Obtener(Nothing, ValorGridCuentas(e.RowIndex, 4))
+                Dim tmp As CN.CuentaContableClass = Nothing
+                Select Case CtasCont.Count
+                    Case 0
+                        tmp = CtasCont(0)
+                    Case Is > 0
+                        SelCuentaContableForm.CuentasContables = CtasCont
+                        If SelCuentaContableForm.ShowDialog = Windows.Forms.DialogResult.OK Then
+                            tmp = SelCuentaContableForm.CuentaContable
+                        End If
+                    Case Else
+                End Select
+                PasarCuenta(tmp, e.RowIndex)
+            Case 8
+                If VerificarBalance2() < 0 Then
+                    ValorGridCuentas(e.RowIndex, e.ColumnIndex, 0)
+                    'MessageBox.Show("La suma de los Cargos sobrepasa a la suma de los Abonos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("La suma de los Abonos sobrepasa a la suma de los Cargos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+        End Select
 
     End Sub
 
@@ -1338,11 +1345,80 @@ Public Class PagosaProveedoresForm
     End Sub
 
     Private Sub DgvFacturas_CellEndEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvFacturas.CellEndEdit
+        'Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("C4")
+    End Sub
+
+    Private Sub DgvCuentas_CellBeginEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvCuentas.CellBeginEdit
+        'CBool(Me.DgvFacturas.Rows(i).Cells("ClmPagar").Value)
+        Dim existenFacturas As Boolean = False
+
+        For r As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
+            If CBool(Me.DgvFacturas.Rows(r).Cells("ClmPagar").Value) = True Then
+                existenFacturas = True
+            End If
+        Next
+
+        If existenFacturas Then
+            Dim abono As Decimal = 0
+            If Not String.IsNullOrEmpty(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+                abono = Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString().Replace(",", "") ' e.RowIndex
+                Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = abono
+            End If
+        Else
+            MessageBox.Show("Debe seleccionar una factura a pagar para poder editar los importes de las cuentas contables.", "Seleccionar Factura", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            e.Cancel = True
+            'Me.DgvCuentas.BindingContext(Me.DgvCuentas.DataSource, Me.DgvCuentas.DataMember).EndCurrentEdit()
+        End If
+
+
+
+        'If txtImporte.Valor > 0 Then
+        '    If e.RowIndex > 0 Then
+        '        If IsNothing(Me.DgvCuentas.Rows(e.RowIndex - 1).DataBoundItem) Then
+        '            e.Cancel = True
+        '        Else
+        '            If ValorGridCuentas(e.RowIndex - 1, 5) > 0 Or ValorGridCuentas(e.RowIndex - 1, 6) > 0 Then
+        '                If (VerificarBalance() = 0) And ValorGridCuentas(e.RowIndex, 5) = 0 Then e.Cancel = True
+        '            Else
+        '                e.Cancel = True
+        '            End If
+        '            Select Case e.ColumnIndex
+        '                Case 1, 2, 3, 4
+        '                    'ValorGridCuentas(e.RowIndex, e.ColumnIndex, QuitarCeros(ValorGridCuentas(e.RowIndex, e.ColumnIndex)))
+        '            End Select
+        '        End If
+        '    End If
+        'Else
+        '    e.Cancel = True
+        '    txtImporte.Focus()
+        'End If
 
     End Sub
 
-    'Private Sub DgvCuentas_CellBeginEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvCuentas.CellBeginEdit
+    Private Sub DgvCuentas_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DgvCuentas.EditingControlShowing
 
+        Dim cajatexto As TextBox = TryCast(e.Control, TextBox)
+        If cajatexto IsNot Nothing Then
+            RemoveHandler cajatexto.KeyPress, AddressOf Me.txtImporte_KeyPress
+            AddHandler cajatexto.KeyPress, AddressOf Me.txtImporte_KeyPress
+        End If
+    End Sub
 
-    'End Sub
+    Private Sub txtImporte_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtImporte.KeyPress
+        NumerosyDecimal(sender, e)
+    End Sub
+
+    Public Sub NumerosyDecimal(ByVal CajaTexto As Windows.Forms.TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf e.KeyChar = "." And Not CajaTexto.Text.IndexOf(".") Then
+            e.Handled = True
+        ElseIf e.KeyChar = "." Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
 End Class

@@ -397,7 +397,7 @@ Public Class FrmAperturaLoteCorte2
 
                             Mensaje.AppendLine("* En la Sección de Productos todos los campos de las filas son requeridos")
                         Else
-                            importekilosDet += calcularTotalPrecioXKiloDet(CDec(KilosRecibidosDet), CDec(PrecioXKiloDet))
+                            importekilosDet += (CDec(totalDet)) '+= calcularTotalPrecioXKiloDet(CDec(KilosRecibidosDet), CDec(PrecioXKiloDet))
                             totaltotalDet += CDec(totalDet)
                             totalKilos += CDec(KilosRecibidosDet)
                             totalPiezas += CDec(NoPiezasDet)
@@ -881,7 +881,9 @@ Public Class FrmAperturaLoteCorte2
     Private Sub gridProductos_CellEndEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles gridProductos.CellEndEdit
         If e.ColumnIndex = clmKilosRecibidosDet.Index Or e.ColumnIndex = clmNoPiezasDet.Index Or e.ColumnIndex = clmPrecioXKiloDet.Index Or e.ColumnIndex = clmTotalDet.Index Then
             'calculo
-
+            If e.ColumnIndex = clmKilosRecibidosDet.Index Or e.ColumnIndex = clmPrecioXKiloDet.Index Then
+                gridProductos.Rows(e.RowIndex).Cells(clmTotalDet.Index).Value = (CDec(gridProductos.Rows(e.RowIndex).Cells(clmKilosRecibidosDet.Index).Value) * CDec(gridProductos.Rows(e.RowIndex).Cells(clmPrecioXKiloDet.Index).Value)).ToString("N4")
+            End If
             'If e.ColumnIndex = clmKilosRecibidosDet.Index Or e.ColumnIndex = clmPrecioXKiloDet.Index Then
             '    gridProductos.Rows(e.RowIndex).Cells(clmTotalDet.Index).Value = (CDec(gridProductos.Rows(e.RowIndex).Cells(clmKilosRecibidosDet.Index).Value) * CDec(gridProductos.Rows(e.RowIndex).Cells(clmPrecioXKiloDet.Index).Value)).ToString("N4")
             'ElseIf e.ColumnIndex = clmTotalDet.Index Then
