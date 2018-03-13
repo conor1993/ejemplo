@@ -1431,7 +1431,7 @@ Public Class PagosaProveedoresForm
                     Case Else
                 End Select
                 PasarCuenta(tmp, e.RowIndex)
-            Case 8
+            Case 7
                 If VerificarBalance2() < 0 Then
                     ValorGridCuentas(e.RowIndex, e.ColumnIndex, 0)
                     'MessageBox.Show("La suma de los Cargos sobrepasa a la suma de los Abonos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
