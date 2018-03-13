@@ -165,6 +165,9 @@ Public Class PagosaProveedoresForm
         For i As Integer = 0 To Pago.Count - 1
             Me.DgvFacturas.Rows(i).Cells("ClmApagar").Value = Pago(i).Importe
         Next
+        ''setear el importe ---------- 
+
+        ''----------------------------
     End Sub
 
     Public Function Validar() As String Implements InterfaceForm.Validar
@@ -988,6 +991,7 @@ Public Class PagosaProveedoresForm
                     polizaDet.Importe = Me.DgvCuentas.Rows(r.Index).Cells("ClmCargo").Value
                     polizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
                     polizaDet.Posicion = r.Index
+                    Poliza.Detalles2.Add(polizaDet)
                     Poliza.AgregarDetalle(polizaDet)
                     'ElseIf ValorFlexGrid(r.Index, 7) > 0 Then
                 ElseIf Me.DgvCuentas.Rows(r.Index).Cells("ClmAbono").Value > 0 Then
@@ -1002,45 +1006,194 @@ Public Class PagosaProveedoresForm
                     polizaDet.Importe = Me.DgvCuentas.Rows(r.Index).Cells("ClmAbono").Value
                     polizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
                     polizaDet.Posicion = r.Index
+                    Poliza.Detalles2.Add(polizaDet)
                     Poliza.AgregarDetalle(polizaDet)
                 End If
             End If
         Next
         cheque.Poliza = Poliza
+        imprimir(Poliza)
+
     End Sub
 
-    Private Sub MostrarPolizaFlexGrid(ByVal Poliza As CN.PolizaClass)
-        Dim cta, ctaban, ctaprov As CN.CuentaContableClass
-        LimpiarGridCuentas()
-        For i As Integer = 0 To Poliza.Detalles.Count - 1
-            'Me.DgvCuentas.Rows.Add()
-            'If i > 0 Then
-            '    Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
-            'Else
-            '    RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
-            'End If
-            cta = Poliza.Detalles(i).CuentaContable
-            ctaprov = cheque.Beneficiario.Proveedor.CuentaContable2
-            ctaban = cheque.Cuenta.CuentaContable
-            If cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = ctaprov.CuentaMayor + ctaprov.SubCuenta + ctaprov.SSubCuenta + ctaprov.SSSubCuenta Then
-                Me.DgvCuentas.Rows(i).Cells("clmId").Value = "PROV"
-            ElseIf cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = ctaban.CuentaMayor + ctaban.SubCuenta + ctaban.SSubCuenta + ctaban.SSSubCuenta Then
-                Me.DgvCuentas.Rows(i).Cells("clmId").Value = "BCO"
-            ElseIf cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = CtaIva.CuentaMayor + CtaIva.SubCuenta + CtaIva.SSubCuenta + CtaIva.SSSubCuenta Then
-                Me.DgvCuentas.Rows(i).Cells("clmId").Value = "IVA"
-            ElseIf cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = CtaRetISR.CuentaMayor + CtaRetISR.SubCuenta + CtaRetISR.SSubCuenta + CtaRetISR.SSSubCuenta Then
-                Me.DgvCuentas.Rows(i).Cells("clmId").Value = "RISR"
-            ElseIf cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = CtaRetIva.CuentaMayor + CtaRetIva.SubCuenta + CtaRetIva.SSubCuenta + CtaRetIva.SSSubCuenta Then
-                Me.DgvCuentas.Rows(i).Cells("clmId").Value = "RIVA"
-            End If
+    Private Function obtenerdatasetPoliza(Poliza As ClasesNegocio.PolizaClass) As DataSet
 
-            If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
-                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("N4")
-            Else
-                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("N4")
-            End If
+        Dim cuentac, cuentac1, cuentac2, cuentac3 As New CN.CuentaContableClass
+        Dim detalles As New CN.PolizaDetalleCollectionClass
+        detalles = Poliza.Detalles2
+        Dim padre, padre1, padre2, padre3 As String
+        Dim ds As New DataSet()
+        Dim dt As New DataTable()
+        Try
+            ''--------------------------------
+            ds.Tables.Add(dt)
+            dt.Columns.Add("cta")
+            dt.Columns.Add("subcta")
+            dt.Columns.Add("ssubcta")
+            dt.Columns.Add("sssubcta")
+            dt.Columns.Add("nomcuenta1")
+            dt.Columns.Add("nomcuenta2")
+            dt.Columns.Add("nomcuenta3")
+            dt.Columns.Add("nomcuenta4")
+            dt.Columns.Add("origen")
+            dt.Columns.Add("poliza")
+            dt.Columns.Add("fecha")
+            dt.Columns.Add("importe")
+            dt.Columns.Add("cargo")
+            dt.Columns.Add("abono")
+
+            ''elemntos del tatset -------------------------------------
+
+            For Each item As CN.PolizaDetalleClass In detalles
+
+                cuentac = item.CuentaContable
+                padre = cuentac.NombreCuenta
+
+                If (cuentac.Nivel = 1) Then
+                    padre = cuentac.NombreCuenta
+                End If
+
+                If (cuentac.Nivel = 2) Then
+                    padre1 = cuentac.NombreCuenta
+                    padre = cuentac.CuentaPadre.NombreCuenta
+                End If
+
+                If (cuentac.Nivel = 3) Then
+                    padre2 = cuentac.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.NombreCuenta
+                    padre = cuentac.CuentaPadre.CuentaPadre.NombreCuenta
+                End If
+
+                If (cuentac.Nivel = 4) Then
+                    padre3 = cuentac.NombreCuenta
+                    padre2 = cuentac.CuentaPadre.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.CuentaPadre.NombreCuenta
+                    padre1 = cuentac.CuentaPadre.CuentaPadre.CuentaPadre.NombreCuenta
+                End If
+
+                dt.Rows.Add(item.Cta, item.SCta, item.SSCta, item.SSSCta, padre, padre1, padre2, padre3, Poliza.Origen, Poliza.NumeroPoliza, Poliza.FechaPoliza, item.Importe, item.Cargo, item.Abono)
+            Next
+
+        Catch ex As Exception
+
+        End Try
+        Return ds
+    End Function
+
+    Private Function imprimir(Poliza As ClasesNegocio.PolizaClass)
+        Try
+
+            ''obtener  datos de la poliza guardada
+            Dim datos As New DataSet
+            datos = obtenerdatasetPoliza(Poliza)
+
+            ''------------------------------------
+
+            'Dim datos As New DataSet
+            'Dim query = "EXEC  rptcuentascontables 1"
+            'Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+            '    Dim adapter As New SqlDataAdapter()
+            '    adapter.SelectCommand = New SqlCommand(query, connection)
+            '    adapter.Fill(datos)
+            'End Using
+
+            Dim Reporte As New Rptpolizapasivo
+            Reporte.SetDataSource(datos.Tables(0))
+            Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
+            Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
+            Reporte.SetParameterValue("Modulo", "")
+
+            Dim pre As New ClasesNegocio.PreVisualizarForm
+            pre.Reporte = Reporte
+            pre.ShowDialog()
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        Finally
+            Cursor = Cursors.Default
+        End Try
+
+    End Function
+
+    Private Sub MostrarPolizaFlexGrid(ByVal Poliza As CN.PolizaClass)
+        Try
+
+            Dim cta, ctaban, ctaprov As CN.CuentaContableClass
+            LimpiarGridCuentas()
+
+            ''-------------------------------------------------------
+            Try
+                llenarcuntascontablesgrid(Poliza)
+            Catch ex As Exception
+
+            End Try
+
+            ''-------------------------------------------------------
+
+            For i As Integer = 0 To Poliza.Detalles.Count - 1
+                'Me.DgvCuentas.Rows.Add()
+                'If i > 0 Then
+                '    Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
+                'Else
+                '    RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
+                'End If
+
+                cta = Poliza.Detalles(i).CuentaContable
+                ctaprov = cheque.Beneficiario.Proveedor.CuentaContable2
+                ctaban = cheque.Cuenta.CuentaContable
+                If cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = ctaprov.CuentaMayor + ctaprov.SubCuenta + ctaprov.SSubCuenta + ctaprov.SSSubCuenta Then
+                    Me.DgvCuentas.Rows(i).Cells("clmId").Value = "PROV"
+                ElseIf cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = ctaban.CuentaMayor + ctaban.SubCuenta + ctaban.SSubCuenta + ctaban.SSSubCuenta Then
+                    Me.DgvCuentas.Rows(i).Cells("clmId").Value = "BCO"
+                ElseIf cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = CtaIva.CuentaMayor + CtaIva.SubCuenta + CtaIva.SSubCuenta + CtaIva.SSSubCuenta Then
+                    Me.DgvCuentas.Rows(i).Cells("clmId").Value = "IVA"
+                ElseIf cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = CtaRetISR.CuentaMayor + CtaRetISR.SubCuenta + CtaRetISR.SSubCuenta + CtaRetISR.SSSubCuenta Then
+                    Me.DgvCuentas.Rows(i).Cells("clmId").Value = "RISR"
+                ElseIf cta.CuentaMayor + cta.SubCuenta + cta.SSubCuenta + cta.SSSubCuenta = CtaRetIva.CuentaMayor + CtaRetIva.SubCuenta + CtaRetIva.SSubCuenta + CtaRetIva.SSSubCuenta Then
+                    Me.DgvCuentas.Rows(i).Cells("clmId").Value = "RIVA"
+                End If
+
+                If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
+                    Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("N4")
+                    txtAbono.Text = txtAbono.Text + Poliza.Detalles(i).Importe
+                Else
+                    Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe
+                    txtCargo.Text = txtCargo.Text + Poliza.Detalles(i).Importe
+                End If
+
+            Next
+            txtPoliza.Text = Poliza.NumeroPoliza
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub llenarcuntascontablesgrid(Poliza As ClasesNegocio.PolizaClass)
+        For z As Integer = 0 To Poliza.Detalles.Count - 1
+            Dim cargoAbono As Decimal = 0
+            Try
+                Dim Cta As New CN.CuentaContableClass
+                Cta = Poliza.Detalles(z).CuentaContable
+
+                Dim i As Integer = Me.DgvCuentas.Rows.Count
+
+                Me.DgvCuentas.Rows.Add()
+                Me.DgvCuentas.Rows(i).Cells("clmId").Value = Cta.Codigo
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Cta.SSSubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = cargoAbono.ToString("C4")
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = cargoAbono.ToString("C4")
+
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+            End Try
         Next
-        txtPoliza.Text = Poliza.NumeroPoliza
+
+       
     End Sub
 
 #End Region
@@ -1165,13 +1318,13 @@ Public Class PagosaProveedoresForm
         'importe = CDec(txtImporte.Text.Replace(",", ""))
         If Me.DgvCuentas.Rows.Count > 0 Then
             Try
-                Me.DgvCuentas.Rows(0).Cells("ClmCargo").Value = importeAPagar.ToString("C4")
+                Me.DgvCuentas.Rows(1).Cells("ClmCargo").Value = importeAPagar.ToString("C4")
             Catch ex As Exception
 
             End Try
 
             Try
-                Me.DgvCuentas.Rows(1).Cells("ClmAbono").Value = importeAPagar.ToString("C4")
+                Me.DgvCuentas.Rows(0).Cells("ClmAbono").Value = importeAPagar.ToString("C4")
             Catch ex As Exception
 
             End Try
@@ -1180,7 +1333,7 @@ Public Class PagosaProveedoresForm
             For j As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
                 Me.DgvCuentas.Rows(j).ReadOnly = True
                 If j > 0 Then
-                    Me.DgvCuentas.Rows(j).Cells("ClmAbono").ReadOnly = False
+                    Me.DgvCuentas.Rows(j).Cells("ClmCargo").ReadOnly = False
                 End If
 
             Next
@@ -1421,4 +1574,7 @@ Public Class PagosaProveedoresForm
             e.Handled = True
         End If
     End Sub
+
+
+
 End Class

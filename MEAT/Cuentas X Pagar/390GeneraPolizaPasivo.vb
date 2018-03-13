@@ -336,7 +336,7 @@ Public Class _390GeneraPolizaPasivo
                 ''              IMPRESIONS DE LA POLIZA
                 ''---------------------------------------------------
 
-                imprimir(Poliza)
+
 
                 ''---------------------------------------------------
                 ''            fin   IMPRESIONS DE LA POLIZA
@@ -390,7 +390,7 @@ Public Class _390GeneraPolizaPasivo
 
                 Next
                 Trans.Commit()
-
+                imprimir(Poliza)
                 MessageBox.Show("Se generó la poliza de pasivo con el folio: " & Poliza.NumeroPoliza, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Limpiar()
             Else
