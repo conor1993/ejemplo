@@ -15,6 +15,7 @@ Public Class frmDistribuciondeGastosconsulta
     Public Shared importe As Decimal
     Public Shared ptjimporte As Decimal
     Public Shared conteo As Integer
+
 #Region "propiedades publicas"
     Public Property valor1 As Decimal
         Get
@@ -89,7 +90,7 @@ Public Class frmDistribuciondeGastosconsulta
             Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
 
             Dim datos As New DataSet
-            Dim query = "EXEC  Consultardepartamentalizacion  " + factura
+            Dim query = "EXEC  Consultardepartamentalizacion  '" + factura + "' , " + idcuentacontable.ToString()
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 Dim adapter As New SqlDataAdapter()
                 adapter.SelectCommand = New SqlCommand(query, connection)
@@ -129,8 +130,8 @@ Public Class frmDistribuciondeGastosconsulta
             Me.txtImporte.Text = Sumaimporte.ToString("C2")
             Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
 
-            dgvMetodos.Enabled = False
-            dgvDetalledeProrrateo.Enabled = False
+            dgvMetodos.Enabled = True
+            dgvDetalledeProrrateo.Enabled = True
         Catch ex As Exception
 
         End Try
