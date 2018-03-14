@@ -927,6 +927,10 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
 
     Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
         Try
+            ''------------------------------------------------------------
+            Dim ren As Integer = 0
+            Dim rendet As Integer = 0
+            ''------------------------------------------------------------
 
             Select Case e.ColumnIndex
                 Case Me.ClmCargo.Index
@@ -937,22 +941,39 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
                         Dim Ventana As New frmDistribuciondeGastos
                         frmDistribuciondeGastos.valor = Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value()
                         If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+
                             Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+
+                            If (dgvDistribuciondeGastos.Rows.Count) >= 1 Then
+                                ren = dgvDistribuciondeGastos.Rows.Count
+                            End If
+
                             For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 2)
+
                                 Me.dgvDistribuciondeGastos.Rows.Add()
 
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+
+
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+
+                                If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
+                                    rendet = dgvdistribuciongastosdet.Rows.Count
+                                End If
+
                                 For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
                                     Me.dgvdistribuciongastosdet.Rows.Add()
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.sucursal1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
+
+
+
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.sucursal1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
                                 Next
                             Next
                         End If
@@ -965,20 +986,30 @@ Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.For
                         frmDistribuciondeGastos.valor = Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value()
                         If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                             Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+
+                            If (dgvDistribuciondeGastos.Rows.Count) >= 1 Then
+                                ren = dgvDistribuciondeGastos.Rows.Count
+                            End If
+
                             For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
                                 Me.dgvDistribuciondeGastos.Rows.Add()
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmCuentaContablePri.Index).Value
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
-                                Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmCuentaContablePri.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
+                                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+
+                                If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
+                                    rendet = dgvdistribuciongastosdet.Rows.Count
+                                End If
+
                                 For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
                                     Me.dgvdistribuciongastosdet.Rows.Add()
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.sucursal1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmSucursal.Index).Value
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmMetodoProrrateo.Index).Value
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
-                                    Me.dgvdistribuciongastosdet.Rows(j).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.sucursal1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmSucursal.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmMetodoProrrateo.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
+                                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
                                 Next
                             Next
                         End If
