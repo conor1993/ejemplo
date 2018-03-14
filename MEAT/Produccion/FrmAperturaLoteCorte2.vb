@@ -440,8 +440,8 @@ Public Class FrmAperturaLoteCorte2
                         End If
                     End If
                 Next
-            Else
-                Mensaje.AppendLine("* Favor de capturar los Gastos de Compra")
+                'Else
+                '    Mensaje.AppendLine("* Favor de capturar los Gastos de Compra")
             End If
 
             'Validando datos de gastos de transporte End

@@ -1,7 +1,7 @@
 Imports CN = ClasesNegocio
-Imports HC = IntegraLab.ORM.HelperClasses
-Imports EC = IntegraLab.ORM.EntityClasses
-Imports CC = IntegraLab.ORM.CollectionClasses
+Imports HC = Integralab.ORM.HelperClasses
+Imports EC = Integralab.ORM.EntityClasses
+Imports CC = Integralab.ORM.CollectionClasses
 Imports System.Xml
 Imports System.IO
 Imports System.Data.SqlClient
@@ -16,6 +16,7 @@ Public Class RecepcionFacturasForm
     Private FactDetRecep As IntegraLab.ORM.CollectionClasses.UsrCxpfacturasDetRecepcionesCollection
     Dim Total As Decimal
     Dim Subtotal As Decimal
+    Dim TotalAux As Decimal 'Se usa para comparar el total de cargos y abonos para el total de facturas
     Dim IVAA As Decimal
     Dim NoFactura As String
     Dim FechaFactura As Date
@@ -28,6 +29,8 @@ Public Class RecepcionFacturasForm
 
     Dim Carpeta As String = "XML"
     Dim NombreDelFichero As String = "RecepcionFacturas"
+
+    Dim formato As String = "C4"
 
     'Private Sub RecepcionFacturasForm_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
     '    If e.Control Then
@@ -158,9 +161,16 @@ Public Class RecepcionFacturasForm
         Me.TxtFactura.Enabled = True
         Me.chkPagada.Enabled = True
         'Me.ChkAgregarRecepciones.Enabled = True
-        Me.TxtSubtotal.Enabled = True
-        Me.txtIva.Enabled = True
+
+
+        'Me.TxtSubtotal.Enabled = True
+        'Me.txtIva.Enabled = True
         Me.TxtAnticipo.Enabled = True
+        'Me.txtISR.Enabled = True
+        'Me.txtRetIVA.Enabled = True
+        'Me.txtIVAFlete1.Enabled = True
+
+
         'Me.TxtTotal.Enabled = True
         Me.txtObservaciones.Enabled = True
         Me.txtConcepto.Enabled = True
@@ -170,9 +180,7 @@ Public Class RecepcionFacturasForm
         'Me.txtTasaIVA.Text = ""
         Me.ckbFlete.Enabled = True
         Me.ckbHonorarios.Enabled = True
-        Me.txtISR.Enabled = True
-        Me.txtRetIVA.Enabled = True
-        Me.txtIVAFlete1.Enabled = True
+
         Me.MtxtUUID.Enabled = True
 
         Me.chkTerceros.Enabled = True
@@ -226,13 +234,13 @@ Public Class RecepcionFacturasForm
         'If Me.txtTasaISR.Text > 0 Then
         '    Fact.TasaIsr = Me.txtTasaISR.Text
         'Else
-        '    Fact.TasaIsr = 0.ToString("C2")
+        '    Fact.TasaIsr = 0.ToString(formato)
         'End If
         ''Fact.TasaIva = Me.
         'If Me.txtTasaRetIVA.Text > 0 Then
         '    Fact.TasaRetIva = Me.txtTasaRetIVA.Text
         'Else
-        '    Fact.TasaRetIva = 0.ToString("C2")
+        '    Fact.TasaRetIva = 0.ToString(formato)
         'End If
 
         If Me.TxtSubtotal.Text = "" Then
@@ -268,13 +276,13 @@ Public Class RecepcionFacturasForm
             Fact.ImporteIsr = Me.txtISR.Text
             Fact.ImporteRetIva = Me.txtRetIVA.Text
         Else
-            Fact.ImporteIsr = 0.ToString("C2")
-            Fact.ImporteRetIva = 0.ToString("C2")
+            Fact.ImporteIsr = 0.ToString(formato)
+            Fact.ImporteRetIva = 0.ToString(formato)
         End If
         If ckbFlete.Checked = True Then
             Fact.Ivaflete = Me.txtIVAFlete1.Text
         Else
-            Fact.Ivaflete = 0.ToString("C2")
+            Fact.Ivaflete = 0.ToString(formato)
         End If
 
         If ckbHonorarios.Checked = True Then
@@ -350,11 +358,14 @@ Public Class RecepcionFacturasForm
         If Not CDec(Me.TxtSumaAbono.Text) = CDec(Me.txtSumaCargo.Text) Then
             MsgBox("Las Sumas del Cargo y del Abono deben ser Equivalentes", MsgBoxStyle.Exclamation, "Aviso")
             Return False
-        ElseIf Not CDec(Me.TxtSumaAbono.Text) = CDec(Me.TxtTotal.Text) Then
+            'ElseIf Not CDec(Me.TxtSumaAbono.Text) = CDec(Me.TxtTotal.Text) Then
+        ElseIf Not CDec(Me.TxtSumaAbono.Text) = calcularSubtotal() Then
+
             MsgBox("El importe de las Sumas de Cargos y Abonos debe ser Igual al Importe Total...", , "Aviso")
             Return False
         End If
-        If Me.txtSumaCargo.Text <> Me.TxtTotal.Text Then
+        'If Me.txtSumaCargo.Text <> Me.TxtTotal.Text Then
+        If Me.txtSumaCargo.Text <> calcularSubtotal() Then
             MsgBox("La Suma de el (los) Cargo(s) no Coinciden con el Total de la Factura", MsgBoxStyle.Exclamation, "Error")
             Return False
         End If
@@ -474,12 +485,12 @@ Public Class RecepcionFacturasForm
                             Me.DgvRecepciones.Rows.Add()
                             Me.DgvRecepciones.Rows(i).Cells("Folio").Value = Recep(i).FolioRecepcionOrdenCompra
                             Me.DgvRecepciones.Rows(i).Cells("IdRecepcionOrdenCompra").Value = Recep(i).IdRecepcionOrdenCompra
-                            Me.DgvRecepciones.Rows(i).Cells("IVA").Value = Recep(i).IVA
+                            Me.DgvRecepciones.Rows(i).Cells("IVA").Value = Recep(i).IVA.ToString(formato)
                             Me.DgvRecepciones.Rows(i).Cells("FechaRecepcion").Value = Recep(i).FechaRecepcion
                             Me.DgvRecepciones.Rows(i).Cells("FolioOrden").Value = Recep(i).OrdenCompra.FolioOrdenCompra
                             Me.DgvRecepciones.Rows(i).Cells("CantidadProducto").Value = Recep(i).Cantidad
-                            Me.DgvRecepciones.Rows(i).Cells("Importe").Value = Recep(i).Total.ToString("C2")
-                            Me.DgvRecepciones.Rows(i).Cells("Precio").Value = Recep(i).SubTotal.ToString("C2")
+                            Me.DgvRecepciones.Rows(i).Cells("Importe").Value = Recep(i).Total.ToString(formato)
+                            Me.DgvRecepciones.Rows(i).Cells("Precio").Value = Recep(i).SubTotal.ToString(formato)
                         Next
                     End If
                 Else
@@ -508,7 +519,7 @@ Public Class RecepcionFacturasForm
                         'Me.DgvRecepciones.Rows(i).Cells("FechaRetiro").Value = Recep(i).FechaRetiro
                         'Me.DgvRecepciones.Rows(i).Cells("NombreProducto").Value = Recep(i).ProductoNombre
                         Me.DgvRecepciones.Rows(i).Cells("CantidadProducto").Value = RecepServicio(i).Cantidad
-                        Me.DgvRecepciones.Rows(i).Cells("Importe").Value = RecepServicio(i).Total.ToString("C2")
+                        Me.DgvRecepciones.Rows(i).Cells("Importe").Value = RecepServicio(i).Total.ToString(formato)
                     Next
                 End If
             End If
@@ -540,10 +551,13 @@ Public Class RecepcionFacturasForm
         End Try
     End Function
 
-    Private Function CuentasRepetidas(ByVal cta As CN.CuentaContableClass) As Boolean
+    Private Function CuentasRepetidas(ByVal cta As CN.CuentaContableClass, Optional ByVal eliminarRow As Boolean = False) As Boolean
         Try
             For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
                 If cta.NombreCuenta = Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value Then
+                    If (eliminarRow) Then
+                        Me.DgvCuentas.Rows.Remove(Me.DgvCuentas.Rows(i))
+                    End If
                     Return True
                 End If
             Next
@@ -805,10 +819,10 @@ Public Class RecepcionFacturasForm
                                 Me.DgvRecepciones.Rows(i).Cells("Folio").Value = FacDe(i).Folio
                                 Me.DgvRecepciones.Rows(i).Cells("FechaRecepcion").Value = FacDe(i).FechaRecepcion
                                 Me.DgvRecepciones.Rows(i).Cells("CantidadProducto").Value = FacDe(i).Cantidad
-                                Me.DgvRecepciones.Rows(i).Cells("Importe").Value = FacDe(i).Total.ToString("C2")
+                                Me.DgvRecepciones.Rows(i).Cells("Importe").Value = FacDe(i).Total.ToString(formato)
                                 Me.DgvRecepciones.Rows(i).Cells("Agregar").Value = True
                                 'Me.DgvRecepciones.Rows(i).Cells("CantidadProducto").Value = FacDe(i).CantidadTotalRecibida
-                                'Me.DgvRecepciones.Rows(i).Cells("Importe").Value = FacDe(i).ImporteTotal.ToString("C2")
+                                'Me.DgvRecepciones.Rows(i).Cells("Importe").Value = FacDe(i).ImporteTotal.ToString(formato)
                             Next
                         End If
                         Editar = True
@@ -828,10 +842,10 @@ Public Class RecepcionFacturasForm
                                 Me.DgvRecepciones.Rows(i).Cells("Folio").Value = FacDe(i).FolioRecepcionOrdenCompra
                                 Me.DgvRecepciones.Rows(i).Cells("FechaRecepcion").Value = FacDe(i).FechaRecepcion
                                 Me.DgvRecepciones.Rows(i).Cells("CantidadProducto").Value = FacDe(i).Cantidad
-                                Me.DgvRecepciones.Rows(i).Cells("Importe").Value = FacDe(i).Total.ToString("C2")
+                                Me.DgvRecepciones.Rows(i).Cells("Importe").Value = FacDe(i).Total.ToString(formato)
                                 Me.DgvRecepciones.Rows(i).Cells("Agregar").Value = True
                                 'Me.DgvRecepciones.Rows(i).Cells("CantidadProducto").Value = FacDe(i).CantidadTotalRecibida
-                                'Me.DgvRecepciones.Rows(i).Cells("Importe").Value = FacDe(i).ImporteTotal.ToString("C2")
+                                'Me.DgvRecepciones.Rows(i).Cells("Importe").Value = FacDe(i).ImporteTotal.ToString(formato)
                             Next
                         End If
                         Editar = True
@@ -883,7 +897,7 @@ Public Class RecepcionFacturasForm
                     Habilitar()
                     Me.DgvRecepciones.Enabled = False
                     Me.CmbProveedor.Enabled = False
-                    Me.TxtAnticipo.Text = True
+                    Me.TxtAnticipo.Enabled = True
                     Me.TxtSubtotal.Enabled = True
                     Me.txtIva.Enabled = True
                     Me.TxtTotal.Enabled = False
@@ -912,7 +926,6 @@ Public Class RecepcionFacturasForm
                         Fact.UsrCxpfacturasDetRecepciones.Add(Det)
                     Next
                 Else
-                    'Mee
                     AgregarRecepcionesCompra()
                     For Each Det As IntegraLab.ORM.EntityClasses.UsrCxpfacturasDetRecepcionesEntity In FactDetRecep
                         Fact.UsrCxpfacturasDetRecepciones.Add(Det)
@@ -1143,7 +1156,6 @@ Public Class RecepcionFacturasForm
 
             If Me.CmbProveedor.SelectedValue > 0 Then
                 'Limpiar Grid Cuentas Contablees y lo llenamos 
-                'MeeRefresh
                 Me.DgvCuentas.Rows.Clear()
                 RellenarGridCuentas(Pr.CuentaContable2)
 
@@ -1151,7 +1163,6 @@ Public Class RecepcionFacturasForm
                 'Me.DgvRecepciones.Rows.Clear()
                 Me.DgvRecepciones.DataSource = Nothing
                 If Me.chkTerceros.Checked Then
-                    'MeeGuardar
                     ObtenerComprasTerceros()
                 Else
                     If chkServicio.Checked Then
@@ -1192,50 +1203,51 @@ Public Class RecepcionFacturasForm
             If Not Me.TxtSubtotal.Text = "" Then
                 Me.Subtotal = Me.TxtSubtotal.Text
                 If Not SeAgregaronRecepciones() Then
-                    Me.txtIva.Text = (((Subtotal * ConfigCont.Iva) / 100)).ToString("C2")
+                    Me.txtIva.Text = CDec(((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
                 End If
                 If Not Me.txtIva.Text = "" Then
-                    Me.TxtTotal.Text = (Subtotal + CDec(Me.txtIva.Text)).ToString("C2")
+                    Me.TxtTotal.Text = CDec(Subtotal + CDec(Me.txtIva.Text)).ToString(formato)
                 Else
                     Me.TxtTotal.Text = Me.TxtSubtotal.Text
                 End If
                 If Not Me.TxtAnticipo.Text = "" Then
-                    Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)).ToString("C2") - CDec(Me.TxtAnticipo.Text)).ToString("C2")
+                    Me.TxtTotal.Text = CDec((Subtotal + CDec(Me.txtIva.Text)) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
                 End If
             Else
                 Subtotal = 0
-                Me.TxtTotal.Text = Subtotal.ToString("C2")
+                Me.TxtTotal.Text = Subtotal.ToString(formato)
             End If
         End If
     End Sub
 
     Private Sub TxtAnticipo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtAnticipo.TextChanged
         If Not IsNumeric(Me.TxtAnticipo.Text) Then
-            MsgBox("Teclee una cantidad válida")
+            'MsgBox("Teclee una cantidad válida")
             Me.TxtAnticipo.Text = "0.0"
             Me.TxtAnticipo.Focus()
         Else
-            If Editar = False Then
-                If Not Me.TxtSubtotal.Text = "" Then
-                    Me.Subtotal = Me.TxtSubtotal.Text
-                    If Not SeAgregaronRecepciones() Then
-                        Me.txtIva.Text = (((Subtotal * ConfigCont.Iva) / 100)).ToString("C2")
-                    End If
-                    If Not Me.txtIva.Text = "" Then
-                        Me.TxtTotal.Text = (Subtotal + CDec(Me.txtIva.Text)).ToString("C2")
-                    Else
-                        Me.TxtTotal.Text = Me.TxtSubtotal.Text
-                    End If
-                    ' Me.TxtTotal.Text = Me.txtSubtotal.Text
-                    If Not Me.TxtAnticipo.Text = "" Then
-                        Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)).ToString("C2") - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-                        'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-                    End If
-                Else
-                    Subtotal = 0
-                    Me.TxtTotal.Text = Subtotal.ToString("C2")
-                End If
-            End If
+            Calcular()
+            'If Editar = False Then
+            '    If Not Me.TxtSubtotal.Text = "" Then
+            '        Me.Subtotal = Me.TxtSubtotal.Text
+            '        If Not SeAgregaronRecepciones() Then
+            '            Me.txtIva.Text = (((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
+            '        End If
+            '        If Not Me.txtIva.Text = "" Then
+            '            Me.TxtTotal.Text = (Subtotal + CDec(Me.txtIva.Text)).ToString(formato)
+            '        Else
+            '            Me.TxtTotal.Text = Me.TxtSubtotal.Text
+            '        End If
+            '        ' Me.TxtTotal.Text = Me.txtSubtotal.Text
+            '        If Not Me.TxtAnticipo.Text = "" Then
+            '            Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)).ToString(formato) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+            '            'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+            '        End If
+            '    Else
+            '        Subtotal = 0
+            '        Me.TxtTotal.Text = Subtotal.ToString(formato)
+            '    End If
+            'End If
         End If
     End Sub
 
@@ -1243,8 +1255,41 @@ Public Class RecepcionFacturasForm
         Me.Fact.Estatus = CN.EstatusFacturasEnum.PAGADA
     End Sub
 
+    Public Function calcularTotales() As Boolean
+
+        Me.Subtotal = 0
+        Me.IVAA = 0
+        For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
+            If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
+                Subtotal = Subtotal + Me.DgvRecepciones.Rows(i).Cells("Precio").Value
+                IVAA = IVAA + Me.DgvRecepciones.Rows(i).Cells("IVA").Value
+            End If
+
+        Next
+        'If Editar = False Then
+        If Me.chkTerceros.Checked Then
+            Me.TxtFactura.Text = Me.NoFactura
+            Me.DtpFechaFactura.Value = Me.FechaFactura
+            Me.txtObservaciones.Text = Me.Observaciones
+        End If
+
+        Me.TxtSubtotal.Text = Subtotal.ToString(formato)
+        Me.txtIva.Text = IVAA.ToString(formato)
+        Me.txtISR.Text = 0.ToString(formato)
+        Me.txtIVAFlete1.Text = 0.ToString(formato)
+        Me.txtRetIVA.Text = 0.ToString(formato)
+
+        'End If
+    End Function
+
+    Public Sub Calcular(Optional ByVal ignorarFlete As Boolean = False)
+        'calcularHonorarios()
+        calcularTotales()
+        calcularFlete(ignorarFlete)
+        calcularSubtotal()
+    End Sub
+
     Private Sub DgvRecepciones_CellContentClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvRecepciones.CellContentClick
-        'MeeCell
         Try
             If e.ColumnIndex = Me.Agregar.Index Then
                 If CBool(Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value) Then
@@ -1254,77 +1299,16 @@ Public Class RecepcionFacturasForm
                     Me.DgvRecepciones.Rows(e.RowIndex).Cells("Agregar").Value = True
 
                 End If
+
+                Calcular(True)
+
                 'Re = New Integralab.ORM.EntityClasses.RecepcionesNewEntity
-                Me.Subtotal = 0
-                Me.IVAA = 0
-                For i As Integer = 0 To Me.DgvRecepciones.Rows.Count - 1
-                    
-                    If CBool(Me.DgvRecepciones.Rows(i).Cells("Agregar").Value) Then
-                        '  If Re.FetchUsingPK(Controlador.Sesion.Empndx, Me.DgvRecepciones.Rows(i).Cells("Folio").Value) Then
-                        If Editar = False Then
-                            'Dim total As Decimal
-                            'Total = Re.Precio * Re.Cantidad
-                            Subtotal = Subtotal + Me.DgvRecepciones.Rows(i).Cells("Precio").Value
-                            IVAA = IVAA + Me.DgvRecepciones.Rows(i).Cells("IVA").Value
-                            'Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Subtotal
-                        End If
-                        'End If
-                    End If
 
-                Next
-                If Subtotal = 0 Then
-                    Me.TxtSubtotal.Enabled = True
-                    Me.txtIva.Enabled = True
-                    Me.TxtTotal.Enabled = True
-                    Me.txtISR.Enabled = True
-                    Me.txtIVAFlete1.Enabled = True
-                    Me.txtRetIVA.Enabled = True
-                    Editar = True
-                Else
-                    Me.TxtSubtotal.Enabled = False
-                    Me.txtIva.Enabled = False
-                    Me.TxtTotal.Enabled = False
-                    Me.txtISR.Enabled = False
-                    Me.txtIVAFlete1.Enabled = False
-                    Me.txtRetIVA.Enabled = False
-                    'Me.txtIva.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                    'If Me.DgvRecepciones.Rows(1).Cells("").Value > 0 Then
-
-                    'End If
-                    'Me.txtISR.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                    'Me.txtRetIVA.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                    'Me.txtIVAFlete1.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-
-
-                End If
-                If Editar = False Then
-                    'If TxtSubtotal.Text = "" Then
-                    If Me.chkTerceros.Checked Then
-                        Me.TxtFactura.Text = Me.NoFactura
-                        Me.DtpFechaFactura.Value = Me.FechaFactura
-                        Me.txtObservaciones.Text = Me.Observaciones
-                    End If
-
-                    Me.TxtSubtotal.Text = Subtotal.ToString("C2")
-                    Me.txtIva.Text = IVAA.ToString("C2")
-                    Me.txtISR.Text = 0.ToString("C2")
-                    Me.txtIVAFlete1.Text = 0.ToString("C2")
-                    Me.txtRetIVA.Text = 0.ToString("C2")
-                    'End If
-                Else
-                    Me.TxtSubtotal.Text = 0.ToString("C2")
-                    Me.txtIva.Text = 0.ToString("C2")
-                    Me.txtISR.Text = 0.ToString("C2")
-                    Me.txtIVAFlete1.Text = 0.ToString("C2")
-                    Me.txtRetIVA.Text = 0.ToString("C2")
-                    Me.TxtTotal.Text = 0.ToString("C2")
-
-                End If
             End If
         Catch ex As Exception
 
         End Try
-        
+
     End Sub
 
     Private Sub DgvRecepciones_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvRecepciones.CellEndEdit
@@ -1359,13 +1343,23 @@ Public Class RecepcionFacturasForm
     Private Sub TxtSubtotal_KeyPress1(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtSubtotal.KeyPress
         If e.KeyChar = Chr(13) Then
             If Not Me.TxtSubtotal.Text = "" Then
-                Me.TxtSubtotal.Text = (CDec(Me.TxtSubtotal.Text)).ToString("C2")
+                Me.TxtSubtotal.Text = (CDec(Me.TxtSubtotal.Text)).ToString(formato)
                 Me.txtIva.Focus()
             End If
         End If
     End Sub
 
-    Private Sub TxtSubtotal_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtSubtotal.TextChanged
+    Public Function calcularSubtotal() As Decimal
+
+        Me.Subtotal = If(String.IsNullOrEmpty(Me.TxtSubtotal.Text), 0, Me.TxtSubtotal.Text)
+        Me.TotalAux = 0D
+        Dim IVAFlete As Decimal = 0D
+        Dim ISRInt As Decimal = 0D
+        Dim RetIVAInt As Decimal = 0D
+        Dim IVA As Decimal = 0D
+        Dim Anticipo As Decimal = If(String.IsNullOrEmpty(Me.TxtAnticipo.Text), 0, Me.TxtAnticipo.Text)
+
+        'Dim AnticipoInt As Decimal = CDec(If(String.IsNullOrEmpty(TxtAnticipo.Text), 0, TxtAnticipo.Text))
         If Not IsNumeric(Me.TxtSubtotal.Text) Then
             'MsgBox("Teclee una cantidad válida")
             Me.TxtSubtotal.Text = ""
@@ -1373,35 +1367,82 @@ Public Class RecepcionFacturasForm
         Else
             If Editar = False Then
                 If Not Me.TxtSubtotal.Text = "" Then
-                    Me.Subtotal = Me.TxtSubtotal.Text
-                    If Not SeAgregaronRecepciones() Then
-                        Me.txtIva.Text = (((Subtotal * ConfigCont.Iva) / 100)).ToString("C2")
-                    End If
-                    If Not Me.txtIva.Text = "" Then
-                        Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)).ToString("C2"))
+                    If ckbHonorarios.Checked = True Then
+                        Label22.Visible = True
+                        txtTasaISR.Visible = True
+                        Label23.Visible = True
+                        txtTasaRetIVA.Visible = True
+                        'ckbFlete.Checked = False
+                        Dim Conf As New CC.UsrConfigContabilidadCollection
+                        Conf.GetMulti(Nothing)
+
+                        Me.txtTasaISR.Text = 0
+                        Me.txtTasaRetIVA.Text = 0
+
+                        Me.txtTasaISR.Text = CDec(Conf(0).Isr).ToString("N2")
+                        Me.txtTasaRetIVA.Text = CDec(Conf(0).TasaRetencion).ToString("N2")
+
+                        Dim TasaISR As Decimal = If(String.IsNullOrEmpty(Me.txtTasaISR.Text), 0, Me.txtTasaISR.Text)
+                        Dim TasaRetIVA As Decimal = If(String.IsNullOrEmpty(Me.txtTasaRetIVA.Text), 0, Me.txtTasaRetIVA.Text)
+                        'Mee
+                        ISRInt = ((Me.Subtotal * TasaISR) / 100).ToString(formato)
+                        RetIVAInt = ((Me.Subtotal * TasaRetIVA) / 100).ToString(formato)
+
+                        Me.txtISR.Text = ISRInt.ToString(formato)
+                        Me.txtRetIVA.Text = RetIVAInt.ToString(formato)
+
                     Else
-                        Me.TxtTotal.Text = Me.TxtSubtotal.Text
+                        Label22.Visible = False
+                        txtTasaISR.Visible = False
+                        Label23.Visible = False
+                        txtTasaRetIVA.Visible = False
+                        txtTasaISR.Text = 0.ToString(formato)
+                        txtTasaRetIVA.Text = 0.ToString(formato)
                     End If
-                    ' Me.TxtTotal.Text = Me.txtSubtotal.Text
-                    If Not Me.TxtAnticipo.Text = "" Then
-                        Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)).ToString("C2") - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-                        'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString("C2")
+
+                    If (ckbFlete.Checked) Then
+                        IVAFlete = CDec(If(String.IsNullOrEmpty(Me.txtIVAFlete1.Text), 0, Me.txtIVAFlete1.Text))
                     End If
+                    IVA = CDec(If(String.IsNullOrEmpty(Me.txtIva.Text), 0, Me.txtIva.Text))
+                    If Not SeAgregaronRecepciones() Then
+                        Me.txtIva.Text = CDec(((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
+                        IVA = CDec(((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
+                    End If
+                    Me.TotalAux = (Subtotal + IVA)
+                    Me.Subtotal = (Subtotal + IVA + ISRInt) - (RetIVAInt + IVAFlete + Anticipo)
+
+                    Me.TxtTotal.Text = Subtotal.ToString(formato)
+
+                    'If Not Me.txtIva.Text = "" Then
+                    '    Me.TxtTotal.Text = CDec(Subtotal + CDec(Me.txtIva.Text)).ToString(formato)
+                    'Else
+                    '    Me.TxtTotal.Text = Me.Subtotal.ToString(formato)
+                    'End If
+                    'If Not Me.TxtAnticipo.Text = "" Then
+                    '    Me.TxtTotal.Text = ((Subtotal).ToString(formato) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+                    'End If
                     'If Not Me.txtISR.Text = "" And Me.txtRetIVA.Text = "" Then
-                    '    Me.TxtTotal.Text = (((Subtotal + CDec(Me.txtIva.Text)) - (CDec(Me.txtISR.Text) + CDec(Me.txtRetIVA.Text))).ToString("C2") - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-                    '    'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString("C2")
+                    '    Me.TxtTotal.Text = (((Subtotal + CDec(Me.txtIva.Text)) - (CDec(Me.txtISR.Text) + CDec(Me.txtRetIVA.Text))).ToString(formato) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+                    '    'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString(formato)
                     'End If
                     'If Not Me.txtIVAFlete1.Text = "" Then
-                    '    Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)) - CDec(Me.txtIVAFlete1.Text).ToString("C2") - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-                    '    'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString("C2")
+                    '    Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)) - CDec(Me.txtIVAFlete1.Text).ToString(formato) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+                    '    'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString(formato)
                     'End If
                 Else
                     Subtotal = 0
-                    Me.TxtTotal.Text = Subtotal.ToString("C2")
-                    'Me.txtIva.Text = (((Subtotal * Me.Fact.TasaIva) / 100)).ToString("C2")
+                    TotalAux = 0
+                    Me.TxtTotal.Text = Subtotal.ToString(formato)
+                    'Me.txtIva.Text = (((Subtotal * Me.Fact.TasaIva) / 100)).ToString(formato)
                 End If
             End If
         End If
+
+        Return Me.TotalAux
+    End Function
+
+    Private Sub TxtSubtotal_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtSubtotal.TextChanged
+        'Me.calcularSubtotal()
 
     End Sub
 
@@ -1425,35 +1466,46 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
-        If e.ColumnIndex = Me.ClmCargo.Index Then
-            If Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString = "" Then
-                Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0.ToString("C2")
-            Else
-                If Not IsNumeric(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
-                    MsgBox("Teclee una Cantidad Correcta", MsgBoxStyle.Exclamation, "Error")
-                    Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0.ToString("C2")
+        Try
+            If e.ColumnIndex = Me.ClmCargo.Index Or e.ColumnIndex = Me.ClmAbono.Index Then
+                If String.IsNullOrEmpty(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+                    Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0.ToString(formato)
                 Else
-                    Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString("C2")
+                    Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString().Replace("$", "")
+                    If Not IsNumeric(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+                        MsgBox("Teclee una Cantidad Correcta", MsgBoxStyle.Exclamation, "Error")
+                        Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0.ToString(formato)
+                    Else
+                        Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString(formato)
+                    End If
                 End If
             End If
-        End If
+        Catch ex As Exception
+            Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0.ToString(formato)
+        End Try
+
     End Sub
 
     Private Sub DgvCuentas_CellValueChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellValueChanged
-        Dim SumaCargo As Decimal = 0
-        Dim SumaAbono As Decimal = 0
-        'If e.ColumnIndex = Me.ClmCargo.Index Then
-        '    For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
-        '        Tot += Decimal.Parse(Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value.ToString)
-        '    Next
-        '    Me.txtSumaCargo.Text = Tot.ToString("C2")
-        'End If
-        For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
-            SumaCargo = SumaCargo + Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value
-            SumaAbono = SumaAbono + Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value
-        Next
-        Me.txtSumaCargo.Text = SumaCargo.ToString("C2")
-        Me.TxtSumaAbono.Text = SumaAbono.ToString("C2")
+        Try
+            Dim SumaCargo As Decimal = 0
+            Dim SumaAbono As Decimal = 0
+            'If e.ColumnIndex = Me.ClmCargo.Index Then
+            '    For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+            '        Tot += Decimal.Parse(Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value.ToString)
+            '    Next
+            '    Me.txtSumaCargo.Text = Tot.ToString(formato)
+            'End If
+            For i As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+                SumaCargo = SumaCargo + Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value
+                SumaAbono = SumaAbono + Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value
+            Next
+            Me.txtSumaCargo.Text = SumaCargo.ToString(formato)
+            Me.TxtSumaAbono.Text = SumaAbono.ToString(formato)
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub DgvCuentas_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DgvCuentas.KeyDown
@@ -1500,75 +1552,86 @@ Public Class RecepcionFacturasForm
         End If
     End Sub
 
-    Private Sub ckbFlete_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckbFlete.CheckedChanged
+    Public Function calcularFlete(Optional ByVal ignorarCuentaFlete As Boolean = False) As Boolean
+        'Mee
         If ckbFlete.Checked = True Then
-            Dim confi As New CN.ConfiguracionCtasCtrolColeccion
-            If confi.Obtener(24) > 0 Then
-                Me.RellenarGridCuentas(confi(0).CuentaContable)
-            Else
-                MessageBox.Show("No se ha configurado la cuenta para el IVA de Fletes." + vbNewLine + "Captúrelo desde Catálogos - Contabilidad - Cuentas de control.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                ckbFlete.Checked = False
-                Return
-            End If
+            If ignorarCuentaFlete = False Then
+                Dim confi As New CN.ConfiguracionCtasCtrolColeccion
+                If confi.Obtener(24) > 0 Then
+                    Me.RellenarGridCuentas(confi(0).CuentaContable)
+                Else
+                    MessageBox.Show("No se ha configurado la cuenta para el IVA de Fletes." + vbNewLine + "Captúrelo desde Catálogos - Contabilidad - Cuentas de control.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ckbFlete.Checked = False
+                    Return False
+                End If
 
+
+            End If
             Label21.Visible = True
             txtIVAFlete.Visible = True
-            ckbHonorarios.Checked = False
+            'ckbHonorarios.Checked = False
             Dim Conf As New CC.UsrConfigContabilidadCollection
             Conf.GetMulti(Nothing)
+            Me.txtIVAFlete.Text = CDec(Conf(0).Ivaflete)
 
-            Me.txtIVAFlete.Text = CInt(Conf(0).Ivaflete)
-            Me.txtIVAFlete1.Text = ((Me.TxtSubtotal.Text * Me.txtIVAFlete.Text) / 100).ToString("C2")
-            If Me.txtIVAFlete1.Text > 0 Then
-                If TxtAnticipo.Text = "" Then
-                    Me.TxtTotal.Text = CDec(Me.TxtTotal.Text) - CDec(txtIVAFlete1.Text).ToString("C2")
-                Else
-                    Me.TxtTotal.Text = ((CDec(Me.TxtTotal.Text) - CDec(txtIVAFlete1.Text)) - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-                End If
-                'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-            End If
+            Dim SubtotalInt As Decimal = If(String.IsNullOrEmpty(Me.TxtSubtotal.Text), 0, Me.TxtSubtotal.Text)
+            Dim IVAFleteInt As Decimal = If(String.IsNullOrEmpty(Me.txtIVAFlete.Text), 0, Me.txtIVAFlete.Text)
+            Dim IVAFlete1Int As Decimal = If(String.IsNullOrEmpty(Me.txtIVAFlete1.Text), 0, Me.txtIVAFlete1.Text)
+
+            IVAFlete1Int = ((SubtotalInt * IVAFleteInt) / 100).ToString(formato)
+            Me.txtIVAFlete1.Text = IVAFlete1Int.ToString(formato)
+
+            'If IVAFlete1Int > 0 Then
+            '    If TxtAnticipo.Text = "" Then
+            '        Me.TxtTotal.Text = CDec(CDec(Me.TxtTotal.Text) - IVAFlete1Int).ToString(formato)
+            '    Else
+            '        Me.TxtTotal.Text = ((CDec(Me.TxtTotal.Text) - IVAFlete1Int) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+            '    End If
+            'End If
 
         Else
+
+            Dim confi As New CN.ConfiguracionCtasCtrolColeccion
+            If confi.Obtener(24) > 0 Then
+                Dim Cta As New ClasesNegocio.CuentaContableClass()
+                Cta = confi(0).CuentaContable
+                CuentasRepetidas(Cta, True)
+            Else
+                Return False
+            End If
+            Dim SubtotalInt As Decimal = If(String.IsNullOrEmpty(Me.TxtSubtotal.Text), 0, Me.TxtSubtotal.Text)
+            Dim IVAFleteInt As Decimal = If(String.IsNullOrEmpty(Me.txtIVAFlete.Text), 0, Me.txtIVAFlete.Text)
+            Dim IVAFlete1Int As Decimal = If(String.IsNullOrEmpty(Me.txtIVAFlete1.Text), 0, Me.txtIVAFlete1.Text)
+
+            IVAFlete1Int = ((SubtotalInt * IVAFleteInt) / 100).ToString(formato)
+            Me.txtIVAFlete1.Text = IVAFlete1Int.ToString(formato)
+            'If IVAFlete1Int > 0 Then
+            '    If TxtAnticipo.Text = "" Then
+            '        Me.TxtTotal.Text = CDec(CDec(Me.TxtTotal.Text) + IVAFlete1Int).ToString(formato)
+            '    Else
+            '        Me.TxtTotal.Text = ((CDec(Me.TxtTotal.Text) + IVAFlete1Int) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+            '    End If
+            '    'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+            'End If
+
             Label21.Visible = False
             txtIVAFlete.Visible = False
-            Me.txtIVAFlete1.Text = 0.ToString("C2")
-            'TxtIVAFlete.Text = 0.ToString("C2")
-
+            Me.txtIVAFlete1.Text = 0.ToString(formato)
         End If
+        Return True
+    End Function
+
+    Public Function calcularHonorarios() As Boolean
+
+    End Function
+
+
+    Private Sub ckbFlete_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckbFlete.CheckedChanged
+        Me.Calcular()
     End Sub
 
     Private Sub ckbHonorarios_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckbHonorarios.CheckedChanged
-        If ckbHonorarios.Checked = True Then
-
-            Label22.Visible = True
-            txtTasaISR.Visible = True
-            Label23.Visible = True
-            txtTasaRetIVA.Visible = True
-            ckbFlete.Checked = False
-            Dim Conf As New CC.UsrConfigContabilidadCollection
-            Conf.GetMulti(Nothing)
-            Me.txtTasaISR.Text = CInt(Conf(0).Isr)
-            Me.txtTasaRetIVA.Text = CInt(Conf(0).TasaRetencion)
-            Me.txtISR.Text = (Me.txtTasaISR.Text)
-            Me.txtRetIVA.Text = (Me.txtTasaRetIVA.Text)
-            If TxtAnticipo.Text = "" Then
-                Me.TxtTotal.Text = (((CDec(TxtSubtotal.Text) + CDec(Me.txtIva.Text)) - (CDec(Me.txtISR.Text) + CDec(Me.txtRetIVA.Text)))).ToString("C2")
-            Else
-
-                Me.TxtTotal.Text = (((Subtotal + CDec(Me.txtIva.Text)) - (CDec(Me.txtISR.Text) + CDec(Me.txtRetIVA.Text))).ToString("C2") - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-                'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString("C2")
-            End If
-
-        Else
-            Label22.Visible = False
-            txtTasaISR.Visible = False
-            Label23.Visible = False
-            txtTasaRetIVA.Visible = False
-            txtTasaISR.Text = 0.ToString("C2")
-            txtTasaRetIVA.Text = 0.ToString("C2")
-
-
-        End If
+        Me.Calcular()
     End Sub
 
     Private Sub chkTerceros_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkTerceros.CheckedChanged
@@ -1627,31 +1690,31 @@ Public Class RecepcionFacturasForm
                     Me.FechaFactura = Me.DgvRecepciones.Rows(e.RowIndex).Cells("FechaRecepcion").Value.ToString()
                     Me.Observaciones = Me.DgvRecepciones.Rows(e.RowIndex).Cells("clmObservaciones").Value.ToString()
                 Next
-                If Subtotal = 0 Then
-                    Me.TxtSubtotal.Enabled = True
-                    Me.txtIva.Enabled = True
-                    Me.TxtTotal.Enabled = True
-                    Me.txtISR.Enabled = True
-                    Me.txtIVAFlete1.Enabled = True
-                    Me.txtRetIVA.Enabled = True
-                    Editar = True
-                Else
-                    Me.TxtSubtotal.Enabled = False
-                    Me.txtIva.Enabled = False
-                    Me.TxtTotal.Enabled = False
-                    Me.txtISR.Enabled = False
-                    Me.txtIVAFlete1.Enabled = False
-                    Me.txtRetIVA.Enabled = False
-                    'Me.txtIva.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                    'If Me.DgvRecepciones.Rows(1).Cells("").Value > 0 Then
+                'If Subtotal = 0 Then
+                '    Me.TxtSubtotal.Enabled = True
+                '    Me.txtIva.Enabled = True
+                '    Me.TxtTotal.Enabled = True
+                '    Me.txtISR.Enabled = True
+                '    Me.txtIVAFlete1.Enabled = True
+                '    Me.txtRetIVA.Enabled = True
+                '    Editar = True
+                'Else
+                '    Me.TxtSubtotal.Enabled = False
+                '    Me.txtIva.Enabled = False
+                '    Me.TxtTotal.Enabled = False
+                '    Me.txtISR.Enabled = False
+                '    Me.txtIVAFlete1.Enabled = False
+                '    Me.txtRetIVA.Enabled = False
+                '    'Me.txtIva.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                '    'If Me.DgvRecepciones.Rows(1).Cells("").Value > 0 Then
 
-                    'End If
-                    'Me.txtISR.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                    'Me.txtRetIVA.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
-                    'Me.txtIVAFlete1.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                '    'End If
+                '    'Me.txtISR.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                '    'Me.txtRetIVA.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
+                '    'Me.txtIVAFlete1.Text = Me.DgvRecepciones.Rows(2).Cells("IVA").Value
 
 
-                End If
+                'End If
                 If Editar = False Then
                     'If TxtSubtotal.Text = "" Then
                     If Me.chkTerceros.Checked Then
@@ -1660,19 +1723,19 @@ Public Class RecepcionFacturasForm
                         Me.txtObservaciones.Text = Me.Observaciones
                     End If
 
-                    Me.TxtSubtotal.Text = Subtotal.ToString("C2")
-                    Me.txtIva.Text = IVAA.ToString("C2")
-                    Me.txtISR.Text = 0.ToString("C2")
-                    Me.txtIVAFlete1.Text = 0.ToString("C2")
-                    Me.txtRetIVA.Text = 0.ToString("C2")
+                    Me.TxtSubtotal.Text = Subtotal.ToString(formato)
+                    Me.txtIva.Text = IVAA.ToString(formato)
+                    Me.txtISR.Text = 0.ToString(formato)
+                    Me.txtIVAFlete1.Text = 0.ToString(formato)
+                    Me.txtRetIVA.Text = 0.ToString(formato)
                     'End If
                 Else
-                    Me.TxtSubtotal.Text = 0.ToString("C2")
-                    Me.txtIva.Text = 0.ToString("C2")
-                    Me.txtISR.Text = 0.ToString("C2")
-                    Me.txtIVAFlete1.Text = 0.ToString("C2")
-                    Me.txtRetIVA.Text = 0.ToString("C2")
-                    Me.TxtTotal.Text = 0.ToString("C2")
+                    Me.TxtSubtotal.Text = 0.ToString(formato)
+                    Me.txtIva.Text = 0.ToString(formato)
+                    Me.txtISR.Text = 0.ToString(formato)
+                    Me.txtIVAFlete1.Text = 0.ToString(formato)
+                    Me.txtRetIVA.Text = 0.ToString(formato)
+                    Me.TxtTotal.Text = 0.ToString(formato)
 
                 End If
             End If
@@ -1680,4 +1743,41 @@ Public Class RecepcionFacturasForm
 
         End Try
     End Sub
+    Public Sub NumerosyDecimal(ByVal CajaTexto As Windows.Forms.TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf e.KeyChar = "." And Not CajaTexto.Text.IndexOf(".") Then
+            e.Handled = True
+        ElseIf e.KeyChar = "." Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+    Private Sub DgvCuentas_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DgvCuentas.EditingControlShowing
+        Dim cajatexto As TextBox = TryCast(e.Control, TextBox)
+        If (Me.DgvCuentas.CurrentCell.ColumnIndex() <> ClmDescripcion.Index) Then
+            If cajatexto IsNot Nothing Then
+                RemoveHandler cajatexto.KeyPress, AddressOf Me.txtDiasPlazo_KeyPress
+                AddHandler cajatexto.KeyPress, AddressOf Me.txtDiasPlazo_KeyPress
+            End If
+        Else
+            RemoveHandler cajatexto.KeyPress, AddressOf Me.txtDiasPlazo_KeyPress
+        End If
+
+    End Sub
+
+    Private Sub txtDiasPlazo_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtDiasPlazo.KeyPress
+        NumerosyDecimal(sender, e)
+    End Sub
+
+    'Private Sub DgvCuentas_CellBeginEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvCuentas.CellBeginEdit
+    '    Dim abono As Decimal = 0
+    '    If Not String.IsNullOrEmpty(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+    '        abono = Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString().Replace(",", "") ' e.RowIndex
+    '        Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = abono
+    '    End If
+    'End Sub
 End Class

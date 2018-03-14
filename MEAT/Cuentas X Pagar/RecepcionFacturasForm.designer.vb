@@ -23,13 +23,13 @@ Partial Class RecepcionFacturasForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblEmpresa = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -441,7 +441,7 @@ Partial Class RecepcionFacturasForm
         Me.Agregar.Name = "Agregar"
         Me.Agregar.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Agregar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Agregar.Width = 60
+        Me.Agregar.Width = 50
         '
         'IdRecepcionOrdenCompra
         '
@@ -454,7 +454,7 @@ Partial Class RecepcionFacturasForm
         Me.IVA.DataPropertyName = "IVA"
         Me.IVA.HeaderText = "IVA"
         Me.IVA.Name = "IVA"
-        Me.IVA.Visible = False
+        Me.IVA.Width = 90
         '
         'Folio
         '
@@ -466,18 +466,18 @@ Partial Class RecepcionFacturasForm
         'FechaRecepcion
         '
         Me.FechaRecepcion.DataPropertyName = "FechaFactura"
-        DataGridViewCellStyle1.Format = "d"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.FechaRecepcion.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle15.Format = "d"
+        DataGridViewCellStyle15.NullValue = Nothing
+        Me.FechaRecepcion.DefaultCellStyle = DataGridViewCellStyle15
         Me.FechaRecepcion.HeaderText = "Fecha"
         Me.FechaRecepcion.Name = "FechaRecepcion"
         Me.FechaRecepcion.ReadOnly = True
         '
         'FechaRetiro
         '
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.FechaRetiro.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle16.Format = "d"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.FechaRetiro.DefaultCellStyle = DataGridViewCellStyle16
         Me.FechaRetiro.HeaderText = "Fecha Retiro"
         Me.FechaRetiro.Name = "FechaRetiro"
         Me.FechaRetiro.ReadOnly = True
@@ -493,10 +493,10 @@ Partial Class RecepcionFacturasForm
         'CantidadProducto
         '
         Me.CantidadProducto.DataPropertyName = "Cantidad"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.CantidadProducto.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle17.Format = "N2"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.CantidadProducto.DefaultCellStyle = DataGridViewCellStyle17
         Me.CantidadProducto.HeaderText = "Cantidad"
         Me.CantidadProducto.Name = "CantidadProducto"
         Me.CantidadProducto.ReadOnly = True
@@ -504,9 +504,9 @@ Partial Class RecepcionFacturasForm
         'Precio
         '
         Me.Precio.DataPropertyName = "Precio"
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle18.Format = "C2"
+        DataGridViewCellStyle18.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle18
         Me.Precio.HeaderText = "Precio"
         Me.Precio.Name = "Precio"
         Me.Precio.ReadOnly = True
@@ -516,8 +516,8 @@ Partial Class RecepcionFacturasForm
         'Importe
         '
         Me.Importe.DataPropertyName = "Total"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.Importe.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.Importe.DefaultCellStyle = DataGridViewCellStyle19
         Me.Importe.HeaderText = "Importe"
         Me.Importe.Name = "Importe"
         Me.Importe.ReadOnly = True
@@ -695,19 +695,19 @@ Partial Class RecepcionFacturasForm
         '
         'ClmCargo
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle20.Format = "C2"
+        DataGridViewCellStyle20.NullValue = Nothing
+        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle20
         Me.ClmCargo.HeaderText = "Cargo"
         Me.ClmCargo.Name = "ClmCargo"
         '
         'ClmAbono
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle7.Format = "C2"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle21.Format = "C2"
+        DataGridViewCellStyle21.NullValue = Nothing
+        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle21
         Me.ClmAbono.HeaderText = "Abono"
         Me.ClmAbono.Name = "ClmAbono"
         '
@@ -983,13 +983,6 @@ Partial Class RecepcionFacturasForm
     Friend WithEvents DgvCuentas As System.Windows.Forms.DataGridView
     Friend WithEvents txtSumaCargo As System.Windows.Forms.TextBox
     Friend WithEvents TxtSumaAbono As System.Windows.Forms.TextBox
-    Friend WithEvents ClmCtaMayor As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSubCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmSssCta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MtxtUUID As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents ckbFlete As System.Windows.Forms.CheckBox
@@ -1020,4 +1013,11 @@ Partial Class RecepcionFacturasForm
     Friend WithEvents Importe As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FolioOrden As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmObservaciones As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmCtaMayor As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSubCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmSssCta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
