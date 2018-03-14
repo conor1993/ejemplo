@@ -15,6 +15,7 @@ Public Class frmDistribuciondeGastosconsulta
     Public Shared importe As Decimal
     Public Shared ptjimporte As Decimal
     Public Shared conteo As Integer
+
 #Region "propiedades publicas"
     Public Property valor1 As Decimal
         Get

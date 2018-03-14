@@ -1334,6 +1334,7 @@ Public Class PagosaProveedoresForm
                 Me.DgvCuentas.Rows(j).ReadOnly = True
                 If j > 0 Then
                     Me.DgvCuentas.Rows(j).Cells("ClmCargo").ReadOnly = False
+                    Me.DgvCuentas.Rows(j).Cells("ClmAbono").ReadOnly = False
                 End If
 
             Next
@@ -1433,11 +1434,10 @@ Public Class PagosaProveedoresForm
                 PasarCuenta(tmp, e.RowIndex)
             Case 7
                 VerificarBalance2()
-                'If VerificarBalance2() < 0 Then
-                '    ValorGridCuentas(e.RowIndex, e.ColumnIndex, 0)
-                '    'MessageBox.Show("La suma de los Cargos sobrepasa a la suma de los Abonos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                '    MessageBox.Show("La suma de los Abonos sobrepasa a la suma de los Cargos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                'End If
+
+            Case 8
+                VerificarBalance2()
+
         End Select
 
     End Sub
