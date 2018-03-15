@@ -23,4 +23,6 @@ Public Enum CodigodeFolios
     ProrrateoMedicamento = 29
     FacturasVentasyCorrales = 30
     PagoEfectivoRecepcionCompra = 31
+    'Se agrega sin ningun criterio aparente /*Dorantes, Inge Juan Carlos Ingeniero*/
+    NotaCredito = 32
 End Enum

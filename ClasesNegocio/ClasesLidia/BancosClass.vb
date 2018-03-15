@@ -248,7 +248,7 @@ Public Class BancosCollectionClass
         Try
             Me.ClearItems()
             Dim sort As New OC.SortExpression
-            sort.Add(New OC.SortClause(HC.BancosFields.DescripcionCorta, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending))
+            sort.Add(New OC.SortClause(HC.BancosFields.Descripcion, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending))
 
             If FcCondicion = CondicionEnum.Todos Then
                 BancoCollection.GetMulti(Nothing)

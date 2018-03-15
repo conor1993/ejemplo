@@ -20,12 +20,12 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("DsCuentascontablesrpt"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("dtspiliza"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class DsCuentascontablesrpt
+Partial Public Class dtspiliza
     Inherits Global.System.Data.DataSet
     
-    Private tabledatasetcuentascontables As datasetcuentascontablesDataTable
+    Private tablesetfrpolizas As setfrpolizasDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class DsCuentascontablesrpt
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("datasetcuentascontables")) Is Nothing) Then
-                MyBase.Tables.Add(New datasetcuentascontablesDataTable(ds.Tables("datasetcuentascontables")))
+            If (Not (ds.Tables("setfrpolizas")) Is Nothing) Then
+                MyBase.Tables.Add(New setfrpolizasDataTable(ds.Tables("setfrpolizas")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class DsCuentascontablesrpt
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property datasetcuentascontables() As datasetcuentascontablesDataTable
+    Public ReadOnly Property setfrpolizas() As setfrpolizasDataTable
         Get
-            Return Me.tabledatasetcuentascontables
+            Return Me.tablesetfrpolizas
         End Get
     End Property
     
@@ -128,7 +128,7 @@ Partial Public Class DsCuentascontablesrpt
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As DsCuentascontablesrpt = CType(MyBase.Clone,DsCuentascontablesrpt)
+        Dim cln As dtspiliza = CType(MyBase.Clone,dtspiliza)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -153,8 +153,8 @@ Partial Public Class DsCuentascontablesrpt
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("datasetcuentascontables")) Is Nothing) Then
-                MyBase.Tables.Add(New datasetcuentascontablesDataTable(ds.Tables("datasetcuentascontables")))
+            If (Not (ds.Tables("setfrpolizas")) Is Nothing) Then
+                MyBase.Tables.Add(New setfrpolizasDataTable(ds.Tables("setfrpolizas")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class DsCuentascontablesrpt
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tabledatasetcuentascontables = CType(MyBase.Tables("datasetcuentascontables"),datasetcuentascontablesDataTable)
+        Me.tablesetfrpolizas = CType(MyBase.Tables("setfrpolizas"),setfrpolizasDataTable)
         If (initTable = true) Then
-            If (Not (Me.tabledatasetcuentascontables) Is Nothing) Then
-                Me.tabledatasetcuentascontables.InitVars
+            If (Not (Me.tablesetfrpolizas) Is Nothing) Then
+                Me.tablesetfrpolizas.InitVars
             End If
         End If
     End Sub
@@ -199,18 +199,18 @@ Partial Public Class DsCuentascontablesrpt
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "DsCuentascontablesrpt"
+        Me.DataSetName = "dtspiliza"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/DsCuentascontablesrpt.xsd"
+        Me.Namespace = "http://tempuri.org/dtspiliza.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tabledatasetcuentascontables = New datasetcuentascontablesDataTable()
-        MyBase.Tables.Add(Me.tabledatasetcuentascontables)
+        Me.tablesetfrpolizas = New setfrpolizasDataTable()
+        MyBase.Tables.Add(Me.tablesetfrpolizas)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializedatasetcuentascontables() As Boolean
+    Private Function ShouldSerializesetfrpolizas() As Boolean
         Return false
     End Function
     
@@ -225,7 +225,7 @@ Partial Public Class DsCuentascontablesrpt
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As DsCuentascontablesrpt = New DsCuentascontablesrpt()
+        Dim ds As dtspiliza = New dtspiliza()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -273,47 +273,49 @@ Partial Public Class DsCuentascontablesrpt
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub datasetcuentascontablesRowChangeEventHandler(ByVal sender As Object, ByVal e As datasetcuentascontablesRowChangeEvent)
+    Public Delegate Sub setfrpolizasRowChangeEventHandler(ByVal sender As Object, ByVal e As setfrpolizasRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class datasetcuentascontablesDataTable
-        Inherits Global.System.Data.TypedTableBase(Of datasetcuentascontablesRow)
+    Partial Public Class setfrpolizasDataTable
+        Inherits Global.System.Data.TypedTableBase(Of setfrpolizasRow)
         
-        Private columncodigo As Global.System.Data.DataColumn
+        Private columncta As Global.System.Data.DataColumn
         
-        Private columnCta As Global.System.Data.DataColumn
+        Private columnsubcta As Global.System.Data.DataColumn
         
-        Private columnSubCta As Global.System.Data.DataColumn
+        Private columnssubcta As Global.System.Data.DataColumn
         
-        Private columnSSubCta As Global.System.Data.DataColumn
+        Private columnsssubcta As Global.System.Data.DataColumn
         
-        Private columnSSSubCta As Global.System.Data.DataColumn
+        Private columnnomcuenta1 As Global.System.Data.DataColumn
         
-        Private columnNomCuenta As Global.System.Data.DataColumn
+        Private columnnomcuenta2 As Global.System.Data.DataColumn
         
-        Private columnNaturaleza As Global.System.Data.DataColumn
+        Private columnnomcuenta3 As Global.System.Data.DataColumn
         
-        Private columnCodAgrupSAT As Global.System.Data.DataColumn
+        Private columnnomcuenta4 As Global.System.Data.DataColumn
         
-        Private columntitulos As Global.System.Data.DataColumn
+        Private columnorigen As Global.System.Data.DataColumn
         
-        Private columntitulo As Global.System.Data.DataColumn
+        Private columnpoliza As Global.System.Data.DataColumn
         
-        Private columnsubtitulo As Global.System.Data.DataColumn
+        Private columnfecha As Global.System.Data.DataColumn
         
-        Private columnsubtitulos As Global.System.Data.DataColumn
+        Private columnimporte As Global.System.Data.DataColumn
         
-        Private columnAfectable As Global.System.Data.DataColumn
+        Private columncargo As Global.System.Data.DataColumn
+        
+        Private columnabono As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "datasetcuentascontables"
+            Me.TableName = "setfrpolizas"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -346,105 +348,113 @@ Partial Public Class DsCuentascontablesrpt
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property codigoColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ctaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columncodigo
+                Return Me.columncta
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property CtaColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property subctaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnCta
+                Return Me.columnsubcta
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property SubCtaColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ssubctaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnSubCta
+                Return Me.columnssubcta
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property SSubCtaColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property sssubctaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnSSubCta
+                Return Me.columnsssubcta
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property SSSubCtaColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property nomcuenta1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnSSSubCta
+                Return Me.columnnomcuenta1
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property NomCuentaColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property nomcuenta2Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnNomCuenta
+                Return Me.columnnomcuenta2
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property NaturalezaColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property nomcuenta3Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnNaturaleza
+                Return Me.columnnomcuenta3
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property CodAgrupSATColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property nomcuenta4Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnCodAgrupSAT
+                Return Me.columnnomcuenta4
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property titulosColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property origenColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columntitulos
+                Return Me.columnorigen
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property tituloColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property polizaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columntitulo
+                Return Me.columnpoliza
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property subtituloColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property fechaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsubtitulo
+                Return Me.columnfecha
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property subtitulosColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property importeColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsubtitulos
+                Return Me.columnimporte
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property AfectableColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property cargoColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnAfectable
+                Return Me.columncargo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property abonoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnabono
             End Get
         End Property
         
@@ -459,44 +469,44 @@ Partial Public Class DsCuentascontablesrpt
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As datasetcuentascontablesRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As setfrpolizasRow
             Get
-                Return CType(Me.Rows(index),datasetcuentascontablesRow)
+                Return CType(Me.Rows(index),setfrpolizasRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event datasetcuentascontablesRowChanging As datasetcuentascontablesRowChangeEventHandler
+        Public Event setfrpolizasRowChanging As setfrpolizasRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event datasetcuentascontablesRowChanged As datasetcuentascontablesRowChangeEventHandler
+        Public Event setfrpolizasRowChanged As setfrpolizasRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event datasetcuentascontablesRowDeleting As datasetcuentascontablesRowChangeEventHandler
+        Public Event setfrpolizasRowDeleting As setfrpolizasRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event datasetcuentascontablesRowDeleted As datasetcuentascontablesRowChangeEventHandler
+        Public Event setfrpolizasRowDeleted As setfrpolizasRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AdddatasetcuentascontablesRow(ByVal row As datasetcuentascontablesRow)
+        Public Overloads Sub AddsetfrpolizasRow(ByVal row As setfrpolizasRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AdddatasetcuentascontablesRow(ByVal codigo As String, ByVal Cta As String, ByVal SubCta As String, ByVal SSubCta As String, ByVal SSSubCta As String, ByVal NomCuenta As String, ByVal Naturaleza As String, ByVal CodAgrupSAT As String, ByVal titulos As String, ByVal titulo As String, ByVal subtitulo As String, ByVal subtitulos As String, ByVal Afectable As String) As datasetcuentascontablesRow
-            Dim rowdatasetcuentascontablesRow As datasetcuentascontablesRow = CType(Me.NewRow,datasetcuentascontablesRow)
-            Dim columnValuesArray() As Object = New Object() {codigo, Cta, SubCta, SSubCta, SSSubCta, NomCuenta, Naturaleza, CodAgrupSAT, titulos, titulo, subtitulo, subtitulos, Afectable}
-            rowdatasetcuentascontablesRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowdatasetcuentascontablesRow)
-            Return rowdatasetcuentascontablesRow
+        Public Overloads Function AddsetfrpolizasRow(ByVal cta As String, ByVal subcta As String, ByVal ssubcta As String, ByVal sssubcta As String, ByVal nomcuenta1 As String, ByVal nomcuenta2 As String, ByVal nomcuenta3 As String, ByVal nomcuenta4 As String, ByVal origen As String, ByVal poliza As String, ByVal fecha As String, ByVal importe As String, ByVal cargo As String, ByVal abono As String) As setfrpolizasRow
+            Dim rowsetfrpolizasRow As setfrpolizasRow = CType(Me.NewRow,setfrpolizasRow)
+            Dim columnValuesArray() As Object = New Object() {cta, subcta, ssubcta, sssubcta, nomcuenta1, nomcuenta2, nomcuenta3, nomcuenta4, origen, poliza, fecha, importe, cargo, abono}
+            rowsetfrpolizasRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowsetfrpolizasRow)
+            Return rowsetfrpolizasRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As datasetcuentascontablesDataTable = CType(MyBase.Clone,datasetcuentascontablesDataTable)
+            Dim cln As setfrpolizasDataTable = CType(MyBase.Clone,setfrpolizasDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -504,82 +514,85 @@ Partial Public Class DsCuentascontablesrpt
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New datasetcuentascontablesDataTable()
+            Return New setfrpolizasDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columncodigo = MyBase.Columns("codigo")
-            Me.columnCta = MyBase.Columns("Cta")
-            Me.columnSubCta = MyBase.Columns("SubCta")
-            Me.columnSSubCta = MyBase.Columns("SSubCta")
-            Me.columnSSSubCta = MyBase.Columns("SSSubCta")
-            Me.columnNomCuenta = MyBase.Columns("NomCuenta")
-            Me.columnNaturaleza = MyBase.Columns("Naturaleza")
-            Me.columnCodAgrupSAT = MyBase.Columns("CodAgrupSAT")
-            Me.columntitulos = MyBase.Columns("titulos")
-            Me.columntitulo = MyBase.Columns("titulo")
-            Me.columnsubtitulo = MyBase.Columns("subtitulo")
-            Me.columnsubtitulos = MyBase.Columns("subtitulos")
-            Me.columnAfectable = MyBase.Columns("Afectable")
+            Me.columncta = MyBase.Columns("cta")
+            Me.columnsubcta = MyBase.Columns("subcta")
+            Me.columnssubcta = MyBase.Columns("ssubcta")
+            Me.columnsssubcta = MyBase.Columns("sssubcta")
+            Me.columnnomcuenta1 = MyBase.Columns("nomcuenta1")
+            Me.columnnomcuenta2 = MyBase.Columns("nomcuenta2")
+            Me.columnnomcuenta3 = MyBase.Columns("nomcuenta3")
+            Me.columnnomcuenta4 = MyBase.Columns("nomcuenta4")
+            Me.columnorigen = MyBase.Columns("origen")
+            Me.columnpoliza = MyBase.Columns("poliza")
+            Me.columnfecha = MyBase.Columns("fecha")
+            Me.columnimporte = MyBase.Columns("importe")
+            Me.columncargo = MyBase.Columns("cargo")
+            Me.columnabono = MyBase.Columns("abono")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
-            Me.columncodigo = New Global.System.Data.DataColumn("codigo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncodigo)
-            Me.columnCta = New Global.System.Data.DataColumn("Cta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCta)
-            Me.columnSubCta = New Global.System.Data.DataColumn("SubCta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSubCta)
-            Me.columnSSubCta = New Global.System.Data.DataColumn("SSubCta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSSubCta)
-            Me.columnSSSubCta = New Global.System.Data.DataColumn("SSSubCta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSSSubCta)
-            Me.columnNomCuenta = New Global.System.Data.DataColumn("NomCuenta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNomCuenta)
-            Me.columnNaturaleza = New Global.System.Data.DataColumn("Naturaleza", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNaturaleza)
-            Me.columnCodAgrupSAT = New Global.System.Data.DataColumn("CodAgrupSAT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCodAgrupSAT)
-            Me.columntitulos = New Global.System.Data.DataColumn("titulos", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntitulos)
-            Me.columntitulo = New Global.System.Data.DataColumn("titulo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntitulo)
-            Me.columnsubtitulo = New Global.System.Data.DataColumn("subtitulo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsubtitulo)
-            Me.columnsubtitulos = New Global.System.Data.DataColumn("subtitulos", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsubtitulos)
-            Me.columnAfectable = New Global.System.Data.DataColumn("Afectable", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnAfectable)
+            Me.columncta = New Global.System.Data.DataColumn("cta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncta)
+            Me.columnsubcta = New Global.System.Data.DataColumn("subcta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsubcta)
+            Me.columnssubcta = New Global.System.Data.DataColumn("ssubcta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnssubcta)
+            Me.columnsssubcta = New Global.System.Data.DataColumn("sssubcta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsssubcta)
+            Me.columnnomcuenta1 = New Global.System.Data.DataColumn("nomcuenta1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnomcuenta1)
+            Me.columnnomcuenta2 = New Global.System.Data.DataColumn("nomcuenta2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnomcuenta2)
+            Me.columnnomcuenta3 = New Global.System.Data.DataColumn("nomcuenta3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnomcuenta3)
+            Me.columnnomcuenta4 = New Global.System.Data.DataColumn("nomcuenta4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnomcuenta4)
+            Me.columnorigen = New Global.System.Data.DataColumn("origen", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnorigen)
+            Me.columnpoliza = New Global.System.Data.DataColumn("poliza", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpoliza)
+            Me.columnfecha = New Global.System.Data.DataColumn("fecha", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfecha)
+            Me.columnimporte = New Global.System.Data.DataColumn("importe", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnimporte)
+            Me.columncargo = New Global.System.Data.DataColumn("cargo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncargo)
+            Me.columnabono = New Global.System.Data.DataColumn("abono", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnabono)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewdatasetcuentascontablesRow() As datasetcuentascontablesRow
-            Return CType(Me.NewRow,datasetcuentascontablesRow)
+        Public Function NewsetfrpolizasRow() As setfrpolizasRow
+            Return CType(Me.NewRow,setfrpolizasRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New datasetcuentascontablesRow(builder)
+            Return New setfrpolizasRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(datasetcuentascontablesRow)
+            Return GetType(setfrpolizasRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.datasetcuentascontablesRowChangedEvent) Is Nothing) Then
-                RaiseEvent datasetcuentascontablesRowChanged(Me, New datasetcuentascontablesRowChangeEvent(CType(e.Row,datasetcuentascontablesRow), e.Action))
+            If (Not (Me.setfrpolizasRowChangedEvent) Is Nothing) Then
+                RaiseEvent setfrpolizasRowChanged(Me, New setfrpolizasRowChangeEvent(CType(e.Row,setfrpolizasRow), e.Action))
             End If
         End Sub
         
@@ -587,8 +600,8 @@ Partial Public Class DsCuentascontablesrpt
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.datasetcuentascontablesRowChangingEvent) Is Nothing) Then
-                RaiseEvent datasetcuentascontablesRowChanging(Me, New datasetcuentascontablesRowChangeEvent(CType(e.Row,datasetcuentascontablesRow), e.Action))
+            If (Not (Me.setfrpolizasRowChangingEvent) Is Nothing) Then
+                RaiseEvent setfrpolizasRowChanging(Me, New setfrpolizasRowChangeEvent(CType(e.Row,setfrpolizasRow), e.Action))
             End If
         End Sub
         
@@ -596,8 +609,8 @@ Partial Public Class DsCuentascontablesrpt
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.datasetcuentascontablesRowDeletedEvent) Is Nothing) Then
-                RaiseEvent datasetcuentascontablesRowDeleted(Me, New datasetcuentascontablesRowChangeEvent(CType(e.Row,datasetcuentascontablesRow), e.Action))
+            If (Not (Me.setfrpolizasRowDeletedEvent) Is Nothing) Then
+                RaiseEvent setfrpolizasRowDeleted(Me, New setfrpolizasRowChangeEvent(CType(e.Row,setfrpolizasRow), e.Action))
             End If
         End Sub
         
@@ -605,14 +618,14 @@ Partial Public Class DsCuentascontablesrpt
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.datasetcuentascontablesRowDeletingEvent) Is Nothing) Then
-                RaiseEvent datasetcuentascontablesRowDeleting(Me, New datasetcuentascontablesRowChangeEvent(CType(e.Row,datasetcuentascontablesRow), e.Action))
+            If (Not (Me.setfrpolizasRowDeletingEvent) Is Nothing) Then
+                RaiseEvent setfrpolizasRowDeleting(Me, New setfrpolizasRowChangeEvent(CType(e.Row,setfrpolizasRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemovedatasetcuentascontablesRow(ByVal row As datasetcuentascontablesRow)
+        Public Sub RemovesetfrpolizasRow(ByVal row As setfrpolizasRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -621,7 +634,7 @@ Partial Public Class DsCuentascontablesrpt
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As DsCuentascontablesrpt = New DsCuentascontablesrpt()
+            Dim ds As dtspiliza = New dtspiliza()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -639,7 +652,7 @@ Partial Public Class DsCuentascontablesrpt
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "datasetcuentascontablesDataTable"
+            attribute2.FixedValue = "setfrpolizasDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -686,376 +699,394 @@ Partial Public Class DsCuentascontablesrpt
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class datasetcuentascontablesRow
+    Partial Public Class setfrpolizasRow
         Inherits Global.System.Data.DataRow
         
-        Private tabledatasetcuentascontables As datasetcuentascontablesDataTable
+        Private tablesetfrpolizas As setfrpolizasDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tabledatasetcuentascontables = CType(Me.Table,datasetcuentascontablesDataTable)
+            Me.tablesetfrpolizas = CType(Me.Table,setfrpolizasDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property codigo() As String
+        Public Property cta() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.codigoColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.ctaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'codigo' de la tabla 'datasetcuentascontables' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cta' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.codigoColumn) = value
+                Me(Me.tablesetfrpolizas.ctaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Cta() As String
+        Public Property subcta() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.CtaColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.subctaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cta' de la tabla 'datasetcuentascontables' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'subcta' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.CtaColumn) = value
+                Me(Me.tablesetfrpolizas.subctaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property SubCta() As String
+        Public Property ssubcta() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.SubCtaColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.ssubctaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SubCta' de la tabla 'datasetcuentascontables' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ssubcta' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.SubCtaColumn) = value
+                Me(Me.tablesetfrpolizas.ssubctaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property SSubCta() As String
+        Public Property sssubcta() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.SSubCtaColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.sssubctaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SSubCta' de la tabla 'datasetcuentascontables' es DBNull."& _ 
-                            "", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'sssubcta' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.SSubCtaColumn) = value
+                Me(Me.tablesetfrpolizas.sssubctaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property SSSubCta() As String
+        Public Property nomcuenta1() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.SSSubCtaColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.nomcuenta1Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SSSubCta' de la tabla 'datasetcuentascontables' es DBNull"& _ 
-                            ".", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nomcuenta1' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.SSSubCtaColumn) = value
+                Me(Me.tablesetfrpolizas.nomcuenta1Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property NomCuenta() As String
+        Public Property nomcuenta2() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.NomCuentaColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.nomcuenta2Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NomCuenta' de la tabla 'datasetcuentascontables' es DBNul"& _ 
-                            "l.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nomcuenta2' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.NomCuentaColumn) = value
+                Me(Me.tablesetfrpolizas.nomcuenta2Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Naturaleza() As String
+        Public Property nomcuenta3() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.NaturalezaColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.nomcuenta3Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Naturaleza' de la tabla 'datasetcuentascontables' es DBNu"& _ 
-                            "ll.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nomcuenta3' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.NaturalezaColumn) = value
+                Me(Me.tablesetfrpolizas.nomcuenta3Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property CodAgrupSAT() As String
+        Public Property nomcuenta4() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.CodAgrupSATColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.nomcuenta4Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CodAgrupSAT' de la tabla 'datasetcuentascontables' es DBN"& _ 
-                            "ull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nomcuenta4' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.CodAgrupSATColumn) = value
+                Me(Me.tablesetfrpolizas.nomcuenta4Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property titulos() As String
+        Public Property origen() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.titulosColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.origenColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'titulos' de la tabla 'datasetcuentascontables' es DBNull."& _ 
-                            "", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'origen' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.titulosColumn) = value
+                Me(Me.tablesetfrpolizas.origenColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property titulo() As String
+        Public Property poliza() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.tituloColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.polizaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'titulo' de la tabla 'datasetcuentascontables' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'poliza' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.tituloColumn) = value
+                Me(Me.tablesetfrpolizas.polizaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property subtitulo() As String
+        Public Property fecha() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.subtituloColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.fechaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'subtitulo' de la tabla 'datasetcuentascontables' es DBNul"& _ 
-                            "l.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.subtituloColumn) = value
+                Me(Me.tablesetfrpolizas.fechaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property subtitulos() As String
+        Public Property importe() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.subtitulosColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.importeColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'subtitulos' de la tabla 'datasetcuentascontables' es DBNu"& _ 
-                            "ll.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'importe' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.subtitulosColumn) = value
+                Me(Me.tablesetfrpolizas.importeColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Afectable() As String
+        Public Property cargo() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabledatasetcuentascontables.AfectableColumn),String)
+                    Return CType(Me(Me.tablesetfrpolizas.cargoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Afectable' de la tabla 'datasetcuentascontables' es DBNul"& _ 
-                            "l.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cargo' de la tabla 'setfrpolizas' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabledatasetcuentascontables.AfectableColumn) = value
+                Me(Me.tablesetfrpolizas.cargoColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IscodigoNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.codigoColumn)
+        Public Property abono() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablesetfrpolizas.abonoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'abono' de la tabla 'setfrpolizas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesetfrpolizas.abonoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsctaNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.ctaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetcodigoNull()
-            Me(Me.tabledatasetcuentascontables.codigoColumn) = Global.System.Convert.DBNull
+        Public Sub SetctaNull()
+            Me(Me.tablesetfrpolizas.ctaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsCtaNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.CtaColumn)
+        Public Function IssubctaNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.subctaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetCtaNull()
-            Me(Me.tabledatasetcuentascontables.CtaColumn) = Global.System.Convert.DBNull
+        Public Sub SetsubctaNull()
+            Me(Me.tablesetfrpolizas.subctaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsSubCtaNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.SubCtaColumn)
+        Public Function IsssubctaNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.ssubctaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetSubCtaNull()
-            Me(Me.tabledatasetcuentascontables.SubCtaColumn) = Global.System.Convert.DBNull
+        Public Sub SetssubctaNull()
+            Me(Me.tablesetfrpolizas.ssubctaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsSSubCtaNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.SSubCtaColumn)
+        Public Function IssssubctaNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.sssubctaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetSSubCtaNull()
-            Me(Me.tabledatasetcuentascontables.SSubCtaColumn) = Global.System.Convert.DBNull
+        Public Sub SetsssubctaNull()
+            Me(Me.tablesetfrpolizas.sssubctaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsSSSubCtaNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.SSSubCtaColumn)
+        Public Function Isnomcuenta1Null() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.nomcuenta1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetSSSubCtaNull()
-            Me(Me.tabledatasetcuentascontables.SSSubCtaColumn) = Global.System.Convert.DBNull
+        Public Sub Setnomcuenta1Null()
+            Me(Me.tablesetfrpolizas.nomcuenta1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsNomCuentaNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.NomCuentaColumn)
+        Public Function Isnomcuenta2Null() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.nomcuenta2Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetNomCuentaNull()
-            Me(Me.tabledatasetcuentascontables.NomCuentaColumn) = Global.System.Convert.DBNull
+        Public Sub Setnomcuenta2Null()
+            Me(Me.tablesetfrpolizas.nomcuenta2Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsNaturalezaNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.NaturalezaColumn)
+        Public Function Isnomcuenta3Null() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.nomcuenta3Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetNaturalezaNull()
-            Me(Me.tabledatasetcuentascontables.NaturalezaColumn) = Global.System.Convert.DBNull
+        Public Sub Setnomcuenta3Null()
+            Me(Me.tablesetfrpolizas.nomcuenta3Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsCodAgrupSATNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.CodAgrupSATColumn)
+        Public Function Isnomcuenta4Null() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.nomcuenta4Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetCodAgrupSATNull()
-            Me(Me.tabledatasetcuentascontables.CodAgrupSATColumn) = Global.System.Convert.DBNull
+        Public Sub Setnomcuenta4Null()
+            Me(Me.tablesetfrpolizas.nomcuenta4Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IstitulosNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.titulosColumn)
+        Public Function IsorigenNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.origenColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SettitulosNull()
-            Me(Me.tabledatasetcuentascontables.titulosColumn) = Global.System.Convert.DBNull
+        Public Sub SetorigenNull()
+            Me(Me.tablesetfrpolizas.origenColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IstituloNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.tituloColumn)
+        Public Function IspolizaNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.polizaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SettituloNull()
-            Me(Me.tabledatasetcuentascontables.tituloColumn) = Global.System.Convert.DBNull
+        Public Sub SetpolizaNull()
+            Me(Me.tablesetfrpolizas.polizaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IssubtituloNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.subtituloColumn)
+        Public Function IsfechaNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.fechaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetsubtituloNull()
-            Me(Me.tabledatasetcuentascontables.subtituloColumn) = Global.System.Convert.DBNull
+        Public Sub SetfechaNull()
+            Me(Me.tablesetfrpolizas.fechaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IssubtitulosNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.subtitulosColumn)
+        Public Function IsimporteNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.importeColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetsubtitulosNull()
-            Me(Me.tabledatasetcuentascontables.subtitulosColumn) = Global.System.Convert.DBNull
+        Public Sub SetimporteNull()
+            Me(Me.tablesetfrpolizas.importeColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsAfectableNull() As Boolean
-            Return Me.IsNull(Me.tabledatasetcuentascontables.AfectableColumn)
+        Public Function IscargoNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.cargoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetAfectableNull()
-            Me(Me.tabledatasetcuentascontables.AfectableColumn) = Global.System.Convert.DBNull
+        Public Sub SetcargoNull()
+            Me(Me.tablesetfrpolizas.cargoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsabonoNull() As Boolean
+            Return Me.IsNull(Me.tablesetfrpolizas.abonoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetabonoNull()
+            Me(Me.tablesetfrpolizas.abonoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1063,16 +1094,16 @@ Partial Public Class DsCuentascontablesrpt
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class datasetcuentascontablesRowChangeEvent
+    Public Class setfrpolizasRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As datasetcuentascontablesRow
+        Private eventRow As setfrpolizasRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As datasetcuentascontablesRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As setfrpolizasRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -1080,7 +1111,7 @@ Partial Public Class DsCuentascontablesrpt
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As datasetcuentascontablesRow
+        Public ReadOnly Property Row() As setfrpolizasRow
             Get
                 Return Me.eventRow
             End Get

@@ -687,7 +687,7 @@ Public Class FrmNotaCredito
                 'Dim FacturasDet As New EC.DetFacturasEntity 'para agregar al detalle
                 'para crear el folio de la factura
 
-                Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales
+                Folio.Codigo = CodigodeFolios.NotaCredito
                 Folio.Año = Year(dtFechaFactura.Value)
                 Folio.Mes = Month(dtFechaFactura.Value)
 
@@ -701,10 +701,10 @@ Public Class FrmNotaCredito
                 End If
 
                 Dim Fact As CFDI.Comprobante
-                Fact = ObtenerComprobante(Fact, Folio.Consecutivo.ToString("0000000"), "A")
+                Fact = ObtenerComprobante(Fact, Folio.Consecutivo.ToString("0000000"), "NC")
 
                 Dim FactPDF As CFDI.Comprobante
-                FactPDF = ObtenerComprobante(FactPDF, Folio.Consecutivo.ToString("0000000"), "A", True)
+                FactPDF = ObtenerComprobante(FactPDF, Folio.Consecutivo.ToString("0000000"), "NC", True)
 
 
 #If DEBUG Then
@@ -726,7 +726,7 @@ Public Class FrmNotaCredito
 
 
                 'folio de la factura
-                FacturaCabecero.NoFactura = "F" & Folio.Consecutivo.ToString("0000000")
+                FacturaCabecero.NoFactura = "NC" & Folio.Consecutivo.ToString("0000000")
                 FacturaCabecero.TipoComprobante = "E"
                 'guardar poliza
                 Dim Poliza As New PolizaClass

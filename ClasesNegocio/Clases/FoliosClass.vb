@@ -80,8 +80,11 @@ Public Class FoliosClass
 
             If col.Count = 0 Then
                 trans.Add(Folio)
-
-                Folio.Consecutivo = 1
+                If (Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales Or Folio.Codigo = CodigodeFolios.NotaCredito) Then
+                    Folio.Consecutivo += 1
+                Else
+                    Folio.Consecutivo = 1
+                End If
 
                 Return Folio.Save()
             Else

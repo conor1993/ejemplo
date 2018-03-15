@@ -133,15 +133,15 @@ Public Class FrmRecepciondeGanado
             RecepcionGanado.CveLugarCompra = CmbLugarCompra.SelectedValue
             RecepcionGanado.HorasViaje = IIf(txtHorasViaje.Text.Trim().Equals(""), 0, txtHorasViaje.Text.Trim())
 
-            ''falta total de kilos y el importe por kilo
 
+            'falta total de kilos y el importe por kilo
+            Dim res As String = Convert.ToDateTime("01/01/1900")
             'RecepcionGanado.DiasCredito = IIf(txtDiasDeCredito.Text.Trim().Equals(""), 0, txtDiasDeCredito.Text.Trim())
-            'RecepcionGanado.FechaPago = dtpFechaPago.Value
+            RecepcionGanado.FechaPago = res
             'RecepcionGanado.NumFactura = txtNoFactura.Text.Trim()
-
-            Dim fechanull As DateTime?
-            fechanull = Nothing
-            RecepcionGanado.FechaContabilidad = New DateTime(1900, 1, 1, 0, 0, 0)
+            'Dim fechanull As DateTime?
+            'fechanull = Nothing
+            RecepcionGanado.FechaContabilidad = res
 
             Dim polizanull As String = Nothing
             RecepcionGanado.NumPoliza = polizanull

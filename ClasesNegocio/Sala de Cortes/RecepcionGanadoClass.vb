@@ -573,7 +573,7 @@ Public Class RecepcionGanadoClass
             If Not Trans Is Nothing Then
                 Trans.Rollback()
             End If
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+            MsgBox(ex.ToString(), MsgBoxStyle.Critical, "Error")
             Return False
         End Try
     End Function

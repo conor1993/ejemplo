@@ -382,8 +382,6 @@ Public Class CatCuentaContableForm
 
     Private Sub mtb_ClickImprimir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickImprimir
         Try
-
-
             Dim datos As New DataSet
             Dim query = "EXEC  rptcuentascontables 1"
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
@@ -393,14 +391,15 @@ Public Class CatCuentaContableForm
             End Using
 
 
-            ' Dim Reporte As New CN.RptCuentaContable
-            'Reporte.SetDataSource(Me.dgv.DataSource)
-            'Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
-            'Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
-            'Reporte.SetParameterValue("Modulo", "Catalogos\Contabilidad\Cuentas Contables")
-            'Dim pre As New ClasesNegocio.PreVisualizarForm
-            'pre.Reporte = Reporte
-            'pre.ShowDialog()
+            Dim Reporte As New CN.RptCuentaContable1
+            Reporte.SetDataSource(datos.Tables(0))
+            Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
+            Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
+            Reporte.SetParameterValue("Modulo", "Catalogos\Contabilidad\Cuentas Contables")
+
+            Dim pre As New ClasesNegocio.PreVisualizarForm
+            pre.Reporte = Reporte
+            pre.ShowDialog()
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
