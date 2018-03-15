@@ -701,10 +701,10 @@ Public Class FrmNotaCredito
                 End If
 
                 Dim Fact As CFDI.Comprobante
-                Fact = ObtenerComprobante(Fact, Folio.Consecutivo.ToString("0000000"), "NC")
+                Fact = ObtenerComprobante(Fact, Folio.Consecutivo.ToString("000000"), "NC")
 
                 Dim FactPDF As CFDI.Comprobante
-                FactPDF = ObtenerComprobante(FactPDF, Folio.Consecutivo.ToString("0000000"), "NC", True)
+                FactPDF = ObtenerComprobante(FactPDF, Folio.Consecutivo.ToString("000000"), "NC", True)
 
 
 #If DEBUG Then
@@ -722,7 +722,7 @@ Public Class FrmNotaCredito
                 End If
 
                 'folio de la factura
-                FacturaCabecero.NoFactura = Folio.Consecutivo.ToString("0000000")
+                FacturaCabecero.NoFactura = Folio.Consecutivo.ToString("000000")
                 FacturaCabecero.Serie = "NC"
                 FacturaCabecero.Clasificacion = "Nota de Crédito"
                 FacturaCabecero.TipoComprobante = "E"

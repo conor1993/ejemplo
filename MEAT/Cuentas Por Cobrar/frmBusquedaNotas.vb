@@ -219,7 +219,35 @@ Public Class frmBusquedaNotas
         End If
     End Sub
 
-    Private Sub dgvFacturasCabecero_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvFacturasCabecero.CellFormatting
-        'VariantType()
+    Private Sub dgvFacturasCabecero_CellPainting(sender As System.Object, e As System.Windows.Forms.DataGridViewCellPaintingEventArgs) Handles dgvFacturasCabecero.CellPainting
+        'If e.ColumnIndex = 3 AndAlso e.RowIndex <> -1 Then
+
+        '    Using gridBrush As Brush = New SolidBrush(Me.dgvFacturasCabecero.GridColor), backColorBrush As Brush = New SolidBrush(e.CellStyle.BackColor)
+
+        '        Using gridLinePen As Pen = New Pen(gridBrush)
+        '            ' Clear cell  
+        '            e.Graphics.FillRectangle(backColorBrush, e.CellBounds)
+
+        '            ' Draw line (bottom border and right border of current cell)  
+        '            'If next row cell has different content, only draw bottom border line of current cell  
+        '            If e.RowIndex < Me.dgvFacturasCabecero.Rows.Count - 2 AndAlso Me.dgvFacturasCabecero.Rows(e.RowIndex + 1).Cells(e.ColumnIndex).Value.ToString() <> e.Value.ToString() Then
+        '                e.Graphics.DrawLine(gridLinePen, e.CellBounds.Left, e.CellBounds.Bottom - 1, e.CellBounds.Right - 1, e.CellBounds.Bottom - 1)
+        '            End If
+
+        '            ' Draw right border line of current cell  
+        '            e.Graphics.DrawLine(gridLinePen, e.CellBounds.Right - 1, e.CellBounds.Top, e.CellBounds.Right - 1, e.CellBounds.Bottom)
+
+        '            ' draw/fill content in current cell, and fill only one cell of multiple same cells  
+        '            If Not e.Value Is Nothing Then
+        '                If e.RowIndex > 0 AndAlso Me.dgvFacturasCabecero.Rows(e.RowIndex - 1).Cells(e.ColumnIndex).Value.ToString() = e.Value.ToString() Then
+        '                Else
+        '                    e.Graphics.DrawString(CType(e.Value, String), e.CellStyle.Font, Brushes.Black, e.CellBounds.X + 2, e.CellBounds.Y + 5, StringFormat.GenericDefault)
+        '                End If
+        '            End If
+
+        '            e.Handled = True
+        '        End Using
+        '    End Using
+        'End If
     End Sub
 End Class
