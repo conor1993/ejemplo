@@ -6,7 +6,7 @@ Imports System.Data.SqlClient
 
 
 Public Class frmDistribuciondeGastos
-    Public Shared valor As Integer
+    Public Shared valor As Decimal
     Public Shared idpoliza As Integer
     Public Shared idsucursal As Integer
     Public Shared idmetodoprorrateo As Integer
@@ -229,7 +229,7 @@ Public Class frmDistribuciondeGastos
         Try
             If e.ColumnIndex = 2 Then
 
-                Dim total As Integer
+                Dim total As Decimal
 
                 total = valor1 / (dgvMetodos.Rows.Count - 1)
                 For i As Integer = 1 To dgvMetodos.Rows.Count - 1
@@ -247,7 +247,7 @@ Public Class frmDistribuciondeGastos
                     Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = ((total * Porcentaje) / 100).ToString("C2")
                 Next
             ElseIf e.ColumnIndex = 3 Then
-                Dim total As Integer
+                Dim total As Decimal
 
                 total = valor1 / (dgvMetodos.Rows.Count - 1)
                 For i As Integer = 1 To dgvMetodos.Rows.Count - 1

@@ -571,52 +571,52 @@ Public Class PagosaProveedoresForm
     End Sub
 
     Private Sub mtb_ClickImprimir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickImprimir
-        If Not IsNothing(cheque) Then
-            ImprimirCheque.Cheque = cheque
-            ImprimirCheque.AbonoEnCuenta = MessageBox.Show("¿Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
-            ImprimirCheque.Banco = IdBanco
-            ppDg.ShowDialog()
-            If Not cheque.Emitido Then
-                If cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO Then
-                    PagoElectronico.Cheque = cheque
-                    pDg.Document = PagoElectronico
-                    If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
-                        Try
-                            PagoElectronico.Print()
-                            If MessageBox.Show("¿Se imprimio el comprobante?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
-                                PagoElectronico.ImpresionExitosa()
-                                cheque.Guardar()
-                            End If
-                        Catch ex As Exception
-                            MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        End Try
-                    End If
-                Else
-                    If MessageBox.Show("¿Desea imprimir el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
-                        '                        ImprimirCheque.AbonoEnCuenta = MessageBox.Show("¿Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
-                        'ImprimirCheque.Banco = IdBanco
-                        'ImprimirCheque.Cheque = cheque                        
-                        Me.ppDg.Close()
-                        pDg.Document = ImprimirCheque
-                        If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
-                            Try
-                                ImprimirCheque.Print()
-                                If MessageBox.Show("¿Se imprimio el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
-                                    ImprimirCheque.ImpresionExitosa()
-                                    '
-                                    'cheque.Guardar()
-                                    cheque.ObtenerEntidad.Save()
-                                End If
-                            Catch ex As Exception
-                                MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            End Try
-                        End If
-                    End If
-                End If
-            Else
-                If Not cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO Then MessageBox.Show(String.Format("Este cheque ya fue emitido el {0}.", cheque.FechaEmision.ToString("dd MMM' de 'yyyy"), "Cheque ya emitido", MessageBoxButtons.OK, MessageBoxIcon.Error))
-            End If
-        End If
+        'If Not IsNothing(cheque) Then
+        '    ImprimirCheque.Cheque = cheque
+        '    ImprimirCheque.AbonoEnCuenta = MessageBox.Show("¿Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        '    ImprimirCheque.Banco = IdBanco
+        '    ppDg.ShowDialog()
+        '    If Not cheque.Emitido Then
+        '        If cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO Then
+        '            PagoElectronico.Cheque = cheque
+        '            pDg.Document = PagoElectronico
+        '            If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
+        '                Try
+        '                    PagoElectronico.Print()
+        '                    If MessageBox.Show("¿Se imprimio el comprobante?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+        '                        PagoElectronico.ImpresionExitosa()
+        '                        cheque.Guardar()
+        '                    End If
+        '                Catch ex As Exception
+        '                    MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '                End Try
+        '            End If
+        '        Else
+        '            If MessageBox.Show("¿Desea imprimir el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+        '                '                        ImprimirCheque.AbonoEnCuenta = MessageBox.Show("¿Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        '                'ImprimirCheque.Banco = IdBanco
+        '                'ImprimirCheque.Cheque = cheque                        
+        '                Me.ppDg.Close()
+        '                pDg.Document = ImprimirCheque
+        '                If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
+        '                    Try
+        '                        ImprimirCheque.Print()
+        '                        If MessageBox.Show("¿Se imprimio el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+        '                            ImprimirCheque.ImpresionExitosa()
+        '                            '
+        '                            'cheque.Guardar()
+        '                            cheque.ObtenerEntidad.Save()
+        '                        End If
+        '                    Catch ex As Exception
+        '                        MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '                    End Try
+        '                End If
+        '            End If
+        '        End If
+        '    Else
+        '        If Not cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO Then MessageBox.Show(String.Format("Este cheque ya fue emitido el {0}.", cheque.FechaEmision.ToString("dd MMM' de 'yyyy"), "Cheque ya emitido", MessageBoxButtons.OK, MessageBoxIcon.Error))
+        '    End If
+        'End If
     End Sub
 
     Private Sub mtb_ClickLimpiar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickLimpiar
@@ -968,8 +968,8 @@ Public Class PagosaProveedoresForm
         Poliza.Concepto = txtConcepto.Text
         Poliza.Empresa = Empresa
         Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
-        Poliza.FechaCaptura = Now
-        Poliza.FechaPoliza = Now
+        Poliza.FechaCaptura = dtp.Value
+        Poliza.FechaPoliza = dtp.Value
         Poliza.Importe = txtImporte.Valor
         Poliza.Origen = ClasesNegocio.PolizaOrigenEnum.CUENTASxPAGAR
         Poliza.TipoCambio = txtTipoCambio.Valor

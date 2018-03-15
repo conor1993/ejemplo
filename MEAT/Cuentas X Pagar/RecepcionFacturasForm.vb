@@ -206,7 +206,7 @@ Public Class RecepcionFacturasForm
         Me.txtConcepto.Enabled = False
         Me.DgvRecepciones.Enabled = False
         Me.chkServicio.Enabled = False
-        Me.DgvCuentas.Enabled = False
+        Me.DgvCuentas.Enabled = True
         Me.ckbFlete.Enabled = False
         Me.ckbHonorarios.Enabled = False
         Me.txtISR.Enabled = False
@@ -298,6 +298,9 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Public Sub ObtenerValores()
+
+
+
         Me.DtpFechaCaptura.Value = Me.Fact.FechaCaptura
         Me.CmbProveedor.SelectedValue = Me.Fact.IdProveedor
         Me.TxtFactura.Text = Fact.NoFactura
@@ -320,7 +323,7 @@ Public Class RecepcionFacturasForm
                 Me.lblEstatus.Text = "ABONADA"
         End Select
         Me.chkServicio.Checked = Me.Fact.Servicios
-        'Me.MtxtUUID.Text = Me.Fact.Uuid
+        Me.MtxtUUID.Text = Me.Fact.Uuid
     End Sub
 
     Public Function Validar() As Boolean
@@ -858,7 +861,7 @@ Public Class RecepcionFacturasForm
                 End If
 
                 Dim FacturasDetalle As New CC.UsrCxpfacturasDetCollection
-                FacturasDetalle.GetMulti(HC.UsrCxpfacturasDetFields.EmpresaId = Controlador.Sesion.Empndx And HC.UsrCxpfacturasDetFields.IdProveedor = Me.CmbProveedor.SelectedValue And HC.UsrCxpfacturasDetFields.NoFactura = Me.TxtFactura.Text And HC.UsrCxpfacturasDetFields.CarAbo = "C")
+                FacturasDetalle.GetMulti(HC.UsrCxpfacturasDetFields.EmpresaId = Controlador.Sesion.Empndx And HC.UsrCxpfacturasDetFields.IdProveedor = Me.CmbProveedor.SelectedValue And HC.UsrCxpfacturasDetFields.NoFactura = Me.TxtFactura.Text And (HC.UsrCxpfacturasDetFields.CarAbo = "C" Or HC.UsrCxpfacturasDetFields.CarAbo = "A"))
 
                 If FacturasDetalle.Count = 0 Then
                     MessageBox.Show("Esta factura no tienes cuentas contables asociadas", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -866,7 +869,12 @@ Public Class RecepcionFacturasForm
                     Dim CuentasCont As ClasesNegocio.CuentaContableClass
                     For Each FacDetalle As EC.UsrCxpfacturasDetEntity In FacturasDetalle
                         CuentasCont = New ClasesNegocio.CuentaContableClass(FacDetalle.CuentaContable)
-                        RellenarGridCuentas(CuentasCont)
+                        'RellenarGridCuentas(CuentasCont)
+                        If FacDetalle.CarAbo = "C" Then
+                            Me.RellenarGridCuentasB(CuentasCont, FacDetalle.Importe, True)
+                        Else
+                            Me.RellenarGridCuentasB(CuentasCont, FacDetalle.Importe, False)
+                        End If
                     Next
                 End If
 
@@ -1243,34 +1251,34 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Private Sub TxtAnticipo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtAnticipo.TextChanged
-        If Not IsNumeric(Me.TxtAnticipo.Text) Then
-            'MsgBox("Teclee una cantidad válida")
-            Me.TxtAnticipo.Text = "0.0"
-            Me.TxtAnticipo.Focus()
-        Else
-            Calcular()
-            'If Editar = False Then
-            '    If Not Me.TxtSubtotal.Text = "" Then
-            '        Me.Subtotal = Me.TxtSubtotal.Text
-            '        If Not SeAgregaronRecepciones() Then
-            '            Me.txtIva.Text = (((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
-            '        End If
-            '        If Not Me.txtIva.Text = "" Then
-            '            Me.TxtTotal.Text = (Subtotal + CDec(Me.txtIva.Text)).ToString(formato)
-            '        Else
-            '            Me.TxtTotal.Text = Me.TxtSubtotal.Text
-            '        End If
-            '        ' Me.TxtTotal.Text = Me.txtSubtotal.Text
-            '        If Not Me.TxtAnticipo.Text = "" Then
-            '            Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)).ToString(formato) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
-            '            'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString(formato)
-            '        End If
-            '    Else
-            '        Subtotal = 0
-            '        Me.TxtTotal.Text = Subtotal.ToString(formato)
-            '    End If
-            'End If
-        End If
+        'If Not IsNumeric(Me.TxtAnticipo.Text) Then
+        '    'MsgBox("Teclee una cantidad válida")
+        '    Me.TxtAnticipo.Text = "0.0"
+        '    Me.TxtAnticipo.Focus()
+        'Else
+        '    Calcular()
+        '    'If Editar = False Then
+        '    '    If Not Me.TxtSubtotal.Text = "" Then
+        '    '        Me.Subtotal = Me.TxtSubtotal.Text
+        '    '        If Not SeAgregaronRecepciones() Then
+        '    '            Me.txtIva.Text = (((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
+        '    '        End If
+        '    '        If Not Me.txtIva.Text = "" Then
+        '    '            Me.TxtTotal.Text = (Subtotal + CDec(Me.txtIva.Text)).ToString(formato)
+        '    '        Else
+        '    '            Me.TxtTotal.Text = Me.TxtSubtotal.Text
+        '    '        End If
+        '    '        ' Me.TxtTotal.Text = Me.txtSubtotal.Text
+        '    '        If Not Me.TxtAnticipo.Text = "" Then
+        '    '            Me.TxtTotal.Text = ((Subtotal + CDec(Me.txtIva.Text)).ToString(formato) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+        '    '            'Me.TxtTotal.Text = (Subtotal - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+        '    '        End If
+        '    '    Else
+        '    '        Subtotal = 0
+        '    '        Me.TxtTotal.Text = Subtotal.ToString(formato)
+        '    '    End If
+        '    'End If
+        'End If
     End Sub
 
     Private Sub chkPagada_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPagada.CheckedChanged
@@ -1970,5 +1978,33 @@ Public Class RecepcionFacturasForm
         End Try
 
 
+    End Sub
+
+    Private Sub RellenarGridCuentasB(ByVal Cta As ClasesNegocio.CuentaContableClass, ByVal Importe As Decimal, ByVal Cargo As Boolean)
+        Try
+            Dim i As Integer = Me.DgvCuentas.Rows.Count
+            Me.DgvCuentas.Rows.Add()
+            If Cargo Then
+                Me.DgvCuentas.Rows(i).Cells("clmidcuentacont").Value = Cta.Codigo
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Cta.SSSubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Importe.ToString("C2")
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+            Else
+                Me.DgvCuentas.Rows(i).Cells("clmidcuentacont").Value = Cta.Codigo
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Cta.SSSubCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Importe.ToString("C2")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 End Class

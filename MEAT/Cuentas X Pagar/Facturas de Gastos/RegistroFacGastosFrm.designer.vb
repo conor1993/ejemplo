@@ -231,7 +231,6 @@ Partial Class RegistroFacGastosFrm
         '
         'txtIva
         '
-        Me.txtIva.Enabled = False
         Me.txtIva.Location = New System.Drawing.Point(629, 176)
         Me.txtIva.Name = "txtIva"
         Me.txtIva.Size = New System.Drawing.Size(98, 20)
