@@ -22,32 +22,32 @@ Partial Class frmLineas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.txtCodigo = New System.Windows.Forms.TextBox
-        Me.label5 = New System.Windows.Forms.Label
-        Me.label4 = New System.Windows.Forms.Label
-        Me.txtObservaciones = New System.Windows.Forms.TextBox
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.dtpFecha = New System.Windows.Forms.DateTimePicker
-        Me.txtDescripcion = New System.Windows.Forms.TextBox
-        Me.txtDescCorta = New System.Windows.Forms.TextBox
-        Me.label3 = New System.Windows.Forms.Label
-        Me.label2 = New System.Windows.Forms.Label
-        Me.panel1 = New System.Windows.Forms.Panel
-        Me.label1 = New System.Windows.Forms.Label
-        Me.lblTema = New System.Windows.Forms.Label
-        Me.gbDetalles = New System.Windows.Forms.GroupBox
-        Me.dgvLineasReg = New System.Windows.Forms.DataGridView
-        Me.ClmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmDescripcionCorta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmObservaciones = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmFechaAlta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.LineaC = New ClasesNegocio.LineaCollectionClass
-        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.txtCodigo = New System.Windows.Forms.TextBox()
+        Me.label5 = New System.Windows.Forms.Label()
+        Me.label4 = New System.Windows.Forms.Label()
+        Me.txtObservaciones = New System.Windows.Forms.TextBox()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.dtpFecha = New System.Windows.Forms.DateTimePicker()
+        Me.txtDescripcion = New System.Windows.Forms.TextBox()
+        Me.txtDescCorta = New System.Windows.Forms.TextBox()
+        Me.label3 = New System.Windows.Forms.Label()
+        Me.label2 = New System.Windows.Forms.Label()
+        Me.panel1 = New System.Windows.Forms.Panel()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.lblTema = New System.Windows.Forms.Label()
+        Me.gbDetalles = New System.Windows.Forms.GroupBox()
+        Me.dgvLineasReg = New System.Windows.Forms.DataGridView()
+        Me.ClmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcionCorta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmObservaciones = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmFechaAlta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LineaC = New ClasesNegocio.LineaCollectionClass()
+        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
         Me.panel1.SuspendLayout()
         Me.gbDetalles.SuspendLayout()
         CType(Me.dgvLineasReg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,7 +64,7 @@ Partial Class frmLineas
         'label5
         '
         Me.label5.AutoSize = True
-        Me.label5.Location = New System.Drawing.Point(14, 36)
+        Me.label5.Location = New System.Drawing.Point(14, 62)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(97, 13)
         Me.label5.TabIndex = 4
@@ -82,7 +82,7 @@ Partial Class frmLineas
         'txtObservaciones
         '
         Me.txtObservaciones.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtObservaciones.Location = New System.Drawing.Point(117, 85)
         Me.txtObservaciones.MaxLength = 250
@@ -117,10 +117,10 @@ Partial Class frmLineas
         'txtDescripcion
         '
         Me.txtDescripcion.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtDescripcion.Location = New System.Drawing.Point(117, 59)
+        Me.txtDescripcion.Location = New System.Drawing.Point(117, 33)
         Me.txtDescripcion.MaxLength = 50
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(483, 20)
@@ -129,9 +129,9 @@ Partial Class frmLineas
         'txtDescCorta
         '
         Me.txtDescCorta.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDescCorta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtDescCorta.Location = New System.Drawing.Point(117, 33)
+        Me.txtDescCorta.Location = New System.Drawing.Point(117, 59)
         Me.txtDescCorta.MaxLength = 15
         Me.txtDescCorta.Name = "txtDescCorta"
         Me.txtDescCorta.Size = New System.Drawing.Size(213, 20)
@@ -140,7 +140,7 @@ Partial Class frmLineas
         'label3
         '
         Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(14, 62)
+        Me.label3.Location = New System.Drawing.Point(14, 36)
         Me.label3.Name = "label3"
         Me.label3.Size = New System.Drawing.Size(69, 13)
         Me.label3.TabIndex = 2
@@ -191,7 +191,7 @@ Partial Class frmLineas
         Me.lblTema.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lblTema.Location = New System.Drawing.Point(0, 0)
         Me.lblTema.Name = "lblTema"
-        Me.lblTema.Size = New System.Drawing.Size(724, 29)
+        Me.lblTema.Size = New System.Drawing.Size(716, 29)
         Me.lblTema.TabIndex = 8
         Me.lblTema.Text = "CATÁLOGO DE FAMILIAS"
         Me.lblTema.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -214,26 +214,26 @@ Partial Class frmLineas
         Me.dgvLineasReg.AllowUserToDeleteRows = False
         Me.dgvLineasReg.AllowUserToResizeRows = False
         Me.dgvLineasReg.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvLineasReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvLineasReg.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCodigo, Me.ClmDescripcion, Me.ClmDescripcionCorta, Me.ClmObservaciones, Me.ClmFechaAlta, Me.ClmEstatus})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Blue
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvLineasReg.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Blue
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvLineasReg.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvLineasReg.Location = New System.Drawing.Point(6, 23)
         Me.dgvLineasReg.Name = "dgvLineasReg"
         Me.dgvLineasReg.ReadOnly = True
         Me.dgvLineasReg.RowHeadersVisible = False
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.dgvLineasReg.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.dgvLineasReg.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvLineasReg.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvLineasReg.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.ControlText
         Me.dgvLineasReg.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption
@@ -325,7 +325,7 @@ Partial Class frmLineas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(724, 471)
+        Me.ClientSize = New System.Drawing.Size(716, 467)
         Me.Controls.Add(Me.lblTema)
         Me.Controls.Add(Me.MEAToolBar1)
         Me.Controls.Add(Me.panel1)
