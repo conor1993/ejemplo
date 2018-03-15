@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: viernes, 2 de marzo de 2018 16:12:41
+' // Code is generated on: jueves, 15 de marzo de 2018 12:00:12
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -696,6 +696,8 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -918,6 +920,12 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("RelacionCfdi", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Serie", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Clasificacion", fieldHashtable)
 		End Sub
 
 
@@ -1766,6 +1774,46 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(CabFacturasFieldIndex.RelacionCfdi, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Serie property of the Entity CabFacturas<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "CabFacturas"."Serie"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 200<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Serie]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(CabFacturasFieldIndex.Serie, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(CabFacturasFieldIndex.Serie, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Clasificacion property of the Entity CabFacturas<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "CabFacturas"."Clasificacion"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 250<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Clasificacion]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(CabFacturasFieldIndex.Clasificacion, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(CabFacturasFieldIndex.Clasificacion, Integer), value)
 			End Set
 		End Property
 	
