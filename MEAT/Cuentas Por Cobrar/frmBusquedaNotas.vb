@@ -218,4 +218,8 @@ Public Class frmBusquedaNotas
             End If
         End If
     End Sub
+
+    Private Sub dgvFacturasCabecero_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvFacturasCabecero.CellFormatting
+        'VariantType()
+    End Sub
 End Class

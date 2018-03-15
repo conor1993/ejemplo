@@ -721,12 +721,10 @@ Public Class FrmNotaCredito
                     Return False
                 End If
 
-
-
-
-
                 'folio de la factura
-                FacturaCabecero.NoFactura = "NC" & Folio.Consecutivo.ToString("0000000")
+                FacturaCabecero.NoFactura = Folio.Consecutivo.ToString("0000000")
+                FacturaCabecero.Serie = "NC"
+                FacturaCabecero.Clasificacion = "Nota de Crédito"
                 FacturaCabecero.TipoComprobante = "E"
                 'guardar poliza
                 Dim Poliza As New PolizaClass

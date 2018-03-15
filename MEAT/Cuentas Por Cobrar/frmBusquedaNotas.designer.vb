@@ -23,12 +23,12 @@ Partial Class frmBusquedaNotas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -148,30 +148,30 @@ Partial Class frmBusquedaNotas
         '
         'clmCabezas
         '
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle25.Format = "N0"
-        DataGridViewCellStyle25.NullValue = Nothing
-        Me.clmCabezas.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N0"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.clmCabezas.DefaultCellStyle = DataGridViewCellStyle1
         Me.clmCabezas.HeaderText = "Cabezas"
         Me.clmCabezas.Name = "clmCabezas"
         Me.clmCabezas.ReadOnly = True
         '
         'clmKilos
         '
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle26.Format = "N2"
-        DataGridViewCellStyle26.NullValue = Nothing
-        Me.clmKilos.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.clmKilos.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmKilos.HeaderText = "Kilos"
         Me.clmKilos.Name = "clmKilos"
         Me.clmKilos.ReadOnly = True
         '
         'clmPrecioxKilo
         '
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle27.Format = "C2"
-        DataGridViewCellStyle27.NullValue = Nothing
-        Me.clmPrecioxKilo.DefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.clmPrecioxKilo.DefaultCellStyle = DataGridViewCellStyle3
         Me.clmPrecioxKilo.HeaderText = "Precio x Kilo"
         Me.clmPrecioxKilo.Name = "clmPrecioxKilo"
         Me.clmPrecioxKilo.ReadOnly = True
@@ -330,8 +330,8 @@ Partial Class frmBusquedaNotas
         Me.dgvFacturasCabecero.Name = "dgvFacturasCabecero"
         Me.dgvFacturasCabecero.ReadOnly = True
         Me.dgvFacturasCabecero.RowHeadersVisible = False
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvFacturasCabecero.RowsDefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvFacturasCabecero.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.dgvFacturasCabecero.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvFacturasCabecero.Size = New System.Drawing.Size(789, 170)
         Me.dgvFacturasCabecero.TabIndex = 55
@@ -347,8 +347,8 @@ Partial Class frmBusquedaNotas
         'clmFecha
         '
         Me.clmFecha.DataPropertyName = "FecFactura"
-        DataGridViewCellStyle28.Format = "dd/MM/yyyy HH:mm"
-        Me.clmFecha.DefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm"
+        Me.clmFecha.DefaultCellStyle = DataGridViewCellStyle4
         Me.clmFecha.FillWeight = 20.0!
         Me.clmFecha.HeaderText = "Fecha "
         Me.clmFecha.Name = "clmFecha"
@@ -357,9 +357,9 @@ Partial Class frmBusquedaNotas
         'clmImporte
         '
         Me.clmImporte.DataPropertyName = "SubTotal"
-        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle29.Format = "N2"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle5
         Me.clmImporte.FillWeight = 20.0!
         Me.clmImporte.HeaderText = "Importe"
         Me.clmImporte.Name = "clmImporte"
