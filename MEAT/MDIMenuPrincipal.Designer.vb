@@ -390,6 +390,7 @@ Partial Class MDIMenuPrincipal
         Me.ReporteDeFacturasDeGastosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReporteDeAntigüedadDeSaldosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PasivosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AuxiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PólizaDePasivosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CancelaciónDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -433,7 +434,8 @@ Partial Class MDIMenuPrincipal
         Me.tmProgreso = New System.Windows.Forms.Timer(Me.components)
         Me.tmHora = New System.Windows.Forms.Timer(Me.components)
         Me.CachedRptVentasPorProducto1 = New MEAT.CachedRptVentasPorProducto()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportesToolStripMenuItem10 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReporteDeDepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -737,7 +739,7 @@ Partial Class MDIMenuPrincipal
         '
         'ContabilidadToolStripMenuItem1
         '
-        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ABCDeCuentasContablesToolStripMenuItem, Me.ABCDeDepartamentosToolStripMenuItem, Me.PresupuestosToolStripMenuItem, Me.MetodosDeProrrateoToolStripMenuItem, Me.ControlMesesToolStripMenuItem, Me.PeriodosContablesToolStripMenuItem, Me.ConfiguaciónDeCuentasDeControlToolStripMenuItem, Me.ConceptosDeFlujoToolStripMenuItem, Me.PrepolizasToolStripMenuItem, Me.AgrupadoresParaEstadosFinancierosToolStripMenuItem, Me.SeleccionarPeriodoToolStripMenuItem, Me.TraspasoDeCuentasToolStripMenuItem, Me.ToolStripSeparator21, Me.ConfiguraciónToolStripMenuItem2})
+        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ABCDeCuentasContablesToolStripMenuItem, Me.ABCDeDepartamentosToolStripMenuItem, Me.PresupuestosToolStripMenuItem, Me.MetodosDeProrrateoToolStripMenuItem, Me.ControlMesesToolStripMenuItem, Me.PeriodosContablesToolStripMenuItem, Me.ConfiguaciónDeCuentasDeControlToolStripMenuItem, Me.ConceptosDeFlujoToolStripMenuItem, Me.PrepolizasToolStripMenuItem, Me.AgrupadoresParaEstadosFinancierosToolStripMenuItem, Me.SeleccionarPeriodoToolStripMenuItem, Me.TraspasoDeCuentasToolStripMenuItem, Me.ToolStripSeparator21, Me.ConfiguraciónToolStripMenuItem2, Me.ReportesToolStripMenuItem10})
         Me.ContabilidadToolStripMenuItem1.Name = "ContabilidadToolStripMenuItem1"
         Me.ContabilidadToolStripMenuItem1.Size = New System.Drawing.Size(182, 22)
         Me.ContabilidadToolStripMenuItem1.Text = "Contabilidad"
@@ -2688,6 +2690,12 @@ Partial Class MDIMenuPrincipal
         Me.PasivosToolStripMenuItem.Size = New System.Drawing.Size(263, 22)
         Me.PasivosToolStripMenuItem.Text = "Pasivos"
         '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(257, 22)
+        Me.ToolStripMenuItem1.Text = "Generación de Archivo de Facturas"
+        '
         'AuxiToolStripMenuItem
         '
         Me.AuxiToolStripMenuItem.Name = "AuxiToolStripMenuItem"
@@ -2945,11 +2953,18 @@ Partial Class MDIMenuPrincipal
         Me.tmHora.Enabled = True
         Me.tmHora.Interval = 1000
         '
-        'ToolStripMenuItem1
+        'ReportesToolStripMenuItem10
         '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(257, 22)
-        Me.ToolStripMenuItem1.Text = "Generación de Archivo de Facturas"
+        Me.ReportesToolStripMenuItem10.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeDepartamentosToolStripMenuItem})
+        Me.ReportesToolStripMenuItem10.Name = "ReportesToolStripMenuItem10"
+        Me.ReportesToolStripMenuItem10.Size = New System.Drawing.Size(274, 22)
+        Me.ReportesToolStripMenuItem10.Text = "Reportes"
+        '
+        'ReporteDeDepartamentosToolStripMenuItem
+        '
+        Me.ReporteDeDepartamentosToolStripMenuItem.Name = "ReporteDeDepartamentosToolStripMenuItem"
+        Me.ReporteDeDepartamentosToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.ReporteDeDepartamentosToolStripMenuItem.Text = "reporte de departamentos"
         '
         'MDIMenuPrincipal
         '
@@ -3388,4 +3403,6 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents AperturaDeLoteDeCortes2ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CapturaDeProductoTerminadoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportesToolStripMenuItem10 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReporteDeDepartamentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

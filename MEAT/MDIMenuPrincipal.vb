@@ -1544,4 +1544,8 @@ Public Class MDIMenuPrincipal
     Private Sub ProgramaciónDePagosToolStripMenuItem_Click_1(sender As System.Object, e As System.EventArgs) Handles ProgramaciónDePagosToolStripMenuItem.Click
         Abrir(AutorizaPagosForm)
     End Sub
+
+    Private Sub ReporteDeDepartamentosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ReporteDeDepartamentosToolStripMenuItem.Click
+        Abrir(frmRptdepartamentos)
+    End Sub
 End Class
