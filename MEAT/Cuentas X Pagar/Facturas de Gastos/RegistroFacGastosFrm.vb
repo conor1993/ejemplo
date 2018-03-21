@@ -357,6 +357,19 @@ Public Class RegistroFacGastosFrm
             TxtTasaISR.Text = 0
             TxtTasaRetIVA.Text = 0
         End If
+
+        Select Case (Me.Factura.Estatus)
+            Case 0
+                Me.lblEstatus.Text = "CANCELADA"
+            Case 1
+                Me.lblEstatus.Text = "PAGADA"
+            Case 2
+                Me.lblEstatus.Text = "VIGENTE"
+            Case 3
+                Me.lblEstatus.Text = "ABONADA"
+        End Select
+        'Me.chkServicio.Checked = Me.Fact.Servicios
+        'Me.MtxtUUID.Text = Me.Fact.Uuid
         'If TxtIVAFlete1.Text = Me.Factura.Ivaflete.ToString("C2") Then
         '    ckbFletes.Checked = True
         '    Dim Conf As New CC.UsrConfigContabilidadCollection
@@ -619,31 +632,42 @@ Public Class RegistroFacGastosFrm
     End Sub
 
 #Region "ToolBaar"
+    'Mee
     Private Sub mtb_ClickBorrar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar
         'Es posible cancelar siempre y cuando no tenga cheques vigentes 
-        If Me.Factura.Estatus <> ClasesNegocio.EstatusFacturasEnum.CANCELADA Then
-            If Me.Factura.Contabilizada = "S" Then
-                MsgBox("La Factura no puede ser cancelada ya que se encuentra provisionada en una poliza de pasivos, verifique porfavor...")
-                Limpiar()
-            Else
-                Dim pag As New CN.PagosProveedoresColeccionClass
-                pag.Obtener(Me.Factura.IdProveedor, Factura.NoFactura, Controlador.Sesion.Empndx, True)
-                If pag.Count = 0 Then
-                    Factura.Estatus = ClasesNegocio.EstatusFacturasEnum.CANCELADA
-                    If Factura.Guardar() Then
-                        MsgBox("La Factura fue cancelada satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
+        Try
+            If Me.Factura.Estatus <> ClasesNegocio.EstatusFacturasEnum.CANCELADA Then
+                If Me.Factura.Contabilizada = "S" Then
+                    MsgBox("La Factura no puede ser cancelada porque ya esta contabilizada")
+                    Limpiar()
+                Else
+                    Dim pag As New CN.PagosProveedoresColeccionClass
+                    pag.Obtener(Me.Factura.IdProveedor, Factura.NoFactura, Controlador.Sesion.Empndx, True)
+                    If pag.Count = 0 Then
+                        Factura.Estatus = ClasesNegocio.EstatusFacturasEnum.CANCELADA
+                        If Factura.Guardar() Then
+                            Dim FactPagar As New CN.FacturasAPagarCXPColeccion
+                            FactPagar.Obtener(Me.Factura.IdProveedor, Factura.NoFactura)
+                            If FactPagar.Count = 1 Then
+                                FactPagar.ObtenerColeccion.DeleteMulti()
+                            End If
+                            MsgBox("La Factura fue cancelada satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
+                            Limpiar()
+                        End If
+                    Else
+                        MsgBox("No es posible Cancelar la factura hay cheques emitidos")
                         Limpiar()
                     End If
-                Else
-                    MsgBox("No es posible Cancelar la factura hay cheques emitidos")
-                    Limpiar()
                 End If
-            End If
 
-        Else
-            MsgBox("La Factura ya está cancelada...")
-            Limpiar()
-        End If
+            Else
+                MsgBox("No es posible Cancelar la factura, ya está cancelada")
+                Limpiar()
+            End If
+        Catch ex As Exception
+
+        End Try
+        
     End Sub
 
     Private Sub mtb_ClickBuscar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBuscar
@@ -670,7 +694,7 @@ Public Class RegistroFacGastosFrm
             Me.DgvCuentas.Enabled = True
             Buscar = True
             'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-
+            Me.lblEstatus.Visible = True
             'Try
 
             '    Dim cadenaConsulta As String = "insert into GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) values ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10})"
@@ -721,12 +745,12 @@ Public Class RegistroFacGastosFrm
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
 
         Dim Tran As New HC.Transaction(IsolationLevel.ReadCommitted, "Fac")
-        Dim Trans As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
+        Dim Trans As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
         Try
             If Validar() Then
                 PasarValores()
                 AgregarDetalles()
-                
+
                 If Factura.Guardar(Tran) Then
                     For Each Det As CN.FacturasDetalleCXPClass In FacDet
                         Tran.Add(Det)
@@ -754,7 +778,7 @@ Public Class RegistroFacGastosFrm
                             sqlCon.Close()
 
                         Next
-                       
+
                     Catch ex As Exception
 
                     End Try
@@ -800,16 +824,16 @@ Public Class RegistroFacGastosFrm
             Cancelar = True
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
-End Sub
+    End Sub
 
 
 
 
-Private Sub mtb_ClickLimpiar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickLimpiar
+    Private Sub mtb_ClickLimpiar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickLimpiar
         Limpiar()
     End Sub
-    
-Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickNuevo
+
+    Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickNuevo
         Try
             Me.CmbProveedor.DataSource = Proveedores
             Me.CmbProveedor.DisplayMember = "RazonSocial"

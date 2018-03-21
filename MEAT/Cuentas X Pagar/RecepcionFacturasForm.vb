@@ -723,54 +723,40 @@ Public Class RecepcionFacturasForm
 #Region "MEAToolBar"
 
     Private Sub mtb_ClickBorrar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar
-        If Me.Fact.Estatus = CN.EstatusFacturasEnum.PAGADA Or Me.Fact.Estatus = CN.EstatusFacturasEnum.ABONADA Then
+        If Me.Fact.Estatus = CN.EstatusFacturasEnum.CANCELADA Then
+            MsgBox("No es posible Cancelar la factura, ya está cancelada", MsgBoxStyle.Information, "Aviso")
+            Cancelar = True
+        ElseIf Me.Fact.Estatus = CN.EstatusFacturasEnum.PAGADA Or Me.Fact.Estatus = CN.EstatusFacturasEnum.ABONADA Then
             MsgBox("La Factura ya Fué Abonada o Pagada, Imposible Cancelarla", MsgBoxStyle.Information, "Aviso")
+            Cancelar = True
+        ElseIf Me.Fact.Contabilizada = "S" Or Not Me.Fact.FechaContabilizacion Is Nothing Then
+            MsgBox("La Factura no puede ser cancelada ya que se encuentra provisionada en una poliza de pasivos, verifique porfavor...", MsgBoxStyle.Information, "Aviso")
             Cancelar = True
         Else
             Dim Ventana As New CancelacionOrdenRetiroForm
             Ventana.Text = "Cancelación de Factura"
             Ventana.lblTitulo.Text = "CANCELACIÓN DE FACTURA"
-            If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-                'ojo
-                'Me.Fact.IdUsuarioCancelacion = Ventana.Usuario.Usrndx
-                'Me.Fact.IdMotivoCancelacion = Ventana.Motivo.Codigo
-                Me.Fact.FechaCancelacion = Now
-                Fact.Estatus = CN.EstatusFacturasEnum.CANCELADA
-                Recepciones = New IntegraLab.ORM.CollectionClasses.RecepcionOrdenCompraCollection
-                Recepciones.GetMulti(IntegraLab.ORM.HelperClasses.RecepcionOrdenCompraFields.NoFactura = Me.Fact.NoFactura)
-                For Each Rec As IntegraLab.ORM.EntityClasses.RecepcionOrdenCompraEntity In Recepciones
-                    Rec.NoFactura = ""
-                    Rec.Facturada = False
-                Next
-                Dim tran As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "FacCan")
-                Try
-                    tran.Add(Fact)
-                    If Fact.Save Then
-                        If Recepciones.Count > 0 Then
-                            tran.Add(Recepciones)
-                            If Recepciones.SaveMulti Then
-                                tran.Commit()
-                                'busca si hay facturas en la programacion de pagos para 
-                                'eliminarlas si no estan abonadas
-                                Dim FactPagar As New CN.FacturasAPagarCXPColeccion
-                                FactPagar.Obtener(Me.Fact.IdProveedor, Fact.NoFactura)
-                                If FactPagar.Count = 1 Then
-                                    FactPagar.ObtenerColeccion.DeleteMulti()
-                                End If
-                                MsgBox("La Factura ha sido Cancelada...")
-                                Limpiar()
-                                Cancelar = False
-                                Me.TxtSubtotal.Enabled = False
-                                Me.txtIva.Enabled = False
-                                Me.TxtTotal.Enabled = False
-                            Else
-                                tran.Rollback()
-                                MsgBox("La Factura no pudo ser Cancelada...")
-                                Me.TxtSubtotal.Enabled = False
-                                Me.txtIva.Enabled = False
-                                Me.TxtTotal.Enabled = False
-                            End If
-                        Else
+            'If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+            'ojo
+            Me.Fact.IdUsuarioCancelacion = Controlador.Sesion.Usrndx
+
+            'Me.Fact.IdUsuarioCancelacion = Ventana.Usuario.Usrndx
+            'Me.Fact.IdMotivoCancelacion = Ventana.Motivo.Codigo
+            Me.Fact.FechaCancelacion = Now
+            Fact.Estatus = CN.EstatusFacturasEnum.CANCELADA
+            Recepciones = New IntegraLab.ORM.CollectionClasses.RecepcionOrdenCompraCollection
+            Recepciones.GetMulti(IntegraLab.ORM.HelperClasses.RecepcionOrdenCompraFields.NoFactura = Me.Fact.NoFactura)
+            For Each Rec As IntegraLab.ORM.EntityClasses.RecepcionOrdenCompraEntity In Recepciones
+                Rec.NoFactura = ""
+                Rec.Facturada = False
+            Next
+            Dim tran As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "FacCan")
+            Try
+                tran.Add(Fact)
+                If Fact.Save Then
+                    If Recepciones.Count > 0 Then
+                        tran.Add(Recepciones)
+                        If Recepciones.SaveMulti Then
                             tran.Commit()
                             'busca si hay facturas en la programacion de pagos para 
                             'eliminarlas si no estan abonadas
@@ -785,21 +771,43 @@ Public Class RecepcionFacturasForm
                             Me.TxtSubtotal.Enabled = False
                             Me.txtIva.Enabled = False
                             Me.TxtTotal.Enabled = False
+                        Else
+                            tran.Rollback()
+                            MsgBox("La Factura no pudo ser Cancelada...")
+                            Me.TxtSubtotal.Enabled = False
+                            Me.txtIva.Enabled = False
+                            Me.TxtTotal.Enabled = False
                         End If
                     Else
-                        tran.Rollback()
-                        MsgBox("La Factura no pudo ser Cancelada...")
+                        tran.Commit()
+                        'busca si hay facturas en la programacion de pagos para 
+                        'eliminarlas si no estan abonadas
+                        Dim FactPagar As New CN.FacturasAPagarCXPColeccion
+                        FactPagar.Obtener(Me.Fact.IdProveedor, Fact.NoFactura)
+                        If FactPagar.Count = 1 Then
+                            FactPagar.ObtenerColeccion.DeleteMulti()
+                        End If
+                        MsgBox("La Factura ha sido Cancelada...")
+                        Limpiar()
+                        Cancelar = False
                         Me.TxtSubtotal.Enabled = False
                         Me.txtIva.Enabled = False
                         Me.TxtTotal.Enabled = False
                     End If
-                Catch ex As Exception
+                Else
                     tran.Rollback()
-                    MsgBox(ex.Message)
-                End Try
-            Else
-                Cancelar = True
-            End If
+                    MsgBox("La Factura no pudo ser Cancelada...")
+                    Me.TxtSubtotal.Enabled = False
+                    Me.txtIva.Enabled = False
+                    Me.TxtTotal.Enabled = False
+                End If
+            Catch ex As Exception
+                tran.Rollback()
+                MsgBox(ex.Message)
+            End Try
+            '    Else
+            '    Cancelar = True
+            'End If
         End If
     End Sub
 
@@ -1750,7 +1758,7 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Private Sub ckbHonorarios_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckbHonorarios.CheckedChanged
-        Me.Calcular()
+        Me.Calcular(True)
     End Sub
 
     Private Sub chkTerceros_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkTerceros.CheckedChanged
