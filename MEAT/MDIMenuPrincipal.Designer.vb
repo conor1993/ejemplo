@@ -88,6 +88,8 @@ Partial Class MDIMenuPrincipal
         Me.TraspasoDeCuentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator21 = New System.Windows.Forms.ToolStripSeparator()
         Me.ConfiguraciónToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportesToolStripMenuItem10 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReporteDeDepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComprasGeneralesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LineasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ABCDeProductosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -434,8 +436,6 @@ Partial Class MDIMenuPrincipal
         Me.tmProgreso = New System.Windows.Forms.Timer(Me.components)
         Me.tmHora = New System.Windows.Forms.Timer(Me.components)
         Me.CachedRptVentasPorProducto1 = New MEAT.CachedRptVentasPorProducto()
-        Me.ReportesToolStripMenuItem10 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReporteDeDepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -828,6 +828,19 @@ Partial Class MDIMenuPrincipal
         Me.ConfiguraciónToolStripMenuItem2.Name = "ConfiguraciónToolStripMenuItem2"
         Me.ConfiguraciónToolStripMenuItem2.Size = New System.Drawing.Size(274, 22)
         Me.ConfiguraciónToolStripMenuItem2.Text = "Configuración"
+        '
+        'ReportesToolStripMenuItem10
+        '
+        Me.ReportesToolStripMenuItem10.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeDepartamentosToolStripMenuItem})
+        Me.ReportesToolStripMenuItem10.Name = "ReportesToolStripMenuItem10"
+        Me.ReportesToolStripMenuItem10.Size = New System.Drawing.Size(274, 22)
+        Me.ReportesToolStripMenuItem10.Text = "Reportes"
+        '
+        'ReporteDeDepartamentosToolStripMenuItem
+        '
+        Me.ReporteDeDepartamentosToolStripMenuItem.Name = "ReporteDeDepartamentosToolStripMenuItem"
+        Me.ReporteDeDepartamentosToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.ReporteDeDepartamentosToolStripMenuItem.Text = "reporte de departamentos"
         '
         'ComprasGeneralesToolStripMenuItem1
         '
@@ -2725,7 +2738,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.EmpresasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistroDeEmpresasToolStripMenuItem})
         Me.EmpresasToolStripMenuItem.Name = "EmpresasToolStripMenuItem"
-        Me.EmpresasToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.EmpresasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.EmpresasToolStripMenuItem.Text = "Empresas"
         '
         'RegistroDeEmpresasToolStripMenuItem
@@ -2738,7 +2751,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.UsuariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistroDeUsuariosToolStripMenuItem, Me.AsignacionDeEmpresaToolStripMenuItem, Me.AsignacionDePermisosToolStripMenuItem})
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'RegistroDeUsuariosToolStripMenuItem
@@ -2762,12 +2775,12 @@ Partial Class MDIMenuPrincipal
         'ToolStripSeparator18
         '
         Me.ToolStripSeparator18.Name = "ToolStripSeparator18"
-        Me.ToolStripSeparator18.Size = New System.Drawing.Size(147, 6)
+        Me.ToolStripSeparator18.Size = New System.Drawing.Size(149, 6)
         '
         'ConfiguracionToolStripMenuItem1
         '
         Me.ConfiguracionToolStripMenuItem1.Name = "ConfiguracionToolStripMenuItem1"
-        Me.ConfiguracionToolStripMenuItem1.Size = New System.Drawing.Size(150, 22)
+        Me.ConfiguracionToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.ConfiguracionToolStripMenuItem1.Text = "Configuracion"
         '
         'SesionToolStripMenuItem
@@ -2952,19 +2965,6 @@ Partial Class MDIMenuPrincipal
         '
         Me.tmHora.Enabled = True
         Me.tmHora.Interval = 1000
-        '
-        'ReportesToolStripMenuItem10
-        '
-        Me.ReportesToolStripMenuItem10.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeDepartamentosToolStripMenuItem})
-        Me.ReportesToolStripMenuItem10.Name = "ReportesToolStripMenuItem10"
-        Me.ReportesToolStripMenuItem10.Size = New System.Drawing.Size(274, 22)
-        Me.ReportesToolStripMenuItem10.Text = "Reportes"
-        '
-        'ReporteDeDepartamentosToolStripMenuItem
-        '
-        Me.ReporteDeDepartamentosToolStripMenuItem.Name = "ReporteDeDepartamentosToolStripMenuItem"
-        Me.ReporteDeDepartamentosToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.ReporteDeDepartamentosToolStripMenuItem.Text = "reporte de departamentos"
         '
         'MDIMenuPrincipal
         '
