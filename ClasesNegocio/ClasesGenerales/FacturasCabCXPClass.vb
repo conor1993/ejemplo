@@ -264,11 +264,11 @@ Public Class FacturasCabCXPClass
             Entity.FechaCancelacion = value
         End Set
     End Property
-    Public Property FechaContabilizacion() As Date
+    Public Property FechaContabilizacion() As Date?
         Get
             Return Entity.FechaContabilizacion.Value
         End Get
-        Set(ByVal value As Date)
+        Set(ByVal value As Date?)
             Entity.FechaContabilizacion = value
         End Set
     End Property
