@@ -2015,4 +2015,43 @@ Public Class RecepcionFacturasForm
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+
+    Private Sub txtIVAFlete_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtIVAFlete.KeyPress
+        If Char.IsDigit(e.KeyChar) Or ((e.KeyChar = Convert.ToChar(Keys.Back)) Or (e.KeyChar = "." And Me.txtIVAFlete.Text.IndexOf(".") < 0)) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtIVAFlete_Leave(sender As System.Object, e As System.EventArgs) Handles txtIVAFlete.Leave
+        Dim value As Decimal = Replace(txtIVAFlete.Text, ",", "")
+        txtIVAFlete.Text = value.ToString("N4")
+    End Sub
+
+    Private Sub txtTasaRetIVA_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtTasaRetIVA.KeyPress
+        If Char.IsDigit(e.KeyChar) Or ((e.KeyChar = Convert.ToChar(Keys.Back)) Or (e.KeyChar = "." And Me.txtTasaRetIVA.Text.IndexOf(".") < 0)) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtTasaRetIVA_Leave(sender As System.Object, e As System.EventArgs) Handles txtTasaRetIVA.Leave
+        Dim value As Decimal = Replace(txtTasaRetIVA.Text, ",", "")
+        txtTasaRetIVA.Text = value.ToString("N4")
+    End Sub
+
+    Private Sub txtTasaISR_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtTasaISR.KeyPress
+        If Char.IsDigit(e.KeyChar) Or ((e.KeyChar = Convert.ToChar(Keys.Back)) Or (e.KeyChar = "." And Me.txtTasaISR.Text.IndexOf(".") < 0)) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtTasaISR_Leave(sender As System.Object, e As System.EventArgs) Handles txtTasaISR.Leave
+        Dim value As Decimal = Replace(txtTasaISR.Text, ",", "")
+        txtTasaISR.Text = value.ToString("N4")
+    End Sub
 End Class
