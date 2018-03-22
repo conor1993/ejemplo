@@ -2305,6 +2305,17 @@
     <Compile Include="ClasesGenerales\MarcaClass.vb" />
     <Compile Include="ClasesGenerales\MesesCollectionClass.vb" />
     <Compile Include="ClasesGenerales\Metodos.vb" />
+    <Compile Include="Reportes\dsDepartamentosrpt2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDepartamentosrpt2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptDepartamentos2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDepartamentos2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\RptEmisionPolizas_por_pagina.vb">
       <DependentUpon>RptEmisionPolizas_por_pagina.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -3552,6 +3563,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptFlujos.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptDepartamentos2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDepartamentos2.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RptEmisionPolizas_por_pagina.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptEmisionPolizas_por_pagina.vb</LastGenOutput>
@@ -3867,6 +3882,7 @@
     <None Include="Almacen\Reportes\General\dstMovimientosAlmacenGeneral.xss">
       <DependentUpon>dstMovimientosAlmacenGeneral.xsd</DependentUpon>
     </None>
+    <None Include="app.config" />
     <None Include="Catalogos\Compras de Ganado\Reportes\DSetCatCompradoresGanado.xsc">
       <DependentUpon>DSetCatCompradoresGanado.xsd</DependentUpon>
     </None>
@@ -5266,6 +5282,17 @@
     </None>
     <None Include="Reportes\DsCuentaFisc.xss">
       <DependentUpon>DsCuentaFisc.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsDepartamentosrpt2.xsc">
+      <DependentUpon>dsDepartamentosrpt2.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsDepartamentosrpt2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDepartamentosrpt2.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsDepartamentosrpt2.xss">
+      <DependentUpon>dsDepartamentosrpt2.xsd</DependentUpon>
     </None>
     <None Include="Reportes\DsInventarioFisico.xsc">
       <DependentUpon>DsInventarioFisico.xsd</DependentUpon>
