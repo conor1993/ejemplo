@@ -593,6 +593,7 @@ Partial Class RegistroFacGastosFrm
         '
         'TxtTasaISR
         '
+        Me.TxtTasaISR.Enabled = False
         Me.TxtTasaISR.Location = New System.Drawing.Point(389, 213)
         Me.TxtTasaISR.Name = "TxtTasaISR"
         Me.TxtTasaISR.Size = New System.Drawing.Size(80, 20)
@@ -602,6 +603,7 @@ Partial Class RegistroFacGastosFrm
         '
         'TxtTasaRetIVA
         '
+        Me.TxtTasaRetIVA.Enabled = False
         Me.TxtTasaRetIVA.Location = New System.Drawing.Point(389, 185)
         Me.TxtTasaRetIVA.Name = "TxtTasaRetIVA"
         Me.TxtTasaRetIVA.Size = New System.Drawing.Size(80, 20)
@@ -762,6 +764,7 @@ Partial Class RegistroFacGastosFrm
         Me.Label21.Size = New System.Drawing.Size(37, 13)
         Me.Label21.TabIndex = 148
         Me.Label21.Text = "Saldo:"
+        Me.Label21.Visible = False
         '
         'TextBox1
         '
@@ -771,6 +774,7 @@ Partial Class RegistroFacGastosFrm
         Me.TextBox1.Size = New System.Drawing.Size(97, 20)
         Me.TextBox1.TabIndex = 15
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TextBox1.Visible = False
         '
         'Label22
         '
@@ -823,6 +827,7 @@ Partial Class RegistroFacGastosFrm
         '
         'TxtIVAFlete
         '
+        Me.TxtIVAFlete.Enabled = False
         Me.TxtIVAFlete.Location = New System.Drawing.Point(389, 257)
         Me.TxtIVAFlete.Name = "TxtIVAFlete"
         Me.TxtIVAFlete.Size = New System.Drawing.Size(80, 20)
@@ -886,7 +891,7 @@ Partial Class RegistroFacGastosFrm
         DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgvDistribuciondeGastos.DefaultCellStyle = DataGridViewCellStyle10
-        Me.dgvDistribuciondeGastos.Location = New System.Drawing.Point(325, 601)
+        Me.dgvDistribuciondeGastos.Location = New System.Drawing.Point(358, 336)
         Me.dgvDistribuciondeGastos.Name = "dgvDistribuciondeGastos"
         DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
@@ -943,7 +948,6 @@ Partial Class RegistroFacGastosFrm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(792, 724)
         Me.Controls.Add(Me.dgvdistribuciongastosdet)
-        Me.Controls.Add(Me.dgvDistribuciondeGastos)
         Me.Controls.Add(Me.UUID)
         Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.TxtIVAFlete1)
@@ -958,7 +962,6 @@ Partial Class RegistroFacGastosFrm
         Me.Controls.Add(Me.Label21)
         Me.Controls.Add(Me.txtSumaAbono)
         Me.Controls.Add(Me.txtSumaCargo)
-        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtRetIva)
         Me.Controls.Add(Me.TxtISR)
@@ -1003,6 +1006,8 @@ Partial Class RegistroFacGastosFrm
         Me.Controls.Add(Me.mtb)
         Me.Controls.Add(Me.lblEmpresa)
         Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.dgvDistribuciondeGastos)
         Me.MaximizeBox = False
         Me.Name = "RegistroFacGastosFrm"
         Me.Text = "Registro de Facturas de Gastos"
