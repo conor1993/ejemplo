@@ -166,7 +166,7 @@ Public Class RecepcionFacturasForm
 
 
         'Me.TxtSubtotal.Enabled = True
-        'Me.txtIva.Enabled = True
+        Me.txtIva.Enabled = True
         Me.TxtAnticipo.Enabled = True
         'Me.txtISR.Enabled = True
         'Me.txtRetIVA.Enabled = True
@@ -769,13 +769,13 @@ Public Class RecepcionFacturasForm
                             Limpiar()
                             Cancelar = False
                             Me.TxtSubtotal.Enabled = False
-                            Me.txtIva.Enabled = False
+                            Me.txtIva.Enabled = True
                             Me.TxtTotal.Enabled = False
                         Else
                             tran.Rollback()
                             MsgBox("La Factura no pudo ser Cancelada...")
                             Me.TxtSubtotal.Enabled = False
-                            Me.txtIva.Enabled = False
+                            Me.txtIva.Enabled = True
                             Me.TxtTotal.Enabled = False
                         End If
                     Else
@@ -791,14 +791,14 @@ Public Class RecepcionFacturasForm
                         Limpiar()
                         Cancelar = False
                         Me.TxtSubtotal.Enabled = False
-                        Me.txtIva.Enabled = False
+                        Me.txtIva.Enabled = True
                         Me.TxtTotal.Enabled = False
                     End If
                 Else
                     tran.Rollback()
                     MsgBox("La Factura no pudo ser Cancelada...")
                     Me.TxtSubtotal.Enabled = False
-                    Me.txtIva.Enabled = False
+                    Me.txtIva.Enabled = True
                     Me.TxtTotal.Enabled = False
                 End If
             Catch ex As Exception
@@ -888,7 +888,7 @@ Public Class RecepcionFacturasForm
 
                 Me.lblEstatus.Visible = True
                 Me.TxtSubtotal.Enabled = False
-                Me.txtIva.Enabled = False
+                Me.txtIva.Enabled = True
                 Me.TxtTotal.Enabled = False
                 Total = Me.Fact.Total
             End If
@@ -1237,23 +1237,28 @@ Public Class RecepcionFacturasForm
     End Sub
 
     Private Sub txtIva_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtIva.TextChanged
-        If Editar = False Then
-            If Not Me.TxtSubtotal.Text = "" Then
-                Me.Subtotal = Me.TxtSubtotal.Text
-                If Not SeAgregaronRecepciones() Then
-                    Me.txtIva.Text = CDec(((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
-                End If
-                If Not Me.txtIva.Text = "" Then
-                    Me.TxtTotal.Text = CDec(Subtotal + CDec(Me.txtIva.Text)).ToString(formato)
+        If Not IsNumeric(Me.txtIva.Text) Then
+            Me.txtIva.Text = 0.ToString(formato)
+            Me.txtIva.Focus()
+        Else
+            If Editar = False Then
+                If Not Me.TxtSubtotal.Text = "" Then
+                    Me.Subtotal = Me.TxtSubtotal.Text
+                    If Not SeAgregaronRecepciones() Then
+                        Me.txtIva.Text = CDec(((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
+                    End If
+                    If Not Me.txtIva.Text = "" Then
+                        Me.TxtTotal.Text = CDec(Subtotal + CDec(Me.txtIva.Text)).ToString(formato)
+                    Else
+                        Me.TxtTotal.Text = Me.TxtSubtotal.Text
+                    End If
+                    If Not Me.TxtAnticipo.Text = "" Then
+                        Me.TxtTotal.Text = CDec((Subtotal + CDec(Me.txtIva.Text)) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
+                    End If
                 Else
-                    Me.TxtTotal.Text = Me.TxtSubtotal.Text
+                    Subtotal = 0
+                    Me.TxtTotal.Text = Subtotal.ToString(formato)
                 End If
-                If Not Me.TxtAnticipo.Text = "" Then
-                    Me.TxtTotal.Text = CDec((Subtotal + CDec(Me.txtIva.Text)) - CDec(Me.TxtAnticipo.Text)).ToString(formato)
-                End If
-            Else
-                Subtotal = 0
-                Me.TxtTotal.Text = Subtotal.ToString(formato)
             End If
         End If
     End Sub
@@ -1827,7 +1832,7 @@ Public Class RecepcionFacturasForm
                 '    Editar = True
                 'Else
                 '    Me.TxtSubtotal.Enabled = False
-                '    Me.txtIva.Enabled = False
+                '    Me.txtIva.Enabled = True
                 '    Me.TxtTotal.Enabled = False
                 '    Me.txtISR.Enabled = False
                 '    Me.txtIVAFlete1.Enabled = False
