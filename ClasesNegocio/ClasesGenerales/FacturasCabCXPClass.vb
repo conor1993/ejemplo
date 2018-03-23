@@ -692,7 +692,7 @@ Public Class FacturaCabCXPColeccion
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Function
-    Public Overloads Function Obtener(ByVal NoFactura As String, Optional ByVal IdProveedor As Integer = Nothing, Optional ByVal Gastos As Boolean = False, Optional ByVal IdTipoProveedor As Integer = 0) As Integer
+    Public Overloads Function Obtener(ByVal NoFactura As String, Optional ByVal IdProveedor As Integer = Nothing, Optional ByVal Gastos As Boolean = False, Optional ByVal IdTipoProveedor As Integer = 0, Optional ByVal Estatus As Integer = -1) As Integer
         Try
             Me.Clear()
             Dim rel As New SD.LLBLGen.Pro.ORMSupportClasses.RelationCollection
@@ -705,6 +705,16 @@ Public Class FacturaCabCXPColeccion
                 rel.Add(EC.ProveedorAvanzadoEntity.Relations.TipoProveedorEntityUsingCodigoTipoProveedor)
                 rel.Add(EC.ProveedorEntity.Relations.ProveedorAvanzadoEntityUsingCodigo)
                 filtro.Add(Integralab.ORM.HelperClasses.ProveedorAvanzadoFields.CodigoTipoProveedor = IdTipoProveedor)
+            End If
+
+            'Dorantes: Valido para en el guardado no conciderar las canceladas
+            If Estatus > -1 Then
+                If Estatus = 0 Then
+                    filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.Estatus <> 0)
+                Else
+                    filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.Estatus = 0)
+                End If
+
             End If
             'If IdProveedor <> 0 Then
             '    '  rel.Add(EC.UsrCxpfacturasCabEntity.Relations.ProveedorEntityUsingIdProveedor)

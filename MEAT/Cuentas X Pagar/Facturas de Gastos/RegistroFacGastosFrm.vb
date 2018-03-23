@@ -275,9 +275,10 @@ Public Class RegistroFacGastosFrm
         End If
 
         Dim facts As New CN.FacturaCabCXPColeccion
-        facts.Obtener(Me.TxtFactura.Text, Me.CmbProveedor.SelectedValue)
+        facts.Obtener(Me.TxtFactura.Text, Me.CmbProveedor.SelectedValue, False, 0, 0)
         If facts.Count > 0 Then
             MsgBox("El número de Factura ya está Registrado...", MsgBoxStyle.Exclamation, "Aviso")
+            Return False
         End If
         Return True
     End Function
@@ -793,7 +794,7 @@ Public Class RegistroFacGastosFrm
                         For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
 
 
-                            Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},'{8}',{9},{10})"
+                            Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},'{6}',{7},'{8}',{9},{10})"
                             cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value, CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value), DtpFechaFactura.Text, 0, Factura.NoFactura, Factura.IdProveedor, Factura.IdEmpresa)
                             Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
                             Dim adp As New SqlDataAdapter(sqlcom)

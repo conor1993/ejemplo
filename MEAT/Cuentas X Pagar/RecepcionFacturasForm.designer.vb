@@ -284,16 +284,17 @@ Partial Class RecepcionFacturasForm
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(504, 272)
+        Me.Label10.Location = New System.Drawing.Point(571, 326)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(48, 13)
         Me.Label10.TabIndex = 82
         Me.Label10.Text = "Anticipo:"
+        Me.Label10.Visible = False
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(504, 299)
+        Me.Label11.Location = New System.Drawing.Point(504, 273)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(34, 13)
         Me.Label11.TabIndex = 83
@@ -380,7 +381,7 @@ Partial Class RecepcionFacturasForm
         'TxtTotal
         '
         Me.TxtTotal.Enabled = False
-        Me.TxtTotal.Location = New System.Drawing.Point(608, 292)
+        Me.TxtTotal.Location = New System.Drawing.Point(608, 266)
         Me.TxtTotal.Name = "TxtTotal"
         Me.TxtTotal.Size = New System.Drawing.Size(98, 20)
         Me.TxtTotal.TabIndex = 9
@@ -389,11 +390,12 @@ Partial Class RecepcionFacturasForm
         'TxtAnticipo
         '
         Me.TxtAnticipo.Enabled = False
-        Me.TxtAnticipo.Location = New System.Drawing.Point(608, 266)
+        Me.TxtAnticipo.Location = New System.Drawing.Point(675, 320)
         Me.TxtAnticipo.Name = "TxtAnticipo"
         Me.TxtAnticipo.Size = New System.Drawing.Size(98, 20)
         Me.TxtAnticipo.TabIndex = 8
         Me.TxtAnticipo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TxtAnticipo.Visible = False
         '
         'txtIva
         '
@@ -935,7 +937,7 @@ Partial Class RecepcionFacturasForm
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(504, 246)
+        Me.Label20.Location = New System.Drawing.Point(504, 248)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(53, 13)
         Me.Label20.TabIndex = 154
@@ -959,7 +961,7 @@ Partial Class RecepcionFacturasForm
         '
         'txtIVAFlete1
         '
-        Me.txtIVAFlete1.Location = New System.Drawing.Point(608, 240)
+        Me.txtIVAFlete1.Location = New System.Drawing.Point(608, 242)
         Me.txtIVAFlete1.Name = "txtIVAFlete1"
         Me.txtIVAFlete1.Size = New System.Drawing.Size(98, 20)
         Me.txtIVAFlete1.TabIndex = 157

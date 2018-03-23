@@ -333,7 +333,7 @@ Public Class RecepcionFacturasForm
                 Return False
             Else
                 Dim Facturas As New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
-                Facturas.GetMulti(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text And IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
+                Facturas.GetMulti(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text And IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue And IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.Estatus <> CN.EstatusFacturasEnum.CANCELADA)
                 If Facturas.Count > 0 Then
                     MsgBox("El número de Factura ya fue registrado, ingrese otro...")
                     Me.TxtFactura.Focus()
@@ -345,17 +345,19 @@ Public Class RecepcionFacturasForm
             MsgBox("No puede hacer una factura por $0.00")
             Return False
         End If
-        If Me.Fact.IsNew Then
-            Dim facts As New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
-            Dim filtro As New SD.LLBLGen.Pro.ORMSupportClasses.PredicateExpression
-            filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text)
-            filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
-            facts.GetMulti(filtro)
-            If facts.Count > 0 Then
-                MsgBox("La Factura ya fue Registrada...", MsgBoxStyle.Exclamation, "Aviso")
-                Return False
-            End If
-        End If
+        'Dorantes: comente este codigo, estaba redundante
+        'If Me.Fact.IsNew Then
+        '    Dim facts As New IntegraLab.ORM.CollectionClasses.UsrCxpfacturasCabCollection
+        '    Dim filtro As New SD.LLBLGen.Pro.ORMSupportClasses.PredicateExpression
+        '    filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.NoFactura = Me.TxtFactura.Text)
+        '    'filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.Estatus <> CN.EstatusFacturasEnum.CANCELADA)
+        '    filtro.Add(IntegraLab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = Me.CmbProveedor.SelectedValue)
+        '    facts.GetMulti(filtro)
+        '    If facts.Count > 0 Then
+        '        MsgBox("La Factura ya fue Registrada...", MsgBoxStyle.Exclamation, "Aviso")
+        '        Return False
+        '    End If
+        'End If
         If Me.DgvCuentas.Rows.Count <= 1 Then
             MsgBox("No ha relacionado las Cuentas Contables a Afectar.", MsgBoxStyle.Exclamation, "Aviso")
             Return False
@@ -1920,7 +1922,7 @@ Public Class RecepcionFacturasForm
             For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
 
 
-                Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},'{8}',{9},{10})"
+                Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},'{6}',{7},'{8}',{9},{10})"
                 cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value, CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value), DtpFechaFactura.Text, 0, Fact.NoFactura, Fact.IdProveedor, Fact.EmpresaId)
                 Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
                 Dim adp As New SqlDataAdapter(sqlcom)
