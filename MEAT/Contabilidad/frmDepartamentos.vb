@@ -54,6 +54,7 @@ Public Class frmDepartamentos
             Limpiar()
             Deshabilitar()
             Me.DepartamentosC.Obtener(ClasesNegocio.CondicionEstatusDepartamento.TODOS)
+
         Catch ex As Exception
 #If CONFIG = "Debug" Then
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
