@@ -2310,6 +2310,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDepartamentosrpt2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\dsDepartamentosrpt2.vb">
+      <DependentUpon>dsDepartamentosrpt2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\rptDepartamentos2.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

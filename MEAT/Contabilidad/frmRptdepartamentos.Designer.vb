@@ -26,8 +26,8 @@ Partial Class frmRptdepartamentos
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.DtPIni = New System.Windows.Forms.DateTimePicker()
+        Me.DtPFin = New System.Windows.Forms.DateTimePicker()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
@@ -66,22 +66,22 @@ Partial Class frmRptdepartamentos
         Me.Button1.Text = "Imprimir"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'DateTimePicker1
+        'DtPIni
         '
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(89, 81)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(93, 20)
-        Me.DateTimePicker1.TabIndex = 6
+        Me.DtPIni.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DtPIni.Location = New System.Drawing.Point(89, 81)
+        Me.DtPIni.Name = "DtPIni"
+        Me.DtPIni.Size = New System.Drawing.Size(93, 20)
+        Me.DtPIni.TabIndex = 6
         '
-        'DateTimePicker2
+        'DtPFin
         '
-        Me.DateTimePicker2.Checked = False
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(270, 81)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(94, 20)
-        Me.DateTimePicker2.TabIndex = 6
+        Me.DtPFin.Checked = False
+        Me.DtPFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DtPFin.Location = New System.Drawing.Point(270, 81)
+        Me.DtPFin.Name = "DtPFin"
+        Me.DtPFin.Size = New System.Drawing.Size(94, 20)
+        Me.DtPFin.TabIndex = 6
         '
         'Label4
         '
@@ -98,14 +98,14 @@ Partial Class frmRptdepartamentos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(398, 168)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.DateTimePicker2)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.DtPFin)
+        Me.Controls.Add(Me.DtPIni)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cmbDepartamentos)
         Me.Name = "frmRptdepartamentos"
-        Me.Text = "frmRptdepartamentos"
+        Me.Text = "Reporte por Departamentos"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -114,7 +114,7 @@ Partial Class frmRptdepartamentos
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents DtPIni As System.Windows.Forms.DateTimePicker
+    Friend WithEvents DtPFin As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class
