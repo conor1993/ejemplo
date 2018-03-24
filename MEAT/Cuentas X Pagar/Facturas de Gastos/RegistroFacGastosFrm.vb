@@ -841,7 +841,7 @@ Public Class RegistroFacGastosFrm
                     sqlCon.Close()
                     sqlCone.Close()
 
-                    MsgBox("La Factura se ha Guardado Satisfactoriamente...", MsgBoxStyle.Exclamation, "Aviso")
+                    MsgBox("La Factura se ha Guardado Satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
                     Limpiar()
                     Deshabilitar()
                 Else
@@ -1480,7 +1480,7 @@ Public Class RegistroFacGastosFrm
                     'IVA = CDec(If(String.IsNullOrEmpty(Me.txtIva.Text), 0, Me.txtIva.Text))
                     'Me.txtIva.Text = IVA.ToString(formato)
                     Me.TotalAux = (Subtotal + IVA)
-                    Me.Subtotal = (Subtotal + IVA + ISRInt) - (RetIVAInt + IVAFlete + Anticipo)
+                    Me.Subtotal = (Subtotal + IVA) - (ISRInt + RetIVAInt + IVAFlete + Anticipo)
 
                     Me.TxtTotal.Text = Subtotal.ToString(formato)
                 Else

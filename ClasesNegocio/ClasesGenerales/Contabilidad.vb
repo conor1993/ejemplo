@@ -1925,7 +1925,7 @@ Public Class PolizaClass
     Public Function Guardar(ByVal tr As HC.Transaction) As Boolean
         Dim bl As Boolean = False
         Try
-            tr.Add(e)
+
             Dim dt As DataTable = Integralab.ORM.StoredProcedureCallerClasses.RetrievalProcedures.Generarfoliopoliza(e.EmpresaId, e.TipoPoliza, e.Mes)
 
             If dt.Rows.Count > 0 Then
@@ -1933,8 +1933,9 @@ Public Class PolizaClass
             Else
                 e.Folio = 1
             End If
+            tr.Add(e)
             e.Save()
-            tr.Add(e.PolizaDetalle)
+            'tr.Add(e.PolizaDetalle)
             e.PolizaDetalle.SaveMulti()
             bl = True
         Catch ex As Exception

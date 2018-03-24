@@ -1454,7 +1454,7 @@ Public Class RecepcionFacturasForm
                         IVA = CDec(((Subtotal * ConfigCont.Iva) / 100)).ToString(formato)
                     End If
                     Me.TotalAux = (Subtotal + IVA)
-                    Me.Subtotal = (Subtotal + IVA + ISRInt) - (RetIVAInt + IVAFlete + Anticipo)
+                    Me.Subtotal = (Subtotal + IVA) - (ISRInt + RetIVAInt + IVAFlete + Anticipo)
 
                     Me.TxtTotal.Text = Subtotal.ToString(formato)
 
