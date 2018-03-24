@@ -168,7 +168,8 @@ Public Class CancelacionPagoAProveedoresForm
 
     Private Sub GenerarPoliza()
         Try
-            Me.Poliza.Referencia = Cheque.Folio  ' El Folio del cheque
+            'Me.Poliza.Referencia = Cheque.Folio  ' El Folio del cheque
+            Me.Poliza.Referencia = Cheque.IdPoliza ' El Folio del cheque
             Dim Empresa As New CN.EmpresaClass(Controlador.Sesion.MiEmpresa.Empndx)
             Poliza.Concepto = Cheque.Concepto
             Poliza.Empresa = Empresa
