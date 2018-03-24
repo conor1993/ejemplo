@@ -17,7 +17,7 @@ Public Class RegistroFacGastosFrm
     Dim gastos As CN.GastosDepartamentosClass
     Public Shared valor As Decimal
     Dim formato As String = "C4"
-    Dim formatoImp As String = "N2"
+    Dim formatoImp As String = "N4"
 
     Dim Subtotal As Decimal
     Dim IVAA As Decimal
