@@ -431,7 +431,58 @@ Public Class FacturasClientesCabClass
 
 End Class
 
+Public Class FacturasCXP
+#Region "Constructores"
+    'Por el momento no usaré
+    Sub New()
 
+    End Sub
+#End Region
+
+#Region "Metodos"
+    Public Function CancelarFactura(ByVal NumeroFactura As String) As Boolean
+        Dim tabla As New DataSet
+        Dim Success As Byte = 0
+        Try
+            Using ad As New SqlClient.SqlDataAdapter(New SqlClient.SqlCommand("Usp_FacturasCancelar",
+                                New SqlClient.SqlConnection(Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)))
+                ad.SelectCommand.CommandType = CommandType.StoredProcedure
+                With ad.SelectCommand.Parameters
+                    .Add("@V_Opc", SqlDbType.Int).Value = 1
+                    .Add("@V_FolioFactura", SqlDbType.VarChar).Value = NumeroFactura
+                End With
+
+                ad.SelectCommand.CommandTimeout = 30
+                ad.SelectCommand.Connection.Open()
+                ad.Fill(tabla)
+                ad.SelectCommand.Connection.Close()
+
+                If (tabla.Tables.Count > 0) Then
+                    If (tabla.Tables(0).Rows.Count > 0) Then
+                        Success = CByte(tabla.Tables(0).Rows(0)("Success"))
+                        Dim Mensaje As String = tabla.Tables(0).Rows(0)("Mensaje").ToString()
+                        If (CBool(Success) = False) Then
+                            MessageBox.Show(Mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                            'If MsgBox("¿Desea Realmente?", MsgBoxStyle.YesNo, "Aviso") = MsgBoxResult.No Then
+
+                            'Else
+
+                        End If
+
+                        'MessageBox.Show("Esta factura no tienes cuentas contables asociadas", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+                End If
+
+            End Using
+        Catch ex As Exception
+
+        End Try
+        Return CBool(Success)
+    End Function
+#End Region
+
+End Class
 Public Class FacturasClientesCabCollectionClass
     Inherits ColleccionBase(Of EC.FacturasClientesCabEntity, CC.FacturasClientesCabCollection, FacturasClientesCabClass)
 

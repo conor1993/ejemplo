@@ -7,6 +7,7 @@ Imports System.Data.SqlClient
 Public Class RegistroFacGastosFrm
     Dim Poliza As CN.PolizaClass
     Private Proveedores As New ClasesNegocio.ProveedorCollectionClass
+    Private CXP As New ClasesNegocio.FacturasCXP
     Private Factura As CN.FacturasCabCXPClass
     Private FacDet As CN.FacturaDetalleCXPColeccion
     'Dim Poliza As CN.PolizaClass
@@ -677,11 +678,13 @@ Public Class RegistroFacGastosFrm
                     If pag.Count = 0 Then
                         Factura.Estatus = ClasesNegocio.EstatusFacturasEnum.CANCELADA
                         If Factura.Guardar() Then
+                            Dim NumeroFactura As String = Factura.NoFactura
                             Dim FactPagar As New CN.FacturasAPagarCXPColeccion
                             FactPagar.Obtener(Me.Factura.IdProveedor, Factura.NoFactura)
                             If FactPagar.Count = 1 Then
                                 FactPagar.ObtenerColeccion.DeleteMulti()
                             End If
+                            CXP.CancelarFactura(NumeroFactura)
                             MsgBox("La Factura fue cancelada satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
                             Limpiar()
                         End If

@@ -104,8 +104,8 @@ Partial Public MustInherit Class ClassBase(Of TipoEntity As {OC.EntityBase, New}
 
             Dim sqlExep As SqlClient.SqlException = CType(ex.InnerException, SqlClient.SqlException)
             If sqlExep.Number = 2627 Or sqlExep.Number = 2601 Then
-                MsgBox("Esta intentando insertar un registro que ya existe." & vbLf & sqlExep.Message.ToString, MsgBoxStyle.Critical, Entidad.GetType.FullName.ToString)
                 Trans.Rollback()
+                MsgBox("Esta intentando insertar un registro que ya existe." & vbLf & sqlExep.Message.ToString, MsgBoxStyle.Critical, Entidad.GetType.FullName.ToString)
                 Return False
             End If
 

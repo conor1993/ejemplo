@@ -9,11 +9,14 @@ Imports System.Data.SqlClient
 Public Class RecepcionFacturasForm
 
     Private Proveedores As New ClasesNegocio.ProveedorCollectionClass
+    Private CXP As New ClasesNegocio.FacturasCXP
     Private RecepSer As IntegraLab.ORM.CollectionClasses.OrdenServicioCollection
     Private Recepciones As IntegraLab.ORM.CollectionClasses.RecepcionOrdenCompraCollection
     Private Fact As New IntegraLab.ORM.EntityClasses.UsrCxpfacturasCabEntity
     Private FactDet As IntegraLab.ORM.CollectionClasses.UsrCxpfacturasDetCollection
     Private FactDetRecep As IntegraLab.ORM.CollectionClasses.UsrCxpfacturasDetRecepcionesCollection
+
+
     Dim Total As Decimal
     Dim Subtotal As Decimal
     Dim TotalAux As Decimal 'Se usa para comparar el total de cargos y abonos para el total de facturas
@@ -756,6 +759,8 @@ Public Class RecepcionFacturasForm
             Try
                 tran.Add(Fact)
                 If Fact.Save Then
+                    Dim NumeroFactura As String = Fact.NoFactura
+                    Dim Success As Boolean = False
                     If Recepciones.Count > 0 Then
                         tran.Add(Recepciones)
                         If Recepciones.SaveMulti Then
@@ -767,7 +772,9 @@ Public Class RecepcionFacturasForm
                             If FactPagar.Count = 1 Then
                                 FactPagar.ObtenerColeccion.DeleteMulti()
                             End If
-                            MsgBox("La Factura ha sido Cancelada...")
+
+                            Success = True
+                            'MsgBox("La Factura ha sido Cancelada...")
                             Limpiar()
                             Cancelar = False
                             Me.TxtSubtotal.Enabled = False
@@ -789,13 +796,20 @@ Public Class RecepcionFacturasForm
                         If FactPagar.Count = 1 Then
                             FactPagar.ObtenerColeccion.DeleteMulti()
                         End If
-                        MsgBox("La Factura ha sido Cancelada...")
+                        Success = True
+                        'MsgBox("La Factura ha sido Cancelada...")
                         Limpiar()
                         Cancelar = False
                         Me.TxtSubtotal.Enabled = False
                         Me.txtIva.Enabled = True
                         Me.TxtTotal.Enabled = False
                     End If
+                    'Dorantes, se eliminan prorrateo , se elimina la factura y se colocan prorrateo y factura en otras tablas para guardar historial
+                    If (Success) Then
+                        CXP.CancelarFactura(NumeroFactura)
+                        MsgBox("La Factura ha sido Cancelada...")
+                    End If
+
                 Else
                     tran.Rollback()
                     MsgBox("La Factura no pudo ser Cancelada...")
