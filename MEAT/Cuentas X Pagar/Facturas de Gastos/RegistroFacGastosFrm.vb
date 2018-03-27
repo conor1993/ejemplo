@@ -171,16 +171,19 @@ Public Class RegistroFacGastosFrm
         Me.Txtconcepto.Enabled = True
         Me.txtObservaciones.Enabled = True
         Me.txtTasaIva.Enabled = True
-        Me.TxtTasaISR.Enabled = True
-        Me.TxtTasaRetIVA.Enabled = True
+
+        'Me.TxtTasaISR.Enabled = True
+        'Me.TxtTasaRetIVA.Enabled = True
+        'TxtIVAFlete.Enabled = True
 
         'Me.TxtISR.Enabled = True
         'Me.txtRetIva.Enabled = True
 
+
         Me.DgvCuentas.Enabled = True
         ckbFletes.Enabled = True
         ckbHonorarios.Enabled = True
-        TxtIVAFlete.Enabled = True
+
         'TxtIVAFlete1.Enabled = True
         Me.UUID.Enabled = True
 
@@ -263,7 +266,7 @@ Public Class RegistroFacGastosFrm
             MsgBox("No ha relacionado las Cuentas Contables a Afectar.", MsgBoxStyle.Exclamation, "Aviso")
             Return False
         End If
-        If Not CDec(Me.txtSumaAbono.Text) = calcularSubtotal() Then
+        If Not CDec(Me.txtSumaAbono.Text) = calcularSubtotal(False) Then
             'If Not CDec(Me.txtSumaAbono.Text) = CDec(Me.txtSumaCargo.Text) Then
             MsgBox("Las Sumas del Cargo y del Abono deben ser Equivalentes", MsgBoxStyle.Exclamation, "Aviso")
             Return False
@@ -272,7 +275,7 @@ Public Class RegistroFacGastosFrm
             '    Return False
         End If
 
-        If Me.txtSumaCargo.Text <> calcularSubtotal() Then
+        If Me.txtSumaCargo.Text <> calcularSubtotal(False) Then
             MsgBox("La Suma de el (los) Cargo(s) no Coinciden con el Total de la Factura", MsgBoxStyle.Exclamation, "Error")
             Return False
         End If
@@ -1371,9 +1374,11 @@ Public Class RegistroFacGastosFrm
     Private Sub TxtTasaRetIVA_Leave(sender As System.Object, e As System.EventArgs) Handles TxtTasaRetIVA.Leave
         Dim value As Decimal = Replace(TxtTasaRetIVA.Text, ",", "")
         TxtTasaRetIVA.Text = value.ToString(formatoImp)
+        Me.Calcular_New(True)
     End Sub
 
     Private Sub TxtTasaRetIVA_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtTasaRetIVA.TextChanged
+        'Me.Calcular_New(True)
         'Calculos()
         'Me.Calcular_New(True)
     End Sub
@@ -1405,6 +1410,7 @@ Public Class RegistroFacGastosFrm
     Private Sub TxtTasaISR_Leave(sender As System.Object, e As System.EventArgs) Handles TxtTasaISR.Leave
         Dim value As Decimal = Replace(TxtTasaISR.Text, ",", "")
         TxtTasaISR.Text = value.ToString(formatoImp)
+        Me.Calcular_New(True)
     End Sub
 
 
@@ -1448,8 +1454,14 @@ Public Class RegistroFacGastosFrm
                         Dim TasaISR As Decimal = If(String.IsNullOrEmpty(Me.TxtTasaISR.Text), 0, Me.TxtTasaISR.Text)
                         Dim TasaRetIVA As Decimal = If(String.IsNullOrEmpty(Me.TxtTasaRetIVA.Text), 0, Me.TxtTasaRetIVA.Text)
                         'Mee
-                        ISRInt = ((Me.Subtotal * TasaISR) / 100).ToString(formato)
-                        RetIVAInt = ((Me.Subtotal * TasaRetIVA) / 100).ToString(formato)
+                        If (tomarEncuentaImpuestos) Then
+                            ISRInt = ((Me.Subtotal * TasaISR) / 100).ToString(formato)
+                            RetIVAInt = ((Me.Subtotal * TasaRetIVA) / 100).ToString(formato)
+                        Else
+                            ISRInt = CDec(If(String.IsNullOrEmpty(Me.TxtISR.Text), 0, Me.TxtISR.Text))
+                            RetIVAInt = CDec(If(String.IsNullOrEmpty(Me.txtRetIva.Text), 0, Me.txtRetIva.Text))
+                        End If
+
 
                         Me.TxtISR.Text = ISRInt.ToString(formato)
                         Me.txtRetIva.Text = RetIVAInt.ToString(formato)
@@ -1483,7 +1495,7 @@ Public Class RegistroFacGastosFrm
         'calcularHonorarios()
         calcularTotales(tomarEnCuentaPorcentajeIVA)
         calcularFlete(ignorar)
-        calcularSubtotal()
+        calcularSubtotal(tomarEnCuentaPorcentajeIVA)
     End Sub
 
     Private Sub ckbHonorarios_CheckedChanged(sender As Object, e As EventArgs) Handles ckbHonorarios.CheckedChanged
