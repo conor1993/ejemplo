@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 15 de marzo de 2018 12:00:14
+' // Code is generated on: lunes, 26 de marzo de 2018 17:30:37
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -10948,6 +10948,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UsrCxpfacturasCabEntity", "Ieps"), persistenceProvider.GetFieldPersistenceInfo("UsrCxpfacturasCabEntity", "Ieps"))
 				Case UsrCxpfacturasCabFieldIndex.Ivaflete
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UsrCxpfacturasCabEntity", "Ivaflete"), persistenceProvider.GetFieldPersistenceInfo("UsrCxpfacturasCabEntity", "Ivaflete"))
+				Case UsrCxpfacturasCabFieldIndex.Tipo
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("UsrCxpfacturasCabEntity", "Tipo"), persistenceProvider.GetFieldPersistenceInfo("UsrCxpfacturasCabEntity", "Tipo"))
 
 			End Select
 			Return fieldToReturn
@@ -14009,6 +14011,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwFacturasTypedView", "PrRazSocial"), persistenceProvider.GetFieldPersistenceInfo("VwFacturasTypedView", "PrRazSocial"))
 				Case VwFacturasFieldIndex.Gastos
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwFacturasTypedView", "Gastos"), persistenceProvider.GetFieldPersistenceInfo("VwFacturasTypedView", "Gastos"))
+				Case VwFacturasFieldIndex.Idfacturacancelada
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwFacturasTypedView", "Idfacturacancelada"), persistenceProvider.GetFieldPersistenceInfo("VwFacturasTypedView", "Idfacturacancelada"))
 			End Select
 
 			Return fieldToReturn

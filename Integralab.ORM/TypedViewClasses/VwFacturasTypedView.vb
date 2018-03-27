@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 15 de marzo de 2018 12:00:17
+' // Code is generated on: lunes, 26 de marzo de 2018 17:30:38
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -59,6 +59,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		Private _columnEstatusFactura As DataColumn
 		Private _columnPrRazSocial As DataColumn
 		Private _columnGastos As DataColumn
+		Private _columnIdfacturacancelada As DataColumn
 		
 		' __LLBLGENPRO_USER_CODE_REGION_START AdditionalMembers
 		' __LLBLGENPRO_USER_CODE_REGION_END
@@ -70,7 +71,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' <summary>
 		''' The amount of fields in the resultset.
 		''' </summary>
-		Private Const AmountOfFields As Integer = 11
+		Private Const AmountOfFields As Integer = 12
 #End Region
 		
 		''' <summary>
@@ -335,6 +336,11 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnGastos.ReadOnly = True
 			_columnGastos.Caption = "Gastos"
 			Me.Columns.Add(_columnGastos)
+
+			_columnIdfacturacancelada = New DataColumn("Idfacturacancelada", GetType(System.Int32), Nothing, MappingType.Element)
+			_columnIdfacturacancelada.ReadOnly = True
+			_columnIdfacturacancelada.Caption = "Idfacturacancelada"
+			Me.Columns.Add(_columnIdfacturacancelada)
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitClass
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -356,6 +362,7 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnEstatusFactura = Me.Columns("EstatusFactura")
 			_columnPrRazSocial = Me.Columns("PrRazSocial")
 			_columnGastos = Me.Columns("Gastos")
+			_columnIdfacturacancelada = Me.Columns("Idfacturacancelada")
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitMembers
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -417,6 +424,10 @@ Namespace Integralab.ORM.TypedViewClasses
 			fieldHashtable = New Hashtable()
 
 			_fieldsCustomProperties.Add("Gastos", fieldHashtable)
+			
+			fieldHashtable = New Hashtable()
+
+			_fieldsCustomProperties.Add("Idfacturacancelada", fieldHashtable)
 			
 		End Sub
 
@@ -611,6 +622,15 @@ Namespace Integralab.ORM.TypedViewClasses
 		ReadOnly Friend Property GastosColumn As DataColumn
 			Get 
 				Return _columnGastos 
+			End Get
+		End Property
+    
+		''' <summary>
+		''' Returns the column Object belonging to the TypedView field Idfacturacancelada
+		''' </summary>
+		ReadOnly Friend Property IdfacturacanceladaColumn As DataColumn
+			Get 
+				Return _columnIdfacturacancelada 
 			End Get
 		End Property
     
@@ -1081,6 +1101,45 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' </summary>
     	Public Sub SetGastosNull() 
 			Me(_parent.GastosColumn) = System.Convert.DBNull
+		End Sub
+
+	
+
+		''' <summary>
+		''' Gets / sets the value of the TypedView field Idfacturacancelada<br/><br/>
+		''' 
+		''' </summary>
+		''' <remarks>
+		''' Mapped on view field: "vwFacturas"."idfacturacancelada"<br/>
+		''' View field characteristics (type, precision, scale, length): Int, 10, 0, 0
+		''' </remarks>
+		Public Property [Idfacturacancelada]() As System.Int32
+			Get 
+				If IsIdfacturacanceladaNull() Then
+					' return default value for this type.
+					Return CType(TypeDefaultValue.GetDefaultValue(GetType(System.Int32)), System.Int32)
+				Else
+					Return CType(Me(_parent.IdfacturacanceladaColumn), System.Int32)
+				End If
+			End Get
+			Set 
+				Me(_parent.IdfacturacanceladaColumn) = Value
+			End Set
+		End Property
+
+		''' <summary>
+		''' Returns True if the TypedView field Idfacturacancelada is NULL, False otherwise.
+		''' </summary>
+		Public Function IsIdfacturacanceladaNull() As Boolean
+			Return IsNull(_parent.IdfacturacanceladaColumn)
+		End Function
+
+		''' <summary>
+		''' Sets the TypedView field Idfacturacancelada to NULL. Not recommended a typed view should be used
+		''' as a readonly Object.
+		''' </summary>
+    	Public Sub SetIdfacturacanceladaNull() 
+			Me(_parent.IdfacturacanceladaColumn) = System.Convert.DBNull
 		End Sub
 
 	

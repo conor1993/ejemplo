@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 15 de marzo de 2018 12:00:07
+' // Code is generated on: lunes, 26 de marzo de 2018 17:30:34
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -730,6 +730,7 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -944,6 +945,9 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("Ivaflete", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Tipo", fieldHashtable)
 		End Sub
 
 
@@ -1714,6 +1718,26 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				SetNewFieldValue(CType(UsrCxpfacturasCabFieldIndex.Ivaflete, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Tipo property of the Entity UsrCxpfacturasCab<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "usrCXPFacturasCab"."Tipo"<br/>
+		''' Table field type characteristics (type, precision, scale, length): VarChar, 0, 0, 20<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Tipo]() As System.String
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(UsrCxpfacturasCabFieldIndex.Tipo, Integer))
+				If valueToReturn Is Nothing Then
+					valueToReturn = TypeDefaultValue.GetDefaultValue(GetType(System.String))
+				End If
+				Return CType(valueToReturn, System.String)
+			End Get
+			Set
+				SetNewFieldValue(CType(UsrCxpfacturasCabFieldIndex.Tipo, Integer), value)
 			End Set
 		End Property
 	

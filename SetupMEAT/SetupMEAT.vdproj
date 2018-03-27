@@ -1301,7 +1301,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                                                          "
+                "FrameworkVersion" = "8:2.0.50727                                                            "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -2699,7 +2699,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.91.91"
+        "ProductVersion" = "8:1.94.94"
         "Manufacturer" = "8:IntegraLab"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -3241,7 +3241,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_497A3D826AB04146ABE3B52DF23237FA"
             {
-            "SourcePath" = "8:..\\MEAT\\obj\\x86\\Release\\Sistema MEAT.exe"
+            "SourcePath" = "8:..\\MEAT\\obj\\x86\\Debug\\Sistema MEAT.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_970083A4D7E842BA939A90FB0AD3198B"
