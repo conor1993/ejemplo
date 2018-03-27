@@ -22,30 +22,31 @@ Partial Class BusquedaFacturasForm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.TxtFactura = New System.Windows.Forms.TextBox
-        Me.CmbProveedor = New System.Windows.Forms.ComboBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.DgvFacturas = New System.Windows.Forms.DataGridView
+        Me.components = New System.ComponentModel.Container()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.TxtFactura = New System.Windows.Forms.TextBox()
+        Me.CmbProveedor = New System.Windows.Forms.ComboBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DgvFacturas = New System.Windows.Forms.DataGridView()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.RecepcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.BtnBuscar = New System.Windows.Forms.Button
-        Me.BtnAceptar = New System.Windows.Forms.Button
-        Me.BtnCancelar = New System.Windows.Forms.Button
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker
-        Me.NoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaFactura = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Proveedor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Estatus = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.RecepcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BtnBuscar = New System.Windows.Forms.Button()
+        Me.BtnAceptar = New System.Windows.Forms.Button()
+        Me.BtnCancelar = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.NoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Proveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Estatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idfacturacancelada = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DgvFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -131,7 +132,7 @@ Partial Class BusquedaFacturasForm
         Me.DgvFacturas.AllowUserToAddRows = False
         Me.DgvFacturas.AllowUserToDeleteRows = False
         Me.DgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NoFactura, Me.FechaFactura, Me.FechaVencimiento, Me.Proveedor, Me.Importe, Me.Estatus})
+        Me.DgvFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NoFactura, Me.FechaFactura, Me.FechaVencimiento, Me.Proveedor, Me.Importe, Me.Estatus, Me.idfacturacancelada})
         Me.DgvFacturas.ContextMenuStrip = Me.ContextMenuStrip1
         Me.DgvFacturas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvFacturas.Location = New System.Drawing.Point(3, 16)
@@ -147,12 +148,12 @@ Partial Class BusquedaFacturasForm
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RecepcionesToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(146, 26)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(141, 26)
         '
         'RecepcionesToolStripMenuItem
         '
         Me.RecepcionesToolStripMenuItem.Name = "RecepcionesToolStripMenuItem"
-        Me.RecepcionesToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
+        Me.RecepcionesToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.RecepcionesToolStripMenuItem.Text = "Recepciones"
         '
         'BtnBuscar
@@ -251,6 +252,14 @@ Partial Class BusquedaFacturasForm
         Me.Estatus.Name = "Estatus"
         Me.Estatus.ReadOnly = True
         '
+        'idfacturacancelada
+        '
+        Me.idfacturacancelada.DataPropertyName = "idfacturacancelada"
+        Me.idfacturacancelada.HeaderText = "idfacturacancelada"
+        Me.idfacturacancelada.Name = "idfacturacancelada"
+        Me.idfacturacancelada.ReadOnly = True
+        Me.idfacturacancelada.Visible = False
+        '
         'BusquedaFacturasForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -304,4 +313,5 @@ Partial Class BusquedaFacturasForm
     Friend WithEvents Proveedor As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Importe As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Estatus As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents idfacturacancelada As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

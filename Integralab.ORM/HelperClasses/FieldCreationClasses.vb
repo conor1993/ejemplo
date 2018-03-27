@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: jueves, 15 de marzo de 2018 12:00:15
+' Code is generated on: lunes, 26 de marzo de 2018 17:30:37
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -20696,6 +20696,12 @@ Namespace Integralab.ORM.HelperClasses
 				Return CType(EntityFieldFactory.Create(UsrCxpfacturasCabFieldIndex.Ivaflete), EntityField)
 			End Get
 		End Property
+		''' <summary>Creates a new UsrCxpfacturasCabEntity.Tipo field instance</summary>
+		Public Shared ReadOnly Property [Tipo] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(UsrCxpfacturasCabFieldIndex.Tipo), EntityField)
+			End Get
+		End Property
 	End Class
 	''' <summary>Field Creation Class for entity UsrCxpfacturasDetEntity</summary>
 	Public Class UsrCxpfacturasDetFields
@@ -26796,6 +26802,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [Gastos] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(VwFacturasFieldIndex.Gastos), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new VwFacturasTypedView.Idfacturacancelada field instance</summary>
+		Public Shared ReadOnly Property [Idfacturacancelada] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(VwFacturasFieldIndex.Idfacturacancelada), EntityField)
 			End Get
 		End Property
 	End Class

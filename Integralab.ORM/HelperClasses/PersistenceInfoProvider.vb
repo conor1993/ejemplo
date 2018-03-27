@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 15 de marzo de 2018 12:00:15
+' // Code is generated on: lunes, 26 de marzo de 2018 17:30:37
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -4760,7 +4760,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits UsrCxpfacturasCabEntity's mappings</summary>
         Private Sub InitUsrCxpfacturasCabEntityMappings()
-            MyBase.AddElementMapping("UsrCxpfacturasCabEntity", "", "dbo", "usrCXPFacturasCab", 31)
+            MyBase.AddElementMapping("UsrCxpfacturasCabEntity", "", "dbo", "usrCXPFacturasCab", 32)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "EmpresaId", "EmpresaId", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "IdProveedor", "IdProveedor", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 1)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "NoFactura", "NoFactura", False, CInt(SqlDbType.VarChar), 40, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -4792,6 +4792,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "Uuid", "UUID", True, CInt(SqlDbType.VarChar), 40, 0, 0, False, "", Nothing, GetType(System.String), 28)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "Ieps", "Ieps", True, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 29)
             MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "Ivaflete", "Ivaflete", True, CInt(SqlDbType.Money), 0, 4, 19, False, "", Nothing, GetType(System.Decimal), 30)
+            MyBase.AddElementFieldMapping("UsrCxpfacturasCabEntity", "Tipo", "Tipo", True, CInt(SqlDbType.VarChar), 20, 0, 0, False, "", Nothing, GetType(System.String), 31)
         End Sub
         ''' <summary>Inits UsrCxpfacturasDetEntity's mappings</summary>
         Private Sub InitUsrCxpfacturasDetEntityMappings()
@@ -6031,7 +6032,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits View's mappings</summary>
         Private Sub InitVwFacturasTypedViewMappings()
-            MyBase.AddElementMapping("VwFacturasTypedView", "", "dbo", "vwFacturas", 11)
+            MyBase.AddElementMapping("VwFacturasTypedView", "", "dbo", "vwFacturas", 12)
             MyBase.AddElementFieldMapping("VwFacturasTypedView", "EmpresaId", "EmpresaId", False, CInt(SqlDbType.Int), 0, 0, 10, False, String.Empty, Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("VwFacturasTypedView", "IdProveedor", "IdProveedor", False, CInt(SqlDbType.Int), 0, 0, 10, False, String.Empty, Nothing, GetType(System.Int32), 1)
             MyBase.AddElementFieldMapping("VwFacturasTypedView", "NoFactura", "NoFactura", False, CInt(SqlDbType.VarChar), 40, 0, 0, False, String.Empty, Nothing, GetType(System.String), 2)
@@ -6043,6 +6044,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("VwFacturasTypedView", "EstatusFactura", "EstatusFactura", False, CInt(SqlDbType.VarChar), 15, 0, 0, False, String.Empty, Nothing, GetType(System.String), 8)
             MyBase.AddElementFieldMapping("VwFacturasTypedView", "PrRazSocial", "PrRazSocial", False, CInt(SqlDbType.VarChar), 150, 0, 0, False, String.Empty, Nothing, GetType(System.String), 9)
             MyBase.AddElementFieldMapping("VwFacturasTypedView", "Gastos", "Gastos", False, CInt(SqlDbType.Bit), 0, 0, 0, False, String.Empty, Nothing, GetType(System.Boolean), 10)
+            MyBase.AddElementFieldMapping("VwFacturasTypedView", "Idfacturacancelada", "idfacturacancelada", False, CInt(SqlDbType.Int), 0, 0, 10, False, String.Empty, Nothing, GetType(System.Int32), 11)
         End Sub
         ''' <summary>Inits View's mappings</summary>
         Private Sub InitVwHistorialdeComprasdeProductosTypedViewMappings()

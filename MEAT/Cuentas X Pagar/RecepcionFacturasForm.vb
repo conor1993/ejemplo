@@ -907,6 +907,12 @@ Public Class RecepcionFacturasForm
                 Me.txtIva.Enabled = True
                 Me.TxtTotal.Enabled = False
                 Total = Me.Fact.Total
+            Else
+                Try
+                    buscarcanceladas(Busqueda.Ifacturacancelada)
+                Catch ex As Exception
+
+                End Try
             End If
         End If
     End Sub
@@ -2075,4 +2081,10 @@ Public Class RecepcionFacturasForm
         Dim value As Decimal = Replace(txtTasaISR.Text, ",", "")
         txtTasaISR.Text = value.ToString("N4")
     End Sub
+
+
+    Private Sub buscarcanceladas(id As Integer)
+
+    End Sub
+
 End Class

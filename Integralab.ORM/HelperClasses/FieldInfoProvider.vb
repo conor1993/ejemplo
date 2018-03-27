@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: jueves, 15 de marzo de 2018 11:59:55
+' Code is generated on: lunes, 26 de marzo de 2018 17:30:29
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -4522,6 +4522,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("UsrCxpfacturasCabEntity", "Uuid", GetType(System.String), False, False, False, True, CInt(UsrCxpfacturasCabFieldIndex.Uuid), 40, 0, 0)
 			MyBase.AddElementFieldInfo("UsrCxpfacturasCabEntity", "Ieps", GetType(System.Decimal), False, False, False, True, CInt(UsrCxpfacturasCabFieldIndex.Ieps), 0, 4, 19)
 			MyBase.AddElementFieldInfo("UsrCxpfacturasCabEntity", "Ivaflete", GetType(System.Decimal), False, False, False, True, CInt(UsrCxpfacturasCabFieldIndex.Ivaflete), 0, 4, 19)
+			MyBase.AddElementFieldInfo("UsrCxpfacturasCabEntity", "Tipo", GetType(System.String), False, False, False, True, CInt(UsrCxpfacturasCabFieldIndex.Tipo), 20, 0, 0)
 		End Sub
 		''' <summary>Inits UsrCxpfacturasDetEntity's FieldInfo objects</summary>
 		Private Sub InitUsrCxpfacturasDetEntityInfos()
@@ -5703,6 +5704,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("VwFacturasTypedView", "EstatusFactura", GetType(System.String), False, False, True, False, CInt(VwFacturasFieldIndex.EstatusFactura), 15, 0, 0)
 			MyBase.AddElementFieldInfo("VwFacturasTypedView", "PrRazSocial", GetType(System.String), False, False, True, False, CInt(VwFacturasFieldIndex.PrRazSocial), 150, 0, 0)
 			MyBase.AddElementFieldInfo("VwFacturasTypedView", "Gastos", GetType(System.Boolean), False, False, True, False, CInt(VwFacturasFieldIndex.Gastos), 0, 0, 0)
+			MyBase.AddElementFieldInfo("VwFacturasTypedView", "Idfacturacancelada", GetType(System.Int32), False, False, True, False, CInt(VwFacturasFieldIndex.Idfacturacancelada), 0, 0, 10)
 		End Sub
 		''' <summary>Inits View's FieldInfo objects</summary>
 		Private Sub InitVwHistorialdeComprasdeProductosTypedViewInfos()

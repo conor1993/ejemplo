@@ -4,6 +4,7 @@ Public Class BusquedaFacturasForm
     Public Factura As String
     Public ProveedorID As Integer
     Public EsDeGastos As Boolean
+    Public Ifacturacancelada As Integer
 
     Private Sub BusquedaFacturasForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -62,6 +63,7 @@ Public Class BusquedaFacturasForm
 
     Private Sub DgvFacturas_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles DgvFacturas.Click
         Factura = Me.DgvFacturas.SelectedRows(0).Cells("NoFactura").Value
+        Ifacturacancelada = Me.DgvFacturas.SelectedRows(0).Cells("idfacturacancelada").Value
         Dim Proveedores As New ClasesNegocio.ProveedorCollectionClass
         Proveedores.Obtener(Me.DgvFacturas.SelectedRows(0).Cells("Proveedor").Value)
         If Proveedores.Count = 1 Then

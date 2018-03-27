@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 15 de marzo de 2018 11:59:55
+' // Code is generated on: lunes, 26 de marzo de 2018 17:30:29
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -5470,6 +5470,7 @@ Namespace Integralab.ORM
 		[Uuid]
 		[Ieps]
 		[Ivaflete]
+		[Tipo]
 		AmountOfFields
 	End Enum
 
@@ -7000,6 +7001,7 @@ Namespace Integralab.ORM
 		[EstatusFactura]
 		[PrRazSocial]
 		[Gastos]
+		[Idfacturacancelada]
 		AmountOfFields
 	End Enum
 
