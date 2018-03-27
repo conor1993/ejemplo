@@ -625,8 +625,6 @@ Public Class RegistroFacGastosFrm
             'Me.CmbProveedor.DataSource = Proveedores
             'Me.CmbProveedor.DisplayMember = "RazonSocial"
 
-
-
             Limpiar()
             Deshabilitar()
         Catch ex As Exception
@@ -666,7 +664,7 @@ Public Class RegistroFacGastosFrm
                 End If
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+
         End Try
     End Sub
 
@@ -712,6 +710,12 @@ Public Class RegistroFacGastosFrm
     End Sub
 
     Private Sub mtb_ClickBuscar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBuscar
+
+        Me.CmbProveedor.DataSource = Proveedores
+        Me.CmbProveedor.DisplayMember = "RazonSocial"
+        Me.CmbProveedor.ValueMember = "Codigo"
+        Proveedores.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS)
+        Me.CmbProveedor.SelectedIndex = -1
         Dim Busqueda As New BusquedaFacturasForm
         Busqueda.EsDeGastos = True
         If Busqueda.ShowDialog = Windows.Forms.DialogResult.OK Then
@@ -734,12 +738,14 @@ Public Class RegistroFacGastosFrm
                 Me.txtIva.Enabled = True
                 Me.TxtTotal.Enabled = False
             End If
+
             calcular()
             Me.DgvCuentas.Enabled = True
             Buscar = True
             'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
             Me.lblEstatus.Visible = True
         End If
+
     End Sub
 
     Private Sub mtb_ClickCancelar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickCancelar
@@ -840,7 +846,10 @@ Public Class RegistroFacGastosFrm
 
     Private Sub mtb_ClickNuevo(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickNuevo
         Try
-
+            Me.CmbProveedor.DataSource = Proveedores
+            Me.CmbProveedor.DisplayMember = "RazonSocial"
+            Me.CmbProveedor.ValueMember = "codigo"
+            Proveedores.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS)
             Me.Factura = New CN.FacturasCabCXPClass
             FacDet = New CN.FacturaDetalleCXPColeccion
             Limpiar()
@@ -849,11 +858,6 @@ Public Class RegistroFacGastosFrm
             'Me.txtTasaIva.Text = Factura.TasaIva.ToString("N2")
             'Me.TxtTasaISR.Text = Factura.TasaISR.ToString("N2")
             'Me.TxtTasaRetIVA.Text = Factura.TasaRetIva.ToString("N2")
-
-            Proveedores.Obtener(Integra.Clases.EstatusEnum.ACTIVO)
-            Me.CmbProveedor.ValueMember = "IDProveedor"
-            Me.CmbProveedor.DataSource = Proveedores
-            Me.CmbProveedor.DisplayMember = "RazonSocial"
             SugerirPorcentajes()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
@@ -1191,7 +1195,7 @@ Public Class RegistroFacGastosFrm
         End Try
     End Sub
 
-   
+
 
     Public Function calcularFlete(Optional ByVal ignorarCuentaFlete As Boolean = False) As Boolean
         'Mee
@@ -1666,8 +1670,12 @@ Public Class RegistroFacGastosFrm
                 Dim cuentascontables As New DataSet()
                 cuentascontables.Tables.Add("cuentascontables")
                 cuentascontables.Tables(0).Load(Rs)
+                Try
+                    Me.CmbProveedor.SelectedValue = CInt(cuentascontables.Tables(0).Rows(0).ItemArray(2).ToString())
+                Catch ex As Exception
 
-                Me.CmbProveedor.SelectedValue = CInt(cuentascontables.Tables(0).Rows(0).ItemArray(2).ToString())
+                End Try
+
                 Me.TxtFactura.Text = cuentascontables.Tables(0).Rows(0).ItemArray(3).ToString()
                 Me.DtpFechaFactura.Value = cuentascontables.Tables(0).Rows(0).ItemArray(4).ToString()
                 Me.DtpFechaCaptura.Value = cuentascontables.Tables(0).Rows(0).ItemArray(5).ToString()
@@ -1696,7 +1704,7 @@ Public Class RegistroFacGastosFrm
         Catch ex As Exception
 
         End Try
-      
+
 
     End Sub
 
@@ -1727,5 +1735,7 @@ Public Class RegistroFacGastosFrm
         Next
 
     End Sub
+
+
 
 End Class
