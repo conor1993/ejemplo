@@ -910,6 +910,11 @@ Public Class RecepcionFacturasForm
             Else
                 Try
                     buscarcanceladas(Busqueda.Ifacturacancelada)
+                    Me.lblEstatus.Visible = True
+                    Me.TxtSubtotal.Enabled = False
+                    Me.txtIva.Enabled = True
+                    Me.TxtTotal.Enabled = False
+                    Total = Me.Fact.Total
                 Catch ex As Exception
 
                 End Try
@@ -2084,6 +2089,106 @@ Public Class RecepcionFacturasForm
 
 
     Private Sub buscarcanceladas(id As Integer)
+
+        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+        Dim cadenaConsulta As String = "EXEC Usp_HistorialUsrFacturas 1, {0}"
+        cadenaConsulta = String.Format(cadenaConsulta, id)
+
+        Using sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+            sqlCon.Open()
+            Dim adp As New SqlDataAdapter(sqlcom)
+            Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
+
+            Dim cuentascontables As New DataSet()
+            cuentascontables.Tables.Add("cuentascontables")
+            cuentascontables.Tables(0).Load(Rs)
+
+            Me.CmbProveedor.SelectedValue = CInt(cuentascontables.Tables(0).Rows(0).ItemArray(2).ToString())
+            Me.TxtFactura.Text = cuentascontables.Tables(0).Rows(0).ItemArray(3).ToString()
+            Me.DtpFechaFactura.Value = cuentascontables.Tables(0).Rows(0).ItemArray(4).ToString()
+            Me.DtpFechaCaptura.Value = cuentascontables.Tables(0).Rows(0).ItemArray(5).ToString()
+            Me.DtpFechaVencimiento.Value = cuentascontables.Tables(0).Rows(0).ItemArray(6).ToString()
+            Me.TxtSubtotal.Text = cuentascontables.Tables(0).Rows(0).ItemArray(7).ToString()
+            Me.txtIva.Text = cuentascontables.Tables(0).Rows(0).ItemArray(8).ToString()
+            Me.TxtTotal.Text = cuentascontables.Tables(0).Rows(0).ItemArray(9).ToString()
+            Me.TxtAnticipo.Text = cuentascontables.Tables(0).Rows(0).ItemArray(10).ToString()
+            Select Case (cuentascontables.Tables(0).Rows(0).ItemArray(11).ToString())
+                Case 0
+                    Me.lblEstatus.Text = "CANCELADA"
+                Case 1
+                    Me.lblEstatus.Text = "PAGADA"
+                Case 2
+                    Me.lblEstatus.Text = "VIGENTE"
+                Case 3
+                    Me.lblEstatus.Text = "ABONADA"
+            End Select
+            lblEstatus.Visible = True
+            Me.txtObservaciones.Text = cuentascontables.Tables(0).Rows(0).ItemArray(15).ToString()
+            ' Me.txtConcepto.Text = Me.Fact.Concepto
+            Me.chkServicio.Checked = cuentascontables.Tables(0).Rows(0).ItemArray(19).ToString()
+            Me.MtxtUUID.Text = cuentascontables.Tables(0).Rows(0).ItemArray(29).ToString()
+
+            llenarcuentascontablesfac(cuentascontables)
+            sqlCon.Close()
+
+        End Using
+
+    End Sub
+
+    'Private Sub llenarcuentascontablesfac(Rs As SqlDataReader)
+
+    '    While Rs.Read()
+    '        Try
+    '            Dim i As Integer = Me.DgvCuentas.Rows.Count
+    '            Me.DgvCuentas.Rows.Add()
+    '            If Rs("CarAbo").ToString().Equals("C") Then
+    '                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Rs("cta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Rs("subcta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Rs("SSubCta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Rs("SSSubCta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Rs("NomCuenta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Rs("importecuenta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+    '            Else
+    '                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Rs("cta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Rs("subcta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Rs("SSubCta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = Rs("SSSubCta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Rs("NomCuenta").ToString()
+    '                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
+    '                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Rs("importecuenta").ToString()
+    '            End If
+    '        Catch ex As Exception
+    '            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+    '        End Try
+    '    End While
+
+    'End Sub
+
+    Private Sub llenarcuentascontablesfac(cuentascontables As DataSet)
+
+
+        For Each row As DataRow In cuentascontables.Tables(0).Rows
+            Dim i As Integer = Me.DgvCuentas.Rows.Count
+            Me.DgvCuentas.Rows.Add()
+            If row("CarAbo").ToString().Equals("C") Then
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("subcta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("importecuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+            Else
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("subcta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("importecuenta").ToString()
+            End If
+        Next
 
     End Sub
 
