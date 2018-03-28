@@ -2129,27 +2129,27 @@ Public Class PolizaCollectionClass
                         If dt.Rows(IndexActual).Item("operacion") = "C" Then
                             dt.Rows(IndexActual).Item("cargo") = totalCargo
 
-                            For index As Integer = IndexAnterior To 0 Step -1
-                                If dt.Rows(index).Item("poliza") <> dt.Rows(IndexActual).Item("poliza") Then
-                                    Exit For
-                                Else
-                                    If dt.Rows(index).Item("operacion") = "C" Then
-                                        dt.Rows(index).Item("cargo") = 0
-                                    End If
-                                End If
-                            Next
+                            'For index As Integer = IndexAnterior To 0 Step -1
+                            '    If dt.Rows(index).Item("poliza") <> dt.Rows(IndexActual).Item("poliza") Then
+                            '        Exit For
+                            '    Else
+                            '        If dt.Rows(index).Item("operacion") = "C" Then
+                            '            dt.Rows(index).Item("cargo") = 0
+                            '        End If
+                            '    End If
+                            'Next
                         Else
                             dt.Rows(IndexActual).Item("abono") = totalAbono
 
-                            For index As Integer = IndexAnterior To 0 Step -1
-                                If dt.Rows(index).Item("poliza") <> dt.Rows(IndexActual).Item("poliza") Then
-                                    Exit For
-                                Else
-                                    If dt.Rows(index).Item("operacion") = "A" Then
-                                        dt.Rows(index).Item("abono") = 0
-                                    End If
-                                End If
-                            Next
+                            'For index As Integer = IndexAnterior To 0 Step -1
+                            '    If dt.Rows(index).Item("poliza") <> dt.Rows(IndexActual).Item("poliza") Then
+                            '        Exit For
+                            '    Else
+                            '        If dt.Rows(index).Item("operacion") = "A" Then
+                            '            dt.Rows(index).Item("abono") = 0
+                            '        End If
+                            '    End If
+                            'Next
                         End If
                     End If
                 Else
@@ -2162,6 +2162,16 @@ Public Class PolizaCollectionClass
                         dt.Rows(IndexActual).Item("abono") = totalAbono
                     End If
                 End If
+            ElseIf (IndexAnterior = -1) Then
+                
+                    totalCargo = dt.Rows(IndexActual).Item("cargo")
+                    totalAbono = dt.Rows(IndexActual).Item("abono")
+
+                    If dt.Rows(IndexActual).Item("operacion") = "C" Then
+                        dt.Rows(IndexActual).Item("cargo") = totalCargo
+                    Else
+                        dt.Rows(IndexActual).Item("abono") = totalAbono
+                    End If
             End If
         Next
         dtPolizas.Clear()
