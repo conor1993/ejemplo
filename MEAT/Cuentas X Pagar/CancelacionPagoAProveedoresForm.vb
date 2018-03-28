@@ -10,6 +10,7 @@ Public Class CancelacionPagoAProveedoresForm
     Dim Cheque As CN.ChequeClass
     Dim Poliza As CN.PolizaClass
     Dim UltimaTeclaProv As DateTime
+    Dim MovBancos As CN.MovimientosBancosClass
 
     Private Sub CancelacionPagoAProveedoresForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -75,6 +76,7 @@ Public Class CancelacionPagoAProveedoresForm
 #Region "Mitollbar"
     Private Sub mtb_ClickBorrar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar
         Try
+            Dim SaldoAnterior As Decimal = Cheque.Cuenta.SaldoActual
             If Cheque.Estatus = Integra.Clases.EstatusEnum.INACTIVO Then
                 MsgBox("El Pago ya fué Cancelado...", MsgBoxStyle.Information, "Aviso")
                 Cancelar = True
@@ -95,6 +97,33 @@ Public Class CancelacionPagoAProveedoresForm
                         If Poliza.Guardar(tr) Then
                             Cheque.ObtenerEntidad.PolizaIdCancelacion = Poliza.Codigo
                             If Cheque.Borrar(tr) Then
+
+                                ''--------------------------------------------------------------------
+                                ''--------------------------------------------------------------------
+
+                                MovBancos = New CN.MovimientosBancosClass() '(cheque.Poliza.Codigo, cheque.Cuenta.Codigo)
+                                MovBancos.NumPoliza = Cheque.PolizaCancelacion.Codigo
+                                MovBancos.FechaCaptura = Cheque.Poliza.FechaCaptura
+                                MovBancos.FechaMov = Now
+                                MovBancos.Concepto = Cheque.PolizaCancelacion.Concepto
+                                MovBancos.CveCancelacion = "S"
+                                MovBancos.Referencia = Cheque.Poliza.Codigo
+                                MovBancos.CtaBancaria = Cheque.Cuenta.Codigo
+                                MovBancos.SaldoAnterior = SaldoAnterior
+                                MovBancos.TipoMov = "D"
+                                MovBancos.Origen = "P"
+                                'MovBancos.TipoCambio = CDec(Me.txtTipoCambio.Text)
+                                MovBancos.Importe = Cheque.Importe
+
+                                If Not MovBancos.Guardar(tr) Then
+                                    tr.Rollback()
+                                    Cancelar = True
+                                    MsgBox("El Cheque no pudo ser Cancelado...", MsgBoxStyle.Critical, "Error")
+                                End If
+
+                                ''-------------------------------------------------------------------
+                                ''-------------------------------------------------------------------
+
                                 For Each Pago As CN.PagosProveedoresClass In Pagos
                                     'Si se supone qe no deja qe cancele si el cheque ya fue entregado por lo tanto
                                     'el saldo de las facturas no se ha afectado

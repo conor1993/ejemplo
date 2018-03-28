@@ -18,7 +18,9 @@ Public Class FrmRptDiariosPolizas
 
     Private Function Imprimir() As Boolean
         If Me.Validate() Then
-            PolizaCollectionClass.Imprimir(Controlador.Sesion, PolizaCollectionClass.TipoReporte.Diarios_de_Polizas, New OC.FieldBetweenPredicate(HC.PolizaFields.FechaPoliza, dtpFechaInicial.Value, dtpFechaFinal.Value.AddDays(1)) And HC.PolizaFields.Estatus = 2)
+            'PolizaCollectionClass.Imprimir(Controlador.Sesion, PolizaCollectionClass.TipoReporte.Diarios_de_Polizas, New OC.FieldBetweenPredicate(HC.PolizaFields.FechaPoliza, dtpFechaInicial.Value, dtpFechaFinal.Value.AddDays(1)) And HC.PolizaFields.Estatus = 2)    ----  con estatus = 2 son las polizaas aplicadas
+
+            PolizaCollectionClass.Imprimir(Controlador.Sesion, PolizaCollectionClass.TipoReporte.Diarios_de_Polizas, New OC.FieldBetweenPredicate(HC.PolizaFields.FechaPoliza, dtpFechaInicial.Value, dtpFechaFinal.Value.AddDays(1)) And HC.PolizaFields.Estatus = 1)
         End If
     End Function
 #End Region

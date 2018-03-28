@@ -1057,7 +1057,8 @@ Public Class CuentaContableClass
         End If
 
         Filtro.Add(New SC.FieldBetweenPredicate(HC.PolizaFields.FechaPoliza, FechaInicial, FechaFinal))
-        Filtro.Add(HC.PolizaFields.Estatus = 2)
+        'Filtro.Add(HC.PolizaFields.Estatus = 2) correcta juan manuel 28/03/2018 --- el dos permite obtener solo las aplciadas 
+        Filtro.Add(HC.PolizaFields.Estatus = 1)
         Relacion.Add(EC.PolizaDetalleEntity.Relations.PolizaEntityUsingPolizaId)
         PolizasDetalle.GetMulti(Filtro, 0, New SC.SortExpression(New SC.SortClause(HC.PolizaFields.FechaPoliza, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending)), Relacion)
         Return PolizasDetalle
@@ -2231,6 +2232,7 @@ Public Class PolizaCollectionClass
                 Reporte = New RptEmisionPolizas_por_pagina()
                 lsModulo = "Contabilidad/Procesos Mensuales/Reporte de Emision de Polizas"
             End If
+
             Reporte.SetDataSource(dtPolizas)
             Reporte.SetParameterValue(0, Sesion.MiEmpresa.Empnom)
             Reporte.SetParameterValue(1, Sesion.MiUsuario.Usrnomcom)
