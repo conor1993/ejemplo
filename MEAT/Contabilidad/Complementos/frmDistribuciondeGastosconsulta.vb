@@ -6,7 +6,7 @@ Imports System.Data.SqlClient
 
 
 Public Class frmDistribuciondeGastosconsulta
-    Public Shared valor As Integer
+    Public Shared valor As Decimal
     Public Shared idpoliza As Integer
     Public Shared factura As String
     Public Shared idsucursal As Integer
@@ -14,7 +14,7 @@ Public Class frmDistribuciondeGastosconsulta
     Public Shared idcuentacontable As Integer
     Public Shared importe As Decimal
     Public Shared ptjimporte As Decimal
-    Public Shared conteo As Integer
+    Public Shared conteo As Decimal
 
 #Region "propiedades publicas"
     Public Property valor1 As Decimal
@@ -127,7 +127,7 @@ Public Class frmDistribuciondeGastosconsulta
                 Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
                 Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
             Next
-            Me.txtImporte.Text = Sumaimporte.ToString("C2")
+            Me.txtImporte.Text = Sumaimporte.ToString()
             Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
 
             dgvMetodos.Enabled = True
