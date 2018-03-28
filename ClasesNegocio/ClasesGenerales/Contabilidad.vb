@@ -2117,8 +2117,11 @@ Public Class PolizaCollectionClass
 
             If IndexAnterior >= 0 Then
                 If dt.Rows(IndexActual).Item("poliza") = dt.Rows(IndexAnterior).Item("poliza") Then
-                    totalCargo += dt.Rows(IndexActual).Item("cargo")
-                    totalAbono += dt.Rows(IndexActual).Item("abono")
+                    'totalCargo += dt.Rows(IndexActual).Item("cargo")
+                    'totalAbono += dt.Rows(IndexActual).Item("abono")
+
+                    totalCargo = dt.Rows(IndexActual).Item("cargo")
+                    totalAbono = dt.Rows(IndexActual).Item("abono")
 
                     If dt.Rows(IndexActual).Item("cta") = dt.Rows(IndexAnterior).Item("cta") And _
                     dt.Rows(IndexActual).Item("scta") = dt.Rows(IndexAnterior).Item("scta") And _
