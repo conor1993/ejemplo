@@ -1990,7 +1990,6 @@ Public Class RecepcionFacturasForm
             Return True
         Catch ex As Exception
 
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
         sqlCon.Close()
         sqlCone.Close()

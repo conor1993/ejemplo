@@ -814,7 +814,7 @@ Public Class RegistroFacGastosFrm
 
                         Next
                     Catch ex As Exception
-                        MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+
                     End Try
 
                     sqlCon.Close()
