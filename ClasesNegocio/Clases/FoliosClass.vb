@@ -81,7 +81,26 @@ Public Class FoliosClass
             If col.Count = 0 Then
                 trans.Add(Folio)
                 If (Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales Or Folio.Codigo = CodigodeFolios.NotaCredito) Then
-                    Folio.Consecutivo += 1
+
+                    'Dim AnioInt As Integer = CInt(Año)
+                    'Dim MesInt As Integer = CInt(Mes)
+
+                    'If (MesInt = 1) Then
+                    '    MesInt = 12
+                    '    AnioInt -= 1
+                    'Else
+                    '    MesInt -= 1
+                    'End If
+                    col.GetMulti(HC.MgcnfFoliadoresFields.Codigo = Codigo, 1, Nothing)
+
+                    If (col.Count = 0) Then
+                        Folio.Consecutivo = 1
+                    Else
+                        Folio = col(0)
+
+                        Folio.Consecutivo += 1
+                    End If
+
                 Else
                     Folio.Consecutivo = 1
                 End If
