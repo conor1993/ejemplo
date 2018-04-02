@@ -538,6 +538,41 @@ Public Class PagosaProveedoresForm
                     If bbl Then
                         GenerarPoliza()
                         If cheque.Guardar(Tran) Then
+                            ''--------------------------------------------------------------------------
+                            ''--------------------------------------------------------------------------
+
+                            Dim MovBancos As New CN.MovimientosBancosClass
+                            MovBancos.NumPoliza = cheque.Poliza.Codigo
+                            MovBancos.CtaBancaria = Cuenta.Codigo
+                            'MovBancos.SaldoAnterior = SaldoAnterior
+                            MovBancos.FechaMov = Me.dtp.Value
+                            MovBancos.FechaCaptura = Now
+                            MovBancos.Importe = Me.txtImporte.Text 'Me.DgvFacturas.Rows(i).Cells(Me.clmApagar.Index).Value
+                            MovBancos.Concepto = cheque.Poliza.Concepto
+                            MovBancos.Cargo_Abono = ClasesNegocio.PolizaOperacionEnum.ABONO
+                            MovBancos.TipoCambio = CDec(Me.txtTipoCambio.Text)
+                            MovBancos.TipoMov = Chr(ClasesNegocio.BancosMovimientosTipo.RETIRO)
+                            MovBancos.Origen = Chr(ClasesNegocio.BancosMovimientosOrigen.PAGOPROVEEDORES)
+                            MovBancos.CveCancelacion = "N"
+                            MovBancos.Beneficiario = Me.cmbBeneficiario.Text 'Me.txtBeneficiario.Text
+                            ' MovBancos.Referencia = txtReferencia.Text
+
+                            If Me.chkElectronico.Checked = False Then
+                                Me.txtReferencia.Enabled = False
+                            End If
+
+                            MovBancos.Referencia = Me.txtReferencia.Text
+
+                            If Not MovBancos.Guardar(Tran) Then
+                                Tran.Rollback()
+                                Cancelar = True
+                                MessageBox.Show("No se pudieron Guardar los pagos, Intentelo de nuevo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                                Exit Sub
+                            End If
+
+                            ''--------------------------------------------------------------------------
+                            ''--------------------------------------------------------------------------
+
                             If GuardarPago(Tran) Then
                                 Tran.Commit()
                                 MessageBox.Show(String.Format("Número de Póliza Generado:{0}{1}", vbCrLf, cheque.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)

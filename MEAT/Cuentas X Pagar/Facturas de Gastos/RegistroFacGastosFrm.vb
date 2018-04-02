@@ -664,7 +664,7 @@ Public Class RegistroFacGastosFrm
                 End If
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+
         End Try
     End Sub
 
@@ -719,62 +719,33 @@ Public Class RegistroFacGastosFrm
         Dim Busqueda As New BusquedaFacturasForm
         Busqueda.EsDeGastos = True
         If Busqueda.ShowDialog = Windows.Forms.DialogResult.OK Then
-            Dim Facturas_ As New CN.FacturaCabCXPColeccion
-            Facturas_.Obtener(Busqueda.Factura, Busqueda.ProveedorID)
-            Editar = True
-            If Facturas_.Count = 1 Then
-                Me.Limpiar()
-                Buscar = True
-                Me.Factura = Facturas_(0)
-                ObtenerValores()
-                ObtenerDetalle()
-                ' calcular()
+            If Busqueda.Ifacturacancelada = 0 Then
+                Dim Facturas_ As New CN.FacturaCabCXPColeccion
+                Facturas_.Obtener(Busqueda.Factura, Busqueda.ProveedorID)
+                Editar = True
+                If Facturas_.Count = 1 Then
+                    Me.Limpiar()
+                    Buscar = True
+                    Me.Factura = Facturas_(0)
+                    ObtenerValores()
+                    ObtenerDetalle()
+                    ' calcular()
+                End If
+            Else
+                buscarcanceladas(Busqueda.Ifacturacancelada)
+                Me.lblEstatus.Visible = True
+                Me.txtSubtotal.Enabled = False
+                Me.txtIva.Enabled = True
+                Me.TxtTotal.Enabled = False
             End If
+
             calcular()
             Me.DgvCuentas.Enabled = True
             Buscar = True
             'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
             Me.lblEstatus.Visible = True
-            'Try
-
-            '    Dim cadenaConsulta As String = "insert into GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) values ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10})"
-            '    cadenaConsulta = String.Format(cadenaConsulta, Nothing, clmSucursal, clmMetodoProrrateo, clmCuentaContable, clmPorcentaje, clmImporte, DtpFechaFactura.Text, )
-
-            '    '    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
-            '    '    Dim adp As New SqlDataAdapter(sqlcom)
-
-            '    '    Dim tb As New DataTable
-
-            '    '    sqlCon.Open()
-            '    '    adp.Fill(tb)
-            '    '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
-            '    '    Me.dgvDistribuciondeGastos.DataSource = tb
-            'Catch ex As Exception
-
-            'End Try
-            'Dim idpoliza As Integer
-            'gastos = New CN.GastosDepartamentosClass
-
-            'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-
-            'Try
-
-            '    Dim cadenaConsulta As String = "Select IdPoliza,IdSucursal,IdMetodoProrrateo,IdCuentaContable,gastos.Importe,Ptj_Importe from GastosDepartamentos as gastos join usrContPolizas on Codigo=IdPoliza where IdPoliza={0} and  Codigo={1}"
-            '    cadenaConsulta = String.Format(cadenaConsulta, idpoliza, 7)
-
-            '    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
-            '    Dim adp As New SqlDataAdapter(sqlcom)
-
-            '    Dim tb As New DataTable
-
-            '    sqlCon.Open()
-            '    adp.Fill(tb)
-            '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
-            '    Me.dgvDistribuciondeGastos.DataSource = tb
-            'Catch ex As Exception
-
-            'End Try
         End If
+
     End Sub
 
     Private Sub mtb_ClickCancelar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickCancelar
@@ -843,7 +814,7 @@ Public Class RegistroFacGastosFrm
 
                         Next
                     Catch ex As Exception
-                        MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+
                     End Try
 
                     sqlCon.Close()
@@ -1224,7 +1195,7 @@ Public Class RegistroFacGastosFrm
         End Try
     End Sub
 
-   
+
 
     Public Function calcularFlete(Optional ByVal ignorarCuentaFlete As Boolean = False) As Boolean
         'Mee
@@ -1684,4 +1655,87 @@ Public Class RegistroFacGastosFrm
     Private Sub TxtAnticipo_Leave(sender As Object, e As EventArgs) Handles TxtAnticipo.Leave
         Me.TxtAnticipo.Text = CDec(If(String.IsNullOrEmpty(Me.TxtAnticipo.Text), 0, Me.TxtAnticipo.Text)).ToString(formato)
     End Sub
+
+    Private Sub buscarcanceladas(id As Integer)
+        Try
+            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            Dim cadenaConsulta As String = "EXEC Usp_HistorialUsrFacturas 1, {0}"
+            cadenaConsulta = String.Format(cadenaConsulta, id)
+
+            Using sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                sqlCon.Open()
+                Dim adp As New SqlDataAdapter(sqlcom)
+                Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
+
+                Dim cuentascontables As New DataSet()
+                cuentascontables.Tables.Add("cuentascontables")
+                cuentascontables.Tables(0).Load(Rs)
+                Try
+                    Me.CmbProveedor.SelectedValue = CInt(cuentascontables.Tables(0).Rows(0).ItemArray(2).ToString())
+                Catch ex As Exception
+
+                End Try
+
+                Me.TxtFactura.Text = cuentascontables.Tables(0).Rows(0).ItemArray(3).ToString()
+                Me.DtpFechaFactura.Value = cuentascontables.Tables(0).Rows(0).ItemArray(4).ToString()
+                Me.DtpFechaCaptura.Value = cuentascontables.Tables(0).Rows(0).ItemArray(5).ToString()
+                Me.DtpFechaVencimiento.Value = cuentascontables.Tables(0).Rows(0).ItemArray(6).ToString()
+                Me.txtSubtotal.Text = cuentascontables.Tables(0).Rows(0).ItemArray(7).ToString()
+                Me.txtIva.Text = cuentascontables.Tables(0).Rows(0).ItemArray(8).ToString()
+                Me.TxtTotal.Text = cuentascontables.Tables(0).Rows(0).ItemArray(9).ToString()
+                Me.TxtAnticipo.Text = cuentascontables.Tables(0).Rows(0).ItemArray(10).ToString()
+                Select Case (cuentascontables.Tables(0).Rows(0).ItemArray(11).ToString())
+                    Case 0
+                        Me.lblEstatus.Text = "CANCELADA"
+                    Case 1
+                        Me.lblEstatus.Text = "PAGADA"
+                    Case 2
+                        Me.lblEstatus.Text = "VIGENTE"
+                    Case 3
+                        Me.lblEstatus.Text = "ABONADA"
+                End Select
+                lblEstatus.Visible = True
+                Me.txtObservaciones.Text = cuentascontables.Tables(0).Rows(0).ItemArray(15).ToString()
+                Me.UUID.Text = cuentascontables.Tables(0).Rows(0).ItemArray(29).ToString()
+                llenarcuentascontablesfac(cuentascontables)
+                sqlCon.Close()
+
+            End Using
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
+
+
+    Private Sub llenarcuentascontablesfac(cuentascontables As DataSet)
+
+
+        For Each row As DataRow In cuentascontables.Tables(0).Rows
+            Dim i As Integer = Me.DgvCuentas.Rows.Count
+            Me.DgvCuentas.Rows.Add()
+            If row("CarAbo").ToString().Equals("C") Then
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("subcta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("importecuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+            Else
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("subcta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("importecuenta").ToString()
+            End If
+        Next
+
+    End Sub
+
+
+
 End Class

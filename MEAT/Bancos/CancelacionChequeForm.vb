@@ -308,6 +308,7 @@ Public Class CancelacionChequeForm
                 Else
                     GenerarPoliza()
                     If cheque.Borrar(Trans) Then
+
                         MovBancos = New CN.MovimientosBancosClass() '(cheque.Poliza.Codigo, cheque.Cuenta.Codigo)
                         MovBancos.NumPoliza = cheque.PolizaCancelacion.Codigo
                         MovBancos.FechaCaptura = Now
