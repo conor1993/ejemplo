@@ -716,12 +716,12 @@ Public Class FacturaCabCXPColeccion
                 End If
 
             End If
-            'If IdProveedor <> 0 Then
-            '    '  rel.Add(EC.UsrCxpfacturasCabEntity.Relations.ProveedorEntityUsingIdProveedor)
 
-            '    '  
-            '    filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = IdProveedor)
-            'End If
+            If IdProveedor <> 0 Then
+                '  rel.Add(EC.UsrCxpfacturasCabEntity.Relations.ProveedorEntityUsingIdProveedor)
+                filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.IdProveedor = IdProveedor)
+            End If
+
             If Gastos Then
                 filtro.Add(Integralab.ORM.HelperClasses.UsrCxpfacturasCabFields.Gastos = True)
             End If

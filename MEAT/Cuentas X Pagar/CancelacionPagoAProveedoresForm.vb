@@ -323,6 +323,7 @@ Public Class CancelacionPagoAProveedoresForm
         End If
     End Sub
 
+
     Private Sub CmbProveedor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbProveedor.SelectedIndexChanged
         If Not IsNothing(Me.CmbProveedor.SelectedValue) Then
             Cheques = New TC.VwpagosaProveedoresTypedView
