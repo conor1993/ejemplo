@@ -684,12 +684,13 @@ Public Class RegistroFacGastosFrm
                         Factura.Estatus = ClasesNegocio.EstatusFacturasEnum.CANCELADA
                         If Factura.Guardar() Then
                             Dim NumeroFactura As String = Factura.NoFactura
+                            Dim ID_Proveedor As String = Factura.IdProveedor
                             Dim FactPagar As New CN.FacturasAPagarCXPColeccion
                             FactPagar.Obtener(Me.Factura.IdProveedor, Factura.NoFactura)
                             If FactPagar.Count = 1 Then
                                 FactPagar.ObtenerColeccion.DeleteMulti()
                             End If
-                            CXP.CancelarFactura(NumeroFactura)
+                            CXP.CancelarFactura(NumeroFactura, ID_Proveedor)
                             MsgBox("La Factura fue cancelada satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
                             Limpiar()
                         End If

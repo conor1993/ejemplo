@@ -440,7 +440,7 @@ Public Class FacturasCXP
 #End Region
 
 #Region "Metodos"
-    Public Function CancelarFactura(ByVal NumeroFactura As String) As Boolean
+    Public Function CancelarFactura(ByVal NumeroFactura As String, ByVal ID_Proveedor As Integer) As Boolean
         Dim tabla As New DataSet
         Dim Success As Byte = 0
         Try
