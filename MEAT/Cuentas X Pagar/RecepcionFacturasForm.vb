@@ -760,6 +760,7 @@ Public Class RecepcionFacturasForm
                 tran.Add(Fact)
                 If Fact.Save Then
                     Dim NumeroFactura As String = Fact.NoFactura
+                    Dim ID_Proveedor As String = Fact.IdProveedor
                     Dim Success As Boolean = False
                     If Recepciones.Count > 0 Then
                         tran.Add(Recepciones)
@@ -806,7 +807,7 @@ Public Class RecepcionFacturasForm
                     End If
                     'Dorantes, se eliminan prorrateo , se elimina la factura y se colocan prorrateo y factura en otras tablas para guardar historial
                     If (Success) Then
-                        CXP.CancelarFactura(NumeroFactura)
+                        CXP.CancelarFactura(NumeroFactura, ID_Proveedor)
                         MsgBox("La Factura ha sido Cancelada...")
                     End If
 
