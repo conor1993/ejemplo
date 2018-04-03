@@ -1562,7 +1562,7 @@ Public Class RecepcionFacturasForm
                                 ren = dgvDistribuciondeGastos.Rows.Count
                             End If
 
-                            For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 2)
+                            For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 1)
 
                                 Me.dgvDistribuciondeGastos.Rows.Add()
                                 Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
@@ -1898,6 +1898,7 @@ Public Class RecepcionFacturasForm
 
                 End If
             End If
+            calcularSubtotal()
         Catch ex As Exception
 
         End Try
@@ -1952,12 +1953,6 @@ Public Class RecepcionFacturasForm
                 Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
                 Dim adp As New SqlDataAdapter(sqlcom)
 
-                'Dim tb As New DataTable
-                'sqlCon.Open()
-                '    adp.Fill(tb)
-                '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
-                '    Me.dgvDistribuciondeGastos.DataSource = tb
-
                 sqlCon.Open()
                 sqlcom.ExecuteNonQuery()
                 sqlCon.Close()
@@ -1969,9 +1964,9 @@ Public Class RecepcionFacturasForm
         End Try
         Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
         Try
-            For i As Integer = 0 To (dgvdistribuciongastosdet.Rows.Count - 2)
-                Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje) values({0},{1},{2},'{3}',{4},{5})"
-                cadenaConsulta = String.Format(cadenaConsulta, dgvdistribuciongastosdet.Rows(i).Cells(sucursal1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Prorrateo1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Cuenta1.Index).Value, Fact.NoFactura, dgvdistribuciongastosdet.Rows(i).Cells(cod_centro.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(idporcentaje.Index).Value)
+            For i As Integer = 0 To (dgvdistribuciongastosdet.Rows.Count - 1)
+                Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje) values({0},{1},{2},'{3}',{4},{5},{6})"
+                cadenaConsulta = String.Format(cadenaConsulta, dgvdistribuciongastosdet.Rows(i).Cells(sucursal1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Prorrateo1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Cuenta1.Index).Value, Fact.NoFactura, dgvdistribuciongastosdet.Rows(i).Cells(cod_centro.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(idporcentaje.Index).Value, Fact.IdProveedor)
 
                 Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCone)
                 Dim adp As New SqlDataAdapter(sqlcom)
