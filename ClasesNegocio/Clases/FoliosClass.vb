@@ -76,7 +76,7 @@ Public Class FoliosClass
 
             col.GetMulti(HC.MgcnfFoliadoresFields.Codigo = Codigo And _
                             HC.MgcnfFoliadoresFields.Año = Año And _
-                            HC.MgcnfFoliadoresFields.Mes = Mes, 1, Nothing)
+                            HC.MgcnfFoliadoresFields.Mes = Mes, 1, sort)
 
             If col.Count = 0 Then
                 trans.Add(Folio)
@@ -91,7 +91,9 @@ Public Class FoliosClass
                     'Else
                     '    MesInt -= 1
                     'End If
-                    col.GetMulti(HC.MgcnfFoliadoresFields.Codigo = Codigo, 1, Nothing)
+                    sort = New OC.SortExpression
+                    sort.Add(New OC.SortClause(HC.MgcnfFoliadoresFields.Consecutivo, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
+                    col.GetMulti(HC.MgcnfFoliadoresFields.Codigo = Codigo, 1, sort)
 
                     If (col.Count = 0) Then
                         Folio.Consecutivo = 1
