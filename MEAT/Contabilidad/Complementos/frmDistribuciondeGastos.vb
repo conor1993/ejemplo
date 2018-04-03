@@ -190,7 +190,7 @@ Public Class frmDistribuciondeGastos
                 Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
             Next
             Me.txtImporte.Text = Sumaimporte.ToString()
-            Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
+            Me.txtPorcentaje.Text = Sumaporentaje.ToString()
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -278,7 +278,7 @@ Public Class frmDistribuciondeGastos
             Next
 
             Me.txtImporte.Text = Sumaimporte.ToString()
-            Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
+            Me.txtPorcentaje.Text = Sumaporentaje.ToString()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)

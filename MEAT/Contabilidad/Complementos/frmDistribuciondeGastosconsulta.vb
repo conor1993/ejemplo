@@ -112,23 +112,18 @@ Public Class frmDistribuciondeGastosconsulta
 
             Dim Porcentaje As Decimal = 0
             Dim Importe As Decimal = 0
+            Dim Sumaimporte As Decimal = 0
+            Dim Sumaporentaje As Decimal = 0
             Importe = dgvMetodos.Rows(0).Cells(clmImporte.Index).Value
             For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
                 Porcentaje = Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmPorcentaje.Index).Value
                 Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = (total * Porcentaje) / 100
-
+                Sumaimporte = Sumaimporte + ((total * Porcentaje) / 100)
+                Sumaporentaje = Sumaporentaje + Porcentaje
             Next
 
-
-
-            Dim Sumaimporte As Decimal = 0
-            Dim Sumaporentaje As Decimal = 0
-            For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
-                Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
-                Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
-            Next
             Me.txtImporte.Text = Sumaimporte.ToString()
-            Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
+            Me.txtPorcentaje.Text = Sumaporentaje.ToString()
 
             dgvMetodos.Enabled = True
             dgvDetalledeProrrateo.Enabled = True
