@@ -13,7 +13,7 @@ Public Class frmDistribuciondeGastos
     Public Shared idcuentacontable As Integer
     Public Shared importe As Decimal
     Public Shared ptjimporte As Decimal
-    Public Shared conteo As Integer
+    Public Shared conteo As Decimal
 #Region "propiedades publicas"
     Public Property valor1 As Decimal
         Get
@@ -109,9 +109,9 @@ Public Class frmDistribuciondeGastos
                 For i As Integer = 1 To dgvMetodos.Rows.Count - 1
                     If i <= 0 Then
 
-                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
+                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString()
                     Else
-                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
+                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString()
 
                     End If
                 Next
@@ -132,7 +132,7 @@ Public Class frmDistribuciondeGastos
                     Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
                     Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
                 Next
-                Me.txtImporte.Text = Sumaimporte.ToString("C2")
+                Me.txtImporte.Text = Sumaimporte.ToString()
                 Me.txtPorcentaje.Text = Sumaporentaje.ToString("N1")
 
             Else
@@ -146,7 +146,7 @@ Public Class frmDistribuciondeGastos
 
     End Sub
 
-   
+
     Private Sub dgvMetodos_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvMetodos.CellEndEdit
 
         Try
@@ -166,9 +166,9 @@ Public Class frmDistribuciondeGastos
                     For i As Integer = 1 To dgvMetodos.Rows.Count - 1
                         If i <= 0 Then
 
-                            dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
+                            dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString()
                         Else
-                            dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
+                            dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString()
 
                         End If
                     Next
@@ -189,7 +189,7 @@ Public Class frmDistribuciondeGastos
                 Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
                 Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
             Next
-            Me.txtImporte.Text = Sumaimporte.ToString("C2")
+            Me.txtImporte.Text = Sumaimporte.ToString()
             Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -235,16 +235,16 @@ Public Class frmDistribuciondeGastos
                 For i As Integer = 1 To dgvMetodos.Rows.Count - 1
                     If i <= 0 Then
 
-                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
+                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString()
                     Else
-                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
+                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString()
                     End If
                 Next
                 Dim Porcentaje As Decimal = 0
                 For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
 
                     Porcentaje = Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmPorcentaje.Index).Value
-                    Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = ((total * Porcentaje) / 100).ToString("C2")
+                    Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = ((total * Porcentaje) / 100).ToString()
                 Next
             ElseIf e.ColumnIndex = 3 Then
                 Dim total As Decimal
@@ -253,9 +253,9 @@ Public Class frmDistribuciondeGastos
                 For i As Integer = 1 To dgvMetodos.Rows.Count - 1
                     If i <= 0 Then
 
-                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString("C2")
+                        dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString()
                     Else
-                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString("C2")
+                        dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString()
 
                     End If
                 Next
@@ -277,7 +277,7 @@ Public Class frmDistribuciondeGastos
                 Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
             Next
 
-            Me.txtImporte.Text = Sumaimporte.ToString("C2")
+            Me.txtImporte.Text = Sumaimporte.ToString()
             Me.txtPorcentaje.Text = Sumaporentaje.ToString("N")
 
         Catch ex As Exception
