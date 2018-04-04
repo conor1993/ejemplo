@@ -133,7 +133,7 @@ Public Class frmDistribuciondeGastos
                     Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
                 Next
                 Me.txtImporte.Text = Sumaimporte.ToString()
-                Me.txtPorcentaje.Text = Sumaporentaje.ToString("N1")
+                Me.txtPorcentaje.Text = Sumaporentaje.ToString()
 
             Else
 
