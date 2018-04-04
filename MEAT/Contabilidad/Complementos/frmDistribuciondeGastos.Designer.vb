@@ -23,8 +23,14 @@ Partial Class frmDistribuciondeGastos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvMetodos = New System.Windows.Forms.DataGridView()
         Me.clmSucursal = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.clmMetodoProrrateo = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -32,13 +38,13 @@ Partial Class frmDistribuciondeGastos
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgvDetalledeProrrateo = New System.Windows.Forms.DataGridView()
-        Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.txtPorcentaje = New System.Windows.Forms.TextBox()
-        Me.txtImporte = New System.Windows.Forms.TextBox()
         Me.Cve_Depto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmDepartamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmPorcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmImporteDepartamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.txtPorcentaje = New System.Windows.Forms.TextBox()
+        Me.txtImporte = New System.Windows.Forms.TextBox()
         CType(Me.dgvMetodos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvDetalledeProrrateo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,13 +52,38 @@ Partial Class frmDistribuciondeGastos
         '
         'dgvMetodos
         '
+        Me.dgvMetodos.AllowUserToDeleteRows = False
         Me.dgvMetodos.AllowUserToResizeColumns = False
         Me.dgvMetodos.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvMetodos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvMetodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvMetodos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSucursal, Me.clmMetodoProrrateo, Me.clmImporte})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvMetodos.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvMetodos.Location = New System.Drawing.Point(12, 56)
         Me.dgvMetodos.MultiSelect = False
         Me.dgvMetodos.Name = "dgvMetodos"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvMetodos.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvMetodos.RowHeadersVisible = False
         Me.dgvMetodos.Size = New System.Drawing.Size(576, 165)
         Me.dgvMetodos.TabIndex = 169
@@ -77,10 +108,10 @@ Partial Class frmDistribuciondeGastos
         '
         'clmImporte
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = "0"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = "0"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmImporte.HeaderText = "Importe"
         Me.clmImporte.Name = "clmImporte"
         Me.clmImporte.ReadOnly = True
@@ -114,14 +145,73 @@ Partial Class frmDistribuciondeGastos
         '
         Me.dgvDetalledeProrrateo.AllowUserToAddRows = False
         Me.dgvDetalledeProrrateo.AllowUserToDeleteRows = False
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDetalledeProrrateo.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgvDetalledeProrrateo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetalledeProrrateo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cve_Depto, Me.clmDepartamento, Me.clmPorcentaje, Me.clmImporteDepartamento})
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDetalledeProrrateo.DefaultCellStyle = DataGridViewCellStyle8
         Me.dgvDetalledeProrrateo.Location = New System.Drawing.Point(6, 19)
         Me.dgvDetalledeProrrateo.MultiSelect = False
         Me.dgvDetalledeProrrateo.Name = "dgvDetalledeProrrateo"
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDetalledeProrrateo.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.dgvDetalledeProrrateo.RowHeadersVisible = False
         Me.dgvDetalledeProrrateo.Size = New System.Drawing.Size(564, 132)
         Me.dgvDetalledeProrrateo.TabIndex = 170
+        '
+        'Cve_Depto
+        '
+        Me.Cve_Depto.DataPropertyName = "IdDepartamento"
+        Me.Cve_Depto.HeaderText = "Clave Departamento"
+        Me.Cve_Depto.Name = "Cve_Depto"
+        Me.Cve_Depto.Visible = False
+        '
+        'clmDepartamento
+        '
+        Me.clmDepartamento.DataPropertyName = "Departamento"
+        Me.clmDepartamento.HeaderText = "Departamento"
+        Me.clmDepartamento.Name = "clmDepartamento"
+        Me.clmDepartamento.ReadOnly = True
+        Me.clmDepartamento.Width = 200
+        '
+        'clmPorcentaje
+        '
+        Me.clmPorcentaje.DataPropertyName = "Porcentaje"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = "00"
+        Me.clmPorcentaje.DefaultCellStyle = DataGridViewCellStyle6
+        Me.clmPorcentaje.HeaderText = "Porcentaje"
+        Me.clmPorcentaje.Name = "clmPorcentaje"
+        '
+        'clmImporteDepartamento
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N2"
+        DataGridViewCellStyle7.NullValue = "0"
+        Me.clmImporteDepartamento.DefaultCellStyle = DataGridViewCellStyle7
+        Me.clmImporteDepartamento.HeaderText = "Importe"
+        Me.clmImporteDepartamento.Name = "clmImporteDepartamento"
+        Me.clmImporteDepartamento.Width = 150
         '
         'btnAceptar
         '
@@ -150,41 +240,6 @@ Partial Class frmDistribuciondeGastos
         Me.txtImporte.Size = New System.Drawing.Size(109, 20)
         Me.txtImporte.TabIndex = 174
         Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Cve_Depto
-        '
-        Me.Cve_Depto.DataPropertyName = "IdDepartamento"
-        Me.Cve_Depto.HeaderText = "Clave Departamento"
-        Me.Cve_Depto.Name = "Cve_Depto"
-        Me.Cve_Depto.Visible = False
-        '
-        'clmDepartamento
-        '
-        Me.clmDepartamento.DataPropertyName = "Departamento"
-        Me.clmDepartamento.HeaderText = "Departamento"
-        Me.clmDepartamento.Name = "clmDepartamento"
-        Me.clmDepartamento.ReadOnly = True
-        Me.clmDepartamento.Width = 200
-        '
-        'clmPorcentaje
-        '
-        Me.clmPorcentaje.DataPropertyName = "Porcentaje"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = "00"
-        Me.clmPorcentaje.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clmPorcentaje.HeaderText = "Porcentaje"
-        Me.clmPorcentaje.Name = "clmPorcentaje"
-        '
-        'clmImporteDepartamento
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = "0"
-        Me.clmImporteDepartamento.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clmImporteDepartamento.HeaderText = "Importe"
-        Me.clmImporteDepartamento.Name = "clmImporteDepartamento"
-        Me.clmImporteDepartamento.Width = 150
         '
         'frmDistribuciondeGastos
         '

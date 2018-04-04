@@ -436,6 +436,7 @@ Partial Class MDIMenuPrincipal
         Me.tmProgreso = New System.Windows.Forms.Timer(Me.components)
         Me.tmHora = New System.Windows.Forms.Timer(Me.components)
         Me.CachedRptVentasPorProducto1 = New MEAT.CachedRptVentasPorProducto()
+        Me.CachedRptVentasPorProducto2 = New MEAT.CachedRptVentasPorProducto()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -1103,37 +1104,37 @@ Partial Class MDIMenuPrincipal
         'RecepciónDeCompraToolStripMenuItem1
         '
         Me.RecepciónDeCompraToolStripMenuItem1.Name = "RecepciónDeCompraToolStripMenuItem1"
-        Me.RecepciónDeCompraToolStripMenuItem1.Size = New System.Drawing.Size(349, 22)
+        Me.RecepciónDeCompraToolStripMenuItem1.Size = New System.Drawing.Size(351, 22)
         Me.RecepciónDeCompraToolStripMenuItem1.Text = "Compras de Ganado"
         '
         'MermasToolStripMenuItem
         '
         Me.MermasToolStripMenuItem.Name = "MermasToolStripMenuItem"
-        Me.MermasToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
+        Me.MermasToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
         Me.MermasToolStripMenuItem.Text = "De Mermas"
         '
         'DeTransferenciasRecepcionLotesToolStripMenuItem
         '
         Me.DeTransferenciasRecepcionLotesToolStripMenuItem.Name = "DeTransferenciasRecepcionLotesToolStripMenuItem"
-        Me.DeTransferenciasRecepcionLotesToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
+        Me.DeTransferenciasRecepcionLotesToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
         Me.DeTransferenciasRecepcionLotesToolStripMenuItem.Text = "De Transferencias de Recepcion a Lotes de Engorda"
         '
         'DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem
         '
         Me.DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem.Name = "DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem"
-        Me.DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
+        Me.DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
         Me.DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem.Text = "De Transferencias de Recepcion Totalizado por Lotes"
         '
         'ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem
         '
         Me.ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem.Name = "ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem"
-        Me.ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
+        Me.ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
         Me.ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem.Text = "Prorrateos de Costos por Cierre de Reciba"
         '
         'DeSalidasDeCorralDeRecepcionToolStripMenuItem
         '
         Me.DeSalidasDeCorralDeRecepcionToolStripMenuItem.Name = "DeSalidasDeCorralDeRecepcionToolStripMenuItem"
-        Me.DeSalidasDeCorralDeRecepcionToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
+        Me.DeSalidasDeCorralDeRecepcionToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
         Me.DeSalidasDeCorralDeRecepcionToolStripMenuItem.Text = "De Salidas de Corral de Recepcion"
         '
         'CorralesToolStripMenuItem1
@@ -1195,25 +1196,25 @@ Partial Class MDIMenuPrincipal
         'ARastroToolStripMenuItem2
         '
         Me.ARastroToolStripMenuItem2.Name = "ARastroToolStripMenuItem2"
-        Me.ARastroToolStripMenuItem2.Size = New System.Drawing.Size(165, 22)
+        Me.ARastroToolStripMenuItem2.Size = New System.Drawing.Size(166, 22)
         Me.ARastroToolStripMenuItem2.Text = "a Rastro"
         '
         'AVentaToolStripMenuItem
         '
         Me.AVentaToolStripMenuItem.Name = "AVentaToolStripMenuItem"
-        Me.AVentaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.AVentaToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.AVentaToolStripMenuItem.Text = "a Venta"
         '
         'PorMuerteToolStripMenuItem2
         '
         Me.PorMuerteToolStripMenuItem2.Name = "PorMuerteToolStripMenuItem2"
-        Me.PorMuerteToolStripMenuItem2.Size = New System.Drawing.Size(165, 22)
+        Me.PorMuerteToolStripMenuItem2.Size = New System.Drawing.Size(166, 22)
         Me.PorMuerteToolStripMenuItem2.Text = "por Muerte"
         '
         'PorTransferenciaToolStripMenuItem
         '
         Me.PorTransferenciaToolStripMenuItem.Name = "PorTransferenciaToolStripMenuItem"
-        Me.PorTransferenciaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.PorTransferenciaToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.PorTransferenciaToolStripMenuItem.Text = "por Transferencia"
         '
         'ToolStripSeparator8
@@ -1617,7 +1618,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.FacturacionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguracionFacturaciontsmi, Me.FacturaDeCortesToolStripMenuItem, Me.RegistroDeFacturasToolStripMenuItem, Me.DevoluciónVentaToolStripMenuItem, Me.ToolStripMenuItem4, Me.ReportesToolStripMenuItem5})
         Me.FacturacionToolStripMenuItem.Name = "FacturacionToolStripMenuItem"
-        Me.FacturacionToolStripMenuItem.Size = New System.Drawing.Size(53, 19)
+        Me.FacturacionToolStripMenuItem.Size = New System.Drawing.Size(54, 19)
         Me.FacturacionToolStripMenuItem.Text = "Ventas"
         '
         'ConfiguracionFacturaciontsmi
@@ -2301,7 +2302,7 @@ Partial Class MDIMenuPrincipal
         'TransferenciasCajasToolStripMenuItem
         '
         Me.TransferenciasCajasToolStripMenuItem.Name = "TransferenciasCajasToolStripMenuItem"
-        Me.TransferenciasCajasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TransferenciasCajasToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.TransferenciasCajasToolStripMenuItem.Text = "Transferencias Cajas"
         '
         'GeneralesToolStripMenuItem1
@@ -2938,7 +2939,7 @@ Partial Class MDIMenuPrincipal
         'SqlConnection1
         '
         Me.SqlConnection1.ConnectionString = "Data Source=INTEGRASRV;Initial Catalog=GANADERA;Persist Security Info=True;User I" & _
-            "D=sa;Password=1nt3gr@2006"
+    "D=sa;Password=1nt3gr@2006"
         Me.SqlConnection1.FireInfoMessageEventOnUserErrors = False
         '
         'DerechosAMenusToolStripMenuItem
@@ -3405,4 +3406,5 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReportesToolStripMenuItem10 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReporteDeDepartamentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CachedRptVentasPorProducto2 As MEAT.CachedRptVentasPorProducto
 End Class

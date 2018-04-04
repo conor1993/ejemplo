@@ -83,17 +83,25 @@ Public Class frmDistribuciondeGastos
 
 
     Private Sub frmDistribuciondeGastos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
         Try
             If idpoliza <> 0 Then
                 Controlador.LlenarComboSucursales(clmSucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
                 Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
                 For i As Integer = 0 To conteo - 1
-                    dgvMetodos.Rows.Add()
+
+
+                    'dgvMetodos.Rows.Add()
                     dgvMetodos.Rows(i).Cells(clmSucursal.Index).Value = idsucursal
                     dgvMetodos.Rows(i).Cells(clmMetodoProrrateo.Index).Value = idmetodoprorrateo
                     dgvMetodos.Rows(i).Cells(clmImporte.Index).Value = valor1
+
                     'dgvMetodos.Rows.Add()
                 Next
+
+
+
+
                 Dim Metodo As New CN.MetodoProrrateoClass
                 Metodo.Obtener(Me.dgvMetodos.CurrentRow.Cells(Me.clmMetodoProrrateo.Index).Value)
                 Me.dgvDetalledeProrrateo.AutoGenerateColumns = True
@@ -110,6 +118,7 @@ Public Class frmDistribuciondeGastos
                     If i <= 0 Then
 
                         dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString()
+
                     Else
                         dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString()
 
@@ -139,6 +148,7 @@ Public Class frmDistribuciondeGastos
 
                 Controlador.LlenarComboSucursales(clmSucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
                 Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
+
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -162,16 +172,18 @@ Public Class frmDistribuciondeGastos
                 Else
                     Dim total As Decimal
                     total = valor1 / (dgvMetodos.Rows.Count - 1)
-
                     For i As Integer = 1 To dgvMetodos.Rows.Count - 1
                         If i <= 0 Then
 
                             dgvMetodos.Rows(i).Cells("clmImporte").Value = total.ToString()
+                            dgvMetodos.AllowUserToAddRows = False
                         Else
                             dgvMetodos.Rows(i - 1).Cells("clmImporte").Value = total.ToString()
-
+                            dgvMetodos.AllowUserToAddRows = False
                         End If
+
                     Next
+
                     Dim Porcentaje As Decimal = 0
                     Dim Importe As Decimal = 0
                     Importe = Me.dgvMetodos.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
@@ -284,4 +296,5 @@ Public Class frmDistribuciondeGastos
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 End Class
