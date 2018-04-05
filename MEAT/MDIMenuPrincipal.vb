@@ -1548,4 +1548,8 @@ Public Class MDIMenuPrincipal
     Private Sub ReporteDeDepartamentosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ReporteDeDepartamentosToolStripMenuItem.Click
         Abrir(frmRptdepartamentos)
     End Sub
+
+    Private Sub DepartartamentosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DepartartamentosToolStripMenuItem.Click
+        Abrir(frmRptDepartamentosDos)
+    End Sub
 End Class

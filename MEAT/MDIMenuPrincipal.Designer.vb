@@ -437,6 +437,7 @@ Partial Class MDIMenuPrincipal
         Me.tmHora = New System.Windows.Forms.Timer(Me.components)
         Me.CachedRptVentasPorProducto1 = New MEAT.CachedRptVentasPorProducto()
         Me.CachedRptVentasPorProducto2 = New MEAT.CachedRptVentasPorProducto()
+        Me.DepartartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -2051,7 +2052,7 @@ Partial Class MDIMenuPrincipal
         '
         'ReportesToolStripMenuItem8
         '
-        Me.ReportesToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BalanceGeneralToolStripMenuItem, Me.EsatdoDeResultadosToolStripMenuItem, Me.ReporteDeDiariosDePólizasToolStripMenuItem, Me.ReporteDeEmisiónDePólizasToolStripMenuItem, Me.ReporteVerificadorDePólizasToolStripMenuItem, Me.AuxiliarDeCuentasToolStripMenuItem, Me.MayorGeneralToolStripMenuItem, Me.BalanzaDeComprobaciónToolStripMenuItem, Me.RelacionesAnalitícasToolStripMenuItem})
+        Me.ReportesToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BalanceGeneralToolStripMenuItem, Me.EsatdoDeResultadosToolStripMenuItem, Me.ReporteDeDiariosDePólizasToolStripMenuItem, Me.ReporteDeEmisiónDePólizasToolStripMenuItem, Me.ReporteVerificadorDePólizasToolStripMenuItem, Me.AuxiliarDeCuentasToolStripMenuItem, Me.MayorGeneralToolStripMenuItem, Me.BalanzaDeComprobaciónToolStripMenuItem, Me.RelacionesAnalitícasToolStripMenuItem, Me.DepartartamentosToolStripMenuItem})
         Me.ReportesToolStripMenuItem8.Name = "ReportesToolStripMenuItem8"
         Me.ReportesToolStripMenuItem8.Size = New System.Drawing.Size(215, 22)
         Me.ReportesToolStripMenuItem8.Text = "Reportes"
@@ -2967,6 +2968,12 @@ Partial Class MDIMenuPrincipal
         Me.tmHora.Enabled = True
         Me.tmHora.Interval = 1000
         '
+        'DepartartamentosToolStripMenuItem
+        '
+        Me.DepartartamentosToolStripMenuItem.Name = "DepartartamentosToolStripMenuItem"
+        Me.DepartartamentosToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.DepartartamentosToolStripMenuItem.Text = "Departartamentos"
+        '
         'MDIMenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3407,4 +3414,5 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents ReportesToolStripMenuItem10 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReporteDeDepartamentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CachedRptVentasPorProducto2 As MEAT.CachedRptVentasPorProducto
+    Friend WithEvents DepartartamentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

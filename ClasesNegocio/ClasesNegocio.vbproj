@@ -2305,6 +2305,12 @@
     <Compile Include="ClasesGenerales\MarcaClass.vb" />
     <Compile Include="ClasesGenerales\MesesCollectionClass.vb" />
     <Compile Include="ClasesGenerales\Metodos.vb" />
+    <Compile Include="Reportes\rptDepartamentoComparativoMes.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDepartamentoComparativoMes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\dsDepartamentosrpt2.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2312,12 +2318,6 @@
     </Compile>
     <Compile Include="Reportes\dsDepartamentosrpt2.vb">
       <DependentUpon>dsDepartamentosrpt2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\rptDepartamentoComparativoMes.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptDepartamentoComparativoMes.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\rptDepartamentos2.vb">
       <AutoGen>True</AutoGen>
