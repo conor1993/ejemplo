@@ -22,34 +22,34 @@ Partial Class _390CancelacionPolizaPasivo
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.lblEmpresa = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.txtCargo = New System.Windows.Forms.TextBox
-        Me.txtAbono = New System.Windows.Forms.TextBox
-        Me.Grid = New System.Windows.Forms.DataGridView
-        Me.txtConcepto = New System.Windows.Forms.TextBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.txtImporte = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.txtPoliza = New System.Windows.Forms.TextBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.DtpFecha = New System.Windows.Forms.DateTimePicker
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSSSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmNombre = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.lblEmpresa = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtCargo = New System.Windows.Forms.TextBox()
+        Me.txtAbono = New System.Windows.Forms.TextBox()
+        Me.Grid = New System.Windows.Forms.DataGridView()
+        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSSSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.txtConcepto = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.txtImporte = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtPoliza = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.DtpFecha = New System.Windows.Forms.DateTimePicker()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -120,8 +120,8 @@ Partial Class _390CancelacionPolizaPasivo
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.txtCargo)
         Me.GroupBox1.Controls.Add(Me.txtAbono)
         Me.GroupBox1.Controls.Add(Me.Grid)
@@ -158,8 +158,8 @@ Partial Class _390CancelacionPolizaPasivo
         Me.Grid.AllowUserToDeleteRows = False
         Me.Grid.AllowUserToResizeRows = False
         Me.Grid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Grid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigo, Me.clmCta, Me.clmSubCuenta, Me.clmSSubCta, Me.clmSSSubCuenta, Me.clmNombre, Me.clmCargo, Me.clmAbono})
         Me.Grid.Location = New System.Drawing.Point(11, 25)
@@ -168,95 +168,6 @@ Partial Class _390CancelacionPolizaPasivo
         Me.Grid.RowHeadersVisible = False
         Me.Grid.Size = New System.Drawing.Size(793, 245)
         Me.Grid.TabIndex = 0
-        '
-        'txtConcepto
-        '
-        Me.txtConcepto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtConcepto.Location = New System.Drawing.Point(62, 108)
-        Me.txtConcepto.Multiline = True
-        Me.txtConcepto.Name = "txtConcepto"
-        Me.txtConcepto.ReadOnly = True
-        Me.txtConcepto.Size = New System.Drawing.Size(445, 30)
-        Me.txtConcepto.TabIndex = 176
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(59, 92)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(56, 13)
-        Me.Label12.TabIndex = 175
-        Me.Label12.Text = "Concepto:"
-        '
-        'lblEstatus
-        '
-        Me.lblEstatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblEstatus.BackColor = System.Drawing.Color.Navy
-        Me.lblEstatus.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEstatus.ForeColor = System.Drawing.Color.White
-        Me.lblEstatus.Location = New System.Drawing.Point(693, 47)
-        Me.lblEstatus.Name = "lblEstatus"
-        Me.lblEstatus.Size = New System.Drawing.Size(122, 21)
-        Me.lblEstatus.TabIndex = 183
-        Me.lblEstatus.Text = "ACTIVO"
-        Me.lblEstatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblEstatus.Visible = False
-        '
-        'txtImporte
-        '
-        Me.txtImporte.Location = New System.Drawing.Point(744, 147)
-        Me.txtImporte.Name = "txtImporte"
-        Me.txtImporte.ReadOnly = True
-        Me.txtImporte.Size = New System.Drawing.Size(100, 20)
-        Me.txtImporte.TabIndex = 182
-        Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(658, 150)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(45, 13)
-        Me.Label11.TabIndex = 181
-        Me.Label11.Text = "Importe:"
-        '
-        'txtPoliza
-        '
-        Me.txtPoliza.BackColor = System.Drawing.Color.GhostWhite
-        Me.txtPoliza.Enabled = False
-        Me.txtPoliza.Location = New System.Drawing.Point(744, 118)
-        Me.txtPoliza.Name = "txtPoliza"
-        Me.txtPoliza.ReadOnly = True
-        Me.txtPoliza.Size = New System.Drawing.Size(100, 20)
-        Me.txtPoliza.TabIndex = 180
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(658, 121)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(63, 13)
-        Me.Label3.TabIndex = 179
-        Me.Label3.Text = "Folio Póliza:"
-        '
-        'DtpFecha
-        '
-        Me.DtpFecha.CalendarMonthBackground = System.Drawing.SystemColors.InactiveCaptionText
-        Me.DtpFecha.Enabled = False
-        Me.DtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtpFecha.Location = New System.Drawing.Point(744, 88)
-        Me.DtpFecha.Name = "DtpFecha"
-        Me.DtpFecha.Size = New System.Drawing.Size(100, 20)
-        Me.DtpFecha.TabIndex = 178
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(658, 92)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(80, 13)
-        Me.Label1.TabIndex = 177
-        Me.Label1.Text = "Fecha Captura:"
         '
         'clmCodigo
         '
@@ -331,6 +242,94 @@ Partial Class _390CancelacionPolizaPasivo
         Me.clmAbono.HeaderText = "Abono"
         Me.clmAbono.Name = "clmAbono"
         Me.clmAbono.ReadOnly = True
+        '
+        'txtConcepto
+        '
+        Me.txtConcepto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtConcepto.Location = New System.Drawing.Point(62, 108)
+        Me.txtConcepto.Multiline = True
+        Me.txtConcepto.Name = "txtConcepto"
+        Me.txtConcepto.ReadOnly = True
+        Me.txtConcepto.Size = New System.Drawing.Size(445, 30)
+        Me.txtConcepto.TabIndex = 176
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(59, 92)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(56, 13)
+        Me.Label12.TabIndex = 175
+        Me.Label12.Text = "Concepto:"
+        '
+        'lblEstatus
+        '
+        Me.lblEstatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblEstatus.BackColor = System.Drawing.Color.Navy
+        Me.lblEstatus.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEstatus.ForeColor = System.Drawing.Color.White
+        Me.lblEstatus.Location = New System.Drawing.Point(693, 47)
+        Me.lblEstatus.Name = "lblEstatus"
+        Me.lblEstatus.Size = New System.Drawing.Size(122, 21)
+        Me.lblEstatus.TabIndex = 183
+        Me.lblEstatus.Text = "ACTIVO"
+        Me.lblEstatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblEstatus.Visible = False
+        '
+        'txtImporte
+        '
+        Me.txtImporte.Location = New System.Drawing.Point(744, 147)
+        Me.txtImporte.Name = "txtImporte"
+        Me.txtImporte.ReadOnly = True
+        Me.txtImporte.Size = New System.Drawing.Size(100, 20)
+        Me.txtImporte.TabIndex = 182
+        Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(658, 150)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(45, 13)
+        Me.Label11.TabIndex = 181
+        Me.Label11.Text = "Importe:"
+        '
+        'txtPoliza
+        '
+        Me.txtPoliza.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtPoliza.Enabled = False
+        Me.txtPoliza.Location = New System.Drawing.Point(744, 118)
+        Me.txtPoliza.Name = "txtPoliza"
+        Me.txtPoliza.ReadOnly = True
+        Me.txtPoliza.Size = New System.Drawing.Size(100, 20)
+        Me.txtPoliza.TabIndex = 180
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(658, 121)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(63, 13)
+        Me.Label3.TabIndex = 179
+        Me.Label3.Text = "Folio Póliza:"
+        '
+        'DtpFecha
+        '
+        Me.DtpFecha.CalendarMonthBackground = System.Drawing.SystemColors.InactiveCaptionText
+        Me.DtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DtpFecha.Location = New System.Drawing.Point(744, 88)
+        Me.DtpFecha.Name = "DtpFecha"
+        Me.DtpFecha.Size = New System.Drawing.Size(100, 20)
+        Me.DtpFecha.TabIndex = 178
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(658, 92)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(80, 13)
+        Me.Label1.TabIndex = 177
+        Me.Label1.Text = "Fecha Captura:"
         '
         '_390CancelacionPolizaPasivo
         '

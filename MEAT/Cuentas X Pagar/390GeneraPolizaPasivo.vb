@@ -113,8 +113,8 @@ Public Class _390GeneraPolizaPasivo
             If Me.CmbProveedor.SelectedIndex > 0 Then
                 Poliza = SPR.GeneraPolizaPasivo(Controlador.Sesion.Empndx, Me.CmbProveedor.SelectedValue, Me.dtpFechaConta.Value.ToShortDateString, 1)
             Else
-                ''Poliza = SPR.GeneraPolizaPasivo(Controlador.Sesion.Empndx, 0, Me.dtpFechaConta.Value.ToShortDateString, 2)
-                Poliza = SPR.GeneraPolizaPasivo(1, 0, Me.dtpFechaConta.Value.ToShortDateString, 2)
+                Poliza = SPR.GeneraPolizaPasivo(Controlador.Sesion.Empndx, 0, Me.dtpFechaConta.Value.ToShortDateString, 2)
+                ''Poliza = SPR.GeneraPolizaPasivo(1, 0, Me.dtpFechaConta.Value.ToShortDateString, 2) de pruebaa
             End If
 
             If Poliza.Rows.Count > 0 Then

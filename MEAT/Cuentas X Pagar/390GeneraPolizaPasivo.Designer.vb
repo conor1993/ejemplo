@@ -311,6 +311,7 @@ Partial Class _390GeneraPolizaPasivo
         Me.dgvGastos.RowHeadersVisible = False
         Me.dgvGastos.Size = New System.Drawing.Size(236, 83)
         Me.dgvGastos.TabIndex = 124
+        Me.dgvGastos.Visible = False
         '
         'chkb
         '

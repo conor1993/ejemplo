@@ -1001,6 +1001,7 @@ Public Class RegistroFacGastosFrm
 
     Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
         Try
+
             ''------------------------------------------------------------
             Dim ren As Integer = 0
             Dim rendet As Integer = 0

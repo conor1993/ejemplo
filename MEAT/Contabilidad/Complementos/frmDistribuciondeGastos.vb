@@ -95,14 +95,14 @@ Public Class frmDistribuciondeGastos
                     'dgvMetodos.Rows.Add()
                 Next
                 Dim Metodo As New CN.MetodoProrrateoClass
-                    Metodo.Obtener(Me.dgvMetodos.CurrentRow.Cells(Me.clmMetodoProrrateo.Index).Value)
-                    Me.dgvDetalledeProrrateo.AutoGenerateColumns = False
-                    Me.dgvDetalledeProrrateo.DataSource = Metodo.Detalle
+                Metodo.Obtener(Me.dgvMetodos.CurrentRow.Cells(Me.clmMetodoProrrateo.Index).Value)
+                Me.dgvDetalledeProrrateo.AutoGenerateColumns = False
+                Me.dgvDetalledeProrrateo.DataSource = Metodo.Detalle
 
-                    'If e.ColumnIndex < Me.clmImporte.Index Then
-                    '    If Me.dgvMetodos.Rows(e.RowIndex).Cells(Me.clmMetodoProrrateo.Index).Value = 0 Then
-                    '        Exit Sub
-                    '    Else
+                'If e.ColumnIndex < Me.clmImporte.Index Then
+                '    If Me.dgvMetodos.Rows(e.RowIndex).Cells(Me.clmMetodoProrrateo.Index).Value = 0 Then
+                '        Exit Sub
+                '    Else
                 Dim total As Decimal
                 total = valor1 / (dgvMetodos.Rows.Count - 1)
 
@@ -123,23 +123,23 @@ Public Class frmDistribuciondeGastos
                     Me.dgvDetalledeProrrateo.Rows(i).Cells(Me.clmImporteDepartamento.Index).Value = (total * Porcentaje) / 100
 
                 Next
-                    'End If
+                'End If
 
-                    'End If
-                    Dim Sumaimporte As Decimal = 0
-                    Dim Sumaporentaje As Decimal = 0
-                    For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
-                        Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
-                        Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
-                    Next
-                    Me.txtImporte.Text = Sumaimporte.ToString("C2")
+                'End If
+                Dim Sumaimporte As Decimal = 0
+                Dim Sumaporentaje As Decimal = 0
+                For i As Integer = 0 To Me.dgvDetalledeProrrateo.Rows.Count - 1
+                    Sumaimporte = Sumaimporte + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmImporteDepartamento").Value
+                    Sumaporentaje = Sumaporentaje + Me.dgvDetalledeProrrateo.Rows(i).Cells("ClmPorcentaje").Value
+                Next
+                Me.txtImporte.Text = Sumaimporte.ToString("C2")
                 Me.txtPorcentaje.Text = Sumaporentaje.ToString("N1")
 
-                Else
+            Else
 
-                    Controlador.LlenarComboSucursales(clmSucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
-                    Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
-                End If
+                Controlador.LlenarComboSucursales(clmSucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
+                Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
+            End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
