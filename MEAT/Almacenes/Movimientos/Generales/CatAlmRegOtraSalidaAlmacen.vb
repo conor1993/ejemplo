@@ -670,11 +670,11 @@ Public Class CatAlmRegOtraSalidaAlmacen
 
 #Region "datagrid"
 
-    Private Sub DataGrid_DataError(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewDataErrorEventArgs) Handles DataGrid.DataError
+    Private Sub DataGrid_DataError(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewDataErrorEventArgs)
 
     End Sub
 
-    Private Sub DataGrid_EditingControlShowing(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DataGrid.EditingControlShowing
+    Private Sub DataGrid_EditingControlShowing(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs)
         Try
             Dim combo As ComboBox = Nothing
 
@@ -705,7 +705,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
         End Try
     End Sub
 
-    Private Sub DataGrid_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles DataGrid.PreviewKeyDown
+    Private Sub DataGrid_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs)
         If e.KeyCode = Keys.F3 Then
 
         ElseIf e.KeyCode = Keys.Delete Then
@@ -717,7 +717,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
         End If
     End Sub
 
-    Private Sub DataGrid_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGrid.SelectionChanged
+    Private Sub DataGrid_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         If Not Me.seleccionar Then Exit Sub
 
         For Each row As DataGridViewRow In Me.DataGrid.Rows

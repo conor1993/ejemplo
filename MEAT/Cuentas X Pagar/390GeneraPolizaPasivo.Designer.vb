@@ -23,8 +23,8 @@ Partial Class _390GeneraPolizaPasivo
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.lblEmpresa = New System.Windows.Forms.Label()
@@ -248,20 +248,20 @@ Partial Class _390GeneraPolizaPasivo
         'clmCargo
         '
         Me.clmCargo.DataPropertyName = "Cargo"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle1
         Me.clmCargo.HeaderText = "Cargo"
         Me.clmCargo.Name = "clmCargo"
         '
         'clmAbono
         '
         Me.clmAbono.DataPropertyName = "Abono"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmAbono.HeaderText = "Abono"
         Me.clmAbono.Name = "clmAbono"
         '

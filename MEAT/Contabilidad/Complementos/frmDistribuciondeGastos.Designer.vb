@@ -46,8 +46,6 @@ Partial Class frmDistribuciondeGastos
         '
         'dgvMetodos
         '
-        Me.dgvMetodos.AllowUserToResizeColumns = False
-        Me.dgvMetodos.AllowUserToResizeRows = False
         Me.dgvMetodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvMetodos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSucursal, Me.clmMetodoProrrateo, Me.clmImporte})
         Me.dgvMetodos.Location = New System.Drawing.Point(12, 56)
@@ -119,7 +117,6 @@ Partial Class frmDistribuciondeGastos
         Me.dgvDetalledeProrrateo.Location = New System.Drawing.Point(6, 19)
         Me.dgvDetalledeProrrateo.MultiSelect = False
         Me.dgvDetalledeProrrateo.Name = "dgvDetalledeProrrateo"
-        Me.dgvDetalledeProrrateo.RowHeadersVisible = False
         Me.dgvDetalledeProrrateo.Size = New System.Drawing.Size(564, 132)
         Me.dgvDetalledeProrrateo.TabIndex = 170
         '
@@ -153,7 +150,6 @@ Partial Class frmDistribuciondeGastos
         '
         'Cve_Depto
         '
-        Me.Cve_Depto.DataPropertyName = "IdDepartamento"
         Me.Cve_Depto.HeaderText = "Clave Departamento"
         Me.Cve_Depto.Name = "Cve_Depto"
         Me.Cve_Depto.Visible = False
@@ -163,7 +159,6 @@ Partial Class frmDistribuciondeGastos
         Me.clmDepartamento.DataPropertyName = "Departamento"
         Me.clmDepartamento.HeaderText = "Departamento"
         Me.clmDepartamento.Name = "clmDepartamento"
-        Me.clmDepartamento.ReadOnly = True
         Me.clmDepartamento.Width = 200
         '
         'clmPorcentaje
@@ -171,10 +166,11 @@ Partial Class frmDistribuciondeGastos
         Me.clmPorcentaje.DataPropertyName = "Porcentaje"
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = "00"
+        DataGridViewCellStyle2.NullValue = "0"
         Me.clmPorcentaje.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmPorcentaje.HeaderText = "Porcentaje"
         Me.clmPorcentaje.Name = "clmPorcentaje"
+        Me.clmPorcentaje.ReadOnly = True
         '
         'clmImporteDepartamento
         '

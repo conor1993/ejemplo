@@ -184,8 +184,6 @@ Public Class FrmRecepciondeGanado
             End If
 
 
-
-
             Dim Gastos As New ClasesNegocio.GastoTransporteClass(RecepcionGanado.LoteRecepcion)
             If Not Gastos.Folio.Equals("") Then
                 If DgvConceptoGastos.Rows.Count > 1 Then

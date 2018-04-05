@@ -114,6 +114,7 @@ Public Class _390GeneraPolizaPasivo
                 Poliza = SPR.GeneraPolizaPasivo(Controlador.Sesion.Empndx, Me.CmbProveedor.SelectedValue, Me.dtpFechaConta.Value.ToShortDateString, 1)
             Else
                 Poliza = SPR.GeneraPolizaPasivo(Controlador.Sesion.Empndx, 0, Me.dtpFechaConta.Value.ToShortDateString, 2)
+                ''Poliza = SPR.GeneraPolizaPasivo(1, 0, Me.dtpFechaConta.Value.ToShortDateString, 2) de pruebaa
             End If
 
             If Poliza.Rows.Count > 0 Then
@@ -418,58 +419,104 @@ Public Class _390GeneraPolizaPasivo
 
             DgvFacturas.CurrentRow.Cells(check.Index).Value = True
 
-            If DgvFacturas.Rows.Count > 0 Then
-                If DgvFacturas.Rows.Count > 1 Then
-                    'Dim ID_ProductoDet As Integer
-                    For Each Fila As DataGridViewRow In DgvFacturas.Rows
+            If dgvGastos.Rows.Count > 0 Then
+                If DgvFacturas.Rows.Count > 0 Then
+                    If DgvFacturas.Rows.Count > 1 Then
+                        'Dim ID_ProductoDet As Integer
+                        For Each Fila As DataGridViewRow In DgvFacturas.Rows
 
-                        For i As Integer = 0 To dgvGastos.Rows.Count - 1
+                            For i As Integer = 0 To dgvGastos.Rows.Count - 1
+                                Try
+                                    If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
+                                        DgvFacturas.Rows(i).Cells(check.Index).Value = True
+                                        Sumar()
+                                        For j As Integer = 0 To dgvGastos.Rows.Count - 1
+                                            If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value And DgvFacturas.CurrentRow.Cells(IdProveedor.Index).Value = dgvGastos.Rows(j).Cells(IdProveedorFG.Index).Value Then
+                                                dgvGastos.Rows(j).Cells(chkb.Index).Value = True
+                                            End If
+                                        Next
+                                    End If
+                                Catch ex As Exception
+                                    Exit For
+                                    'MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                End Try
+                            Next
+                        Next
+
+                    End If
+                End If
+                ''---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            Else
+                If DgvFacturas.Rows.Count > 0 Then
+                    If DgvFacturas.Rows.Count > 1 Then
+                        'Dim ID_ProductoDet As Integer
+                        Dim i = 0
+                        For Each Fila As DataGridViewRow In DgvFacturas.Rows
                             Try
-                                If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
-                                    DgvFacturas.Rows(i).Cells(check.Index).Value = True
-                                    Sumar()
-                                    For j As Integer = 0 To dgvGastos.Rows.Count - 1
-                                        If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value And DgvFacturas.CurrentRow.Cells(IdProveedor.Index).Value = dgvGastos.Rows(j).Cells(IdProveedorFG.Index).Value Then
-                                            dgvGastos.Rows(j).Cells(chkb.Index).Value = True
-                                        End If
-                                    Next
-                                End If
+                                DgvFacturas.Rows(i).Cells(check.Index).Value = True
+                                Sumar()
+                                i = i + 1
                             Catch ex As Exception
                                 Exit For
                                 'MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             End Try
-                        Next
-                    Next
 
+                        Next
+
+                    End If
                 End If
             End If
+
+
+
 
         Else
 
             DgvFacturas.CurrentRow.Cells(check.Index).Value = False
-            If DgvFacturas.Rows.Count > 0 Then
+
+            If dgvGastos.Rows.Count > 0 Then
+
+                If DgvFacturas.Rows.Count > 0 Then
+                    If DgvFacturas.Rows.Count > 1 Then
+                        'Dim ID_ProductoDet As Integer
+                        For Each Fila As DataGridViewRow In DgvFacturas.Rows
+                            For i As Integer = 0 To dgvGastos.Rows.Count - 1
+                                Try
+                                    If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
+                                        DgvFacturas.Rows(i).Cells(check.Index).Value = False
+                                        Sumar()
+                                        For j As Integer = 0 To dgvGastos.Rows.Count - 1
+                                            If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value Then
+                                                dgvGastos.Rows(j).Cells(chkb.Index).Value = False
+                                            End If
+                                        Next
+                                    End If
+                                Catch ex As Exception
+                                    Exit For
+
+                                End Try
+                            Next
+                        Next
+                    End If
+                End If
+            Else
+
                 If DgvFacturas.Rows.Count > 1 Then
                     'Dim ID_ProductoDet As Integer
+                    Dim i = 0
                     For Each Fila As DataGridViewRow In DgvFacturas.Rows
-                        For i As Integer = 0 To dgvGastos.Rows.Count - 1
-                            Try
-                                If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = DgvFacturas.Rows(i).Cells(NoFactura.Index).Value Then
-                                    DgvFacturas.Rows(i).Cells(check.Index).Value = False
-                                    Sumar()
-                                    For j As Integer = 0 To dgvGastos.Rows.Count - 1
-                                        If DgvFacturas.CurrentRow.Cells(NoFactura.Index).Value = dgvGastos.Rows(j).Cells(Factura.Index).Value Then
-                                            dgvGastos.Rows(j).Cells(chkb.Index).Value = False
-                                        End If
-                                    Next
-                                End If
-                            Catch ex As Exception
-                                Exit For
+                        Try
+                            DgvFacturas.Rows(i).Cells(check.Index).Value = False
+                            Sumar()
+                            i = i + 1
+                        Catch ex As Exception
+                            Exit For
+                            'MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
 
-                            End Try
-                        Next
                     Next
-
                 End If
+
             End If
 
         End If
