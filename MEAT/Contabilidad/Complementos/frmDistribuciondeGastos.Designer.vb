@@ -32,13 +32,13 @@ Partial Class frmDistribuciondeGastos
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgvDetalledeProrrateo = New System.Windows.Forms.DataGridView()
-        Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.txtPorcentaje = New System.Windows.Forms.TextBox()
-        Me.txtImporte = New System.Windows.Forms.TextBox()
         Me.Cve_Depto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmDepartamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmPorcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmImporteDepartamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.txtPorcentaje = New System.Windows.Forms.TextBox()
+        Me.txtImporte = New System.Windows.Forms.TextBox()
         CType(Me.dgvMetodos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvDetalledeProrrateo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -123,34 +123,6 @@ Partial Class frmDistribuciondeGastos
         Me.dgvDetalledeProrrateo.Size = New System.Drawing.Size(564, 132)
         Me.dgvDetalledeProrrateo.TabIndex = 170
         '
-        'btnAceptar
-        '
-        Me.btnAceptar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAceptar.Location = New System.Drawing.Point(494, 442)
-        Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(102, 34)
-        Me.btnAceptar.TabIndex = 172
-        Me.btnAceptar.Text = "Aceptar"
-        Me.btnAceptar.UseVisualStyleBackColor = True
-        '
-        'txtPorcentaje
-        '
-        Me.txtPorcentaje.Enabled = False
-        Me.txtPorcentaje.Location = New System.Drawing.Point(263, 399)
-        Me.txtPorcentaje.Name = "txtPorcentaje"
-        Me.txtPorcentaje.Size = New System.Drawing.Size(109, 20)
-        Me.txtPorcentaje.TabIndex = 173
-        Me.txtPorcentaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtImporte
-        '
-        Me.txtImporte.Enabled = False
-        Me.txtImporte.Location = New System.Drawing.Point(401, 399)
-        Me.txtImporte.Name = "txtImporte"
-        Me.txtImporte.Size = New System.Drawing.Size(109, 20)
-        Me.txtImporte.TabIndex = 174
-        Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
         'Cve_Depto
         '
         Me.Cve_Depto.DataPropertyName = "IdDepartamento"
@@ -185,6 +157,34 @@ Partial Class frmDistribuciondeGastos
         Me.clmImporteDepartamento.HeaderText = "Importe"
         Me.clmImporteDepartamento.Name = "clmImporteDepartamento"
         Me.clmImporteDepartamento.Width = 150
+        '
+        'btnAceptar
+        '
+        Me.btnAceptar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAceptar.Location = New System.Drawing.Point(494, 442)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(102, 34)
+        Me.btnAceptar.TabIndex = 172
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'txtPorcentaje
+        '
+        Me.txtPorcentaje.Enabled = False
+        Me.txtPorcentaje.Location = New System.Drawing.Point(263, 399)
+        Me.txtPorcentaje.Name = "txtPorcentaje"
+        Me.txtPorcentaje.Size = New System.Drawing.Size(109, 20)
+        Me.txtPorcentaje.TabIndex = 173
+        Me.txtPorcentaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtImporte
+        '
+        Me.txtImporte.Enabled = False
+        Me.txtImporte.Location = New System.Drawing.Point(401, 399)
+        Me.txtImporte.Name = "txtImporte"
+        Me.txtImporte.Size = New System.Drawing.Size(109, 20)
+        Me.txtImporte.TabIndex = 174
+        Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'frmDistribuciondeGastos
         '

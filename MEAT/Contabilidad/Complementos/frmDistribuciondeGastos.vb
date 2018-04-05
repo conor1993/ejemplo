@@ -147,7 +147,7 @@ Public Class frmDistribuciondeGastos
     End Sub
 
 
-    Private Sub dgvMetodos_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvMetodos.CellEndEdit
+    Private Sub dgvMetodos_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
 
         Try
             Dim Metodo As New CN.MetodoProrrateoClass
@@ -225,7 +225,7 @@ Public Class frmDistribuciondeGastos
     '    End If
     'End Sub
 
-    Private Sub dgvDetalledeProrrateo_CellEndEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalledeProrrateo.CellEndEdit
+    Private Sub dgvDetalledeProrrateo_CellEndEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDetalledeProrrateo.CellEndEdit, dgvMetodos.CellEndEdit
         Try
             If e.ColumnIndex = 2 Then
 
