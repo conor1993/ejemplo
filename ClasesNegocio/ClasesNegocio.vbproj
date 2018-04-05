@@ -2313,6 +2313,12 @@
     <Compile Include="Reportes\dsDepartamentosrpt2.vb">
       <DependentUpon>dsDepartamentosrpt2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\rptDepartamentoComparativoMes.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDepartamentoComparativoMes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\rptDepartamentos2.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3565,6 +3571,10 @@
     <EmbeddedResource Include="Reportes\Contabilidad\RptFlujos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptFlujos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptDepartamentoComparativoMes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDepartamentoComparativoMes.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptDepartamentos2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

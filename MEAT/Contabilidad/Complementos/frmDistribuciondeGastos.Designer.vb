@@ -22,23 +22,22 @@ Partial Class frmDistribuciondeGastos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvMetodos = New System.Windows.Forms.DataGridView()
-        Me.clmSucursal = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.clmMetodoProrrateo = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgvDetalledeProrrateo = New System.Windows.Forms.DataGridView()
-        Me.Cve_Depto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmDepartamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmPorcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmImporteDepartamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.txtPorcentaje = New System.Windows.Forms.TextBox()
         Me.txtImporte = New System.Windows.Forms.TextBox()
+        Me.clmSucursal = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.clmMetodoProrrateo = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvMetodos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvDetalledeProrrateo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,8 +45,6 @@ Partial Class frmDistribuciondeGastos
         '
         'dgvMetodos
         '
-        Me.dgvMetodos.AllowUserToResizeColumns = False
-        Me.dgvMetodos.AllowUserToResizeRows = False
         Me.dgvMetodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvMetodos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSucursal, Me.clmMetodoProrrateo, Me.clmImporte})
         Me.dgvMetodos.Location = New System.Drawing.Point(12, 56)
@@ -56,35 +53,6 @@ Partial Class frmDistribuciondeGastos
         Me.dgvMetodos.RowHeadersVisible = False
         Me.dgvMetodos.Size = New System.Drawing.Size(576, 165)
         Me.dgvMetodos.TabIndex = 169
-        '
-        'clmSucursal
-        '
-        Me.clmSucursal.DataPropertyName = "SCDescripcion"
-        Me.clmSucursal.HeaderText = "Sucursal"
-        Me.clmSucursal.Name = "clmSucursal"
-        Me.clmSucursal.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.clmSucursal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.clmSucursal.Width = 200
-        '
-        'clmMetodoProrrateo
-        '
-        Me.clmMetodoProrrateo.DataPropertyName = "Descripcion"
-        Me.clmMetodoProrrateo.HeaderText = "Prorrateo"
-        Me.clmMetodoProrrateo.Name = "clmMetodoProrrateo"
-        Me.clmMetodoProrrateo.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.clmMetodoProrrateo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.clmMetodoProrrateo.Width = 200
-        '
-        'clmImporte
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = "0"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle1
-        Me.clmImporte.HeaderText = "Importe"
-        Me.clmImporte.Name = "clmImporte"
-        Me.clmImporte.ReadOnly = True
-        Me.clmImporte.Width = 150
         '
         'lblTitulo
         '
@@ -115,27 +83,18 @@ Partial Class frmDistribuciondeGastos
         Me.dgvDetalledeProrrateo.AllowUserToAddRows = False
         Me.dgvDetalledeProrrateo.AllowUserToDeleteRows = False
         Me.dgvDetalledeProrrateo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDetalledeProrrateo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cve_Depto, Me.clmDepartamento, Me.clmPorcentaje, Me.clmImporteDepartamento})
+        Me.dgvDetalledeProrrateo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmDepartamento, Me.clmPorcentaje, Me.clmImporteDepartamento})
         Me.dgvDetalledeProrrateo.Location = New System.Drawing.Point(6, 19)
         Me.dgvDetalledeProrrateo.MultiSelect = False
         Me.dgvDetalledeProrrateo.Name = "dgvDetalledeProrrateo"
-        Me.dgvDetalledeProrrateo.RowHeadersVisible = False
         Me.dgvDetalledeProrrateo.Size = New System.Drawing.Size(564, 132)
         Me.dgvDetalledeProrrateo.TabIndex = 170
-        '
-        'Cve_Depto
-        '
-        Me.Cve_Depto.DataPropertyName = "IdDepartamento"
-        Me.Cve_Depto.HeaderText = "Clave Departamento"
-        Me.Cve_Depto.Name = "Cve_Depto"
-        Me.Cve_Depto.Visible = False
         '
         'clmDepartamento
         '
         Me.clmDepartamento.DataPropertyName = "Departamento"
         Me.clmDepartamento.HeaderText = "Departamento"
         Me.clmDepartamento.Name = "clmDepartamento"
-        Me.clmDepartamento.ReadOnly = True
         Me.clmDepartamento.Width = 200
         '
         'clmPorcentaje
@@ -143,10 +102,11 @@ Partial Class frmDistribuciondeGastos
         Me.clmPorcentaje.DataPropertyName = "Porcentaje"
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = "00"
+        DataGridViewCellStyle2.NullValue = "0"
         Me.clmPorcentaje.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmPorcentaje.HeaderText = "Porcentaje"
         Me.clmPorcentaje.Name = "clmPorcentaje"
+        Me.clmPorcentaje.ReadOnly = True
         '
         'clmImporteDepartamento
         '
@@ -186,6 +146,35 @@ Partial Class frmDistribuciondeGastos
         Me.txtImporte.TabIndex = 174
         Me.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'clmSucursal
+        '
+        Me.clmSucursal.DataPropertyName = "SCDescripcion"
+        Me.clmSucursal.HeaderText = "Sucursal"
+        Me.clmSucursal.Name = "clmSucursal"
+        Me.clmSucursal.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.clmSucursal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.clmSucursal.Width = 200
+        '
+        'clmMetodoProrrateo
+        '
+        Me.clmMetodoProrrateo.DataPropertyName = "Descripcion"
+        Me.clmMetodoProrrateo.HeaderText = "Prorrateo"
+        Me.clmMetodoProrrateo.Name = "clmMetodoProrrateo"
+        Me.clmMetodoProrrateo.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.clmMetodoProrrateo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.clmMetodoProrrateo.Width = 200
+        '
+        'clmImporte
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N2"
+        DataGridViewCellStyle1.NullValue = "0"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle1
+        Me.clmImporte.HeaderText = "Importe"
+        Me.clmImporte.Name = "clmImporte"
+        Me.clmImporte.ReadOnly = True
+        Me.clmImporte.Width = 150
+        '
         'frmDistribuciondeGastos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -213,11 +202,10 @@ Partial Class frmDistribuciondeGastos
     Friend WithEvents btnAceptar As System.Windows.Forms.Button
     Friend WithEvents txtPorcentaje As System.Windows.Forms.TextBox
     Friend WithEvents txtImporte As System.Windows.Forms.TextBox
-    Friend WithEvents clmSucursal As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents clmMetodoProrrateo As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Cve_Depto As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmDepartamento As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmPorcentaje As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmImporteDepartamento As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmSucursal As System.Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents clmMetodoProrrateo As System.Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
