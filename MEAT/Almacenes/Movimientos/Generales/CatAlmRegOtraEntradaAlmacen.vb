@@ -5,6 +5,8 @@ Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports System.Data.SqlClient
 Imports ClasesNegocio
 Imports ClasesNegocio.AlmacenGeneral
+Imports ClasesNegocio.ProductoClass
+
 
 'Borrar falTa
 'Poner el obtener entradas con retorno de valor boolean
