@@ -440,6 +440,8 @@ Partial Class MDIMenuPrincipal
         Me.CachedRptVentasPorProducto2 = New MEAT.CachedRptVentasPorProducto()
         Me.CachedRptVentasPorProducto3 = New MEAT.CachedRptVentasPorProducto()
         Me.CachedRptVentasPorProducto4 = New MEAT.CachedRptVentasPorProducto()
+        Me.CachedRptVentasPorProducto5 = New MEAT.CachedRptVentasPorProducto()
+        Me.reportDocument1 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -3419,4 +3421,6 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents DepartartamentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CachedRptVentasPorProducto3 As MEAT.CachedRptVentasPorProducto
     Friend WithEvents CachedRptVentasPorProducto4 As MEAT.CachedRptVentasPorProducto
+    Friend WithEvents CachedRptVentasPorProducto5 As MEAT.CachedRptVentasPorProducto
+    Friend WithEvents reportDocument1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
 End Class
