@@ -33,7 +33,7 @@ Partial Class frmRptDepartamentosDos
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.rdbDetallado = New System.Windows.Forms.RadioButton()
         Me.rdbSimplificado = New System.Windows.Forms.RadioButton()
-        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
+        Me.mtb = New MEAToolBar.MEAToolBar()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -49,19 +49,24 @@ Partial Class frmRptDepartamentosDos
         '
         'cmbDepartamento
         '
+        Me.cmbDepartamento.DisplayMember = "Nom_Depto"
         Me.cmbDepartamento.FormattingEnabled = True
         Me.cmbDepartamento.Location = New System.Drawing.Point(143, 33)
         Me.cmbDepartamento.Name = "cmbDepartamento"
         Me.cmbDepartamento.Size = New System.Drawing.Size(203, 21)
         Me.cmbDepartamento.TabIndex = 1
+        Me.cmbDepartamento.ValueMember = "Cve_Depto"
         '
         'cmbMeses
         '
+        Me.cmbMeses.DisplayMember = "Mes"
         Me.cmbMeses.FormattingEnabled = True
+        Me.cmbMeses.Items.AddRange(New Object() {"TODOS", "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"})
         Me.cmbMeses.Location = New System.Drawing.Point(143, 60)
         Me.cmbMeses.Name = "cmbMeses"
         Me.cmbMeses.Size = New System.Drawing.Size(203, 21)
         Me.cmbMeses.TabIndex = 3
+        Me.cmbMeses.ValueMember = "Codigo"
         '
         'lblMeses
         '
@@ -74,11 +79,13 @@ Partial Class frmRptDepartamentosDos
         '
         'cmbAnio
         '
+        Me.cmbAnio.DisplayMember = "Ejercicio"
         Me.cmbAnio.FormattingEnabled = True
         Me.cmbAnio.Location = New System.Drawing.Point(143, 87)
         Me.cmbAnio.Name = "cmbAnio"
         Me.cmbAnio.Size = New System.Drawing.Size(114, 21)
         Me.cmbAnio.TabIndex = 5
+        Me.cmbAnio.ValueMember = "Ejercicio"
         '
         'lblAnio
         '
@@ -132,35 +139,35 @@ Partial Class frmRptDepartamentosDos
         Me.rdbSimplificado.Text = "Simplificado"
         Me.rdbSimplificado.UseVisualStyleBackColor = True
         '
-        'MEAToolBar1
+        'mtb
         '
-        Me.MEAToolBar1.ButtonSize = New System.Drawing.Size(50, 50)
-        Me.MEAToolBar1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MEAToolBar1.DropDownArrows = True
-        Me.MEAToolBar1.HabilitarBorrar = True
-        Me.MEAToolBar1.HabilitarBuscar = True
-        Me.MEAToolBar1.HabilitarCancelar = True
-        Me.MEAToolBar1.HabilitarEditar = True
-        Me.MEAToolBar1.HabilitarGuardar = True
-        Me.MEAToolBar1.HabilitarImprimir = True
-        Me.MEAToolBar1.HabilitarLimpiar = True
-        Me.MEAToolBar1.HabilitarNuevo = True
-        Me.MEAToolBar1.HabilitarSalir = True
-        Me.MEAToolBar1.ImageButtonSize = MEAToolBar.MEAToolBar.ImageButtonSizeEnum.de32
-        Me.MEAToolBar1.Location = New System.Drawing.Point(1, -1)
-        Me.MEAToolBar1.MostrarBorrar = False
-        Me.MEAToolBar1.MostrarBuscar = False
-        Me.MEAToolBar1.MostrarCancelar = False
-        Me.MEAToolBar1.MostrarEditar = False
-        Me.MEAToolBar1.MostrarGuardar = False
-        Me.MEAToolBar1.MostrarImprimir = True
-        Me.MEAToolBar1.MostrarLimpiar = True
-        Me.MEAToolBar1.MostrarNuevo = False
-        Me.MEAToolBar1.MostrarSalir = True
-        Me.MEAToolBar1.Name = "MEAToolBar1"
-        Me.MEAToolBar1.ShowToolTips = True
-        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 266)
-        Me.MEAToolBar1.TabIndex = 40
+        Me.mtb.ButtonSize = New System.Drawing.Size(50, 50)
+        Me.mtb.Dock = System.Windows.Forms.DockStyle.None
+        Me.mtb.DropDownArrows = True
+        Me.mtb.HabilitarBorrar = True
+        Me.mtb.HabilitarBuscar = True
+        Me.mtb.HabilitarCancelar = True
+        Me.mtb.HabilitarEditar = True
+        Me.mtb.HabilitarGuardar = True
+        Me.mtb.HabilitarImprimir = True
+        Me.mtb.HabilitarLimpiar = True
+        Me.mtb.HabilitarNuevo = True
+        Me.mtb.HabilitarSalir = True
+        Me.mtb.ImageButtonSize = MEAToolBar.MEAToolBar.ImageButtonSizeEnum.de32
+        Me.mtb.Location = New System.Drawing.Point(1, -1)
+        Me.mtb.MostrarBorrar = False
+        Me.mtb.MostrarBuscar = False
+        Me.mtb.MostrarCancelar = False
+        Me.mtb.MostrarEditar = False
+        Me.mtb.MostrarGuardar = False
+        Me.mtb.MostrarImprimir = True
+        Me.mtb.MostrarLimpiar = True
+        Me.mtb.MostrarNuevo = False
+        Me.mtb.MostrarSalir = True
+        Me.mtb.Name = "mtb"
+        Me.mtb.ShowToolTips = True
+        Me.mtb.Size = New System.Drawing.Size(50, 266)
+        Me.mtb.TabIndex = 40
         '
         'lblTitulo
         '
@@ -181,7 +188,7 @@ Partial Class frmRptDepartamentosDos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(371, 231)
         Me.Controls.Add(Me.lblTitulo)
-        Me.Controls.Add(Me.MEAToolBar1)
+        Me.Controls.Add(Me.mtb)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.chbComparativo)
         Me.Controls.Add(Me.cmbAnio)
@@ -208,6 +215,6 @@ Partial Class frmRptDepartamentosDos
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents rdbDetallado As System.Windows.Forms.RadioButton
     Friend WithEvents rdbSimplificado As System.Windows.Forms.RadioButton
-    Friend WithEvents MEAToolBar1 As MEAToolBar.MEAToolBar
+    Friend WithEvents mtb As MEAToolBar.MEAToolBar
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
 End Class
