@@ -22,34 +22,34 @@ Partial Class CancelacionPagoAProveedoresForm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CancelacionPagoAProveedoresForm))
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.lblEmpresa = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.DtpFecha = New System.Windows.Forms.DateTimePicker
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.DgvFacturas = New System.Windows.Forms.DataGridView
-        Me.ClmFactura = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmImportePago = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DgvPagos = New System.Windows.Forms.DataGridView
-        Me.ClmCheque = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmCuentaBancaria = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CmbProveedor = New System.Windows.Forms.ComboBox
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.pDg = New System.Windows.Forms.PrintDialog
-        Me.ppDg = New System.Windows.Forms.PrintPreviewDialog
-        Me.ImprimirCheque = New ClasesNegocio.PrintDocumentPolizaCancelacionClass
-        Me.PagoElectronico = New ClasesNegocio.PrintDocumentPagoElectronicoClass
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.lblEmpresa = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.DtpFecha = New System.Windows.Forms.DateTimePicker()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DgvFacturas = New System.Windows.Forms.DataGridView()
+        Me.ClmFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmImportePago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DgvPagos = New System.Windows.Forms.DataGridView()
+        Me.ClmCheque = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCuentaBancaria = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CmbProveedor = New System.Windows.Forms.ComboBox()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.pDg = New System.Windows.Forms.PrintDialog()
+        Me.ppDg = New System.Windows.Forms.PrintPreviewDialog()
+        Me.ImprimirCheque = New ClasesNegocio.PrintDocumentPolizaCancelacionClass()
+        Me.PagoElectronico = New ClasesNegocio.PrintDocumentPagoElectronicoClass()
         Me.TmProveedor = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.DgvFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -139,7 +139,6 @@ Partial Class CancelacionPagoAProveedoresForm
         '
         'DtpFecha
         '
-        Me.DtpFecha.Enabled = False
         Me.DtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DtpFecha.Location = New System.Drawing.Point(544, 39)
         Me.DtpFecha.Name = "DtpFecha"
