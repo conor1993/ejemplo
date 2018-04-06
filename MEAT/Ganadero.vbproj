@@ -1066,10 +1066,10 @@
     <Compile Include="Contabilidad\frmSeleccionarPeriodo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Contabilidad\Reportes\frmRptDepartamentosDos.vb.Designer.vb">
-      <DependentUpon>frmRptDepartamentosDos.vb.vb</DependentUpon>
+    <Compile Include="Contabilidad\Reportes\frmRptDepartamentosDos.Designer.vb">
+      <DependentUpon>frmRptDepartamentosDos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Contabilidad\Reportes\frmRptDepartamentosDos.vb.vb">
+    <Compile Include="Contabilidad\Reportes\frmRptDepartamentosDos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Contabilidad\Reportes\frmRptRelacionesAnaliticas.Designer.vb">
@@ -3838,8 +3838,8 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmSeleccionarPeriodo.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Contabilidad\Reportes\frmRptDepartamentosDos.vb.resx">
-      <DependentUpon>frmRptDepartamentosDos.vb.vb</DependentUpon>
+    <EmbeddedResource Include="Contabilidad\Reportes\frmRptDepartamentosDos.resx">
+      <DependentUpon>frmRptDepartamentosDos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\Reportes\frmRptRelacionesAnaliticas.resx">
       <DependentUpon>frmRptRelacionesAnaliticas.vb</DependentUpon>
