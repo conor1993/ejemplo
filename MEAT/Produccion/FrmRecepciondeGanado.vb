@@ -538,74 +538,74 @@ Public Class FrmRecepciondeGanado
             Me.txtKilosRecibidos.Text = Me.RecepcionGanado.KilosRecibidos.ToString("N3")
             Me.txtKilos1erpasada.Text = Me.RecepcionGanado.KilosPrimeraPesada.ToString("N3")
             Me.txtKilos2daPasada.Text = Me.RecepcionGanado.KilosSegundaPesada.ToString("N3")
-
-            txtCabezasMachos.Text = Me.RecepcionGanado.CantCabezas.ToString()
-            txtCabezasHembra.Text = "0"
-
-
-            'Me.cmbIntroductor.ValueMember = "Codigo"
-            'Me.cmbIntroductor.DisplayMember = "Nombre"
-            'Me.cmbIntroductor.DataSource = Introductores
-            'Me.cmbIntroductor.SelectedIndex = -1
-            CargaPantalla = True
-            Me.cmbIntroductor.SelectedValue = Me.RecepcionGanado.IdCliente
-            CargaPantalla = False
-            Me.txtUnidad.Text = Me.RecepcionGanado.Unidad
-            Me.txtConductor.Text = Me.RecepcionGanado.Conductor
-            Me.txtPlacas.Text = Me.RecepcionGanado.Placas
-            Me.txtHorasViaje.Text = Me.RecepcionGanado.HorasViaje.ToString("N2")
-
-            Me.cmbProveedor.SelectedValue = Me.RecepcionGanado.IdProveedor
-
-            Me.CmbLugarCompra.SelectedValue = Me.RecepcionGanado.CveLugarCompra
-            Me.cmbComprador.SelectedValue = Me.RecepcionGanado.CveCompradorGanado
-            Me.txtObservaciones.Text = Me.RecepcionGanado.Observaciones
-            Me.txtCantCabezas.Text = Me.RecepcionGanado.CantCabezas
-            Me.CmbTipoGanado.SelectedValue = Me.RecepcionGanado.TipoGanado.IdTipoGanado
-            'Me.dtpFechaPago.Value = Me.RecepcionGanado.FechaPago
-            Me.txtNoFactura.Text = Me.RecepcionGanado.NumFactura
-            'txtDiasDeCredito.Text = Me.RecepcionGanado.DiasCredito.ToString()
-
-            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
-            Dim recepGanadoIDe As New ClasesNegocio.RecepcionGanadoClass(RecepcionGanado.LoteRecepcion)
-
-            Dim Gastos As New ClasesNegocio.GastoTransporteClass
-            Gastos.Obtener(RecepcionGanado.LoteRecepcion)
-            'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-            'Try
-
-            '    Dim cadenaConsulta As String = "select Fol_Recep, Cve_Renglon,Cve_Gasto,Ptj_Iva,Impte_Gasto,Retencion,NoFactura,CodProveedor from DetGasTrans join  usrProdRecepcionGanado on LoteRecepcion= Fol_Recep where LoteRecepcion={0}"
-            '    cadenaConsulta = String.Format(cadenaConsulta, RecepcionGanado.LoteRecepcion)
-            '    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
-            '    Dim adp As New SqlDataAdapter(sqlcom)
-            '    Dim tb As New DataTable
-
-            '    sqlCon.Open()
-            '    adp.Fill(tb)
-            '    Me.DgvConceptoGastos.AutoGenerateColumns = False
-            '    Me.DgvConceptoGastos.DataSource = tb
-            '    sqlCon.Close()
+            
+                    txtCabezasMachos.Text = Me.RecepcionGanado.CantCabezas.ToString()
+                    txtCabezasHembra.Text = "0"
 
 
-            'Catch ex As Exception
+                    'Me.cmbIntroductor.ValueMember = "Codigo"
+                    'Me.cmbIntroductor.DisplayMember = "Nombre"
+                    'Me.cmbIntroductor.DataSource = Introductores
+                    'Me.cmbIntroductor.SelectedIndex = -1
+                    CargaPantalla = True
+                    Me.cmbIntroductor.SelectedValue = Me.RecepcionGanado.IdCliente
+                    CargaPantalla = False
+                    Me.txtUnidad.Text = Me.RecepcionGanado.Unidad
+                    Me.txtConductor.Text = Me.RecepcionGanado.Conductor
+                    Me.txtPlacas.Text = Me.RecepcionGanado.Placas
+                    Me.txtHorasViaje.Text = Me.RecepcionGanado.HorasViaje.ToString("N2")
 
-            'End Try
+                    Me.cmbProveedor.SelectedValue = Me.RecepcionGanado.IdProveedor
+
+                    Me.CmbLugarCompra.SelectedValue = Me.RecepcionGanado.CveLugarCompra
+                    Me.cmbComprador.SelectedValue = Me.RecepcionGanado.CveCompradorGanado
+                    Me.txtObservaciones.Text = Me.RecepcionGanado.Observaciones
+                    Me.txtCantCabezas.Text = Me.RecepcionGanado.CantCabezas
+                    Me.CmbTipoGanado.SelectedValue = Me.RecepcionGanado.TipoGanado.IdTipoGanado
+                    'Me.dtpFechaPago.Value = Me.RecepcionGanado.FechaPago
+                    Me.txtNoFactura.Text = Me.RecepcionGanado.NumFactura
+                    'txtDiasDeCredito.Text = Me.RecepcionGanado.DiasCredito.ToString()
+
+                    HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
+                    Dim recepGanadoIDe As New ClasesNegocio.RecepcionGanadoClass(RecepcionGanado.LoteRecepcion)
+
+                    Dim Gastos As New ClasesNegocio.GastoTransporteClass
+                    Gastos.Obtener(RecepcionGanado.LoteRecepcion)
+                    'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                    'Try
+
+                    '    Dim cadenaConsulta As String = "select Fol_Recep, Cve_Renglon,Cve_Gasto,Ptj_Iva,Impte_Gasto,Retencion,NoFactura,CodProveedor from DetGasTrans join  usrProdRecepcionGanado on LoteRecepcion= Fol_Recep where LoteRecepcion={0}"
+                    '    cadenaConsulta = String.Format(cadenaConsulta, RecepcionGanado.LoteRecepcion)
+                    '    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                    '    Dim adp As New SqlDataAdapter(sqlcom)
+                    '    Dim tb As New DataTable
+
+                    '    sqlCon.Open()
+                    '    adp.Fill(tb)
+                    '    Me.DgvConceptoGastos.AutoGenerateColumns = False
+                    '    Me.DgvConceptoGastos.DataSource = tb
+                    '    sqlCon.Close()
 
 
-            txtSubTotal.Text = (Gastos.ImporteTotal - Gastos.IVA).ToString("N2")
-            txtIVA.Text = Gastos.IVA.ToString("N2")
-            txtTotal.Text = Gastos.ImporteTotal.ToString("N2")
-            DgvConceptoGastos.DataSource = Gastos.Detalle
-            DgvConceptoGastos.AllowUserToAddRows = False
-            txtImporte.Text = recepGanadoIDe.ImporteComp.ToString("N2")
-            'For Each renglon As ClasesNegocio.GastoTransporteDetalleClass In Gastos.Detalle
+                    'Catch ex As Exception
 
-            'Next
-
-            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
+                    'End Try
 
 
-            CargaPantalla = True
+                    txtSubTotal.Text = (Gastos.ImporteTotal - Gastos.IVA).ToString("N2")
+                    txtIVA.Text = Gastos.IVA.ToString("N2")
+                    txtTotal.Text = Gastos.ImporteTotal.ToString("N2")
+                    DgvConceptoGastos.DataSource = Gastos.Detalle
+                    DgvConceptoGastos.AllowUserToAddRows = False
+                    txtImporte.Text = recepGanadoIDe.ImporteComp.ToString("N2")
+                    'For Each renglon As ClasesNegocio.GastoTransporteDetalleClass In Gastos.Detalle
+
+                    'Next
+
+                    HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
+
+
+                    CargaPantalla = True
         Catch ex As Exception
 #If CONFIG = "Debug" Then
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
@@ -1415,4 +1415,5 @@ Public Class FrmRecepciondeGanado
     Private Sub txtImporte_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtImporte.KeyUp
         calcular()
     End Sub
+
 End Class

@@ -23,11 +23,11 @@ Partial Class FrmRecepciondeGanado
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -36,6 +36,13 @@ Partial Class FrmRecepciondeGanado
         Me.fieldGastos = New System.Windows.Forms.GroupBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.DgvConceptoGastos = New System.Windows.Forms.DataGridView()
+        Me.clmcmbConceptoGasto = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.clmtxtIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmtxtImporteGasto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmRenglon = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Retencion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Factura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.proveedor = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtSubTotal = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -63,9 +70,9 @@ Partial Class FrmRecepciondeGanado
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtLeerPeso = New wclTextBoxSerial.TextBoxSerial()
         Me.chkBascula = New System.Windows.Forms.CheckBox()
-        Me.txtCabezasHembra = New Integralab.Controles.TextBoxMejorado()
+        Me.txtCabezasHembra = New IntegraLab.Controles.TextBoxMejorado()
         Me.txtObservaciones = New System.Windows.Forms.TextBox()
-        Me.txtCabezasMachos = New Integralab.Controles.TextBoxMejorado()
+        Me.txtCabezasMachos = New IntegraLab.Controles.TextBoxMejorado()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.CmbTipoGanado = New System.Windows.Forms.ComboBox()
@@ -94,13 +101,7 @@ Partial Class FrmRecepciondeGanado
         Me.txtLoteRecepcion = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SerialPort = New System.IO.Ports.SerialPort(Me.components)
-        Me.clmcmbConceptoGasto = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.clmtxtIva = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmtxtImporteGasto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmRenglon = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Retencion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Factura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.proveedor = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.lblEstatus = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.fieldGastos.SuspendLayout()
         CType(Me.DgvConceptoGastos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -153,7 +154,8 @@ Partial Class FrmRecepciondeGanado
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.lblEstatus)
         Me.GroupBox1.Controls.Add(Me.txtTotalTotal)
         Me.GroupBox1.Controls.Add(Me.Label26)
         Me.GroupBox1.Controls.Add(Me.fieldGastos)
@@ -261,42 +263,100 @@ Partial Class FrmRecepciondeGanado
         Me.DgvConceptoGastos.AllowUserToDeleteRows = False
         Me.DgvConceptoGastos.AllowUserToResizeRows = False
         Me.DgvConceptoGastos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvConceptoGastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DgvConceptoGastos.BackgroundColor = System.Drawing.SystemColors.ControlLight
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvConceptoGastos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvConceptoGastos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DgvConceptoGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvConceptoGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmcmbConceptoGasto, Me.clmtxtIva, Me.clmtxtImporteGasto, Me.clmRenglon, Me.Retencion, Me.Factura, Me.proveedor})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvConceptoGastos.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvConceptoGastos.DefaultCellStyle = DataGridViewCellStyle9
         Me.DgvConceptoGastos.Location = New System.Drawing.Point(6, 18)
         Me.DgvConceptoGastos.MultiSelect = False
         Me.DgvConceptoGastos.Name = "DgvConceptoGastos"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvConceptoGastos.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvConceptoGastos.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.DgvConceptoGastos.RowHeadersVisible = False
         Me.DgvConceptoGastos.Size = New System.Drawing.Size(643, 115)
         Me.DgvConceptoGastos.TabIndex = 22
+        '
+        'clmcmbConceptoGasto
+        '
+        Me.clmcmbConceptoGasto.DataPropertyName = "IdGasto"
+        Me.clmcmbConceptoGasto.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.clmcmbConceptoGasto.FillWeight = 35.2329!
+        Me.clmcmbConceptoGasto.HeaderText = "Gasto"
+        Me.clmcmbConceptoGasto.Name = "clmcmbConceptoGasto"
+        Me.clmcmbConceptoGasto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'clmtxtIva
+        '
+        Me.clmtxtIva.DataPropertyName = "PorcentajeIva"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N2"
+        Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle7
+        Me.clmtxtIva.FillWeight = 29.87783!
+        Me.clmtxtIva.HeaderText = "Iva %"
+        Me.clmtxtIva.Name = "clmtxtIva"
+        '
+        'clmtxtImporteGasto
+        '
+        Me.clmtxtImporteGasto.DataPropertyName = "ImporteGasto"
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "N2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle8
+        Me.clmtxtImporteGasto.FillWeight = 36.86112!
+        Me.clmtxtImporteGasto.HeaderText = "Importe"
+        Me.clmtxtImporteGasto.Name = "clmtxtImporteGasto"
+        '
+        'clmRenglon
+        '
+        Me.clmRenglon.DataPropertyName = "Renglon"
+        Me.clmRenglon.HeaderText = "Renglon"
+        Me.clmRenglon.Name = "clmRenglon"
+        Me.clmRenglon.Visible = False
+        '
+        'Retencion
+        '
+        Me.Retencion.DataPropertyName = "Retencion"
+        Me.Retencion.FillWeight = 43.30653!
+        Me.Retencion.HeaderText = "Importe Retencion "
+        Me.Retencion.Name = "Retencion"
+        '
+        'Factura
+        '
+        Me.Factura.DataPropertyName = "NoFactura"
+        Me.Factura.FillWeight = 45.80314!
+        Me.Factura.HeaderText = "No. Factura"
+        Me.Factura.Name = "Factura"
+        '
+        'proveedor
+        '
+        Me.proveedor.DataPropertyName = "CodProveedor"
+        Me.proveedor.FillWeight = 45.90142!
+        Me.proveedor.HeaderText = "Proveedor"
+        Me.proveedor.Name = "proveedor"
         '
         'Label24
         '
@@ -577,7 +637,7 @@ Partial Class FrmRecepciondeGanado
         Me.txtCabezasHembra.Size = New System.Drawing.Size(72, 20)
         Me.txtCabezasHembra.TabIndex = 2
         Me.txtCabezasHembra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtCabezasHembra.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtCabezasHembra.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
         Me.txtCabezasHembra.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtCabezasHembra.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -605,7 +665,7 @@ Partial Class FrmRecepciondeGanado
         Me.txtCabezasMachos.Size = New System.Drawing.Size(72, 20)
         Me.txtCabezasMachos.TabIndex = 1
         Me.txtCabezasMachos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtCabezasMachos.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtCabezasMachos.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
         Me.txtCabezasMachos.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
         Me.txtCabezasMachos.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
@@ -814,7 +874,7 @@ Partial Class FrmRecepciondeGanado
         '
         Me.dtpFechaRecepcion.CustomFormat = "dd/MMM/yyyy"
         Me.dtpFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpFechaRecepcion.Location = New System.Drawing.Point(533, 12)
+        Me.dtpFechaRecepcion.Location = New System.Drawing.Point(397, 12)
         Me.dtpFechaRecepcion.Name = "dtpFechaRecepcion"
         Me.dtpFechaRecepcion.Size = New System.Drawing.Size(92, 20)
         Me.dtpFechaRecepcion.TabIndex = 55
@@ -822,7 +882,7 @@ Partial Class FrmRecepciondeGanado
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(420, 16)
+        Me.Label9.Location = New System.Drawing.Point(284, 16)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(110, 13)
         Me.Label9.TabIndex = 54
@@ -846,63 +906,18 @@ Partial Class FrmRecepciondeGanado
         Me.Label1.TabIndex = 31
         Me.Label1.Text = "Folio interno :"
         '
-        'clmcmbConceptoGasto
+        'lblEstatus
         '
-        Me.clmcmbConceptoGasto.DataPropertyName = "IdGasto"
-        Me.clmcmbConceptoGasto.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.clmcmbConceptoGasto.FillWeight = 35.2329!
-        Me.clmcmbConceptoGasto.HeaderText = "Gasto"
-        Me.clmcmbConceptoGasto.Name = "clmcmbConceptoGasto"
-        Me.clmcmbConceptoGasto.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'clmtxtIva
-        '
-        Me.clmtxtIva.DataPropertyName = "PorcentajeIva"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        Me.clmtxtIva.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clmtxtIva.FillWeight = 29.87783!
-        Me.clmtxtIva.HeaderText = "Iva %"
-        Me.clmtxtIva.Name = "clmtxtIva"
-        '
-        'clmtxtImporteGasto
-        '
-        Me.clmtxtImporteGasto.DataPropertyName = "ImporteGasto"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.clmtxtImporteGasto.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clmtxtImporteGasto.FillWeight = 36.86112!
-        Me.clmtxtImporteGasto.HeaderText = "Importe"
-        Me.clmtxtImporteGasto.Name = "clmtxtImporteGasto"
-        '
-        'clmRenglon
-        '
-        Me.clmRenglon.DataPropertyName = "Renglon"
-        Me.clmRenglon.HeaderText = "Renglon"
-        Me.clmRenglon.Name = "clmRenglon"
-        Me.clmRenglon.Visible = False
-        '
-        'Retencion
-        '
-        Me.Retencion.DataPropertyName = "Retencion"
-        Me.Retencion.FillWeight = 43.30653!
-        Me.Retencion.HeaderText = "Importe Retencion "
-        Me.Retencion.Name = "Retencion"
-        '
-        'Factura
-        '
-        Me.Factura.DataPropertyName = "NoFactura"
-        Me.Factura.FillWeight = 45.80314!
-        Me.Factura.HeaderText = "No. Factura"
-        Me.Factura.Name = "Factura"
-        '
-        'proveedor
-        '
-        Me.proveedor.DataPropertyName = "CodProveedor"
-        Me.proveedor.FillWeight = 45.90142!
-        Me.proveedor.HeaderText = "Proveedor"
-        Me.proveedor.Name = "proveedor"
+        Me.lblEstatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblEstatus.BackColor = System.Drawing.Color.Navy
+        Me.lblEstatus.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEstatus.ForeColor = System.Drawing.Color.White
+        Me.lblEstatus.Location = New System.Drawing.Point(552, 16)
+        Me.lblEstatus.Name = "lblEstatus"
+        Me.lblEstatus.Size = New System.Drawing.Size(122, 21)
+        Me.lblEstatus.TabIndex = 107
+        Me.lblEstatus.Text = "ESTATUS"
+        Me.lblEstatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'FrmRecepciondeGanado
         '
@@ -1000,4 +1015,5 @@ Partial Class FrmRecepciondeGanado
     Friend WithEvents Retencion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Factura As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents proveedor As System.Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents lblEstatus As System.Windows.Forms.Label
 End Class
