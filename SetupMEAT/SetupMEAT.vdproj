@@ -2523,7 +2523,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.8"
+        "ProductVersion" = "8:1.1.9"
         "Manufacturer" = "8:IntegraLab"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -3065,7 +3065,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_497A3D826AB04146ABE3B52DF23237FA"
             {
-            "SourcePath" = "8:..\\MEAT\\obj\\x86\\Debug\\Sistema MEAT.exe"
+            "SourcePath" = "8:..\\MEAT\\obj\\x86\\Release\\Sistema MEAT.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_970083A4D7E842BA939A90FB0AD3198B"
