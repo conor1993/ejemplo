@@ -150,6 +150,7 @@ Partial Class frmDistribuciondeGastos
         '
         'Cve_Depto
         '
+        Me.Cve_Depto.DataPropertyName = "IdDepartamento"
         Me.Cve_Depto.HeaderText = "Clave Departamento"
         Me.Cve_Depto.Name = "Cve_Depto"
         Me.Cve_Depto.Visible = False
@@ -170,7 +171,6 @@ Partial Class frmDistribuciondeGastos
         Me.clmPorcentaje.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmPorcentaje.HeaderText = "Porcentaje"
         Me.clmPorcentaje.Name = "clmPorcentaje"
-        Me.clmPorcentaje.ReadOnly = True
         '
         'clmImporteDepartamento
         '
