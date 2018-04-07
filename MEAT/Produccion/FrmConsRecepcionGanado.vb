@@ -11,6 +11,10 @@ Public Class FrmConsRecepcionGanado
         Me.DialogResult = Windows.Forms.DialogResult.OK
         Dim tb As New DataTable
         Dim dr() As DataRow = tb.Select("")
+        Dim roww As DataGridViewRow = DgvRecepcionGanado.CurrentRow
+        Dim string11 As String
+        string11 = CStr(roww.Cells("Estatus").Value)
+        FrmRecepciondeGanado.lblEstatus.Text = string11
     End Sub
 
     Private Sub FrmConsRecepcionGanado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -20,6 +24,7 @@ Public Class FrmConsRecepcionGanado
     Private Sub BtnBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnBuscar.Click
         Recepciones.Obtener(Me.txtIntroductor.Text, Me.DtpFechaInicio.Value, Me.DtpFechaFin.Value.AddDays(1))
         Me.DgvRecepcionGanado.DataSource = Recepciones
+
     End Sub
 
     Private Sub txtIntroductor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtIntroductor.TextChanged
