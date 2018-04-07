@@ -61,7 +61,6 @@ Partial Class frmRptDepartamentosDos
         '
         Me.cmbMeses.DisplayMember = "Mes"
         Me.cmbMeses.FormattingEnabled = True
-        Me.cmbMeses.Items.AddRange(New Object() {"TODOS", "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"})
         Me.cmbMeses.Location = New System.Drawing.Point(143, 60)
         Me.cmbMeses.Name = "cmbMeses"
         Me.cmbMeses.Size = New System.Drawing.Size(203, 21)
@@ -131,6 +130,7 @@ Partial Class frmRptDepartamentosDos
         'rdbSimplificado
         '
         Me.rdbSimplificado.AutoSize = True
+        Me.rdbSimplificado.Checked = True
         Me.rdbSimplificado.Location = New System.Drawing.Point(20, 29)
         Me.rdbSimplificado.Name = "rdbSimplificado"
         Me.rdbSimplificado.Size = New System.Drawing.Size(81, 17)
@@ -154,14 +154,14 @@ Partial Class frmRptDepartamentosDos
         Me.mtb.HabilitarNuevo = True
         Me.mtb.HabilitarSalir = True
         Me.mtb.ImageButtonSize = MEAToolBar.MEAToolBar.ImageButtonSizeEnum.de32
-        Me.mtb.Location = New System.Drawing.Point(1, -1)
+        Me.mtb.Location = New System.Drawing.Point(1, -54)
         Me.mtb.MostrarBorrar = False
         Me.mtb.MostrarBuscar = False
         Me.mtb.MostrarCancelar = False
         Me.mtb.MostrarEditar = False
         Me.mtb.MostrarGuardar = False
         Me.mtb.MostrarImprimir = True
-        Me.mtb.MostrarLimpiar = True
+        Me.mtb.MostrarLimpiar = False
         Me.mtb.MostrarNuevo = False
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
