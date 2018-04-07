@@ -170,7 +170,6 @@ Partial Class frmDistribuciondeGastos
         Me.clmPorcentaje.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmPorcentaje.HeaderText = "Porcentaje"
         Me.clmPorcentaje.Name = "clmPorcentaje"
-        Me.clmPorcentaje.ReadOnly = True
         '
         'clmImporteDepartamento
         '
