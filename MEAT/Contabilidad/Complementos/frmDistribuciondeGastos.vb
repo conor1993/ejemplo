@@ -6,14 +6,14 @@ Imports System.Data.SqlClient
 
 
 Public Class frmDistribuciondeGastos
-    Public Shared valor As Integer
+    Public Shared valor As Decimal
     Public Shared idpoliza As Integer
     Public Shared idsucursal As Integer
     Public Shared idmetodoprorrateo As Integer
     Public Shared idcuentacontable As Integer
     Public Shared importe As Decimal
     Public Shared ptjimporte As Decimal
-    Public Shared conteo As Integer
+    Public Shared conteo As Decimal
 #Region "propiedades publicas"
     Public Property valor1 As Decimal
         Get
