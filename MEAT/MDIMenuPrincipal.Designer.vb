@@ -296,6 +296,7 @@ Partial Class MDIMenuPrincipal
         Me.MayorGeneralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BalanzaDeComprobaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RelacionesAnalitícasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DepartartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BancosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovimientosDiariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegistroDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -437,7 +438,10 @@ Partial Class MDIMenuPrincipal
         Me.tmHora = New System.Windows.Forms.Timer(Me.components)
         Me.CachedRptVentasPorProducto1 = New MEAT.CachedRptVentasPorProducto()
         Me.CachedRptVentasPorProducto2 = New MEAT.CachedRptVentasPorProducto()
-        Me.DepartartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CachedRptVentasPorProducto3 = New MEAT.CachedRptVentasPorProducto()
+        Me.CachedRptVentasPorProducto4 = New MEAT.CachedRptVentasPorProducto()
+        Me.CachedRptVentasPorProducto5 = New MEAT.CachedRptVentasPorProducto()
+        Me.reportDocument1 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -2111,6 +2115,12 @@ Partial Class MDIMenuPrincipal
         Me.RelacionesAnalitícasToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.RelacionesAnalitícasToolStripMenuItem.Text = "Relaciones Analitícas"
         '
+        'DepartartamentosToolStripMenuItem
+        '
+        Me.DepartartamentosToolStripMenuItem.Name = "DepartartamentosToolStripMenuItem"
+        Me.DepartartamentosToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.DepartartamentosToolStripMenuItem.Text = "Departartamentos"
+        '
         'BancosToolStripMenuItem1
         '
         Me.BancosToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MovimientosDiariosToolStripMenuItem, Me.DepositosToolStripMenuItem, Me.CargosDiversosToolStripMenuItem, Me.AbonosDiversosToolStripMenuItem, Me.TraspasosToolStripMenuItem, Me.FrmConciliacionBancariaToolStripMenuItem, Me.ConsultaSaldosToolStripMenuItem, Me.CapturaDeMovimientosDeEstadoDeCuentaToolStripMenuItem, Me.ToolStripSeparator7, Me.ReportesToolStripMenuItem7})
@@ -2968,12 +2978,6 @@ Partial Class MDIMenuPrincipal
         Me.tmHora.Enabled = True
         Me.tmHora.Interval = 1000
         '
-        'DepartartamentosToolStripMenuItem
-        '
-        Me.DepartartamentosToolStripMenuItem.Name = "DepartartamentosToolStripMenuItem"
-        Me.DepartartamentosToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-        Me.DepartartamentosToolStripMenuItem.Text = "Departartamentos"
-        '
         'MDIMenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3415,4 +3419,8 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents ReporteDeDepartamentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CachedRptVentasPorProducto2 As MEAT.CachedRptVentasPorProducto
     Friend WithEvents DepartartamentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CachedRptVentasPorProducto3 As MEAT.CachedRptVentasPorProducto
+    Friend WithEvents CachedRptVentasPorProducto4 As MEAT.CachedRptVentasPorProducto
+    Friend WithEvents CachedRptVentasPorProducto5 As MEAT.CachedRptVentasPorProducto
+    Friend WithEvents reportDocument1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
 End Class

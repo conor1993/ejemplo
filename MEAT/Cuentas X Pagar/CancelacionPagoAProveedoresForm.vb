@@ -45,6 +45,7 @@ Public Class CancelacionPagoAProveedoresForm
             Me.CmbProveedor.ValueMember = "codigo"
             Me.DgvPagos.DataSource = Cheques
             Me.DgvFacturas.DataSource = Pagos
+            DtpFecha.Enabled = True
             Limpiar()
             proveedores.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS)
             Pagos = New CN.PagosProveedoresColeccionClass
@@ -330,6 +331,7 @@ Public Class CancelacionPagoAProveedoresForm
             Cheques.Fill(0, Nothing, True, HC.VwpagosaProveedoresFields.IdProveedor = Me.CmbProveedor.SelectedValue And HC.VwpagosaProveedoresFields.EmpresaId = Controlador.Sesion.Empndx)
             Me.DgvPagos.DataSource = Cheques
         End If
+        DtpFecha.Enabled = True
     End Sub
 
     Private Sub DgvPagos_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvPagos.CellClick
