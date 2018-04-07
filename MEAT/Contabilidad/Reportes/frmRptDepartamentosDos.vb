@@ -8,7 +8,7 @@ Public Class frmRptDepartamentosDos
         Try
             Dim datos As New DataSet
             Dim pre As New ClasesNegocio.PreVisualizarForm
-            Dim query = String.Format("EXEC rptDepartamentosNew 1, {0}, {1}, {2}, {3}, {4}", If(String.IsNullOrEmpty(cmbDepartamento.SelectedValue), -1, cmbDepartamento.SelectedValue), cmbMeses.SelectedValue, cmbAnio.SelectedValue, CByte(chbComparativo.Checked), CByte(rdbSimplificado.Checked))
+            Dim query = String.Format("EXEC rptDepartamentosNew 1, {0}, {1}, {2}, {3}, {4}", If(String.IsNullOrEmpty(cmbDepartamento.SelectedValue), -1, cmbDepartamento.SelectedValue), cmbMeses.SelectedValue, cmbAnio.SelectedValue, Convert.ToByte(chbComparativo.Checked), Convert.ToByte(rdbSimplificado.Checked))
 
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 Dim adapter As New SqlDataAdapter()
