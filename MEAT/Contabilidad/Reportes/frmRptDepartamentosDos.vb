@@ -41,6 +41,10 @@ Public Class frmRptDepartamentosDos
                     pre.ShowDialog()
                 End If
             Else
+                If (If(String.IsNullOrEmpty(cmbDepartamento.SelectedValue), -1, cmbDepartamento.SelectedValue = -1)) Then
+                    MsgBox("Debe seleccionar un Departamento cuando el reporte no es Comparativo", MsgBoxStyle.Information, " Seleccione un Departamento")
+                    Return
+                End If
                 If rdbSimplificado.Checked Then
                     Dim Reporte As New CN.rptDepartamentoNoComparativoSimple
                     Reporte.SetDataSource(datos.Tables(0))
