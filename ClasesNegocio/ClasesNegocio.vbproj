@@ -2305,16 +2305,16 @@
     <Compile Include="ClasesGenerales\MarcaClass.vb" />
     <Compile Include="ClasesGenerales\MesesCollectionClass.vb" />
     <Compile Include="ClasesGenerales\Metodos.vb" />
-    <Compile Include="Reportes\rptDepartamentoComparativo.vb">
+    <Compile Include="Reportes\rptDepartamentoComparativoDetalles.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptDepartamentoComparativo.rpt</DependentUpon>
+      <DependentUpon>rptDepartamentoComparativoDetalles.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\rptDepartamentoComparativoMes.vb">
+    <Compile Include="Reportes\rptDepartamentoComparativoSimple.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptDepartamentoComparativoMes.rpt</DependentUpon>
+      <DependentUpon>rptDepartamentoComparativoSimple.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\dsDepartamentosrpt2.Designer.vb">
@@ -3590,13 +3590,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptFlujos.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\rptDepartamentoComparativo.rpt">
+    <EmbeddedResource Include="Reportes\rptDepartamentoComparativoDetalles.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptDepartamentoComparativo.vb</LastGenOutput>
+      <LastGenOutput>rptDepartamentoComparativoDetalles.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\rptDepartamentoComparativoMes.rpt">
+    <EmbeddedResource Include="Reportes\rptDepartamentoComparativoSimple.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptDepartamentoComparativoMes.vb</LastGenOutput>
+      <LastGenOutput>rptDepartamentoComparativoSimple.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptDepartamentoNoComparativoDetalles.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

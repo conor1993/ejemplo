@@ -18,7 +18,7 @@ Public Class frmRptDepartamentosDos
 
             If chbComparativo.Checked Then
                 If rdbSimplificado.Checked Then
-                    Dim Reporte As New CN.rptDepartamentoComparativoMes
+                    Dim Reporte As New CN.rptDepartamentoComparativoSimple
                     Reporte.SetDataSource(datos.Tables(0))
                     Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
                     Reporte.SetParameterValue("Departamento", cmbDepartamento.Text)
@@ -29,7 +29,7 @@ Public Class frmRptDepartamentosDos
                     pre.Reporte = Reporte
                     pre.ShowDialog()
                 Else
-                    Dim Reporte As New CN.rptDepartamentoComparativo
+                    Dim Reporte As New CN.rptDepartamentoComparativoDetalles
                     Reporte.SetDataSource(datos.Tables(0))
                     Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
                     Reporte.SetParameterValue("Departamento", cmbDepartamento.Text)
@@ -179,9 +179,11 @@ Public Class frmRptDepartamentosDos
             'cmbDepartamento.Enabled = True
             Me.llenarDepartamentos(True)
 
+
         Else
             cmbMeses.Enabled = True
             Me.llenarDepartamentos(False)
         End If
+        cmbDepartamento.SelectedIndex = 0
     End Sub
 End Class
