@@ -577,7 +577,7 @@ Public Class FrmAperturaLoteCorte2
                 " WHERE PrEstatus = 1 " &
                 " ORDER BY PrRazSocial "
 
-            query = "SELECT        IdProducto, Descripcion, Corte" &
+            query = "SELECT IdProducto, Descripcion, Corte" &
             " FROM MSCCatProductos" &
             " WHERE (Corte = 1)"
 
