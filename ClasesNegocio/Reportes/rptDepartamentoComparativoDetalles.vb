@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class rptDepartamentoComparativo
+Public Class rptDepartamentoComparativoDetalles
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class rptDepartamentoComparativo
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "rptDepartamentoComparativo.rpt"
+            Return "rptDepartamentoComparativoDetalles.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class rptDepartamentoComparativo
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "ClasesNegocio.rptDepartamentoComparativo.rpt"
+            Return "ClasesNegocio.rptDepartamentoComparativoDetalles.rpt"
         End Get
         Set
             'Do nothing
@@ -158,7 +158,7 @@ Public Class rptDepartamentoComparativo
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedrptDepartamentoComparativo
+Public Class CachedrptDepartamentoComparativoDetalles
     Inherits Component
     Implements ICachedReport
     
@@ -200,7 +200,7 @@ Public Class CachedrptDepartamentoComparativo
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As rptDepartamentoComparativo = New rptDepartamentoComparativo()
+        Dim rpt As rptDepartamentoComparativoDetalles = New rptDepartamentoComparativoDetalles()
         rpt.Site = Me.Site
         Return rpt
     End Function

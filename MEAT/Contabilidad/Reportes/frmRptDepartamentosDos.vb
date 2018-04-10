@@ -8,7 +8,7 @@ Public Class frmRptDepartamentosDos
         Try
             Dim datos As New DataSet
             Dim pre As New ClasesNegocio.PreVisualizarForm
-            Dim query = String.Format("EXEC rptDepartamentosNew 1, {0}, {1}, {2}, {3}, {4}", If(String.IsNullOrEmpty(cmbDepartamento.SelectedValue), -1, cmbDepartamento.SelectedValue), cmbMeses.SelectedValue, cmbAnio.SelectedValue, CByte(chbComparativo.Checked), CByte(rdbSimplificado.Checked))
+            Dim query = String.Format("EXEC rptDepartamentosNew 1, {0}, {1}, {2}, {3}, {4}", If(String.IsNullOrEmpty(cmbDepartamento.SelectedValue), -1, cmbDepartamento.SelectedValue), cmbMeses.SelectedValue, cmbAnio.SelectedValue, Convert.ToByte(chbComparativo.Checked), Convert.ToByte(rdbSimplificado.Checked))
 
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 Dim adapter As New SqlDataAdapter()
@@ -18,7 +18,7 @@ Public Class frmRptDepartamentosDos
 
             If chbComparativo.Checked Then
                 If rdbSimplificado.Checked Then
-                    Dim Reporte As New CN.rptDepartamentoComparativoMes
+                    Dim Reporte As New CN.rptDepartamentoComparativoSimple
                     Reporte.SetDataSource(datos.Tables(0))
                     Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
                     Reporte.SetParameterValue("Departamento", cmbDepartamento.Text)
@@ -29,7 +29,7 @@ Public Class frmRptDepartamentosDos
                     pre.Reporte = Reporte
                     pre.ShowDialog()
                 Else
-                    Dim Reporte As New CN.rptDepartamentoComparativo
+                    Dim Reporte As New CN.rptDepartamentoComparativoDetalles
                     Reporte.SetDataSource(datos.Tables(0))
                     Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
                     Reporte.SetParameterValue("Departamento", cmbDepartamento.Text)
@@ -41,6 +41,10 @@ Public Class frmRptDepartamentosDos
                     pre.ShowDialog()
                 End If
             Else
+                If (If(String.IsNullOrEmpty(cmbDepartamento.SelectedValue), -1, cmbDepartamento.SelectedValue = -1)) Then
+                    MsgBox("Debe seleccionar un Departamento cuando el reporte no es Comparativo", MsgBoxStyle.Information, " Seleccione un Departamento")
+                    Return
+                End If
                 If rdbSimplificado.Checked Then
                     Dim Reporte As New CN.rptDepartamentoNoComparativoSimple
                     Reporte.SetDataSource(datos.Tables(0))
@@ -175,9 +179,11 @@ Public Class frmRptDepartamentosDos
             'cmbDepartamento.Enabled = True
             Me.llenarDepartamentos(True)
 
+
         Else
             cmbMeses.Enabled = True
             Me.llenarDepartamentos(False)
         End If
+        cmbDepartamento.SelectedIndex = 0
     End Sub
 End Class
