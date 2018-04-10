@@ -1510,7 +1510,6 @@ Public Class MDIMenuPrincipal
 
     Private Sub Conexiontsmi_Click(sender As System.Object, e As System.EventArgs) Handles Conexiontsmi.Click
         Abrir(New IntegraLab.FactDigital.Configuracion.frmConfiguracionConexion())
-
     End Sub
 
     Private Sub ParametrosYSellostsmi_Click(sender As System.Object, e As System.EventArgs) Handles ParametrosYSellostsmi.Click

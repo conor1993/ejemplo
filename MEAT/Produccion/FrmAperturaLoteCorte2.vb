@@ -518,15 +518,12 @@ Public Class FrmAperturaLoteCorte2
             Dim productos As New ClasesNegocio.ProductosCollectionsClass
             Dim productosDet As New ClasesNegocio.ProductosCollectionsClass
 
-
-
             productos.Obtener()
             productosDet.Obtener()
             Me.CmbTipoGanado.DisplayMember = "Descripcion"
             Me.CmbTipoGanado.ValueMember = "IdProducto"
             Me.CmbTipoGanado.DataSource = productos
             Me.CmbTipoGanado.SelectedIndex = -1
-
 
 
             lugares.Obtener(CondicionEnum.ACTIVOS)
@@ -572,7 +569,6 @@ Public Class FrmAperturaLoteCorte2
                 adp.Fill(tb)
                 cmbProveedor.DataSource = tb
 
-
                 sqlCon.Close()
             End Using
 
@@ -581,21 +577,34 @@ Public Class FrmAperturaLoteCorte2
                 " WHERE PrEstatus = 1 " &
                 " ORDER BY PrRazSocial "
 
+            query = "SELECT        IdProducto, Descripcion, Corte" &
+            " FROM MSCCatProductos" &
+            " WHERE (Corte = 1)"
+
+            Me.clmProductoDet.DisplayMember = "Descripcion"
+            Me.clmProductoDet.ValueMember = "IdProducto"
+
             Using sqlcom As New SqlCommand(query, sqlCon)
                 tb = New DataTable
                 Dim adp As New SqlDataAdapter(sqlcom)
                 sqlCon.Open()
                 adp.Fill(tb)
-                clmproovedor.DataSource = tb
-
+                clmProductoDet.DataSource = tb
 
                 sqlCon.Close()
             End Using
 
-            Me.clmProductoDet.DisplayMember = "Descripcion"
-            Me.clmProductoDet.ValueMember = "IdProducto"
-            Me.clmProductoDet.DataSource = productosDet
-            'Me.clmProductoDet.SelectedIndex = -1
+            'Me.clmProductoDet.DisplayMember = "Descripcion"
+            'Me.clmProductoDet.ValueMember = "IdProducto"
+            'Me.clmProductoDet.DataSource = productosDet
+            ''Me.clmProductoDet.SelectedIndex = -1
+
+
+
+
+
+
+
        
 
             Return True
