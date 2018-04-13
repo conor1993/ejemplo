@@ -2331,6 +2331,12 @@
       <DependentUpon>rptDepartamentoNoComparativoDetalles.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\rptDepartamentoNoComparativoDetallesCrossT.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDepartamentoNoComparativoDetallesCrossT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\rptDepartamentoNoComparativoSimple.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3601,6 +3607,10 @@
     <EmbeddedResource Include="Reportes\rptDepartamentoNoComparativoDetalles.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDepartamentoNoComparativoDetalles.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptDepartamentoNoComparativoDetallesCrossT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDepartamentoNoComparativoDetallesCrossT.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptDepartamentoNoComparativoSimple.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

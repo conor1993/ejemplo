@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class rptDepartamentoNoComparativoDetalles
+Public Class rptDepartamentoNoComparativoDetallesCrossT
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class rptDepartamentoNoComparativoDetalles
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "rptDepartamentoNoComparativoDetalles.rpt"
+            Return "rptDepartamentoNoComparativoDetallesCrossT.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class rptDepartamentoNoComparativoDetalles
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "ClasesNegocio.rptDepartamentoNoComparativoDetalles.rpt"
+            Return "ClasesNegocio.rptDepartamentoNoComparativoDetallesCrossT.rpt"
         End Get
         Set
             'Do nothing
@@ -139,18 +139,10 @@ Public Class rptDepartamentoNoComparativoDetalles
             Return Me.DataDefinition.ParameterFields(3)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_Territorio() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(4)
-        End Get
-    End Property
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedrptDepartamentoNoComparativoDetalles
+Public Class CachedrptDepartamentoNoComparativoDetallesCrossT
     Inherits Component
     Implements ICachedReport
     
@@ -192,7 +184,7 @@ Public Class CachedrptDepartamentoNoComparativoDetalles
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As rptDepartamentoNoComparativoDetalles = New rptDepartamentoNoComparativoDetalles()
+        Dim rpt As rptDepartamentoNoComparativoDetallesCrossT = New rptDepartamentoNoComparativoDetallesCrossT()
         rpt.Site = Me.Site
         Return rpt
     End Function
