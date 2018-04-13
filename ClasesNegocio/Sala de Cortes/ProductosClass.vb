@@ -512,7 +512,7 @@ Public Class ProductosCollectionsClass
     'Dim Coleccion As New CC.MsccatProductosCollection
     Inherits ColleccionBase(Of EC.MsccatProductosEntity, CC.MsccatProductosCollection, ProductosClass)
 
-    Public Overloads Function Obtener(ByVal Estatus As CondicionEstatusEnum, Optional ByVal NoCortes As Boolean = False, Optional ByVal PreCorte As Boolean = False) As Integer
+    Public Overloads Function Obtener(ByVal Estatus As CondicionEstatusEnum, Optional ByVal NoCortes As Boolean = True, Optional ByVal PreCorte As Boolean = True) As Integer
         Try
             Dim Filtro As New OC.PredicateExpression
 
@@ -520,12 +520,12 @@ Public Class ProductosCollectionsClass
                 Filtro.Add(HC.MsccatProductosFields.Estatus = Estatus)
             End If
 
-            If NoCortes = True Then
+            If NoCortes Then
                 Filtro.Add(HC.MsccatProductosFields.Corte = False)
             End If
 
             If PreCorte Then
-                Filtro.Add(HC.MsccatProductosFields.PreCorte = True)
+                Filtro.Add(HC.MsccatProductosFields.PreCorte = False)
             End If
 
             coleccion.GetMulti(Filtro, 0, New OC.SortExpression(New OC.SortClause(HC.MsccatProductosFields.Descripcion, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Ascending)))

@@ -1,8 +1,8 @@
 Imports ClasesNegocio
-Imports HC = Integralab.ORM.HelperClasses
-Imports EC = Integralab.ORM.EntityClasses
-Imports CC = Integralab.ORM.CollectionClasses
-Imports TC = Integralab.ORM.TypedViewClasses
+Imports HC = IntegraLab.ORM.HelperClasses
+Imports EC = IntegraLab.ORM.EntityClasses
+Imports CC = IntegraLab.ORM.CollectionClasses
+Imports TC = IntegraLab.ORM.TypedViewClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports System.Data.SqlClient
 
@@ -159,7 +159,7 @@ Public Class FrmAperturaLoteCorte2
                     Return 0
                 End Try
                 'Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                
+
                 Dim Gastos As New ClasesNegocio.GastoTransporteClass(LoteCorte.LoteCorte)
                 If Not Gastos.Folio.Equals("") Then
                     If DgvConceptoGastos.Rows.Count > 1 Then
@@ -503,7 +503,7 @@ Public Class FrmAperturaLoteCorte2
         Else
             gridProductos.DataSource = tbProductos
         End If
-        
+
         Me.Limpiar()
         LlenaComboBox()
         'tabControl.TabPages.Remove(tbDatosPago)
@@ -516,12 +516,12 @@ Public Class FrmAperturaLoteCorte2
             Dim CompradoresGanadoC As New ClasesNegocio.CompradorGanadoCollectionClass
             Dim ConceptosGasto As New ClasesNegocio.ConceptoGastosTransporteColeccionClass
             Dim productos As New ClasesNegocio.ProductosCollectionsClass
-            Dim productosDet As New ClasesNegocio.ProductosCollectionsClass
+            'Dim productosDet As New ClasesNegocio.ProductosCollectionsClass
 
 
 
             productos.Obtener()
-            productosDet.Obtener()
+            'productosDet.Obtener()
             Me.CmbTipoGanado.DisplayMember = "Descripcion"
             Me.CmbTipoGanado.ValueMember = "IdProducto"
             Me.CmbTipoGanado.DataSource = productos
@@ -594,9 +594,25 @@ Public Class FrmAperturaLoteCorte2
 
             Me.clmProductoDet.DisplayMember = "Descripcion"
             Me.clmProductoDet.ValueMember = "IdProducto"
-            Me.clmProductoDet.DataSource = productosDet
             'Me.clmProductoDet.SelectedIndex = -1
-       
+
+
+            query = "SELECT IdProducto, Descripcion, Corte" &
+            " FROM MSCCatProductos" &
+            " WHERE (Corte = 1)"
+
+            Me.clmProductoDet.DisplayMember = "Descripcion"
+            Me.clmProductoDet.ValueMember = "IdProducto"
+
+            Using sqlcom As New SqlCommand(query, sqlCon)
+                tb = New DataTable
+                Dim adp As New SqlDataAdapter(sqlcom)
+                sqlCon.Open()
+                adp.Fill(tb)
+                clmProductoDet.DataSource = tb
+
+                sqlCon.Close()
+            End Using
 
             Return True
         Catch ex As Exception
@@ -919,7 +935,7 @@ Public Class FrmAperturaLoteCorte2
         Catch ex As Exception
 
         End Try
-        
+
         'End Verificar producto
 
 
