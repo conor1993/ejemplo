@@ -57,7 +57,6 @@ Public Class frmRptDepartamentosDos
                     pre.Reporte = Reporte
                     pre.ShowDialog()
                 Else
-                    Console.WriteLine(query)
                     Dim Reporte As New CN.rptDepartamentoNoComparativoDetalles
                     Reporte.SetDataSource(datos.Tables(0))
                     Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
