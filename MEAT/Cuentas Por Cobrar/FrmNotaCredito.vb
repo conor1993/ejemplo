@@ -680,8 +680,9 @@ Public Class FrmNotaCredito
             'Return False
             'DomFiscalCte.Obtener(CmbCliente.SelectedValue, )
             'DomFiscalCte = DirectCast(ultcmbDomiciliosFiscales.SelectedRow.cell, DomicilioClienteClass)
-            FacturaCabecero = New FacturasClass
+
             If Estatus = "V" Then
+                FacturaCabecero = New FacturasClass
                 Dim Folio As New FoliosClass 'variable para la clase de folio
                 'Dim FacturasDetalleCol As New CN.FacturasDetalleCollectionClass ' para crear la coleccion de detalle
                 'Dim FacturasDet As New EC.DetFacturasEntity 'para agregar al detalle
@@ -1306,8 +1307,7 @@ Public Class FrmNotaCredito
             TransG = New Gentle.Framework.Transaction(IntegraLab.FactDigital.ControladorFactDigital.Conexion)
 
             ControlFD.CancelarCFDI(txtUUID.Text, DateTime.Now, TransG)
-
-
+           
 
 
             'generar poliza de cancelacion
@@ -2366,4 +2366,5 @@ Public Class FrmNotaCredito
     Private Sub btnRelacion_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnRelacion.MouseClick
         Me.buscarCFDI()
     End Sub
+
 End Class
