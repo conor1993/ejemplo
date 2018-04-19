@@ -1,0 +1,506 @@
+[33mcommit 3a38ca29d61904ca1a2cfb79472a5a3dc62aa56a[m[33m ([m[1;36mHEAD -> [m[1;32mdesarrollo[m[33m, [m[1;31morigin/desarrollo[m[33m)[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Fri Apr 13 15:43:21 2018 -0600
+
+    Solucionado error de reporte departamentos
+
+[33mcommit 719e930c1860cb269d8c142d7c5d0ec9df724b27[m
+Merge: e5d1d36e 77ede5c3
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Fri Apr 13 11:59:51 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit e5d1d36e2eea5d1df56cade187c5727a8cb88371[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Fri Apr 13 11:59:40 2018 -0600
+
+    Cambios a reportes de Departamento
+
+[33mcommit 77ede5c3f91aa6c78b1e8ef888895ca1f907cd4f[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Wed Apr 11 13:34:59 2018 -0600
+
+    registro de productos tercero
+
+[33mcommit f7e6b574bfd2c8a768d4163d24f7984150f379b4[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Tue Apr 10 17:49:28 2018 -0600
+
+    combobox cortes
+
+[33mcommit a3bcffdb12473aae4b9bd09884f116086c764b0f[m
+Merge: b73d77ee eab1a0a4
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Tue Apr 10 16:43:09 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit b73d77eedd9f5b86eee86a3cd7880d4551197d45[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Tue Apr 10 16:43:02 2018 -0600
+
+    FrmAperturaLoteCorte2 datagridcombobox cortes
+
+[33mcommit eab1a0a4813a2128a14e106a25824c4b5c86ddbb[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Tue Apr 10 15:06:50 2018 -0600
+
+    Se corrige nombre de catalogo en menu principal
+
+[33mcommit 9018197f57c520ccb9762d6d4551329d7649d690[m
+Merge: 058b6c0a 44308a2b
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Tue Apr 10 10:02:33 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit 058b6c0acf1339fe8a80f01fccc2edb2c38b72cb[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Tue Apr 10 10:02:28 2018 -0600
+
+    datagrid
+
+[33mcommit 44308a2b144c6c8c668506681b9b4198354a418b[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Apr 10 09:39:34 2018 -0600
+
+    version
+
+[33mcommit 5e89bd5a3d987d43d4292f0ddf6739f27d2021ce[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Tue Apr 10 09:11:03 2018 -0600
+
+    datagrid
+
+[33mcommit 30faa8d87e8d61f18c16dc7f51b96d2c7b650ae1[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Mon Apr 9 18:10:23 2018 -0600
+
+    Cambio a formato de numeros en reporte de departamento
+
+[33mcommit 81734276563b0be5061e707315d17b97dd314b47[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Mon Apr 9 17:59:23 2018 -0600
+
+    Cambios de fuente a los reportes de departamento
+
+[33mcommit 2ad4f2e17551998c4f72a4291ae856d9306c7662[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Mon Apr 9 13:30:04 2018 -0600
+
+    Se corrigen errores pequenios en los reportes de Departamento
+
+[33mcommit 3761a02514c1cc7d20c26b6301459af86117660e[m
+Merge: bc9b178e 9fff62e6
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Sat Apr 7 12:03:19 2018 -0600
+
+    Se resuelve conflicto
+
+[33mcommit bc9b178ee37f739cf5a5980a01dbf72aad2f6c0b[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Sat Apr 7 12:02:23 2018 -0600
+
+    Se corrige error al soltar reporte de departamentos
+
+[33mcommit 9fff62e60c3051635ac00587613c055e25ba4eb0[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Sat Apr 7 10:40:59 2018 -0600
+
+     version  juan 07/04/2018
+
+[33mcommit a9c37abb5268aa145b923cae6b18cf78db8c55d4[m
+Merge: 9976fe0b cdf5a0ff
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Sat Apr 7 10:35:33 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit 9976fe0b2992b76f5dff3de48b637aacb2519367[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Sat Apr 7 10:35:28 2018 -0600
+
+     07/04/2018 cambio en prorrateo version ya guardando el detalle
+
+[33mcommit cdf5a0ff4a21afb383bbc671028ad775a14a8ff9[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Sat Apr 7 10:02:16 2018 -0600
+
+    reporte de poliza pasivo
+
+[33mcommit 566e76a8fc7aa3606e006903e07fdfe9e993d552[m
+Merge: 9d7f23db 91eb9be9
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Sat Apr 7 09:13:18 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit 9d7f23db7f8ab7e71b3f704808e82e7b16831812[m
+Merge: e138b20c 7b470e98
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Sat Apr 7 09:12:12 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit 91eb9be9c320c97b6fb54ece259c517bedeef049[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Sat Apr 7 09:11:43 2018 -0600
+
+     correccion 07/04/2018
+
+[33mcommit e11cf8df3e86e635e5eec9720f6c85feb51afee0[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Sat Apr 7 08:21:33 2018 -0600
+
+     cambios 07/04/2018
+
+[33mcommit 7b470e9887f8e6dd956ad12dd981bb6c9dfdeaa8[m
+Merge: d4ab74bb c5ffa9ee
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Fri Apr 6 19:33:52 2018 -0600
+
+     a
+
+[33mcommit d4ab74bb743620fe99cba23be91d8527d6f98ab6[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Fri Apr 6 19:32:30 2018 -0600
+
+    Faltaron cambios en la anterior
+
+[33mcommit cb07d56d6059c269066ecdd6c7e364f69162dc72[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Fri Apr 6 19:31:31 2018 -0600
+
+    Agregados Reportes de departamentos
+
+[33mcommit e138b20c1cc9280c7bcfa026dbf3a971f51d64ea[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Fri Apr 6 17:28:13 2018 -0600
+
+    Label Estatus pantalla Rececpcion de Animales a Sacrificio
+
+[33mcommit c5ffa9ee07ca226e40f7f7561e45969454f1db1b[m
+Merge: 4052af70 3e257018
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Fri Apr 6 15:39:52 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit 4052af70f46484532434f8137258803468aa8635[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Fri Apr 6 15:39:44 2018 -0600
+
+    Informe de Polizas
+
+[33mcommit 121bcc672f3abde4ee88eca45a2d695a2dae11f0[m
+Author: Rodrigo Burgos <rodrigob@integra-lab.com.mx>
+Date:   Fri Apr 6 15:39:28 2018 -0600
+
+    Informe de Polizas
+
+[33mcommit 3e257018811743f716a96e076200c5dc8121c2c7[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Fri Apr 6 14:14:38 2018 -0600
+
+    Cambios a Reporte de departamento Comparativo
+
+[33mcommit 2dc2efb9b98d0dab3620217ae9d033be1471d109[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Thu Apr 5 18:45:58 2018 -0600
+
+    Cambios a Reporte de Departamento comparativo simple
+
+[33mcommit 05be2dd728b2b59d3962e6f5d9c2549906cb848d[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Thu Apr 5 16:41:50 2018 -0600
+
+    Se termina de disenio de reporte de departamentos
+
+[33mcommit a0324ec079d2c77e991e833140e01522997c2999[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Thu Apr 5 16:30:33 2018 -0600
+
+    Reporte de departamentos
+
+[33mcommit 5e316f0cd63ef0df7cfd13677165038d412c7228[m
+Merge: f8894d37 737ee9c0
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Thu Apr 5 16:11:34 2018 -0600
+
+    Se resuelve conflico con brandom
+
+[33mcommit f8894d3724f5f895ddf587ceea62f96dafb3886a[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Thu Apr 5 16:10:35 2018 -0600
+
+    Se agrega forma a de reporte de departamentos
+
+[33mcommit 737ee9c098ec7581bb3f3c8e30ded3d510f87475[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Thu Apr 5 15:35:27 2018 -0600
+
+     juan cambios 05/04/2018
+
+[33mcommit 6b05e720345bf2fb90971f8b29928bec4e69bc3b[m
+Author: manueli <manueli@integra-lab.com.mx>
+Date:   Thu Apr 5 13:38:23 2018 -0600
+
+    Cambio datagrid salidas
+
+[33mcommit 0f6368c951404635f2863c0d6dd09a9e68a01c73[m
+Merge: da049aae d434c714
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Thu Apr 5 11:29:02 2018 -0600
+
+     cambios de rodrigo distribucion de gastos
+
+[33mcommit da049aaeacba4ef3916bf5a2416269b1b3fa0502[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Thu Apr 5 11:26:37 2018 -0600
+
+     05-04-2018   version
+
+[33mcommit d434c714bd1521ddb6a370bde79490495a270b08[m
+Author: Brandon <brandont@integra-lab.com.mx>
+Date:   Wed Apr 4 18:08:45 2018 -0600
+
+    Reporte de Departamento Comparativo Simplificado Agregado
+
+[33mcommit 3a303fbf76c2454d18f6ef3a3f41bd118110a580[m
+Author: manueli <manueli@integra-lab.com.mx>
+Date:   Wed Apr 4 13:13:13 2018 -0600
+
+    frmDistribuciondeGastos, Eliminar renglon
+
+[33mcommit d68d9b9aa2a43956c05c91adbe417c51f3eee38b[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Wed Apr 4 09:30:07 2018 -0600
+
+     versxin 04-04-2018
+
+[33mcommit a01a240ee55f95c1416a11135f89c446defd21f0[m
+Merge: 1d8f4679 eb29ded6
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Apr 3 17:53:44 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit 1d8f46790ec236f10fb0b28db846dc2ec848311f[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Apr 3 17:53:40 2018 -0600
+
+     version
+
+[33mcommit a0b55904aea9d43bde43d81deef27b9e100501f7[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Apr 3 17:30:21 2018 -0600
+
+     se reparo distribucion de gastos
+
+[33mcommit eb29ded674916a6ba1ef784bffefd3e9565dcd11[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Tue Apr 3 16:56:17 2018 -0600
+
+    Se produjo un error al momento de cargar el folio en facturas
+
+[33mcommit 3fa6d183e0e0294be093f23e19e3c9e87371e5d4[m
+Merge: 57aa906c 267e43e8
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Apr 3 15:26:10 2018 -0600
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit 57aa906cb5b204b0b41d6aee4d30794a8cb558c4[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Apr 3 15:23:33 2018 -0600
+
+     version de 03/04/20148
+
+[33mcommit 267e43e8471097f639f4eac6119f9457b4b5fb65[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Tue Apr 3 14:04:07 2018 -0600
+
+    Se arregla problema al borrar datos de las facturas sin considerar proveedor
+
+[33mcommit 0e57a2576a1578c4fc9374894fb156f7d637b0c8[m
+Merge: c3c6961f 3ffdf4b8
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Mon Apr 2 12:43:10 2018 -0600
+
+    Se corrige merge
+
+[33mcommit c3c6961fa7dea2b8f39ae2640e518431c94949d9[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Mon Apr 2 12:42:05 2018 -0600
+
+    Se corrige proceso de consecutivo de folios
+
+[33mcommit 3ffdf4b85643501147378004c30c44e02adac8a1[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Mon Apr 2 10:10:59 2018 -0600
+
+     version  02-04-2018
+
+[33mcommit ee15d2b02d195596ef375e1035a626a5453897c9[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Wed Mar 28 16:00:29 2018 -0700
+
+     cambios juan manuel lugo 28/03/2018
+
+[33mcommit 460161cb103fac7f5febb1ce658dccac83d873b2[m
+Merge: 130b26a4 ef16ae4c
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Wed Mar 28 11:59:01 2018 -0700
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit ef16ae4ceeccc1457d79132e3fae6f86ade67a72[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Wed Mar 28 11:58:27 2018 -0700
+
+    Se arregla problema con emision de polizas no mostraba importes y estaban mal los calculos
+
+[33mcommit 130b26a4eb1dd2511cd70d8c6b7cd22722bf9136[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Wed Mar 28 11:56:30 2018 -0700
+
+     version   28-03-2018
+
+[33mcommit a9516a8f5cee8fa6d0844bee3f499b95afffa899[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Wed Mar 28 11:17:34 2018 -0700
+
+    se arregla prorrateo
+
+[33mcommit 41829f96371504359d30048fb793d21e9c17e7b9[m
+Merge: 467386dc 08eb2792
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Mar 27 20:53:27 2018 -0700
+
+    Merge branch 'desarrollo' of //integrasrv4/repositorios/meatvta into desarrollo
+
+[33mcommit 08eb2792b936e7a2100935d7304ee70f1c3213ee[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Tue Mar 27 20:53:04 2018 -0700
+
+    Se arreglan importes en reporte de Emision de polizas
+
+[33mcommit 467386dcbeeefe7f931867b94defede505cdf097[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Mar 27 20:46:54 2018 -0700
+
+     version
+
+[33mcommit 528f9561dacddaf18939383e94e85825edf3db99[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Mar 27 16:36:19 2018 -0700
+
+      consulta funcionando en ambas
+
+[33mcommit 0b7d2c201bf54ee20afef8d34d5187eb62ae2ee6[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Tue Mar 27 16:06:59 2018 -0700
+
+     bvuscador de facturas canceladas en registro de facturas funcionando
+
+[33mcommit db6f3142403bca90e3cd106ecbdfa50802474e19[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Mon Mar 26 19:35:32 2018 -0700
+
+    Se termina cambio de ISR Y RetIva Factura de gastos
+
+[33mcommit 56fdf9c52d6e81a74894e52761a75f919a8e472f[m
+Merge: cff677b4 a9eedaa7
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Mon Mar 26 18:47:40 2018 -0700
+
+    ORM Cambios Juan
+
+[33mcommit cff677b45e3e849ef6c979c5a4772205d829f8cd[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Mon Mar 26 18:46:36 2018 -0700
+
+    isr retencion iva Facturas de gastos semiterminado
+
+[33mcommit a9eedaa76584b3d4b1fcab04433b8c1880628f4f[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Mon Mar 26 18:42:04 2018 -0700
+
+     orm se agrego el campo de idfacturacancelada y en recepcion de facturas se modifico el campo tipo
+
+[33mcommit d3e3b6ce5a0752ddac6626c5fffc7b5e7ea65926[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Mon Mar 26 09:55:30 2018 -0700
+
+    Se termina proceso para eliminar, insertar en nueva tabla a Facturas CXP
+
+[33mcommit 30e40c0989c5458c5c485f33b2b884304d6e42eb[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Sat Mar 24 11:14:54 2018 -0700
+
+    Se le pone decimal a los impuestos
+
+[33mcommit 6cb84fe5d371ee6fd8be9dd2a4ef8a6ff399b5d9[m
+Merge: 62eb3466 184762ed
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Fri Mar 23 19:18:33 2018 -0700
+
+    Conflictos con Brandom
+
+[33mcommit 62eb34661577917f08da66ff2521ab370033a612[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Fri Mar 23 19:15:22 2018 -0700
+
+    Cancelacion pago de proveedores
+
+[33mcommit 184762ed3ef064bc4025a79c56721a0fd50c2441[m
+Author: al@gmail.com <al@gmail.com>
+Date:   Fri Mar 23 19:13:41 2018 -0700
+
+    Reporte de Gasto por Departamento terminado
+
+[33mcommit 9e9c95115a05f1acd46f23a8fee89536f08d4036[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Fri Mar 23 17:59:45 2018 -0700
+
+    Se corrige aumento de ISR en el total
+
+[33mcommit 1056c8835ea62d01e08b6351871fcdbe7e859720[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Fri Mar 23 15:55:57 2018 -0700
+
+    Se validan folios al momento de guardar y se agrega comillas simples al guardar prorrateo
+
+[33mcommit 7d855bf14e457ef0b9ffed62f399f85ede3b72c7[m
+Merge: 205a70bc 467aa401
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Thu Mar 22 19:48:35 2018 -0700
+
+    Se resuelte conflicto
+
+[33mcommit 467aa4019d242ebd84255baea4d824bf78b19a79[m
+Merge: fe0c6049 41cd9696
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Thu Mar 22 19:41:34 2018 -0700
+
+    version
+
+[33mcommit 205a70bc1d3f16cc95714ad3d7d0a1b4ad8dac8d[m
+Author: Dorantes <mdorantes@integra-lab.com.mx>
+Date:   Thu Mar 22 19:10:27 2018 -0700
+
+    Se termina comportamiento y cancelacion de Registro de Facturas de gastos
+
+[33mcommit fe0c6049d39e14669bc75d5b38f37ed93429e18c[m
+Author: connor1993 <manuellugo1993@gmail.com>
+Date:   Thu Mar 22 19:03:29 2018 -0700
+
+     recepciondefacturasform  se le habilito que el iva se pueda modificar
+
+[33mcommit 41cd969696aa0b4d7d7da90ee7f442d78799811a[m
+Merge: 24c45f66 11b74c15
+Author: unknown <mdorantes@integra-lab.com.mx>
+Date:   Thu Mar 22 14:51:32 2018 -0700
+
+    Version
