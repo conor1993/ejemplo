@@ -100,7 +100,7 @@ Public Class frmDistribuciondeGastosconsulta
                 dgvMetodos.Rows(0).Cells(clmSucursal.Index).Value = datos.Tables(0).Rows(1).Item(2)
                 dgvMetodos.Rows(0).Cells(clmMetodoProrrateo.Index).Value = datos.Tables(0).Rows(1).Item(3)
                 dgvMetodos.Rows(0).Cells(clmImporte.Index).Value = datos.Tables(0).Rows(1).Item(4)
-
+                Me.txtImporte.Text = datos.Tables(0).Rows(1).Item(4)
             End Using
 
 
@@ -122,7 +122,7 @@ Public Class frmDistribuciondeGastosconsulta
                 Sumaporentaje = Sumaporentaje + Porcentaje
             Next
 
-            Me.txtImporte.Text = Sumaimporte.ToString()
+
             Me.txtPorcentaje.Text = Sumaporentaje.ToString()
 
             dgvMetodos.Enabled = True
