@@ -31,6 +31,8 @@ Partial Class FrmABCClientes
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TbpDatosGen = New System.Windows.Forms.TabPage()
+        Me.cmbFormaPago = New System.Windows.Forms.ComboBox()
+        Me.Label37 = New System.Windows.Forms.Label()
         Me.cmbUsoCFDI = New System.Windows.Forms.ComboBox()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -124,8 +126,6 @@ Partial Class FrmABCClientes
         Me.pktxtCodigo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.cmbFormaPago = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TbpDatosGen.SuspendLayout()
@@ -256,6 +256,23 @@ Partial Class FrmABCClientes
         Me.TbpDatosGen.TabIndex = 0
         Me.TbpDatosGen.Text = "Datos Generales"
         Me.TbpDatosGen.UseVisualStyleBackColor = True
+        '
+        'cmbFormaPago
+        '
+        Me.cmbFormaPago.FormattingEnabled = True
+        Me.cmbFormaPago.Location = New System.Drawing.Point(118, 333)
+        Me.cmbFormaPago.Name = "cmbFormaPago"
+        Me.cmbFormaPago.Size = New System.Drawing.Size(402, 21)
+        Me.cmbFormaPago.TabIndex = 49
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(6, 338)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(82, 13)
+        Me.Label37.TabIndex = 48
+        Me.Label37.Text = "Forma de Pago:"
         '
         'cmbUsoCFDI
         '
@@ -648,7 +665,7 @@ Partial Class FrmABCClientes
         Me.TbpDatosCred.Location = New System.Drawing.Point(4, 22)
         Me.TbpDatosCred.Name = "TbpDatosCred"
         Me.TbpDatosCred.Padding = New System.Windows.Forms.Padding(3)
-        Me.TbpDatosCred.Size = New System.Drawing.Size(698, 332)
+        Me.TbpDatosCred.Size = New System.Drawing.Size(698, 370)
         Me.TbpDatosCred.TabIndex = 1
         Me.TbpDatosCred.Text = "Datos Para Crédito"
         Me.TbpDatosCred.UseVisualStyleBackColor = True
@@ -773,7 +790,7 @@ Partial Class FrmABCClientes
         Me.TbpDatosFiscales.Location = New System.Drawing.Point(4, 22)
         Me.TbpDatosFiscales.Name = "TbpDatosFiscales"
         Me.TbpDatosFiscales.Padding = New System.Windows.Forms.Padding(3)
-        Me.TbpDatosFiscales.Size = New System.Drawing.Size(698, 332)
+        Me.TbpDatosFiscales.Size = New System.Drawing.Size(698, 370)
         Me.TbpDatosFiscales.TabIndex = 2
         Me.TbpDatosFiscales.Text = "Datos Fiscales"
         Me.TbpDatosFiscales.UseVisualStyleBackColor = True
@@ -1156,23 +1173,6 @@ Partial Class FrmABCClientes
         Me.Label1.Size = New System.Drawing.Size(43, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Codigo:"
-        '
-        'Label37
-        '
-        Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(6, 338)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(82, 13)
-        Me.Label37.TabIndex = 48
-        Me.Label37.Text = "Forma de Pago:"
-        '
-        'cmbFormaPago
-        '
-        Me.cmbFormaPago.FormattingEnabled = True
-        Me.cmbFormaPago.Location = New System.Drawing.Point(118, 333)
-        Me.cmbFormaPago.Name = "cmbFormaPago"
-        Me.cmbFormaPago.Size = New System.Drawing.Size(402, 21)
-        Me.cmbFormaPago.TabIndex = 49
         '
         'FrmABCClientes
         '
