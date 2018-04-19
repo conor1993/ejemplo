@@ -47,8 +47,6 @@ Public Class frmBusquedaNotas
             Dim Estatus As EstatusChar
 
 
-
-
             If chkVigentes.Checked And Not chkCancelados.Checked Then
                 Estatus = EstatusChar.VIGENTE
             ElseIf chkCancelados.Checked And Not chkVigentes.Checked Then
