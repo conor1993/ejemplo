@@ -338,7 +338,7 @@ Public Class RegistroIngresosForm
                         MovBancos.NumPoliza = Cheque.Poliza.Codigo
                         MovBancos.CtaBancaria = Cuenta.Codigo
                         MovBancos.SaldoAnterior = SaldoAnterior
-                        MovBancos.FechaMov = Me.dtp.Value
+                        MovBancos.FechaMov = dtp.Value
                         MovBancos.FechaCaptura = Now
                         MovBancos.Importe = Me.txtImporte.Text
                         MovBancos.Concepto = Cheque.Poliza.Concepto

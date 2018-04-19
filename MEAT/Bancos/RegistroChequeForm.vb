@@ -832,7 +832,7 @@ Public Class RegistroChequeForm
         Poliza.Empresa = Empresa
         Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
         Poliza.FechaCaptura = Now
-        Poliza.FechaPoliza = Now
+        Poliza.FechaPoliza = dtp.Value
         Poliza.Importe = Me.txtImporte.Text
         Poliza.Origen = ClasesNegocio.PolizaOrigenEnum.BANCOS
         Poliza.TipoCambio = txtTipoCambio.Text

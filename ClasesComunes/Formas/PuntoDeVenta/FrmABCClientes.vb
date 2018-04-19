@@ -859,12 +859,20 @@ Public Class FrmABCClientes
             Else
                 Dim FacturasPagadas As Boolean = True
 
-                For Each Factura As EC.FacturasClientesCabEntity In Cliente.Facturas
-                    If Factura.Estatus = "V" OrElse Factura.Estatus = "A" Then
-                        FacturasPagadas = False
-                        Exit For
-                    End If
-                Next
+                'Nuevo Codigo
+                'Inicio
+
+                FacturasPagadas = comprobarFacturas(Cliente.Codigo)
+                'Final
+
+
+                'codigo anterior aqui marca error
+                'For Each Factura As EC.FacturasClientesCabEntity In Cliente.Facturas
+                'If Factura.Estatus = "V" OrElse Factura.Estatus = "A" Then
+                '    FacturasPagadas = False
+                '    Exit For
+                'End If
+                'Next
 
                 If Not FacturasPagadas Then
                     MsgBox("No se puede desactivar ya que tiene facturas vigentes", MsgBoxStyle.Exclamation, "Catalogo de Clientes")
@@ -1574,5 +1582,54 @@ Public Class FrmABCClientes
         Me.pbLogo.Tag = Nothing
     End Sub
 
+
+    Private Sub mtb_ButtonClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs) Handles mtb.ButtonClick
+
+    End Sub
+    'Esta funcion verifica si el cliete tiene facturas pendientes
+    Private Function comprobarFacturas(ByVal clv_cliente As Object) As Integer
+
+
+        Dim val As String = ""
+        Dim strConnection As String = "Server=integrasrv4;" & _
+            "Database=MeatLa20;" & _
+            "User Id=sa;" & _
+            "Password=int3gr@"
+
+        Try
+
+            Using connection As New SqlConnection(strConnection)
+
+                connection.Open()
+
+                Dim rd As SqlDataReader
+                Dim cmd As New SqlCommand("spComprobarFacturas", connection)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.AddWithValue("@idcliente", clv_cliente)
+                rd = cmd.ExecuteReader()
+
+                'mejorar esto
+                While rd.Read()
+
+                    val = rd(0)
+
+                End While
+
+            End Using
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        End Try
+
+        'Si val = 1 etonces el cliente tiene facturas pendientes y no puede eliminarse(regresa False), sino pasa de largo y regresa True
+        If val = "1" Then
+            Return False
+        End If
+
+        Return True
+
+    End Function
 
 End Class
