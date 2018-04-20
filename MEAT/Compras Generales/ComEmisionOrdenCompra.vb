@@ -664,7 +664,7 @@ Public Class ComEmisionOrdenCompra
                     Trans.Commit()
                     MsgBox("Se ha guardado la orden de compra con el Folio: " & Me.Orden.FolioOrdenCompra, MsgBoxStyle.Information, "Aviso")
                     Me.txtFolioOrden.Text = Me.Orden.FolioOrdenCompra
-                    Imprimir()
+                    'Imprimir()
                     Limpiar()
                     Deshabilitar()
                 Else

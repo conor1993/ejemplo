@@ -48,6 +48,7 @@ Partial Class FrmRegSolProducto
         Me.dtpFechaSurtir = New System.Windows.Forms.DateTimePicker()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.clmIdSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFamilia = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.clmIdProducto = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.clmUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -197,7 +198,7 @@ Partial Class FrmRegSolProducto
         Me.dgvSolicitudDetalles.AllowUserToAddRows = False
         Me.dgvSolicitudDetalles.AllowUserToDeleteRows = False
         Me.dgvSolicitudDetalles.AllowUserToResizeRows = False
-        Me.dgvSolicitudDetalles.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIdSolicitud, Me.clmIdProducto, Me.clmUnidad, Me.clmCantidad, Me.clmUrgente, Me.clmFechaSurtir, Me.clmObservaciones, Me.clmEstatus})
+        Me.dgvSolicitudDetalles.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIdSolicitud, Me.clmFamilia, Me.clmIdProducto, Me.clmUnidad, Me.clmCantidad, Me.clmUrgente, Me.clmFechaSurtir, Me.clmObservaciones, Me.clmEstatus})
         Me.dgvSolicitudDetalles.Location = New System.Drawing.Point(6, 22)
         Me.dgvSolicitudDetalles.MultiSelect = False
         Me.dgvSolicitudDetalles.Name = "dgvSolicitudDetalles"
@@ -296,6 +297,14 @@ Partial Class FrmRegSolProducto
         Me.clmIdSolicitud.Name = "clmIdSolicitud"
         Me.clmIdSolicitud.ReadOnly = True
         Me.clmIdSolicitud.Visible = False
+        '
+        'clmFamilia
+        '
+        Me.clmFamilia.DataPropertyName = "LNIdLinea"
+        Me.clmFamilia.HeaderText = "Familia"
+        Me.clmFamilia.Name = "clmFamilia"
+        Me.clmFamilia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.clmFamilia.Visible = False
         '
         'clmIdProducto
         '
@@ -447,6 +456,7 @@ Partial Class FrmRegSolProducto
     Friend WithEvents dtpFechaSurtir As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents clmIdSolicitud As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmFamilia As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents clmIdProducto As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents clmUnidad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmCantidad As System.Windows.Forms.DataGridViewTextBoxColumn

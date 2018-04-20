@@ -2923,6 +2923,18 @@ Partial Public Class ControladorGanadera
         End If
     End Sub
 
+    Public Sub LlenarComboLineas(ByVal Combo As Object, ByVal Estatus As CondicionEnum)
+        Combo.DataSource = Nothing
+        Combo.ValueMember = "Codigo"
+        Combo.DisplayMember = "Descripcion"
+        Combo.DataSource = Me.ObtenerLineas(Estatus)
+
+        If Combo.GetType Is GetType(ComboBox) Then
+            Combo.SelectedIndex = -1
+            Combo.Text = "Seleccione la Familia"
+        End If
+    End Sub
+
     Public Sub LlenarComboSucursales(ByVal Combo As Object, ByVal Estatus As CondicionEnum)
         Combo.DataSource = Nothing
         Combo.ValueMember = "Codigo"

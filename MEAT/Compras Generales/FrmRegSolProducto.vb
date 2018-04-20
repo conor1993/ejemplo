@@ -85,9 +85,10 @@ Partial Class FrmRegSolProducto
 
         Controlador.LlenarComboPlazas(cmbPlaza, CondicionEnum.ACTIVOS)
         Controlador.LlenarComboProductosGenerales(clmIdProducto, CondicionEnum.ACTIVOS)
+        Controlador.LlenarComboLineas(clmFamilia, CondicionEnum.ACTIVOS)
 
         Modo(False)
-        Limpiar()
+        LimpiarDos()
     End Sub
 
 #End Region
@@ -98,12 +99,13 @@ Partial Class FrmRegSolProducto
         Solicitud = Nothing
 
         clmEstatus.Visible = False
+        clmFamilia.Visible = False
         clmFechaSurtir.Visible = False
 
         Return MyBase.Cancelar()
     End Function
 
-    Public Overrides Function Limpiar() As Boolean
+    Public Function LimpiarDos() As Boolean
         Me.txtEntregarA.Clear()
         Me.txtEntregarEn.Clear()
         Me.txtFolio.Clear()
@@ -122,15 +124,33 @@ Partial Class FrmRegSolProducto
         Return True
     End Function
 
-    Public Overrides Function Nuevo() As Boolean
+    Public Overrides Function Limpiar() As Boolean
+        clmFamilia.Visible = True
         Estado = FormState.Nuevo
         Modo(True)
         Solicitud = Nothing
-        Limpiar()
+        LimpiarDos()
 
         clmEstatus.Visible = False
         clmFechaSurtir.Visible = False
+        dgvSolicitudDetalles.DataSource = New SolicitudProductoDetalleCollectionClass
+        txtSolicita.Text = Controlador.Sesion.MiUsuario.Usrnomcom
+        txtPara.Text = txtSolicita.Text
+        txtPara.Focus()
+        txtPara.SelectionStart = 0
+        txtPara.SelectionLength = txtPara.Text.Length
+        Return True
+    End Function
 
+    Public Overrides Function Nuevo() As Boolean
+        clmFamilia.Visible = True
+        Estado = FormState.Nuevo
+        Modo(True)
+        Solicitud = Nothing
+        LimpiarDos()
+
+        clmEstatus.Visible = False
+        clmFechaSurtir.Visible = False
         dgvSolicitudDetalles.DataSource = New SolicitudProductoDetalleCollectionClass
         txtSolicita.Text = Controlador.Sesion.MiUsuario.Usrnomcom
         txtPara.Text = txtSolicita.Text
@@ -381,4 +401,23 @@ Partial Class FrmRegSolProducto
 
 #End Region
    
+    Private Sub dgvSolicitudDetalles_CellValueChanged(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvSolicitudDetalles.CellValueChanged
+        If e.ColumnIndex = clmFamilia.Index And Not e.RowIndex = -1 Then
+            Try
+                Dim comboFam As DataGridViewComboBoxCell = CType(dgvSolicitudDetalles.Rows(e.RowIndex).Cells(clmFamilia.Index), DataGridViewComboBoxCell)
+                Dim comboProd As DataGridViewComboBoxCell = CType(dgvSolicitudDetalles.Rows(e.RowIndex).Cells(clmIdProducto.Index), DataGridViewComboBoxCell)
+                If comboFam IsNot Nothing And comboProd IsNot Nothing Then
+                    comboProd.DataSource = Nothing
+                    comboProd.ValueMember = "Codigo"
+                    comboProd.DisplayMember = "Descripcion"
+                    Dim linea As New LineaClass(CType(comboFam.Value, Integer))
+                    Dim familias As New LineaCollectionClass
+                    familias.Obtener(linea)
+                    comboProd.DataSource = Controlador.ObtenerProductosGenerales(CondicionEnum.ACTIVOS, familias)
+                End If
+            Catch ex As Exception
+                MsgBox("ERROR::: " & ex.Message, MsgBoxStyle.Critical, "INTEGRALAB S.A DE C.V - MEAT")
+            End Try
+        End If
+    End Sub
 End Class

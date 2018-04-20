@@ -1586,7 +1586,7 @@ Public Class FrmABCClientes
     Private Sub mtb_ButtonClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs) Handles mtb.ButtonClick
 
     End Sub
-    'Esta fincion verifica si el cliete tiene facturas pendientes
+    'Esta funcion verifica si el cliete tiene facturas pendientes
     Private Function comprobarFacturas(ByVal clv_cliente As Object) As Integer
 
 
@@ -1623,7 +1623,7 @@ Public Class FrmABCClientes
 
         End Try
 
-        'Si val = 1 etonces el cliete tiene facturas pendientes y no puede eliminarse(regresa False), sino pasa de largo y regresa True
+        'Si val = 1 etonces el cliente tiene facturas pendientes y no puede eliminarse(regresa False), sino pasa de largo y regresa True
         If val = "1" Then
             Return False
         End If
