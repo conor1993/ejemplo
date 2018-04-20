@@ -39,7 +39,7 @@ Public Class frmReporteFactura
         Me.cmbClientes.Enabled = True
         Me.dtpFechaFinal.Enabled = True
         Me.dtpFechaInicial.Enabled = True
-      
+
     End Sub
 
     Sub Deshabilitar()
@@ -72,7 +72,7 @@ Public Class frmReporteFactura
                 'las Opciones para usar el procedimiento son
                 '1 todos los clientes en un rango de fechas
                 '2 un cliente con un rango de fechas
-               
+
                 If Me.cmbClientes.SelectedIndex > -1 Then
                     .Add("@idCliente", SqlDbType.Int).Value = Me.cmbClientes.SelectedValue
                     .Add("@FechaIni", SqlDbType.DateTime).Value = Me.dtpFechaInicial.Value.ToShortDateString
