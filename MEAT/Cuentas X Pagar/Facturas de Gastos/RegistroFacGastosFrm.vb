@@ -1738,6 +1738,4 @@ Public Class RegistroFacGastosFrm
 
     End Sub
 
-
-
 End Class
