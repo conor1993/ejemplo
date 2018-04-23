@@ -634,6 +634,15 @@ Public Class FrmCapturaProdTerminado
                 Nopiezas = Rs(3).ToString()
                 'NoBultos = Rs(4).ToString()
 
+                'inicio editando codigo---------------
+
+                'verificarKilos(CantPzas, CantKgrs, KilosRecibidos, Nopiezas)
+
+
+                'fin----------------------------------
+
+
+                'codigo original -----------------------------------
 
                 If (CantKgrs + LoteCorte.TotalKgs) > KilosRecibidos Then
                     Trans.Rollback()
@@ -645,7 +654,12 @@ Public Class FrmCapturaProdTerminado
                     Trans.Rollback()
                     MessageBox.Show("Las piezas registradas exceden las piezas compradas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Return False
+
                 End If
+
+                'Codigo original -------------------------------
+
+
                 'LoteCorte.TotalPzas
 
                 'FormPrincipal.txtFolioSacrificio.Text = Rs(2).ToString()
@@ -1197,6 +1211,7 @@ Public Class FrmCapturaProdTerminado
                 End If
 
             Next
+
             Dim ID_Producto As Integer = 0
             Dim transaction As SqlTransaction
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
@@ -1664,6 +1679,97 @@ Public Class FrmCapturaProdTerminado
             Me.buscarcortes(Me.cmbCortes.SelectedValue.ToString())
             'exec Usp_MSCLoteCortesCon 5, '190218051' , '2', '', ''
 
+
+        End If
+
+    End Sub
+
+    'Private Sub verificarKilos(ByVal CantPzas As Decimal, ByVal CantKgrs As Decimal, ByVal KilosRecibidos As Decimal, ByVal Nopiezas As Decimal)
+
+    '    'CantPzas, CantKgrs, KilosRecibidos, Nopiezas
+    '    If (CantKgrs + LoteCorte.TotalKgs) > KilosRecibidos Then
+    '        Trans.Rollback()
+    '        MessageBox.Show("Los kilos registrados exceden los kilos comprados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        Return False
+    '    End If
+
+    '    If (CantPzas + LoteCorte.TotalPzas) > Nopiezas Then
+    '        Trans.Rollback()
+    '        MessageBox.Show("Las piezas registradas exceden las piezas compradas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        Return False
+
+    'End Sub
+
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+
+        If MessageBox.Show("El total de kilos no cuandra con los kilos registrados ¿Desea continuar? ",
+                           "Atencion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
+                           MessageBoxDefaultButton.Button1) = DialogResult.OK Then
+
+            numcaja = txtcajas.Text
+            ''nuevo modo de guardar----------------------------------------
+
+
+            'If kilosrecividos < (numcaja * txtPeso.Text) Then
+            '    MsgBox("El monto de kilos ingresados es mayor al monto de kilos recibidos en", MsgBoxStyle.Exclamation, "Aviso")
+            '    Exit Sub
+            'End If
+
+            Dim saveResult As Boolean
+            For i As Integer = 1 To numcaja
+                saveResult = Me.Guardar()
+                If saveResult = False Then
+                    Exit For
+                End If
+
+            Next
+
+            Dim ID_Producto As Integer = 0
+            Dim transaction As SqlTransaction
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                connection.Open()
+                Dim command As SqlCommand = connection.CreateCommand()
+                transaction = connection.BeginTransaction("SampleTransaction")
+                command.Connection = connection
+                command.Transaction = transaction
+                Dim query As String = "exec Usp_MSCLoteCortesCon 7, '{0}', '', '', ''"
+                Try
+                    query = String.Format(query, Me.txtLoteCorte.Text)
+                    command.CommandText = query
+                    command.ExecuteNonQuery()
+
+                    Dim Rs As SqlDataReader = command.ExecuteReader()
+                    Rs.Read()
+                    ID_Producto = Rs(0).ToString()
+                    Rs.Close()
+                    command.Transaction.Commit()
+                    connection.Close()
+                Catch ex As Exception
+                    command.Transaction.Rollback()
+                End Try
+
+            End Using
+
+            Me.txtPeso.Text = "0"
+            Me.txtPiezas.Text = "0"
+            Me.txtcajas.Text = "0"
+
+
+            If saveResult = True Then
+                Me.txtcajas.Focus()
+            End If
+            'If Me.Guardar() Then
+            '    Me.txtCodSubCorte.Focus()
+            'End If
+            ''------------------------------------------------------------
+
+            'End If
+
+            'If Not IsNumeric(e.KeyChar) And Not e.KeyChar = Chr(8) And Not e.KeyChar = "." Then
+            '    e.Handled = True
+            'End If
+
+            'Limpiar()123
 
         End If
 
