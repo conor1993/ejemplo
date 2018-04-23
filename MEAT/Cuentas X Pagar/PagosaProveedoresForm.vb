@@ -1048,7 +1048,6 @@ Public Class PagosaProveedoresForm
         Next
         cheque.Poliza = Poliza
         imprimir(Poliza)
-
     End Sub
 
     Private Function obtenerdatasetPoliza(Poliza As ClasesNegocio.PolizaClass) As DataSet

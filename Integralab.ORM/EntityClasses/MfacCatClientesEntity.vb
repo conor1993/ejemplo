@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 26 de marzo de 2018 17:30:33
+' // Code is generated on: lunes, 23 de abril de 2018 15:21:57
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -69,12 +69,16 @@ Namespace Integralab.ORM.EntityClasses
 		Private _serviciosXembarque As Integralab.ORM.CollectionClasses.ServiciosXembarqueCollection
 		Private _alwaysFetchServiciosXembarque, _alreadyFetchedServiciosXembarque As Boolean
 
+		Private _catDeptos As CatDeptosEntity
+		Private _alwaysFetchCatDeptos, _alreadyFetchedCatDeptos, _catDeptosReturnsNewIfNotFound As Boolean
 		Private _comicionista As ComicionistaEntity
 		Private _alwaysFetchComicionista, _alreadyFetchedComicionista, _comicionistaReturnsNewIfNotFound As Boolean
 		Private _cuentaContable As CuentaContableEntity
 		Private _alwaysFetchCuentaContable, _alreadyFetchedCuentaContable, _cuentaContableReturnsNewIfNotFound As Boolean
 		Private _cuentaContable_ As CuentaContableEntity
 		Private _alwaysFetchCuentaContable_, _alreadyFetchedCuentaContable_, _cuentaContable_ReturnsNewIfNotFound As Boolean
+		Private _cuentaContable__ As CuentaContableEntity
+		Private _alwaysFetchCuentaContable__, _alreadyFetchedCuentaContable__, _cuentaContable__ReturnsNewIfNotFound As Boolean
 		Private _almacen As AlmacenEntity
 		Private _alwaysFetchAlmacen, _alreadyFetchedAlmacen, _almacenReturnsNewIfNotFound As Boolean
 
@@ -166,6 +170,13 @@ Namespace Integralab.ORM.EntityClasses
 			_alwaysFetchServiciosXembarque = info.GetBoolean("_alwaysFetchServiciosXembarque")
 			_alreadyFetchedServiciosXembarque = info.GetBoolean("_alreadyFetchedServiciosXembarque")
 
+			_catDeptos = CType(info.GetValue("_catDeptos", GetType(CatDeptosEntity)), CatDeptosEntity)
+			If Not _catDeptos Is Nothing Then
+				AddHandler _catDeptos.AfterSave, AddressOf OnEntityAfterSave
+			End If
+			_catDeptosReturnsNewIfNotFound = info.GetBoolean("_catDeptosReturnsNewIfNotFound")
+			_alwaysFetchCatDeptos = info.GetBoolean("_alwaysFetchCatDeptos")
+			_alreadyFetchedCatDeptos = info.GetBoolean("_alreadyFetchedCatDeptos")
 			_comicionista = CType(info.GetValue("_comicionista", GetType(ComicionistaEntity)), ComicionistaEntity)
 			If Not _comicionista Is Nothing Then
 				AddHandler _comicionista.AfterSave, AddressOf OnEntityAfterSave
@@ -187,6 +198,13 @@ Namespace Integralab.ORM.EntityClasses
 			_cuentaContable_ReturnsNewIfNotFound = info.GetBoolean("_cuentaContable_ReturnsNewIfNotFound")
 			_alwaysFetchCuentaContable_ = info.GetBoolean("_alwaysFetchCuentaContable_")
 			_alreadyFetchedCuentaContable_ = info.GetBoolean("_alreadyFetchedCuentaContable_")
+			_cuentaContable__ = CType(info.GetValue("_cuentaContable__", GetType(CuentaContableEntity)), CuentaContableEntity)
+			If Not _cuentaContable__ Is Nothing Then
+				AddHandler _cuentaContable__.AfterSave, AddressOf OnEntityAfterSave
+			End If
+			_cuentaContable__ReturnsNewIfNotFound = info.GetBoolean("_cuentaContable__ReturnsNewIfNotFound")
+			_alwaysFetchCuentaContable__ = info.GetBoolean("_alwaysFetchCuentaContable__")
+			_alreadyFetchedCuentaContable__ = info.GetBoolean("_alreadyFetchedCuentaContable__")
 			_almacen = CType(info.GetValue("_almacen", GetType(AlmacenEntity)), AlmacenEntity)
 			If Not _almacen Is Nothing Then
 				' rewire event handler.
@@ -218,9 +236,11 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedPagoDeCtes = (_pagoDeCtes.Count > 0)
 			_alreadyFetchedServiciosXembarque = (_serviciosXembarque.Count > 0)
 
+			_alreadyFetchedCatDeptos = Not(_catDeptos Is Nothing)
 			_alreadyFetchedComicionista = Not(_comicionista Is Nothing)
 			_alreadyFetchedCuentaContable = Not(_cuentaContable Is Nothing)
 			_alreadyFetchedCuentaContable_ = Not(_cuentaContable_ Is Nothing)
+			_alreadyFetchedCuentaContable__ = Not(_cuentaContable__ Is Nothing)
 			_alreadyFetchedAlmacen = Not(_almacen Is Nothing)
 		End Sub
 
@@ -311,6 +331,10 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_alwaysFetchServiciosXembarque", _alwaysFetchServiciosXembarque)
 			info.AddValue("_alreadyFetchedServiciosXembarque", _alreadyFetchedServiciosXembarque)
 
+			info.AddValue("_catDeptos", _catDeptos)
+			info.AddValue("_catDeptosReturnsNewIfNotFound", _catDeptosReturnsNewIfNotFound)
+			info.AddValue("_alwaysFetchCatDeptos", _alwaysFetchCatDeptos)
+			info.AddValue("_alreadyFetchedCatDeptos", _alreadyFetchedCatDeptos)
 			info.AddValue("_comicionista", _comicionista)
 			info.AddValue("_comicionistaReturnsNewIfNotFound", _comicionistaReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchComicionista", _alwaysFetchComicionista)
@@ -323,6 +347,10 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_cuentaContable_ReturnsNewIfNotFound", _cuentaContable_ReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchCuentaContable_", _alwaysFetchCuentaContable_)
 			info.AddValue("_alreadyFetchedCuentaContable_", _alreadyFetchedCuentaContable_)
+			info.AddValue("_cuentaContable__", _cuentaContable__)
+			info.AddValue("_cuentaContable__ReturnsNewIfNotFound", _cuentaContable__ReturnsNewIfNotFound)
+			info.AddValue("_alwaysFetchCuentaContable__", _alwaysFetchCuentaContable__)
+			info.AddValue("_alreadyFetchedCuentaContable__", _alreadyFetchedCuentaContable__)
 			info.AddValue("_almacen", _almacen)
 			info.AddValue("_almacenReturnsNewIfNotFound", _almacenReturnsNewIfNotFound)
 			info.AddValue("_alwaysFetchAlmacen", _alwaysFetchAlmacen)
@@ -340,6 +368,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub SetRelatedEntityProperty(propertyName As String, entity As IEntity)
 			Select Case propertyName
+				Case "CatDeptos"
+					_alreadyFetchedCatDeptos = True
+					Me.CatDeptos = CType(entity, CatDeptosEntity)
 				Case "Comicionista"
 					_alreadyFetchedComicionista = True
 					Me.Comicionista = CType(entity, ComicionistaEntity)
@@ -349,6 +380,9 @@ Namespace Integralab.ORM.EntityClasses
 				Case "CuentaContable_"
 					_alreadyFetchedCuentaContable_ = True
 					Me.CuentaContable_ = CType(entity, CuentaContableEntity)
+				Case "CuentaContable__"
+					_alreadyFetchedCuentaContable__ = True
+					Me.CuentaContable__ = CType(entity, CuentaContableEntity)
 				Case "RecepcionGanado"
 					_alreadyFetchedRecepcionGanado = True
 					If Not entity Is Nothing Then
@@ -429,6 +463,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub SetRelatedEntity(relatedEntity As IEntity, fieldName As String)
 			Select Case fieldName
+				Case "CatDeptos"
+					SetupSyncCatDeptos(relatedEntity)
+					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "Comicionista"
 					SetupSyncComicionista(relatedEntity)
 					OnRelatedEntitySet(relatedEntity, fieldName)
@@ -437,6 +474,9 @@ Namespace Integralab.ORM.EntityClasses
 					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "CuentaContable_"
 					SetupSyncCuentaContable_(relatedEntity)
+					OnRelatedEntitySet(relatedEntity, fieldName)
+				Case "CuentaContable__"
+					SetupSyncCuentaContable__(relatedEntity)
 					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "RecepcionGanado"
 					_recepcionGanado.Add(CType(relatedEntity, RecepcionGanadoEntity))
@@ -492,6 +532,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub UnsetRelatedEntity(relatedEntity As IEntity, fieldName As String, signalRelatedEntityManyToOne As Boolean)
 			Select Case fieldName
+				Case "CatDeptos"
+					DesetupSyncCatDeptos(False, True)
+					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "Comicionista"
 					DesetupSyncComicionista(False, True)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
@@ -500,6 +543,9 @@ Namespace Integralab.ORM.EntityClasses
 					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "CuentaContable_"
 					DesetupSyncCuentaContable_(False, True)
+					OnRelatedEntityUnset(relatedEntity, fieldName)
+				Case "CuentaContable__"
+					DesetupSyncCuentaContable__(False, True)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "RecepcionGanado"
 					MyBase.PerformRelatedEntityRemoval(_recepcionGanado, relatedEntity, signalRelatedEntityManyToOne)
@@ -567,6 +613,9 @@ Namespace Integralab.ORM.EntityClasses
 		''' <returns>Collection with 0 or more IEntity objects, referenced by this entity</returns>
 		Public Overrides Function GetDependentRelatedEntities() As List(Of IEntity)
 			Dim toReturn As New List(Of IEntity)()
+			If Not _catDeptos Is Nothing Then
+				toReturn.Add(_catDeptos)
+			End If
 			If Not _comicionista Is Nothing Then
 				toReturn.Add(_comicionista)
 			End If
@@ -575,6 +624,9 @@ Namespace Integralab.ORM.EntityClasses
 			End If
 			If Not _cuentaContable_ Is Nothing Then
 				toReturn.Add(_cuentaContable_)
+			End If
+			If Not _cuentaContable__ Is Nothing Then
+				toReturn.Add(_cuentaContable__)
 			End If
 
 
@@ -1420,6 +1472,42 @@ Namespace Integralab.ORM.EntityClasses
 	
 	
 
+		''' <summary>Retrieves the related entity of type 'CatDeptosEntity', Imports a relation of type 'n:1'</summary>
+		''' <returns>A fetched entity of type 'CatDeptosEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleCatDeptos() As CatDeptosEntity
+			Return GetSingleCatDeptos(False)
+		End Function
+
+		''' <summary>Retrieves the related entity of type 'CatDeptosEntity', Imports a relation of type 'n:1'</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
+		''' <returns>A fetched entity of type 'CatDeptosEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleCatDeptos(forceFetch As Boolean) As CatDeptosEntity
+			If ( Not _alreadyFetchedCatDeptos Or forceFetch Or _alwaysFetchCatDeptos) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
+
+				Dim newEntity As New CatDeptosEntity()
+				If MyBase.ParticipatesInTransaction Then
+					MyBase.Transaction.Add(newEntity)
+				End If
+				Dim fetchResult As Boolean = False
+				If MyBase.CheckIfLazyLoadingShouldOccur(MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento) Then
+					fetchResult = newEntity.FetchUsingPK(Me.IdDepartamento.GetValueOrDefault())
+				End If
+				If Not _catDeptosReturnsNewIfNotFound AndAlso Not fetchResult Then
+					Me.CatDeptos = Nothing
+				Else
+					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
+						newEntity = CType(MyBase.ActiveContext.Get(newEntity), CatDeptosEntity)
+					End If
+					Me.CatDeptos = newEntity
+					_alreadyFetchedCatDeptos = fetchResult
+				End If
+				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
+					MyBase.Transaction.Remove(newEntity)
+				End If
+			End If
+			Return _catDeptos
+		End Function
+	
 		''' <summary>Retrieves the related entity of type 'ComicionistaEntity', Imports a relation of type 'n:1'</summary>
 		''' <returns>A fetched entity of type 'ComicionistaEntity' which is related to this entity.</returns>
 		Public Overridable Function GetSingleComicionista() As ComicionistaEntity
@@ -1528,6 +1616,42 @@ Namespace Integralab.ORM.EntityClasses
 			Return _cuentaContable_
 		End Function
 	
+		''' <summary>Retrieves the related entity of type 'CuentaContableEntity', Imports a relation of type 'n:1'</summary>
+		''' <returns>A fetched entity of type 'CuentaContableEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleCuentaContable__() As CuentaContableEntity
+			Return GetSingleCuentaContable__(False)
+		End Function
+
+		''' <summary>Retrieves the related entity of type 'CuentaContableEntity', Imports a relation of type 'n:1'</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
+		''' <returns>A fetched entity of type 'CuentaContableEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleCuentaContable__(forceFetch As Boolean) As CuentaContableEntity
+			If ( Not _alreadyFetchedCuentaContable__ Or forceFetch Or _alwaysFetchCuentaContable__) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
+
+				Dim newEntity As New CuentaContableEntity()
+				If MyBase.ParticipatesInTransaction Then
+					MyBase.Transaction.Add(newEntity)
+				End If
+				Dim fetchResult As Boolean = False
+				If MyBase.CheckIfLazyLoadingShouldOccur(MfacCatClientesEntity.Relations.CuentaContableEntityUsingIdcuentaventa) Then
+					fetchResult = newEntity.FetchUsingPK(Me.Idcuentaventa.GetValueOrDefault())
+				End If
+				If Not _cuentaContable__ReturnsNewIfNotFound AndAlso Not fetchResult Then
+					Me.CuentaContable__ = Nothing
+				Else
+					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
+						newEntity = CType(MyBase.ActiveContext.Get(newEntity), CuentaContableEntity)
+					End If
+					Me.CuentaContable__ = newEntity
+					_alreadyFetchedCuentaContable__ = fetchResult
+				End If
+				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
+					MyBase.Transaction.Remove(newEntity)
+				End If
+			End If
+			Return _cuentaContable__
+		End Function
+	
 	
 		''' <summary>Retrieves the related entity of type 'AlmacenEntity', Imports a relation of type '1:1'</summary>
 		''' <returns>A fetched entity of type 'AlmacenEntity' which is related to this entity.</returns>
@@ -1616,6 +1740,12 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+					Case MfacCatClientesFieldIndex.IdDepartamento
+						DesetupSyncCatDeptos(True, False)
+						_alreadyFetchedCatDeptos = False
+					Case MfacCatClientesFieldIndex.Idcuentaventa
+						DesetupSyncCuentaContable__(True, False)
+						_alreadyFetchedCuentaContable__ = False
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -1639,6 +1769,9 @@ Namespace Integralab.ORM.EntityClasses
 			_pagoDeCtes.ActiveContext = MyBase.ActiveContext
 			_serviciosXembarque.ActiveContext = MyBase.ActiveContext
 
+		If Not _catDeptos Is Nothing Then
+				_catDeptos.ActiveContext = MyBase.ActiveContext
+			End If
 		If Not _comicionista Is Nothing Then
 				_comicionista.ActiveContext = MyBase.ActiveContext
 			End If
@@ -1647,6 +1780,9 @@ Namespace Integralab.ORM.EntityClasses
 			End If
 		If Not _cuentaContable_ Is Nothing Then
 				_cuentaContable_.ActiveContext = MyBase.ActiveContext
+			End If
+		If Not _cuentaContable__ Is Nothing Then
+				_cuentaContable__.ActiveContext = MyBase.ActiveContext
 			End If
 		If Not _almacen Is Nothing Then
 				_almacen.ActiveContext = MyBase.ActiveContext
@@ -1775,6 +1911,10 @@ Namespace Integralab.ORM.EntityClasses
 			_alwaysFetchServiciosXembarque = False
 			_alreadyFetchedServiciosXembarque = False
 
+			_catDeptos = Nothing
+			_catDeptosReturnsNewIfNotFound = True
+			_alwaysFetchCatDeptos = False
+			_alreadyFetchedCatDeptos = False
 			_comicionista = Nothing
 			_comicionistaReturnsNewIfNotFound = True
 			_alwaysFetchComicionista = False
@@ -1787,6 +1927,10 @@ Namespace Integralab.ORM.EntityClasses
 			_cuentaContable_ReturnsNewIfNotFound = True
 			_alwaysFetchCuentaContable_ = False
 			_alreadyFetchedCuentaContable_ = False
+			_cuentaContable__ = Nothing
+			_cuentaContable__ReturnsNewIfNotFound = True
+			_alwaysFetchCuentaContable__ = False
+			_alreadyFetchedCuentaContable__ = False
 			_almacen = Nothing
 			_almacenReturnsNewIfNotFound = True
 			_alwaysFetchAlmacen = False
@@ -1901,9 +2045,41 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("FormaPago", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("IdDepartamento", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("Idcuentaventa", fieldHashtable)
 		End Sub
 
 
+		''' <summary>Removes the sync logic for member _catDeptos</summary>
+		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
+		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
+		Private Sub DesetupSyncCatDeptos(signalRelatedEntity As Boolean, resetFKFields As Boolean)
+			MyBase.PerformDesetupSyncRelatedEntity( _catDeptos, AddressOf OnCatDeptosPropertyChanged, "CatDeptos", MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento, True, signalRelatedEntity, "MfacCatClientes", resetFKFields, New Integer() { CInt(MfacCatClientesFieldIndex.IdDepartamento) } )
+			_catDeptos = Nothing
+		End Sub
+		
+		''' <summary>setups the sync logic for member _catDeptos</summary>
+		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
+		Private Sub SetupSyncCatDeptos(relatedEntity As IEntity)
+			DesetupSyncCatDeptos(True, True)
+			_catDeptos = CType(relatedEntity, CatDeptosEntity)
+			MyBase.PerformSetupSyncRelatedEntity( _catDeptos, AddressOf OnCatDeptosPropertyChanged, "CatDeptos", MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento, True, _alreadyFetchedCatDeptos, New String() {  } )
+		End Sub
+		
+		''' <summary>Handles Property change events of properties In a related entity.</summary>
+		''' <param name="sender"></param>
+		''' <param name="e"></param>
+		Private Sub OnCatDeptosPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
+			Select Case e.PropertyName
+
+				Case Else
+					' Emtpy
+			End Select
+		End Sub
 		''' <summary>Removes the sync logic for member _comicionista</summary>
 		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
 		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
@@ -1976,6 +2152,32 @@ Namespace Integralab.ORM.EntityClasses
 		''' <param name="sender"></param>
 		''' <param name="e"></param>
 		Private Sub OnCuentaContable_PropertyChanged( sender As Object, e As PropertyChangedEventArgs)
+			Select Case e.PropertyName
+
+				Case Else
+					' Emtpy
+			End Select
+		End Sub
+		''' <summary>Removes the sync logic for member _cuentaContable__</summary>
+		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
+		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
+		Private Sub DesetupSyncCuentaContable__(signalRelatedEntity As Boolean, resetFKFields As Boolean)
+			MyBase.PerformDesetupSyncRelatedEntity( _cuentaContable__, AddressOf OnCuentaContable__PropertyChanged, "CuentaContable__", MfacCatClientesEntity.Relations.CuentaContableEntityUsingIdcuentaventa, True, signalRelatedEntity, "MfacCatClientes", resetFKFields, New Integer() { CInt(MfacCatClientesFieldIndex.Idcuentaventa) } )
+			_cuentaContable__ = Nothing
+		End Sub
+		
+		''' <summary>setups the sync logic for member _cuentaContable__</summary>
+		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
+		Private Sub SetupSyncCuentaContable__(relatedEntity As IEntity)
+			DesetupSyncCuentaContable__(True, True)
+			_cuentaContable__ = CType(relatedEntity, CuentaContableEntity)
+			MyBase.PerformSetupSyncRelatedEntity( _cuentaContable__, AddressOf OnCuentaContable__PropertyChanged, "CuentaContable__", MfacCatClientesEntity.Relations.CuentaContableEntityUsingIdcuentaventa, True, _alreadyFetchedCuentaContable__, New String() {  } )
+		End Sub
+		
+		''' <summary>Handles Property change events of properties In a related entity.</summary>
+		''' <param name="sender"></param>
+		''' <param name="e"></param>
+		Private Sub OnCuentaContable__PropertyChanged( sender As Object, e As PropertyChangedEventArgs)
 			Select Case e.PropertyName
 
 				Case Else
@@ -2202,6 +2404,17 @@ Namespace Integralab.ORM.EntityClasses
 	
 	
 	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CatDeptos' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathCatDeptos() As IPrefetchPathElement
+			Get
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CatDeptosCollection(), _
+					MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento, _
+					CType(Integralab.ORM.EntityType.MfacCatClientesEntity, Integer), CType(Integralab.ORM.EntityType.CatDeptosEntity, Integer), 0, Nothing, Nothing, Nothing, "CatDeptos", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+			End Get
+		End Property
+	
 		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'Comicionista' 
 		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
 		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
@@ -2232,6 +2445,17 @@ Namespace Integralab.ORM.EntityClasses
 				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CuentaContableCollection(), _
 					MfacCatClientesEntity.Relations.CuentaContableEntityUsingCuentaAnticipoId, _
 					CType(Integralab.ORM.EntityType.MfacCatClientesEntity, Integer), CType(Integralab.ORM.EntityType.CuentaContableEntity, Integer), 0, Nothing, Nothing, Nothing, "CuentaContable_", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CuentaContable' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathCuentaContable__() As IPrefetchPathElement
+			Get
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CuentaContableCollection(), _
+					MfacCatClientesEntity.Relations.CuentaContableEntityUsingIdcuentaventa, _
+					CType(Integralab.ORM.EntityType.MfacCatClientesEntity, Integer), CType(Integralab.ORM.EntityType.CuentaContableEntity, Integer), 0, Nothing, Nothing, Nothing, "CuentaContable__", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
 			End Get
 		End Property
 	
@@ -2935,6 +3159,42 @@ Namespace Integralab.ORM.EntityClasses
 			End Set
 		End Property
 	
+		''' <summary>The IdDepartamento property of the Entity MfacCatClientes<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MFacCatClientes"."IdDepartamento"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [IdDepartamento]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MfacCatClientesFieldIndex.IdDepartamento, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(MfacCatClientesFieldIndex.IdDepartamento, Integer), value)
+			End Set
+		End Property
+	
+		''' <summary>The Idcuentaventa property of the Entity MfacCatClientes<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MFacCatClientes"."Idcuentaventa"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [Idcuentaventa]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MfacCatClientesFieldIndex.Idcuentaventa, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(MfacCatClientesFieldIndex.Idcuentaventa, Integer), value)
+			End Set
+		End Property
+	
 	
 		''' <summary>Retrieves all related entities of type 'RecepcionGanadoEntity' Imports a relation of type '1:n'.</summary>
 		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiRecepcionGanado()', because 
@@ -3237,6 +3497,58 @@ Namespace Integralab.ORM.EntityClasses
 	
 	
 	
+		''' <summary>Gets / sets related entity of type 'CatDeptosEntity'. This property is not visible in databound grids.
+		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
+		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
+		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleCatDeptos()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
+		<Browsable(False)> _
+		Public Overridable Property [CatDeptos]() As CatDeptosEntity
+			Get
+				Return GetSingleCatDeptos(False)
+			End Get
+			Set
+				If MyBase.IsDeserializing Then
+					SetupSyncCatDeptos(value)
+				Else
+					If value Is Nothing Then
+						If Not _catDeptos Is Nothing Then
+							_catDeptos.UnsetRelatedEntity(Me, "MfacCatClientes")
+						End If
+					Else
+						CType(value, IEntity).SetRelatedEntity(Me, "MfacCatClientes")
+					End If
+				End If
+			End Set
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for CatDeptos. When set to true, CatDeptos is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time CatDeptos is accessed. You can always execute
+		''' a forced fetch by calling GetSingleCatDeptos(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchCatDeptos As Boolean
+			Get
+				Return _alwaysFetchCatDeptos
+			End Get
+			Set
+				_alwaysFetchCatDeptos = value
+			End Set	
+		End Property
+
+		''' <summary>Gets / sets the flag for what to do if the related entity available through the property CatDeptos is not found
+		''' in the database. When set to true, CatDeptos will return a new entity instance if the related entity is not found, otherwise 
+		''' null be returned if the related entity is not found. Default: true.</summary>
+		<Browsable(False)> _
+		Public Property CatDeptosReturnsNewIfNotFound As Boolean
+			Get
+				Return _catDeptosReturnsNewIfNotFound
+			End Get
+			Set
+				_catDeptosReturnsNewIfNotFound = value
+			End Set	
+		End Property
+	
 		''' <summary>Gets / sets related entity of type 'ComicionistaEntity'. This property is not visible in databound grids.
 		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
 		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
@@ -3390,6 +3702,58 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				_cuentaContable_ReturnsNewIfNotFound = value
+			End Set	
+		End Property
+	
+		''' <summary>Gets / sets related entity of type 'CuentaContableEntity'. This property is not visible in databound grids.
+		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
+		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
+		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleCuentaContable__()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
+		<Browsable(False)> _
+		Public Overridable Property [CuentaContable__]() As CuentaContableEntity
+			Get
+				Return GetSingleCuentaContable__(False)
+			End Get
+			Set
+				If MyBase.IsDeserializing Then
+					SetupSyncCuentaContable__(value)
+				Else
+					If value Is Nothing Then
+						If Not _cuentaContable__ Is Nothing Then
+							_cuentaContable__.UnsetRelatedEntity(Me, "MfacCatClientes")
+						End If
+					Else
+						CType(value, IEntity).SetRelatedEntity(Me, "MfacCatClientes")
+					End If
+				End If
+			End Set
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for CuentaContable__. When set to true, CuentaContable__ is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time CuentaContable__ is accessed. You can always execute
+		''' a forced fetch by calling GetSingleCuentaContable__(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchCuentaContable__ As Boolean
+			Get
+				Return _alwaysFetchCuentaContable__
+			End Get
+			Set
+				_alwaysFetchCuentaContable__ = value
+			End Set	
+		End Property
+
+		''' <summary>Gets / sets the flag for what to do if the related entity available through the property CuentaContable__ is not found
+		''' in the database. When set to true, CuentaContable__ will return a new entity instance if the related entity is not found, otherwise 
+		''' null be returned if the related entity is not found. Default: true.</summary>
+		<Browsable(False)> _
+		Public Property CuentaContable__ReturnsNewIfNotFound As Boolean
+			Get
+				Return _cuentaContable__ReturnsNewIfNotFound
+			End Get
+			Set
+				_cuentaContable__ReturnsNewIfNotFound = value
 			End Set	
 		End Property
 	
