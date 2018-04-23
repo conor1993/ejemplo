@@ -417,6 +417,24 @@ Public Class ClientesIntroductoresClass
         End Set
     End Property
 
+    Public Property Iddepartamento() As Integer
+        Get
+            Return Entity.IdDepartamento
+        End Get
+        Set(ByVal value As Integer)
+            Entity.IdDepartamento = value
+        End Set
+    End Property
+
+    Public Property Idcuentaventa() As Integer
+        Get
+            Return Entity.Idcuentaventa
+        End Get
+        Set(ByVal value As Integer)
+            Entity.Idcuentaventa = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Constructores"
