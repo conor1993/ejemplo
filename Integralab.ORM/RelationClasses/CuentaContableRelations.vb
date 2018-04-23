@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 26 de marzo de 2018 17:30:30
+' // Code is generated on: lunes, 23 de abril de 2018 15:21:55
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -233,6 +233,21 @@ Namespace Integralab.ORM.RelationClasses
 				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
 				relation.StartEntityIsPkSide = True
 				relation.AddEntityFieldPair(EntityFieldFactory.Create(CuentaContableFieldIndex.Codigo), EntityFieldFactory.Create(MfacCatClientesFieldIndex.CuentaAnticipoId))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CuentaContableEntity", True)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacCatClientesEntity", False)
+				Return relation
+			End Get
+		End Property
+	
+		''' <summary>Returns a new IEntityRelation Object, between CuentaContableEntity and MfacCatClientesEntity over the 1:n relation they have, using the relation between the fields:
+		''' CuentaContable.Codigo - MfacCatClientes.Idcuentaventa
+		''' </summary>
+		Public Overridable ReadOnly Property MfacCatClientesEntityUsingIdcuentaventa() As IEntityRelation
+			Get
+
+				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
+				relation.StartEntityIsPkSide = True
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(CuentaContableFieldIndex.Codigo), EntityFieldFactory.Create(MfacCatClientesFieldIndex.Idcuentaventa))
 				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CuentaContableEntity", True)
 				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacCatClientesEntity", False)
 				Return relation

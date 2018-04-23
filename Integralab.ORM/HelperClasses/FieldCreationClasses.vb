@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: lunes, 26 de marzo de 2018 17:30:37
+' Code is generated on: lunes, 23 de abril de 2018 15:22:01
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -10432,6 +10432,18 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [FormaPago] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(MfacCatClientesFieldIndex.FormaPago), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MfacCatClientesEntity.IdDepartamento field instance</summary>
+		Public Shared ReadOnly Property [IdDepartamento] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MfacCatClientesFieldIndex.IdDepartamento), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MfacCatClientesEntity.Idcuentaventa field instance</summary>
+		Public Shared ReadOnly Property [Idcuentaventa] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MfacCatClientesFieldIndex.Idcuentaventa), EntityField)
 			End Get
 		End Property
 	End Class

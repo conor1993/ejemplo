@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 26 de marzo de 2018 17:30:23
+' // Code is generated on: lunes, 23 de abril de 2018 15:21:49
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -162,6 +162,75 @@ Namespace Integralab.ORM.CollectionClasses
 	
 	
 		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in CatDeptosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="catDeptosInstance">CatDeptosEntity Object to be used as a filter in the m:n relation</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingCatDeptosCollectionViaMfacCatClientes(catDeptosInstance As IEntity) As Boolean
+			Return GetMultiManyToManyUsingCatDeptosCollectionViaMfacCatClientes(catDeptosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, 0, 0)
+		End Function
+		
+
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in CatDeptosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="catDeptosInstance">CatDeptosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingCatDeptosCollectionViaMfacCatClientes(catDeptosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression) As Boolean
+			Return GetMultiManyToManyUsingCatDeptosCollectionViaMfacCatClientes(catDeptosInstance, maxNumberOfItemsToReturn, sortClauses, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in CatDeptosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="catDeptosInstance">CatDeptosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="pageNumber">The page number to retrieve.</param>
+		''' <param name="pageSize">The page size of the page to retrieve.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingCatDeptosCollectionViaMfacCatClientes(catDeptosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As ComicionistaDAO = DAOFactory.CreateComicionistaDAO()
+			Return dao.GetMultiUsingCatDeptosCollectionViaMfacCatClientes(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, catDeptosInstance, pageNumber, pageSize)
+		End Function
+
+
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in CatDeptosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="catDeptosInstance">CatDeptosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingCatDeptosCollectionViaMfacCatClientes(catDeptosInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
+			Return GetMultiManyToManyUsingCatDeptosCollectionViaMfacCatClientes(catDeptosInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, prefetchPathToUse)
+		End Function
+
+
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in CatDeptosEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="catDeptosInstance">CatDeptosEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Overridable Function GetMultiManyToManyUsingCatDeptosCollectionViaMfacCatClientes(catDeptosInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, prefetchPathToUse As IPrefetchPath) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As ComicionistaDAO = DAOFactory.CreateComicionistaDAO()
+			Return dao.GetMultiUsingCatDeptosCollectionViaMfacCatClientes(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, catDeptosInstance, prefetchPathToUse)
+		End Function
+	
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
 		''' Relation of type 'm:n' with the passed in CuentaContableEntity. 
 		''' All current elements in the collection are removed from the collection.</summary>
 		''' <param name="cuentaContableInstance">CuentaContableEntity Object to be used as a filter in the m:n relation</param>
@@ -297,6 +366,75 @@ Namespace Integralab.ORM.CollectionClasses
 
 			Dim dao As ComicionistaDAO = DAOFactory.CreateComicionistaDAO()
 			Return dao.GetMultiUsingCuentaContableCollectionViaMfacCatClientes_(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, cuentaContableInstance, prefetchPathToUse)
+		End Function
+	
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in CuentaContableEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="cuentaContableInstance">CuentaContableEntity Object to be used as a filter in the m:n relation</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingCuentaContableCollectionViaMfacCatClientes__(cuentaContableInstance As IEntity) As Boolean
+			Return GetMultiManyToManyUsingCuentaContableCollectionViaMfacCatClientes__(cuentaContableInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, 0, 0)
+		End Function
+		
+
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in CuentaContableEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="cuentaContableInstance">CuentaContableEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingCuentaContableCollectionViaMfacCatClientes__(cuentaContableInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression) As Boolean
+			Return GetMultiManyToManyUsingCuentaContableCollectionViaMfacCatClientes__(cuentaContableInstance, maxNumberOfItemsToReturn, sortClauses, 0, 0)
+		End Function
+
+
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in CuentaContableEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="cuentaContableInstance">CuentaContableEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="pageNumber">The page number to retrieve.</param>
+		''' <param name="pageSize">The page size of the page to retrieve.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingCuentaContableCollectionViaMfacCatClientes__(cuentaContableInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As ComicionistaDAO = DAOFactory.CreateComicionistaDAO()
+			Return dao.GetMultiUsingCuentaContableCollectionViaMfacCatClientes__(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, cuentaContableInstance, pageNumber, pageSize)
+		End Function
+
+
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' Relation of type 'm:n' with the passed in CuentaContableEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="cuentaContableInstance">CuentaContableEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Function GetMultiManyToManyUsingCuentaContableCollectionViaMfacCatClientes__(cuentaContableInstance As IEntity, prefetchPathToUse As IPrefetchPath) As Boolean
+			Return GetMultiManyToManyUsingCuentaContableCollectionViaMfacCatClientes__(cuentaContableInstance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, prefetchPathToUse)
+		End Function
+
+
+		''' <summary>Retrieves in this ComicionistaCollection Object all ComicionistaEntity objects which are related via a 
+		''' relation of type 'm:n' with the passed in CuentaContableEntity. 
+		''' All current elements in the collection are removed from the collection.</summary>
+		''' <param name="cuentaContableInstance">CuentaContableEntity Object to be used as a filter in the m:n relation</param>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to Return with this retrieval query.</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch.</param>
+		''' <returns>true if the retrieval succeeded, false otherwise</returns>
+		Public Overridable Function GetMultiManyToManyUsingCuentaContableCollectionViaMfacCatClientes__(cuentaContableInstance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, prefetchPathToUse As IPrefetchPath) As Boolean
+			If Not MyBase.SuppressClearInGetMulti Then
+				Me.Clear()
+			End If
+
+			Dim dao As ComicionistaDAO = DAOFactory.CreateComicionistaDAO()
+			Return dao.GetMultiUsingCuentaContableCollectionViaMfacCatClientes__(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, cuentaContableInstance, prefetchPathToUse)
 		End Function
 	
 

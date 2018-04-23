@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 26 de marzo de 2018 17:30:30
+' // Code is generated on: lunes, 23 de abril de 2018 15:21:55
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -245,6 +245,21 @@ Namespace Integralab.ORM.RelationClasses
 		End Property
 	
 	
+		''' <summary>Returns a new IEntityRelation Object, between MfacCatClientesEntity and CatDeptosEntity over the m:1 relation they have, using the relation between the fields:
+		''' MfacCatClientes.IdDepartamento - CatDeptos.CveDepto
+		''' </summary>
+		Public Overridable  ReadOnly Property CatDeptosEntityUsingIdDepartamento() As IEntityRelation
+			Get
+
+				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+				relation.StartEntityIsPkSide = False
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(CatDeptosFieldIndex.CveDepto), EntityFieldFactory.Create(MfacCatClientesFieldIndex.IdDepartamento))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CatDeptosEntity", False)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacCatClientesEntity", True)
+				Return relation
+			End Get
+		End Property
+	
 		''' <summary>Returns a new IEntityRelation Object, between MfacCatClientesEntity and ComicionistaEntity over the m:1 relation they have, using the relation between the fields:
 		''' MfacCatClientes.IdVendedor - Comicionista.Codigo
 		''' </summary>
@@ -284,6 +299,21 @@ Namespace Integralab.ORM.RelationClasses
 				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
 				relation.StartEntityIsPkSide = False
 				relation.AddEntityFieldPair(EntityFieldFactory.Create(CuentaContableFieldIndex.Codigo), EntityFieldFactory.Create(MfacCatClientesFieldIndex.CuentaAnticipoId))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CuentaContableEntity", False)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacCatClientesEntity", True)
+				Return relation
+			End Get
+		End Property
+	
+		''' <summary>Returns a new IEntityRelation Object, between MfacCatClientesEntity and CuentaContableEntity over the m:1 relation they have, using the relation between the fields:
+		''' MfacCatClientes.Idcuentaventa - CuentaContable.Codigo
+		''' </summary>
+		Public Overridable  ReadOnly Property CuentaContableEntityUsingIdcuentaventa() As IEntityRelation
+			Get
+
+				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+				relation.StartEntityIsPkSide = False
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(CuentaContableFieldIndex.Codigo), EntityFieldFactory.Create(MfacCatClientesFieldIndex.Idcuentaventa))
 				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CuentaContableEntity", False)
 				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacCatClientesEntity", True)
 				Return relation

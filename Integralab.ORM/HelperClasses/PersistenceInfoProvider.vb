@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 26 de marzo de 2018 17:30:37
+' // Code is generated on: lunes, 23 de abril de 2018 15:22:01
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -2621,7 +2621,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits MfacCatClientesEntity's mappings</summary>
         Private Sub InitMfacCatClientesEntityMappings()
-            MyBase.AddElementMapping("MfacCatClientesEntity", "", "dbo", "MFacCatClientes", 33)
+            MyBase.AddElementMapping("MfacCatClientesEntity", "", "dbo", "MFacCatClientes", 35)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "IdCliente", "IdCliente", False, CInt(SqlDbType.Int), 0, 0, 10, True, "SCOPE_IDENTITY()", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Nombre", "Nombre", False, CInt(SqlDbType.VarChar), 120, 0, 0, False, "", Nothing, GetType(System.String), 1)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "RazonSocial", "RazonSocial", False, CInt(SqlDbType.VarChar), 160, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -2655,6 +2655,8 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Canaldistribucion", "Canaldistribucion", True, CInt(SqlDbType.NChar), 20, 0, 0, False, "", Nothing, GetType(System.String), 30)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "UsoCfdi", "UsoCFDI", False, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 31)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "FormaPago", "FormaPago", False, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 32)
+            MyBase.AddElementFieldMapping("MfacCatClientesEntity", "IdDepartamento", "IdDepartamento", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 33)
+            MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Idcuentaventa", "Idcuentaventa", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 34)
         End Sub
         ''' <summary>Inits MfacClientesDatosFiscalesEntity's mappings</summary>
         Private Sub InitMfacClientesDatosFiscalesEntityMappings()

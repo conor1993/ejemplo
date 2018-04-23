@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 26 de marzo de 2018 17:30:34
+' // Code is generated on: lunes, 23 de abril de 2018 15:21:58
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -70,6 +70,8 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchCliente, _alreadyFetchedCliente As Boolean
 		Private _cliente_ As Integralab.ORM.CollectionClasses.MfacCatClientesCollection
 		Private _alwaysFetchCliente_, _alreadyFetchedCliente_ As Boolean
+		Private _mfacCatClientes As Integralab.ORM.CollectionClasses.MfacCatClientesCollection
+		Private _alwaysFetchMfacCatClientes, _alreadyFetchedMfacCatClientes As Boolean
 		Private _msccatProductos As Integralab.ORM.CollectionClasses.MsccatProductosCollection
 		Private _alwaysFetchMsccatProductos, _alreadyFetchedMsccatProductos As Boolean
 		Private _polizasModeloDet As Integralab.ORM.CollectionClasses.PolizasModeloDetCollection
@@ -122,10 +124,18 @@ Namespace Integralab.ORM.EntityClasses
 		Private _alwaysFetchContDiotTiposTercerosCollectionViaProveedor, _alreadyFetchedContDiotTiposTercerosCollectionViaProveedor As Boolean
 		Private _contDiotTiposTercerosCollectionViaProveedor_ As Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection
 		Private _alwaysFetchContDiotTiposTercerosCollectionViaProveedor_, _alreadyFetchedContDiotTiposTercerosCollectionViaProveedor_ As Boolean
+		Private _catDeptosCollectionViaMfacCatClientes As Integralab.ORM.CollectionClasses.CatDeptosCollection
+		Private _alwaysFetchCatDeptosCollectionViaMfacCatClientes, _alreadyFetchedCatDeptosCollectionViaMfacCatClientes As Boolean
+		Private _catDeptosCollectionViaMfacCatClientes_ As Integralab.ORM.CollectionClasses.CatDeptosCollection
+		Private _alwaysFetchCatDeptosCollectionViaMfacCatClientes_, _alreadyFetchedCatDeptosCollectionViaMfacCatClientes_ As Boolean
+		Private _catDeptosCollectionViaMfacCatClientes__ As Integralab.ORM.CollectionClasses.CatDeptosCollection
+		Private _alwaysFetchCatDeptosCollectionViaMfacCatClientes__, _alreadyFetchedCatDeptosCollectionViaMfacCatClientes__ As Boolean
 		Private _comicionistaCollectionViaMfacCatClientes As Integralab.ORM.CollectionClasses.ComicionistaCollection
 		Private _alwaysFetchComicionistaCollectionViaMfacCatClientes, _alreadyFetchedComicionistaCollectionViaMfacCatClientes As Boolean
 		Private _comicionistaCollectionViaMfacCatClientes_ As Integralab.ORM.CollectionClasses.ComicionistaCollection
 		Private _alwaysFetchComicionistaCollectionViaMfacCatClientes_, _alreadyFetchedComicionistaCollectionViaMfacCatClientes_ As Boolean
+		Private _comicionistaCollectionViaMfacCatClientes__ As Integralab.ORM.CollectionClasses.ComicionistaCollection
+		Private _alwaysFetchComicionistaCollectionViaMfacCatClientes__, _alreadyFetchedComicionistaCollectionViaMfacCatClientes__ As Boolean
 		Private _polizasModeloCabCollectionViaPolizasModeloDet As Integralab.ORM.CollectionClasses.PolizasModeloCabCollection
 		Private _alwaysFetchPolizasModeloCabCollectionViaPolizasModeloDet, _alreadyFetchedPolizasModeloCabCollectionViaPolizasModeloDet As Boolean
 		Private _tipoMonedaCollectionViaCuenta As Integralab.ORM.CollectionClasses.TipoMonedaCollection
@@ -236,6 +246,9 @@ Namespace Integralab.ORM.EntityClasses
 			_cliente_ = CType(info.GetValue("_cliente_", GetType(Integralab.ORM.CollectionClasses.MfacCatClientesCollection)), Integralab.ORM.CollectionClasses.MfacCatClientesCollection)
 			_alwaysFetchCliente_ = info.GetBoolean("_alwaysFetchCliente_")
 			_alreadyFetchedCliente_ = info.GetBoolean("_alreadyFetchedCliente_")
+			_mfacCatClientes = CType(info.GetValue("_mfacCatClientes", GetType(Integralab.ORM.CollectionClasses.MfacCatClientesCollection)), Integralab.ORM.CollectionClasses.MfacCatClientesCollection)
+			_alwaysFetchMfacCatClientes = info.GetBoolean("_alwaysFetchMfacCatClientes")
+			_alreadyFetchedMfacCatClientes = info.GetBoolean("_alreadyFetchedMfacCatClientes")
 			_msccatProductos = CType(info.GetValue("_msccatProductos", GetType(Integralab.ORM.CollectionClasses.MsccatProductosCollection)), Integralab.ORM.CollectionClasses.MsccatProductosCollection)
 			_alwaysFetchMsccatProductos = info.GetBoolean("_alwaysFetchMsccatProductos")
 			_alreadyFetchedMsccatProductos = info.GetBoolean("_alreadyFetchedMsccatProductos")
@@ -314,12 +327,24 @@ Namespace Integralab.ORM.EntityClasses
 			_contDiotTiposTercerosCollectionViaProveedor_ = CType(info.GetValue("_contDiotTiposTercerosCollectionViaProveedor_", GetType(Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection)), Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection)
 			_alwaysFetchContDiotTiposTercerosCollectionViaProveedor_ = info.GetBoolean("_alwaysFetchContDiotTiposTercerosCollectionViaProveedor_")
 			_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor_ = info.GetBoolean("_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor_")
+			_catDeptosCollectionViaMfacCatClientes = CType(info.GetValue("_catDeptosCollectionViaMfacCatClientes", GetType(Integralab.ORM.CollectionClasses.CatDeptosCollection)), Integralab.ORM.CollectionClasses.CatDeptosCollection)
+			_alwaysFetchCatDeptosCollectionViaMfacCatClientes = info.GetBoolean("_alwaysFetchCatDeptosCollectionViaMfacCatClientes")
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes = info.GetBoolean("_alreadyFetchedCatDeptosCollectionViaMfacCatClientes")
+			_catDeptosCollectionViaMfacCatClientes_ = CType(info.GetValue("_catDeptosCollectionViaMfacCatClientes_", GetType(Integralab.ORM.CollectionClasses.CatDeptosCollection)), Integralab.ORM.CollectionClasses.CatDeptosCollection)
+			_alwaysFetchCatDeptosCollectionViaMfacCatClientes_ = info.GetBoolean("_alwaysFetchCatDeptosCollectionViaMfacCatClientes_")
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes_ = info.GetBoolean("_alreadyFetchedCatDeptosCollectionViaMfacCatClientes_")
+			_catDeptosCollectionViaMfacCatClientes__ = CType(info.GetValue("_catDeptosCollectionViaMfacCatClientes__", GetType(Integralab.ORM.CollectionClasses.CatDeptosCollection)), Integralab.ORM.CollectionClasses.CatDeptosCollection)
+			_alwaysFetchCatDeptosCollectionViaMfacCatClientes__ = info.GetBoolean("_alwaysFetchCatDeptosCollectionViaMfacCatClientes__")
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes__ = info.GetBoolean("_alreadyFetchedCatDeptosCollectionViaMfacCatClientes__")
 			_comicionistaCollectionViaMfacCatClientes = CType(info.GetValue("_comicionistaCollectionViaMfacCatClientes", GetType(Integralab.ORM.CollectionClasses.ComicionistaCollection)), Integralab.ORM.CollectionClasses.ComicionistaCollection)
 			_alwaysFetchComicionistaCollectionViaMfacCatClientes = info.GetBoolean("_alwaysFetchComicionistaCollectionViaMfacCatClientes")
 			_alreadyFetchedComicionistaCollectionViaMfacCatClientes = info.GetBoolean("_alreadyFetchedComicionistaCollectionViaMfacCatClientes")
 			_comicionistaCollectionViaMfacCatClientes_ = CType(info.GetValue("_comicionistaCollectionViaMfacCatClientes_", GetType(Integralab.ORM.CollectionClasses.ComicionistaCollection)), Integralab.ORM.CollectionClasses.ComicionistaCollection)
 			_alwaysFetchComicionistaCollectionViaMfacCatClientes_ = info.GetBoolean("_alwaysFetchComicionistaCollectionViaMfacCatClientes_")
 			_alreadyFetchedComicionistaCollectionViaMfacCatClientes_ = info.GetBoolean("_alreadyFetchedComicionistaCollectionViaMfacCatClientes_")
+			_comicionistaCollectionViaMfacCatClientes__ = CType(info.GetValue("_comicionistaCollectionViaMfacCatClientes__", GetType(Integralab.ORM.CollectionClasses.ComicionistaCollection)), Integralab.ORM.CollectionClasses.ComicionistaCollection)
+			_alwaysFetchComicionistaCollectionViaMfacCatClientes__ = info.GetBoolean("_alwaysFetchComicionistaCollectionViaMfacCatClientes__")
+			_alreadyFetchedComicionistaCollectionViaMfacCatClientes__ = info.GetBoolean("_alreadyFetchedComicionistaCollectionViaMfacCatClientes__")
 			_polizasModeloCabCollectionViaPolizasModeloDet = CType(info.GetValue("_polizasModeloCabCollectionViaPolizasModeloDet", GetType(Integralab.ORM.CollectionClasses.PolizasModeloCabCollection)), Integralab.ORM.CollectionClasses.PolizasModeloCabCollection)
 			_alwaysFetchPolizasModeloCabCollectionViaPolizasModeloDet = info.GetBoolean("_alwaysFetchPolizasModeloCabCollectionViaPolizasModeloDet")
 			_alreadyFetchedPolizasModeloCabCollectionViaPolizasModeloDet = info.GetBoolean("_alreadyFetchedPolizasModeloCabCollectionViaPolizasModeloDet")
@@ -383,6 +408,7 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedMcgcatCompradoresdeGanado = (_mcgcatCompradoresdeGanado.Count > 0)
 			_alreadyFetchedCliente = (_cliente.Count > 0)
 			_alreadyFetchedCliente_ = (_cliente_.Count > 0)
+			_alreadyFetchedMfacCatClientes = (_mfacCatClientes.Count > 0)
 			_alreadyFetchedMsccatProductos = (_msccatProductos.Count > 0)
 			_alreadyFetchedPolizasModeloDet = (_polizasModeloDet.Count > 0)
 			_alreadyFetchedCuenta = (_cuenta.Count > 0)
@@ -409,8 +435,12 @@ Namespace Integralab.ORM.EntityClasses
 			_alreadyFetchedContDiotTiposOperacionCollectionViaProveedor_ = (_contDiotTiposOperacionCollectionViaProveedor_.Count > 0)
 			_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor = (_contDiotTiposTercerosCollectionViaProveedor.Count > 0)
 			_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor_ = (_contDiotTiposTercerosCollectionViaProveedor_.Count > 0)
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes = (_catDeptosCollectionViaMfacCatClientes.Count > 0)
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes_ = (_catDeptosCollectionViaMfacCatClientes_.Count > 0)
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes__ = (_catDeptosCollectionViaMfacCatClientes__.Count > 0)
 			_alreadyFetchedComicionistaCollectionViaMfacCatClientes = (_comicionistaCollectionViaMfacCatClientes.Count > 0)
 			_alreadyFetchedComicionistaCollectionViaMfacCatClientes_ = (_comicionistaCollectionViaMfacCatClientes_.Count > 0)
+			_alreadyFetchedComicionistaCollectionViaMfacCatClientes__ = (_comicionistaCollectionViaMfacCatClientes__.Count > 0)
 			_alreadyFetchedPolizasModeloCabCollectionViaPolizasModeloDet = (_polizasModeloCabCollectionViaPolizasModeloDet.Count > 0)
 			_alreadyFetchedTipoMonedaCollectionViaCuenta = (_tipoMonedaCollectionViaCuenta.Count > 0)
 			_alreadyFetchedBancosCollectionViaCuenta = (_bancosCollectionViaCuenta.Count > 0)
@@ -512,6 +542,9 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_cliente_", _cliente_)
 			info.AddValue("_alwaysFetchCliente_", _alwaysFetchCliente_)
 			info.AddValue("_alreadyFetchedCliente_", _alreadyFetchedCliente_)
+			info.AddValue("_mfacCatClientes", _mfacCatClientes)
+			info.AddValue("_alwaysFetchMfacCatClientes", _alwaysFetchMfacCatClientes)
+			info.AddValue("_alreadyFetchedMfacCatClientes", _alreadyFetchedMfacCatClientes)
 			info.AddValue("_msccatProductos", _msccatProductos)
 			info.AddValue("_alwaysFetchMsccatProductos", _alwaysFetchMsccatProductos)
 			info.AddValue("_alreadyFetchedMsccatProductos", _alreadyFetchedMsccatProductos)
@@ -590,12 +623,24 @@ Namespace Integralab.ORM.EntityClasses
 			info.AddValue("_contDiotTiposTercerosCollectionViaProveedor_", _contDiotTiposTercerosCollectionViaProveedor_)
 			info.AddValue("_alwaysFetchContDiotTiposTercerosCollectionViaProveedor_", _alwaysFetchContDiotTiposTercerosCollectionViaProveedor_)
 			info.AddValue("_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor_", _alreadyFetchedContDiotTiposTercerosCollectionViaProveedor_)
+			info.AddValue("_catDeptosCollectionViaMfacCatClientes", _catDeptosCollectionViaMfacCatClientes)
+			info.AddValue("_alwaysFetchCatDeptosCollectionViaMfacCatClientes", _alwaysFetchCatDeptosCollectionViaMfacCatClientes)
+			info.AddValue("_alreadyFetchedCatDeptosCollectionViaMfacCatClientes", _alreadyFetchedCatDeptosCollectionViaMfacCatClientes)
+			info.AddValue("_catDeptosCollectionViaMfacCatClientes_", _catDeptosCollectionViaMfacCatClientes_)
+			info.AddValue("_alwaysFetchCatDeptosCollectionViaMfacCatClientes_", _alwaysFetchCatDeptosCollectionViaMfacCatClientes_)
+			info.AddValue("_alreadyFetchedCatDeptosCollectionViaMfacCatClientes_", _alreadyFetchedCatDeptosCollectionViaMfacCatClientes_)
+			info.AddValue("_catDeptosCollectionViaMfacCatClientes__", _catDeptosCollectionViaMfacCatClientes__)
+			info.AddValue("_alwaysFetchCatDeptosCollectionViaMfacCatClientes__", _alwaysFetchCatDeptosCollectionViaMfacCatClientes__)
+			info.AddValue("_alreadyFetchedCatDeptosCollectionViaMfacCatClientes__", _alreadyFetchedCatDeptosCollectionViaMfacCatClientes__)
 			info.AddValue("_comicionistaCollectionViaMfacCatClientes", _comicionistaCollectionViaMfacCatClientes)
 			info.AddValue("_alwaysFetchComicionistaCollectionViaMfacCatClientes", _alwaysFetchComicionistaCollectionViaMfacCatClientes)
 			info.AddValue("_alreadyFetchedComicionistaCollectionViaMfacCatClientes", _alreadyFetchedComicionistaCollectionViaMfacCatClientes)
 			info.AddValue("_comicionistaCollectionViaMfacCatClientes_", _comicionistaCollectionViaMfacCatClientes_)
 			info.AddValue("_alwaysFetchComicionistaCollectionViaMfacCatClientes_", _alwaysFetchComicionistaCollectionViaMfacCatClientes_)
 			info.AddValue("_alreadyFetchedComicionistaCollectionViaMfacCatClientes_", _alreadyFetchedComicionistaCollectionViaMfacCatClientes_)
+			info.AddValue("_comicionistaCollectionViaMfacCatClientes__", _comicionistaCollectionViaMfacCatClientes__)
+			info.AddValue("_alwaysFetchComicionistaCollectionViaMfacCatClientes__", _alwaysFetchComicionistaCollectionViaMfacCatClientes__)
+			info.AddValue("_alreadyFetchedComicionistaCollectionViaMfacCatClientes__", _alreadyFetchedComicionistaCollectionViaMfacCatClientes__)
 			info.AddValue("_polizasModeloCabCollectionViaPolizasModeloDet", _polizasModeloCabCollectionViaPolizasModeloDet)
 			info.AddValue("_alwaysFetchPolizasModeloCabCollectionViaPolizasModeloDet", _alwaysFetchPolizasModeloCabCollectionViaPolizasModeloDet)
 			info.AddValue("_alreadyFetchedPolizasModeloCabCollectionViaPolizasModeloDet", _alreadyFetchedPolizasModeloCabCollectionViaPolizasModeloDet)
@@ -718,6 +763,11 @@ Namespace Integralab.ORM.EntityClasses
 					_alreadyFetchedCliente_ = True
 					If Not entity Is Nothing Then
 						Me.Cliente_.Add(CType(entity, MfacCatClientesEntity))
+					End If
+				Case "MfacCatClientes"
+					_alreadyFetchedMfacCatClientes = True
+					If Not entity Is Nothing Then
+						Me.MfacCatClientes.Add(CType(entity, MfacCatClientesEntity))
 					End If
 				Case "MsccatProductos"
 					_alreadyFetchedMsccatProductos = True
@@ -849,6 +899,21 @@ Namespace Integralab.ORM.EntityClasses
 					If Not entity Is Nothing Then
 						Me.ContDiotTiposTercerosCollectionViaProveedor_.Add(CType(entity, ContDiotTiposTercerosEntity))
 					End If
+				Case "CatDeptosCollectionViaMfacCatClientes"
+					_alreadyFetchedCatDeptosCollectionViaMfacCatClientes = True
+					If Not entity Is Nothing Then
+						Me.CatDeptosCollectionViaMfacCatClientes.Add(CType(entity, CatDeptosEntity))
+					End If
+				Case "CatDeptosCollectionViaMfacCatClientes_"
+					_alreadyFetchedCatDeptosCollectionViaMfacCatClientes_ = True
+					If Not entity Is Nothing Then
+						Me.CatDeptosCollectionViaMfacCatClientes_.Add(CType(entity, CatDeptosEntity))
+					End If
+				Case "CatDeptosCollectionViaMfacCatClientes__"
+					_alreadyFetchedCatDeptosCollectionViaMfacCatClientes__ = True
+					If Not entity Is Nothing Then
+						Me.CatDeptosCollectionViaMfacCatClientes__.Add(CType(entity, CatDeptosEntity))
+					End If
 				Case "ComicionistaCollectionViaMfacCatClientes"
 					_alreadyFetchedComicionistaCollectionViaMfacCatClientes = True
 					If Not entity Is Nothing Then
@@ -858,6 +923,11 @@ Namespace Integralab.ORM.EntityClasses
 					_alreadyFetchedComicionistaCollectionViaMfacCatClientes_ = True
 					If Not entity Is Nothing Then
 						Me.ComicionistaCollectionViaMfacCatClientes_.Add(CType(entity, ComicionistaEntity))
+					End If
+				Case "ComicionistaCollectionViaMfacCatClientes__"
+					_alreadyFetchedComicionistaCollectionViaMfacCatClientes__ = True
+					If Not entity Is Nothing Then
+						Me.ComicionistaCollectionViaMfacCatClientes__.Add(CType(entity, ComicionistaEntity))
 					End If
 				Case "PolizasModeloCabCollectionViaPolizasModeloDet"
 					_alreadyFetchedPolizasModeloCabCollectionViaPolizasModeloDet = True
@@ -952,6 +1022,9 @@ Namespace Integralab.ORM.EntityClasses
 				Case "Cliente_"
 					_cliente_.Add(CType(relatedEntity, MfacCatClientesEntity))
 					OnRelatedEntitySet(relatedEntity, fieldName)
+				Case "MfacCatClientes"
+					_mfacCatClientes.Add(CType(relatedEntity, MfacCatClientesEntity))
+					OnRelatedEntitySet(relatedEntity, fieldName)
 				Case "MsccatProductos"
 					_msccatProductos.Add(CType(relatedEntity, MsccatProductosEntity))
 					OnRelatedEntitySet(relatedEntity, fieldName)
@@ -1043,6 +1116,9 @@ Namespace Integralab.ORM.EntityClasses
 				Case "Cliente_"
 					MyBase.PerformRelatedEntityRemoval(_cliente_, relatedEntity, signalRelatedEntityManyToOne)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
+				Case "MfacCatClientes"
+					MyBase.PerformRelatedEntityRemoval(_mfacCatClientes, relatedEntity, signalRelatedEntityManyToOne)
+					OnRelatedEntityUnset(relatedEntity, fieldName)
 				Case "MsccatProductos"
 					MyBase.PerformRelatedEntityRemoval(_msccatProductos, relatedEntity, signalRelatedEntityManyToOne)
 					OnRelatedEntityUnset(relatedEntity, fieldName)
@@ -1124,6 +1200,7 @@ Namespace Integralab.ORM.EntityClasses
 			toReturn.Add(_mcgcatCompradoresdeGanado)
 			toReturn.Add(_cliente)
 			toReturn.Add(_cliente_)
+			toReturn.Add(_mfacCatClientes)
 			toReturn.Add(_msccatProductos)
 			toReturn.Add(_polizasModeloDet)
 			toReturn.Add(_cuenta)
@@ -1934,7 +2011,7 @@ Namespace Integralab.ORM.EntityClasses
 				If Not entityFactoryToUse Is Nothing Then
 					_cliente.EntityFactoryToUse = entityFactoryToUse
 				End If
-				_cliente.GetMultiManyToOne(Nothing, Me, Nothing, Filter)
+				_cliente.GetMultiManyToOne(Nothing, Nothing, Me, Nothing, Nothing, Filter)
 				_cliente.SuppressClearInGetMulti = False
 				_alreadyFetchedCliente = True
 			End If
@@ -1989,7 +2066,7 @@ Namespace Integralab.ORM.EntityClasses
 				If Not entityFactoryToUse Is Nothing Then
 					_cliente_.EntityFactoryToUse = entityFactoryToUse
 				End If
-				_cliente_.GetMultiManyToOne(Nothing, Nothing, Me, Filter)
+				_cliente_.GetMultiManyToOne(Nothing, Nothing, Nothing, Me, Nothing, Filter)
 				_cliente_.SuppressClearInGetMulti = False
 				_alreadyFetchedCliente_ = True
 			End If
@@ -2003,6 +2080,61 @@ Namespace Integralab.ORM.EntityClasses
 		Public Overridable Sub SetCollectionParametersCliente_(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
 			_cliente_.SortClauses=sortClauses
 			_cliente_.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
+		End Sub
+	
+		''' <summary>Retrieves all related entities of type 'MfacCatClientesEntity' Imports a relation of type '1:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <returns>Filled collection with all related entities of type 'MfacCatClientesEntity'</returns>
+		Public Function GetMultiMfacCatClientes(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.MfacCatClientesCollection
+			Return GetMultiMfacCatClientes(forceFetch, _mfacCatClientes.EntityFactoryToUse, Nothing)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'MfacCatClientesEntity' Imports a relation of type '1:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToOne() routine.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Function GetMultiMfacCatClientes(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.MfacCatClientesCollection
+			Return GetMultiMfacCatClientes(forceFetch, entityFactoryToUse, Nothing)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'MfacCatClientesEntity' Imports a relation of type '1:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="filter">Extra filter to limit the resultset.</param>
+		''' <returns>Filled collection with all related entities of type 'MfacCatClientesEntity'</returns>
+		Public Function GetMultiMfacCatClientes(forceFetch As Boolean, Filter As IPredicateExpression) As Integralab.ORM.CollectionClasses.MfacCatClientesCollection
+			Return GetMultiMfacCatClientes(forceFetch, _mfacCatClientes.EntityFactoryToUse, Filter)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'MfacCatClientesEntity' Imports a relation of type '1:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToOne() routine.</param>
+		''' <param name="filter">Extra filter to limit the resultset.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Overridable Function GetMultiMfacCatClientes(forceFetch As Boolean, entityFactoryToUse As IEntityFactory, Filter As IPredicateExpression) As Integralab.ORM.CollectionClasses.MfacCatClientesCollection
+			If ( Not _alreadyFetchedMfacCatClientes Or forceFetch Or _alwaysFetchMfacCatClientes) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
+				If MyBase.ParticipatesInTransaction Then
+					If Not _mfacCatClientes.ParticipatesInTransaction Then
+						MyBase.Transaction.Add(_mfacCatClientes)
+					End If
+				End If
+				_mfacCatClientes.SuppressClearInGetMulti = Not forceFetch
+				If Not entityFactoryToUse Is Nothing Then
+					_mfacCatClientes.EntityFactoryToUse = entityFactoryToUse
+				End If
+				_mfacCatClientes.GetMultiManyToOne(Nothing, Nothing, Nothing, Nothing, Me, Filter)
+				_mfacCatClientes.SuppressClearInGetMulti = False
+				_alreadyFetchedMfacCatClientes = True
+			End If
+			Return _mfacCatClientes
+		End Function
+
+		''' <summary>Sets the collection parameters for the collection for 'MfacCatClientes'. These settings will be taken into account
+		''' when the property MfacCatClientes is requested or GetMultiMfacCatClientes is called.</summary>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
+		Public Overridable Sub SetCollectionParametersMfacCatClientes(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
+			_mfacCatClientes.SortClauses=sortClauses
+			_mfacCatClientes.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub
 	
 		''' <summary>Retrieves all related entities of type 'MsccatProductosEntity' Imports a relation of type '1:n'.</summary>
@@ -3232,6 +3364,135 @@ Namespace Integralab.ORM.EntityClasses
 			_contDiotTiposTercerosCollectionViaProveedor_.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub	
 
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <returns>Filled collection with all related entities of type 'CatDeptosEntity'</returns>
+		Public Function GetMultiCatDeptosCollectionViaMfacCatClientes(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			Return GetMultiCatDeptosCollectionViaMfacCatClientes(forceFetch, _catDeptosCollectionViaMfacCatClientes.EntityFactoryToUse)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToMany() routine.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Overridable Function GetMultiCatDeptosCollectionViaMfacCatClientes(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			If ( Not _alreadyFetchedCatDeptosCollectionViaMfacCatClientes Or forceFetch Or _alwaysFetchCatDeptosCollectionViaMfacCatClientes) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
+				If MyBase.ParticipatesInTransaction Then
+					If Not _catDeptosCollectionViaMfacCatClientes.ParticipatesInTransaction Then
+						MyBase.Transaction.Add(_catDeptosCollectionViaMfacCatClientes)
+					End If
+				End If
+				Dim relations As IRelationCollection = New RelationCollection()
+				Dim Filter As IPredicateExpression = New PredicateExpression()
+				relations.Add(CuentaContableEntity.Relations.MfacCatClientesEntityUsingCuentaContId, "__CuentaContableEntity__", "MfacCatClientes_", JoinHint.None)
+				relations.Add(MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento, "MfacCatClientes_", String.Empty, JoinHint.None)
+				Filter.Add(New FieldCompareValuePredicate(EntityFieldFactory.Create(CuentaContableFieldIndex.Codigo), ComparisonOperator.Equal, Me.Codigo))
+				_catDeptosCollectionViaMfacCatClientes.SuppressClearInGetMulti = Not forceFetch
+				If Not entityFactoryToUse Is Nothing Then
+					_catDeptosCollectionViaMfacCatClientes.EntityFactoryToUse = entityFactoryToUse
+				End If
+				_catDeptosCollectionViaMfacCatClientes.GetMulti(Filter, relations)
+				_catDeptosCollectionViaMfacCatClientes.SuppressClearInGetMulti = False
+				_alreadyFetchedCatDeptosCollectionViaMfacCatClientes = True
+			End If
+			Return _catDeptosCollectionViaMfacCatClientes
+		End Function
+
+		''' <summary>Sets the collection parameters for the collection for 'CatDeptosCollectionViaMfacCatClientes'. These settings will be taken into account
+		''' when the property CatDeptosCollectionViaMfacCatClientes is requested or GetMultiCatDeptosCollectionViaMfacCatClientes is called.</summary>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
+		Public Overridable Sub SetCollectionParametersCatDeptosCollectionViaMfacCatClientes(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
+			_catDeptosCollectionViaMfacCatClientes.SortClauses=sortClauses
+			_catDeptosCollectionViaMfacCatClientes.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
+		End Sub	
+
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <returns>Filled collection with all related entities of type 'CatDeptosEntity'</returns>
+		Public Function GetMultiCatDeptosCollectionViaMfacCatClientes_(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			Return GetMultiCatDeptosCollectionViaMfacCatClientes_(forceFetch, _catDeptosCollectionViaMfacCatClientes_.EntityFactoryToUse)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToMany() routine.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Overridable Function GetMultiCatDeptosCollectionViaMfacCatClientes_(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			If ( Not _alreadyFetchedCatDeptosCollectionViaMfacCatClientes_ Or forceFetch Or _alwaysFetchCatDeptosCollectionViaMfacCatClientes_) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
+				If MyBase.ParticipatesInTransaction Then
+					If Not _catDeptosCollectionViaMfacCatClientes_.ParticipatesInTransaction Then
+						MyBase.Transaction.Add(_catDeptosCollectionViaMfacCatClientes_)
+					End If
+				End If
+				Dim relations As IRelationCollection = New RelationCollection()
+				Dim Filter As IPredicateExpression = New PredicateExpression()
+				relations.Add(CuentaContableEntity.Relations.MfacCatClientesEntityUsingCuentaAnticipoId, "__CuentaContableEntity__", "MfacCatClientes_", JoinHint.None)
+				relations.Add(MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento, "MfacCatClientes_", String.Empty, JoinHint.None)
+				Filter.Add(New FieldCompareValuePredicate(EntityFieldFactory.Create(CuentaContableFieldIndex.Codigo), ComparisonOperator.Equal, Me.Codigo))
+				_catDeptosCollectionViaMfacCatClientes_.SuppressClearInGetMulti = Not forceFetch
+				If Not entityFactoryToUse Is Nothing Then
+					_catDeptosCollectionViaMfacCatClientes_.EntityFactoryToUse = entityFactoryToUse
+				End If
+				_catDeptosCollectionViaMfacCatClientes_.GetMulti(Filter, relations)
+				_catDeptosCollectionViaMfacCatClientes_.SuppressClearInGetMulti = False
+				_alreadyFetchedCatDeptosCollectionViaMfacCatClientes_ = True
+			End If
+			Return _catDeptosCollectionViaMfacCatClientes_
+		End Function
+
+		''' <summary>Sets the collection parameters for the collection for 'CatDeptosCollectionViaMfacCatClientes_'. These settings will be taken into account
+		''' when the property CatDeptosCollectionViaMfacCatClientes_ is requested or GetMultiCatDeptosCollectionViaMfacCatClientes_ is called.</summary>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
+		Public Overridable Sub SetCollectionParametersCatDeptosCollectionViaMfacCatClientes_(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
+			_catDeptosCollectionViaMfacCatClientes_.SortClauses=sortClauses
+			_catDeptosCollectionViaMfacCatClientes_.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
+		End Sub	
+
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <returns>Filled collection with all related entities of type 'CatDeptosEntity'</returns>
+		Public Function GetMultiCatDeptosCollectionViaMfacCatClientes__(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			Return GetMultiCatDeptosCollectionViaMfacCatClientes__(forceFetch, _catDeptosCollectionViaMfacCatClientes__.EntityFactoryToUse)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToMany() routine.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Overridable Function GetMultiCatDeptosCollectionViaMfacCatClientes__(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			If ( Not _alreadyFetchedCatDeptosCollectionViaMfacCatClientes__ Or forceFetch Or _alwaysFetchCatDeptosCollectionViaMfacCatClientes__) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
+				If MyBase.ParticipatesInTransaction Then
+					If Not _catDeptosCollectionViaMfacCatClientes__.ParticipatesInTransaction Then
+						MyBase.Transaction.Add(_catDeptosCollectionViaMfacCatClientes__)
+					End If
+				End If
+				Dim relations As IRelationCollection = New RelationCollection()
+				Dim Filter As IPredicateExpression = New PredicateExpression()
+				relations.Add(CuentaContableEntity.Relations.MfacCatClientesEntityUsingIdcuentaventa, "__CuentaContableEntity__", "MfacCatClientes_", JoinHint.None)
+				relations.Add(MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento, "MfacCatClientes_", String.Empty, JoinHint.None)
+				Filter.Add(New FieldCompareValuePredicate(EntityFieldFactory.Create(CuentaContableFieldIndex.Codigo), ComparisonOperator.Equal, Me.Codigo))
+				_catDeptosCollectionViaMfacCatClientes__.SuppressClearInGetMulti = Not forceFetch
+				If Not entityFactoryToUse Is Nothing Then
+					_catDeptosCollectionViaMfacCatClientes__.EntityFactoryToUse = entityFactoryToUse
+				End If
+				_catDeptosCollectionViaMfacCatClientes__.GetMulti(Filter, relations)
+				_catDeptosCollectionViaMfacCatClientes__.SuppressClearInGetMulti = False
+				_alreadyFetchedCatDeptosCollectionViaMfacCatClientes__ = True
+			End If
+			Return _catDeptosCollectionViaMfacCatClientes__
+		End Function
+
+		''' <summary>Sets the collection parameters for the collection for 'CatDeptosCollectionViaMfacCatClientes__'. These settings will be taken into account
+		''' when the property CatDeptosCollectionViaMfacCatClientes__ is requested or GetMultiCatDeptosCollectionViaMfacCatClientes__ is called.</summary>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
+		Public Overridable Sub SetCollectionParametersCatDeptosCollectionViaMfacCatClientes__(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
+			_catDeptosCollectionViaMfacCatClientes__.SortClauses=sortClauses
+			_catDeptosCollectionViaMfacCatClientes__.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
+		End Sub	
+
 		''' <summary>Retrieves all related entities of type 'ComicionistaEntity' Imports a relation of type 'm:n'.</summary>
 		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
 		''' <returns>Filled collection with all related entities of type 'ComicionistaEntity'</returns>
@@ -3316,6 +3577,49 @@ Namespace Integralab.ORM.EntityClasses
 		Public Overridable Sub SetCollectionParametersComicionistaCollectionViaMfacCatClientes_(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
 			_comicionistaCollectionViaMfacCatClientes_.SortClauses=sortClauses
 			_comicionistaCollectionViaMfacCatClientes_.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
+		End Sub	
+
+		''' <summary>Retrieves all related entities of type 'ComicionistaEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <returns>Filled collection with all related entities of type 'ComicionistaEntity'</returns>
+		Public Function GetMultiComicionistaCollectionViaMfacCatClientes__(forceFetch As Boolean) As Integralab.ORM.CollectionClasses.ComicionistaCollection
+			Return GetMultiComicionistaCollectionViaMfacCatClientes__(forceFetch, _comicionistaCollectionViaMfacCatClientes__.EntityFactoryToUse)
+		End Function
+
+		''' <summary>Retrieves all related entities of type 'ComicionistaEntity' Imports a relation of type 'm:n'.</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the collection and will rerun the complete query instead</param>
+		''' <param name="entityFactoryToUse">The entity factory to use for the GetMultiManyToMany() routine.</param>
+		''' <returns>Filled collection with all related entities of the type constructed by the passed in entity factory</returns>
+		Public Overridable Function GetMultiComicionistaCollectionViaMfacCatClientes__(forceFetch As Boolean, entityFactoryToUse As IEntityFactory) As Integralab.ORM.CollectionClasses.ComicionistaCollection
+			If ( Not _alreadyFetchedComicionistaCollectionViaMfacCatClientes__ Or forceFetch Or _alwaysFetchComicionistaCollectionViaMfacCatClientes__) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing AndAlso Not MyBase.InDesignMode Then
+				If MyBase.ParticipatesInTransaction Then
+					If Not _comicionistaCollectionViaMfacCatClientes__.ParticipatesInTransaction Then
+						MyBase.Transaction.Add(_comicionistaCollectionViaMfacCatClientes__)
+					End If
+				End If
+				Dim relations As IRelationCollection = New RelationCollection()
+				Dim Filter As IPredicateExpression = New PredicateExpression()
+				relations.Add(CuentaContableEntity.Relations.MfacCatClientesEntityUsingIdcuentaventa, "__CuentaContableEntity__", "MfacCatClientes_", JoinHint.None)
+				relations.Add(MfacCatClientesEntity.Relations.ComicionistaEntityUsingIdVendedor, "MfacCatClientes_", String.Empty, JoinHint.None)
+				Filter.Add(New FieldCompareValuePredicate(EntityFieldFactory.Create(CuentaContableFieldIndex.Codigo), ComparisonOperator.Equal, Me.Codigo))
+				_comicionistaCollectionViaMfacCatClientes__.SuppressClearInGetMulti = Not forceFetch
+				If Not entityFactoryToUse Is Nothing Then
+					_comicionistaCollectionViaMfacCatClientes__.EntityFactoryToUse = entityFactoryToUse
+				End If
+				_comicionistaCollectionViaMfacCatClientes__.GetMulti(Filter, relations)
+				_comicionistaCollectionViaMfacCatClientes__.SuppressClearInGetMulti = False
+				_alreadyFetchedComicionistaCollectionViaMfacCatClientes__ = True
+			End If
+			Return _comicionistaCollectionViaMfacCatClientes__
+		End Function
+
+		''' <summary>Sets the collection parameters for the collection for 'ComicionistaCollectionViaMfacCatClientes__'. These settings will be taken into account
+		''' when the property ComicionistaCollectionViaMfacCatClientes__ is requested or GetMultiComicionistaCollectionViaMfacCatClientes__ is called.</summary>
+		''' <param name="maxNumberOfItemsToReturn"> The maximum number of items to return. When set to 0, this parameter is ignored</param>
+		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified (null), no sorting is applied.</param>
+		Public Overridable Sub SetCollectionParametersComicionistaCollectionViaMfacCatClientes__(maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression)
+			_comicionistaCollectionViaMfacCatClientes__.SortClauses=sortClauses
+			_comicionistaCollectionViaMfacCatClientes__.MaxNumberOfItemsToReturn=maxNumberOfItemsToReturn
 		End Sub	
 
 		''' <summary>Retrieves all related entities of type 'PolizasModeloCabEntity' Imports a relation of type 'm:n'.</summary>
@@ -3748,6 +4052,7 @@ Namespace Integralab.ORM.EntityClasses
 			_mcgcatCompradoresdeGanado.ActiveContext = MyBase.ActiveContext
 			_cliente.ActiveContext = MyBase.ActiveContext
 			_cliente_.ActiveContext = MyBase.ActiveContext
+			_mfacCatClientes.ActiveContext = MyBase.ActiveContext
 			_msccatProductos.ActiveContext = MyBase.ActiveContext
 			_polizasModeloDet.ActiveContext = MyBase.ActiveContext
 			_cuenta.ActiveContext = MyBase.ActiveContext
@@ -3774,8 +4079,12 @@ Namespace Integralab.ORM.EntityClasses
 			_contDiotTiposOperacionCollectionViaProveedor_.ActiveContext = MyBase.ActiveContext
 			_contDiotTiposTercerosCollectionViaProveedor.ActiveContext = MyBase.ActiveContext
 			_contDiotTiposTercerosCollectionViaProveedor_.ActiveContext = MyBase.ActiveContext
+			_catDeptosCollectionViaMfacCatClientes.ActiveContext = MyBase.ActiveContext
+			_catDeptosCollectionViaMfacCatClientes_.ActiveContext = MyBase.ActiveContext
+			_catDeptosCollectionViaMfacCatClientes__.ActiveContext = MyBase.ActiveContext
 			_comicionistaCollectionViaMfacCatClientes.ActiveContext = MyBase.ActiveContext
 			_comicionistaCollectionViaMfacCatClientes_.ActiveContext = MyBase.ActiveContext
+			_comicionistaCollectionViaMfacCatClientes__.ActiveContext = MyBase.ActiveContext
 			_polizasModeloCabCollectionViaPolizasModeloDet.ActiveContext = MyBase.ActiveContext
 			_tipoMonedaCollectionViaCuenta.ActiveContext = MyBase.ActiveContext
 			_bancosCollectionViaCuenta.ActiveContext = MyBase.ActiveContext
@@ -3919,6 +4228,10 @@ Namespace Integralab.ORM.EntityClasses
 			_cliente_.SetContainingEntityInfo(Me, "CuentaContable_")
 			_alwaysFetchCliente_ = False
 			_alreadyFetchedCliente_ = False
+			_mfacCatClientes = New Integralab.ORM.CollectionClasses.MfacCatClientesCollection(New MfacCatClientesEntityFactory())
+			_mfacCatClientes.SetContainingEntityInfo(Me, "CuentaContable__")
+			_alwaysFetchMfacCatClientes = False
+			_alreadyFetchedMfacCatClientes = False
 			_msccatProductos = New Integralab.ORM.CollectionClasses.MsccatProductosCollection(New MsccatProductosEntityFactory())
 			_msccatProductos.SetContainingEntityInfo(Me, "CuentaContable")
 			_alwaysFetchMsccatProductos = False
@@ -4006,12 +4319,24 @@ Namespace Integralab.ORM.EntityClasses
 			_contDiotTiposTercerosCollectionViaProveedor_ = New Integralab.ORM.CollectionClasses.ContDiotTiposTercerosCollection(New ContDiotTiposTercerosEntityFactory())
 			_alwaysFetchContDiotTiposTercerosCollectionViaProveedor_ = False
 			_alreadyFetchedContDiotTiposTercerosCollectionViaProveedor_ = False
+			_catDeptosCollectionViaMfacCatClientes = New Integralab.ORM.CollectionClasses.CatDeptosCollection(New CatDeptosEntityFactory())
+			_alwaysFetchCatDeptosCollectionViaMfacCatClientes = False
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes = False
+			_catDeptosCollectionViaMfacCatClientes_ = New Integralab.ORM.CollectionClasses.CatDeptosCollection(New CatDeptosEntityFactory())
+			_alwaysFetchCatDeptosCollectionViaMfacCatClientes_ = False
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes_ = False
+			_catDeptosCollectionViaMfacCatClientes__ = New Integralab.ORM.CollectionClasses.CatDeptosCollection(New CatDeptosEntityFactory())
+			_alwaysFetchCatDeptosCollectionViaMfacCatClientes__ = False
+			_alreadyFetchedCatDeptosCollectionViaMfacCatClientes__ = False
 			_comicionistaCollectionViaMfacCatClientes = New Integralab.ORM.CollectionClasses.ComicionistaCollection(New ComicionistaEntityFactory())
 			_alwaysFetchComicionistaCollectionViaMfacCatClientes = False
 			_alreadyFetchedComicionistaCollectionViaMfacCatClientes = False
 			_comicionistaCollectionViaMfacCatClientes_ = New Integralab.ORM.CollectionClasses.ComicionistaCollection(New ComicionistaEntityFactory())
 			_alwaysFetchComicionistaCollectionViaMfacCatClientes_ = False
 			_alreadyFetchedComicionistaCollectionViaMfacCatClientes_ = False
+			_comicionistaCollectionViaMfacCatClientes__ = New Integralab.ORM.CollectionClasses.ComicionistaCollection(New ComicionistaEntityFactory())
+			_alwaysFetchComicionistaCollectionViaMfacCatClientes__ = False
+			_alreadyFetchedComicionistaCollectionViaMfacCatClientes__ = False
 			_polizasModeloCabCollectionViaPolizasModeloDet = New Integralab.ORM.CollectionClasses.PolizasModeloCabCollection(New PolizasModeloCabEntityFactory())
 			_alwaysFetchPolizasModeloCabCollectionViaPolizasModeloDet = False
 			_alreadyFetchedPolizasModeloCabCollectionViaPolizasModeloDet = False
@@ -4404,6 +4729,17 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 		End Property
 	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'MfacCatClientes' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath2 instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathMfacCatClientes() As IPrefetchPathElement
+			Get
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.MfacCatClientesCollection(), _
+					CuentaContableEntity.Relations.MfacCatClientesEntityUsingIdcuentaventa, _
+					CType(Integralab.ORM.EntityType.CuentaContableEntity, Integer), CType(Integralab.ORM.EntityType.MfacCatClientesEntity, Integer), 0, Nothing, Nothing, Nothing, "MfacCatClientes", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
+			End Get
+		End Property
+	
 		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'MsccatProductos' 
 		''' for this entity. Add the object Returned by this property to an existing PrefetchPath2 instance.</summary>
 		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
@@ -4742,6 +5078,48 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 		End Property
 	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CatDeptos' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathCatDeptosCollectionViaMfacCatClientes() As IPrefetchPathElement
+			Get
+				Dim relations As IRelationCollection = New RelationCollection()
+				relations.Add(CuentaContableEntity.Relations.MfacCatClientesEntityUsingCuentaContId, "__CuentaContableEntity__", String.Empty, JoinHint.None)
+				relations.Add(MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento)
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CatDeptosCollection(), _
+					CuentaContableEntity.Relations.MfacCatClientesEntityUsingCuentaContId, _
+					CType(Integralab.ORM.EntityType.CuentaContableEntity, Integer), CType(Integralab.ORM.EntityType.CatDeptosEntity, Integer), 0, Nothing, Nothing, relations, "CatDeptosCollectionViaMfacCatClientes", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CatDeptos' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathCatDeptosCollectionViaMfacCatClientes_() As IPrefetchPathElement
+			Get
+				Dim relations As IRelationCollection = New RelationCollection()
+				relations.Add(CuentaContableEntity.Relations.MfacCatClientesEntityUsingCuentaAnticipoId, "__CuentaContableEntity__", String.Empty, JoinHint.None)
+				relations.Add(MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento)
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CatDeptosCollection(), _
+					CuentaContableEntity.Relations.MfacCatClientesEntityUsingCuentaAnticipoId, _
+					CType(Integralab.ORM.EntityType.CuentaContableEntity, Integer), CType(Integralab.ORM.EntityType.CatDeptosEntity, Integer), 0, Nothing, Nothing, relations, "CatDeptosCollectionViaMfacCatClientes_", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CatDeptos' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathCatDeptosCollectionViaMfacCatClientes__() As IPrefetchPathElement
+			Get
+				Dim relations As IRelationCollection = New RelationCollection()
+				relations.Add(CuentaContableEntity.Relations.MfacCatClientesEntityUsingIdcuentaventa, "__CuentaContableEntity__", String.Empty, JoinHint.None)
+				relations.Add(MfacCatClientesEntity.Relations.CatDeptosEntityUsingIdDepartamento)
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CatDeptosCollection(), _
+					CuentaContableEntity.Relations.MfacCatClientesEntityUsingIdcuentaventa, _
+					CType(Integralab.ORM.EntityType.CuentaContableEntity, Integer), CType(Integralab.ORM.EntityType.CatDeptosEntity, Integer), 0, Nothing, Nothing, relations, "CatDeptosCollectionViaMfacCatClientes__", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
+			End Get
+		End Property
+	
 		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'Comicionista' 
 		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
 		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
@@ -4767,6 +5145,20 @@ Namespace Integralab.ORM.EntityClasses
 				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.ComicionistaCollection(), _
 					CuentaContableEntity.Relations.MfacCatClientesEntityUsingCuentaAnticipoId, _
 					CType(Integralab.ORM.EntityType.CuentaContableEntity, Integer), CType(Integralab.ORM.EntityType.ComicionistaEntity, Integer), 0, Nothing, Nothing, relations, "ComicionistaCollectionViaMfacCatClientes_", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
+			End Get
+		End Property
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'Comicionista' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathComicionistaCollectionViaMfacCatClientes__() As IPrefetchPathElement
+			Get
+				Dim relations As IRelationCollection = New RelationCollection()
+				relations.Add(CuentaContableEntity.Relations.MfacCatClientesEntityUsingIdcuentaventa, "__CuentaContableEntity__", String.Empty, JoinHint.None)
+				relations.Add(MfacCatClientesEntity.Relations.ComicionistaEntityUsingIdVendedor)
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.ComicionistaCollection(), _
+					CuentaContableEntity.Relations.MfacCatClientesEntityUsingIdcuentaventa, _
+					CType(Integralab.ORM.EntityType.CuentaContableEntity, Integer), CType(Integralab.ORM.EntityType.ComicionistaEntity, Integer), 0, Nothing, Nothing, relations, "ComicionistaCollectionViaMfacCatClientes__", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToMany)
 			End Get
 		End Property
 	
@@ -5684,6 +6076,29 @@ Namespace Integralab.ORM.EntityClasses
 			End Set	
 		End Property
 	
+		''' <summary>Retrieves all related entities of type 'MfacCatClientesEntity' Imports a relation of type '1:n'.</summary>
+		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiMfacCatClientes()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope.</remarks>
+		Public Overridable ReadOnly Property [MfacCatClientes]() As Integralab.ORM.CollectionClasses.MfacCatClientesCollection
+			Get
+				Return GetMultiMfacCatClientes(False)
+			End Get
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for MfacCatClientes. When set to true, MfacCatClientes is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time MfacCatClientes is accessed. You can always execute
+		''' a forced fetch by calling GetMultiMfacCatClientes(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchMfacCatClientes As Boolean
+			Get
+				Return _alwaysFetchMfacCatClientes
+			End Get
+			Set
+				_alwaysFetchMfacCatClientes = value
+			End Set	
+		End Property
+	
 		''' <summary>Retrieves all related entities of type 'MsccatProductosEntity' Imports a relation of type '1:n'.</summary>
 		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiMsccatProductos()', because 
 		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
@@ -6283,6 +6698,75 @@ Namespace Integralab.ORM.EntityClasses
 			End Set	
 		End Property
 	
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiCatDeptosCollectionViaMfacCatClientes()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope.</remarks>
+		Public Overridable ReadOnly Property [CatDeptosCollectionViaMfacCatClientes]() As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			Get
+				Return GetMultiCatDeptosCollectionViaMfacCatClientes(False)
+			End Get
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for CatDeptosCollectionViaMfacCatClientes. When set to true, CatDeptosCollectionViaMfacCatClientes is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time CatDeptosCollectionViaMfacCatClientes is accessed. You can always execute
+		''' a forced fetch by calling GetMultiCatDeptosCollectionViaMfacCatClientes(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchCatDeptosCollectionViaMfacCatClientes As Boolean
+			Get
+				Return _alwaysFetchCatDeptosCollectionViaMfacCatClientes
+			End Get
+			Set
+				_alwaysFetchCatDeptosCollectionViaMfacCatClientes = value
+			End Set	
+		End Property
+	
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiCatDeptosCollectionViaMfacCatClientes_()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope.</remarks>
+		Public Overridable ReadOnly Property [CatDeptosCollectionViaMfacCatClientes_]() As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			Get
+				Return GetMultiCatDeptosCollectionViaMfacCatClientes_(False)
+			End Get
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for CatDeptosCollectionViaMfacCatClientes_. When set to true, CatDeptosCollectionViaMfacCatClientes_ is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time CatDeptosCollectionViaMfacCatClientes_ is accessed. You can always execute
+		''' a forced fetch by calling GetMultiCatDeptosCollectionViaMfacCatClientes_(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchCatDeptosCollectionViaMfacCatClientes_ As Boolean
+			Get
+				Return _alwaysFetchCatDeptosCollectionViaMfacCatClientes_
+			End Get
+			Set
+				_alwaysFetchCatDeptosCollectionViaMfacCatClientes_ = value
+			End Set	
+		End Property
+	
+		''' <summary>Retrieves all related entities of type 'CatDeptosEntity' Imports a relation of type 'm:n'.</summary>
+		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiCatDeptosCollectionViaMfacCatClientes__()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope.</remarks>
+		Public Overridable ReadOnly Property [CatDeptosCollectionViaMfacCatClientes__]() As Integralab.ORM.CollectionClasses.CatDeptosCollection
+			Get
+				Return GetMultiCatDeptosCollectionViaMfacCatClientes__(False)
+			End Get
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for CatDeptosCollectionViaMfacCatClientes__. When set to true, CatDeptosCollectionViaMfacCatClientes__ is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time CatDeptosCollectionViaMfacCatClientes__ is accessed. You can always execute
+		''' a forced fetch by calling GetMultiCatDeptosCollectionViaMfacCatClientes__(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchCatDeptosCollectionViaMfacCatClientes__ As Boolean
+			Get
+				Return _alwaysFetchCatDeptosCollectionViaMfacCatClientes__
+			End Get
+			Set
+				_alwaysFetchCatDeptosCollectionViaMfacCatClientes__ = value
+			End Set	
+		End Property
+	
 		''' <summary>Retrieves all related entities of type 'ComicionistaEntity' Imports a relation of type 'm:n'.</summary>
 		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiComicionistaCollectionViaMfacCatClientes()', because 
 		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
@@ -6326,6 +6810,29 @@ Namespace Integralab.ORM.EntityClasses
 			End Get
 			Set
 				_alwaysFetchComicionistaCollectionViaMfacCatClientes_ = value
+			End Set	
+		End Property
+	
+		''' <summary>Retrieves all related entities of type 'ComicionistaEntity' Imports a relation of type 'm:n'.</summary>
+		''' <remarks>This property is added for databinding conveniance, however it is recommeded to use the method 'GetMultiComicionistaCollectionViaMfacCatClientes__()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope.</remarks>
+		Public Overridable ReadOnly Property [ComicionistaCollectionViaMfacCatClientes__]() As Integralab.ORM.CollectionClasses.ComicionistaCollection
+			Get
+				Return GetMultiComicionistaCollectionViaMfacCatClientes__(False)
+			End Get
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for ComicionistaCollectionViaMfacCatClientes__. When set to true, ComicionistaCollectionViaMfacCatClientes__ is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time ComicionistaCollectionViaMfacCatClientes__ is accessed. You can always execute
+		''' a forced fetch by calling GetMultiComicionistaCollectionViaMfacCatClientes__(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchComicionistaCollectionViaMfacCatClientes__ As Boolean
+			Get
+				Return _alwaysFetchComicionistaCollectionViaMfacCatClientes__
+			End Get
+			Set
+				_alwaysFetchComicionistaCollectionViaMfacCatClientes__ = value
 			End Set	
 		End Property
 	

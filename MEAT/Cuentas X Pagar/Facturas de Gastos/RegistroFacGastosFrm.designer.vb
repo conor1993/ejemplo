@@ -118,6 +118,7 @@ Partial Class RegistroFacGastosFrm
         Me.clmCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmPorcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelBorrar = New System.Windows.Forms.Label()
         CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -942,11 +943,21 @@ Partial Class RegistroFacGastosFrm
         Me.clmPorcentaje.HeaderText = "Porcentaje"
         Me.clmPorcentaje.Name = "clmPorcentaje"
         '
+        'LabelBorrar
+        '
+        Me.LabelBorrar.AutoSize = True
+        Me.LabelBorrar.Location = New System.Drawing.Point(4, 307)
+        Me.LabelBorrar.Name = "LabelBorrar"
+        Me.LabelBorrar.Size = New System.Drawing.Size(43, 13)
+        Me.LabelBorrar.TabIndex = 163
+        Me.LabelBorrar.Text = "Eliminar"
+        '
         'RegistroFacGastosFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(792, 724)
+        Me.Controls.Add(Me.LabelBorrar)
         Me.Controls.Add(Me.dgvdistribuciongastosdet)
         Me.Controls.Add(Me.UUID)
         Me.Controls.Add(Me.Label25)
@@ -1105,4 +1116,5 @@ Partial Class RegistroFacGastosFrm
     Friend WithEvents Cuenta1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cod_centro As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents idporcentaje As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LabelBorrar As System.Windows.Forms.Label
 End Class

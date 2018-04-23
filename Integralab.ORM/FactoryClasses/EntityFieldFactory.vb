@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 26 de marzo de 2018 17:30:37
+' // Code is generated on: lunes, 23 de abril de 2018 15:22:01
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -5650,6 +5650,10 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "UsoCfdi"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "UsoCfdi"))
 				Case MfacCatClientesFieldIndex.FormaPago
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "FormaPago"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "FormaPago"))
+				Case MfacCatClientesFieldIndex.IdDepartamento
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "IdDepartamento"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "IdDepartamento"))
+				Case MfacCatClientesFieldIndex.Idcuentaventa
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "Idcuentaventa"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "Idcuentaventa"))
 
 			End Select
 			Return fieldToReturn
