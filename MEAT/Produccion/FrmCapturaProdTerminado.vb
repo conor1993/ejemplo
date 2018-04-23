@@ -1074,7 +1074,7 @@ Public Class FrmCapturaProdTerminado
             Me.txtSubCorte.Text = TablaProductos.Tables(0).Rows(0)("Descripcion")
         End If
 
-        Me.txtPiezas.Text = TablaProductos.Tables(0).Rows(0)("MaximoPiezasxCaja")
+        Me.txtPiezas.Text = 1
 
         If DBNull.Value.Equals(TablaProductos.Tables(0).Rows(0)("IdPrecorte")) Then
             Me.txtCodCorte.Text = ""
@@ -1239,7 +1239,7 @@ Public Class FrmCapturaProdTerminado
             End Using
 
             Me.txtPeso.Text = "0"
-            Me.txtPiezas.Text = "0"
+            Me.txtPiezas.Text = "1"
             Me.txtcajas.Text = "0"
 
             If ID_Producto > 0 Then
@@ -1324,7 +1324,7 @@ Public Class FrmCapturaProdTerminado
                     'Modificar los dos txtCodSubCorte txtSubCorte
                     Me.txtCodSubCorte.Text = Consultas.dgvCortes.CurrentRow.Cells("Codigo").Value
                     Me.txtSubCorte.Text = Consultas.dgvCortes.CurrentRow.Cells("Descripcion").Value
-                    Me.txtPiezas.Text = Consultas.dgvCortes.CurrentRow.Cells("Piezas").Value
+                    Me.txtPiezas.Text = 1
 
                     If DBNull.Value.Equals(Consultas.dgvCortes.CurrentRow.Cells("CodigoPreCorte").Value) Then
                         Me.txtCodCorte.Text = ""
@@ -1393,7 +1393,7 @@ Public Class FrmCapturaProdTerminado
                     Else
                         Me.txtPeso.Text = Mid(Me.txtFolioReferencia.Text, ConfiguracionEtiqueta.Tables(0).Rows(0)("KilosColumnaInicial"), ConfiguracionEtiqueta.Tables(0).Rows(0)("KilosLongitud"))
                         Me.txtPeso.Text = Mid(Me.txtPeso.Text, 1, 4) & "." & Mid(Me.txtPeso.Text, 5, 2)
-                        Me.txtPiezas.Text = Mid(Me.txtFolioReferencia.Text, ConfiguracionEtiqueta.Tables(0).Rows(0)("PiezasColumnaInicial"), ConfiguracionEtiqueta.Tables(0).Rows(0)("PiezasLongitud"))
+                        Me.txtPiezas.Text = 1
                         'busca el codigo del producto en la tabla de relacion del rastro
                         CodigoRastro = Mid(Me.txtFolioReferencia.Text, ConfiguracionEtiqueta.Tables(0).Rows(0)("CodigoColumnaInicial"), ConfiguracionEtiqueta.Tables(0).Rows(0)("CodigoLongitud"))
                         ProductosRastros = Utilerias.EjecutarSQL("Select * From MSCRelacionProductosRastros where CodProductoRastro=" & CodigoRastro, "MSCRelacionProductosRastros", HC.DbUtils.ActualConnectionString)
@@ -1751,7 +1751,7 @@ Public Class FrmCapturaProdTerminado
             End Using
 
             Me.txtPeso.Text = "0"
-            Me.txtPiezas.Text = "0"
+            Me.txtPiezas.Text = "1"
             Me.txtcajas.Text = "0"
 
 
