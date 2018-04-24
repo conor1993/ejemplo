@@ -435,6 +435,22 @@ Public Class ClientesIntroductoresClass
         End Set
     End Property
 
+    Public Property CuentaContableVenta() As CuentaContableClass
+        Get
+            If _CuentaContable Is Nothing Then
+                _CuentaContable = New CuentaContableClass(Entity.Idcuentaventa)
+            End If
+            Return _CuentaContable
+        End Get
+        Set(ByVal value As CuentaContableClass)
+            _CuentaContable = value
+            If value Is Nothing Then
+                Entity.CuentaContable = Nothing
+            Else
+                Entity.CuentaContable = value.ObtenerEntidad
+            End If
+        End Set
+    End Property
 #End Region
 
 #Region "Constructores"
