@@ -1461,15 +1461,19 @@ Public Class frmFacturacionEspecial
                 Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("Transaction").Hidden = True
                 Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("ParticipatesInTransaction").Hidden = True
                 '''----
+                If ClientesClas.Idcuentaventa <> 0 Then
+                    If ClientesClas.Idcuentaventa > 0 Then
+                        'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
+                        Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
 
+                        'Dim CtasConts As New CuentaContableCollectionClass
+                        If ClientesClas.CuentaContableId > 0 Then
+                            Me.RellenarGridCuentas(ClientesClas.CuentaContable)
+                        Else
+                            MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End If
 
-
-
-                'Dim CtasConts As New CuentaContableCollectionClass
-                If ClientesClas.CuentaContableId > 0 Then
-                    Me.RellenarGridCuentas(ClientesClas.CuentaContable)
-                Else
-                    MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End If
             End If
         Catch ex As Exception
@@ -1715,32 +1719,32 @@ Public Class frmFacturacionEspecial
                 MsgBox("Imposible obtener la cuenta, es una Cuenta Bancaria", MsgBoxStyle.Information, "Aviso")
             Else
                 If Me.dgvCuentasContables.Rows(0).Cells("ClmDescripcion").Value <> "" Then
-                    If CuentasRepetidas(Cta) Then
-                        MsgBox("Imposible obtener la cuenta, Error de duplicidad", MsgBoxStyle.Information, "Aviso")
-                    Else
+                    'If CuentasRepetidas(Cta) Then
+                    '    MsgBox("Imposible obtener la cuenta, Error de duplicidad", MsgBoxStyle.Information, "Aviso")
+                    'Else
 
-                        If Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value <> "" Then
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
-                            'Me.dgvCuentasContables.Rows.Add()
-                        Else
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
-                            'Me.dgvCuentasContables.Rows.Add()
-                        End If
+                    If Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value <> "" Then
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
+                        'Me.dgvCuentasContables.Rows.Add()
+                    Else
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
+                        'Me.dgvCuentasContables.Rows.Add()
                     End If
+                    ' End If
                 Else
                     Me.dgvCuentasContables.Rows.Add()
                     Me.dgvCuentasContables.Rows(0).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
