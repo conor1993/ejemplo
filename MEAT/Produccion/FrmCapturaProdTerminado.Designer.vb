@@ -53,6 +53,7 @@ Partial Class FrmCapturaProdTerminado
         Me.cmdBuscarPreCortes = New System.Windows.Forms.Button()
         Me.CmdImprimir = New System.Windows.Forms.Button()
         Me.Frame2 = New System.Windows.Forms.GroupBox()
+        Me.txtCerrado = New System.Windows.Forms.TextBox()
         Me.txtTotKgrs = New System.Windows.Forms.TextBox()
         Me.txtTotPzas = New System.Windows.Forms.TextBox()
         Me.txtTotEti = New System.Windows.Forms.TextBox()
@@ -64,7 +65,7 @@ Partial Class FrmCapturaProdTerminado
         Me._LblEtiqueta_1 = New System.Windows.Forms.Label()
         Me._LblEtiqueta_2 = New System.Windows.Forms.Label()
         Me._LblEtiqueta_3 = New System.Windows.Forms.Label()
-        Me._LblEtiqueta_7 = New System.Windows.Forms.Label()
+        Me.lblpiezas = New System.Windows.Forms.Label()
         Me._LblEtiqueta_8 = New System.Windows.Forms.Label()
         Me._LblEtiqueta_9 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -106,7 +107,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtKilosRegistrar = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cmbCortes = New System.Windows.Forms.ComboBox()
-        Me.txtCerrado = New System.Windows.Forms.TextBox()
+        Me.btnCerrar = New System.Windows.Forms.Button()
         CType(Me.dgvEtiquetas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Frame2.SuspendLayout()
         Me.gpbCanales.SuspendLayout()
@@ -120,6 +121,7 @@ Partial Class FrmCapturaProdTerminado
         Me.dgvEtiquetas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgvEtiquetas.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -256,10 +258,11 @@ Partial Class FrmCapturaProdTerminado
         'txtPiezas
         '
         Me.txtPiezas.AcceptsReturn = True
-        Me.txtPiezas.BackColor = System.Drawing.SystemColors.Window
+        Me.txtPiezas.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.txtPiezas.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtPiezas.Enabled = False
         Me.txtPiezas.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPiezas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtPiezas.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
         Me.txtPiezas.Location = New System.Drawing.Point(252, 176)
         Me.txtPiezas.MaxLength = 0
         Me.txtPiezas.Name = "txtPiezas"
@@ -268,6 +271,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtPiezas.TabIndex = 61
         Me.txtPiezas.Text = "0"
         Me.txtPiezas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtPiezas.Visible = False
         '
         'txtSubCorte
         '
@@ -433,6 +437,18 @@ Partial Class FrmCapturaProdTerminado
         Me.Frame2.Text = "Totales"
         Me.Frame2.Visible = False
         '
+        'txtCerrado
+        '
+        Me.txtCerrado.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.txtCerrado.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCerrado.Location = New System.Drawing.Point(82, 0)
+        Me.txtCerrado.Name = "txtCerrado"
+        Me.txtCerrado.Size = New System.Drawing.Size(113, 26)
+        Me.txtCerrado.TabIndex = 102
+        Me.txtCerrado.Text = "Cerrado"
+        Me.txtCerrado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtCerrado.Visible = False
+        '
         'txtTotKgrs
         '
         Me.txtTotKgrs.AcceptsReturn = True
@@ -586,19 +602,20 @@ Partial Class FrmCapturaProdTerminado
         Me._LblEtiqueta_3.TabIndex = 64
         Me._LblEtiqueta_3.Text = "Kgrs. :"
         '
-        '_LblEtiqueta_7
+        'lblpiezas
         '
-        Me._LblEtiqueta_7.AutoSize = True
-        Me._LblEtiqueta_7.BackColor = System.Drawing.SystemColors.Control
-        Me._LblEtiqueta_7.Cursor = System.Windows.Forms.Cursors.Default
-        Me._LblEtiqueta_7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me._LblEtiqueta_7.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._LblEtiqueta_7.Location = New System.Drawing.Point(191, 195)
-        Me._LblEtiqueta_7.Name = "_LblEtiqueta_7"
-        Me._LblEtiqueta_7.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me._LblEtiqueta_7.Size = New System.Drawing.Size(55, 16)
-        Me._LblEtiqueta_7.TabIndex = 63
-        Me._LblEtiqueta_7.Text = "Piezas :"
+        Me.lblpiezas.AutoSize = True
+        Me.lblpiezas.BackColor = System.Drawing.SystemColors.Control
+        Me.lblpiezas.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblpiezas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblpiezas.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblpiezas.Location = New System.Drawing.Point(191, 195)
+        Me.lblpiezas.Name = "lblpiezas"
+        Me.lblpiezas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblpiezas.Size = New System.Drawing.Size(55, 16)
+        Me.lblpiezas.TabIndex = 63
+        Me.lblpiezas.Text = "Piezas :"
+        Me.lblpiezas.Visible = False
         '
         '_LblEtiqueta_8
         '
@@ -1075,23 +1092,21 @@ Partial Class FrmCapturaProdTerminado
         Me.cmbCortes.Size = New System.Drawing.Size(416, 28)
         Me.cmbCortes.TabIndex = 59
         '
-        'txtCerrado
+        'btnCerrar
         '
-        Me.txtCerrado.BackColor = System.Drawing.Color.MediumSeaGreen
-        Me.txtCerrado.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCerrado.Location = New System.Drawing.Point(82, 0)
-        Me.txtCerrado.Name = "txtCerrado"
-        Me.txtCerrado.Size = New System.Drawing.Size(113, 26)
-        Me.txtCerrado.TabIndex = 102
-        Me.txtCerrado.Text = "Cerrado"
-        Me.txtCerrado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.txtCerrado.Visible = False
+        Me.btnCerrar.Location = New System.Drawing.Point(741, 41)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(66, 48)
+        Me.btnCerrar.TabIndex = 102
+        Me.btnCerrar.Text = "Cerrar"
+        Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'FrmCapturaProdTerminado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1018, 595)
+        Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.cmbCortes)
         Me.Controls.Add(Me.txtKilosRegistrar)
         Me.Controls.Add(Me.Label8)
@@ -1114,7 +1129,7 @@ Partial Class FrmCapturaProdTerminado
         Me.Controls.Add(Me._LblEtiqueta_11)
         Me.Controls.Add(Me._LblEtiqueta_1)
         Me.Controls.Add(Me._LblEtiqueta_3)
-        Me.Controls.Add(Me._LblEtiqueta_7)
+        Me.Controls.Add(Me.lblpiezas)
         Me.Controls.Add(Me.chkEdadGanado)
         Me.Controls.Add(Me.dgvEtiquetas)
         Me.Controls.Add(Me.txtFolioReferencia)
@@ -1181,7 +1196,7 @@ Partial Class FrmCapturaProdTerminado
     Public WithEvents _LblEtiqueta_1 As System.Windows.Forms.Label
     Public WithEvents _LblEtiqueta_2 As System.Windows.Forms.Label
     Public WithEvents _LblEtiqueta_3 As System.Windows.Forms.Label
-    Public WithEvents _LblEtiqueta_7 As System.Windows.Forms.Label
+    Public WithEvents lblpiezas As System.Windows.Forms.Label
     Public WithEvents _LblEtiqueta_8 As System.Windows.Forms.Label
     Public WithEvents _LblEtiqueta_9 As System.Windows.Forms.Label
     Public WithEvents Label1 As System.Windows.Forms.Label
@@ -1231,4 +1246,5 @@ Partial Class FrmCapturaProdTerminado
     Public WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents cmbCortes As System.Windows.Forms.ComboBox
     Friend WithEvents txtCerrado As System.Windows.Forms.TextBox
+    Friend WithEvents btnCerrar As System.Windows.Forms.Button
 End Class
