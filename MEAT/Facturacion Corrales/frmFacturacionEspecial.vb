@@ -1434,6 +1434,10 @@ Public Class frmFacturacionEspecial
                 Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("ParticipatesInTransaction").Hidden = True
                 '''----
 
+                If IsDBNull(ClientesClas.Idcuentaventa) Then
+                    MessageBox.Show("El cliente no tiene registrada la cuenta contable de ventas, Catalogos/Ventas/Clientes", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                End If
+
                 If ClientesClas.Idcuentaventa > 0 Then
                     'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
                     Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
@@ -1449,7 +1453,10 @@ Public Class frmFacturacionEspecial
 
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Aviso")
+            MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            ''  MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            '' MsgBox(ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try
 
     End Sub
