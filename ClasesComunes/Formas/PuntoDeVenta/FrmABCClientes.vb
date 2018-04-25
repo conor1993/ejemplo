@@ -476,7 +476,6 @@ Public Class FrmABCClientes
             'End If
 
 
-
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -583,8 +582,6 @@ Public Class FrmABCClientes
                 MessageBox.Show(Mensaje.ToString(), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return False
             End If
-
-
 
 
             'If Not Me.txtLimiteCred.Text > 0 Then
