@@ -24,6 +24,7 @@ Public Class FrmABCClientes
     Private ClientesCol As CN.ClientesIntroductoresColeccion
     Private WithEvents CuentaCont As CN.CuentaContableClass
     Private WithEvents CuentaAnt As CN.CuentaContableClass
+    Private WithEvents CuentaVenta As CN.CuentaContableClass
     Dim DiasCredito As Integer
     Dim Estatus As CN.FormState
     'Dim bit As CN.BitacoraPV
@@ -434,7 +435,7 @@ Public Class FrmABCClientes
             End If
 
             If Me.txtCtaVenta.Text <> "" Then
-                Cliente.Idcuentaventa = CuentaCont.Codigo
+                Cliente.Idcuentaventa = CuentaVenta.Codigo
             End If
 
             If Me.txtCtaContable.Text <> "" Then
@@ -1202,9 +1203,9 @@ Public Class FrmABCClientes
         Try
             Dim buscarCuentaV As New BusquedaCuentasContablesForm
             If buscarCuentaV.ShowDialog = Windows.Forms.DialogResult.OK Then
-                CuentaAnt = New CN.CuentaContableClass
-                CuentaAnt = buscarCuentaV.CuentaContable
-                Me.txtCtaVenta.Text = String.Format("{0} : {1}", CuentaAnt.NombreCuenta, CuentaAnt.CuentaContable)
+                CuentaVenta = New CN.CuentaContableClass
+                CuentaVenta = buscarCuentaV.CuentaContable
+                Me.txtCtaVenta.Text = String.Format("{0} : {1}", CuentaVenta.NombreCuenta, CuentaVenta.CuentaContable)
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)

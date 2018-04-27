@@ -234,6 +234,7 @@ Public Class _390GeneraPolizaPasivo
 
             ''obtener  datos de la poliza guardada
             Dim datos As New DataSet
+
             datos = obtenerdatasetPoliza(Poliza)
 
             ''------------------------------------
