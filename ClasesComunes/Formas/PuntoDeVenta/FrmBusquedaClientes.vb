@@ -41,6 +41,10 @@ Public Class FrmBusquedaClientes
                 Filtro.Add(HC.VwBusquedaClientesFields.IdCliente = Me.txtCodigo.Text)
             End If
 
+            If Not Me.txtCodigo.Text = "" Then
+                Filtro.Add(HC.VwBusquedaClientesFields.)
+            End If
+
             If Not Me.txtNombre.Text = "" Then
                 Filtro.Add(HC.VwBusquedaClientesFields.Nombre Mod String.Format("%{0}%", Me.txtNombre.Text))
             End If
@@ -86,6 +90,9 @@ Public Class FrmBusquedaClientes
 
             Me.dgvClientes.AutoGenerateColumns = False
             Me.dgvClientes.DataSource = Vista
+
+
+
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

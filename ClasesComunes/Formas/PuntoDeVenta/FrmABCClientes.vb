@@ -532,6 +532,10 @@ Public Class FrmABCClientes
                 Me.txtCtaContable.Text = String.Format("{0} : {1}", CuentaCont.NombreCuenta, CuentaCont.CuentaContable)
             End If
 
+            If Not CuentaVenta Is Nothing Then
+                Me.txtCtaVenta.Text = String.Format("{0} : {1}", CuentaVenta.NombreCuenta, CuentaVenta.CuentaContable)
+            End If
+
             dgvDomicilios.DataSource = Cliente.DomiciliosFiscales
 
             Me.lblEstatus.Text = Cliente.Estatus.ToString
@@ -1170,6 +1174,7 @@ Public Class FrmABCClientes
             buscarCuenta.txtSCta.Text = CuentaConfiguracion(0).CuentaContable.SubCta
             buscarCuenta.txtSSCta.Text = CuentaConfiguracion(0).CuentaContable.SsubCta
             buscarCuenta.txtSSSCta.Text = CuentaConfiguracion(0).CuentaContable.SssubCta
+
 
             buscarCuenta.txtNombre.Enabled = False
             buscarCuenta.txtCta.Enabled = False
