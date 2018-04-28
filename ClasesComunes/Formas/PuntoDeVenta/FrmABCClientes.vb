@@ -24,6 +24,7 @@ Public Class FrmABCClientes
     Private ClientesCol As CN.ClientesIntroductoresColeccion
     Private WithEvents CuentaCont As CN.CuentaContableClass
     Private WithEvents CuentaAnt As CN.CuentaContableClass
+    Private WithEvents CuentaVenta As CN.CuentaContableClass
     Dim DiasCredito As Integer
     Dim Estatus As CN.FormState
     'Dim bit As CN.BitacoraPV
@@ -90,6 +91,9 @@ Public Class FrmABCClientes
             tipoclientes.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS)
             Me.cmbtipocliente.DataSource = tipoclientes
 
+            llenarDepartamentos(True)
+
+
             llenarUsoCFDISAT()
             llenarFormasPago()
 
@@ -107,7 +111,31 @@ Public Class FrmABCClientes
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Sub llenarDepartamentos(ByVal tof As Boolean)
+        Dim query As String = ""
+        Dim tb As New DataTable
+        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+        query = "SELECT Cve_Depto, Nom_Depto" &
+               " FROM CatDeptos"
 
+        tb.Columns.Add("Nom_Depto")
+        Dim dr As DataRow = tb.NewRow
+
+        cmbDepartamento.DisplayMember = "Nom_Depto"
+        cmbDepartamento.ValueMember = "Cve_Depto"
+
+        Using sqlcom As New SqlCommand(query, sqlCon)
+            Dim adp As New SqlDataAdapter(sqlcom)
+            sqlCon.Open()
+            adp.Fill(tb)
+            cmbDepartamento.DataSource = tb
+
+            sqlCon.Close()
+            cmbDepartamento.SelectedValue = -1
+        End Using
+
+
+    End Sub
     Public Sub llenarFormasPago()
         Dim connetionString As String = Nothing
         Dim connection As SqlConnection
@@ -211,6 +239,7 @@ Public Class FrmABCClientes
         Me.txtTelCel.Text = ""
         Me.txtTelefono.Text = ""
         Me.txtTelefonoFisc.Text = ""
+        Me.txtCtaVenta.Text = ""
         Me.DateTimePicker1.Text = ""
         Me.txtRfc.Text = ""
         Me.CmbEstado.SelectedIndex = -1
@@ -268,6 +297,7 @@ Public Class FrmABCClientes
         Me.txtNombre.Enabled = True
         Me.txtRazonSocial.Enabled = True
         Me.txtRfc.Enabled = True
+        Me.btnCtaVenta.Enabled = True
         Me.txtTelefono.Enabled = True
         Me.CmbEstado.Enabled = True
         Me.CmbCiudades.Enabled = True
@@ -283,7 +313,7 @@ Public Class FrmABCClientes
         Me.cmbVendedor.Enabled = True
         Me.cmbPasarInformacion.Enabled = True
         Me.btnCrearDomicilio.Enabled = True
-
+        Me.txtCtaContable.Enabled = True
         Me.txtColoniaFisc.Enabled = True
         Me.txtCPfiscal.Enabled = True
         Me.txtCalleFisc.Enabled = True
@@ -324,6 +354,7 @@ Public Class FrmABCClientes
         Me.txtCodigoPostal.Enabled = False
         Me.txtColonia.Enabled = False
         Me.txtColoniaFisc.Enabled = False
+        Me.txtCtaContable.Enabled = False
         Me.txtCPfiscal.Enabled = False
         Me.txtCtaAnticipo.Enabled = False
         Me.txtCtaContable.Enabled = False
@@ -334,6 +365,7 @@ Public Class FrmABCClientes
         Me.txtNoIntFisc.Enabled = False
         Me.txtEmail.Enabled = False
         Me.txtFax.Enabled = False
+        Me.btnCtaVenta.Enabled = False
         Me.txtLimiteCred.Enabled = False
         Me.txtNombre.Enabled = False
         Me.txtRazonSocial.Enabled = False
@@ -398,7 +430,13 @@ Public Class FrmABCClientes
                 Me.Cliente.canaldistribucion = "DETALLE"
             End If
 
+            If Me.cmbDepartamento.Text <> "" Then
+                Cliente.Iddepartamento = cmbDepartamento.SelectedValue
+            End If
 
+            If Me.txtCtaVenta.Text <> "" Then
+                Cliente.Idcuentaventa = CuentaVenta.Codigo
+            End If
 
             If Me.txtCtaContable.Text <> "" Then
                 Me.Cliente.CuentaContableId = CuentaCont.Codigo
@@ -437,7 +475,6 @@ Public Class FrmABCClientes
             Cliente.UsoCFDI = cmbUsoCFDI.SelectedValue.ToString().Trim()
             Cliente.FormaPago = cmbFormaPago.SelectedValue.ToString().Trim()
             'End If
-
 
 
         Catch ex As Exception
@@ -546,8 +583,6 @@ Public Class FrmABCClientes
                 MessageBox.Show(Mensaje.ToString(), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return False
             End If
-
-
 
 
             'If Not Me.txtLimiteCred.Text > 0 Then
@@ -1164,6 +1199,19 @@ Public Class FrmABCClientes
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub btnCtaVenta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCtaVenta.Click
+        Try
+            Dim buscarCuentaV As New BusquedaCuentasContablesForm
+            If buscarCuentaV.ShowDialog = Windows.Forms.DialogResult.OK Then
+                CuentaVenta = New CN.CuentaContableClass
+                CuentaVenta = buscarCuentaV.CuentaContable
+                Me.txtCtaVenta.Text = String.Format("{0} : {1}", CuentaVenta.NombreCuenta, CuentaVenta.CuentaContable)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 #End Region
 
 #Region "Key Press"

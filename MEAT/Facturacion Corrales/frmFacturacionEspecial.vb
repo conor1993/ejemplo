@@ -254,11 +254,7 @@ Public Class frmFacturacionEspecial
                         Dim CveProdServ = DirectCast([Enum].Parse(GetType(CFDI.c_ClaveProdServ), .Cells(clmProductoServicio.Index).Value.ToString()), CFDI.c_ClaveProdServ)
                         Dim CveUnidadS = DirectCast([Enum].Parse(GetType(CFDI.c_ClaveUnidad), .Cells(clmUnidadSat.Index).Value.ToString()), CFDI.c_ClaveUnidad)
 
-
-
                         Concepto = New CFDI.ComprobanteConcepto(CveProdServ, .Cells(clmUnidadSat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
-
-
 
                         Dim ComprobanteImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
                         'If CDec(.Cells(clmIVA.Index).Value) > 0 Then
@@ -371,16 +367,6 @@ Public Class frmFacturacionEspecial
 
 
 
-
-
-
-
-
-
-
-
-
-
         Catch ex As Exception
             If ex.Message = "No hay ninguna aplicación asociada con el archivo especificado para esta operación" Then
                 MessageBox.Show("Debe instalar Adobe Reader para abrir los archivos pdf", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -418,9 +404,6 @@ Public Class frmFacturacionEspecial
                 Return False
                 Exit Function
             End If
-
-
-
 
             'System.Threading.Thread.Sleep(6000)
             'Application.DoEvents()
@@ -469,9 +452,6 @@ Public Class frmFacturacionEspecial
                     MsgBox("Error al generar el CFDI." & vbCrLf & File.ReadAllText(Application.StartupPath + "\\" + "Error.txt"), MsgBoxStyle.Critical, "Facturación")
                     Return False
                 End If
-
-
-
 
 
                 'folio de la factura
@@ -965,20 +945,12 @@ Public Class frmFacturacionEspecial
             clmProductoDes.MaxDropDownItems = 6
             clmUnidadSat.MaxDropDownItems = 6
 
-
-
             'llenarProductos()
-
-
-
 
             cmbformadepago.SelectedIndex = -1
             cmbmetododepago.SelectedIndex = -1
             cmbformadepago.Text = "Seleccione la forma de pago..."
             cmbmetododepago.Text = "Seleccione la método de pago..."
-
-
-
 
             Dim MtbEstados As New MEAToolBar.MEAToolBar.ToolBarButtonStatusStructure
 
@@ -1462,18 +1434,29 @@ Public Class frmFacturacionEspecial
                 Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("ParticipatesInTransaction").Hidden = True
                 '''----
 
-
-
-
-                'Dim CtasConts As New CuentaContableCollectionClass
-                If ClientesClas.CuentaContableId > 0 Then
-                    Me.RellenarGridCuentas(ClientesClas.CuentaContable)
-                Else
-                    MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If IsDBNull(ClientesClas.Idcuentaventa) Then
+                    MessageBox.Show("El cliente no tiene registrada la cuenta contable de ventas, Catalogos/Ventas/Clientes", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Stop)
                 End If
+
+                If ClientesClas.Idcuentaventa > 0 Then
+                    'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
+
+                    'Dim CtasConts As New CuentaContableCollectionClass
+                    If ClientesClas.CuentaContableId > 0 Then
+                        Me.RellenarGridCuentas(ClientesClas.CuentaContable)
+                    Else
+                        MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+
+                End If
+
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Aviso")
+            MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            ''  MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            '' MsgBox(ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try
 
     End Sub
@@ -1715,32 +1698,32 @@ Public Class frmFacturacionEspecial
                 MsgBox("Imposible obtener la cuenta, es una Cuenta Bancaria", MsgBoxStyle.Information, "Aviso")
             Else
                 If Me.dgvCuentasContables.Rows(0).Cells("ClmDescripcion").Value <> "" Then
-                    If CuentasRepetidas(Cta) Then
-                        MsgBox("Imposible obtener la cuenta, Error de duplicidad", MsgBoxStyle.Information, "Aviso")
-                    Else
+                    'If CuentasRepetidas(Cta) Then
+                    '    MsgBox("Imposible obtener la cuenta, Error de duplicidad", MsgBoxStyle.Information, "Aviso")
+                    'Else
 
-                        If Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value <> "" Then
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
-                            'Me.dgvCuentasContables.Rows.Add()
-                        Else
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
-                            'Me.dgvCuentasContables.Rows.Add()
-                        End If
+                    If Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value <> "" Then
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
+                        'Me.dgvCuentasContables.Rows.Add()
+                    Else
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
+                        'Me.dgvCuentasContables.Rows.Add()
                     End If
+                    ' End If
                 Else
                     Me.dgvCuentasContables.Rows.Add()
                     Me.dgvCuentasContables.Rows(0).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
