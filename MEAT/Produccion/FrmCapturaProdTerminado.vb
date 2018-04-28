@@ -14,6 +14,8 @@ Imports System.Data.SqlClient
 
 Public Class FrmCapturaProdTerminado
 
+    'Private diccionario As New Dictionary(Of String, Integer)()
+
 #Region "Miembros"
     Private LoteCorte As New CortesClass
     Private WithEvents LoteCorteDetalle As New CortesDetalleClass
@@ -517,7 +519,7 @@ Public Class FrmCapturaProdTerminado
         End Try
     End Sub
 
-    Public Shared Function LoadFontFamily(fileName As String, ByRef fontCollection As PrivateFontCollection) As FontFamily
+    Public Shared Function LoadFontFamily(ByVal fileName As String, ByRef fontCollection As PrivateFontCollection) As FontFamily
         fontCollection = New PrivateFontCollection()
         fontCollection.AddFontFile(fileName)
         Return fontCollection.Families(0)
@@ -647,6 +649,7 @@ Public Class FrmCapturaProdTerminado
                 If (CantKgrs + LoteCorte.TotalKgs) > KilosRecibidos Then
                     Trans.Rollback()
                     MessageBox.Show("Los kilos registrados exceden los kilos comprados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
                     Return False
                 End If
 
@@ -1670,11 +1673,11 @@ Public Class FrmCapturaProdTerminado
 
     End Sub
 
-    Private Sub CmdImprimir_Click(sender As System.Object, e As System.EventArgs) Handles CmdImprimir.Click
+    Private Sub CmdImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdImprimir.Click
 
     End Sub
 
-    Private Sub cmbCortes_SelectedValueChanged(sender As System.Object, e As System.EventArgs) Handles cmbCortes.SelectedValueChanged
+    Private Sub cmbCortes_SelectedValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbCortes.SelectedValueChanged
         If Me.cmbCortes.SelectedValue <> Nothing Then
             Me.buscarcortes(Me.cmbCortes.SelectedValue.ToString())
             'exec Usp_MSCLoteCortesCon 5, '190218051' , '2', '', ''
@@ -1774,4 +1777,112 @@ Public Class FrmCapturaProdTerminado
         End If
 
     End Sub
+
+    Private Sub btnBuscarTxt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscarTxt.Click
+
+        Dim strem As Stream = Nothing
+        Dim ofdBucarTxt As New OpenFileDialog()
+
+
+        'Detalles del openfiledialog
+        ofdBucarTxt.InitialDirectory = "C:\"
+        ofdBucarTxt.Filter = "txt files (*.txt)|*.txt"
+        ofdBucarTxt.FilterIndex = 2
+        ofdBucarTxt.RestoreDirectory = True
+
+        If ofdBucarTxt.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            strem = ofdBucarTxt.OpenFile()
+            If (strem IsNot Nothing) Then
+                'llamar metodo validar para verificar
+                validarTxt(ofdBucarTxt.FileName.ToString())
+            End If
+        End If
+
+    End Sub
+
+    Private Sub validarTxt(ByVal ruta As String)
+
+        Dim separador() As String = {"-"}
+        Dim productosTxt As String 'para guardar lo hay en el txt 
+        Dim producto() As String 'se usa para hacer el split de productostxt
+        Dim codigo() As String 'se usa para hacer split en la cadena de producto
+        Dim codigoBarraArray As New ArrayList
+        Dim kls As Double
+        Dim punteroCb As Integer
+
+        productosTxt = My.Computer.FileSystem.ReadAllText(ruta.ToString())
+        producto = productosTxt.Split(New String() {Environment.NewLine}, StringSplitOptions.None) 'hace el split con salto de linea
+
+        'ciclo para validar que los productos existen
+        For Each elemento As String In producto 'separa el txt en cadenas cada salto de linea y las guarda en elemento
+
+            codigo = elemento.Split(separador, StringSplitOptions.RemoveEmptyEntries) 'hace split a las cadenas creadas anteriormente
+
+            If (Not codigoBarraArray.Contains(codigo(0))) Then 'cuando el CB sea diferente se agrana al arreglo y se registra
+                codigoBarraArray.Add(codigo(0))
+                If (verificarProducto(codigo)) = False Then
+                    MessageBox.Show("El codigo de barra no esta relacionado con ningun producto", "Producto no entontrado", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub 'si algun CB no se encuantra en la BD se termina la operacion y no se registra
+                    Exit For
+                End If
+            End If
+        Next
+
+        punteroCb = 0
+        For Each elemento As String In producto
+            Try
+                codigo = elemento.Split(separador, StringSplitOptions.RemoveEmptyEntries)
+                kls = kls + Convert.ToDouble(codigo(1))
+                kls = Math.Round(kls, 4)
+                If kls > Convert.ToDouble(txtKilosRegistrar.Text) Then 'cuando el numero de kls sea mayor al producto cambia el combobox al producto siguiente
+                    punteroCb = punteroCb + 1
+                    kls = Convert.ToDouble(codigo(1)) 'se resetea kls con el ultimo valor ingresado que sera el primero del proximo producto cuando se actualize el combobox
+                    cmbCortes.SelectedIndex = punteroCb ' hace set al combobox(actualiza)
+                    'cmbCortes.Select()
+                End If
+                txtPeso.Text = codigo(1) 'se hace set para registrar los kls de cada uno de los productos en el grid
+                Guardar()
+
+            Catch ex As Exception
+                MessageBox.Show("Erro al insertar los datos del archivo de texto: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End Try
+        Next
+
+        'Si todo sale bien manda mensaje 
+        txtPeso.Text = "0"
+        MsgBox("Se han registrado exitosamente el total de kgs en cada producto, a continuación se procederá a cerrar los cortes", MsgBoxStyle.Information, "AVISO")
+        Me.txtcajas.Enabled = False
+        Me.txtPiezas.Enabled = False
+        Me.txtPeso.Enabled = False
+        Me.chkActivarLectura.Enabled = False
+        Me.dgvEtiquetas.Enabled = False
+        Me.btnBuscarTxt.Enabled = False
+        Me.txtCerrado.Show()
+
+    End Sub
+
+    'metodo para verificar si el producto existe en la base de datos
+    Private Function verificarProducto(ByVal productocdg() As String) As Boolean
+
+        Dim query As String = "exec Ups_VerificarProducto '{0}','{1}'"
+        query = String.Format(query, productocdg(0), txtLoteCorte.Text)
+        Dim existeProducto As Boolean = False
+        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+
+        Using sqlcom As New SqlCommand(query, sqlCon)
+            sqlCon.Open()
+            Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
+            If Rs.Read() Then 'si lee, existe producto
+                existeProducto = True
+                'diccionario.Add(productocdg(0), Rs.GetInt32(0)) 'Agrega al diccionario (Codigo Barra, ID)
+                'Return Rs.GetInt32(0)
+            End If
+            Rs.Close()
+            sqlCon.Close()
+        End Using
+        Return existeProducto
+
+    End Function
+
 End Class
