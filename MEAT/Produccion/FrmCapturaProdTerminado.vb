@@ -1821,7 +1821,7 @@ Public Class FrmCapturaProdTerminado
             If (Not codigoBarraArray.Contains(codigo(0))) Then 'cuando el CB sea diferente se agrana al arreglo y se registra
                 codigoBarraArray.Add(codigo(0))
                 If (verificarProducto(codigo)) = False Then
-                    MessageBox.Show("El codigo de barra no esta relacionado con ningun producto", "Producto no entontrado", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("El codigo de barra '" + codigo(0) + "' no esta relacionado con ningun producto", "Producto no entontrado", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub 'si algun CB no se encuantra en la BD se termina la operacion y no se registra
                     Exit For
                 End If
