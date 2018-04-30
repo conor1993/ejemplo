@@ -287,7 +287,7 @@ Public Class DomicilioClienteClass
             Return Entity.IdDepartamento
         End Get
         Set(ByVal value As Integer)
-            Entity.Email = value
+            Entity.IdDepartamento = value
         End Set
     End Property
 #End Region

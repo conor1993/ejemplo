@@ -534,7 +534,7 @@ Public Class ClientesIntroductoresClass
 
         'Guardar cada uno de los domicilios
         For i As Integer = 0 To Me.DomiciliosFiscales.Count - 1
-            Dim Domicilio As New DomicilioClienteClass(DomiciliosFiscales(i).IdEstado, DomiciliosFiscales(i).IdCiudad, DomiciliosFiscales(i).IdPoblacion, DomiciliosFiscales(i).Colonia, DomiciliosFiscales(i).Calle, DomiciliosFiscales(i).NoExt, DomiciliosFiscales(i).NoInt, DomiciliosFiscales(i).CodigPostal, DomiciliosFiscales(i).Telefono1, DomiciliosFiscales(i).Celular, DomiciliosFiscales(i).Fax, DomiciliosFiscales(i).Email)
+            Dim Domicilio As New DomicilioClienteClass(DomiciliosFiscales(i).IdEstado, DomiciliosFiscales(i).IdCiudad, DomiciliosFiscales(i).IdPoblacion, DomiciliosFiscales(i).Colonia, DomiciliosFiscales(i).Calle, DomiciliosFiscales(i).NoExt, DomiciliosFiscales(i).NoInt, DomiciliosFiscales(i).CodigPostal, DomiciliosFiscales(i).Telefono1, DomiciliosFiscales(i).Celular, DomiciliosFiscales(i).Fax, DomiciliosFiscales(i).Email, DomiciliosFiscales(i).IdDepartamento)
             Domicilio.IdCliente = Me.Codigo
             Domicilio.IdRenglon = i + 1
             Domicilio.EsPrincipal = DomiciliosFiscales(i).EsPrincipal
