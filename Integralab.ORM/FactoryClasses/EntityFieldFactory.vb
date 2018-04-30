@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 23 de abril de 2018 15:22:01
+' // Code is generated on: lunes, 30 de abril de 2018 09:07:35
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -5650,8 +5650,6 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "UsoCfdi"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "UsoCfdi"))
 				Case MfacCatClientesFieldIndex.FormaPago
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "FormaPago"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "FormaPago"))
-				Case MfacCatClientesFieldIndex.IdDepartamento
-					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "IdDepartamento"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "IdDepartamento"))
 				Case MfacCatClientesFieldIndex.Idcuentaventa
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacCatClientesEntity", "Idcuentaventa"), persistenceProvider.GetFieldPersistenceInfo("MfacCatClientesEntity", "Idcuentaventa"))
 
@@ -5702,6 +5700,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacClientesDatosFiscalesEntity", "NoExt"), persistenceProvider.GetFieldPersistenceInfo("MfacClientesDatosFiscalesEntity", "NoExt"))
 				Case MfacClientesDatosFiscalesFieldIndex.NoInt
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacClientesDatosFiscalesEntity", "NoInt"), persistenceProvider.GetFieldPersistenceInfo("MfacClientesDatosFiscalesEntity", "NoInt"))
+				Case MfacClientesDatosFiscalesFieldIndex.IdDepartamento
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("MfacClientesDatosFiscalesEntity", "IdDepartamento"), persistenceProvider.GetFieldPersistenceInfo("MfacClientesDatosFiscalesEntity", "IdDepartamento"))
 
 			End Select
 			Return fieldToReturn
@@ -11791,6 +11791,8 @@ Namespace Integralab.ORM.FactoryClasses
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaClientesTypedView", "TipoPersonaCad"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaClientesTypedView", "TipoPersonaCad"))
 				Case VwBusquedaClientesFieldIndex.TipoPersona
 					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaClientesTypedView", "TipoPersona"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaClientesTypedView", "TipoPersona"))
+				Case VwBusquedaClientesFieldIndex.Idcuentaventa
+					fieldToReturn = New EntityField(fieldProvider.GetFieldInfo("VwBusquedaClientesTypedView", "Idcuentaventa"), persistenceProvider.GetFieldPersistenceInfo("VwBusquedaClientesTypedView", "Idcuentaventa"))
 			End Select
 
 			Return fieldToReturn
