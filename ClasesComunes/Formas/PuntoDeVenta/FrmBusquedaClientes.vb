@@ -81,6 +81,10 @@ Public Class FrmBusquedaClientes
                 Filtro.Add(New OC.FieldBetweenPredicate(HC.VwBusquedaClientesFields.FechaAlta, Me.dtpFechaInicial.Value.ToShortDateString, Me.dtpFechaFinal.Value.AddDays(1).ToShortDateString))
             End If
 
+
+
+
+
             Dim Vista As New TC.VwBusquedaClientesTypedView
             Vista.Fill(0, Nothing, True, Filtro)
 
