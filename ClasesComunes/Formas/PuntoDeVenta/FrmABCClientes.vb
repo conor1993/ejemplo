@@ -27,6 +27,7 @@ Public Class FrmABCClientes
     Private WithEvents CuentaVenta As CN.CuentaContableClass
     Dim DiasCredito As Integer
     Dim Estatus As CN.FormState
+
     'Dim bit As CN.BitacoraPV
     Dim bandera As Boolean = False
 #End Region
@@ -529,7 +530,7 @@ Public Class FrmABCClientes
             End If
 
             If Not CuentaVenta Is Nothing Then
-                Me.txtCtaVenta.Text = String.Format("{0} : {1}", CuentaVenta.NombreCuenta, CuentaVenta.CuentaContable)
+                Me.txtCtaVenta.Text = String.Format("{0} : {1}", Me.CuentaVenta.NombreCuenta, Me.CuentaVenta.CuentaContable)
             End If
 
             dgvDomicilios.DataSource = Cliente.DomiciliosFiscales
@@ -947,6 +948,7 @@ Public Class FrmABCClientes
                 Cliente.Obtener(Ventana.dgvClientes.SelectedRows(0).Cells(Ventana.clmCodigo.Index).Value)
                 Me.CuentaCont = Nothing
                 Me.CuentaAnt = Nothing
+                Me.CuentaVenta = Nothing
 
                 If Not Me.Cliente.CuentaAntiId = -1 Then
                     Me.CuentaAnt = New CN.CuentaContableClass
@@ -956,6 +958,11 @@ Public Class FrmABCClientes
                     Me.CuentaCont = New CN.CuentaContableClass
                     Me.CuentaCont.Obtener(Cliente.CuentaContableId)
                 End If
+                If Not Me.Cliente.Idcuentaventa = -1 Then
+                    Me.CuentaVenta = New CN.CuentaContableClass
+                    Me.CuentaVenta.Obtener(Cliente.Idcuentaventa)
+                End If
+
                 Me.PonerDatos()
 
                 'bit = New CN.BitacoraPV
@@ -1455,7 +1462,7 @@ Public Class FrmABCClientes
     Private Sub btnCrearDomicilio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCrearDomicilio.Click
         Try
             dgvDomicilios.DataSource = Nothing
-            Dim Domicilio As New CN.DomicilioClienteClass(Me.cmbEstadoFisc.SelectedValue, Me.cmbCiudadFisc.SelectedValue, Me.cmbPoblacionFisc.SelectedValue, Me.txtColoniaFisc.Text.Trim, Me.txtCalleFisc.Text.Trim, Me.txtNoExtFisc.Text.Trim, Me.txtNoIntFisc.Text.Trim, Me.txtCPfiscal.Text.Trim, Me.txtTelefonoFisc.Text.Trim, txtTelCel.Text.Trim, txtFax.Text.Trim, txtEmail.Text.Trim)
+            Dim Domicilio As New CN.DomicilioClienteClass(Me.cmbEstadoFisc.SelectedValue, Me.cmbCiudadFisc.SelectedValue, Me.cmbPoblacionFisc.SelectedValue, Me.txtColoniaFisc.Text.Trim, Me.txtCalleFisc.Text.Trim, Me.txtNoExtFisc.Text.Trim, Me.txtNoIntFisc.Text.Trim, Me.txtCPfiscal.Text.Trim, Me.txtTelefonoFisc.Text.Trim, txtTelCel.Text.Trim, txtFax.Text.Trim, txtEmail.Text.Trim, Me.cmbDepartamento.SelectedValue)
             Cliente.ValidarDomicliosDiferentes(Domicilio)
             Cliente.DomiciliosFiscales.Add(Domicilio)
 
