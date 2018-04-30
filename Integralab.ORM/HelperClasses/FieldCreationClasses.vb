@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: lunes, 23 de abril de 2018 15:22:01
+' Code is generated on: lunes, 30 de abril de 2018 09:07:35
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -10434,12 +10434,6 @@ Namespace Integralab.ORM.HelperClasses
 				Return CType(EntityFieldFactory.Create(MfacCatClientesFieldIndex.FormaPago), EntityField)
 			End Get
 		End Property
-		''' <summary>Creates a new MfacCatClientesEntity.IdDepartamento field instance</summary>
-		Public Shared ReadOnly Property [IdDepartamento] As EntityField
-			Get 
-				Return CType(EntityFieldFactory.Create(MfacCatClientesFieldIndex.IdDepartamento), EntityField)
-			End Get
-		End Property
 		''' <summary>Creates a new MfacCatClientesEntity.Idcuentaventa field instance</summary>
 		Public Shared ReadOnly Property [Idcuentaventa] As EntityField
 			Get 
@@ -10544,6 +10538,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [NoInt] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(MfacClientesDatosFiscalesFieldIndex.NoInt), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new MfacClientesDatosFiscalesEntity.IdDepartamento field instance</summary>
+		Public Shared ReadOnly Property [IdDepartamento] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(MfacClientesDatosFiscalesFieldIndex.IdDepartamento), EntityField)
 			End Get
 		End Property
 	End Class
@@ -22254,6 +22254,12 @@ Namespace Integralab.ORM.HelperClasses
 		Public Shared ReadOnly Property [TipoPersona] As EntityField
 			Get 
 				Return CType(EntityFieldFactory.Create(VwBusquedaClientesFieldIndex.TipoPersona), EntityField)
+			End Get
+		End Property
+		''' <summary>Creates a new VwBusquedaClientesTypedView.Idcuentaventa field instance</summary>
+		Public Shared ReadOnly Property [Idcuentaventa] As EntityField
+			Get 
+				Return CType(EntityFieldFactory.Create(VwBusquedaClientesFieldIndex.Idcuentaventa), EntityField)
 			End Get
 		End Property
 	End Class

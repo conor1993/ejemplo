@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 23 de abril de 2018 15:21:55
+' // Code is generated on: lunes, 30 de abril de 2018 09:07:28
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -30,6 +30,21 @@ Namespace Integralab.ORM.RelationClasses
 #Region "Class Property Declarations"
 	
 	
+	
+		''' <summary>Returns a new IEntityRelation Object, between MfacClientesDatosFiscalesEntity and CatDeptosEntity over the m:1 relation they have, using the relation between the fields:
+		''' MfacClientesDatosFiscales.IdDepartamento - CatDeptos.CveDepto
+		''' </summary>
+		Public Overridable  ReadOnly Property CatDeptosEntityUsingIdDepartamento() As IEntityRelation
+			Get
+
+				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+				relation.StartEntityIsPkSide = False
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(CatDeptosFieldIndex.CveDepto), EntityFieldFactory.Create(MfacClientesDatosFiscalesFieldIndex.IdDepartamento))
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CatDeptosEntity", False)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacClientesDatosFiscalesEntity", True)
+				Return relation
+			End Get
+		End Property
 	
 		
 		''' <summary>stub, not used In this entity, only For TargetPerEntity entities.</summary>

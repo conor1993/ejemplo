@@ -430,10 +430,6 @@ Public Class FrmABCClientes
                 Me.Cliente.canaldistribucion = "DETALLE"
             End If
 
-            If Me.cmbDepartamento.Text <> "" Then
-                Cliente.Iddepartamento = cmbDepartamento.SelectedValue
-            End If
-
             If Me.txtCtaVenta.Text <> "" Then
                 Cliente.Idcuentaventa = CuentaVenta.Codigo
             End If

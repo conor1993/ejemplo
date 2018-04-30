@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 23 de abril de 2018 15:21:50
+' // Code is generated on: lunes, 30 de abril de 2018 09:07:23
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -67,36 +67,33 @@ Namespace Integralab.ORM.CollectionClasses
 		''' <summary>Retrieves in this MfacCatClientesCollection Object all MfacCatClientesEntity objects which have data in common
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
-		''' <param name="catDeptosInstance">CatDeptosEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="comicionistaInstance">ComicionistaEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable__Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(catDeptosInstance As IEntity, comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity) As Boolean
-			Return GetMultiManyToOne(catDeptosInstance, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Nothing, 0, 0)
+		Public Overloads Function GetMultiManyToOne(comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity) As Boolean
+			Return GetMultiManyToOne(comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Nothing, 0, 0)
 		End Function
 
 
 		''' <summary>Retrieves in this MfacCatClientesCollection Object all MfacCatClientesEntity objects which have data in common
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
-		''' <param name="catDeptosInstance">CatDeptosEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="comicionistaInstance">ComicionistaEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable__Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(catDeptosInstance As IEntity, comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity, Filter As IPredicateExpression) As Boolean
-			Return GetMultiManyToOne(catDeptosInstance, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Filter, 0, 0)
+		Public Overloads Function GetMultiManyToOne(comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity, Filter As IPredicateExpression) As Boolean
+			Return GetMultiManyToOne(comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance, MyBase.MaxNumberOfItemsToReturn, MyBase.SortClauses, Filter, 0, 0)
 		End Function
 
 
 		''' <summary>Retrieves in this MfacCatClientesCollection Object all MfacCatClientesEntity objects which have data in common
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
-		''' <param name="catDeptosInstance">CatDeptosEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="comicionistaInstance">ComicionistaEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
@@ -105,15 +102,14 @@ Namespace Integralab.ORM.CollectionClasses
 		''' <param name="sortClauses">The order by specifications for the sorting of the resultset. When not specified, no sorting is applied.</param>
 		''' <param name="filter">Extra filter to limit the resultset. Predicate expression can be Nothing, in which case it will be ignored.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Function GetMultiManyToOne(catDeptosInstance As IEntity, comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression) As Boolean
-			Return GetMultiManyToOne(catDeptosInstance, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance, maxNumberOfItemsToReturn, sortClauses, Filter, 0, 0)
+		Public Overloads Function GetMultiManyToOne(comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression) As Boolean
+			Return GetMultiManyToOne(comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance, maxNumberOfItemsToReturn, sortClauses, Filter, 0, 0)
 		End Function
 
 
 		''' <summary>Retrieves in this MfacCatClientesCollection Object all MfacCatClientesEntity objects which have data in common
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter. All current elements in the collection are removed from the collection.</summary>
-		''' <param name="catDeptosInstance">CatDeptosEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="comicionistaInstance">ComicionistaEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
@@ -124,9 +120,8 @@ Namespace Integralab.ORM.CollectionClasses
 		''' <param name="pageNumber">The page number to retrieve.</param>
 		''' <param name="pageSize">The page size of the page to retrieve.</param>
 		''' <returns>true if succeeded, false otherwise</returns>
-		Public Overloads Overridable Function GetMultiManyToOne(catDeptosInstance As IEntity, comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression, pageNumber As Integer, pageSize As Integer) As Boolean
+		Public Overloads Overridable Function GetMultiManyToOne(comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity, maxNumberOfItemsToReturn As Long, sortClauses As ISortExpression, Filter As IPredicateExpression, pageNumber As Integer, pageSize As Integer) As Boolean
 			Dim validParameters As Boolean = False
-			validParameters = validParameters Or Not (catDeptosInstance Is Nothing)
 			validParameters = validParameters Or Not (comicionistaInstance Is Nothing)
 			validParameters = validParameters Or Not (cuentaContableInstance Is Nothing)
 			validParameters = validParameters Or Not (cuentaContable_Instance Is Nothing)
@@ -138,22 +133,21 @@ Namespace Integralab.ORM.CollectionClasses
 				Me.Clear()
 			End If
 			Dim dao As MfacCatClientesDAO = DAOFactory.CreateMfacCatClientesDAO()
-			Return dao.GetMulti(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, Filter, catDeptosInstance, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance, pageNumber, pageSize)
+			Return dao.GetMulti(MyBase.Transaction, Me, maxNumberOfItemsToReturn, sortClauses, MyBase.EntityFactoryToUse, Filter, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance, pageNumber, pageSize)
 		End Function
 
 		''' <summary>Deletes from the persistent storage all MfacCatClientes entities which have data in common
 		''' with the specified related Entities.
 		''' If one is omitted, that entity is not used as a filter.</summary>
 		''' <remarks>Runs directly on the persistent storage. It will not delete entity objects from the current collection.</remarks>
-		''' <param name="catDeptosInstance">CatDeptosEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="comicionistaInstance">ComicionistaEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable__Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function DeleteMultiManyToOne(catDeptosInstance As IEntity, comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity) As Integer
+		Public Overloads Function DeleteMultiManyToOne(comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity) As Integer
 			Dim dao As MfacCatClientesDAO = DAOFactory.CreateMfacCatClientesDAO()
-			Return dao.DeleteMulti(MyBase.Transaction, catDeptosInstance, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance)
+			Return dao.DeleteMulti(MyBase.Transaction, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance)
 		End Function
 
 
@@ -163,15 +157,14 @@ Namespace Integralab.ORM.CollectionClasses
 		''' <i>changed</i> in the passed in entity entityWithNewValues. The new values of these fields are read from entityWithNewValues. </summary>
 		''' <param name="entityWithNewValues">MfacCatClientesEntity instance which holds the new values for the matching entities to update. Only
 		''' changed fields are taken into account</param>
-		''' <param name="catDeptosInstance">CatDeptosEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="comicionistaInstance">ComicionistaEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContableInstance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable_Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <param name="cuentaContable__Instance">CuentaContableEntity instance to use as a filter for the MfacCatClientesEntity objects to Return</param>
 		''' <returns>Amount of entities affected, if the used persistent storage has rowcounting enabled.</returns>
-		Public Overloads Function UpdateMultiManyToOne(entityWithNewValues As MfacCatClientesEntity, catDeptosInstance As IEntity, comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity) As Integer
+		Public Overloads Function UpdateMultiManyToOne(entityWithNewValues As MfacCatClientesEntity, comicionistaInstance As IEntity, cuentaContableInstance As IEntity, cuentaContable_Instance As IEntity, cuentaContable__Instance As IEntity) As Integer
 			Dim dao As MfacCatClientesDAO = DAOFactory.CreateMfacCatClientesDAO()
-			Return dao.UpdateMulti(entityWithNewValues, MyBase.Transaction, catDeptosInstance, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance)
+			Return dao.UpdateMulti(entityWithNewValues, MyBase.Transaction, comicionistaInstance, cuentaContableInstance, cuentaContable_Instance, cuentaContable__Instance)
 		End Function
 	
 	

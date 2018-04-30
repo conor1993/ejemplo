@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: lunes, 23 de abril de 2018 15:21:54
+' Code is generated on: lunes, 30 de abril de 2018 09:07:27
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -2513,7 +2513,6 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "Canaldistribucion", GetType(System.String), False, False, False, True, CInt(MfacCatClientesFieldIndex.Canaldistribucion), 20, 0, 0)
 			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "UsoCfdi", GetType(System.String), False, False, False, False, CInt(MfacCatClientesFieldIndex.UsoCfdi), 10, 0, 0)
 			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "FormaPago", GetType(System.String), False, False, False, False, CInt(MfacCatClientesFieldIndex.FormaPago), 10, 0, 0)
-			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "IdDepartamento", GetType(System.Int32), False, True, False, True, CInt(MfacCatClientesFieldIndex.IdDepartamento), 0, 0, 10)
 			MyBase.AddElementFieldInfo("MfacCatClientesEntity", "Idcuentaventa", GetType(System.Int32), False, True, False, True, CInt(MfacCatClientesFieldIndex.Idcuentaventa), 0, 0, 10)
 		End Sub
 		''' <summary>Inits MfacClientesDatosFiscalesEntity's FieldInfo objects</summary>
@@ -2534,6 +2533,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("MfacClientesDatosFiscalesEntity", "Calle", GetType(System.String), False, False, False, False, CInt(MfacClientesDatosFiscalesFieldIndex.Calle), 100, 0, 0)
 			MyBase.AddElementFieldInfo("MfacClientesDatosFiscalesEntity", "NoExt", GetType(System.String), False, False, False, False, CInt(MfacClientesDatosFiscalesFieldIndex.NoExt), 10, 0, 0)
 			MyBase.AddElementFieldInfo("MfacClientesDatosFiscalesEntity", "NoInt", GetType(System.String), False, False, False, False, CInt(MfacClientesDatosFiscalesFieldIndex.NoInt), 10, 0, 0)
+			MyBase.AddElementFieldInfo("MfacClientesDatosFiscalesEntity", "IdDepartamento", GetType(System.Int32), False, True, False, True, CInt(MfacClientesDatosFiscalesFieldIndex.IdDepartamento), 0, 0, 10)
 		End Sub
 		''' <summary>Inits MfacEmbarquesCabEntity's FieldInfo objects</summary>
 		Private Sub InitMfacEmbarquesCabEntityInfos()
@@ -4834,6 +4834,7 @@ Namespace Integralab.ORM.HelperClasses
 			MyBase.AddElementFieldInfo("VwBusquedaClientesTypedView", "Poblacion", GetType(System.String), False, False, True, False, CInt(VwBusquedaClientesFieldIndex.Poblacion), 80, 0, 0)
 			MyBase.AddElementFieldInfo("VwBusquedaClientesTypedView", "TipoPersonaCad", GetType(System.String), False, False, True, False, CInt(VwBusquedaClientesFieldIndex.TipoPersonaCad), 15, 0, 0)
 			MyBase.AddElementFieldInfo("VwBusquedaClientesTypedView", "TipoPersona", GetType(System.Boolean), False, False, True, False, CInt(VwBusquedaClientesFieldIndex.TipoPersona), 0, 0, 0)
+			MyBase.AddElementFieldInfo("VwBusquedaClientesTypedView", "Idcuentaventa", GetType(System.Int32), False, False, True, False, CInt(VwBusquedaClientesFieldIndex.Idcuentaventa), 0, 0, 10)
 		End Sub
 		''' <summary>Inits View's FieldInfo objects</summary>
 		Private Sub InitVwBusquedaComparacionMedicamentosTypedViewInfos()

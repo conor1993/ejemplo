@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 23 de abril de 2018 15:21:55
+' // Code is generated on: lunes, 30 de abril de 2018 09:07:29
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -44,17 +44,17 @@ Namespace Integralab.ORM.RelationClasses
 			End Get
 		End Property
 	
-		''' <summary>Returns a new IEntityRelation Object, between CatDeptosEntity and MfacCatClientesEntity over the 1:n relation they have, using the relation between the fields:
-		''' CatDeptos.CveDepto - MfacCatClientes.IdDepartamento
+		''' <summary>Returns a new IEntityRelation Object, between CatDeptosEntity and MfacClientesDatosFiscalesEntity over the 1:n relation they have, using the relation between the fields:
+		''' CatDeptos.CveDepto - MfacClientesDatosFiscales.IdDepartamento
 		''' </summary>
-		Public Overridable ReadOnly Property MfacCatClientesEntityUsingIdDepartamento() As IEntityRelation
+		Public Overridable ReadOnly Property MfacClientesDatosFiscalesEntityUsingIdDepartamento() As IEntityRelation
 			Get
 
 				Dim relation As IEntityRelation = New EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany)
 				relation.StartEntityIsPkSide = True
-				relation.AddEntityFieldPair(EntityFieldFactory.Create(CatDeptosFieldIndex.CveDepto), EntityFieldFactory.Create(MfacCatClientesFieldIndex.IdDepartamento))
+				relation.AddEntityFieldPair(EntityFieldFactory.Create(CatDeptosFieldIndex.CveDepto), EntityFieldFactory.Create(MfacClientesDatosFiscalesFieldIndex.IdDepartamento))
 				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CatDeptosEntity", True)
-				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacCatClientesEntity", False)
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("MfacClientesDatosFiscalesEntity", False)
 				Return relation
 			End Get
 		End Property

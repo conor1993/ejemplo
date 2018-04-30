@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 23 de abril de 2018 15:21:58
+' // Code is generated on: lunes, 30 de abril de 2018 09:07:32
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -44,7 +44,8 @@ Namespace Integralab.ORM.EntityClasses
 #Region "Class Member Declarations"
 
 
-
+		Private _catDeptos As CatDeptosEntity
+		Private _alwaysFetchCatDeptos, _alreadyFetchedCatDeptos, _catDeptosReturnsNewIfNotFound As Boolean
 
 
 		Private Shared _customProperties As Dictionary(Of String, String)
@@ -100,7 +101,13 @@ Namespace Integralab.ORM.EntityClasses
 			MyBase.New(info, context)
 
 
-
+			_catDeptos = CType(info.GetValue("_catDeptos", GetType(CatDeptosEntity)), CatDeptosEntity)
+			If Not _catDeptos Is Nothing Then
+				AddHandler _catDeptos.AfterSave, AddressOf OnEntityAfterSave
+			End If
+			_catDeptosReturnsNewIfNotFound = info.GetBoolean("_catDeptosReturnsNewIfNotFound")
+			_alwaysFetchCatDeptos = info.GetBoolean("_alwaysFetchCatDeptos")
+			_alreadyFetchedCatDeptos = info.GetBoolean("_alreadyFetchedCatDeptos")
 
 			MyBase.FixupDeserialization(FieldInfoProviderSingleton.GetInstance(), PersistenceInfoProviderSingleton.GetInstance())
 			
@@ -113,7 +120,7 @@ Namespace Integralab.ORM.EntityClasses
 		Protected Overrides Sub PostReadXmlFixups()
 
 
-
+			_alreadyFetchedCatDeptos = Not(_catDeptos Is Nothing)
 
 		End Sub
 
@@ -166,7 +173,10 @@ Namespace Integralab.ORM.EntityClasses
 		Public Overrides Sub GetObjectData(info As SerializationInfo, context As StreamingContext)
 
 
-
+			info.AddValue("_catDeptos", _catDeptos)
+			info.AddValue("_catDeptosReturnsNewIfNotFound", _catDeptosReturnsNewIfNotFound)
+			info.AddValue("_alwaysFetchCatDeptos", _alwaysFetchCatDeptos)
+			info.AddValue("_alreadyFetchedCatDeptos", _alreadyFetchedCatDeptos)
 
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START GetObjectInfo
@@ -181,7 +191,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub SetRelatedEntityProperty(propertyName As String, entity As IEntity)
 			Select Case propertyName
-
+				Case "CatDeptos"
+					_alreadyFetchedCatDeptos = True
+					Me.CatDeptos = CType(entity, CatDeptosEntity)
 
 
 
@@ -196,7 +208,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub SetRelatedEntity(relatedEntity As IEntity, fieldName As String)
 			Select Case fieldName
-
+				Case "CatDeptos"
+					SetupSyncCatDeptos(relatedEntity)
+					OnRelatedEntitySet(relatedEntity, fieldName)
 
 
 				Case Else
@@ -211,7 +225,9 @@ Namespace Integralab.ORM.EntityClasses
 		<EditorBrowsable(EditorBrowsableState.Never)> _
 		Public Overrides Overloads Sub UnsetRelatedEntity(relatedEntity As IEntity, fieldName As String, signalRelatedEntityManyToOne As Boolean)
 			Select Case fieldName
-
+				Case "CatDeptos"
+					DesetupSyncCatDeptos(False, True)
+					OnRelatedEntityUnset(relatedEntity, fieldName)
 
 
 				Case Else
@@ -234,7 +250,9 @@ Namespace Integralab.ORM.EntityClasses
 		''' <returns>Collection with 0 or more IEntity objects, referenced by this entity</returns>
 		Public Overrides Function GetDependentRelatedEntities() As List(Of IEntity)
 			Dim toReturn As New List(Of IEntity)()
-
+			If Not _catDeptos Is Nothing Then
+				toReturn.Add(_catDeptos)
+			End If
 
 
 			Return toReturn
@@ -353,6 +371,42 @@ Namespace Integralab.ORM.EntityClasses
 
 	
 
+		''' <summary>Retrieves the related entity of type 'CatDeptosEntity', Imports a relation of type 'n:1'</summary>
+		''' <returns>A fetched entity of type 'CatDeptosEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleCatDeptos() As CatDeptosEntity
+			Return GetSingleCatDeptos(False)
+		End Function
+
+		''' <summary>Retrieves the related entity of type 'CatDeptosEntity', Imports a relation of type 'n:1'</summary>
+		''' <param name="forceFetch">if true, it will discard any changes currently in the currently loaded related entity and will refetch the entity from the persistent storage</param>
+		''' <returns>A fetched entity of type 'CatDeptosEntity' which is related to this entity.</returns>
+		Public Overridable Function GetSingleCatDeptos(forceFetch As Boolean) As CatDeptosEntity
+			If ( Not _alreadyFetchedCatDeptos Or forceFetch Or _alwaysFetchCatDeptos) AndAlso Not MyBase.IsSerializing AndAlso Not MyBase.IsDeserializing Then
+
+				Dim newEntity As New CatDeptosEntity()
+				If MyBase.ParticipatesInTransaction Then
+					MyBase.Transaction.Add(newEntity)
+				End If
+				Dim fetchResult As Boolean = False
+				If MyBase.CheckIfLazyLoadingShouldOccur(MfacClientesDatosFiscalesEntity.Relations.CatDeptosEntityUsingIdDepartamento) Then
+					fetchResult = newEntity.FetchUsingPK(Me.IdDepartamento.GetValueOrDefault())
+				End If
+				If Not _catDeptosReturnsNewIfNotFound AndAlso Not fetchResult Then
+					Me.CatDeptos = Nothing
+				Else
+					If Not MyBase.ActiveContext Is Nothing AndAlso fetchResult Then
+						newEntity = CType(MyBase.ActiveContext.Get(newEntity), CatDeptosEntity)
+					End If
+					Me.CatDeptos = newEntity
+					_alreadyFetchedCatDeptos = fetchResult
+				End If
+				If MyBase.ParticipatesInTransaction AndAlso Not fetchResult Then
+					MyBase.Transaction.Remove(newEntity)
+				End If
+			End If
+			Return _catDeptos
+		End Function
+	
 	
 		
 		''' <summary>Sets the field On index fieldIndex To the New value value. Marks also the fields Object As dirty. </summary>
@@ -382,6 +436,9 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
+					Case MfacClientesDatosFiscalesFieldIndex.IdDepartamento
+						DesetupSyncCatDeptos(True, False)
+						_alreadyFetchedCatDeptos = False
 					Case Else
 				End Select
 				MyBase.PostFieldValueSetAction(toReturn, Me.Fields(fieldIndex).Name)
@@ -393,7 +450,9 @@ Namespace Integralab.ORM.EntityClasses
 		Protected Overrides Overloads Sub AddInternalsToContext()
 
 
-
+		If Not _catDeptos Is Nothing Then
+				_catDeptos.ActiveContext = MyBase.ActiveContext
+			End If
 
 
 		End Sub
@@ -469,7 +528,10 @@ Namespace Integralab.ORM.EntityClasses
 		Private Sub InitClassMembers()
 
 
-
+			_catDeptos = Nothing
+			_catDeptosReturnsNewIfNotFound = True
+			_alwaysFetchCatDeptos = False
+			_alreadyFetchedCatDeptos = False
 
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitClassMembers
@@ -530,9 +592,38 @@ Namespace Integralab.ORM.EntityClasses
 			fieldHashtable = New Dictionary(Of String, String)()
 
 			_fieldsCustomProperties.Add("NoInt", fieldHashtable)
+			fieldHashtable = New Dictionary(Of String, String)()
+
+			_fieldsCustomProperties.Add("IdDepartamento", fieldHashtable)
 		End Sub
 
 
+		''' <summary>Removes the sync logic for member _catDeptos</summary>
+		''' <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
+		''' <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
+		Private Sub DesetupSyncCatDeptos(signalRelatedEntity As Boolean, resetFKFields As Boolean)
+			MyBase.PerformDesetupSyncRelatedEntity( _catDeptos, AddressOf OnCatDeptosPropertyChanged, "CatDeptos", MfacClientesDatosFiscalesEntity.Relations.CatDeptosEntityUsingIdDepartamento, True, signalRelatedEntity, "MfacClientesDatosFiscales", resetFKFields, New Integer() { CInt(MfacClientesDatosFiscalesFieldIndex.IdDepartamento) } )
+			_catDeptos = Nothing
+		End Sub
+		
+		''' <summary>setups the sync logic for member _catDeptos</summary>
+		''' <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
+		Private Sub SetupSyncCatDeptos(relatedEntity As IEntity)
+			DesetupSyncCatDeptos(True, True)
+			_catDeptos = CType(relatedEntity, CatDeptosEntity)
+			MyBase.PerformSetupSyncRelatedEntity( _catDeptos, AddressOf OnCatDeptosPropertyChanged, "CatDeptos", MfacClientesDatosFiscalesEntity.Relations.CatDeptosEntityUsingIdDepartamento, True, _alreadyFetchedCatDeptos, New String() {  } )
+		End Sub
+		
+		''' <summary>Handles Property change events of properties In a related entity.</summary>
+		''' <param name="sender"></param>
+		''' <param name="e"></param>
+		Private Sub OnCatDeptosPropertyChanged( sender As Object, e As PropertyChangedEventArgs)
+			Select Case e.PropertyName
+
+				Case Else
+					' Emtpy
+			End Select
+		End Sub
 
 
 
@@ -585,6 +676,17 @@ Namespace Integralab.ORM.EntityClasses
 		
 	
 	
+	
+		''' <summary>Creates a New PrefetchPathElement object which contains all the information to prefetch the related entities of type 'CatDeptos' 
+		''' for this entity. Add the object Returned by this property to an existing PrefetchPath instance.</summary>
+		''' <Returns>Ready to use IPrefetchPathElement implementation.</Returns>
+		Public Shared ReadOnly Property PrefetchPathCatDeptos() As IPrefetchPathElement
+			Get
+				Return New PrefetchPathElement( New Integralab.ORM.CollectionClasses.CatDeptosCollection(), _
+					MfacClientesDatosFiscalesEntity.Relations.CatDeptosEntityUsingIdDepartamento, _
+					CType(Integralab.ORM.EntityType.MfacClientesDatosFiscalesEntity, Integer), CType(Integralab.ORM.EntityType.CatDeptosEntity, Integer), 0, Nothing, Nothing, Nothing, "CatDeptos", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne)
+			End Get
+		End Property
 	
 	
 
@@ -945,8 +1047,78 @@ Namespace Integralab.ORM.EntityClasses
 			End Set
 		End Property
 	
+		''' <summary>The IdDepartamento property of the Entity MfacClientesDatosFiscales<br/><br/>
+		''' </summary>
+		''' <remarks>
+		''' Mapped on table field: "MFacClientesDatosFiscales"."IdDepartamento"<br/>
+		''' Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
+		''' Table field behavior characteristics (is nullable, is PK, is identity): True, False, False
+		''' </remarks>
+		Public Overridable Property [IdDepartamento]() As Nullable(Of System.Int32)
+			Get
+				Dim valueToReturn As Object = MyBase.GetCurrentFieldValue(CType(MfacClientesDatosFiscalesFieldIndex.IdDepartamento, Integer))
+
+				Return CType(valueToReturn, Nullable(Of System.Int32))
+			End Get
+			Set
+				SetNewFieldValue(CType(MfacClientesDatosFiscalesFieldIndex.IdDepartamento, Integer), value)
+			End Set
+		End Property
 	
 	
+	
+	
+		''' <summary>Gets / sets related entity of type 'CatDeptosEntity'. This property is not visible in databound grids.
+		''' Setting this property to a new object will make the load-on-demand feature to stop fetching data from the database, until you set this
+		''' property to Nothing. Setting this property to an entity will make sure that FK-PK relations are synchronized when appropriate.</summary>
+		''' <remarks>This property is added for conveniance, however it is recommeded to use the method 'GetSingleCatDeptos()', because 
+		''' this property is rather expensive and a method tells the user to cache the result when it has to be used more than once in the
+		''' same scope. The property is marked non-browsable to make it hidden in bound controls, f.e. datagrids.</remarks>
+		<Browsable(False)> _
+		Public Overridable Property [CatDeptos]() As CatDeptosEntity
+			Get
+				Return GetSingleCatDeptos(False)
+			End Get
+			Set
+				If MyBase.IsDeserializing Then
+					SetupSyncCatDeptos(value)
+				Else
+					If value Is Nothing Then
+						If Not _catDeptos Is Nothing Then
+							_catDeptos.UnsetRelatedEntity(Me, "MfacClientesDatosFiscales")
+						End If
+					Else
+						CType(value, IEntity).SetRelatedEntity(Me, "MfacClientesDatosFiscales")
+					End If
+				End If
+			End Set
+		End Property
+
+		''' <summary>Gets / sets the lazy loading flag for CatDeptos. When set to true, CatDeptos is always refetched from the 
+		''' persistent storage. When set to false, the data is only fetched the first time CatDeptos is accessed. You can always execute
+		''' a forced fetch by calling GetSingleCatDeptos(True).</summary>
+		<Browsable(False)> _
+		Public Property AlwaysFetchCatDeptos As Boolean
+			Get
+				Return _alwaysFetchCatDeptos
+			End Get
+			Set
+				_alwaysFetchCatDeptos = value
+			End Set	
+		End Property
+
+		''' <summary>Gets / sets the flag for what to do if the related entity available through the property CatDeptos is not found
+		''' in the database. When set to true, CatDeptos will return a new entity instance if the related entity is not found, otherwise 
+		''' null be returned if the related entity is not found. Default: true.</summary>
+		<Browsable(False)> _
+		Public Property CatDeptosReturnsNewIfNotFound As Boolean
+			Get
+				Return _catDeptosReturnsNewIfNotFound
+			End Get
+			Set
+				_catDeptosReturnsNewIfNotFound = value
+			End Set	
+		End Property
 	
 	
 	

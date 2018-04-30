@@ -67,6 +67,24 @@ Public Class DomicilioClienteClass
         Me.Email = Email
     End Sub
 
+
+    Sub New(ByVal IdEstado As Integer, ByVal IdCiudad As Integer, ByVal IdPoblacion As Integer, ByVal Colonia As String, ByVal Calle As String, ByVal NoExt As String, ByVal NoInt As String, ByVal CodigoPostal As String, ByVal Telefono As String, ByVal Celular As String, ByVal Fax As String, ByVal Email As String, ByVal IdDepartamento As Integer)
+        validarDomicilio(IdEstado, IdCiudad, IdPoblacion, Colonia, Calle, NoExt, NoInt, Email)
+        Me.IdEstado = IdEstado
+        Me.IdCiudad = IdCiudad
+        Me.IdPoblacion = IdPoblacion
+        Me.Colonia = Colonia
+        Me.Calle = Calle
+        Me.NoExt = NoExt
+        Me.NoInt = NoInt
+        Me.Domicilio = Calle + " " + NoExt + " " + NoInt
+        Me.CodigPostal = CodigoPostal
+        Me.Telefono1 = Telefono
+        Me.Celular = Celular
+        Me.Fax = Fax
+        Me.Email = Email
+        Me.IdDepartamento = IdDepartamento
+    End Sub
 #End Region
 
 #Region "Propiedades"
@@ -263,7 +281,19 @@ Public Class DomicilioClienteClass
             Return _Cliente
         End Get
     End Property
+
+    Public Property IdDepartamento() As Integer
+        Get
+            Return Entity.IdDepartamento
+        End Get
+        Set(ByVal value As Integer)
+            Entity.Email = value
+        End Set
+    End Property
 #End Region
+
+
+
 
 #Region "Metodos"
     Public Shadows Sub Guardar(ByVal Trans As HC.Transaction)
