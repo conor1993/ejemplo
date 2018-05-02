@@ -62,7 +62,7 @@ Public Class frmActualizacionSaldos
             If Ejercicios.Estatus = Integra.Clases.EstatusEnum.ACTIVO Then
                 If mes.Obtener(Me.DateTimePicker1.Value.Year, Me.DateTimePicker1.Value.Month) Then
                     If mes.Estatus = ClasesNegocio.EstatusMes.ABIERTO Then
-                        If SPA.UspActualizarSaldos(Me.DateTimePicker1.Value) > 0 Then
+                        If SPA.UspActualizarSaldos(Me.DateTimePicker1.Value.ToString("dd/MM/yyyy hh:mm:ss")) > 0 Then 'error <------------------------------------------------
                             trans.Commit()
                         Else
                             trans.Rollback()
