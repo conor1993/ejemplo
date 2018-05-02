@@ -14,6 +14,7 @@ Public Class frmBusquedaFacturas
 
         Me.dgvFacturasCabecero.AutoGenerateColumns = False
         Me.dgvFacturasDetalle.AutoGenerateColumns = False
+
         Limpiar()
     End Sub
 
@@ -56,8 +57,6 @@ Public Class frmBusquedaFacturas
                 cliente = Me.cmbClientes.SelectedValue
                 Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura)
             End If
-
-            
 
         Catch ex As Exception
             dgvFacturasDetalle.DataSource = Nothing

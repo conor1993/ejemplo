@@ -1441,15 +1441,21 @@ Public Class frmFacturacionEspecial
                 If ClientesClas.Idcuentaventa > 0 Then
                     'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
                     Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
-
-                    'Dim CtasConts As New CuentaContableCollectionClass
-                    If ClientesClas.CuentaContableId > 0 Then
-                        Me.RellenarGridCuentas(ClientesClas.CuentaContable)
-                    Else
-                        MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    End If
-
                 End If
+
+                If ClientesClas.CuentaAntiId > 0 Then
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContableAntici)
+                    '  Me.RellenarGridCuentas(ClientesClas.CuentaAntiId)
+                End If
+
+                'Dim CtasConts As New CuentaContableCollectionClass
+                If ClientesClas.CuentaContableId > 0 Then
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContable)
+                Else
+                    MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+
+
 
             End If
         Catch ex As Exception
