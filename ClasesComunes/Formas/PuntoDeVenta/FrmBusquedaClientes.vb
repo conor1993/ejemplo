@@ -82,9 +82,6 @@ Public Class FrmBusquedaClientes
             End If
 
 
-
-
-
             Dim Vista As New TC.VwBusquedaClientesTypedView
             Vista.Fill(0, Nothing, True, Filtro)
 

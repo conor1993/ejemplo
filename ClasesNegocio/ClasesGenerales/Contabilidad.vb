@@ -1168,6 +1168,7 @@ Public Class CuentaContableCollectionClass
         filtro.Add(HC.CuentaContableFields.SubCta = SubCuenta)
         filtro.Add(HC.CuentaContableFields.SsubCta = SSubCuenta)
         filtro.Add(HC.CuentaContableFields.SssubCta = SSSubCuenta)
+
         Tmp.GetMulti(filtro)
         If Tmp.Count > 0 Then res = New CuentaContableClass(Tmp(0))
         Return res

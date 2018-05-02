@@ -9,6 +9,8 @@ Public Class ClientesIntroductoresClass
     Inherits ClassBase(Of EC.MfacCatClientesEntity)
     Dim _DomiciliosFiscales As DomicilioClienteColeccionClass
     Private _CuentaContable As CuentaContableClass
+    Private _Idcuentaventa As CuentaContableClass
+    Private _Idcuentanticipo As CuentaContableClass
     Private _Vendedor As VendedorClass
     Private _Estado As EstadoClass
     Private _Ciudad As CiudadClass
@@ -264,6 +266,23 @@ Public Class ClientesIntroductoresClass
         End Set
     End Property
 
+    Public Property CuentaContableAntici() As CuentaContableClass
+        Get
+            If _Idcuentanticipo Is Nothing Then
+                _Idcuentanticipo = New CuentaContableClass(Entity.CuentaAnticipoId)
+            End If
+            Return _Idcuentanticipo
+        End Get
+        Set(ByVal value As CuentaContableClass)
+            _Idcuentanticipo = value
+            If value Is Nothing Then
+                Entity.CuentaAnticipoId = Nothing
+            Else
+                Entity.CuentaContable = value.ObtenerEntidad
+            End If
+        End Set
+    End Property
+
     Public Property CuentaContableId() As Integer
         Get
             Return Me.Entity.CuentaContId.GetValueOrDefault(-1)
@@ -429,15 +448,15 @@ Public Class ClientesIntroductoresClass
 
     Public Property CuentaContableVenta() As CuentaContableClass
         Get
-            If _CuentaContable Is Nothing Then
-                _CuentaContable = New CuentaContableClass(Entity.Idcuentaventa)
+            If _Idcuentaventa Is Nothing Then
+                _Idcuentaventa = New CuentaContableClass(Entity.Idcuentaventa)
             End If
-            Return _CuentaContable
+            Return _Idcuentaventa
         End Get
         Set(ByVal value As CuentaContableClass)
-            _CuentaContable = value
+            _Idcuentaventa = value
             If value Is Nothing Then
-                Entity.CuentaContable = Nothing
+                Entity.Idcuentaventa = Nothing
             Else
                 Entity.CuentaContable = value.ObtenerEntidad
             End If

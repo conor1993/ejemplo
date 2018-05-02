@@ -13,7 +13,7 @@
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
     <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>JSLogo32.ico</ApplicationIcon>
@@ -5328,7 +5328,7 @@
     </BootstrapperPackage>
     <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
       <Visible>False</Visible>
-      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework 4.0</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
