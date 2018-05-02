@@ -1007,6 +1007,7 @@ Public Class FrmABCClientes
         Me.Estatus = CN.FormState.Guardar
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Cliente")
 
+
         Try
             If Not Validar() Then
                 Cancelar = True
@@ -1025,7 +1026,6 @@ Public Class FrmABCClientes
             '    bit = New CN.BitacoraPV
             '    bit.diferencias(Me.Controls)
             'End If
-
 
 
             ' Dim Resultado As Object = Utilerias.RunControlException(Cliente, "Guardar", New Object() {Trans})
@@ -1491,7 +1491,7 @@ Public Class FrmABCClientes
     'modificar el domicilio seleccionado
     Private Sub btnModificarDomicilio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarDomicilio.Click
         Try
-            Dim Domicilio As New CN.DomicilioClienteClass(cmbEstadoFisc.SelectedValue, cmbCiudadFisc.SelectedValue, cmbPoblacionFisc.SelectedValue, txtColoniaFisc.Text.Trim, txtCalleFisc.Text.Trim, txtNoExtFisc.Text.Trim, txtNoIntFisc.Text.Trim, txtCPfiscal.Text.Trim, txtTelefonoFisc.Text.Trim, txtTelCel.Text.Trim, txtFax.Text.Trim, txtEmail.Text.Trim)
+            Dim Domicilio As New CN.DomicilioClienteClass(cmbEstadoFisc.SelectedValue, cmbCiudadFisc.SelectedValue, cmbPoblacionFisc.SelectedValue, txtColoniaFisc.Text.Trim, txtCalleFisc.Text.Trim, txtNoExtFisc.Text.Trim, txtNoIntFisc.Text.Trim, txtCPfiscal.Text.Trim, txtTelefonoFisc.Text.Trim, txtTelCel.Text.Trim, txtFax.Text.Trim, txtEmail.Text.Trim, cmbDepartamento.SelectedValue)
 
             Domicilio.validarDomicilio(Val(cmbEstadoFisc.SelectedValue), Val(cmbCiudadFisc.SelectedValue), Val(cmbPoblacionFisc.SelectedValue), txtColoniaFisc.Text.Trim, txtCalleFisc.Text.Trim, txtNoExtFisc.Text.Trim, txtNoIntFisc.Text.Trim, txtEmail.Text.Trim)
             Cliente.ValidarDomicliosDiferentes(Domicilio, dgvDomicilios.SelectedRows(0).Index)
@@ -1541,11 +1541,11 @@ Public Class FrmABCClientes
                 cmbDepartamento.SelectedValue = Domicilio.IdDepartamento
             End If
         Catch ex As Exception
-            If ex.InnerException IsNot Nothing AndAlso ex.InnerException.Message = "Domicilio Fiscal" Then
-                MsgBox(ex.Message, MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom & " - " & ex.InnerException.Message)
-            Else
-                MsgBox(ex.Message, MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom)
-            End If
+            'If ex.InnerException IsNot Nothing AndAlso ex.InnerException.Message = "Domicilio Fiscal" Then
+            '    MsgBox(ex.Message, MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom & " - " & ex.InnerException.Message)
+            'Else
+            '  '  MsgBox(ex.Message, MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom)
+            'End If
         End Try
     End Sub
 

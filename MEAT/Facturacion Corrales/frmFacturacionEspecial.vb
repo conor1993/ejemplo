@@ -1438,9 +1438,9 @@ Public Class frmFacturacionEspecial
                     MessageBox.Show("El cliente no tiene registrada la cuenta contable de ventas, Catalogos/Ventas/Clientes", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Stop)
                 End If
 
-                If ClientesClas.Idcuentaventa > 0 Then
-                    'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
-                    Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
+
+                If ClientesClas.CuentaContableId > 0 Then
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContable)
                 End If
 
                 If ClientesClas.CuentaAntiId > 0 Then
@@ -1448,9 +1448,10 @@ Public Class frmFacturacionEspecial
                     '  Me.RellenarGridCuentas(ClientesClas.CuentaAntiId)
                 End If
 
-                'Dim CtasConts As New CuentaContableCollectionClass
-                If ClientesClas.CuentaContableId > 0 Then
-                    Me.RellenarGridCuentas(ClientesClas.CuentaContable)
+                If ClientesClas.Idcuentaventa > 0 Then
+                    'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
+                    'Dim CtasConts As New CuentaContableCollectionClass
                 Else
                     MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
