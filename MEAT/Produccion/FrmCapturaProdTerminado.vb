@@ -14,7 +14,7 @@ Imports System.Data.SqlClient
 
 Public Class FrmCapturaProdTerminado
 
-    'Private diccionario As New Dictionary(Of String, Integer)()
+    Private diccionario As New Dictionary(Of String, String)()
 
 #Region "Miembros"
     Private LoteCorte As New CortesClass
@@ -1263,8 +1263,6 @@ Public Class FrmCapturaProdTerminado
             'If Me.Guardar() Then
             '    Me.txtCodSubCorte.Focus()
             'End If
-            ''------------------------------------------------------------
-
         End If
 
         If Not IsNumeric(e.KeyChar) And Not e.KeyChar = Chr(8) And Not e.KeyChar = "." Then
@@ -1776,6 +1774,9 @@ Public Class FrmCapturaProdTerminado
 
         End If
 
+        btnCerrar.Enabled = False
+        btnBuscarTxt.Enabled = False
+
     End Sub
 
     Private Sub btnBuscarTxt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscarTxt.Click
@@ -1834,8 +1835,9 @@ Public Class FrmCapturaProdTerminado
                 codigo = elemento.Split(separador, StringSplitOptions.RemoveEmptyEntries)
                 kls = kls + Convert.ToDouble(codigo(1))
                 kls = Math.Round(kls, 4)
-                If kls > Convert.ToDouble(txtKilosRegistrar.Text) Then 'cuando el numero de kls sea mayor al producto cambia el combobox al producto siguiente
+                If (cmbCortes.Text <> diccionario(codigo(0))) Then 'cuando los producto sean diferente entra.           kls > Convert.ToDouble(txtKilosRegistrar.Text)
                     punteroCb = punteroCb + 1
+                    txtKilosCanales.Text = (kls - Convert.ToDouble(codigo(1))).ToString
                     kls = Convert.ToDouble(codigo(1)) 'se resetea kls con el ultimo valor ingresado que sera el primero del proximo producto cuando se actualize el combobox
                     cmbCortes.SelectedIndex = punteroCb ' hace set al combobox(actualiza)
                     'cmbCortes.Select()
@@ -1851,7 +1853,11 @@ Public Class FrmCapturaProdTerminado
 
         'Si todo sale bien manda mensaje 
         txtPeso.Text = "0"
-        MsgBox("Se han registrado exitosamente el total de kgs en cada producto, a continuación se procederá a cerrar los cortes", MsgBoxStyle.Information, "AVISO")
+
+        'cerraLoteTxt(txtLoteCorte.Text) cabia el status a cancelado manualmente
+
+        MsgBox("Se han registrado los kgs de los producto del archivo txt, verfique antes de cerrar corte", MsgBoxStyle.Information, "AVISO")
+
         Me.txtcajas.Enabled = False
         Me.txtPiezas.Enabled = False
         Me.txtPeso.Enabled = False
@@ -1859,6 +1865,7 @@ Public Class FrmCapturaProdTerminado
         Me.dgvEtiquetas.Enabled = False
         Me.btnBuscarTxt.Enabled = False
         Me.txtCerrado.Show()
+        btnBuscarTxt.Enabled = False
 
     End Sub
 
@@ -1875,7 +1882,7 @@ Public Class FrmCapturaProdTerminado
             Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
             If Rs.Read() Then 'si lee, existe producto
                 existeProducto = True
-                'diccionario.Add(productocdg(0), Rs.GetInt32(0)) 'Agrega al diccionario (Codigo Barra, ID)
+                diccionario.Add(productocdg(0), Rs.GetString(0)) 'Agrega al diccionario (Codigo Barra, ID)
                 'Return Rs.GetInt32(0)
             End If
             Rs.Close()
@@ -1884,5 +1891,4 @@ Public Class FrmCapturaProdTerminado
         Return existeProducto
 
     End Function
-
 End Class
