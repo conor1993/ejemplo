@@ -1829,6 +1829,7 @@ Public Class FrmCapturaProdTerminado
             End If
         Next
 
+        codigoBarraArray.Clear()
         punteroCb = 0
         For Each elemento As String In producto
             Try
@@ -1836,14 +1837,21 @@ Public Class FrmCapturaProdTerminado
                 kls = kls + Convert.ToDouble(codigo(1))
                 kls = Math.Round(kls, 4)
                 If (cmbCortes.Text <> diccionario(codigo(0))) Then 'cuando los producto sean diferente entra.           kls > Convert.ToDouble(txtKilosRegistrar.Text)
-                    punteroCb = punteroCb + 1
-                    txtKilosCanales.Text = (kls - Convert.ToDouble(codigo(1))).ToString
-                    kls = Convert.ToDouble(codigo(1)) 'se resetea kls con el ultimo valor ingresado que sera el primero del proximo producto cuando se actualize el combobox
-                    cmbCortes.SelectedIndex = punteroCb ' hace set al combobox(actualiza)
-                    'cmbCortes.Select()
-                End If
-                txtPeso.Text = codigo(1) 'se hace set para registrar los kls de cada uno de los productos en el grid
-                Guardar()
+                    codigoBarraArray.Add(cmbCortes.Text)
+                    If (codigoBarraArray.Contains(codigo(0))) Then
+                        punteroCb = cmbCortes.FindString(diccionario(codigo(0)))
+                        cmbCortes.SelectedIndex = punteroCb
+                    Else
+                        punteroCb = cmbCortes.FindString(diccionario(codigo(0)))
+                        txtKilosCanales.Text = (kls - Convert.ToDouble(codigo(1))).ToString
+                        kls = Convert.ToDouble(codigo(1)) 'se resetea kls con el ultimo valor ingresado que sera el primero del proximo producto cuando se actualize el combobox
+                        cmbCortes.SelectedIndex = punteroCb ' hace set al combobox(actualiza)
+                        'cmbCortes.Select()
+                    End If
+
+                    End If
+                    txtPeso.Text = codigo(1) 'se hace set para registrar los kls de cada uno de los productos en el grid
+                    Guardar()
 
             Catch ex As Exception
                 MessageBox.Show("Erro al insertar los datos del archivo de texto: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
