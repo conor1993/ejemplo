@@ -1706,9 +1706,11 @@ Public Class FrmCapturaProdTerminado
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
 
-        If MessageBox.Show("El total de kilos no cuandra con los kilos registrados ¿Desea continuar? ",
+        Dim resultado As Integer = MessageBox.Show("El total de kilos no cuandra con los kilos registrados ¿Desea continuar? ",
                            "Atencion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
-                           MessageBoxDefaultButton.Button1) = DialogResult.OK Then
+                           MessageBoxDefaultButton.Button1)
+
+        If resultado = DialogResult.OK Then
 
             numcaja = txtcajas.Text
             ''nuevo modo de guardar----------------------------------------
@@ -1751,13 +1753,11 @@ Public Class FrmCapturaProdTerminado
                 Catch ex As Exception
                     command.Transaction.Rollback()
                 End Try
-
             End Using
 
             Me.txtPeso.Text = "0"
             Me.txtPiezas.Text = "1"
             Me.txtcajas.Text = "0"
-
 
             If saveResult = True Then
                 Me.txtcajas.Focus()
@@ -1765,21 +1765,16 @@ Public Class FrmCapturaProdTerminado
             'If Me.Guardar() Then
             '    Me.txtCodSubCorte.Focus()
             'End If
-            ''------------------------------------------------------------
-
             'End If
-
             'If Not IsNumeric(e.KeyChar) And Not e.KeyChar = Chr(8) And Not e.KeyChar = "." Then
             '    e.Handled = True
             'End If
-
             'Limpiar()123
-
+            btnCerrar.Enabled = False
+            btnBuscarTxt.Enabled = False
+        ElseIf resultado = DialogResult.Cancel Then
+            'No hace nada
         End If
-
-        btnCerrar.Enabled = False
-        btnBuscarTxt.Enabled = False
-
     End Sub
 
     Private Sub btnBuscarTxt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscarTxt.Click
