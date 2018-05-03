@@ -569,6 +569,7 @@ Public Class frmFacturacionEspecial
                 Next
 
                 TransG.Commit()
+
                 Dim Ubicacion As String = ControlFD.GenerarArchivoPDF(cfdi, Fact.Conceptos, 0, FactPDF)
                 Application.DoEvents()
                 Cursor = Cursors.Default
@@ -927,7 +928,10 @@ Public Class frmFacturacionEspecial
             'Me.clmProductoDes.DisplayMember = "Descripcion"
             'Me.clmProductoDes.ValueMember = "Codigo"
             'Me.clmProductoDes.DataSource = Me.ProductosVistaC
-
+            ''llena combos de gastos
+            Controlador.LlenarComboSucursales(cmbsucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
+            Controlador.LlenarComboMetodosdeProrrateo(cmbmetodo)
+            ''
             llenarFormasPago()
             llenarMetodosPago()
             llenarProductosSAT()
