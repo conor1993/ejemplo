@@ -1634,6 +1634,7 @@ Public Class frmFacturacionEspecial
 
         ' Me.dgvCuentasContables.Rows(0).Cells(Me.clmCargo.Index).Value = (suma + sumaIVA).ToString("N2")
         calculacargosabonos()
+        Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
     End Sub
 
 
@@ -1662,6 +1663,7 @@ Public Class frmFacturacionEspecial
                     SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmAbono").Value
                 Next
                 'End If
+
                 Me.txtSumaCargo.Text = SumaCargo.ToString("C2")
                 Me.txtSumaAbono.Text = SumaAbono.ToString("C2")
             ElseIf e.ColumnIndex = Me.clmSubCta.Index Or e.ColumnIndex = Me.clmSSubCta.Index Or e.ColumnIndex = Me.clmSSSubCta.Index Then
@@ -1686,7 +1688,10 @@ Public Class frmFacturacionEspecial
         For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
             If Not Me.dgvCuentasContables.Rows(i).IsNewRow Then
                 SumaCargo = SumaCargo + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
-                SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmAbono").Value
+                Me.dgvCuentasContables.Rows(i + 1).Cells("ClmAbono").Value = SumaCargo
+                SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
+                Me.txtSumaCargo.Text = SumaCargo.ToString("N2")
+                Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
             End If
         Next
         'End If
@@ -1695,14 +1700,6 @@ Public Class frmFacturacionEspecial
         '    SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmAbono").Value
         'Next
         'End If
-        Me.txtSumaCargo.Text = SumaCargo.ToString("N2")
-        Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
-    End Sub
-    Private Sub CargoyAbono()
-        Dim i As Integer = Me.dgvCuentasContables.Rows.Count
-        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = Me.dgvCuentasContables
-        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
-
     End Sub
 
     Private Sub RellenarGridCuentas(ByVal Cta As ClasesNegocio.CuentaContableClass)

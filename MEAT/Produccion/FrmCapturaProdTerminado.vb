@@ -1834,19 +1834,19 @@ Public Class FrmCapturaProdTerminado
         For Each elemento As String In producto
             Try
                 codigo = elemento.Split(separador, StringSplitOptions.RemoveEmptyEntries)
-                kls = kls + Convert.ToDouble(codigo(1))
+                kls = Convert.ToDouble(codigo(1))
                 kls = Math.Round(kls, 4)
                 If (cmbCortes.Text <> diccionario(codigo(0))) Then 'cuando los producto sean diferente entra.           kls > Convert.ToDouble(txtKilosRegistrar.Text)
                     codigoBarraArray.Add(cmbCortes.Text)
                     If (codigoBarraArray.Contains(codigo(0))) Then
                         punteroCb = cmbCortes.FindString(diccionario(codigo(0)))
                         cmbCortes.SelectedIndex = punteroCb
+                        txtKilosCanales.Text = (Convert.ToDouble(txtKilosCanales.Text) + kls)
                     Else
                         punteroCb = cmbCortes.FindString(diccionario(codigo(0)))
-                        txtKilosCanales.Text = (kls - Convert.ToDouble(codigo(1))).ToString
-                        kls = Convert.ToDouble(codigo(1)) 'se resetea kls con el ultimo valor ingresado que sera el primero del proximo producto cuando se actualize el combobox
+                        'kls = Convert.ToDouble(codigo(1)) 'se resetea kls con el ultimo valor ingresado que sera el primero del proximo producto cuando se actualize el combobox
                         cmbCortes.SelectedIndex = punteroCb ' hace set al combobox(actualiza)
-                        'cmbCortes.Select()
+                        txtKilosCanales.Text = (Convert.ToDouble(txtKilosCanales.Text) + kls)
                     End If
 
                     End If
