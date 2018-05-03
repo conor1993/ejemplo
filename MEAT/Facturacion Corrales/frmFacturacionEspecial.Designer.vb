@@ -23,12 +23,12 @@ Partial Class frmFacturacionEspecial
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -122,6 +122,10 @@ Partial Class frmFacturacionEspecial
         Me.DataGridViewComboBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewComboBoxColumn2 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.ProductosVistaC = New ClasesNegocio.ProductosVistaCollectionClass()
+        Me.cmbsucursal = New System.Windows.Forms.ComboBox()
+        Me.cmbmetodo = New System.Windows.Forms.ComboBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.gbFormaPago.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -134,6 +138,10 @@ Partial Class frmFacturacionEspecial
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label23)
+        Me.GroupBox1.Controls.Add(Me.Label22)
+        Me.GroupBox1.Controls.Add(Me.cmbmetodo)
+        Me.GroupBox1.Controls.Add(Me.cmbsucursal)
         Me.GroupBox1.Controls.Add(Me.lblEstatus)
         Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -172,7 +180,7 @@ Partial Class frmFacturacionEspecial
         Me.GroupBox1.Controls.Add(Me.txtUUID)
         Me.GroupBox1.Location = New System.Drawing.Point(54, 35)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(975, 565)
+        Me.GroupBox1.Size = New System.Drawing.Size(975, 625)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
@@ -453,7 +461,7 @@ Partial Class frmFacturacionEspecial
         'txtSumaAbono
         '
         Me.txtSumaAbono.Enabled = False
-        Me.txtSumaAbono.Location = New System.Drawing.Point(857, 541)
+        Me.txtSumaAbono.Location = New System.Drawing.Point(852, 594)
         Me.txtSumaAbono.Name = "txtSumaAbono"
         Me.txtSumaAbono.Size = New System.Drawing.Size(110, 20)
         Me.txtSumaAbono.TabIndex = 0
@@ -462,7 +470,7 @@ Partial Class frmFacturacionEspecial
         'txtSumaCargo
         '
         Me.txtSumaCargo.Enabled = False
-        Me.txtSumaCargo.Location = New System.Drawing.Point(732, 541)
+        Me.txtSumaCargo.Location = New System.Drawing.Point(727, 594)
         Me.txtSumaCargo.Name = "txtSumaCargo"
         Me.txtSumaCargo.Size = New System.Drawing.Size(110, 20)
         Me.txtSumaCargo.TabIndex = 0
@@ -475,7 +483,7 @@ Partial Class frmFacturacionEspecial
         Me.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetalle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigo, Me.clmProductoServicio, Me.clmDescripcionEspecial, Me.clmProductoDes, Me.clmUnidadSat, Me.clmUnidad, Me.clmCantidad, Me.clmPrecio, Me.clmIVA, Me.clmIVAdecimales, Me.clmImporte, Me.clmImporteDecimales, Me.clmConIVA})
         Me.dgvDetalle.Enabled = False
-        Me.dgvDetalle.Location = New System.Drawing.Point(11, 302)
+        Me.dgvDetalle.Location = New System.Drawing.Point(6, 355)
         Me.dgvDetalle.Name = "dgvDetalle"
         Me.dgvDetalle.RowHeadersVisible = False
         Me.dgvDetalle.Size = New System.Drawing.Size(960, 133)
@@ -528,27 +536,27 @@ Partial Class frmFacturacionEspecial
         '
         'clmCantidad
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N2"
-        Me.clmCantidad.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N2"
+        Me.clmCantidad.DefaultCellStyle = DataGridViewCellStyle7
         Me.clmCantidad.FillWeight = 6.0!
         Me.clmCantidad.HeaderText = "Cantidad"
         Me.clmCantidad.Name = "clmCantidad"
         '
         'clmPrecio
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        Me.clmPrecio.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "N2"
+        Me.clmPrecio.DefaultCellStyle = DataGridViewCellStyle8
         Me.clmPrecio.FillWeight = 9.0!
         Me.clmPrecio.HeaderText = "Precio"
         Me.clmPrecio.Name = "clmPrecio"
         '
         'clmIVA
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        Me.clmIVA.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle9.Format = "N2"
+        Me.clmIVA.DefaultCellStyle = DataGridViewCellStyle9
         Me.clmIVA.FillWeight = 8.0!
         Me.clmIVA.HeaderText = "IVA"
         Me.clmIVA.Name = "clmIVA"
@@ -561,9 +569,9 @@ Partial Class frmFacturacionEspecial
         '
         'clmImporte
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N2"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle10.Format = "N2"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle10
         Me.clmImporte.FillWeight = 12.0!
         Me.clmImporte.HeaderText = "Importe"
         Me.clmImporte.Name = "clmImporte"
@@ -587,7 +595,7 @@ Partial Class frmFacturacionEspecial
         Me.dgvCuentasContables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvCuentasContables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCuentasContables.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCtaMayor, Me.clmSubCta, Me.clmSSubCta, Me.clmSSSubCta, Me.clmDescripcion, Me.clmCargo, Me.clmAbono, Me.clmCodigoCuenta})
-        Me.dgvCuentasContables.Location = New System.Drawing.Point(11, 443)
+        Me.dgvCuentasContables.Location = New System.Drawing.Point(6, 496)
         Me.dgvCuentasContables.Name = "dgvCuentasContables"
         Me.dgvCuentasContables.Size = New System.Drawing.Size(958, 92)
         Me.dgvCuentasContables.TabIndex = 22
@@ -629,18 +637,18 @@ Partial Class frmFacturacionEspecial
         '
         'clmCargo
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle11.Format = "N2"
+        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle11
         Me.clmCargo.FillWeight = 13.0!
         Me.clmCargo.HeaderText = "Cargo"
         Me.clmCargo.Name = "clmCargo"
         '
         'clmAbono
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N2"
-        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle12.Format = "N2"
+        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle12
         Me.clmAbono.FillWeight = 13.0!
         Me.clmAbono.HeaderText = "Abono"
         Me.clmAbono.Name = "clmAbono"
@@ -981,7 +989,7 @@ Partial Class frmFacturacionEspecial
         Me.MEAToolBar1.MostrarSalir = True
         Me.MEAToolBar1.Name = "MEAToolBar1"
         Me.MEAToolBar1.ShowToolTips = True
-        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 613)
+        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 680)
         Me.MEAToolBar1.TabIndex = 0
         '
         'DataGridViewComboBoxColumn1
@@ -1010,11 +1018,47 @@ Partial Class frmFacturacionEspecial
         Me.ProductosVistaC.Name = ""
         Me.ProductosVistaC.RaiseListChangedEvents = True
         '
+        'cmbsucursal
+        '
+        Me.cmbsucursal.FormattingEnabled = True
+        Me.cmbsucursal.Location = New System.Drawing.Point(189, 321)
+        Me.cmbsucursal.Name = "cmbsucursal"
+        Me.cmbsucursal.Size = New System.Drawing.Size(252, 21)
+        Me.cmbsucursal.TabIndex = 166
+        Me.cmbsucursal.TabStop = False
+        '
+        'cmbmetodo
+        '
+        Me.cmbmetodo.FormattingEnabled = True
+        Me.cmbmetodo.Location = New System.Drawing.Point(561, 321)
+        Me.cmbmetodo.Name = "cmbmetodo"
+        Me.cmbmetodo.Size = New System.Drawing.Size(252, 21)
+        Me.cmbmetodo.TabIndex = 167
+        Me.cmbmetodo.TabStop = False
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(115, 321)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(51, 13)
+        Me.Label22.TabIndex = 168
+        Me.Label22.Text = "Sucursal:"
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(484, 329)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(46, 13)
+        Me.Label23.TabIndex = 169
+        Me.Label23.Text = "Metodo:"
+        '
         'frmFacturacionEspecial
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1041, 613)
+        Me.ClientSize = New System.Drawing.Size(1041, 680)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.MEAToolBar1)
@@ -1119,4 +1163,8 @@ Partial Class frmFacturacionEspecial
     Friend WithEvents cmbUsoCFDI As System.Windows.Forms.ComboBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents txtUUID As System.Windows.Forms.TextBox
+    Friend WithEvents cmbsucursal As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbmetodo As System.Windows.Forms.ComboBox
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents Label22 As System.Windows.Forms.Label
 End Class
