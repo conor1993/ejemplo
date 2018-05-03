@@ -1438,19 +1438,21 @@ Public Class frmFacturacionEspecial
                     MessageBox.Show("El cliente no tiene registrada la cuenta contable de ventas, Catalogos/Ventas/Clientes", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Stop)
                 End If
 
-                If ClientesClas.Idcuentaventa > 0 Then
-                    'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
-                    Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
+                ' Cargo
+                If ClientesClas.CuentaContableId > 0 Then
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContable)
                 End If
 
                 If ClientesClas.CuentaAntiId > 0 Then
                     Me.RellenarGridCuentas(ClientesClas.CuentaContableAntici)
                     '  Me.RellenarGridCuentas(ClientesClas.CuentaAntiId)
                 End If
-
-                'Dim CtasConts As New CuentaContableCollectionClass
-                If ClientesClas.CuentaContableId > 0 Then
-                    Me.RellenarGridCuentas(ClientesClas.CuentaContable)
+                'Abono
+                If ClientesClas.Idcuentaventa > 0 Then
+                    'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
+                    calcular()
+                    'Dim CtasConts As New CuentaContableCollectionClass
                 Else
                     MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
@@ -1610,6 +1612,8 @@ Public Class frmFacturacionEspecial
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = Math.Round((Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2)) * (1 + CDec(Controlador.ObtenerIVA() / 100)), 2)
                 Else
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
+                    Me.dgvCuentasContables.Rows(i + 1).Cells(Me.clmAbono.Index).Value = (Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
+
                 End If
                 'Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) + (CDec(Controlador.ObtenerIVA() / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value))
             End If
@@ -1694,6 +1698,12 @@ Public Class frmFacturacionEspecial
         Me.txtSumaCargo.Text = SumaCargo.ToString("N2")
         Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
     End Sub
+    Private Sub CargoyAbono()
+        Dim i As Integer = Me.dgvCuentasContables.Rows.Count
+        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = Me.dgvCuentasContables
+        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
+
+    End Sub
 
     Private Sub RellenarGridCuentas(ByVal Cta As ClasesNegocio.CuentaContableClass)
         Try
@@ -1709,6 +1719,7 @@ Public Class frmFacturacionEspecial
                     'Else
 
                     If Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value <> "" Then
+
                         Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                         Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
                         Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
@@ -1718,6 +1729,7 @@ Public Class frmFacturacionEspecial
                         Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
                         Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
                         'Me.dgvCuentasContables.Rows.Add()
+
                     Else
                         Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                         Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
@@ -1745,7 +1757,10 @@ Public Class frmFacturacionEspecial
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
+        ' CargoyAbono(dgvCuentasContables)
     End Sub
+
     Private Function CuentasRepetidas(ByVal cta As CuentaContableClass) As Boolean
         Try
             For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
@@ -1876,7 +1891,7 @@ Public Class frmFacturacionEspecial
     End Sub
 
     Public Sub llenarUnidadesSAT()
-  
+
         Dim connetionString As String = Nothing
         Dim connection As SqlConnection
         Dim command As SqlCommand
