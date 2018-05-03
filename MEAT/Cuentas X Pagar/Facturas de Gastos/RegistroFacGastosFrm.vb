@@ -258,6 +258,10 @@ Public Class RegistroFacGastosFrm
             MsgBox("Teclee el Número de la Factura", MsgBoxStyle.Exclamation, "Aviso")
             Return False
         End If
+        If Me.TxtFactura.Text = "0" Then
+            MsgBox("El número de la factura no puede ser '0'", MsgBoxStyle.Exclamation, "Aviso")
+            Return False
+        End If
         If CDec(Me.txtSubtotal.Text) = 0 Then
             MsgBox("No se puede Facturar por $0.")
             Return False
@@ -277,6 +281,12 @@ Public Class RegistroFacGastosFrm
 
         If Me.txtSumaCargo.Text <> calcularSubtotal(False) Then
             MsgBox("La Suma de el (los) Cargo(s) no Coinciden con el Total de la Factura", MsgBoxStyle.Exclamation, "Error")
+            Return False
+        End If
+
+        ''Los cheques cuentan con un prefijo " C| ", evitar que una factura se guarde con este prefijo
+        If (Me.TxtFactura.Text.Substring(0, 2) = "C|") Then
+            MsgBox("El prefijo 'C|' en Código de Factura es exclusivo para Cheques", MsgBoxStyle.Exclamation, "Error")
             Return False
         End If
 
@@ -770,12 +780,18 @@ Public Class RegistroFacGastosFrm
                     Next
                     Tran.Commit()
                     Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                    ''Ingresar datos de prorrateo a tabla "GastosDepartamentalesFG"
                     Try
                         For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
 
 
                             Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},'{6}',{7},'{8}',{9},{10})"
-                            cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value, CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value), DtpFechaFactura.Text, 0, Factura.NoFactura, Factura.IdProveedor, Factura.IdEmpresa)
+                            cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value,
+                                                           dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value,
+                                                           dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value,
+                                                           dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value,
+                                                           CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value), DtpFechaFactura.Text, 0,
+                                                           Factura.NoFactura, Factura.IdProveedor, Factura.IdEmpresa)
                             Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
                             Dim adp As New SqlDataAdapter(sqlcom)
 
@@ -794,6 +810,8 @@ Public Class RegistroFacGastosFrm
                     Catch ex As Exception
 
                     End Try
+
+                    ''Ingresar datos de prorrateo a tabla "GastosDepartamentosDetFG"
                     Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                     Try
                         For i As Integer = 0 To (dgvdistribuciongastosdet.Rows.Count - 1)
