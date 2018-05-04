@@ -66,6 +66,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
         TxtRecibe.Enabled = True
         DTPFecha.Enabled = False
         DataGrid.Enabled = True
+        txtTipoMovimiento.Enabled = True
         Me.txtObservaciones.Enabled = True
         Me.cmbTipoMovimiento.Enabled = True
     End Sub
@@ -892,4 +893,36 @@ Public Class CatAlmRegOtraSalidaAlmacen
         End Try
     End Sub
 
+    Private Sub cmbTipoMovimiento_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbTipoMovimiento.SelectedIndexChanged
+        Try
+            If Me.cmbTipoMovimiento.Text = "" Then
+                If Not Me.txtTipoMovimiento.Text = "" Then
+                    Me.cmbTipoMovimiento.SelectedValue = Me.txtTipoMovimiento.Text
+                End If
+            Else
+                Me.txtTipoMovimiento.Text = Me.cmbTipoMovimiento.SelectedValue
+            End If
+            'Me.ObtenerProductos()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    Private Sub txtTipoMovimiento_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTipoMovimiento.TextChanged
+        Try
+            If Not Me.txtTipoMovimiento.Text = "" Then
+                If Not CInt(Me.txtTipoMovimiento.Text) = 0 Then
+                    Me.cmbTipoMovimiento.SelectedValue = CInt(Me.txtTipoMovimiento.Text)
+                End If
+            Else
+                Me.cmbTipoMovimiento.SelectedValue = Me.txtTipoMovimiento.Text
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error ")
+        End Try
+    End Sub
+
+    Private Sub DataGrid_EditingControlShowing_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DataGrid.EditingControlShowing
+
+    End Sub
 End Class
