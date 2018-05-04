@@ -597,12 +597,12 @@ Public Class frmFacturacionEspecial
 
                     sqlCon.Open()
                     cmd.Connection = sqlCon
-                    cmd.CommandText = "INSERT INTO GastosDepartamentalesFG VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                    cmd.CommandText = "INSERT INTO GastosDepartamentalesFG VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
                     cmd.ExecuteNonQuery()
                     sqlCon.Close()
 
                 Catch exe As Exception
-                    MsgBox("Error al insertar en la tabla GastosDepartamenralesFG")
+                    '  MsgBox(exe.ToString())
                 End Try
                 Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                 Try
@@ -611,12 +611,12 @@ Public Class frmFacturacionEspecial
                     'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
                     sqlCone.Open()
                     cmd.Connection = sqlCone
-                    cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
+                    cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
                     cmd.ExecuteNonQuery()
                     sqlCone.Close()
 
                 Catch exe As Exception
-
+                    ' MsgBox(exe.ToString())
                 End Try
 
 
@@ -1734,17 +1734,22 @@ Public Class frmFacturacionEspecial
     End Sub
 
     Public Sub calculacargosabonos()
-        SumaCargo = 0
-        SumaAbono = 0
-        For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
-            If Not Me.dgvCuentasContables.Rows(i).IsNewRow Then
-                SumaCargo = SumaCargo + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
-                Me.dgvCuentasContables.Rows(i + 1).Cells("ClmAbono").Value = SumaCargo
-                SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
-                Me.txtSumaCargo.Text = SumaCargo.ToString("N2")
-                Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
-            End If
-        Next
+        Try
+            SumaCargo = 0
+            SumaAbono = 0
+            For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
+                If Not Me.dgvCuentasContables.Rows(i).IsNewRow Then
+                    SumaCargo = SumaCargo + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
+                    'Me.dgvCuentasContables.Rows(i + 1).Cells("ClmAbono").Value = SumaCargo
+                    SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
+                    Me.txtSumaCargo.Text = SumaCargo.ToString("N2")
+                    Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+
         'End If
         'If e.ColumnIndex = Me.ClmAbono.Index Then
         'For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1

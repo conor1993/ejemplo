@@ -1166,6 +1166,11 @@
             "AssemblyAsmDisplayName" = "8:System.Data.SQLite, Version=1.0.65.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_015D54F126910221634AA8CDDC429340"
+                    {
+                    "Name" = "8:System.Data.SQLite.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Data.SQLite.dll"
             "TargetName" = "8:"
@@ -1192,6 +1197,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Win.UltraWinGrid.ExcelExport.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_05390F18A0C840AFEE4AA26D0772E6BD"
+                    {
+                    "Name" = "8:Infragistics2.Win.UltraWinGrid.ExcelExport.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Win.UltraWinGrid.ExcelExport.v8.3.dll"
             "TargetName" = "8:"
@@ -1218,6 +1228,11 @@
             "AssemblyAsmDisplayName" = "8:ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
                 "ScatterAssemblies"
                 {
+                    "_07879BEDD20348A83DC20AF78705A3C7"
+                    {
+                    "Name" = "8:ShockwaveFlashObjects.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ShockwaveFlashObjects.dll"
             "TargetName" = "8:"
@@ -1244,6 +1259,11 @@
             "AssemblyAsmDisplayName" = "8:FacDigitalConfiguracion, Version=1.0.1.22036, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_0A91D9A684DAF810E524B3D6B0F66676"
+                    {
+                    "Name" = "8:FacDigitalConfiguracion.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:FacDigitalConfiguracion.dll"
             "TargetName" = "8:"
@@ -1270,6 +1290,11 @@
             "AssemblyAsmDisplayName" = "8:Gentle.Provider.SQLite, Version=1.5.0.36475, Culture=neutral, PublicKeyToken=80b5de62e27be49b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_0D1DAAEFDF4C302F84266A59207E7CC3"
+                    {
+                    "Name" = "8:Gentle.Provider.SQLite.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Gentle.Provider.SQLite.dll"
             "TargetName" = "8:"
@@ -1358,6 +1383,11 @@
             "AssemblyAsmDisplayName" = "8:Integralab.ORMSeguridad, Version=1.0.6075.20596, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_23D284B66C69BE25709353E4194506B5"
+                    {
+                    "Name" = "8:Integralab.ORMSeguridad.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Integralab.ORMSeguridad.dll"
             "TargetName" = "8:"
@@ -1384,6 +1414,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Excel.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_24BAA31CF78FE08FB8AE4577A74790B5"
+                    {
+                    "Name" = "8:Infragistics2.Excel.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Excel.v8.3.dll"
             "TargetName" = "8:"
@@ -1410,6 +1445,11 @@
             "AssemblyAsmDisplayName" = "8:CNFactDigital, Version=1.0.0.22031, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_268D287695B4AE545A832C27E2382EE0"
+                    {
+                    "Name" = "8:CNFactDigital.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:CNFactDigital.dll"
             "TargetName" = "8:"
@@ -1436,6 +1476,11 @@
             "AssemblyAsmDisplayName" = "8:ConvertidorNumerosALetras, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_2D9289372E0D11F02384B71A8AAFA1F5"
+                    {
+                    "Name" = "8:ConvertidorNumerosALetras.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ConvertidorNumerosALetras.dll"
             "TargetName" = "8:"
@@ -1462,6 +1507,11 @@
             "AssemblyAsmDisplayName" = "8:FormasSeguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_3442728FA3116DEC0F1BC9CD6EEFF869"
+                    {
+                    "Name" = "8:FormasSeguridad.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:FormasSeguridad.dll"
             "TargetName" = "8:"
@@ -1519,6 +1569,11 @@
             "AssemblyAsmDisplayName" = "8:FactDigital.XmlSerializers, Version=0.1.3.22032, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_424032CF462D5C61325EF4175CBCAFEE"
+                    {
+                    "Name" = "8:FactDigital.XmlSerializers.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:FactDigital.XmlSerializers.dll"
             "TargetName" = "8:"
@@ -1545,6 +1600,11 @@
             "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_463943DD30658E222D8DE0ACE41A6536"
+                    {
+                    "Name" = "8:Ionic.Zip.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Ionic.Zip.dll"
             "TargetName" = "8:"
@@ -1571,6 +1631,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Win.UltraWinGrid.DocumentExport.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_4AB3BAF044444626E05EC78F885F7A33"
+                    {
+                    "Name" = "8:Infragistics2.Win.UltraWinGrid.DocumentExport.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Win.UltraWinGrid.DocumentExport.v8.3.dll"
             "TargetName" = "8:"
@@ -1597,6 +1662,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Win.UltraWinGrid.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_528FA0467DD1FEC9DE02DBDA1E7F3861"
+                    {
+                    "Name" = "8:Infragistics2.Win.UltraWinGrid.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Win.UltraWinGrid.v8.3.dll"
             "TargetName" = "8:"
@@ -1620,9 +1690,14 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Integralab.ORM, Version=1.0.6659.31593, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:Integralab.ORM, Version=1.0.6694.19171, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_53BEF4FBA07638A45DBAE1117CBC1D31"
+                    {
+                    "Name" = "8:Integralab.ORM.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Integralab.ORM.dll"
             "TargetName" = "8:"
@@ -1649,6 +1724,11 @@
             "AssemblyAsmDisplayName" = "8:Gentle.Common, Version=1.5.0.36471, Culture=neutral, PublicKeyToken=80b5de62e27be49b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_53DBAFBFD08A6EE74F0F4BEB7E1F9B65"
+                    {
+                    "Name" = "8:Gentle.Common.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Gentle.Common.dll"
             "TargetName" = "8:"
@@ -1675,6 +1755,11 @@
             "AssemblyAsmDisplayName" = "8:Gentle.Framework, Version=1.5.0.36472, Culture=neutral, PublicKeyToken=80b5de62e27be49b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_5B6DF3970CDF5E151B9ACFFE7824E1A8"
+                    {
+                    "Name" = "8:Gentle.Framework.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Gentle.Framework.dll"
             "TargetName" = "8:"
@@ -1701,6 +1786,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Win.Misc.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_62FB407FFE92F17ECCA1CB1A6489CE4F"
+                    {
+                    "Name" = "8:Infragistics2.Win.Misc.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Win.Misc.v8.3.dll"
             "TargetName" = "8:"
@@ -1727,6 +1817,11 @@
             "AssemblyAsmDisplayName" = "8:SD.LLBLGen.Pro.ORMSupportClasses.NET20, Version=2.0.0.0, Culture=neutral, PublicKeyToken=ca73b74ba4e3ff27, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_6B975450C2311A053D3A98EA45ABD0BE"
+                    {
+                    "Name" = "8:SD.LLBLGen.Pro.ORMSupportClasses.NET20.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SD.LLBLGen.Pro.ORMSupportClasses.NET20.dll"
             "TargetName" = "8:"
@@ -1753,6 +1848,11 @@
             "AssemblyAsmDisplayName" = "8:PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_8336FCDD47AED1706A88B211C2356B0A"
+                    {
+                    "Name" = "8:PdfSharp.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:PdfSharp.dll"
             "TargetName" = "8:"
@@ -1779,6 +1879,11 @@
             "AssemblyAsmDisplayName" = "8:MEAToolBar, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_8C89D4004267BDD3556C18CF3E6978FF"
+                    {
+                    "Name" = "8:MEAToolBar.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:MEAToolBar.dll"
             "TargetName" = "8:"
@@ -1805,6 +1910,11 @@
             "AssemblyAsmDisplayName" = "8:Barcode, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_8DCEC661AA0A6F2906C7A4881398EB00"
+                    {
+                    "Name" = "8:barcode.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:barcode.dll"
             "TargetName" = "8:"
@@ -1831,6 +1941,11 @@
             "AssemblyAsmDisplayName" = "8:Gentle.Provider.SQLServer, Version=1.5.0.36475, Culture=neutral, PublicKeyToken=80b5de62e27be49b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_8E3031715208A46D72FD8503CAD8945D"
+                    {
+                    "Name" = "8:Gentle.Provider.SQLServer.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Gentle.Provider.SQLServer.dll"
             "TargetName" = "8:"
@@ -1857,6 +1972,11 @@
             "AssemblyAsmDisplayName" = "8:IntegraLab.Controles, Version=1.0.3866.29251, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_92449D75593297CEEADDED0432876F98"
+                    {
+                    "Name" = "8:IntegraLab.Controles.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:IntegraLab.Controles.dll"
             "TargetName" = "8:"
@@ -1883,6 +2003,11 @@
             "AssemblyAsmDisplayName" = "8:IntegraClases, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0dd260eca752a536, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_9677C3B0F10EE081A61000F0643F1AE1"
+                    {
+                    "Name" = "8:IntegraClases.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:IntegraClases.dll"
             "TargetName" = "8:"
@@ -1909,6 +2034,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Win.UltraWinDataSource.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_9FD9DC56CDA893CED9C6CD29A41C19D6"
+                    {
+                    "Name" = "8:Infragistics2.Win.UltraWinDataSource.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Win.UltraWinDataSource.v8.3.dll"
             "TargetName" = "8:"
@@ -1935,6 +2065,11 @@
             "AssemblyAsmDisplayName" = "8:log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821"
                 "ScatterAssemblies"
                 {
+                    "_9FE42E02EC6D8B7C6B94C08D71192844"
+                    {
+                    "Name" = "8:log4net.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:log4net.dll"
             "TargetName" = "8:"
@@ -1961,6 +2096,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Win.UltraWinEditors.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_A52926544C1F094514FF698A96DC9A50"
+                    {
+                    "Name" = "8:Infragistics2.Win.UltraWinEditors.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Win.UltraWinEditors.v8.3.dll"
             "TargetName" = "8:"
@@ -1987,6 +2127,11 @@
             "AssemblyAsmDisplayName" = "8:FactDigital, Version=0.1.3.22032, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_A6A7587201B99FBE6A84CB5C77BBB8FD"
+                    {
+                    "Name" = "8:FactDigital.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:FactDigital.dll"
             "TargetName" = "8:"
@@ -2013,6 +2158,11 @@
             "AssemblyAsmDisplayName" = "8:SD.LLBLGen.Pro.DQE.SqlServer.NET20, Version=2.0.0.0, Culture=neutral, PublicKeyToken=ca73b74ba4e3ff27, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_AFE3752B8FF51D9E56C2E99099A113AE"
+                    {
+                    "Name" = "8:SD.LLBLGen.Pro.DQE.SqlServer.NET20.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SD.LLBLGen.Pro.DQE.SqlServer.NET20.dll"
             "TargetName" = "8:"
@@ -2039,6 +2189,11 @@
             "AssemblyAsmDisplayName" = "8:CrystalDecisions.ReportAppServer.Prompting, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_C7F52A6B444B1388280EDDBEB26092B3"
+                    {
+                    "Name" = "8:CrystalDecisions.ReportAppServer.Prompting.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:CrystalDecisions.ReportAppServer.Prompting.dll"
             "TargetName" = "8:"
@@ -2062,9 +2217,14 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ClasesComunes, Version=1.0.6661.24522, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:ClasesComunes, Version=1.0.6694.32050, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_C83D6B49B84534DC758EA2A2CBE6A5DE"
+                    {
+                    "Name" = "8:ClasesComunes.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ClasesComunes.dll"
             "TargetName" = "8:"
@@ -2091,6 +2251,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Documents.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_CAAA27CC522D700342D5B2B9E2F8E7AF"
+                    {
+                    "Name" = "8:Infragistics2.Documents.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Documents.v8.3.dll"
             "TargetName" = "8:"
@@ -2117,6 +2282,11 @@
             "AssemblyAsmDisplayName" = "8:Integra.Controles, Version=1.0.2838.28568, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_CAF6A867CA8CF92033878B0AFBB130B2"
+                    {
+                    "Name" = "8:Integra.Controles.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Integra.Controles.dll"
             "TargetName" = "8:"
@@ -2143,6 +2313,11 @@
             "AssemblyAsmDisplayName" = "8:ORMFactDigital, Version=1.0.0.22030, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_CBC03D09479D83BE131C2ED02BDC2A8F"
+                    {
+                    "Name" = "8:ORMFactDigital.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ORMFactDigital.dll"
             "TargetName" = "8:"
@@ -2195,6 +2370,11 @@
             "AssemblyAsmDisplayName" = "8:ClasesNegocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_CE576D7FED1E87D210BA15FE4BAEE912"
+                    {
+                    "Name" = "8:ClasesNegocio.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ClasesNegocio.dll"
             "TargetName" = "8:"
@@ -2221,6 +2401,11 @@
             "AssemblyAsmDisplayName" = "8:nunit.framework, Version=2.5.3.9345, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_D1B9A98DD77B2B8CBD0C1C37918D5E40"
+                    {
+                    "Name" = "8:nunit.framework.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:nunit.framework.dll"
             "TargetName" = "8:"
@@ -2247,6 +2432,11 @@
             "AssemblyAsmDisplayName" = "8:Seguridad, Version=0.7.5.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_DEEB6925EBFDA02BA951D8D75C75C707"
+                    {
+                    "Name" = "8:Seguridad.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Seguridad.dll"
             "TargetName" = "8:"
@@ -2273,6 +2463,11 @@
             "AssemblyAsmDisplayName" = "8:ThoughtWorks.QRCode, Version=1.0.4042.29967, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_DF6B165E7FECC89437B2F2A783CE5151"
+                    {
+                    "Name" = "8:ThoughtWorks.QRCode.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ThoughtWorks.QRCode.dll"
             "TargetName" = "8:"
@@ -2299,6 +2494,11 @@
             "AssemblyAsmDisplayName" = "8:BarcodeLib, Version=1.0.0.22, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_E0298284135D2D62529B8A5EBC4BF897"
+                    {
+                    "Name" = "8:BarcodeLib.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:BarcodeLib.dll"
             "TargetName" = "8:"
@@ -2325,6 +2525,11 @@
             "AssemblyAsmDisplayName" = "8:ILTreeViewMenu, Version=1.0.0.20595, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_E050E39C75E0D22C537DD396023B3C92"
+                    {
+                    "Name" = "8:ILTreeViewMenu.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ILTreeViewMenu.dll"
             "TargetName" = "8:"
@@ -2351,6 +2556,11 @@
             "AssemblyAsmDisplayName" = "8:wclTextBoxSerial, Version=1.0.1906.33345, Culture=neutral"
                 "ScatterAssemblies"
                 {
+                    "_E77B1720C6E41EF8DFA4DBDC46402BCB"
+                    {
+                    "Name" = "8:wcltextboxserial.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:wcltextboxserial.dll"
             "TargetName" = "8:"
@@ -2377,6 +2587,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Win.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_EB59ED09C49E1D54DE1F82627A36CCCF"
+                    {
+                    "Name" = "8:Infragistics2.Win.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Win.v8.3.dll"
             "TargetName" = "8:"
@@ -2403,6 +2618,11 @@
             "AssemblyAsmDisplayName" = "8:FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304"
                 "ScatterAssemblies"
                 {
+                    "_EEA274521665ACA7E843B40E06CE618E"
+                    {
+                    "Name" = "8:FlashControlV71.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:FlashControlV71.dll"
             "TargetName" = "8:"
@@ -2429,6 +2649,11 @@
             "AssemblyAsmDisplayName" = "8:Infragistics2.Shared.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_F07ACF152B79435A90BE4B4B1AA92FEC"
+                    {
+                    "Name" = "8:Infragistics2.Shared.v8.3.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Infragistics2.Shared.v8.3.dll"
             "TargetName" = "8:"
@@ -2523,7 +2748,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.36"
+        "ProductVersion" = "8:1.1.39"
         "Manufacturer" = "8:IntegraLab"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

@@ -124,6 +124,7 @@ Public Class FrmABCCortes
     End Function
 
     Public Function Guardar() As Boolean
+        Productos.Observaciones = ""
         Productos.Descripcion = Me.txtDescripcion.Text
         Productos.DescripcionCorta = Me.txtDescCorta.Text
         Productos.MaximoPiezasxCaja = Me.txtMaximoPiezasxCaja.Text
