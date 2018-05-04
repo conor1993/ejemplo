@@ -16,7 +16,10 @@ Public Class frmFacturacionEspecial
     Dim ProductosGenCol As ProductoCollectionClass
     Dim ConF As New CC.ConfiguracionFacturaCollection
     Dim NumRenglones As Integer
+    Dim PolizaDet2 As New PolizaDetalleClass
+    Dim Poliza As New PolizaClass
     Dim configurarImprecion As Boolean = True
+    Dim DomFiscalCte2 As DomicilioClienteClass
     Dim SumaCargo As Decimal
     Dim SumaAbono As Decimal
     Dim Band As Boolean
@@ -183,6 +186,7 @@ Public Class frmFacturacionEspecial
         Dim Cliente As ClientesIntroductoresClass
         Dim DomFiscalCte As DomicilioClienteClass
         DomFiscalCte = DirectCast(DirectCast(ultcmbDomiciliosFiscales.SelectedRow.ListObject, Object), DomicilioClienteClass)
+        DomFiscalCte2 = DomFiscalCte
         Cliente = New ClientesIntroductoresClass(CInt(CmbCliente.SelectedValue))
 
         Dim Receptor As New CFDI.ComprobanteReceptor(Cliente.RFC.Replace("_", "").Replace("-", "").Replace(" ", ""))
@@ -459,7 +463,7 @@ Public Class frmFacturacionEspecial
 
                 'guardar poliza
                 Dim Poliza As New PolizaClass
-
+                Dim Poliza2 As New PolizaClass
                 'se guarda la poliza en contabilidad
                 Poliza.Concepto = "Cargo por Factura Especial a: " & Trim(Me.CmbCliente.Text) & " # Factura : " & FacturaCabecero.NoFactura
                 Poliza.EmpresaId = Controlador.Sesion.MiEmpresa.Empndx
@@ -472,6 +476,7 @@ Public Class frmFacturacionEspecial
                 Poliza.TipoPoliza = ClasesNegocio.PolizaTipoPolizaEnum.DIARIO
                 Poliza.TipoError = 0
 
+
                 'Se crea el detalle de la poliza
                 For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
                     If CType(Me.dgvCuentasContables.Rows(i).Cells(Me.clmCargo.Index).Value, Decimal) > 0D Then
@@ -483,6 +488,7 @@ Public Class frmFacturacionEspecial
                         PolizaDet.Posicion = i + 1
                         PolizaDet.Importe = CType(Me.dgvCuentasContables.Rows(i).Cells(Me.clmCargo.Index).Value, Decimal)
                         Poliza.Detalles2.Add(PolizaDet)
+                        PolizaDet2 = PolizaDet
                         'Poliza.AgregarDetalle(PolizaDet)
                     ElseIf CType(Me.dgvCuentasContables.Rows(i).Cells(Me.clmAbono.Index).Value, Decimal) > 0D Then
                         Dim CuentaCon As New CuentaContableClass
@@ -495,6 +501,7 @@ Public Class frmFacturacionEspecial
                         Poliza.Detalles2.Add(PolizaDet)
                         'Poliza.AgregarDetalle(PolizaDet)
                     End If
+
                 Next
 
                 If Not Poliza.Detalles2.Count > 0 Then
@@ -570,6 +577,7 @@ Public Class frmFacturacionEspecial
 
                 TransG.Commit()
 
+
                 Dim Ubicacion As String = ControlFD.GenerarArchivoPDF(cfdi, Fact.Conceptos, 0, FactPDF)
                 Application.DoEvents()
                 Cursor = Cursors.Default
@@ -581,6 +589,39 @@ Public Class frmFacturacionEspecial
                 Procesar.Start()
                 Trans.Commit()
                 Cursor.Current = Cursors.Default
+
+
+                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim cmd As New SqlCommand
+                Try
+
+                    sqlCon.Open()
+                    cmd.Connection = sqlCon
+                    cmd.CommandText = "INSERT INTO GastosDepartamentalesFG VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & Poliza.FechaCaptura & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                    cmd.ExecuteNonQuery()
+                    sqlCon.Close()
+
+                Catch exe As Exception
+                    MsgBox("Error al insertar en la tabla GastosDepartamenralesFG")
+                End Try
+                Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                Try
+
+                    'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG
+                    'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
+                    sqlCone.Open()
+                    cmd.Connection = sqlCone
+                    cmd.CommandText = "INSERT INTO GastosDepartamentalesDetFG VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & Poliza.FechaCaptura & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "','" & CmbCliente.SelectedValue & "')"
+                    cmd.ExecuteNonQuery()
+                    sqlCone.Close()
+
+                Catch exe As Exception
+                    MsgBox("Error al insertar en la tabla GastosDepartamenralesDetFG")
+                End Try
+
+
+
+
                 MessageBox.Show("La Factura de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 FacturaCabecero.Estatus = "C"
@@ -596,6 +637,12 @@ Public Class frmFacturacionEspecial
             MEAToolBar1.Enabled = True
             If ex.Message = "No hay ninguna aplicación asociada con el archivo especificado para esta operación" Then
                 Cursor.Current = Cursors.Default
+
+
+                'DomFiscalCte = DirectCast(DirectCast(ultcmbDomiciliosFiscales.SelectedRow.ListObject, Object), DomicilioClienteClass)
+
+
+
                 MessageBox.Show("Debe instalar Adobe Reader para abrir los archivos pdf", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Else
 
