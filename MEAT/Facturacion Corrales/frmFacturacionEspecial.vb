@@ -169,6 +169,16 @@ Public Class frmFacturacionEspecial
                 Return False
             End If
 
+            If cmbmetodo.SelectedValue = Nothing Then
+                MessageBox.Show("Falta seleccionar Metodo.", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return False
+            End If
+
+            If cmbsucursal.SelectedValue = Nothing Then
+                MessageBox.Show("Falta seleccionar Sucursal.", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return False
+            End If
+
 
 
             Return True
@@ -383,7 +393,6 @@ Public Class frmFacturacionEspecial
             End If
         End Try
 
-
     End Function
 
     Public Function Guardar(ByVal Trans As HC.Transaction, ByVal Estatus As String) As Boolean
@@ -397,6 +406,11 @@ Public Class frmFacturacionEspecial
         End If
         ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
 
+        If Not validar() Then
+            Return False
+            Exit Function
+        End If
+
         Cursor = Cursors.WaitCursor
         MEAToolBar1.Enabled = False
         Application.DoEvents()
@@ -404,10 +418,7 @@ Public Class frmFacturacionEspecial
         Dim TransG As New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
         Try
 
-            If Not validar() Then
-                Return False
-                Exit Function
-            End If
+            
 
             'System.Threading.Thread.Sleep(6000)
             'Application.DoEvents()
@@ -575,6 +586,37 @@ Public Class frmFacturacionEspecial
                     End If
                 Next
 
+               
+
+
+                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim cmd As New SqlCommand
+                'Try
+
+                sqlCon.Open()
+                cmd.Connection = sqlCon
+                cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                cmd.ExecuteNonQuery()
+                sqlCon.Close()
+
+                'Catch exe As Exception
+                '    MsgBox(exe.Message)
+                'End Try
+                Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                'Try
+
+                'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG
+                'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
+                sqlCone.Open()
+                cmd.Connection = sqlCone
+                cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG(IdSucursal, IdMetodoProrrateo, IdCuentaContable, Factura, Cod_CentroCostos, Porcentaje, ID_Proveedor) VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
+                cmd.ExecuteNonQuery()
+                sqlCone.Close()
+
+                '        Catch exe As Exception
+                '    MsgBox(exe.Message)
+                'End Try
+
                 TransG.Commit()
 
 
@@ -589,37 +631,6 @@ Public Class frmFacturacionEspecial
                 Procesar.Start()
                 Trans.Commit()
                 Cursor.Current = Cursors.Default
-
-
-                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                Dim cmd As New SqlCommand
-                Try
-
-                    sqlCon.Open()
-                    cmd.Connection = sqlCon
-                    cmd.CommandText = "INSERT INTO GastosDepartamentalesFG VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
-                    cmd.ExecuteNonQuery()
-                    sqlCon.Close()
-
-                Catch exe As Exception
-                    '  MsgBox(exe.ToString())
-                End Try
-                Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                Try
-
-                    'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG
-                    'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
-                    sqlCone.Open()
-                    cmd.Connection = sqlCone
-                    cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
-                    cmd.ExecuteNonQuery()
-                    sqlCone.Close()
-
-                Catch exe As Exception
-                    ' MsgBox(exe.ToString())
-                End Try
-
-
 
 
                 MessageBox.Show("La Factura de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
