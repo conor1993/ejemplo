@@ -23,12 +23,12 @@ Partial Class frmFacturacionEspecial
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -42,6 +42,10 @@ Partial Class frmFacturacionEspecial
         Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.cmbmetodo = New System.Windows.Forms.ComboBox()
+        Me.cmbsucursal = New System.Windows.Forms.ComboBox()
         Me.lblEstatus = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -122,10 +126,6 @@ Partial Class frmFacturacionEspecial
         Me.DataGridViewComboBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewComboBoxColumn2 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.ProductosVistaC = New ClasesNegocio.ProductosVistaCollectionClass()
-        Me.cmbsucursal = New System.Windows.Forms.ComboBox()
-        Me.cmbmetodo = New System.Windows.Forms.ComboBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.gbFormaPago.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -183,6 +183,42 @@ Partial Class frmFacturacionEspecial
         Me.GroupBox1.Size = New System.Drawing.Size(975, 625)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(484, 329)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(46, 13)
+        Me.Label23.TabIndex = 169
+        Me.Label23.Text = "Metodo:"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(115, 321)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(51, 13)
+        Me.Label22.TabIndex = 168
+        Me.Label22.Text = "Sucursal:"
+        '
+        'cmbmetodo
+        '
+        Me.cmbmetodo.FormattingEnabled = True
+        Me.cmbmetodo.Location = New System.Drawing.Point(561, 321)
+        Me.cmbmetodo.Name = "cmbmetodo"
+        Me.cmbmetodo.Size = New System.Drawing.Size(252, 21)
+        Me.cmbmetodo.TabIndex = 167
+        Me.cmbmetodo.TabStop = False
+        '
+        'cmbsucursal
+        '
+        Me.cmbsucursal.FormattingEnabled = True
+        Me.cmbsucursal.Location = New System.Drawing.Point(189, 321)
+        Me.cmbsucursal.Name = "cmbsucursal"
+        Me.cmbsucursal.Size = New System.Drawing.Size(252, 21)
+        Me.cmbsucursal.TabIndex = 166
+        Me.cmbsucursal.TabStop = False
         '
         'lblEstatus
         '
@@ -536,27 +572,27 @@ Partial Class frmFacturacionEspecial
         '
         'clmCantidad
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N2"
-        Me.clmCantidad.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N2"
+        Me.clmCantidad.DefaultCellStyle = DataGridViewCellStyle1
         Me.clmCantidad.FillWeight = 6.0!
         Me.clmCantidad.HeaderText = "Cantidad"
         Me.clmCantidad.Name = "clmCantidad"
         '
         'clmPrecio
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N2"
-        Me.clmPrecio.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        Me.clmPrecio.DefaultCellStyle = DataGridViewCellStyle2
         Me.clmPrecio.FillWeight = 9.0!
         Me.clmPrecio.HeaderText = "Precio"
         Me.clmPrecio.Name = "clmPrecio"
         '
         'clmIVA
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "N2"
-        Me.clmIVA.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        Me.clmIVA.DefaultCellStyle = DataGridViewCellStyle3
         Me.clmIVA.FillWeight = 8.0!
         Me.clmIVA.HeaderText = "IVA"
         Me.clmIVA.Name = "clmIVA"
@@ -569,9 +605,9 @@ Partial Class frmFacturacionEspecial
         '
         'clmImporte
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "N2"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N2"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle4
         Me.clmImporte.FillWeight = 12.0!
         Me.clmImporte.HeaderText = "Importe"
         Me.clmImporte.Name = "clmImporte"
@@ -637,18 +673,18 @@ Partial Class frmFacturacionEspecial
         '
         'clmCargo
         '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "N2"
-        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle5
         Me.clmCargo.FillWeight = 13.0!
         Me.clmCargo.HeaderText = "Cargo"
         Me.clmCargo.Name = "clmCargo"
         '
         'clmAbono
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "N2"
-        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle6
         Me.clmAbono.FillWeight = 13.0!
         Me.clmAbono.HeaderText = "Abono"
         Me.clmAbono.Name = "clmAbono"
@@ -1017,42 +1053,6 @@ Partial Class frmFacturacionEspecial
         Me.ProductosVistaC.AllowRemove = True
         Me.ProductosVistaC.Name = ""
         Me.ProductosVistaC.RaiseListChangedEvents = True
-        '
-        'cmbsucursal
-        '
-        Me.cmbsucursal.FormattingEnabled = True
-        Me.cmbsucursal.Location = New System.Drawing.Point(189, 321)
-        Me.cmbsucursal.Name = "cmbsucursal"
-        Me.cmbsucursal.Size = New System.Drawing.Size(252, 21)
-        Me.cmbsucursal.TabIndex = 166
-        Me.cmbsucursal.TabStop = False
-        '
-        'cmbmetodo
-        '
-        Me.cmbmetodo.FormattingEnabled = True
-        Me.cmbmetodo.Location = New System.Drawing.Point(561, 321)
-        Me.cmbmetodo.Name = "cmbmetodo"
-        Me.cmbmetodo.Size = New System.Drawing.Size(252, 21)
-        Me.cmbmetodo.TabIndex = 167
-        Me.cmbmetodo.TabStop = False
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(115, 321)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(51, 13)
-        Me.Label22.TabIndex = 168
-        Me.Label22.Text = "Sucursal:"
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(484, 329)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(46, 13)
-        Me.Label23.TabIndex = 169
-        Me.Label23.Text = "Metodo:"
         '
         'frmFacturacionEspecial
         '
