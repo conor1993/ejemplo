@@ -23,11 +23,11 @@ Partial Class FrmCapturaProdTerminado
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmCapturaProdTerminado))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvEtiquetas = New System.Windows.Forms.DataGridView()
         Me.IdFolioEtiqueta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -96,7 +96,7 @@ Partial Class FrmCapturaProdTerminado
         Me.chkTipoCorte = New System.Windows.Forms.CheckBox()
         Me.chkEdadGanado = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.LoteCortesDet = New Integralab.ORM.CollectionClasses.MscloteCortesDetCollection()
+        Me.LoteCortesDet = New IntegraLab.ORM.CollectionClasses.MscloteCortesDetCollection()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtcajas = New System.Windows.Forms.TextBox()
         Me.txtPiezasRegistrar = New System.Windows.Forms.TextBox()
@@ -167,8 +167,8 @@ Partial Class FrmCapturaProdTerminado
         '
         'CantPzas
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.CantPzas.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.CantPzas.DefaultCellStyle = DataGridViewCellStyle13
         Me.CantPzas.HeaderText = "Piezas"
         Me.CantPzas.Name = "CantPzas"
         Me.CantPzas.ReadOnly = True
@@ -176,10 +176,10 @@ Partial Class FrmCapturaProdTerminado
         '
         'CantKgrs
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle2.Format = "N3"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.CantKgrs.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle14.Format = "N3"
+        DataGridViewCellStyle14.NullValue = Nothing
+        Me.CantKgrs.DefaultCellStyle = DataGridViewCellStyle14
         Me.CantKgrs.HeaderText = "Kilos"
         Me.CantKgrs.Name = "CantKgrs"
         Me.CantKgrs.ReadOnly = True
@@ -220,7 +220,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtPeso.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtPeso.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPeso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtPeso.Location = New System.Drawing.Point(389, 178)
+        Me.txtPeso.Location = New System.Drawing.Point(271, 179)
         Me.txtPeso.MaxLength = 0
         Me.txtPeso.Name = "txtPeso"
         Me.txtPeso.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -237,7 +237,7 @@ Partial Class FrmCapturaProdTerminado
         Me.txtPiezas.Enabled = False
         Me.txtPiezas.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPiezas.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
-        Me.txtPiezas.Location = New System.Drawing.Point(252, 176)
+        Me.txtPiezas.Location = New System.Drawing.Point(227, 183)
         Me.txtPiezas.MaxLength = 0
         Me.txtPiezas.Name = "txtPiezas"
         Me.txtPiezas.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -569,7 +569,7 @@ Partial Class FrmCapturaProdTerminado
         Me._LblEtiqueta_3.Cursor = System.Windows.Forms.Cursors.Default
         Me._LblEtiqueta_3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me._LblEtiqueta_3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._LblEtiqueta_3.Location = New System.Drawing.Point(339, 197)
+        Me._LblEtiqueta_3.Location = New System.Drawing.Point(221, 198)
         Me._LblEtiqueta_3.Name = "_LblEtiqueta_3"
         Me._LblEtiqueta_3.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me._LblEtiqueta_3.Size = New System.Drawing.Size(44, 16)
@@ -838,9 +838,9 @@ Partial Class FrmCapturaProdTerminado
         'chkActivarLectura
         '
         Me.chkActivarLectura.Appearance = System.Windows.Forms.Appearance.Button
-        Me.chkActivarLectura.Location = New System.Drawing.Point(556, 178)
+        Me.chkActivarLectura.Location = New System.Drawing.Point(485, 178)
         Me.chkActivarLectura.Name = "chkActivarLectura"
-        Me.chkActivarLectura.Size = New System.Drawing.Size(80, 50)
+        Me.chkActivarLectura.Size = New System.Drawing.Size(76, 51)
         Me.chkActivarLectura.TabIndex = 63
         Me.chkActivarLectura.Text = "Lectura de Peso Desactivada"
         Me.chkActivarLectura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -892,8 +892,8 @@ Partial Class FrmCapturaProdTerminado
         '
         'DataGridViewTextBoxColumn6
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle15
         Me.DataGridViewTextBoxColumn6.HeaderText = "Piezas"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -901,10 +901,10 @@ Partial Class FrmCapturaProdTerminado
         '
         'DataGridViewTextBoxColumn7
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle16.Format = "N2"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle16
         Me.DataGridViewTextBoxColumn7.HeaderText = "Kilos"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -924,9 +924,9 @@ Partial Class FrmCapturaProdTerminado
         Me.chkTipoCorte.FlatAppearance.BorderSize = 0
         Me.chkTipoCorte.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkTipoCorte.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chkTipoCorte.Location = New System.Drawing.Point(642, 179)
+        Me.chkTipoCorte.Location = New System.Drawing.Point(648, 178)
         Me.chkTipoCorte.Name = "chkTipoCorte"
-        Me.chkTipoCorte.Size = New System.Drawing.Size(92, 51)
+        Me.chkTipoCorte.Size = New System.Drawing.Size(76, 51)
         Me.chkTipoCorte.TabIndex = 64
         Me.chkTipoCorte.Text = "Fresco"
         Me.chkTipoCorte.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -937,9 +937,9 @@ Partial Class FrmCapturaProdTerminado
         Me.chkEdadGanado.Appearance = System.Windows.Forms.Appearance.Button
         Me.chkEdadGanado.FlatAppearance.BorderSize = 0
         Me.chkEdadGanado.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEdadGanado.Location = New System.Drawing.Point(740, 178)
+        Me.chkEdadGanado.Location = New System.Drawing.Point(730, 179)
         Me.chkEdadGanado.Name = "chkEdadGanado"
-        Me.chkEdadGanado.Size = New System.Drawing.Size(66, 50)
+        Me.chkEdadGanado.Size = New System.Drawing.Size(75, 50)
         Me.chkEdadGanado.TabIndex = 65
         Me.chkEdadGanado.Text = "-30"
         Me.chkEdadGanado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -961,7 +961,7 @@ Partial Class FrmCapturaProdTerminado
         Me.LoteCortesDet.Capacity = 32
         Me.LoteCortesDet.ConcurrencyPredicateFactoryToUse = Nothing
         Me.LoteCortesDet.DoNotPerformAddIfPresent = False
-        Me.LoteCortesDet.EntityFactoryToUse = New Integralab.ORM.FactoryClasses.MscloteCortesDetEntityFactory()
+        Me.LoteCortesDet.EntityFactoryToUse = New IntegraLab.ORM.FactoryClasses.MscloteCortesDetEntityFactory()
         Me.LoteCortesDet.IsReadOnly = False
         Me.LoteCortesDet.MaxNumberOfItemsToReturn = CType(0, Long)
         Me.LoteCortesDet.SortClauses = Nothing
@@ -1068,9 +1068,9 @@ Partial Class FrmCapturaProdTerminado
         '
         'btnCerrar
         '
-        Me.btnCerrar.Location = New System.Drawing.Point(741, 41)
+        Me.btnCerrar.Location = New System.Drawing.Point(567, 178)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(66, 48)
+        Me.btnCerrar.Size = New System.Drawing.Size(76, 51)
         Me.btnCerrar.TabIndex = 102
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
@@ -1078,9 +1078,9 @@ Partial Class FrmCapturaProdTerminado
         'btnBuscarTxt
         '
         Me.btnBuscarTxt.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscarTxt.Location = New System.Drawing.Point(742, 114)
+        Me.btnBuscarTxt.Location = New System.Drawing.Point(596, 141)
         Me.btnBuscarTxt.Name = "btnBuscarTxt"
-        Me.btnBuscarTxt.Size = New System.Drawing.Size(65, 39)
+        Me.btnBuscarTxt.Size = New System.Drawing.Size(40, 26)
         Me.btnBuscarTxt.TabIndex = 103
         Me.btnBuscarTxt.Text = "..."
         Me.btnBuscarTxt.UseVisualStyleBackColor = True
@@ -1090,6 +1090,8 @@ Partial Class FrmCapturaProdTerminado
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1018, 595)
+        Me.Controls.Add(Me.txtPeso)
+        Me.Controls.Add(Me._LblEtiqueta_3)
         Me.Controls.Add(Me.btnBuscarTxt)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.cmbCortes)
@@ -1104,7 +1106,6 @@ Partial Class FrmCapturaProdTerminado
         Me.Controls.Add(Me.txtLeerPeso)
         Me.Controls.Add(Me.cmbClientes)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.txtPeso)
         Me.Controls.Add(Me.txtPiezas)
         Me.Controls.Add(Me.txtSubCorte)
         Me.Controls.Add(Me.txtCodSubCorte)
@@ -1113,7 +1114,6 @@ Partial Class FrmCapturaProdTerminado
         Me.Controls.Add(Me.cmdBuscarCortes)
         Me.Controls.Add(Me._LblEtiqueta_11)
         Me.Controls.Add(Me._LblEtiqueta_1)
-        Me.Controls.Add(Me._LblEtiqueta_3)
         Me.Controls.Add(Me.lblpiezas)
         Me.Controls.Add(Me.chkEdadGanado)
         Me.Controls.Add(Me.dgvEtiquetas)
