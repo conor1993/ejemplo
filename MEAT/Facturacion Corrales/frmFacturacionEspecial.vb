@@ -597,7 +597,7 @@ Public Class frmFacturacionEspecial
 
                     sqlCon.Open()
                     cmd.Connection = sqlCon
-                    cmd.CommandText = "INSERT INTO GastosDepartamentalesFG VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & Poliza.FechaCaptura & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                    cmd.CommandText = "INSERT INTO GastosDepartamentalesFG VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
                     cmd.ExecuteNonQuery()
                     sqlCon.Close()
 
@@ -611,12 +611,12 @@ Public Class frmFacturacionEspecial
                     'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
                     sqlCone.Open()
                     cmd.Connection = sqlCone
-                    cmd.CommandText = "INSERT INTO GastosDepartamentalesDetFG VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & Poliza.FechaCaptura & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "','" & CmbCliente.SelectedValue & "')"
+                    cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
                     cmd.ExecuteNonQuery()
                     sqlCone.Close()
 
                 Catch exe As Exception
-                    MsgBox("Error al insertar en la tabla GastosDepartamenralesDetFG")
+
                 End Try
 
 
@@ -2071,7 +2071,7 @@ Public Class frmFacturacionEspecial
                 End If
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+          ''  MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
 
