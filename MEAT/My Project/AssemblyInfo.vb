@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 ' Revisar los valores de los atributos del ensamblado
 
-<Assembly: AssemblyTitle("Sistema MEAT")> 
+<Assembly: AssemblyTitle("s")> 
 <Assembly: AssemblyDescription("MANEJO DE ENGORDA Y ADMINISTRACION TOTAL")> 
 <Assembly: AssemblyCompany("INTEGRA-LAB")> 
 <Assembly: AssemblyProduct("MEAT")> 
@@ -34,8 +34,8 @@ Imports System.Runtime.InteropServices
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
 
-<Assembly: AssemblyVersion("1.1.1.39")> 
-<Assembly: AssemblyFileVersion("1.1.1.39")> 
+<Assembly: AssemblyVersion("1.1.1.40")> 
+<Assembly: AssemblyFileVersion("1.1.1.40")> 
 
 
 <Assembly: NeutralResourcesLanguageAttribute("")> 

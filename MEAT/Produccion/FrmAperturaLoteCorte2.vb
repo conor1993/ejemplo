@@ -599,7 +599,7 @@ Public Class FrmAperturaLoteCorte2
 
             query = "SELECT IdProducto, Descripcion, Corte" &
             " FROM MSCCatProductos" &
-            " WHERE (Corte = 1)"
+            " WHERE (Corte = 1) ORDER BY Descripcion"
 
             Me.clmProductoDet.DisplayMember = "Descripcion"
             Me.clmProductoDet.ValueMember = "IdProducto"
