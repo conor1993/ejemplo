@@ -58,7 +58,6 @@ Public Class frmReporteFactura
 
     Private Sub Imprimir()
         Dim sqlCon As New SqlConnection(Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)
-
         Try
             Dim sqlCom As New SqlCommand("FacturasGenerales", sqlCon)
             Dim ds As New DataSet
