@@ -964,10 +964,16 @@ Public Class FrmABCClientes
                     Me.CuentaCont = New CN.CuentaContableClass
                     Me.CuentaCont.Obtener(Cliente.CuentaContableId)
                 End If
-                If Not Me.Cliente.Idcuentaventa = -1 Then
-                    Me.CuentaVenta = New CN.CuentaContableClass
-                    Me.CuentaVenta.Obtener(Cliente.Idcuentaventa)
-                End If
+
+                Try
+                    If Not Me.Cliente.Idcuentaventa = -1 Then
+                        Me.CuentaVenta = New CN.CuentaContableClass
+                        Me.CuentaVenta.Obtener(Cliente.Idcuentaventa)
+                    End If
+                Catch ex As Exception
+
+                End Try
+
 
                 Me.PonerDatos()
 
