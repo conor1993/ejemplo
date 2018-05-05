@@ -16,6 +16,7 @@ Public Class frmFacturacionEspecial
     Dim ProductosGenCol As ProductoCollectionClass
     Dim ConF As New CC.ConfiguracionFacturaCollection
     Dim NumRenglones As Integer
+    Dim CuentaContableV As Integer
     Dim PolizaDet2 As New PolizaDetalleClass
     Dim Poliza As New PolizaClass
     Dim configurarImprecion As Boolean = True
@@ -595,7 +596,7 @@ Public Class frmFacturacionEspecial
 
                 sqlCon.Open()
                 cmd.Connection = sqlCon
-                cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
                 cmd.ExecuteNonQuery()
                 sqlCon.Close()
 
@@ -609,7 +610,7 @@ Public Class frmFacturacionEspecial
                 'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
                 sqlCone.Open()
                 cmd.Connection = sqlCone
-                cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG(IdSucursal, IdMetodoProrrateo, IdCuentaContable, Factura, Cod_CentroCostos, Porcentaje, ID_Proveedor) VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & PolizaDet2.IdCuentaContable & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
+                cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG(IdSucursal, IdMetodoProrrateo, IdCuentaContable, Factura, Cod_CentroCostos, Porcentaje, ID_Proveedor) VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
                 cmd.ExecuteNonQuery()
                 sqlCone.Close()
 
@@ -1457,7 +1458,7 @@ Public Class frmFacturacionEspecial
                 Else
                     Me.rdContado.Checked = True
                 End If
-
+                CuentaContableV = ClientesClas.Idcuentaventa
                 cmbUsoCFDI.SelectedValue = ClientesClas.UsoCFDI.Trim()
                 cmbformadepago.SelectedValue = ClientesClas.FormaPago.Trim()
 
