@@ -15,9 +15,9 @@ Imports System.Data.SqlClient
 Public Class FrmCapturaProdTerminado
 
     Private diccionario As New Dictionary(Of String, String)()
-    Private totalkilosproductos As New Double()
-    Private totalPiezas As New Dictionary(Of String, Integer)()
-    Private piezasRegistradas As New Dictionary(Of String, Integer)()
+    'Private totalkilosproductos As New Double()
+    'Private totalPiezas As New Dictionary(Of String, Integer)()
+    'Private piezasRegistradas As New Dictionary(Of String, Integer)()
 
 #Region "Miembros"
     Private LoteCorte As New CortesClass
@@ -649,19 +649,19 @@ Public Class FrmCapturaProdTerminado
 
                 'codigo original -----------------------------------
 
-                If (CantKgrs + LoteCorte.TotalKgs) > KilosRecibidos Then
-                    Trans.Rollback()
-                    MessageBox.Show("Los kilos registrados exceden los kilos comprados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'If (CantKgrs + LoteCorte.TotalKgs) > KilosRecibidos Then
+                '    Trans.Rollback()
+                '    MessageBox.Show("Los kilos registrados exceden los kilos comprados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-                    Return False
-                End If
+                '    Return False
+                'End If
 
-                If (CantPzas + LoteCorte.TotalPzas) > Nopiezas Then
-                    Trans.Rollback()
-                    MessageBox.Show("Las piezas registradas exceden las piezas compradas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Return False
+                'If (CantPzas + LoteCorte.TotalPzas) > Nopiezas Then
+                '    Trans.Rollback()
+                '    MessageBox.Show("Las piezas registradas exceden las piezas compradas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '    Return False
 
-                End If
+                'End If
 
                 'Codigo original -------------------------------
 
@@ -1816,10 +1816,10 @@ Public Class FrmCapturaProdTerminado
             For Each elemento As String In producto 'separa el txt en cadenas cada salto de linea y las guarda en elemento
 
                 codigo = elemento.Split(separador, StringSplitOptions.RemoveEmptyEntries) 'hace split a las cadenas creadas anteriormente
-                totalkilosproductos = totalkilosproductos + Convert.ToDouble(codigo(1)) 'se acumula para verificar compara con el total de los productos        
+                'totalkilosproductos = totalkilosproductos + Convert.ToDouble(codigo(1)) 'se acumula para verificar compara con el total de los productos        
                 If (Not codigoBarraArray.Contains(codigo(0))) Then 'cuando el CB sea diferente se agrana al arreglo y se registra
                     codigoBarraArray.Add(codigo(0))
-                    piezasRegistradas.Add(codigo(0), 0)
+                    'piezasRegistradas.Add(codigo(0), 0)
                     If (verificarProducto(codigo(0))) = False Then
                         MessageBox.Show("El codigo de barra '" + codigo(0) + "' no esta relacionado con ningun producto", "Producto no entontrado", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Exit Sub 'si algun CB no se encuantra en la BD se termina la operacion y no se registra
@@ -1827,11 +1827,11 @@ Public Class FrmCapturaProdTerminado
                     End If
                 End If
 
-                piezasRegistradas(codigo(0)) += 1
-                If (totalPiezas(codigo(0)) < piezasRegistradas(codigo(0))) Then
-                    MessageBox.Show("El numero de piezas del producto: '" + codigo(0) + "' a sobrepasado al total, verifique el archivo TXT.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    Exit Sub
-                End If
+                'piezasRegistradas(codigo(0)) += 1
+                'If (totalPiezas(codigo(0)) < piezasRegistradas(codigo(0))) Then
+                '    MessageBox.Show("El numero de piezas del producto: '" + codigo(0) + "' a sobrepasado al total, verifique el archivo TXT.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                '    Exit Sub
+                'End If
             Next
         Catch ex As Exception
             MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1839,11 +1839,11 @@ Public Class FrmCapturaProdTerminado
 
 
         'verifica que los kilos del txt sean los mismo que los registrados
-        totalkilosproductos = Math.Round(totalkilosproductos, 4)
-        If verificarkilos() = False Then
-            MessageBox.Show("El total de kilos registrados en el txt exceden a los kilos comprados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
+        'totalkilosproductos = Math.Round(totalkilosproductos, 4)
+        'If verificarkilos() = False Then
+        '    MessageBox.Show("El total de kilos registrados en el txt exceden a los kilos comprados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    Exit Sub
+        'End If
 
         codigoBarraArray.Clear()
         punteroCb = 0
@@ -1907,7 +1907,7 @@ Public Class FrmCapturaProdTerminado
             If Rs.Read() Then 'si lee, existe producto
                 existeProducto = True
                 diccionario.Add(productocdg, Rs.GetString(0)) 'Agrega al diccionario (Codigo Barra, ID)
-                totalPiezas.Add(productocdg, Rs.GetInt32(1)) 'se usa para verificar que las cajas registradas no sean mayor a las de la compra
+                'totalPiezas.Add(productocdg, Rs.GetInt32(1)) 'se usa para verificar que las cajas registradas no sean mayor a las de la compra
                 'Return Rs.GetInt32(0)
             End If
             Rs.Close()
@@ -1916,21 +1916,21 @@ Public Class FrmCapturaProdTerminado
         Return existeProducto
     End Function
     'Verfica que el total de kilos registrados sea igual o menor que los que estan en el txt (recibe el total de kilos del txt)
-    Private Function verificarkilos() As Boolean
-        Dim query As String = "select sum(KilosRecibidos) from MSCLoteCortesDetProductos where LoteCorte = '" + txtLoteCorte.Text + "'"
-        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-        Dim totalReal As String
-        Using sqlcom As New SqlCommand(query, sqlCon)
-            sqlCon.Open()
-            Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
-            Rs.Read()
-            totalReal = Rs(0).ToString()
-            Rs.Close()
-            sqlCon.Close()
-            If (Convert.ToDouble(totalReal) < totalkilosproductos) Then
-                Return False
-            End If
-        End Using
-        Return True
-    End Function
+    'Private Function verificarkilos() As Boolean
+    '    Dim query As String = "select sum(KilosRecibidos) from MSCLoteCortesDetProductos where LoteCorte = '" + txtLoteCorte.Text + "'"
+    '    Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+    '    Dim totalReal As String
+    '    Using sqlcom As New SqlCommand(query, sqlCon)
+    '        sqlCon.Open()
+    '        Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
+    '        Rs.Read()
+    '        totalReal = Rs(0).ToString()
+    '        Rs.Close()
+    '        sqlCon.Close()
+    '        If (Convert.ToDouble(totalReal) < totalkilosproductos) Then
+    '            Return False
+    '        End If
+    '    End Using
+    '    Return True
+    'End Function
 End Class
