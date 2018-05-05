@@ -35,6 +35,14 @@ Partial Class CatAlmRegOtraSalidaAlmacen
         Me.txtAlmancen = New System.Windows.Forms.TextBox()
         Me.txtPlaza = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DataGrid = New System.Windows.Forms.DataGridView()
+        Me.CódigoColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductoColumn = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.clmLote = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantidadColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UMColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TxtTotal = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
@@ -52,14 +60,6 @@ Partial Class CatAlmRegOtraSalidaAlmacen
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TipoMovimientoC = New ClasesNegocio.TipoMovimientoAlmacenCollectionClass()
-        Me.DataGrid = New System.Windows.Forms.DataGridView()
-        Me.CódigoColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductoColumn = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.clmLote = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CantidadColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UMColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CostoColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,8 +112,8 @@ Partial Class CatAlmRegOtraSalidaAlmacen
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.Controls.Add(Me.txtTipoMovimiento)
         Me.Panel1.Controls.Add(Me.cmbTipoMovimiento)
         Me.Panel1.Controls.Add(Me.Label8)
@@ -182,7 +182,7 @@ Partial Class CatAlmRegOtraSalidaAlmacen
         'txtObservaciones
         '
         Me.txtObservaciones.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtObservaciones.Location = New System.Drawing.Point(99, 470)
         Me.txtObservaciones.MaxLength = 250
@@ -219,8 +219,8 @@ Partial Class CatAlmRegOtraSalidaAlmacen
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.DataGrid)
         Me.GroupBox1.Controls.Add(Me.TxtTotal)
         Me.GroupBox1.Controls.Add(Me.Label7)
@@ -230,6 +230,74 @@ Partial Class CatAlmRegOtraSalidaAlmacen
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Detalle de Movimiento"
+        '
+        'DataGrid
+        '
+        Me.DataGrid.AllowUserToDeleteRows = False
+        Me.DataGrid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CódigoColumn, Me.ProductoColumn, Me.clmLote, Me.CantidadColumn, Me.UMColumn, Me.CostoColumn, Me.ImporteColumn})
+        Me.DataGrid.Location = New System.Drawing.Point(6, 19)
+        Me.DataGrid.MultiSelect = False
+        Me.DataGrid.Name = "DataGrid"
+        Me.DataGrid.Size = New System.Drawing.Size(800, 189)
+        Me.DataGrid.TabIndex = 76
+        '
+        'CódigoColumn
+        '
+        Me.CódigoColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CódigoColumn.HeaderText = "Código"
+        Me.CódigoColumn.Name = "CódigoColumn"
+        Me.CódigoColumn.Width = 65
+        '
+        'ProductoColumn
+        '
+        Me.ProductoColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.ProductoColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.ProductoColumn.HeaderText = "Producto"
+        Me.ProductoColumn.Name = "ProductoColumn"
+        Me.ProductoColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ProductoColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.ProductoColumn.Width = 75
+        '
+        'clmLote
+        '
+        Me.clmLote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.clmLote.HeaderText = "Lote"
+        Me.clmLote.Name = "clmLote"
+        Me.clmLote.Visible = False
+        '
+        'CantidadColumn
+        '
+        Me.CantidadColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CantidadColumn.HeaderText = "Cantidad"
+        Me.CantidadColumn.Name = "CantidadColumn"
+        Me.CantidadColumn.Width = 74
+        '
+        'UMColumn
+        '
+        Me.UMColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.UMColumn.HeaderText = "Unidad Medida"
+        Me.UMColumn.Name = "UMColumn"
+        Me.UMColumn.ReadOnly = True
+        Me.UMColumn.Width = 96
+        '
+        'CostoColumn
+        '
+        Me.CostoColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CostoColumn.HeaderText = "Costo"
+        Me.CostoColumn.Name = "CostoColumn"
+        Me.CostoColumn.Width = 59
+        '
+        'ImporteColumn
+        '
+        Me.ImporteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.ImporteColumn.HeaderText = "Importe"
+        Me.ImporteColumn.Name = "ImporteColumn"
+        Me.ImporteColumn.ReadOnly = True
+        Me.ImporteColumn.Width = 67
         '
         'TxtTotal
         '
@@ -399,74 +467,6 @@ Partial Class CatAlmRegOtraSalidaAlmacen
         Me.TipoMovimientoC.Name = ""
         Me.TipoMovimientoC.RaiseListChangedEvents = True
         Me.TipoMovimientoC.Transaction = Nothing
-        '
-        'DataGrid
-        '
-        Me.DataGrid.AllowUserToDeleteRows = False
-        Me.DataGrid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CódigoColumn, Me.ProductoColumn, Me.clmLote, Me.CantidadColumn, Me.UMColumn, Me.CostoColumn, Me.ImporteColumn})
-        Me.DataGrid.Location = New System.Drawing.Point(6, 19)
-        Me.DataGrid.MultiSelect = False
-        Me.DataGrid.Name = "DataGrid"
-        Me.DataGrid.Size = New System.Drawing.Size(800, 189)
-        Me.DataGrid.TabIndex = 76
-        '
-        'CódigoColumn
-        '
-        Me.CódigoColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CódigoColumn.HeaderText = "Código"
-        Me.CódigoColumn.Name = "CódigoColumn"
-        Me.CódigoColumn.Width = 65
-        '
-        'ProductoColumn
-        '
-        Me.ProductoColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.ProductoColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.ProductoColumn.HeaderText = "Producto"
-        Me.ProductoColumn.Name = "ProductoColumn"
-        Me.ProductoColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ProductoColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.ProductoColumn.Width = 75
-        '
-        'clmLote
-        '
-        Me.clmLote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.clmLote.HeaderText = "Lote"
-        Me.clmLote.Name = "clmLote"
-        Me.clmLote.Visible = False
-        '
-        'CantidadColumn
-        '
-        Me.CantidadColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CantidadColumn.HeaderText = "Cantidad"
-        Me.CantidadColumn.Name = "CantidadColumn"
-        Me.CantidadColumn.Width = 74
-        '
-        'UMColumn
-        '
-        Me.UMColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.UMColumn.HeaderText = "Unidad Medida"
-        Me.UMColumn.Name = "UMColumn"
-        Me.UMColumn.ReadOnly = True
-        Me.UMColumn.Width = 96
-        '
-        'CostoColumn
-        '
-        Me.CostoColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CostoColumn.HeaderText = "Costo"
-        Me.CostoColumn.Name = "CostoColumn"
-        Me.CostoColumn.Width = 59
-        '
-        'ImporteColumn
-        '
-        Me.ImporteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.ImporteColumn.HeaderText = "Importe"
-        Me.ImporteColumn.Name = "ImporteColumn"
-        Me.ImporteColumn.ReadOnly = True
-        Me.ImporteColumn.Width = 67
         '
         'CatAlmRegOtraSalidaAlmacen
         '
