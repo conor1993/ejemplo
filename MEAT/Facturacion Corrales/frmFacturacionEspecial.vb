@@ -596,7 +596,7 @@ Public Class frmFacturacionEspecial
 
                 sqlCon.Open()
                 cmd.Connection = sqlCon
-                cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & 100 & "','" & CDec(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
                 cmd.ExecuteNonQuery()
                 sqlCon.Close()
 
