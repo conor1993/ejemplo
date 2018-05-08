@@ -923,6 +923,51 @@ Public Class CatAlmRegOtraSalidaAlmacen
     End Sub
 
     Private Sub DataGrid_EditingControlShowing_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DataGrid.EditingControlShowing
+        Dim editingComboBox As ComboBox = TryCast(e.Control, ComboBox)
+        If Not editingComboBox Is Nothing Then
+            'Agregrar handle en el IndexChanged Event
+            AddHandler editingComboBox.SelectedIndexChanged, AddressOf productosComboBox_SelectedIndexChanged
+        End If
+        'Evite que este evento se active dos veces, como suele ser el caso
+        RemoveHandler DataGrid.EditingControlShowing, AddressOf DataGrid_EditingControlShowing_1
+    End Sub
+    'metodo se llamara cada que el combobox del gris cambia de indice(ProductosColumns)
+    Private Sub productosComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        Dim productoCB As ComboBox = TryCast(sender, ComboBox)
+        If productoCB Is Nothing Then Exit Sub
+
+        buscarProducto(productoCB.SelectedItem.ToString()) 'Llama esta metodo para setear el codigo, UM, y costo del producto
+
+        'Retire la manija de este evento. Se volverá a asignar cada vez que una nueva selección de combobox haga que se desactive el Evento EditingControlShowing.
+        RemoveHandler productoCB.SelectedIndexChanged, AddressOf productosComboBox_SelectedIndexChanged
+        'Vuelva a habilitar el evento EditingControlShowing para que ocurra lo anterior.
+        AddHandler DataGrid.EditingControlShowing, AddressOf DataGrid_EditingControlShowing_1
 
     End Sub
+    'Metodo recibe el nombre del producto y busca y regresa su ID
+    Private Sub buscarProducto(ByVal nombreProducto As String)
+        Dim query As String = "select MCatCompProductos.PdIdProducto, MCatCompUnidadMedida.UMDescCorta, MInvAlmacen.CostoPromedio " & _
+                            "from MCatCompProductos JOIN MInvAlmacen on MCatCompProductos.PdIdProducto = MInvAlmacen.ProductoId AND MCatCompProductos.PdDescripcion " & _
+                            "= '{0}' inner join MCatCompUnidadMedida on MCatCompUnidadMedida.UMIdUnidadMedida = MCatCompProductos.PdIdUnidadMedida"
+        query = String.Format(query, nombreProducto)
+        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+        Try
+            Using sqlcom As New SqlCommand(query, sqlCon)
+                sqlCon.Open()
+                Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
+                If (Rs.Read()) Then
+                    DataGrid.CurrentRow.Cells(0).Value = (Rs.GetValue(0))
+                    DataGrid.CurrentRow.Cells(4).Value = (Rs.GetValue(1))
+                    DataGrid.CurrentRow.Cells(5).Value = (Rs.GetValue(2))
+                Else
+                    MessageBox.Show("No se encontro el ID del producto " + nombreProducto + ". Este no se encuentra registrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                Rs.Close()
+                sqlCon.Close()
+                End Using
+        Catch ex As Exception
+            MessageBox.Show("Error al tratar de buscar el id del producto " + nombreProducto + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+    End Sub
+
 End Class
