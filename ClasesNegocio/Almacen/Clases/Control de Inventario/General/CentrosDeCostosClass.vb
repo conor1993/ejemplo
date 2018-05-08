@@ -30,25 +30,25 @@ Public Class CentrosDeCostosClass
         End Get
     End Property
 
-    Public Property IdPlaza() As PlazaClass
-        Get
-            _plaza.LeerEntidad(Entity.Plaza)
-            Return _plaza
-        End Get
-        Set(ByVal value As PlazaClass)
-            _plaza = value
-            Entity.Plaza = _plaza.ObtenerEntidad
-        End Set
-    End Property
-
-    'Public Property IdPlaza() As Integer
+    'Public Property IdPlaza() As PlazaClass
     '    Get
-    '        Return Entity.IdPlaza
+    '        _plaza.LeerEntidad(Entity.Plaza)
+    '        Return _plaza
     '    End Get
-    '    Set(ByVal value As Integer)
-    '        Entity.IdPlaza = value
+    '    Set(ByVal value As PlazaClass)
+    '        _plaza = value
+    '        Entity.Plaza = _plaza.ObtenerEntidad
     '    End Set
     'End Property
+
+    Public Property IdPlaza() As Integer
+        Get
+            Return Entity.IdPlaza
+        End Get
+        Set(ByVal value As Integer)
+            Entity.IdPlaza = value
+        End Set
+    End Property
 
     'Public Overridable Property Plaza() As PlazaClass
     '    Get
