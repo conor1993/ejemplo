@@ -970,4 +970,9 @@ Public Class CatAlmRegOtraSalidaAlmacen
             End Try
     End Sub
 
+    Private Sub DataGrid_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGrid.CellEndEdit
+
+
+    End Sub
+
 End Class
