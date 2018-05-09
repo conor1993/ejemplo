@@ -40,6 +40,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
     End Sub
 
     Private Sub Limpiar()
+        Me.DataGrid.Rows.Clear()
         Me.txtPlaza.Clear()
         CmbPlaza.SelectedValue = "Seleccione Plaza"
         TxtFolio.Clear()
@@ -47,7 +48,6 @@ Public Class CatAlmRegOtraSalidaAlmacen
         CmbAlmacen.SelectedValue = "Seleccione Almacen"
         TxtEntrga.Clear()
         TxtRecibe.Clear()
-        Me.DataGrid.Rows.Clear()
         DTPFecha.Value = Now
         Me.txtObservaciones.Clear()
         Me.lblEstatus.Text = "ESTATUS"
@@ -300,7 +300,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
 
     Private Sub ObtenerDatos()
         'Dim TipoMovimientoCol As New TipoMovimientoAlmacenCollectionClass
-        Me.CalcularImporteTotal()
+        'Me.CalcularImporteTotal()
         'TipoMovimientoCol.Obtener(Me.cmbTipoMovimiento.SelectedValue)
         With mac
             .Contabilizado = AlmacenGeneral.MovimientoAlmacenClass.MovimientoAlmacenEstatus.VIGENTE
@@ -518,7 +518,6 @@ Public Class CatAlmRegOtraSalidaAlmacen
             Me.ObtenerDatos()
 
             If Me.mac.Guardar Then
-                Me.Limpiar()
                 Me.Lectura()
                 MsgBox("La Salida se realizo con exito", MsgBoxStyle.Information, "Aviso")
                 Me.Imprimir(Controlador.Sesion.MiEmpresa.Empnom, Controlador.Sesion.MiUsuario.Usrnom)
@@ -530,6 +529,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error ")
             Cancelar = True
         End Try
+        Limpiar()
     End Sub
 
     Private Sub mtb_ClickBorrar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar
@@ -980,6 +980,14 @@ Public Class CatAlmRegOtraSalidaAlmacen
             MessageBox.Show("Error al tratar de obtener el importe del producto " + DataGrid.CurrentRow.Cells(2).Value + ". Verifique que la cantidad del producto sea solo numeros." _
                             , "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End Try
+
+        If DataGrid.Rows.Count > 0 Then
+            Dim total As Decimal
+            For Each fila As DataGridViewRow In Me.DataGrid.Rows
+                total += Val(fila.Cells(6).Value)
+            Next
+            TxtTotal.Text = CStr(total)
+        End If
     End Sub
 
 End Class
