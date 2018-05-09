@@ -55,6 +55,10 @@ Partial Class MFacRegFacturasVentas
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.cmbmetodo = New System.Windows.Forms.ComboBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.cmbsucursal = New System.Windows.Forms.ComboBox()
         Me.dgvCuentasContables = New System.Windows.Forms.DataGridView()
         Me.clmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -167,6 +171,10 @@ Partial Class MFacRegFacturasVentas
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.Label25)
+        Me.GroupBox1.Controls.Add(Me.cmbmetodo)
+        Me.GroupBox1.Controls.Add(Me.Label24)
+        Me.GroupBox1.Controls.Add(Me.cmbsucursal)
         Me.GroupBox1.Controls.Add(Me.dgvCuentasContables)
         Me.GroupBox1.Controls.Add(Me.Label23)
         Me.GroupBox1.Controls.Add(Me.cmbUsoCFDI)
@@ -211,6 +219,42 @@ Partial Class MFacRegFacturasVentas
         Me.GroupBox1.Size = New System.Drawing.Size(1067, 598)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(441, 300)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(46, 13)
+        Me.Label25.TabIndex = 172
+        Me.Label25.Text = "Metodo:"
+        '
+        'cmbmetodo
+        '
+        Me.cmbmetodo.FormattingEnabled = True
+        Me.cmbmetodo.Location = New System.Drawing.Point(491, 297)
+        Me.cmbmetodo.Name = "cmbmetodo"
+        Me.cmbmetodo.Size = New System.Drawing.Size(252, 21)
+        Me.cmbmetodo.TabIndex = 171
+        Me.cmbmetodo.TabStop = False
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(95, 301)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(51, 13)
+        Me.Label24.TabIndex = 170
+        Me.Label24.Text = "Sucursal:"
+        '
+        'cmbsucursal
+        '
+        Me.cmbsucursal.FormattingEnabled = True
+        Me.cmbsucursal.Location = New System.Drawing.Point(150, 297)
+        Me.cmbsucursal.Name = "cmbsucursal"
+        Me.cmbsucursal.Size = New System.Drawing.Size(252, 21)
+        Me.cmbsucursal.TabIndex = 169
+        Me.cmbsucursal.TabStop = False
         '
         'dgvCuentasContables
         '
@@ -532,7 +576,7 @@ Partial Class MFacRegFacturasVentas
         DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgvDetalleConcentrado.DefaultCellStyle = DataGridViewCellStyle10
-        Me.dgvDetalleConcentrado.Location = New System.Drawing.Point(1, 339)
+        Me.dgvDetalleConcentrado.Location = New System.Drawing.Point(1, 351)
         Me.dgvDetalleConcentrado.Name = "dgvDetalleConcentrado"
         DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
@@ -543,7 +587,7 @@ Partial Class MFacRegFacturasVentas
         DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvDetalleConcentrado.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dgvDetalleConcentrado.RowHeadersVisible = False
-        Me.dgvDetalleConcentrado.Size = New System.Drawing.Size(1052, 155)
+        Me.dgvDetalleConcentrado.Size = New System.Drawing.Size(1052, 143)
         Me.dgvDetalleConcentrado.TabIndex = 15
         '
         'Codigo
@@ -696,7 +740,7 @@ Partial Class MFacRegFacturasVentas
         Me.GroupBox4.Controls.Add(Me.rdContado)
         Me.GroupBox4.Location = New System.Drawing.Point(444, 214)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(98, 99)
+        Me.GroupBox4.Size = New System.Drawing.Size(98, 69)
         Me.GroupBox4.TabIndex = 12
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Tipo Factura"
@@ -892,7 +936,7 @@ Partial Class MFacRegFacturasVentas
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtObservaciones.Size = New System.Drawing.Size(325, 88)
+        Me.txtObservaciones.Size = New System.Drawing.Size(325, 58)
         Me.txtObservaciones.TabIndex = 3
         '
         'txtDiasCredito
@@ -1194,6 +1238,7 @@ Partial Class MFacRegFacturasVentas
         Me.txtSumaCargo.Size = New System.Drawing.Size(110, 20)
         Me.txtSumaCargo.TabIndex = 167
         Me.txtSumaCargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtSumaCargo.Visible = False
         '
         'txtSumaAbono
         '
@@ -1203,6 +1248,7 @@ Partial Class MFacRegFacturasVentas
         Me.txtSumaAbono.Size = New System.Drawing.Size(110, 20)
         Me.txtSumaAbono.TabIndex = 167
         Me.txtSumaAbono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtSumaAbono.Visible = False
         '
         'MFacRegFacturasVentas
         '
@@ -1336,5 +1382,9 @@ Partial Class MFacRegFacturasVentas
     Friend WithEvents clmCodigoCuenta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents txtSumaCargo As System.Windows.Forms.TextBox
     Friend WithEvents txtSumaAbono As System.Windows.Forms.TextBox
+    Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents cmbsucursal As System.Windows.Forms.ComboBox
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents cmbmetodo As System.Windows.Forms.ComboBox
 
 End Class
