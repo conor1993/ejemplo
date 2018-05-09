@@ -927,9 +927,10 @@ Public Class CatAlmRegOtraSalidaAlmacen
         If Not editingComboBox Is Nothing Then
             'Agregrar handle en el IndexChanged Event
             AddHandler editingComboBox.SelectedIndexChanged, AddressOf productosComboBox_SelectedIndexChanged
+            'Evite que este evento se active dos veces, como suele ser el caso
+            RemoveHandler DataGrid.EditingControlShowing, AddressOf DataGrid_EditingControlShowing_1
         End If
-        'Evite que este evento se active dos veces, como suele ser el caso
-        RemoveHandler DataGrid.EditingControlShowing, AddressOf DataGrid_EditingControlShowing_1
+
     End Sub
     'metodo se llamara cada que el combobox del gris cambia de indice(ProductosColumns)
     Private Sub productosComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -969,10 +970,16 @@ Public Class CatAlmRegOtraSalidaAlmacen
             MessageBox.Show("Error al tratar de buscar el id del producto " + nombreProducto + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
     End Sub
-
+    'se usa para obtener el imorte de los prodcutos
     Private Sub DataGrid_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGrid.CellEndEdit
-
-
+        Try
+            If (Not DataGrid.CurrentRow.Cells(3).Value Is Nothing) And (Not DataGrid.CurrentRow.Cells(5).Value Is Nothing) Then
+                DataGrid.CurrentRow.Cells(6).Value = (Convert.ToInt32(DataGrid.CurrentRow.Cells(3).Value) * Convert.ToDouble(DataGrid.CurrentRow.Cells(5).Value)) '.ToString()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al tratar de obtener el importe del producto " + DataGrid.CurrentRow.Cells(2).Value + ". Verifique que la cantidad del producto sea solo numeros." _
+                            , "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End Try
     End Sub
 
 End Class
