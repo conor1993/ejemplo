@@ -891,7 +891,7 @@ Public Class CatAlmRegSalAlmConsumo
                     If Not lote = "" Then
                         Dim invlote As New AlmacenGeneral.InventarioAlmacenLoteClass
                         Me.clmLote.ReadOnly = False
-                        If invlote.Obtener(codigo, Me.CmbAlmacen.SelectedValue, lote) Then
+                        If invlote.Obtener(codigo, Me.cmbAlmacen.SelectedValue, lote) Then
                             Me.DataGrid.CurrentRow.Cells(Me.CostoColumn.Index).Value = invlote.CostoPromedio
                             Me.DataGrid.CurrentRow.Cells(Me.UMColumn.Index).Value = row("UMDescCorta")
                             Me.DataGrid.CurrentRow.Cells(Me.ImporteColumn.Index).Value = 0D
@@ -916,7 +916,7 @@ Public Class CatAlmRegSalAlmConsumo
                     'Me.DataGrid.CurrentRow.Cells(Me.CódigoColumn.Index).Selected = True
                     Dim inv As New AlmacenGeneral.InventarioAlmacenClass
                     Me.clmLote.ReadOnly = True
-                    If inv.Obtener(codigo, Me.CmbAlmacen.SelectedValue) Then
+                    If inv.Obtener(codigo, Me.cmbAlmacen.SelectedValue) Then
                         Me.DataGrid.CurrentRow.Cells(Me.CostoColumn.Index).Value = inv.CostoPromedio
                         Me.DataGrid.CurrentRow.Cells(Me.UMColumn.Index).Value = row("UMDescCorta")
                         Me.DataGrid.CurrentRow.Cells(Me.ImporteColumn.Index).Value = 0D

@@ -42,6 +42,10 @@ Partial Class frmFacturacionEspecial
         Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.cmbmetodo = New System.Windows.Forms.ComboBox()
+        Me.cmbsucursal = New System.Windows.Forms.ComboBox()
         Me.lblEstatus = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -134,6 +138,10 @@ Partial Class frmFacturacionEspecial
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label23)
+        Me.GroupBox1.Controls.Add(Me.Label22)
+        Me.GroupBox1.Controls.Add(Me.cmbmetodo)
+        Me.GroupBox1.Controls.Add(Me.cmbsucursal)
         Me.GroupBox1.Controls.Add(Me.lblEstatus)
         Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -172,9 +180,45 @@ Partial Class frmFacturacionEspecial
         Me.GroupBox1.Controls.Add(Me.txtUUID)
         Me.GroupBox1.Location = New System.Drawing.Point(54, 35)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(975, 565)
+        Me.GroupBox1.Size = New System.Drawing.Size(975, 625)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(484, 329)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(46, 13)
+        Me.Label23.TabIndex = 169
+        Me.Label23.Text = "Metodo:"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(115, 321)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(51, 13)
+        Me.Label22.TabIndex = 168
+        Me.Label22.Text = "Sucursal:"
+        '
+        'cmbmetodo
+        '
+        Me.cmbmetodo.FormattingEnabled = True
+        Me.cmbmetodo.Location = New System.Drawing.Point(561, 321)
+        Me.cmbmetodo.Name = "cmbmetodo"
+        Me.cmbmetodo.Size = New System.Drawing.Size(252, 21)
+        Me.cmbmetodo.TabIndex = 167
+        Me.cmbmetodo.TabStop = False
+        '
+        'cmbsucursal
+        '
+        Me.cmbsucursal.FormattingEnabled = True
+        Me.cmbsucursal.Location = New System.Drawing.Point(189, 321)
+        Me.cmbsucursal.Name = "cmbsucursal"
+        Me.cmbsucursal.Size = New System.Drawing.Size(252, 21)
+        Me.cmbsucursal.TabIndex = 166
+        Me.cmbsucursal.TabStop = False
         '
         'lblEstatus
         '
@@ -453,7 +497,7 @@ Partial Class frmFacturacionEspecial
         'txtSumaAbono
         '
         Me.txtSumaAbono.Enabled = False
-        Me.txtSumaAbono.Location = New System.Drawing.Point(857, 541)
+        Me.txtSumaAbono.Location = New System.Drawing.Point(852, 594)
         Me.txtSumaAbono.Name = "txtSumaAbono"
         Me.txtSumaAbono.Size = New System.Drawing.Size(110, 20)
         Me.txtSumaAbono.TabIndex = 0
@@ -462,7 +506,7 @@ Partial Class frmFacturacionEspecial
         'txtSumaCargo
         '
         Me.txtSumaCargo.Enabled = False
-        Me.txtSumaCargo.Location = New System.Drawing.Point(732, 541)
+        Me.txtSumaCargo.Location = New System.Drawing.Point(727, 594)
         Me.txtSumaCargo.Name = "txtSumaCargo"
         Me.txtSumaCargo.Size = New System.Drawing.Size(110, 20)
         Me.txtSumaCargo.TabIndex = 0
@@ -475,7 +519,7 @@ Partial Class frmFacturacionEspecial
         Me.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetalle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigo, Me.clmProductoServicio, Me.clmDescripcionEspecial, Me.clmProductoDes, Me.clmUnidadSat, Me.clmUnidad, Me.clmCantidad, Me.clmPrecio, Me.clmIVA, Me.clmIVAdecimales, Me.clmImporte, Me.clmImporteDecimales, Me.clmConIVA})
         Me.dgvDetalle.Enabled = False
-        Me.dgvDetalle.Location = New System.Drawing.Point(11, 302)
+        Me.dgvDetalle.Location = New System.Drawing.Point(6, 355)
         Me.dgvDetalle.Name = "dgvDetalle"
         Me.dgvDetalle.RowHeadersVisible = False
         Me.dgvDetalle.Size = New System.Drawing.Size(960, 133)
@@ -587,7 +631,7 @@ Partial Class frmFacturacionEspecial
         Me.dgvCuentasContables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvCuentasContables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCuentasContables.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCtaMayor, Me.clmSubCta, Me.clmSSubCta, Me.clmSSSubCta, Me.clmDescripcion, Me.clmCargo, Me.clmAbono, Me.clmCodigoCuenta})
-        Me.dgvCuentasContables.Location = New System.Drawing.Point(11, 443)
+        Me.dgvCuentasContables.Location = New System.Drawing.Point(6, 496)
         Me.dgvCuentasContables.Name = "dgvCuentasContables"
         Me.dgvCuentasContables.Size = New System.Drawing.Size(958, 92)
         Me.dgvCuentasContables.TabIndex = 22
@@ -981,7 +1025,7 @@ Partial Class frmFacturacionEspecial
         Me.MEAToolBar1.MostrarSalir = True
         Me.MEAToolBar1.Name = "MEAToolBar1"
         Me.MEAToolBar1.ShowToolTips = True
-        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 613)
+        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 680)
         Me.MEAToolBar1.TabIndex = 0
         '
         'DataGridViewComboBoxColumn1
@@ -1014,7 +1058,7 @@ Partial Class frmFacturacionEspecial
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1041, 613)
+        Me.ClientSize = New System.Drawing.Size(1041, 680)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.MEAToolBar1)
@@ -1119,4 +1163,8 @@ Partial Class frmFacturacionEspecial
     Friend WithEvents cmbUsoCFDI As System.Windows.Forms.ComboBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents txtUUID As System.Windows.Forms.TextBox
+    Friend WithEvents cmbsucursal As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbmetodo As System.Windows.Forms.ComboBox
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents Label22 As System.Windows.Forms.Label
 End Class

@@ -9,6 +9,8 @@ Public Class ClientesIntroductoresClass
     Inherits ClassBase(Of EC.MfacCatClientesEntity)
     Dim _DomiciliosFiscales As DomicilioClienteColeccionClass
     Private _CuentaContable As CuentaContableClass
+    Private _Idcuentaventa As CuentaContableClass
+    Private _Idcuentanticipo As CuentaContableClass
     Private _Vendedor As VendedorClass
     Private _Estado As EstadoClass
     Private _Ciudad As CiudadClass
@@ -264,6 +266,23 @@ Public Class ClientesIntroductoresClass
         End Set
     End Property
 
+    Public Property CuentaContableAntici() As CuentaContableClass
+        Get
+            If _Idcuentanticipo Is Nothing Then
+                _Idcuentanticipo = New CuentaContableClass(Entity.CuentaAnticipoId)
+            End If
+            Return _Idcuentanticipo
+        End Get
+        Set(ByVal value As CuentaContableClass)
+            _Idcuentanticipo = value
+            If value Is Nothing Then
+                Entity.CuentaAnticipoId = Nothing
+            Else
+                Entity.CuentaContable = value.ObtenerEntidad
+            End If
+        End Set
+    End Property
+
     Public Property CuentaContableId() As Integer
         Get
             Return Me.Entity.CuentaContId.GetValueOrDefault(-1)
@@ -417,14 +436,6 @@ Public Class ClientesIntroductoresClass
         End Set
     End Property
 
-    Public Property Iddepartamento() As Integer
-        Get
-            Return Entity.IdDepartamento
-        End Get
-        Set(ByVal value As Integer)
-            Entity.IdDepartamento = value
-        End Set
-    End Property
 
     Public Property Idcuentaventa() As Integer
         Get
@@ -435,6 +446,22 @@ Public Class ClientesIntroductoresClass
         End Set
     End Property
 
+    Public Property CuentaContableVenta() As CuentaContableClass
+        Get
+            If _Idcuentaventa Is Nothing Then
+                _Idcuentaventa = New CuentaContableClass(Entity.Idcuentaventa)
+            End If
+            Return _Idcuentaventa
+        End Get
+        Set(ByVal value As CuentaContableClass)
+            _Idcuentaventa = value
+            If value Is Nothing Then
+                Entity.Idcuentaventa = Nothing
+            Else
+                Entity.CuentaContable = value.ObtenerEntidad
+            End If
+        End Set
+    End Property
 #End Region
 
 #Region "Constructores"
@@ -526,7 +553,7 @@ Public Class ClientesIntroductoresClass
 
         'Guardar cada uno de los domicilios
         For i As Integer = 0 To Me.DomiciliosFiscales.Count - 1
-            Dim Domicilio As New DomicilioClienteClass(DomiciliosFiscales(i).IdEstado, DomiciliosFiscales(i).IdCiudad, DomiciliosFiscales(i).IdPoblacion, DomiciliosFiscales(i).Colonia, DomiciliosFiscales(i).Calle, DomiciliosFiscales(i).NoExt, DomiciliosFiscales(i).NoInt, DomiciliosFiscales(i).CodigPostal, DomiciliosFiscales(i).Telefono1, DomiciliosFiscales(i).Celular, DomiciliosFiscales(i).Fax, DomiciliosFiscales(i).Email)
+            Dim Domicilio As New DomicilioClienteClass(DomiciliosFiscales(i).IdEstado, DomiciliosFiscales(i).IdCiudad, DomiciliosFiscales(i).IdPoblacion, DomiciliosFiscales(i).Colonia, DomiciliosFiscales(i).Calle, DomiciliosFiscales(i).NoExt, DomiciliosFiscales(i).NoInt, DomiciliosFiscales(i).CodigPostal, DomiciliosFiscales(i).Telefono1, DomiciliosFiscales(i).Celular, DomiciliosFiscales(i).Fax, DomiciliosFiscales(i).Email, DomiciliosFiscales(i).IdDepartamento)
             Domicilio.IdCliente = Me.Codigo
             Domicilio.IdRenglon = i + 1
             Domicilio.EsPrincipal = DomiciliosFiscales(i).EsPrincipal

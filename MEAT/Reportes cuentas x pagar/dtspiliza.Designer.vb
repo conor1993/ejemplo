@@ -311,8 +311,6 @@ Partial Public Class dtspiliza
         
         Private columnabono As Global.System.Data.DataColumn
         
-        Private columnconce As Global.System.Data.DataColumn
-        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -461,14 +459,6 @@ Partial Public Class dtspiliza
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property conceColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnconce
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -505,9 +495,9 @@ Partial Public Class dtspiliza
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddsetfrpolizasRow(ByVal cta As String, ByVal subcta As String, ByVal ssubcta As String, ByVal sssubcta As String, ByVal nomcuenta1 As String, ByVal nomcuenta2 As String, ByVal nomcuenta3 As String, ByVal nomcuenta4 As String, ByVal origen As String, ByVal poliza As String, ByVal fecha As String, ByVal importe As String, ByVal cargo As String, ByVal abono As String, ByVal conce As String) As setfrpolizasRow
+        Public Overloads Function AddsetfrpolizasRow(ByVal cta As String, ByVal subcta As String, ByVal ssubcta As String, ByVal sssubcta As String, ByVal nomcuenta1 As String, ByVal nomcuenta2 As String, ByVal nomcuenta3 As String, ByVal nomcuenta4 As String, ByVal origen As String, ByVal poliza As String, ByVal fecha As String, ByVal importe As String, ByVal cargo As String, ByVal abono As String) As setfrpolizasRow
             Dim rowsetfrpolizasRow As setfrpolizasRow = CType(Me.NewRow,setfrpolizasRow)
-            Dim columnValuesArray() As Object = New Object() {cta, subcta, ssubcta, sssubcta, nomcuenta1, nomcuenta2, nomcuenta3, nomcuenta4, origen, poliza, fecha, importe, cargo, abono, conce}
+            Dim columnValuesArray() As Object = New Object() {cta, subcta, ssubcta, sssubcta, nomcuenta1, nomcuenta2, nomcuenta3, nomcuenta4, origen, poliza, fecha, importe, cargo, abono}
             rowsetfrpolizasRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowsetfrpolizasRow)
             Return rowsetfrpolizasRow
@@ -544,7 +534,6 @@ Partial Public Class dtspiliza
             Me.columnimporte = MyBase.Columns("importe")
             Me.columncargo = MyBase.Columns("cargo")
             Me.columnabono = MyBase.Columns("abono")
-            Me.columnconce = MyBase.Columns("conce")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -578,8 +567,6 @@ Partial Public Class dtspiliza
             MyBase.Columns.Add(Me.columncargo)
             Me.columnabono = New Global.System.Data.DataColumn("abono", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnabono)
-            Me.columnconce = New Global.System.Data.DataColumn("conce", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnconce)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -936,21 +923,6 @@ Partial Public Class dtspiliza
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property conce() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablesetfrpolizas.conceColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'conce' in table 'setfrpolizas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablesetfrpolizas.conceColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsctaNull() As Boolean
             Return Me.IsNull(Me.tablesetfrpolizas.ctaColumn)
         End Function
@@ -1115,18 +1087,6 @@ Partial Public Class dtspiliza
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetabonoNull()
             Me(Me.tablesetfrpolizas.abonoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsconceNull() As Boolean
-            Return Me.IsNull(Me.tablesetfrpolizas.conceColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetconceNull()
-            Me(Me.tablesetfrpolizas.conceColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

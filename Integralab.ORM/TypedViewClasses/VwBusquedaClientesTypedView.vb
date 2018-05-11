@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 23 de abril de 2018 15:22:02
+' // Code is generated on: lunes, 30 de abril de 2018 09:07:36
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -65,6 +65,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		Private _columnPoblacion As DataColumn
 		Private _columnTipoPersonaCad As DataColumn
 		Private _columnTipoPersona As DataColumn
+		Private _columnIdcuentaventa As DataColumn
 		
 		' __LLBLGENPRO_USER_CODE_REGION_START AdditionalMembers
 		' __LLBLGENPRO_USER_CODE_REGION_END
@@ -76,7 +77,7 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' <summary>
 		''' The amount of fields in the resultset.
 		''' </summary>
-		Private Const AmountOfFields As Integer = 17
+		Private Const AmountOfFields As Integer = 18
 #End Region
 		
 		''' <summary>
@@ -371,6 +372,11 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnTipoPersona.ReadOnly = True
 			_columnTipoPersona.Caption = "TipoPersona"
 			Me.Columns.Add(_columnTipoPersona)
+
+			_columnIdcuentaventa = New DataColumn("Idcuentaventa", GetType(System.Int32), Nothing, MappingType.Element)
+			_columnIdcuentaventa.ReadOnly = True
+			_columnIdcuentaventa.Caption = "Idcuentaventa"
+			Me.Columns.Add(_columnIdcuentaventa)
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitClass
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -398,6 +404,7 @@ Namespace Integralab.ORM.TypedViewClasses
 			_columnPoblacion = Me.Columns("Poblacion")
 			_columnTipoPersonaCad = Me.Columns("TipoPersonaCad")
 			_columnTipoPersona = Me.Columns("TipoPersona")
+			_columnIdcuentaventa = Me.Columns("Idcuentaventa")
 			
 			' __LLBLGENPRO_USER_CODE_REGION_START InitMembers
 			' __LLBLGENPRO_USER_CODE_REGION_END
@@ -483,6 +490,10 @@ Namespace Integralab.ORM.TypedViewClasses
 			fieldHashtable = New Hashtable()
 
 			_fieldsCustomProperties.Add("TipoPersona", fieldHashtable)
+			
+			fieldHashtable = New Hashtable()
+
+			_fieldsCustomProperties.Add("Idcuentaventa", fieldHashtable)
 			
 		End Sub
 
@@ -731,6 +742,15 @@ Namespace Integralab.ORM.TypedViewClasses
 		ReadOnly Friend Property TipoPersonaColumn As DataColumn
 			Get 
 				Return _columnTipoPersona 
+			End Get
+		End Property
+    
+		''' <summary>
+		''' Returns the column Object belonging to the TypedView field Idcuentaventa
+		''' </summary>
+		ReadOnly Friend Property IdcuentaventaColumn As DataColumn
+			Get 
+				Return _columnIdcuentaventa 
 			End Get
 		End Property
     
@@ -1435,6 +1455,45 @@ Namespace Integralab.ORM.TypedViewClasses
 		''' </summary>
     	Public Sub SetTipoPersonaNull() 
 			Me(_parent.TipoPersonaColumn) = System.Convert.DBNull
+		End Sub
+
+	
+
+		''' <summary>
+		''' Gets / sets the value of the TypedView field Idcuentaventa<br/><br/>
+		''' 
+		''' </summary>
+		''' <remarks>
+		''' Mapped on view field: "vwBusquedaClientes"."Idcuentaventa"<br/>
+		''' View field characteristics (type, precision, scale, length): Int, 10, 0, 0
+		''' </remarks>
+		Public Property [Idcuentaventa]() As System.Int32
+			Get 
+				If IsIdcuentaventaNull() Then
+					' return default value for this type.
+					Return CType(TypeDefaultValue.GetDefaultValue(GetType(System.Int32)), System.Int32)
+				Else
+					Return CType(Me(_parent.IdcuentaventaColumn), System.Int32)
+				End If
+			End Get
+			Set 
+				Me(_parent.IdcuentaventaColumn) = Value
+			End Set
+		End Property
+
+		''' <summary>
+		''' Returns True if the TypedView field Idcuentaventa is NULL, False otherwise.
+		''' </summary>
+		Public Function IsIdcuentaventaNull() As Boolean
+			Return IsNull(_parent.IdcuentaventaColumn)
+		End Function
+
+		''' <summary>
+		''' Sets the TypedView field Idcuentaventa to NULL. Not recommended a typed view should be used
+		''' as a readonly Object.
+		''' </summary>
+    	Public Sub SetIdcuentaventaNull() 
+			Me(_parent.IdcuentaventaColumn) = System.Convert.DBNull
 		End Sub
 
 	

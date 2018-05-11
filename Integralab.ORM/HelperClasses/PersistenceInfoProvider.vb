@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 23 de abril de 2018 15:22:01
+' // Code is generated on: lunes, 30 de abril de 2018 09:07:35
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -2621,7 +2621,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits MfacCatClientesEntity's mappings</summary>
         Private Sub InitMfacCatClientesEntityMappings()
-            MyBase.AddElementMapping("MfacCatClientesEntity", "", "dbo", "MFacCatClientes", 35)
+            MyBase.AddElementMapping("MfacCatClientesEntity", "", "dbo", "MFacCatClientes", 34)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "IdCliente", "IdCliente", False, CInt(SqlDbType.Int), 0, 0, 10, True, "SCOPE_IDENTITY()", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Nombre", "Nombre", False, CInt(SqlDbType.VarChar), 120, 0, 0, False, "", Nothing, GetType(System.String), 1)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "RazonSocial", "RazonSocial", False, CInt(SqlDbType.VarChar), 160, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -2655,12 +2655,11 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Canaldistribucion", "Canaldistribucion", True, CInt(SqlDbType.NChar), 20, 0, 0, False, "", Nothing, GetType(System.String), 30)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "UsoCfdi", "UsoCFDI", False, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 31)
             MyBase.AddElementFieldMapping("MfacCatClientesEntity", "FormaPago", "FormaPago", False, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 32)
-            MyBase.AddElementFieldMapping("MfacCatClientesEntity", "IdDepartamento", "IdDepartamento", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 33)
-            MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Idcuentaventa", "Idcuentaventa", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 34)
+            MyBase.AddElementFieldMapping("MfacCatClientesEntity", "Idcuentaventa", "Idcuentaventa", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 33)
         End Sub
         ''' <summary>Inits MfacClientesDatosFiscalesEntity's mappings</summary>
         Private Sub InitMfacClientesDatosFiscalesEntityMappings()
-            MyBase.AddElementMapping("MfacClientesDatosFiscalesEntity", "", "dbo", "MFacClientesDatosFiscales", 16)
+            MyBase.AddElementMapping("MfacClientesDatosFiscalesEntity", "", "dbo", "MFacClientesDatosFiscales", 17)
             MyBase.AddElementFieldMapping("MfacClientesDatosFiscalesEntity", "IdCliente", "IdCliente", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 0)
             MyBase.AddElementFieldMapping("MfacClientesDatosFiscalesEntity", "IdRenglon", "IdRenglon", False, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 1)
             MyBase.AddElementFieldMapping("MfacClientesDatosFiscalesEntity", "Domicilio", "Domicilio", False, CInt(SqlDbType.VarChar), 160, 0, 0, False, "", Nothing, GetType(System.String), 2)
@@ -2677,6 +2676,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("MfacClientesDatosFiscalesEntity", "Calle", "Calle", False, CInt(SqlDbType.VarChar), 100, 0, 0, False, "", Nothing, GetType(System.String), 13)
             MyBase.AddElementFieldMapping("MfacClientesDatosFiscalesEntity", "NoExt", "NoExt", False, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 14)
             MyBase.AddElementFieldMapping("MfacClientesDatosFiscalesEntity", "NoInt", "NoInt", False, CInt(SqlDbType.VarChar), 10, 0, 0, False, "", Nothing, GetType(System.String), 15)
+            MyBase.AddElementFieldMapping("MfacClientesDatosFiscalesEntity", "IdDepartamento", "IdDepartamento", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 16)
         End Sub
         ''' <summary>Inits MfacEmbarquesCabEntity's mappings</summary>
         Private Sub InitMfacEmbarquesCabEntityMappings()
@@ -5108,7 +5108,7 @@ Namespace Integralab.ORM.HelperClasses
         End Sub
         ''' <summary>Inits View's mappings</summary>
         Private Sub InitVwBusquedaClientesTypedViewMappings()
-            MyBase.AddElementMapping("VwBusquedaClientesTypedView", "", "dbo", "vwBusquedaClientes", 17)
+            MyBase.AddElementMapping("VwBusquedaClientesTypedView", "", "dbo", "vwBusquedaClientes", 18)
             MyBase.AddElementFieldMapping("VwBusquedaClientesTypedView", "Nombre", "Nombre", False, CInt(SqlDbType.VarChar), 120, 0, 0, False, String.Empty, Nothing, GetType(System.String), 0)
             MyBase.AddElementFieldMapping("VwBusquedaClientesTypedView", "IdEstado", "IdEstado", False, CInt(SqlDbType.Int), 0, 0, 10, False, String.Empty, Nothing, GetType(System.Int32), 1)
             MyBase.AddElementFieldMapping("VwBusquedaClientesTypedView", "IdCiudad", "IdCiudad", False, CInt(SqlDbType.Int), 0, 0, 10, False, String.Empty, Nothing, GetType(System.Int32), 2)
@@ -5126,6 +5126,7 @@ Namespace Integralab.ORM.HelperClasses
             MyBase.AddElementFieldMapping("VwBusquedaClientesTypedView", "Poblacion", "Poblacion", False, CInt(SqlDbType.VarChar), 80, 0, 0, False, String.Empty, Nothing, GetType(System.String), 14)
             MyBase.AddElementFieldMapping("VwBusquedaClientesTypedView", "TipoPersonaCad", "TipoPersonaCad", False, CInt(SqlDbType.VarChar), 15, 0, 0, False, String.Empty, Nothing, GetType(System.String), 15)
             MyBase.AddElementFieldMapping("VwBusquedaClientesTypedView", "TipoPersona", "TipoPersona", False, CInt(SqlDbType.Bit), 0, 0, 0, False, String.Empty, Nothing, GetType(System.Boolean), 16)
+            MyBase.AddElementFieldMapping("VwBusquedaClientesTypedView", "Idcuentaventa", "Idcuentaventa", False, CInt(SqlDbType.Int), 0, 0, 10, False, String.Empty, Nothing, GetType(System.Int32), 17)
         End Sub
         ''' <summary>Inits View's mappings</summary>
         Private Sub InitVwBusquedaComparacionMedicamentosTypedViewMappings()

@@ -24,8 +24,10 @@ Public Class FrmABCClientes
     Private ClientesCol As CN.ClientesIntroductoresColeccion
     Private WithEvents CuentaCont As CN.CuentaContableClass
     Private WithEvents CuentaAnt As CN.CuentaContableClass
+    Private WithEvents CuentaVenta As CN.CuentaContableClass
     Dim DiasCredito As Integer
     Dim Estatus As CN.FormState
+
     'Dim bit As CN.BitacoraPV
     Dim bandera As Boolean = False
 #End Region
@@ -90,6 +92,9 @@ Public Class FrmABCClientes
             tipoclientes.Obtener(ClasesNegocio.CondicionEnum.ACTIVOS)
             Me.cmbtipocliente.DataSource = tipoclientes
 
+            llenarDepartamentos(True)
+
+
             llenarUsoCFDISAT()
             llenarFormasPago()
 
@@ -107,7 +112,31 @@ Public Class FrmABCClientes
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Sub llenarDepartamentos(ByVal tof As Boolean)
+        Dim query As String = ""
+        Dim tb As New DataTable
+        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+        query = "SELECT Cve_Depto, Nom_Depto" &
+               " FROM CatDeptos"
 
+        tb.Columns.Add("Nom_Depto")
+        Dim dr As DataRow = tb.NewRow
+
+        cmbDepartamento.DisplayMember = "Nom_Depto"
+        cmbDepartamento.ValueMember = "Cve_Depto"
+
+        Using sqlcom As New SqlCommand(query, sqlCon)
+            Dim adp As New SqlDataAdapter(sqlcom)
+            sqlCon.Open()
+            adp.Fill(tb)
+            cmbDepartamento.DataSource = tb
+
+            sqlCon.Close()
+            cmbDepartamento.SelectedValue = -1
+        End Using
+
+
+    End Sub
     Public Sub llenarFormasPago()
         Dim connetionString As String = Nothing
         Dim connection As SqlConnection
@@ -211,6 +240,7 @@ Public Class FrmABCClientes
         Me.txtTelCel.Text = ""
         Me.txtTelefono.Text = ""
         Me.txtTelefonoFisc.Text = ""
+        Me.txtCtaVenta.Text = ""
         Me.DateTimePicker1.Text = ""
         Me.txtRfc.Text = ""
         Me.CmbEstado.SelectedIndex = -1
@@ -264,12 +294,15 @@ Public Class FrmABCClientes
         Me.txtCtaContable.Enabled = True
         Me.txtDiasCred.Enabled = True
         Me.txtDomicilio.Enabled = True
+        Me.txtCtaVenta.Enabled = True
         Me.txtLimiteCred.Enabled = True
         Me.txtNombre.Enabled = True
         Me.txtRazonSocial.Enabled = True
         Me.txtRfc.Enabled = True
+        Me.btnCtaVenta.Enabled = True
         Me.txtTelefono.Enabled = True
         Me.CmbEstado.Enabled = True
+        Me.cmbDepartamento.Enabled = True
         Me.CmbCiudades.Enabled = True
         Me.CmbPoblaciones.Enabled = True
         Me.cmbDiasPago.Enabled = True
@@ -283,7 +316,7 @@ Public Class FrmABCClientes
         Me.cmbVendedor.Enabled = True
         Me.cmbPasarInformacion.Enabled = True
         Me.btnCrearDomicilio.Enabled = True
-
+        Me.txtCtaContable.Enabled = True
         Me.txtColoniaFisc.Enabled = True
         Me.txtCPfiscal.Enabled = True
         Me.txtCalleFisc.Enabled = True
@@ -324,8 +357,11 @@ Public Class FrmABCClientes
         Me.txtCodigoPostal.Enabled = False
         Me.txtColonia.Enabled = False
         Me.txtColoniaFisc.Enabled = False
+        Me.txtCtaContable.Enabled = False
+        Me.cmbDepartamento.Enabled = False
         Me.txtCPfiscal.Enabled = False
         Me.txtCtaAnticipo.Enabled = False
+        Me.txtCtaVenta.Enabled = False
         Me.txtCtaContable.Enabled = False
         Me.txtDiasCred.Enabled = False
         Me.txtDomicilio.Enabled = False
@@ -334,6 +370,7 @@ Public Class FrmABCClientes
         Me.txtNoIntFisc.Enabled = False
         Me.txtEmail.Enabled = False
         Me.txtFax.Enabled = False
+        Me.btnCtaVenta.Enabled = False
         Me.txtLimiteCred.Enabled = False
         Me.txtNombre.Enabled = False
         Me.txtRazonSocial.Enabled = False
@@ -392,13 +429,16 @@ Public Class FrmABCClientes
             Me.Cliente.EsPersonaFisica = RbtnPersonaFisica.Checked
             Me.Cliente.RazonSocial = IIf(txtRazonSocial.Text.Trim <> String.Empty, txtRazonSocial.Text.Trim, txtNombre.Text.Trim)
             Me.Cliente.Idtipocliente = Me.cmbtipocliente.SelectedValue
+
             If rdtcanaldis.Checked Then
                 Me.Cliente.canaldistribucion = "MAYOREO"
             Else
                 Me.Cliente.canaldistribucion = "DETALLE"
             End If
 
-
+            If Me.txtCtaVenta.Text <> "" Then
+                Cliente.Idcuentaventa = CuentaVenta.Codigo
+            End If
 
             If Me.txtCtaContable.Text <> "" Then
                 Me.Cliente.CuentaContableId = CuentaCont.Codigo
@@ -439,7 +479,6 @@ Public Class FrmABCClientes
             'End If
 
 
-
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -471,6 +510,7 @@ Public Class FrmABCClientes
             Me.cmbDiasPago.Text = Me.Cliente.DiasPago
             Me.cmbDiasRevision.Text = Me.Cliente.DiasRevision
             Me.cmbtipocliente.SelectedValue = Me.Cliente.Idtipocliente
+            ' Me.cmbDepartamento.SelectedValue = Me.Cliente.Domicili
 
 
             If Cliente.canaldistribucion.Trim().Equals("MAYOREO") Then
@@ -493,6 +533,10 @@ Public Class FrmABCClientes
 
             If Not CuentaCont Is Nothing Then
                 Me.txtCtaContable.Text = String.Format("{0} : {1}", CuentaCont.NombreCuenta, CuentaCont.CuentaContable)
+            End If
+
+            If Not CuentaVenta Is Nothing Then
+                Me.txtCtaVenta.Text = String.Format("{0} : {1}", Me.CuentaVenta.NombreCuenta, Me.CuentaVenta.CuentaContable)
             End If
 
             dgvDomicilios.DataSource = Cliente.DomiciliosFiscales
@@ -546,8 +590,6 @@ Public Class FrmABCClientes
                 MessageBox.Show(Mensaje.ToString(), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return False
             End If
-
-
 
 
             'If Not Me.txtLimiteCred.Text > 0 Then
@@ -912,6 +954,7 @@ Public Class FrmABCClientes
                 Cliente.Obtener(Ventana.dgvClientes.SelectedRows(0).Cells(Ventana.clmCodigo.Index).Value)
                 Me.CuentaCont = Nothing
                 Me.CuentaAnt = Nothing
+                Me.CuentaVenta = Nothing
 
                 If Not Me.Cliente.CuentaAntiId = -1 Then
                     Me.CuentaAnt = New CN.CuentaContableClass
@@ -921,6 +964,17 @@ Public Class FrmABCClientes
                     Me.CuentaCont = New CN.CuentaContableClass
                     Me.CuentaCont.Obtener(Cliente.CuentaContableId)
                 End If
+
+                Try
+                    If Not Me.Cliente.Idcuentaventa = -1 Then
+                        Me.CuentaVenta = New CN.CuentaContableClass
+                        Me.CuentaVenta.Obtener(Cliente.Idcuentaventa)
+                    End If
+                Catch ex As Exception
+
+                End Try
+
+
                 Me.PonerDatos()
 
                 'bit = New CN.BitacoraPV
@@ -959,6 +1013,7 @@ Public Class FrmABCClientes
         Me.Estatus = CN.FormState.Guardar
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Cliente")
 
+
         Try
             If Not Validar() Then
                 Cancelar = True
@@ -977,7 +1032,6 @@ Public Class FrmABCClientes
             '    bit = New CN.BitacoraPV
             '    bit.diferencias(Me.Controls)
             'End If
-
 
 
             ' Dim Resultado As Object = Utilerias.RunControlException(Cliente, "Guardar", New Object() {Trans})
@@ -1136,6 +1190,7 @@ Public Class FrmABCClientes
             buscarCuenta.txtSSCta.Text = CuentaConfiguracion(0).CuentaContable.SsubCta
             buscarCuenta.txtSSSCta.Text = CuentaConfiguracion(0).CuentaContable.SssubCta
 
+
             buscarCuenta.txtNombre.Enabled = False
             buscarCuenta.txtCta.Enabled = False
             buscarCuenta.txtSCta.Enabled = False
@@ -1164,6 +1219,19 @@ Public Class FrmABCClientes
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub btnCtaVenta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCtaVenta.Click
+        Try
+            Dim buscarCuentaV As New BusquedaCuentasContablesForm
+            If buscarCuentaV.ShowDialog = Windows.Forms.DialogResult.OK Then
+                CuentaVenta = New CN.CuentaContableClass
+                CuentaVenta = buscarCuentaV.CuentaContable
+                Me.txtCtaVenta.Text = String.Format("{0} : {1}", CuentaVenta.NombreCuenta, CuentaVenta.CuentaContable)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom & " - Catalogo de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 #End Region
 
 #Region "Key Press"
@@ -1406,7 +1474,7 @@ Public Class FrmABCClientes
     Private Sub btnCrearDomicilio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCrearDomicilio.Click
         Try
             dgvDomicilios.DataSource = Nothing
-            Dim Domicilio As New CN.DomicilioClienteClass(Me.cmbEstadoFisc.SelectedValue, Me.cmbCiudadFisc.SelectedValue, Me.cmbPoblacionFisc.SelectedValue, Me.txtColoniaFisc.Text.Trim, Me.txtCalleFisc.Text.Trim, Me.txtNoExtFisc.Text.Trim, Me.txtNoIntFisc.Text.Trim, Me.txtCPfiscal.Text.Trim, Me.txtTelefonoFisc.Text.Trim, txtTelCel.Text.Trim, txtFax.Text.Trim, txtEmail.Text.Trim)
+            Dim Domicilio As New CN.DomicilioClienteClass(Me.cmbEstadoFisc.SelectedValue, Me.cmbCiudadFisc.SelectedValue, Me.cmbPoblacionFisc.SelectedValue, Me.txtColoniaFisc.Text.Trim, Me.txtCalleFisc.Text.Trim, Me.txtNoExtFisc.Text.Trim, Me.txtNoIntFisc.Text.Trim, Me.txtCPfiscal.Text.Trim, Me.txtTelefonoFisc.Text.Trim, txtTelCel.Text.Trim, txtFax.Text.Trim, txtEmail.Text.Trim, cmbDepartamento.SelectedValue)
             Cliente.ValidarDomicliosDiferentes(Domicilio)
             Cliente.DomiciliosFiscales.Add(Domicilio)
 
@@ -1429,7 +1497,7 @@ Public Class FrmABCClientes
     'modificar el domicilio seleccionado
     Private Sub btnModificarDomicilio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarDomicilio.Click
         Try
-            Dim Domicilio As New CN.DomicilioClienteClass(cmbEstadoFisc.SelectedValue, cmbCiudadFisc.SelectedValue, cmbPoblacionFisc.SelectedValue, txtColoniaFisc.Text.Trim, txtCalleFisc.Text.Trim, txtNoExtFisc.Text.Trim, txtNoIntFisc.Text.Trim, txtCPfiscal.Text.Trim, txtTelefonoFisc.Text.Trim, txtTelCel.Text.Trim, txtFax.Text.Trim, txtEmail.Text.Trim)
+            Dim Domicilio As New CN.DomicilioClienteClass(cmbEstadoFisc.SelectedValue, cmbCiudadFisc.SelectedValue, cmbPoblacionFisc.SelectedValue, txtColoniaFisc.Text.Trim, txtCalleFisc.Text.Trim, txtNoExtFisc.Text.Trim, txtNoIntFisc.Text.Trim, txtCPfiscal.Text.Trim, txtTelefonoFisc.Text.Trim, txtTelCel.Text.Trim, txtFax.Text.Trim, txtEmail.Text.Trim, cmbDepartamento.SelectedValue)
 
             Domicilio.validarDomicilio(Val(cmbEstadoFisc.SelectedValue), Val(cmbCiudadFisc.SelectedValue), Val(cmbPoblacionFisc.SelectedValue), txtColoniaFisc.Text.Trim, txtCalleFisc.Text.Trim, txtNoExtFisc.Text.Trim, txtNoIntFisc.Text.Trim, txtEmail.Text.Trim)
             Cliente.ValidarDomicliosDiferentes(Domicilio, dgvDomicilios.SelectedRows(0).Index)
@@ -1476,13 +1544,14 @@ Public Class FrmABCClientes
                 cmbPoblacionFisc.SelectedValue = Domicilio.IdPoblacion
                 txtTelefonoFisc.Text = Domicilio.Telefono1
                 chkPrincipal.Checked = Domicilio.EsPrincipal
+                cmbDepartamento.SelectedValue = Domicilio.IdDepartamento
             End If
         Catch ex As Exception
-            If ex.InnerException IsNot Nothing AndAlso ex.InnerException.Message = "Domicilio Fiscal" Then
-                MsgBox(ex.Message, MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom & " - " & ex.InnerException.Message)
-            Else
-                MsgBox(ex.Message, MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom)
-            End If
+            'If ex.InnerException IsNot Nothing AndAlso ex.InnerException.Message = "Domicilio Fiscal" Then
+            '    MsgBox(ex.Message, MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom & " - " & ex.InnerException.Message)
+            'Else
+            '  '  MsgBox(ex.Message, MsgBoxStyle.Exclamation, Controlador.Sesion.MiEmpresa.Empnom)
+            'End If
         End Try
     End Sub
 

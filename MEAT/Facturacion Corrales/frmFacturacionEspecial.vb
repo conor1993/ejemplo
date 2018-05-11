@@ -16,7 +16,11 @@ Public Class frmFacturacionEspecial
     Dim ProductosGenCol As ProductoCollectionClass
     Dim ConF As New CC.ConfiguracionFacturaCollection
     Dim NumRenglones As Integer
+    Dim CuentaContableV As Integer
+    Dim PolizaDet2 As New PolizaDetalleClass
+    Dim Poliza As New PolizaClass
     Dim configurarImprecion As Boolean = True
+    Dim DomFiscalCte2 As DomicilioClienteClass
     Dim SumaCargo As Decimal
     Dim SumaAbono As Decimal
     Dim Band As Boolean
@@ -166,6 +170,16 @@ Public Class frmFacturacionEspecial
                 Return False
             End If
 
+            If cmbmetodo.SelectedValue = Nothing Then
+                MessageBox.Show("Falta seleccionar Metodo.", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return False
+            End If
+
+            If cmbsucursal.SelectedValue = Nothing Then
+                MessageBox.Show("Falta seleccionar Sucursal.", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return False
+            End If
+
 
 
             Return True
@@ -183,6 +197,7 @@ Public Class frmFacturacionEspecial
         Dim Cliente As ClientesIntroductoresClass
         Dim DomFiscalCte As DomicilioClienteClass
         DomFiscalCte = DirectCast(DirectCast(ultcmbDomiciliosFiscales.SelectedRow.ListObject, Object), DomicilioClienteClass)
+        DomFiscalCte2 = DomFiscalCte
         Cliente = New ClientesIntroductoresClass(CInt(CmbCliente.SelectedValue))
 
         Dim Receptor As New CFDI.ComprobanteReceptor(Cliente.RFC.Replace("_", "").Replace("-", "").Replace(" ", ""))
@@ -254,11 +269,7 @@ Public Class frmFacturacionEspecial
                         Dim CveProdServ = DirectCast([Enum].Parse(GetType(CFDI.c_ClaveProdServ), .Cells(clmProductoServicio.Index).Value.ToString()), CFDI.c_ClaveProdServ)
                         Dim CveUnidadS = DirectCast([Enum].Parse(GetType(CFDI.c_ClaveUnidad), .Cells(clmUnidadSat.Index).Value.ToString()), CFDI.c_ClaveUnidad)
 
-
-
                         Concepto = New CFDI.ComprobanteConcepto(CveProdServ, .Cells(clmUnidadSat.Index).Value.ToString(), String.Format("{0:D5}", (row.Index + 1)), CDec(.Cells(clmCantidad.Index).Value), .Cells(clmUnidad.Index).Value.ToString(), IIf(.Cells(clmProductoDes.Index).Visible = True, .Cells(clmProductoDes.Index).EditedFormattedValue.ToString(), .Cells(clmDescripcionEspecial.Index).EditedFormattedValue), CDec(.Cells(clmPrecio.Index).Value), CDec(.Cells(clmImporte.Index).Value) - CDec(.Cells(clmIVA.Index).Value))
-
-
 
                         Dim ComprobanteImpuestosTraslados As New List(Of CFDI.ComprobanteConceptoImpuestosTraslado)()
                         'If CDec(.Cells(clmIVA.Index).Value) > 0 Then
@@ -371,16 +382,6 @@ Public Class frmFacturacionEspecial
 
 
 
-
-
-
-
-
-
-
-
-
-
         Catch ex As Exception
             If ex.Message = "No hay ninguna aplicación asociada con el archivo especificado para esta operación" Then
                 MessageBox.Show("Debe instalar Adobe Reader para abrir los archivos pdf", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -392,7 +393,6 @@ Public Class frmFacturacionEspecial
                 Return False
             End If
         End Try
-
 
     End Function
 
@@ -407,6 +407,11 @@ Public Class frmFacturacionEspecial
         End If
         ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
 
+        If Not validar() Then
+            Return False
+            Exit Function
+        End If
+
         Cursor = Cursors.WaitCursor
         MEAToolBar1.Enabled = False
         Application.DoEvents()
@@ -414,13 +419,7 @@ Public Class frmFacturacionEspecial
         Dim TransG As New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
         Try
 
-            If Not validar() Then
-                Return False
-                Exit Function
-            End If
-
-
-
+            
 
             'System.Threading.Thread.Sleep(6000)
             'Application.DoEvents()
@@ -471,15 +470,12 @@ Public Class frmFacturacionEspecial
                 End If
 
 
-
-
-
                 'folio de la factura
                 FacturaCabecero.NoFactura = "F" & Folio.Consecutivo.ToString("0000000")
 
                 'guardar poliza
                 Dim Poliza As New PolizaClass
-
+                Dim Poliza2 As New PolizaClass
                 'se guarda la poliza en contabilidad
                 Poliza.Concepto = "Cargo por Factura Especial a: " & Trim(Me.CmbCliente.Text) & " # Factura : " & FacturaCabecero.NoFactura
                 Poliza.EmpresaId = Controlador.Sesion.MiEmpresa.Empndx
@@ -492,6 +488,7 @@ Public Class frmFacturacionEspecial
                 Poliza.TipoPoliza = ClasesNegocio.PolizaTipoPolizaEnum.DIARIO
                 Poliza.TipoError = 0
 
+
                 'Se crea el detalle de la poliza
                 For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
                     If CType(Me.dgvCuentasContables.Rows(i).Cells(Me.clmCargo.Index).Value, Decimal) > 0D Then
@@ -503,6 +500,7 @@ Public Class frmFacturacionEspecial
                         PolizaDet.Posicion = i + 1
                         PolizaDet.Importe = CType(Me.dgvCuentasContables.Rows(i).Cells(Me.clmCargo.Index).Value, Decimal)
                         Poliza.Detalles2.Add(PolizaDet)
+                        PolizaDet2 = PolizaDet
                         'Poliza.AgregarDetalle(PolizaDet)
                     ElseIf CType(Me.dgvCuentasContables.Rows(i).Cells(Me.clmAbono.Index).Value, Decimal) > 0D Then
                         Dim CuentaCon As New CuentaContableClass
@@ -515,6 +513,7 @@ Public Class frmFacturacionEspecial
                         Poliza.Detalles2.Add(PolizaDet)
                         'Poliza.AgregarDetalle(PolizaDet)
                     End If
+
                 Next
 
                 If Not Poliza.Detalles2.Count > 0 Then
@@ -588,7 +587,40 @@ Public Class frmFacturacionEspecial
                     End If
                 Next
 
+               
+
+
+                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim cmd As New SqlCommand
+                'Try
+
+                sqlCon.Open()
+                cmd.Connection = sqlCon
+                cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & 100 & "','" & CDec(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                cmd.ExecuteNonQuery()
+                sqlCon.Close()
+
+                'Catch exe As Exception
+                '    MsgBox(exe.Message)
+                'End Try
+                Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                'Try
+
+                'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG
+                'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
+                sqlCone.Open()
+                cmd.Connection = sqlCone
+                cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG(IdSucursal, IdMetodoProrrateo, IdCuentaContable, Factura, Cod_CentroCostos, Porcentaje, ID_Proveedor) VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
+                cmd.ExecuteNonQuery()
+                sqlCone.Close()
+
+                '        Catch exe As Exception
+                '    MsgBox(exe.Message)
+                'End Try
+
                 TransG.Commit()
+
+
                 Dim Ubicacion As String = ControlFD.GenerarArchivoPDF(cfdi, Fact.Conceptos, 0, FactPDF)
                 Application.DoEvents()
                 Cursor = Cursors.Default
@@ -600,6 +632,8 @@ Public Class frmFacturacionEspecial
                 Procesar.Start()
                 Trans.Commit()
                 Cursor.Current = Cursors.Default
+
+
                 MessageBox.Show("La Factura de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 FacturaCabecero.Estatus = "C"
@@ -615,6 +649,12 @@ Public Class frmFacturacionEspecial
             MEAToolBar1.Enabled = True
             If ex.Message = "No hay ninguna aplicación asociada con el archivo especificado para esta operación" Then
                 Cursor.Current = Cursors.Default
+
+
+                'DomFiscalCte = DirectCast(DirectCast(ultcmbDomiciliosFiscales.SelectedRow.ListObject, Object), DomicilioClienteClass)
+
+
+
                 MessageBox.Show("Debe instalar Adobe Reader para abrir los archivos pdf", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Else
 
@@ -947,7 +987,10 @@ Public Class frmFacturacionEspecial
             'Me.clmProductoDes.DisplayMember = "Descripcion"
             'Me.clmProductoDes.ValueMember = "Codigo"
             'Me.clmProductoDes.DataSource = Me.ProductosVistaC
-
+            ''llena combos de gastos
+            Controlador.LlenarComboSucursales(cmbsucursal, ClasesNegocio.CondicionEnum.ACTIVOS)
+            Controlador.LlenarComboMetodosdeProrrateo(cmbmetodo)
+            ''
             llenarFormasPago()
             llenarMetodosPago()
             llenarProductosSAT()
@@ -965,20 +1008,12 @@ Public Class frmFacturacionEspecial
             clmProductoDes.MaxDropDownItems = 6
             clmUnidadSat.MaxDropDownItems = 6
 
-
-
             'llenarProductos()
-
-
-
 
             cmbformadepago.SelectedIndex = -1
             cmbmetododepago.SelectedIndex = -1
             cmbformadepago.Text = "Seleccione la forma de pago..."
             cmbmetododepago.Text = "Seleccione la método de pago..."
-
-
-
 
             Dim MtbEstados As New MEAToolBar.MEAToolBar.ToolBarButtonStatusStructure
 
@@ -1423,7 +1458,7 @@ Public Class frmFacturacionEspecial
                 Else
                     Me.rdContado.Checked = True
                 End If
-
+                CuentaContableV = ClientesClas.Idcuentaventa
                 cmbUsoCFDI.SelectedValue = ClientesClas.UsoCFDI.Trim()
                 cmbformadepago.SelectedValue = ClientesClas.FormaPago.Trim()
 
@@ -1462,18 +1497,37 @@ Public Class frmFacturacionEspecial
                 Me.ultcmbDomiciliosFiscales.Rows.Band.Columns("ParticipatesInTransaction").Hidden = True
                 '''----
 
+                If IsDBNull(ClientesClas.Idcuentaventa) Then
+                    MessageBox.Show("El cliente no tiene registrada la cuenta contable de ventas, Catalogos/Ventas/Clientes", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                End If
 
-
-
-                'Dim CtasConts As New CuentaContableCollectionClass
+                ' Cargo
                 If ClientesClas.CuentaContableId > 0 Then
                     Me.RellenarGridCuentas(ClientesClas.CuentaContable)
+                End If
+
+                If ClientesClas.CuentaAntiId > 0 Then
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContableAntici)
+                    '  Me.RellenarGridCuentas(ClientesClas.CuentaAntiId)
+                End If
+                'Abono
+                If ClientesClas.Idcuentaventa > 0 Then
+                    'Me.RellenarGridCuentas(ClientesClas.Idcuentaventa)
+                    Me.RellenarGridCuentas(ClientesClas.CuentaContableVenta)
+                    calcular()
+                    'Dim CtasConts As New CuentaContableCollectionClass
                 Else
                     MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
+
+
+
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Aviso")
+            MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            ''  MessageBox.Show("Cliente no tiene cuenta contable asignada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            '' MsgBox(ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try
 
     End Sub
@@ -1621,6 +1675,8 @@ Public Class frmFacturacionEspecial
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = Math.Round((Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2)) * (1 + CDec(Controlador.ObtenerIVA() / 100)), 2)
                 Else
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
+                    Me.dgvCuentasContables.Rows(i + 1).Cells(Me.clmAbono.Index).Value = (Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
+
                 End If
                 'Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) + (CDec(Controlador.ObtenerIVA() / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value))
             End If
@@ -1641,6 +1697,7 @@ Public Class frmFacturacionEspecial
 
         ' Me.dgvCuentasContables.Rows(0).Cells(Me.clmCargo.Index).Value = (suma + sumaIVA).ToString("N2")
         calculacargosabonos()
+        Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
     End Sub
 
 
@@ -1669,6 +1726,7 @@ Public Class frmFacturacionEspecial
                     SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmAbono").Value
                 Next
                 'End If
+
                 Me.txtSumaCargo.Text = SumaCargo.ToString("C2")
                 Me.txtSumaAbono.Text = SumaAbono.ToString("C2")
             ElseIf e.ColumnIndex = Me.clmSubCta.Index Or e.ColumnIndex = Me.clmSSubCta.Index Or e.ColumnIndex = Me.clmSSSubCta.Index Then
@@ -1688,22 +1746,28 @@ Public Class frmFacturacionEspecial
     End Sub
 
     Public Sub calculacargosabonos()
-        SumaCargo = 0
-        SumaAbono = 0
-        For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
-            If Not Me.dgvCuentasContables.Rows(i).IsNewRow Then
-                SumaCargo = SumaCargo + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
-                SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmAbono").Value
-            End If
-        Next
+        Try
+            SumaCargo = 0
+            SumaAbono = 0
+            For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
+                If Not Me.dgvCuentasContables.Rows(i).IsNewRow Then
+                    SumaCargo = SumaCargo + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
+                    'Me.dgvCuentasContables.Rows(i + 1).Cells("ClmAbono").Value = SumaCargo
+                    SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmCargo").Value
+                    Me.txtSumaCargo.Text = SumaCargo.ToString("N2")
+                    Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+
         'End If
         'If e.ColumnIndex = Me.ClmAbono.Index Then
         'For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
         '    SumaAbono = SumaAbono + Me.dgvCuentasContables.Rows(i).Cells("ClmAbono").Value
         'Next
         'End If
-        Me.txtSumaCargo.Text = SumaCargo.ToString("N2")
-        Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
     End Sub
 
     Private Sub RellenarGridCuentas(ByVal Cta As ClasesNegocio.CuentaContableClass)
@@ -1715,32 +1779,34 @@ Public Class frmFacturacionEspecial
                 MsgBox("Imposible obtener la cuenta, es una Cuenta Bancaria", MsgBoxStyle.Information, "Aviso")
             Else
                 If Me.dgvCuentasContables.Rows(0).Cells("ClmDescripcion").Value <> "" Then
-                    If CuentasRepetidas(Cta) Then
-                        MsgBox("Imposible obtener la cuenta, Error de duplicidad", MsgBoxStyle.Information, "Aviso")
-                    Else
+                    'If CuentasRepetidas(Cta) Then
+                    '    MsgBox("Imposible obtener la cuenta, Error de duplicidad", MsgBoxStyle.Information, "Aviso")
+                    'Else
 
-                        If Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value <> "" Then
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
-                            'Me.dgvCuentasContables.Rows.Add()
-                        Else
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
-                            Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
-                            'Me.dgvCuentasContables.Rows.Add()
-                        End If
+                    If Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value <> "" Then
+
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
+                        'Me.dgvCuentasContables.Rows.Add()
+
+                    Else
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSsubCta").Value = Cta.SSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmSssubCta").Value = Cta.SSSubCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCargo").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmAbono").Value = 0
+                        Me.dgvCuentasContables.Rows(i - 1).Cells("ClmCodigoCuenta").Value = Cta.Codigo
+                        'Me.dgvCuentasContables.Rows.Add()
                     End If
+                    ' End If
                 Else
                     Me.dgvCuentasContables.Rows.Add()
                     Me.dgvCuentasContables.Rows(0).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
@@ -1756,7 +1822,10 @@ Public Class frmFacturacionEspecial
         Catch ex As Exception
             MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
+        ' CargoyAbono(dgvCuentasContables)
     End Sub
+
     Private Function CuentasRepetidas(ByVal cta As CuentaContableClass) As Boolean
         Try
             For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
@@ -1887,7 +1956,7 @@ Public Class frmFacturacionEspecial
     End Sub
 
     Public Sub llenarUnidadesSAT()
-  
+
         Dim connetionString As String = Nothing
         Dim connection As SqlConnection
         Dim command As SqlCommand
@@ -2019,7 +2088,7 @@ Public Class frmFacturacionEspecial
                 End If
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+          ''  MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
 

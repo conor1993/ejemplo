@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 ' //////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: lunes, 23 de abril de 2018 15:21:53
+' Code is generated on: lunes, 30 de abril de 2018 09:07:26
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 

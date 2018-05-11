@@ -78,45 +78,51 @@ Public Class FoliosClass
                             HC.MgcnfFoliadoresFields.Año = Año And _
                             HC.MgcnfFoliadoresFields.Mes = Mes, 1, sort)
 
-            If col.Count = 0 Then
-                trans.Add(Folio)
-                If (Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales Or Folio.Codigo = CodigodeFolios.NotaCredito) Then
+            If (Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales Or Folio.Codigo = CodigodeFolios.NotaCredito) Then
 
-                    'Dim AnioInt As Integer = CInt(Año)
-                    'Dim MesInt As Integer = CInt(Mes)
+                'Dim AnioInt As Integer = CInt(Año)
+                'Dim MesInt As Integer = CInt(Mes)
 
-                    'If (MesInt = 1) Then
-                    '    MesInt = 12
-                    '    AnioInt -= 1
-                    'Else
-                    '    MesInt -= 1
-                    'End If
-                    sort = New OC.SortExpression
-                    sort.Add(New OC.SortClause(HC.MgcnfFoliadoresFields.Consecutivo, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
-                    col.GetMulti(HC.MgcnfFoliadoresFields.Codigo = Codigo, 1, sort)
+                'If (MesInt = 1) Then
+                '    MesInt = 12
+                '    AnioInt -= 1
+                'Else
+                '    MesInt -= 1
+                'End If
+                sort = New OC.SortExpression
+                sort.Add(New OC.SortClause(HC.MgcnfFoliadoresFields.Consecutivo, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
+                col.GetMulti(HC.MgcnfFoliadoresFields.Codigo = Codigo, 1, sort)
 
-                    If (col.Count = 0) Then
-                        Folio.Consecutivo = 1
-                    Else
-                        Folio = col(0)
-
-                        Folio.Consecutivo += 1
-                    End If
-
-                Else
+                If (col.Count = 0) Then
                     Folio.Consecutivo = 1
+                Else
+                    Folio = col(0)
+
+                    Folio.Consecutivo += 1
                 End If
+                trans.Add(Folio)
 
                 Return Folio.Save()
-            Else
-                Folio = col(0)
 
-                Folio.Consecutivo += 1
+            Else
+                If col.Count = 0 Then
+                    trans.Add(Folio)
+
+                    Folio.Consecutivo = 1
+                Else
+                    Folio = col(0)
+
+                    Folio.Consecutivo += 1
+
+                    
+                End If
 
                 trans.Add(Folio)
 
                 Return Folio.Save()
             End If
+
+            
         Catch ex As Exception
             Throw ex
         End Try

@@ -776,7 +776,6 @@ Public Class PolizaDiario
                     '        End If
                     '    Next
                     'End If
-
                     Dim DetalleNvo As New CN.PolizaDetalleClass
                     dgvPoliza.DataSource = Nothing
 
