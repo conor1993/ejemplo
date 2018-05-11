@@ -826,6 +826,7 @@ Partial Class RegistroChequeForm
         Me.clmidcuentacont.HeaderText = "clmidcuentacont"
         Me.clmidcuentacont.Name = "clmidcuentacont"
         Me.clmidcuentacont.ReadOnly = True
+        Me.clmidcuentacont.Visible = False
         '
         'RegistroChequeForm
         '
