@@ -195,27 +195,27 @@ Public Class PolizaDiario
     'Me.gridDetalle.Columns("Importe").Visible = False
     'Me.gridDetalle.Columns("Posicion").Visible = False
 
-    ''Modificar el Texto del Encabezado que se muestra de las Columnas
+     ''Modificar el Texto del Encabezado que se muestra de las Columnas
     'Me.gridDetalle.Columns("FechaPoliza").HeaderText = "Fecha"
     'Me.gridDetalle.Columns("NumeroPoliza").HeaderText = "Poliza"
     'Me.gridDetalle.Columns("Importe").HeaderText = "Importe"
     'Me.gridDetalle.Columns("Concepto").HeaderText = "Concepto"
 
-    ''Modificar el ancho de las columnas
+     ''Modificar el ancho de las columnas
     'Me.gridDetalle.Columns("FechaPoliza").Width = 100
     'Me.gridDetalle.Columns("NumeroPoliza").Width = 100
     'Me.gridDetalle.Columns("Importe").Width = 100
     'Me.gridDetalle.Columns("Concepto").Width = 150
 
-    ''Formato del grid y sus columnas
-    ''   para los valores nulos
+     ''Formato del grid y sus columnas
+     ''   para los valores nulos
     'Me.gridDetalle.DefaultCellStyle.NullValue = "Sin datos"
-    ''   para habilitar el ajuste automático de líneas en celdas basadas en texto
+     ''   para habilitar el ajuste automático de líneas en celdas basadas en texto
     'Me.gridDetalle.DefaultCellStyle.WrapMode = DataGridViewTriState.True
     'Me.gridDetalle.Columns("FechaPoliza").DefaultCellStyle.Format = "d"
     'Me.gridDetalle.Columns("Importe").DefaultCellStyle.Format = "c"
 
-    ''para alineacion de las columnas
+     ''para alineacion de las columnas
     'Me.gridDetalle.Columns("Importe").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
 

@@ -88,57 +88,95 @@ Public Class FrmBusquedaPolizas
                 Filtro.Add(HC.VwPolizasFields.NumeroPoliza Mod String.Format("%{0}%", Me.txtNoPoliza.Text))
             End If
 
-            If rbtnAlmacen.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.ALMACEN))
-            End If
+            'RadioButtons Estatus
+            Select Case True
+                Case rbtnVigentes.Checked
+                    Filtro.Add(HC.VwPolizasFields.Estatus = CN.PolizaEstatusEnum.ACTIVA)
+                Case rbtnCanceladas.Checked
+                    Filtro.Add(HC.VwPolizasFields.Estatus = CN.PolizaEstatusEnum.CANCELADA)
+            End Select
 
-            If rbtnBancos.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.BANCOS))
-            End If
+            'RadioButtons origen
+            Select Case True
+                Case rbtnAlmacen.Checked
+                    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.ALMACEN))
+                Case rbtnBancos.Checked
+                    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.BANCOS))
+                Case rbtnCompras.Checked
+                    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.COMPRAS))
+                Case rbtnContabilidad.Checked
+                    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CONTABILIDAD))
+                Case rbtnCxC.Checked
+                    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CUENTASxCOBRAR))
+                Case rbtnCxP.Checked
+                    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CUENTASxPAGAR))
+                Case rbtnVentas.Checked
+                    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.VENTAS))
+            End Select
 
-            If rbtnCompras.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.COMPRAS))
-            End If
+            'RadioButtons Tipo de Poliza
+            Select Case True
+                Case RbtnIngreso.Checked
+                    Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.INGRESO))
+                Case RbtnEgreso.Checked
+                    Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.EGRESO))
+                Case rbtnDiario.Checked
+                    Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.DIARIO))
+                Case rbtnCancelacion.Checked
+                    Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.CANCELACION))
+            End Select
 
-            If rbtnContabilidad.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CONTABILIDAD))
-            End If
+            'If rbtnAlmacen.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.ALMACEN))
+            'End If
 
-            If rbtnCxC.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CUENTASxCOBRAR))
-            End If
+            'If rbtnBancos.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.BANCOS))
+            'End If
 
-            If rbtnCxP.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CUENTASxPAGAR))
-            End If
+            'If rbtnCompras.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.COMPRAS))
+            'End If
 
-            If rbtnVentas.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.VENTAS))
-            End If
+            'If rbtnContabilidad.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CONTABILIDAD))
+            'End If
 
-            If rbtnVigentes.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Estatus = CN.PolizaEstatusEnum.ACTIVA)
-            End If
+            'If rbtnCxC.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CUENTASxCOBRAR))
+            'End If
 
-            If rbtnCanceladas.Checked Then
-                Filtro.Add(HC.VwPolizasFields.Estatus = CN.PolizaEstatusEnum.CANCELADA)
-            End If
+            'If rbtnCxP.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.CUENTASxPAGAR))
+            'End If
 
-            If rbtnCancelacion.Checked Then
-                Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.CANCELACION))
-            End If
+            'If rbtnVentas.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Origen = Chr(CN.PolizaOrigenEnum.VENTAS))
+            'End If
 
-            If rbtnDiario.Checked Then
-                Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.DIARIO))
-            End If
+            'If rbtnVigentes.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Estatus = CN.PolizaEstatusEnum.ACTIVA)
+            'End If
 
-            If RbtnEgreso.Checked Then
-                Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.EGRESO))
-            End If
+            'If rbtnCanceladas.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.Estatus = CN.PolizaEstatusEnum.CANCELADA)
+            'End If
 
-            If RbtnIngreso.Checked Then
-                Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.INGRESO))
-            End If
+            'If rbtnCancelacion.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.CANCELACION))
+            'End If
+
+            'If rbtnDiario.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.DIARIO))
+            'End If
+
+            'If RbtnEgreso.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.EGRESO))
+            'End If
+
+            'If RbtnIngreso.Checked Then
+            '    Filtro.Add(HC.VwPolizasFields.TipoPoliza = Chr(CN.PolizaTipoPolizaEnum.INGRESO))
+            'End If
 
             If Validar() Then
                 Filtro.Add(New OC.FieldBetweenPredicate(HC.VwPolizasFields.FechaPoliza, Me.DtpFechaIni.Value.ToShortDateString, Me.DtpFechaFin.Value.AddDays(1).ToShortDateString))
@@ -215,9 +253,14 @@ Public Class FrmBusquedaPolizas
     End Sub
 
     Private Sub txtNoPoliza_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNoPoliza.KeyPress
-        If txtNoPoliza.Text.Length > 4 Then
-            Buscar()
-        End If
+        'If txtNoPoliza.Text = "" Then
+        '    DgvPolizas.DataSource = Nothing
+        '    DgvDetalles.DataSource = Nothing
+        'Else
+        '    'If txtNoPoliza.Text.Length > 4 Then
+        '    Buscar()
+        '    'End If
+        'End If
     End Sub
 
 
@@ -236,5 +279,16 @@ Public Class FrmBusquedaPolizas
 
     Private Sub mtb_ClickSalir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickSalir
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
+    End Sub
+
+    Private Sub txtNoPoliza_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtNoPoliza.TextChanged
+        If txtNoPoliza.Text = "" Then
+            DgvPolizas.DataSource = Nothing
+            DgvDetalles.DataSource = Nothing
+        Else
+            'If txtNoPoliza.Text.Length > 4 Then
+            Buscar()
+            'End If
+        End If
     End Sub
 End Class
