@@ -241,11 +241,11 @@ Namespace AlmacenGeneral
             End Set
         End Property
 
-        Public Property CostoTotal() As Decimal
+        Public Property CostoTotal() As Double
             Get
                 Return Entity.CostoTotal
             End Get
-            Set(ByVal value As Decimal)
+            Set(ByVal value As Double)
                 Entity.CostoTotal = value
             End Set
         End Property

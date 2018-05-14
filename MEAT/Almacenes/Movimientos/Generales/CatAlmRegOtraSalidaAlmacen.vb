@@ -40,6 +40,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
     End Sub
 
     Private Sub Limpiar()
+        Me.DataGrid.Rows.Clear()
         Me.txtPlaza.Clear()
         CmbPlaza.SelectedValue = "Seleccione Plaza"
         TxtFolio.Clear()
@@ -47,7 +48,6 @@ Public Class CatAlmRegOtraSalidaAlmacen
         CmbAlmacen.SelectedValue = "Seleccione Almacen"
         TxtEntrga.Clear()
         TxtRecibe.Clear()
-        Me.DataGrid.Rows.Clear()
         DTPFecha.Value = Now
         Me.txtObservaciones.Clear()
         Me.lblEstatus.Text = "ESTATUS"
@@ -300,7 +300,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
 
     Private Sub ObtenerDatos()
         'Dim TipoMovimientoCol As New TipoMovimientoAlmacenCollectionClass
-        Me.CalcularImporteTotal()
+        'Me.CalcularImporteTotal()
         'TipoMovimientoCol.Obtener(Me.cmbTipoMovimiento.SelectedValue)
         With mac
             .Contabilizado = AlmacenGeneral.MovimientoAlmacenClass.MovimientoAlmacenEstatus.VIGENTE
@@ -518,7 +518,6 @@ Public Class CatAlmRegOtraSalidaAlmacen
             Me.ObtenerDatos()
 
             If Me.mac.Guardar Then
-                Me.Limpiar()
                 Me.Lectura()
                 MsgBox("La Salida se realizo con exito", MsgBoxStyle.Information, "Aviso")
                 Me.Imprimir(Controlador.Sesion.MiEmpresa.Empnom, Controlador.Sesion.MiUsuario.Usrnom)
@@ -530,6 +529,7 @@ Public Class CatAlmRegOtraSalidaAlmacen
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error ")
             Cancelar = True
         End Try
+        Limpiar()
     End Sub
 
     Private Sub mtb_ClickBorrar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar
@@ -923,6 +923,71 @@ Public Class CatAlmRegOtraSalidaAlmacen
     End Sub
 
     Private Sub DataGrid_EditingControlShowing_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DataGrid.EditingControlShowing
+        Dim editingComboBox As ComboBox = TryCast(e.Control, ComboBox)
+        If Not editingComboBox Is Nothing Then
+            'Agregrar handle en el IndexChanged Event
+            AddHandler editingComboBox.SelectedIndexChanged, AddressOf productosComboBox_SelectedIndexChanged
+            'Evite que este evento se active dos veces, como suele ser el caso
+            RemoveHandler DataGrid.EditingControlShowing, AddressOf DataGrid_EditingControlShowing_1
+        End If
 
     End Sub
+    'metodo se llamara cada que el combobox del gris cambia de indice(ProductosColumns)
+    Private Sub productosComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        Dim productoCB As ComboBox = TryCast(sender, ComboBox)
+        If productoCB Is Nothing Then Exit Sub
+
+        buscarProducto(productoCB.SelectedItem.ToString()) 'Llama esta metodo para setear el codigo, UM, y costo del producto
+
+        'Retire la manija de este evento. Se volverá a asignar cada vez que una nueva selección de combobox haga que se desactive el Evento EditingControlShowing.
+        RemoveHandler productoCB.SelectedIndexChanged, AddressOf productosComboBox_SelectedIndexChanged
+        'Vuelva a habilitar el evento EditingControlShowing para que ocurra lo anterior.
+        AddHandler DataGrid.EditingControlShowing, AddressOf DataGrid_EditingControlShowing_1
+
+    End Sub
+    'Metodo recibe el nombre del producto y busca y regresa su ID
+    Private Sub buscarProducto(ByVal nombreProducto As String)
+        Dim query As String = "select MCatCompProductos.PdIdProducto, MCatCompUnidadMedida.UMDescCorta, MInvAlmacen.CostoPromedio " & _
+                            "from MCatCompProductos JOIN MInvAlmacen on MCatCompProductos.PdIdProducto = MInvAlmacen.ProductoId AND MCatCompProductos.PdDescripcion " & _
+                            "= '{0}' inner join MCatCompUnidadMedida on MCatCompUnidadMedida.UMIdUnidadMedida = MCatCompProductos.PdIdUnidadMedida"
+        query = String.Format(query, nombreProducto)
+        Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+        Try
+            Using sqlcom As New SqlCommand(query, sqlCon)
+                sqlCon.Open()
+                Dim Rs As SqlDataReader = sqlcom.ExecuteReader()
+                If (Rs.Read()) Then
+                    DataGrid.CurrentRow.Cells(0).Value = (Rs.GetValue(0))
+                    DataGrid.CurrentRow.Cells(4).Value = (Rs.GetValue(1))
+                    DataGrid.CurrentRow.Cells(5).Value = (Rs.GetValue(2))
+                Else
+                    MessageBox.Show("No se encontro el ID del producto " + nombreProducto + ". Este no se encuentra registrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                Rs.Close()
+                sqlCon.Close()
+                End Using
+        Catch ex As Exception
+            MessageBox.Show("Error al tratar de buscar el id del producto " + nombreProducto + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+    End Sub
+    'se usa para obtener el imorte de los prodcutos
+    Private Sub DataGrid_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGrid.CellEndEdit
+        Try
+            If (Not DataGrid.CurrentRow.Cells(3).Value Is Nothing) And (Not DataGrid.CurrentRow.Cells(5).Value Is Nothing) Then
+                DataGrid.CurrentRow.Cells(6).Value = (Convert.ToInt32(DataGrid.CurrentRow.Cells(3).Value) * Convert.ToDouble(DataGrid.CurrentRow.Cells(5).Value)) '.ToString()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al tratar de obtener el importe del producto " + DataGrid.CurrentRow.Cells(2).Value + ". Verifique que la cantidad del producto sea solo numeros." _
+                            , "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End Try
+
+        If DataGrid.Rows.Count > 0 Then
+            Dim total As Decimal
+            For Each fila As DataGridViewRow In Me.DataGrid.Rows
+                total += Val(fila.Cells(6).Value)
+            Next
+            TxtTotal.Text = CStr(total)
+        End If
+    End Sub
+
 End Class

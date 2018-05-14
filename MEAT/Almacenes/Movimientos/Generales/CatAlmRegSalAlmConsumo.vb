@@ -532,7 +532,7 @@ Public Class CatAlmRegSalAlmConsumo
                                 row.Cells(Me.clmLote.Index).Value, New Nullable(Of Date), row.Cells(Me.AplicacionColumn.Index).Value)
                 Me.vecCostoAplicacion.Add(Me.ObtenerCentroCostosDescripcion(row.Cells(Me.AplicacionColumn.Index).Value))
 
-                mac.CostoTotal += Decimal.Parse(row.Cells(Me.ImporteColumn.Index).Value.ToString)
+                mac.CostoTotal += Convert.ToDouble(row.Cells(Me.ImporteColumn.Index).Value.ToString().Replace("$", ""))
             Next
             'mac.CostoTotal = CDec(Me.TxtTotal.Text)
         End With
