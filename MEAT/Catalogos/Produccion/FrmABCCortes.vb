@@ -136,6 +136,20 @@ Public Class FrmABCCortes
         Productos.PrecioXKilo = CDec(Me.txtPrecio.Text.Replace("$", "").Replace(",", ","))
         Productos.ConHueso = Me.chkHueso.Checked
         Productos.ClaveprodSat = Me.cmbProdSAT.SelectedValue
+        Productos.PreCorte = cmbPreCortes.SelectedValue
+        Productos.Decomisa = 0
+
+        Productos.EnPiezas = 0
+        Productos.EnPiezas = 1
+        Productos.CodProdAnt = 0
+        Productos.kilosmaximo = 0
+        Productos.kilosmin = 0
+        Productos.Canal = 0
+        Productos.EsMerma = 0
+        Productos.ValorAgregado1 = 0
+        Productos.EsDerivable = 0
+
+
     End Function
 
     Public Function PonerDatos() As Boolean
