@@ -258,6 +258,33 @@ Public Class ProductosClass
         End Set
     End Property
 
+    Property kilosmaximo() As Integer
+        Get
+            Return Entity.KilosMaximo
+        End Get
+        Set(ByVal value As Integer)
+            Entity.KilosMaximo = value
+        End Set
+    End Property
+
+    Property kilosmin() As Integer
+        Get
+            Return Entity.KilosMinimo
+        End Get
+        Set(ByVal value As Integer)
+            Entity.KilosMinimo = value
+        End Set
+    End Property
+
+    Public Property ValorAgregado1() As Boolean
+        Get
+            Return Entity.ValorAgregado
+        End Get
+        Set(ByVal value As Boolean)
+            Entity.ValorAgregado = value
+        End Set
+    End Property
+
     Property IdCuentaContable() As Integer
         Get
             Return Me.entity.IdCeuntaContable.Value
