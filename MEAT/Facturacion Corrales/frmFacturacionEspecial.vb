@@ -417,13 +417,12 @@ Public Class frmFacturacionEspecial
         End If
         ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
 
-        If Estatus = "V" Then
+        If Estatus <> "C" Then
             If Not validar() Then
                 Return False
                 Exit Function
             End If
         End If
-
 
         Cursor = Cursors.WaitCursor
         MEAToolBar1.Enabled = False
@@ -492,9 +491,7 @@ Public Class frmFacturacionEspecial
                 'se guarda la poliza en contabilidad
                 Poliza.Concepto = "Cargo por Factura Especial a: " & Trim(Me.CmbCliente.Text) & " # Factura : " & FacturaCabecero.NoFactura
                 Poliza.EmpresaId = Controlador.Sesion.MiEmpresa.Empndx
-
                 Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
-
                 Poliza.FechaCaptura = Now
                 Poliza.FechaPoliza = Me.dtFechaFactura.Value
                 Poliza.Importe = Me.txtTotal.Text
@@ -567,7 +564,7 @@ Public Class frmFacturacionEspecial
                 FacturaCabecero.FormaPago = CStr(cmbformadepago.SelectedValue)
                 FacturaCabecero.MetodoPago = CStr(cmbmetododepago.SelectedValue)
                 FacturaCabecero.NumCta = CStr(txtNumCta.Text.Trim())
-                FacturaCabecero.Uuid = cfdi.UUID.ToString()
+                FacturaCabecero.UUID = cfdi.UUID.ToString()
                 FacturaCabecero.UsoCfdi = CStr(cmbUsoCFDI.SelectedValue)
                 FacturaCabecero.Observaciones = txtObservaciones.Text
                 FacturaCabecero.Direccion = txtDireccion.Text
@@ -603,36 +600,38 @@ Public Class frmFacturacionEspecial
                 Next
 
 
+                If Estatus = "V" Then
 
 
-                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                Dim cmd As New SqlCommand
-                'Try
 
-                sqlCon.Open()
-                cmd.Connection = sqlCon
-                cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & 100 & "','" & CDec(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
-                cmd.ExecuteNonQuery()
-                sqlCon.Close()
+                    Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                    Dim cmd As New SqlCommand
+                    'Try
 
-                'Catch exe As Exception
-                '    MsgBox(exe.Message)
-                'End Try
-                Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                'Try
+                    sqlCon.Open()
+                    cmd.Connection = sqlCon
+                    cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                    cmd.ExecuteNonQuery()
+                    sqlCon.Close()
 
-                'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG
-                'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
-                sqlCone.Open()
-                cmd.Connection = sqlCone
-                cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG(IdSucursal, IdMetodoProrrateo, IdCuentaContable, Factura, Cod_CentroCostos, Porcentaje, ID_Proveedor) VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
-                cmd.ExecuteNonQuery()
-                sqlCone.Close()
+                    'Catch exe As Exception
+                    '    MsgBox(exe.Message)
+                    'End Try
+                    Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                    'Try
 
-                '        Catch exe As Exception
-                '    MsgBox(exe.Message)
-                'End Try
+                    'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG
+                    'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
+                    sqlCone.Open()
+                    cmd.Connection = sqlCone
+                    cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG(IdSucursal, IdMetodoProrrateo, IdCuentaContable, Factura, Cod_CentroCostos, Porcentaje, ID_Proveedor) VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
+                    cmd.ExecuteNonQuery()
+                    sqlCone.Close()
 
+                    '        Catch exe As Exception
+                    '    MsgBox(exe.Message)
+                    'End Try
+                End If
                 TransG.Commit()
 
 
@@ -1109,6 +1108,8 @@ Public Class frmFacturacionEspecial
             ControlFD.CancelarCFDI(txtUUID.Text, DateTime.Now, TransG)
 
 
+
+
             'generar poliza de cancelacion
             Dim PolizaCan As New PolizaClass
             PolizaCan.Concepto = "Cancelacion de Cargo por Factura Especial a: " & Trim(Me.CmbCliente.Text) & " # Factura : " & FacturaCabecero.NoFactura
@@ -1121,7 +1122,7 @@ Public Class frmFacturacionEspecial
             PolizaCan.TipoCambio = 1
             PolizaCan.TipoPoliza = ClasesNegocio.PolizaTipoPolizaEnum.CANCELACION
             PolizaCan.TipoError = 0
-            PolizaCan.Referencia = Poliza.NumeroPoliza
+            PolizaCan.Referencia = PolizaACancelar
 
             'Se crea el detalle de la poliza
             For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
@@ -1160,16 +1161,6 @@ Public Class frmFacturacionEspecial
                 Exit Sub
             End If
 
-            Poliza.Estatus = PolizaEstatusEnum.CANCELADA
-
-            If Not Poliza.Guardar2(Trans) Then
-                Trans.Rollback()
-                Cursor = Cursors.Default
-                MEAToolBar1.Enabled = True
-                MessageBox.Show("No se Guardo la poliza", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
-            End If
-
             Guardar(Trans, "C")
             Trans.Commit()
             TransG.Commit()
@@ -1193,7 +1184,7 @@ Public Class frmFacturacionEspecial
             Dim Clientes As New ClientesIntroductoresClass
             Dim ListaSalidas As New List(Of String)
             Dim i As Integer = 0
-            'Dim Poliza As New PolizaClass
+            Dim Poliza As New PolizaClass
             Dim PolizaDet As New PolizaDetalleClass
 
             Consultas.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
@@ -1698,12 +1689,12 @@ Public Class frmFacturacionEspecial
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = Math.Round((Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2)) * (1 + CDec(Controlador.ObtenerIVA() / 100)), 2)
                 Else
                     Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
-                    Me.dgvCuentasContables.Rows(i + 1).Cells(Me.clmAbono.Index).Value = (Math.Round(CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value), 2))
-
                 End If
                 'Me.dgvDetalle.Rows(i).Cells(Me.clmImporte.Index).Value = (CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmPrecio.Index).Value) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value)) + (CDec(Controlador.ObtenerIVA() / 100) * CDec(Me.dgvDetalle.Rows(i).Cells(Me.clmCantidad.Index).Value))
             End If
         Next
+
+
         Me.txtSubTotal.Text = (Math.Round(suma, 2)).ToString()
         Me.txtIVA.Text = (Math.Round(sumaIVA, 2)).ToString()
 
@@ -1720,6 +1711,16 @@ Public Class frmFacturacionEspecial
 
         ' Me.dgvCuentasContables.Rows(0).Cells(Me.clmCargo.Index).Value = (suma + sumaIVA).ToString("N2")
         calculacargosabonos()
+
+        Try
+            If (Me.dgvCuentasContables.RowCount > 0) Then
+                Me.dgvCuentasContables.Rows(0).Cells(Me.clmCargo.Index).Value = Me.txtTotal.Text
+                Me.dgvCuentasContables.Rows(1).Cells(Me.clmAbono.Index).Value = Me.txtTotal.Text
+            End If
+        Catch ex As Exception
+
+        End Try
+
         Me.txtSumaAbono.Text = SumaAbono.ToString("N2")
     End Sub
 
@@ -2111,7 +2112,7 @@ Public Class frmFacturacionEspecial
                 End If
             End If
         Catch ex As Exception
-          ''  MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ''  MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
 
