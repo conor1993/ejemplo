@@ -465,11 +465,6 @@ Public Class FrmRecepcionCanales
            
 
             Me.txtPeso.Text = "0.00"
-            Me.txtTotalKilos.Text = "0.00"
-            Me.txtKilosRecibidos.Text = "0.00"
-            Me.tmActualizacion.Stop()
-            Me.ObtenerCanales()
-            Me.tmActualizacion.Start()
 
             Return True
         Catch ex As Exception

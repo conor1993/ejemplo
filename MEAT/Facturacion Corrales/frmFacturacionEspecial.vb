@@ -417,10 +417,13 @@ Public Class frmFacturacionEspecial
         End If
         ControlFD = New Integralab.FactDigital.ControladorFactDigital(Controlador.Empresa.CodEmpndx, ConStr)
 
-        If Not validar() Then
-            Return False
-            Exit Function
+        If Estatus = "V" Then
+            If Not validar() Then
+                Return False
+                Exit Function
+            End If
         End If
+
 
         Cursor = Cursors.WaitCursor
         MEAToolBar1.Enabled = False
@@ -489,7 +492,9 @@ Public Class frmFacturacionEspecial
                 'se guarda la poliza en contabilidad
                 Poliza.Concepto = "Cargo por Factura Especial a: " & Trim(Me.CmbCliente.Text) & " # Factura : " & FacturaCabecero.NoFactura
                 Poliza.EmpresaId = Controlador.Sesion.MiEmpresa.Empndx
+
                 Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
+
                 Poliza.FechaCaptura = Now
                 Poliza.FechaPoliza = Me.dtFechaFactura.Value
                 Poliza.Importe = Me.txtTotal.Text
@@ -562,7 +567,7 @@ Public Class frmFacturacionEspecial
                 FacturaCabecero.FormaPago = CStr(cmbformadepago.SelectedValue)
                 FacturaCabecero.MetodoPago = CStr(cmbmetododepago.SelectedValue)
                 FacturaCabecero.NumCta = CStr(txtNumCta.Text.Trim())
-                FacturaCabecero.UUID = cfdi.UUID.ToString()
+                FacturaCabecero.Uuid = cfdi.UUID.ToString()
                 FacturaCabecero.UsoCfdi = CStr(cmbUsoCFDI.SelectedValue)
                 FacturaCabecero.Observaciones = txtObservaciones.Text
                 FacturaCabecero.Direccion = txtDireccion.Text
@@ -1104,8 +1109,6 @@ Public Class frmFacturacionEspecial
             ControlFD.CancelarCFDI(txtUUID.Text, DateTime.Now, TransG)
 
 
-
-
             'generar poliza de cancelacion
             Dim PolizaCan As New PolizaClass
             PolizaCan.Concepto = "Cancelacion de Cargo por Factura Especial a: " & Trim(Me.CmbCliente.Text) & " # Factura : " & FacturaCabecero.NoFactura
@@ -1118,7 +1121,7 @@ Public Class frmFacturacionEspecial
             PolizaCan.TipoCambio = 1
             PolizaCan.TipoPoliza = ClasesNegocio.PolizaTipoPolizaEnum.CANCELACION
             PolizaCan.TipoError = 0
-            PolizaCan.Referencia = PolizaACancelar
+            PolizaCan.Referencia = Poliza.NumeroPoliza
 
             'Se crea el detalle de la poliza
             For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1
@@ -1157,6 +1160,16 @@ Public Class frmFacturacionEspecial
                 Exit Sub
             End If
 
+            Poliza.Estatus = PolizaEstatusEnum.CANCELADA
+
+            If Not Poliza.Guardar2(Trans) Then
+                Trans.Rollback()
+                Cursor = Cursors.Default
+                MEAToolBar1.Enabled = True
+                MessageBox.Show("No se Guardo la poliza", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+
             Guardar(Trans, "C")
             Trans.Commit()
             TransG.Commit()
@@ -1180,7 +1193,7 @@ Public Class frmFacturacionEspecial
             Dim Clientes As New ClientesIntroductoresClass
             Dim ListaSalidas As New List(Of String)
             Dim i As Integer = 0
-            Dim Poliza As New PolizaClass
+            'Dim Poliza As New PolizaClass
             Dim PolizaDet As New PolizaDetalleClass
 
             Consultas.TipoFactura = TipoFacturaEnum.FACTURACION_ESPECIAL
