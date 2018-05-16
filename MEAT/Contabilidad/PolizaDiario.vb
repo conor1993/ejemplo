@@ -37,6 +37,7 @@ Public Class PolizaDiario
         'Me.gridDetalle.RowCount = 0
         Me.dgvPoliza.Enabled = False
         Me.txtConcepto.Enabled = False
+        dgvPoliza.Columns(9).Width = 200
         Limpiar()
     End Sub
 
