@@ -7,8 +7,6 @@ Public Class RegistroIngresosForm
 
 #Region " Declaraciones "
     Private WithEvents Cheque As CN.ChequeClass
-    Dim distribucionGastosTb As New DataTable
-    Dim detalleDistGastosTb As New DataTable
     ' Private Ingresos As New CN.IngresosCollectionClass
     Private seleccion As New Integra.Clases.BusquedaClass(Of CN.ChequeClass)
     Private Cuentas As New CN.CuentaCollectionClass
@@ -43,24 +41,6 @@ Public Class RegistroIngresosForm
         Me.mtb.Buttons(12).ToolTipText = "Cierra la Ventana Ignorando los cambios que no hayan sido Guardados."
         mtb.ToolBarButtonStatus = MtbEstados
         mtb.sbCambiarEstadoBotones("Cancelar")
-
-        ''Inicializar tabla de Distribucion de gastos y detalle de gastos
-        distribucionGastosTb.Columns.Add("rowNumber", GetType(Integer))
-        distribucionGastosTb.PrimaryKey = New DataColumn() {distribucionGastosTb.Columns("rowNumber")}
-        'distribucionGastosTb.Columns.Add("idPoliza", GetType(Integer))
-        distribucionGastosTb.Columns.Add("idSucursal", GetType(Integer))
-        distribucionGastosTb.Columns.Add("idMetdProrrateo", GetType(Integer))
-        distribucionGastosTb.Columns.Add("idCuentaContable", GetType(Integer))
-        distribucionGastosTb.Columns.Add("importe", GetType(Decimal))
-        distribucionGastosTb.Columns.Add("ptjImporte", GetType(Decimal))
-
-        detalleDistGastosTb.Columns.Add("rowNumber", GetType(Integer))
-        detalleDistGastosTb.Columns.Add("detSucursal", GetType(Integer))
-        detalleDistGastosTb.Columns.Add("detMetdProrrateo", GetType(Integer))
-        detalleDistGastosTb.Columns.Add("detCuenta", GetType(Integer))
-        detalleDistGastosTb.Columns.Add("detCentroCostos", GetType(Integer))
-        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Integer))
-
         Cheques.Obtener(ClasesNegocio.BancosMovimientosTipo.DEPOSITO, chkEstatus)
         RellenarBancos()
         Lectura()
@@ -692,9 +672,6 @@ Public Class RegistroIngresosForm
     End Sub
 
     Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
-        If Buscar Then
-            Exit Sub
-        End If
         Select Case e.ColumnIndex
             Case 0 To 3
                 Dim tmp As CN.CuentaContableClass
@@ -725,66 +702,6 @@ Public Class RegistroIngresosForm
                     MessageBox.Show("La suma de los Cargos sobrepasa a la suma de los Abonos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
         End Select
-
-        Try
-            Dim ren As Integer = 0
-            Dim rendet As Integer = 0
-
-
-
-            Me.DgvCuentas.Refresh()
-
-            'Select Case e.ColumnIndex
-            '    Case Me.clmCargo.Index
-            Dim Cuenta As New CN.CuentaContableClass
-            Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value)
-            Dim Ventana As New frmDistribuciondeGastos
-            frmDistribuciondeGastos.valor = If(e.ColumnIndex = Me.ClmCargo.Index, Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value(),
-                                                    Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value())
-            If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-                If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
-
-                    For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 2)
-                        If distribucionGastosTb.Rows.Count Then
-
-                            ''Checar si la fila actual ya existe en el DataTable, si ya existe removerla de ambas tablas
-                            For j As Integer = distribucionGastosTb.Rows.Count - 1 To 0 Step -1
-                                If distribucionGastosTb.Rows(j)("rowNumber") = Me.DgvCuentas.CurrentRow.Index Then
-                                    For k As Integer = detalleDistGastosTb.Rows.Count - 1 To 0 Step -1
-                                        If detalleDistGastosTb.Rows(k)("rowNumber") = Me.DgvCuentas.CurrentRow.Index Then
-                                            detalleDistGastosTb.Rows(k).Delete()
-                                        End If
-                                    Next
-                                    distribucionGastosTb.Rows(j).Delete()
-                                End If
-                            Next
-                        End If
-                        ''Aqui se agregan los datos de la Distribucion de gastos al DataTable 'distribucionGastosTb'
-                        distribucionGastosTb.Rows.Add(
-                            Me.DgvCuentas.CurrentRow.Index,
-                            Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value,
-                            Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value,
-                            Me.DgvCuentas.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value,
-                            Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmImporte.Index).Value,
-                            Ventana.txtPorcentaje.Text)
-
-                        'If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
-                        '    rendet = dgvdistribuciongastosdet.Rows.Count
-                        'End If
-
-                        For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
-
-                            ''Aqui se agregan los detalles de la Distribucion de gastos al DataTable 'detalleDistGastosTb'
-                            detalleDistGastosTb.Rows.Add(Me.DgvCuentas.CurrentRow.Index, Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value,
-                                Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value, Me.DgvCuentas.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value,
-                                Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value, Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value)
-                        Next
-                    Next
-                End If
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
 
     Private Function ValorGridCuentas(ByVal Renglon As Integer, ByVal Columna As Integer, Optional ByVal Valor As Object = Nothing) As Object
@@ -943,7 +860,7 @@ Public Class RegistroIngresosForm
         LimpiarGridCuentas()
         For i As Integer = 0 To Poliza.Detalles.Count - 1
             'Me.DgvCuentas.Rows.Add()
-            If i > 50 Then
+            If i > 0 Then
                 Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
             Else
                 RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
@@ -981,7 +898,6 @@ Public Class RegistroIngresosForm
         BuscarCheques.TipoMovimientos = ClasesNegocio.BancosMovimientosTipo.DEPOSITO
         Buscar = True
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
-            Me.DgvCuentas.Enabled = True
             Cheque = BuscarCheques.Cheque
             Mostrar()
         End If
