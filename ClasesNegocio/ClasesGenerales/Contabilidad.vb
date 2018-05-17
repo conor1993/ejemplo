@@ -2523,18 +2523,18 @@ Public Class PolizaDetalleClass
 
     Public Property NombreCta() As String
         Get
-            If Not e.Concepto.Replace(" ", "").Length = 0 Then
-                Return e.Concepto
-            Else
-                If _CuentaContable Is Nothing Then
-                    If e.IsNew Then
-                        _CuentaContable = New CuentaContableClass
-                    Else
-                        _CuentaContable = New CuentaContableClass(e.CuentaContable)
-                    End If
+            ' If Not e.Concepto.Replace(" ", "").Length = 0 Then
+            '    Return e.Concepto
+            '  Else
+            If _CuentaContable Is Nothing Then
+                If e.IsNew Then
+                    _CuentaContable = New CuentaContableClass
+                Else
+                    _CuentaContable = New CuentaContableClass(e.CuentaContable)
                 End If
-                Return _CuentaContable.NombreCuenta
             End If
+            Return _CuentaContable.NombreCuenta
+            'End If
         End Get
         Set(ByVal value As String)
             e.Concepto = value
