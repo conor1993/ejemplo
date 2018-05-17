@@ -28,7 +28,7 @@ Public Class PolizaDiario
         mtb.ToolBarButtonStatus = MtbEstados
         Me.mtb.Buttons(0).ToolTipText = "Busca los Registros de Cheque Registrados"
         Me.mtb.Buttons(2).ToolTipText = "Limpia todos los datos que ya hayan sido capturados."
-        Me.mtb.Buttons(3).ToolTipText = "Cancela la acción actual."
+        Me.mtb.Buttons(3).ToolTipText = "Cancela la acciï¿½n actual."
         Me.mtb.Buttons(5).ToolTipText = "Crea un nuevo Registro de cheque."
         Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Cheque o los cambios que se le hayan Realizado."
         'Me.mtb.Buttons(7).ToolTipText = "Cambia el estatus del Banco."
@@ -69,7 +69,7 @@ Public Class PolizaDiario
                 Cancelar = True
                 Exit Sub
             End If
-            If MessageBox.Show("¿Esta seguro de cancelar la poliza?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
+            If MessageBox.Show("ï¿½Esta seguro de cancelar la poliza?", "Confirmaciï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
                 Cancelar = True
                 Exit Sub
             End If
@@ -78,7 +78,7 @@ Public Class PolizaDiario
             If Not Poliza.Guardar2(Trans) Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se pudo generar la poliza de cancelación", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("No se pudo generar la poliza de cancelaciï¿½n", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
 
@@ -113,13 +113,13 @@ Public Class PolizaDiario
             If Not PolizaAux.Guardar2(Trans) Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se pudo generar la poliza de cancelación", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("No se pudo generar la poliza de cancelaciï¿½n", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
                 Exit Sub
             End If
 
             Trans.Commit()
-            MessageBox.Show("La Poliza ha sido cancelada", "¡Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("La Poliza ha sido cancelada", "ï¿½Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Limpiar()
             Me.txtConcepto.Enabled = False
         Catch ex As Exception
@@ -177,7 +177,7 @@ Public Class PolizaDiario
             End If
 
             'If EstadoForma = "Buscando" And Me.txtPoliza.Text <> "" Then
-            '    'Obtener los detalles de la Póliza
+            '    'Obtener los detalles de la Pï¿½liza
             '    Dim strConsulta As String
             '    Dim dsPolizasDetalle As DataSet
 
@@ -233,7 +233,7 @@ Public Class PolizaDiario
      ''Formato del grid y sus columnas
      ''   para los valores nulos
     'Me.gridDetalle.DefaultCellStyle.NullValue = "Sin datos"
-     ''   para habilitar el ajuste automático de líneas en celdas basadas en texto
+     ''   para habilitar el ajuste automï¿½tico de lï¿½neas en celdas basadas en texto
     'Me.gridDetalle.DefaultCellStyle.WrapMode = DataGridViewTriState.True
     'Me.gridDetalle.Columns("FechaPoliza").DefaultCellStyle.Format = "d"
     'Me.gridDetalle.Columns("Importe").DefaultCellStyle.Format = "c"
@@ -290,7 +290,7 @@ Public Class PolizaDiario
             Poliza.TipoError = ClasesNegocio.ErroresPolizaEnum.NINGUNO
 
             If Me.txtTotalCargo.Text <> Me.txtTotalAbono.Text Then
-                If MessageBox.Show("¡La Poliza esta Descuadrada!, ¿Aun asi desea Guardarla?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
+                If MessageBox.Show("ï¿½La Poliza esta Descuadrada!, ï¿½Aun asi desea Guardarla?", "ï¿½ATENCIï¿½N!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
                     Cancelar = True
                     Exit Sub
                 End If
@@ -336,7 +336,7 @@ Public Class PolizaDiario
 
                 Trans.Commit()
 
-                guardarDetallePoliza(Poliza.NumeroPoliza)
+                'guardarDetallePoliza(Poliza.NumeroPoliza)
                 'Ingresar los datos de prorrateo a la base de datos
                 Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                 Try
@@ -380,14 +380,14 @@ Public Class PolizaDiario
                 Catch ex As Exception
 
                 End Try
-                MessageBox.Show("La Póliza ha sido grabada con el folio " & Poliza.NumeroPoliza, "¡Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("La Pï¿½liza ha sido grabada con el folio " & Poliza.NumeroPoliza, "ï¿½Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Limpiar()
                 Me.txtConcepto.Enabled = False
             End If
         Catch ex As Exception
             Trans.Rollback()
             Cancelar = True
-            MessageBox.Show(ex.Message, "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "ï¿½Atenciï¿½n!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -710,14 +710,14 @@ Public Class PolizaDiario
 
         If dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0 Or dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value Is Nothing Then
             If e.ColumnIndex = clmCargo.Index And dgvPoliza.Rows(e.RowIndex).Cells(clmAbono.Index).Value <> 0 Then
-                If MessageBox.Show("La operacion se establecera como Cargo, ¿Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If MessageBox.Show("La operacion se establecera como Cargo, ï¿½Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                     CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
                     dgvPoliza.Rows(e.RowIndex).Cells(clmAbono.Index).Value = 0
                 Else
                     e.Cancel = True
                 End If
             ElseIf e.ColumnIndex = clmAbono.Index And dgvPoliza.Rows(e.RowIndex).Cells(clmCargo.Index).Value <> 0 Then
-                If MessageBox.Show("La operacion se establecera como Abono, ¿Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If MessageBox.Show("La operacion se establecera como Abono, ï¿½Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                     CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
                     dgvPoliza.Rows(e.RowIndex).Cells(clmCargo.Index).Value = 0
                 Else
@@ -765,35 +765,35 @@ Public Class PolizaDiario
         End Try
     End Sub
 
+    'Private Sub guardarDetallePoliza(ByVal numPoliza As String)
 
-    Private Sub guardarDetallePoliza(ByVal numPoliza As String)
+    '    Dim transaction As SqlTransaction
+    '    Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
 
-        Dim transaction As SqlTransaction
-        Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+    '        connection.Open()
+    '        Dim command As SqlCommand = connection.CreateCommand()
+    '        transaction = connection.BeginTransaction("SampleTransaction")
+    '        command.Connection = connection
+    '        command.Transaction = transaction
+    '        Dim query As String
 
-            connection.Open()
-            Dim command As SqlCommand = connection.CreateCommand()
-            transaction = connection.BeginTransaction("SampleTransaction")
-            command.Connection = connection
-            command.Transaction = transaction
-            Dim query As String
+    '        Try
+    '            For Each row As DataGridViewRow In dgvPoliza.Rows
+    '                If Not row.IsNewRow Then
+    '                    query = "EXEC ActualizarConcepto_UCPD '{0}', '{1}', {2}"
+    '                    query = String.Format(query, numPoliza, row.Cells(clmConcepto.Index).Value.ToString(), row.Index + 1)
+    '                    command.CommandText = query
+    '                    command.ExecuteNonQuery()
+    '                End If
+    '            Next
+    '            command.Transaction.Commit()
+    '            connection.Close()
+    '        Catch ex As Exception
+    '            connection.Close()
+    '            MessageBox.Show("No se pudo agregar descricion del concepto de uno de los productos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        End Try
 
-            Try
-                For Each row As DataGridViewRow In dgvPoliza.Rows
-                    If Not row.IsNewRow Then
-                        query = "EXEC ActualizarConcepto_UCPD '{0}', '{1}', {2}"
-                        query = String.Format(query, numPoliza, row.Cells(clmConcepto.Index).Value.ToString(), row.Index + 1)
-                        command.CommandText = query
-                        command.ExecuteNonQuery()
-                    End If
-                Next
-                command.Transaction.Commit()
-                connection.Close()
-            Catch ex As Exception
-                connection.Close()
-                MessageBox.Show("No se pudo agregar descricion del concepto de uno de los productos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+    '    End Using
+    'End Sub
 
-        End Using
-    End Sub
 End Class

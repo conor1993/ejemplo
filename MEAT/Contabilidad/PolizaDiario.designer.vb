@@ -20,16 +20,12 @@ Partial Class PolizaDiario
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.dgvParaProrratear = New System.Windows.Forms.DataGridView()
-        Me.clmCodigoCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmDepartamentalizable = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblEstatus = New System.Windows.Forms.Label()
         Me.txtImporte = New System.Windows.Forms.TextBox()
         Me.txtConcepto = New System.Windows.Forms.TextBox()
@@ -43,13 +39,6 @@ Partial Class PolizaDiario
         Me.txtTotalAbono = New System.Windows.Forms.TextBox()
         Me.txtDiferencia = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.dgvDistribuciondeGastos = New System.Windows.Forms.DataGridView()
-        Me.clmIdPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmSucursal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmMetodoProrrateo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmPorcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgvPoliza = New System.Windows.Forms.DataGridView()
         Me.clmIdCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -66,8 +55,6 @@ Partial Class PolizaDiario
         Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PolizaDetalleC = New ClasesNegocio.PolizaDetalleCollectionClass()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.dgvParaProrratear, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvDistribuciondeGastos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvPoliza, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -117,7 +104,6 @@ Partial Class PolizaDiario
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.dgvParaProrratear)
         Me.GroupBox1.Controls.Add(Me.lblEstatus)
         Me.GroupBox1.Controls.Add(Me.txtImporte)
         Me.GroupBox1.Controls.Add(Me.txtConcepto)
@@ -132,27 +118,6 @@ Partial Class PolizaDiario
         Me.GroupBox1.Size = New System.Drawing.Size(698, 135)
         Me.GroupBox1.TabIndex = 167
         Me.GroupBox1.TabStop = False
-        '
-        'dgvParaProrratear
-        '
-        Me.dgvParaProrratear.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvParaProrratear.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigoCuenta, Me.clmDepartamentalizable})
-        Me.dgvParaProrratear.Location = New System.Drawing.Point(539, 53)
-        Me.dgvParaProrratear.Name = "dgvParaProrratear"
-        Me.dgvParaProrratear.RowHeadersVisible = False
-        Me.dgvParaProrratear.Size = New System.Drawing.Size(122, 64)
-        Me.dgvParaProrratear.TabIndex = 176
-        Me.dgvParaProrratear.Visible = False
-        '
-        'clmCodigoCuenta
-        '
-        Me.clmCodigoCuenta.HeaderText = "Codigo"
-        Me.clmCodigoCuenta.Name = "clmCodigoCuenta"
-        '
-        'clmDepartamentalizable
-        '
-        Me.clmDepartamentalizable.HeaderText = "Departamentalizable"
-        Me.clmDepartamentalizable.Name = "clmDepartamentalizable"
         '
         'lblEstatus
         '
@@ -278,55 +243,6 @@ Partial Class PolizaDiario
         Me.Label2.TabIndex = 174
         Me.Label2.Text = "Diferencia:"
         '
-        'dgvDistribuciondeGastos
-        '
-        Me.dgvDistribuciondeGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDistribuciondeGastos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIdPoliza, Me.clmSucursal, Me.clmMetodoProrrateo, Me.clmCuentaContable, Me.clmImporte, Me.clmPorcentaje})
-        Me.dgvDistribuciondeGastos.Location = New System.Drawing.Point(55, 431)
-        Me.dgvDistribuciondeGastos.Name = "dgvDistribuciondeGastos"
-        Me.dgvDistribuciondeGastos.Size = New System.Drawing.Size(388, 71)
-        Me.dgvDistribuciondeGastos.TabIndex = 175
-        Me.dgvDistribuciondeGastos.Visible = False
-        '
-        'clmIdPoliza
-        '
-        Me.clmIdPoliza.DataPropertyName = "IdPoliza"
-        Me.clmIdPoliza.HeaderText = "IdPoliza"
-        Me.clmIdPoliza.Name = "clmIdPoliza"
-        '
-        'clmSucursal
-        '
-        Me.clmSucursal.DataPropertyName = "IdSucursal"
-        Me.clmSucursal.HeaderText = "sucursal"
-        Me.clmSucursal.Name = "clmSucursal"
-        '
-        'clmMetodoProrrateo
-        '
-        Me.clmMetodoProrrateo.DataPropertyName = "IdMetodoProrrateo"
-        Me.clmMetodoProrrateo.HeaderText = "Metodo"
-        Me.clmMetodoProrrateo.Name = "clmMetodoProrrateo"
-        '
-        'clmCuentaContable
-        '
-        Me.clmCuentaContable.DataPropertyName = "IdCuentaContable"
-        Me.clmCuentaContable.HeaderText = "CuentaContable"
-        Me.clmCuentaContable.Name = "clmCuentaContable"
-        '
-        'clmImporte
-        '
-        Me.clmImporte.DataPropertyName = "Importe"
-        DataGridViewCellStyle21.Format = "N2"
-        DataGridViewCellStyle21.NullValue = "0"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle21
-        Me.clmImporte.HeaderText = "Importe"
-        Me.clmImporte.Name = "clmImporte"
-        '
-        'clmPorcentaje
-        '
-        Me.clmPorcentaje.DataPropertyName = "Ptj_Importe"
-        Me.clmPorcentaje.HeaderText = "Porcentaje"
-        Me.clmPorcentaje.Name = "clmPorcentaje"
-        '
         'dgvPoliza
         '
         Me.dgvPoliza.AutoGenerateColumns = False
@@ -405,35 +321,36 @@ Partial Class PolizaDiario
         '
         'clmConcepto
         '
+        Me.clmConcepto.DataPropertyName = "Concepto"
         Me.clmConcepto.HeaderText = "Concepto"
         Me.clmConcepto.Name = "clmConcepto"
         '
         'CargoDataGridViewTextBoxColumn
         '
         Me.CargoDataGridViewTextBoxColumn.DataPropertyName = "Cargo"
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle22.Format = "N2"
-        DataGridViewCellStyle22.NullValue = "0"
-        Me.CargoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N2"
+        DataGridViewCellStyle1.NullValue = "0"
+        Me.CargoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.CargoDataGridViewTextBoxColumn.HeaderText = "Cargo"
         Me.CargoDataGridViewTextBoxColumn.Name = "CargoDataGridViewTextBoxColumn"
         '
         'AbonoDataGridViewTextBoxColumn
         '
         Me.AbonoDataGridViewTextBoxColumn.DataPropertyName = "Abono"
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle23.Format = "N2"
-        DataGridViewCellStyle23.NullValue = "0"
-        Me.AbonoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = "0"
+        Me.AbonoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.AbonoDataGridViewTextBoxColumn.HeaderText = "Abono"
         Me.AbonoDataGridViewTextBoxColumn.Name = "AbonoDataGridViewTextBoxColumn"
         '
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle24.Format = "C2"
-        DataGridViewCellStyle24.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.Visible = False
@@ -451,7 +368,6 @@ Partial Class PolizaDiario
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(911, 514)
-        Me.Controls.Add(Me.dgvDistribuciondeGastos)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtDiferencia)
         Me.Controls.Add(Me.txtTotalAbono)
@@ -464,8 +380,6 @@ Partial Class PolizaDiario
         Me.Text = "Poliza de Diario"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.dgvParaProrratear, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvDistribuciondeGastos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvPoliza, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -489,16 +403,6 @@ Partial Class PolizaDiario
     Friend WithEvents txtTotalAbono As System.Windows.Forms.TextBox
     Friend WithEvents txtDiferencia As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents dgvDistribuciondeGastos As System.Windows.Forms.DataGridView
-    Friend WithEvents dgvParaProrratear As System.Windows.Forms.DataGridView
-    Friend WithEvents clmCodigoCuenta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmDepartamentalizable As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmIdPoliza As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmSucursal As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmMetodoProrrateo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmCuentaContable As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmPorcentaje As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmIdCuentaContable As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PolizaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PosicionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
