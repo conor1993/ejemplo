@@ -245,6 +245,16 @@ Public Class frmFacturacionEspecial
                 Domicilio.estado = DomFiscalCte.Estado.Descripcion
                 'Domicilio.referencia = CompA.Receptor.Domicilio.Referencia
 
+                If Cliente.DiasCredito <> 0 Then
+                    Domicilio.fechaven = dtpFechaVencimiento.Value
+                    Domicilio.Diaspago = Cliente.DiasCredito
+                    Domicilio.CondicionesPago = "Crédito"
+                Else
+                    Domicilio.fechaven = dtFechaFactura.Value
+                    Domicilio.Diaspago = 0
+                    Domicilio.CondicionesPago = "Contado"
+                End If
+
                 Receptor.Domicilio = Domicilio
             End If
 
@@ -419,7 +429,7 @@ Public Class frmFacturacionEspecial
         Dim TransG As New Gentle.Framework.Transaction(Integralab.FactDigital.ControladorFactDigital.Conexion)
         Try
 
-            
+
 
             'System.Threading.Thread.Sleep(6000)
             'Application.DoEvents()
@@ -587,7 +597,7 @@ Public Class frmFacturacionEspecial
                     End If
                 Next
 
-               
+
 
 
                 Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)

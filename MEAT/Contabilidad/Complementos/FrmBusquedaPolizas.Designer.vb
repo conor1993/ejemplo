@@ -22,62 +22,62 @@ Partial Class FrmBusquedaPolizas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.DgvPolizas = New System.Windows.Forms.DataGridView
-        Me.clmCodPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmNoPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmConcepto = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmTipo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmOrigen = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmFechaCaptura = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.DgvDetalles = New System.Windows.Forms.DataGridView
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtNoPoliza = New System.Windows.Forms.TextBox
-        Me.GrpTipo = New System.Windows.Forms.GroupBox
-        Me.RbtnTodasTipo = New System.Windows.Forms.RadioButton
-        Me.rbtnCancelacion = New System.Windows.Forms.RadioButton
-        Me.rbtnDiario = New System.Windows.Forms.RadioButton
-        Me.RbtnEgreso = New System.Windows.Forms.RadioButton
-        Me.RbtnIngreso = New System.Windows.Forms.RadioButton
-        Me.GrpOrigen = New System.Windows.Forms.GroupBox
-        Me.rbtnTodasOrigen = New System.Windows.Forms.RadioButton
-        Me.rbtnVentas = New System.Windows.Forms.RadioButton
-        Me.rbtnCxP = New System.Windows.Forms.RadioButton
-        Me.rbtnCxC = New System.Windows.Forms.RadioButton
-        Me.rbtnContabilidad = New System.Windows.Forms.RadioButton
-        Me.rbtnCompras = New System.Windows.Forms.RadioButton
-        Me.rbtnBancos = New System.Windows.Forms.RadioButton
-        Me.rbtnAlmacen = New System.Windows.Forms.RadioButton
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.DtpFechaFin = New System.Windows.Forms.DateTimePicker
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.DtpFechaIni = New System.Windows.Forms.DateTimePicker
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.chkFechas = New System.Windows.Forms.CheckBox
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox
-        Me.rbtnTodasEstatus = New System.Windows.Forms.RadioButton
-        Me.rbtnCanceladas = New System.Windows.Forms.RadioButton
-        Me.rbtnVigentes = New System.Windows.Forms.RadioButton
-        Me.btnaceptar = New System.Windows.Forms.Button
-        Me.btnCancelar = New System.Windows.Forms.Button
-        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSSSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmNombre = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.DgvPolizas = New System.Windows.Forms.DataGridView()
+        Me.clmCodPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmNoPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmConcepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmOrigen = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFechaCaptura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmEstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.DgvDetalles = New System.Windows.Forms.DataGridView()
+        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSSSubCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtNoPoliza = New System.Windows.Forms.TextBox()
+        Me.GrpTipo = New System.Windows.Forms.GroupBox()
+        Me.RbtnTodasTipo = New System.Windows.Forms.RadioButton()
+        Me.rbtnCancelacion = New System.Windows.Forms.RadioButton()
+        Me.rbtnDiario = New System.Windows.Forms.RadioButton()
+        Me.RbtnEgreso = New System.Windows.Forms.RadioButton()
+        Me.RbtnIngreso = New System.Windows.Forms.RadioButton()
+        Me.GrpOrigen = New System.Windows.Forms.GroupBox()
+        Me.rbtnTodasOrigen = New System.Windows.Forms.RadioButton()
+        Me.rbtnVentas = New System.Windows.Forms.RadioButton()
+        Me.rbtnCxP = New System.Windows.Forms.RadioButton()
+        Me.rbtnCxC = New System.Windows.Forms.RadioButton()
+        Me.rbtnContabilidad = New System.Windows.Forms.RadioButton()
+        Me.rbtnCompras = New System.Windows.Forms.RadioButton()
+        Me.rbtnBancos = New System.Windows.Forms.RadioButton()
+        Me.rbtnAlmacen = New System.Windows.Forms.RadioButton()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.DtpFechaFin = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.DtpFechaIni = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.chkFechas = New System.Windows.Forms.CheckBox()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.rbtnTodasEstatus = New System.Windows.Forms.RadioButton()
+        Me.rbtnCanceladas = New System.Windows.Forms.RadioButton()
+        Me.rbtnVigentes = New System.Windows.Forms.RadioButton()
+        Me.btnaceptar = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
         CType(Me.DgvPolizas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -273,6 +273,81 @@ Partial Class FrmBusquedaPolizas
         Me.DgvDetalles.RowHeadersVisible = False
         Me.DgvDetalles.Size = New System.Drawing.Size(780, 190)
         Me.DgvDetalles.TabIndex = 1
+        '
+        'clmCodigo
+        '
+        Me.clmCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmCodigo.DataPropertyName = "IdCuentaContable"
+        Me.clmCodigo.HeaderText = "Código"
+        Me.clmCodigo.Name = "clmCodigo"
+        Me.clmCodigo.ReadOnly = True
+        Me.clmCodigo.Width = 71
+        '
+        'clmCta
+        '
+        Me.clmCta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmCta.DataPropertyName = "Cta"
+        Me.clmCta.HeaderText = "Cta"
+        Me.clmCta.Name = "clmCta"
+        Me.clmCta.ReadOnly = True
+        Me.clmCta.Width = 51
+        '
+        'clmSubCuenta
+        '
+        Me.clmSubCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmSubCuenta.DataPropertyName = "SCta"
+        Me.clmSubCuenta.HeaderText = "SCuenta"
+        Me.clmSubCuenta.Name = "clmSubCuenta"
+        Me.clmSubCuenta.ReadOnly = True
+        Me.clmSubCuenta.Width = 80
+        '
+        'clmSSubCta
+        '
+        Me.clmSSubCta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmSSubCta.DataPropertyName = "SSCta"
+        Me.clmSSubCta.HeaderText = "SSCuenta"
+        Me.clmSSubCta.Name = "clmSSubCta"
+        Me.clmSSubCta.ReadOnly = True
+        Me.clmSSubCta.Width = 88
+        '
+        'clmSSSubCuenta
+        '
+        Me.clmSSSubCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.clmSSSubCuenta.DataPropertyName = "SSSCta"
+        Me.clmSSSubCuenta.HeaderText = "SSSCuenta"
+        Me.clmSSSubCuenta.Name = "clmSSSubCuenta"
+        Me.clmSSSubCuenta.ReadOnly = True
+        Me.clmSSSubCuenta.Width = 96
+        '
+        'clmNombre
+        '
+        Me.clmNombre.DataPropertyName = "NombreCta"
+        Me.clmNombre.HeaderText = "Nombre"
+        Me.clmNombre.Name = "clmNombre"
+        Me.clmNombre.ReadOnly = True
+        Me.clmNombre.Width = 200
+        '
+        'clmCargo
+        '
+        Me.clmCargo.DataPropertyName = "Cargo"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clmCargo.HeaderText = "Cargo"
+        Me.clmCargo.Name = "clmCargo"
+        Me.clmCargo.ReadOnly = True
+        '
+        'clmAbono
+        '
+        Me.clmAbono.DataPropertyName = "Abono"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clmAbono.HeaderText = "Abono"
+        Me.clmAbono.Name = "clmAbono"
+        Me.clmAbono.ReadOnly = True
         '
         'Label1
         '
@@ -629,81 +704,6 @@ Partial Class FrmBusquedaPolizas
         Me.btnCancelar.TabIndex = 122
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
-        '
-        'clmCodigo
-        '
-        Me.clmCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmCodigo.DataPropertyName = "IdCuentaContable"
-        Me.clmCodigo.HeaderText = "Código"
-        Me.clmCodigo.Name = "clmCodigo"
-        Me.clmCodigo.ReadOnly = True
-        Me.clmCodigo.Width = 71
-        '
-        'clmCta
-        '
-        Me.clmCta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmCta.DataPropertyName = "Cta"
-        Me.clmCta.HeaderText = "Cta"
-        Me.clmCta.Name = "clmCta"
-        Me.clmCta.ReadOnly = True
-        Me.clmCta.Width = 51
-        '
-        'clmSubCuenta
-        '
-        Me.clmSubCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmSubCuenta.DataPropertyName = "SCta"
-        Me.clmSubCuenta.HeaderText = "SCuenta"
-        Me.clmSubCuenta.Name = "clmSubCuenta"
-        Me.clmSubCuenta.ReadOnly = True
-        Me.clmSubCuenta.Width = 80
-        '
-        'clmSSubCta
-        '
-        Me.clmSSubCta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmSSubCta.DataPropertyName = "SSCta"
-        Me.clmSSubCta.HeaderText = "SSCuenta"
-        Me.clmSSubCta.Name = "clmSSubCta"
-        Me.clmSSubCta.ReadOnly = True
-        Me.clmSSubCta.Width = 88
-        '
-        'clmSSSubCuenta
-        '
-        Me.clmSSSubCuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.clmSSSubCuenta.DataPropertyName = "SSSCta"
-        Me.clmSSSubCuenta.HeaderText = "SSSCuenta"
-        Me.clmSSSubCuenta.Name = "clmSSSubCuenta"
-        Me.clmSSSubCuenta.ReadOnly = True
-        Me.clmSSSubCuenta.Width = 96
-        '
-        'clmNombre
-        '
-        Me.clmNombre.DataPropertyName = "NombreCta"
-        Me.clmNombre.HeaderText = "Nombre"
-        Me.clmNombre.Name = "clmNombre"
-        Me.clmNombre.ReadOnly = True
-        Me.clmNombre.Width = 200
-        '
-        'clmCargo
-        '
-        Me.clmCargo.DataPropertyName = "Cargo"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clmCargo.HeaderText = "Cargo"
-        Me.clmCargo.Name = "clmCargo"
-        Me.clmCargo.ReadOnly = True
-        '
-        'clmAbono
-        '
-        Me.clmAbono.DataPropertyName = "Abono"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clmAbono.HeaderText = "Abono"
-        Me.clmAbono.Name = "clmAbono"
-        Me.clmAbono.ReadOnly = True
         '
         'FrmBusquedaPolizas
         '

@@ -1948,6 +1948,7 @@ Public Class PolizaClass
     End Function
 
     Public Function Guardar2(ByVal Trans As HC.Transaction) As Boolean
+        'aqui guarda poliza
         Dim Band As Boolean = False
         Try
             Trans.Add(e)

@@ -27,6 +27,7 @@ Public Class frmReporteVentas
                 filtro.Add(New OC.FieldBetweenPredicate(HC.VwVentasXfacturaFields.Fecha, Me.dtFechaInicial.Value.ToShortDateString, Me.dtFechaFinal.Value.AddDays(1).ToShortDateString))
             End If
 
+
             Dim FilEstatus As OC.IPredicate = Nothing
             Dim Coleccion As New Collection()
 

@@ -58,13 +58,13 @@ Public Class frmReporteFactura
 
     Private Sub Imprimir()
         Dim sqlCon As New SqlConnection(Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)
-
         Try
             Dim sqlCom As New SqlCommand("FacturasGenerales", sqlCon)
             Dim ds As New DataSet
             Dim ad As New SqlDataAdapter(sqlCom)
             Dim reporte As New rptCXCFacturasGenerales
             Dim prev As New ClasesNegocio.PreVisualizarForm
+            Dim totalReal As New Double
 
             sqlCom.CommandType = CommandType.StoredProcedure
 
@@ -91,6 +91,7 @@ Public Class frmReporteFactura
 
             ad.Fill(ds)
             'FechaFactura, NoFactura
+
             Dim Rows() As DataRow
             Dim datosOrdenados As DataTable = ds.Tables(0).Clone()
 
@@ -104,6 +105,21 @@ Public Class frmReporteFactura
                 datosOrdenados.Rows.Add(row.ItemArray)
             Next
 
+            'Se obtien el total, sumando los ingresos y restando los egresos
+
+            'Dim indice As Integer = 0
+            'For Each row As DataRow In datosOrdenados.Rows
+
+            '    If (datosOrdenados.Rows(indice)(8) = "I") Then
+            '        totalReal += datosOrdenados.Rows(indice)(3)
+            '    ElseIf (datosOrdenados.Rows(indice)(8) = "E") Then
+            '        totalReal -= datosOrdenados.Rows(indice)(3)
+            '    End If
+
+            '    indice += 1
+            '    totalReal = Math.Round(totalReal, 2)
+
+            'Next
             reporte.SetDataSource(datosOrdenados)
             'reporte.Subreports(0).SetDataSource(ds.Tables(1))
             reporte.SetParameterValue(0, Controlador.Sesion.MiEmpresa.Empnom)
@@ -112,7 +128,6 @@ Public Class frmReporteFactura
             reporte.SetParameterValue(2, Me.dtpFechaInicial.Value)
             reporte.SetParameterValue(1, Me.dtpFechaFinal.Value)
             prev.Reporte = reporte
-
 
             prev.Text = "Reporte de Facturas Generales por Cliente y Cargo a Cliente"
             prev.Icon = Icon

@@ -57,6 +57,7 @@ Public Class PolizaDiario
         'Me.gridDetalle.RowCount = 0
         Me.dgvPoliza.Enabled = False
         Me.txtConcepto.Enabled = False
+        dgvPoliza.Columns(9).Width = 200
         Limpiar()
     End Sub
 
@@ -217,27 +218,27 @@ Public Class PolizaDiario
     'Me.gridDetalle.Columns("Importe").Visible = False
     'Me.gridDetalle.Columns("Posicion").Visible = False
 
-    ''Modificar el Texto del Encabezado que se muestra de las Columnas
+     ''Modificar el Texto del Encabezado que se muestra de las Columnas
     'Me.gridDetalle.Columns("FechaPoliza").HeaderText = "Fecha"
     'Me.gridDetalle.Columns("NumeroPoliza").HeaderText = "Poliza"
     'Me.gridDetalle.Columns("Importe").HeaderText = "Importe"
     'Me.gridDetalle.Columns("Concepto").HeaderText = "Concepto"
 
-    ''Modificar el ancho de las columnas
+     ''Modificar el ancho de las columnas
     'Me.gridDetalle.Columns("FechaPoliza").Width = 100
     'Me.gridDetalle.Columns("NumeroPoliza").Width = 100
     'Me.gridDetalle.Columns("Importe").Width = 100
     'Me.gridDetalle.Columns("Concepto").Width = 150
 
-    ''Formato del grid y sus columnas
-    ''   para los valores nulos
+     ''Formato del grid y sus columnas
+     ''   para los valores nulos
     'Me.gridDetalle.DefaultCellStyle.NullValue = "Sin datos"
-    ''   para habilitar el ajuste automático de líneas en celdas basadas en texto
+     ''   para habilitar el ajuste automático de líneas en celdas basadas en texto
     'Me.gridDetalle.DefaultCellStyle.WrapMode = DataGridViewTriState.True
     'Me.gridDetalle.Columns("FechaPoliza").DefaultCellStyle.Format = "d"
     'Me.gridDetalle.Columns("Importe").DefaultCellStyle.Format = "c"
 
-    ''para alineacion de las columnas
+     ''para alineacion de las columnas
     'Me.gridDetalle.Columns("Importe").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
 
@@ -312,18 +313,19 @@ Public Class PolizaDiario
                 Trans.Rollback()
                 Cancelar = True
             Else
+
                 'codigo para guardar los gastos
-                'For i As Integer = 0 To distribucionGastosTb.Rows.Count - 1
-                '    If Me.distribucionGastosTb.Rows(i)("importe") = 0 Then
+                'For i As Integer = 0 To Me.dgvDistribuciondeGastos.Rows.Count - 1
+                '    If Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value = 0 Then
                 '        Exit For
                 '    End If
                 '    Dim Gastos As New CN.GastosDepartamentosClass
-                '    Gastos.IdCuentaContable = Me.distribucionGastosTb.Rows(i)("idCuentaContable")
-                '    Gastos.IdSucursal = Me.distribucionGastosTb.Rows(i)("idSucursal")
-                '    Gastos.IdMetodoProrrateo = Me.distribucionGastosTb.Rows(i)("idMetdProrrateo")
-                '    Gastos.Importe = Me.distribucionGastosTb.Rows(i)("importe")
+                '    Gastos.IdCuentaContable = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmCuentaContable.Index).Value
+                '    Gastos.IdSucursal = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmSucursal.Index).Value
+                '    Gastos.IdMetodoProrrateo = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmMetodoProrrateo.Index).Value
+                '    Gastos.Importe = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmImporte.Index).Value
                 '    Gastos.IdPoliza = Poliza.Codigo
-                '    Gastos.Porcentaje = Me.distribucionGastosTb.Rows(i)("ptjImporte")
+                '    Gastos.Porcentaje = Me.dgvDistribuciondeGastos.Rows(i).Cells(Me.clmPorcentaje.Index).Value
                 '    Gastos.FechaPolizas = Me.DtpFecha.Value
 
                 '    If Not Gastos.Guardar(Trans) Then
@@ -333,6 +335,8 @@ Public Class PolizaDiario
                 'Next
 
                 Trans.Commit()
+
+                guardarDetallePoliza(Poliza.NumeroPoliza)
                 'Ingresar los datos de prorrateo a la base de datos
                 Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                 Try
@@ -380,8 +384,6 @@ Public Class PolizaDiario
                 Limpiar()
                 Me.txtConcepto.Enabled = False
             End If
-
-
         Catch ex As Exception
             Trans.Rollback()
             Cancelar = True
@@ -464,7 +466,7 @@ Public Class PolizaDiario
         Poliza = New CN.PolizaClass
         Me.dgvPoliza.DataSource = Poliza.Detalles2
         Me.dgvPoliza.Enabled = True
-        Me.NombreCtaDataGridViewTextBoxColumn.ReadOnly = False
+        Me.clmDescripcion.ReadOnly = True
     End Sub
 
     Private Sub mtb_ClickSalir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickSalir
@@ -706,7 +708,7 @@ Public Class PolizaDiario
             e.Cancel = True
         End If
 
-        If dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0 Then
+        If dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0 Or dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value Is Nothing Then
             If e.ColumnIndex = clmCargo.Index And dgvPoliza.Rows(e.RowIndex).Cells(clmAbono.Index).Value <> 0 Then
                 If MessageBox.Show("La operacion se establecera como Cargo, ¿Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                     CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
@@ -722,18 +724,26 @@ Public Class PolizaDiario
                     e.Cancel = True
                 End If
             Else
-                If e.ColumnIndex = clmCargo.Index Then
-                    CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
-                ElseIf e.ColumnIndex = clmAbono.Index Then
-                    CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
-                End If
+                Try
+                    If (e.ColumnIndex = clmCargo.Index) Then
+                        CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
+                    ElseIf (e.ColumnIndex = clmAbono.Index) Then
+                        CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Se necesita de una cuenta contable o de una descripcion para poder ingresar el cargo o abono.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End Try
             End If
         Else
-            If e.ColumnIndex = clmCargo.Index Then
-                CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
-            ElseIf e.ColumnIndex = clmAbono.Index Then
-                CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
-            End If
+            Try
+                If (e.ColumnIndex = clmCargo.Index) Then
+                    CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
+                ElseIf (e.ColumnIndex = clmAbono.Index) Then
+                    CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Se necesita de una cuenta contable o de una descripcion para poder ingresar el cargo o abono.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            End Try
         End If
     End Sub
 
@@ -753,5 +763,37 @@ Public Class PolizaDiario
         Catch ex As Exception
 
         End Try
+    End Sub
+
+
+    Private Sub guardarDetallePoliza(ByVal numPoliza As String)
+
+        Dim transaction As SqlTransaction
+        Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+
+            connection.Open()
+            Dim command As SqlCommand = connection.CreateCommand()
+            transaction = connection.BeginTransaction("SampleTransaction")
+            command.Connection = connection
+            command.Transaction = transaction
+            Dim query As String
+
+            Try
+                For Each row As DataGridViewRow In dgvPoliza.Rows
+                    If Not row.IsNewRow Then
+                        query = "EXEC ActualizarConcepto_UCPD '{0}', '{1}', {2}"
+                        query = String.Format(query, numPoliza, row.Cells(clmConcepto.Index).Value.ToString(), row.Index + 1)
+                        command.CommandText = query
+                        command.ExecuteNonQuery()
+                    End If
+                Next
+                command.Transaction.Commit()
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show("No se pudo agregar descricion del concepto de uno de los productos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+        End Using
     End Sub
 End Class
