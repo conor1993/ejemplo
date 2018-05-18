@@ -91,8 +91,6 @@ Public Class FrmRecepcionCanales
                         'lblCostoXKilo.Text = Convert.ToDecimal(RecGanDetEnty.RecepcionGanado.ImpteComp / RecGanDetEnty.RecepcionGanado.KilosComp).ToString("N2")
 
 
-
-
                         ''Cambia a la bd idefoods para obtener el precio por kilo
 
                         HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
@@ -478,12 +476,12 @@ Public Class FrmRecepcionCanales
     Private Function GuardarIDE(ByVal FolioAlm As String, ByVal RecepCabColCount As Integer, ByVal IdFolioAlmacen As String, Optional ByVal CerrarLote As Boolean = False) As Boolean
 
         HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATLA20", "MEATIDE")
-        'Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
+        Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
 
         Try
 
 
-            'Dim FolioAlmacen As String
+            Dim FolioAlmacen As String
             'Dim IdFolioAlmacen As String
             Dim RecepCabCol As New CC.MscrecepcionCanalesCabCollection
             Dim RecepCab As EC.MscrecepcionCanalesCabEntity
@@ -492,18 +490,18 @@ Public Class FrmRecepcionCanales
             RecepCabCol.GetMulti(HC.MscrecepcionCanalesCabFields.FolioSacrificio = Me.txtLoteSacrificio.Text.Trim)
 
             If Not RecepCabColCount > 0 Then
-                'Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
-                'Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
-                'Folio.Año = Now.Year
-                'Folio.Mes = Now.ToString("MM")
+                Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
+                Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
+                Folio.Año = Now.Year
+                Folio.Mes = Now.ToString("MM")
 
-                'If Not Folio.Guardar(Trans) Then
-                '    Trans.Rollback()
-                '    Return False
-                'End If
+                If Not Folio.Guardar(Trans) Then
+                    Trans.Rollback()
+                    Return False
+                End If
 
                 'folio para el registro de movimientos de almacen
-                'FolioAlmacen = Folio.Año & Folio.Mes & Folio.Consecutivo.ToString("0000")
+                FolioAlmacen = Folio.Año & Folio.Mes & Folio.Consecutivo.ToString("0000")
                 'Asignar valore a al cabecero de la recepcion de canales
                 RecepcCanales = New RecepcionCanalesCabClass
 
@@ -526,7 +524,7 @@ Public Class FrmRecepcionCanales
                 Me.RecepcCanalesDet.FolioMov = FolioAlm
 
                 If Not RecepcCanales.Guardar() Then
-                    'Trans.Rollback()
+                    Trans.Rollback()
                     Return False
                 End If
 
@@ -559,17 +557,17 @@ Public Class FrmRecepcionCanales
             End If
 
             'Generar el Folio de movimiento 
-            'Folio = New FoliosClass
-            'Folio.Codigo = CodigodeFolios.MovimientosdeAlmacen
-            'Folio.Año = Now.Year
-            'Folio.Mes = Now.ToString("MM")
+            Folio = New FoliosClass
+            Folio.Codigo = CodigodeFolios.MovimientosdeAlmacen
+            Folio.Año = Now.Year
+            Folio.Mes = Now.ToString("MM")
 
-            'If Not Folio.Guardar(Trans) Then
-            '    Trans.Rollback()
-            '    Return False
-            'End If
+            If Not Folio.Guardar(Trans) Then
+                Trans.Rollback()
+                Return False
+            End If
 
-            'IdFolioAlmacen = Folio.Año & Folio.Mes & Folio.Consecutivo.ToString("000000")
+            IdFolioAlmacen = Folio.Año & Folio.Mes & Folio.Consecutivo.ToString("000000")
 
             'asignar datos de almacen a clase de cabecero de almacen 
             Dim ConfigAlmacen As New CC.MscconfigMovtosAlmacenCollection
