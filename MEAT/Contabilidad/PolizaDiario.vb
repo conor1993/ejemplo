@@ -28,7 +28,7 @@ Public Class PolizaDiario
         mtb.ToolBarButtonStatus = MtbEstados
         Me.mtb.Buttons(0).ToolTipText = "Busca los Registros de Cheque Registrados"
         Me.mtb.Buttons(2).ToolTipText = "Limpia todos los datos que ya hayan sido capturados."
-        Me.mtb.Buttons(3).ToolTipText = "Cancela la acci�n actual."
+        Me.mtb.Buttons(3).ToolTipText = "Cancela la acción actual."
         Me.mtb.Buttons(5).ToolTipText = "Crea un nuevo Registro de cheque."
         Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Cheque o los cambios que se le hayan Realizado."
         'Me.mtb.Buttons(7).ToolTipText = "Cambia el estatus del Banco."
@@ -69,7 +69,7 @@ Public Class PolizaDiario
                 Cancelar = True
                 Exit Sub
             End If
-            If MessageBox.Show("�Esta seguro de cancelar la poliza?", "Confirmaci�n", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
+            If MessageBox.Show("¿Esta seguro de cancelar la poliza?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
                 Cancelar = True
                 Exit Sub
             End If
@@ -78,7 +78,7 @@ Public Class PolizaDiario
             If Not Poliza.Guardar2(Trans) Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se pudo generar la poliza de cancelaci�n", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("No se pudo generar la poliza de cancelación", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
 
@@ -113,13 +113,13 @@ Public Class PolizaDiario
             If Not PolizaAux.Guardar2(Trans) Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se pudo generar la poliza de cancelaci�n", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("No se pudo generar la poliza de cancelación", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
                 Exit Sub
             End If
 
             Trans.Commit()
-            MessageBox.Show("La Poliza ha sido cancelada", "�Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("La Poliza ha sido cancelada", "¡Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Limpiar()
             Me.txtConcepto.Enabled = False
         Catch ex As Exception
@@ -177,7 +177,7 @@ Public Class PolizaDiario
             End If
 
             'If EstadoForma = "Buscando" And Me.txtPoliza.Text <> "" Then
-            '    'Obtener los detalles de la P�liza
+            '    'Obtener los detalles de la Póliza
             '    Dim strConsulta As String
             '    Dim dsPolizasDetalle As DataSet
 
@@ -218,27 +218,27 @@ Public Class PolizaDiario
     'Me.gridDetalle.Columns("Importe").Visible = False
     'Me.gridDetalle.Columns("Posicion").Visible = False
 
-     ''Modificar el Texto del Encabezado que se muestra de las Columnas
+    ''Modificar el Texto del Encabezado que se muestra de las Columnas
     'Me.gridDetalle.Columns("FechaPoliza").HeaderText = "Fecha"
     'Me.gridDetalle.Columns("NumeroPoliza").HeaderText = "Poliza"
     'Me.gridDetalle.Columns("Importe").HeaderText = "Importe"
     'Me.gridDetalle.Columns("Concepto").HeaderText = "Concepto"
 
-     ''Modificar el ancho de las columnas
+    ''Modificar el ancho de las columnas
     'Me.gridDetalle.Columns("FechaPoliza").Width = 100
     'Me.gridDetalle.Columns("NumeroPoliza").Width = 100
     'Me.gridDetalle.Columns("Importe").Width = 100
     'Me.gridDetalle.Columns("Concepto").Width = 150
 
-     ''Formato del grid y sus columnas
-     ''   para los valores nulos
+    ''Formato del grid y sus columnas
+    ''   para los valores nulos
     'Me.gridDetalle.DefaultCellStyle.NullValue = "Sin datos"
-     ''   para habilitar el ajuste autom�tico de l�neas en celdas basadas en texto
+    ''   para habilitar el ajuste automático de líneas en celdas basadas en texto
     'Me.gridDetalle.DefaultCellStyle.WrapMode = DataGridViewTriState.True
     'Me.gridDetalle.Columns("FechaPoliza").DefaultCellStyle.Format = "d"
     'Me.gridDetalle.Columns("Importe").DefaultCellStyle.Format = "c"
 
-     ''para alineacion de las columnas
+    ''para alineacion de las columnas
     'Me.gridDetalle.Columns("Importe").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
 
@@ -270,7 +270,9 @@ Public Class PolizaDiario
             Exit Sub
         End If
 
-        Dim Trans As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
+        Dim Trans As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
+        Dim TransDet As SqlTransaction
+
         Try
             'Dim Trans As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
             If txtConcepto.Text = "" Then
@@ -290,7 +292,7 @@ Public Class PolizaDiario
             Poliza.TipoError = ClasesNegocio.ErroresPolizaEnum.NINGUNO
 
             If Me.txtTotalCargo.Text <> Me.txtTotalAbono.Text Then
-                If MessageBox.Show("�La Poliza esta Descuadrada!, �Aun asi desea Guardarla?", "�ATENCI�N!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
+                If MessageBox.Show("¡La Poliza esta Descuadrada!, ¿Aun asi desea Guardarla?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
                     Cancelar = True
                     Exit Sub
                 End If
@@ -334,60 +336,136 @@ Public Class PolizaDiario
                 '    End If
                 'Next
 
-                Trans.Commit()
-
                 'guardarDetallePoliza(Poliza.NumeroPoliza)
                 'Ingresar los datos de prorrateo a la base de datos
                 Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                Try
-                    For i As Integer = 0 To distribucionGastosTb.Rows.Count - 1
-                        Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},'{8}',{9},{10})"
-                        cadenaConsulta = String.Format(cadenaConsulta, 0, distribucionGastosTb.Rows(i)("idSucursal"),
-                                                       distribucionGastosTb.Rows(i)("idMetdProrrateo"), distribucionGastosTb.Rows(i)("idCuentaContable"),
-                                                       distribucionGastosTb.Rows(i)("ptjImporte"), CDec(distribucionGastosTb.Rows(i)("importe")),
-                                                       Poliza.FechaPoliza.ToString("dd-mm-yyyy"), 0, ("C|" + CStr(Poliza.Codigo)), 0, 0)
-                        Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
-                        Dim adp As New SqlDataAdapter(sqlcom)
+                Dim errorValue As Integer = 0
+                Dim idGastoDepartamental As Integer = 0
+                'Try
+                sqlCon.Open()
 
-                        sqlCon.Open()
-                        sqlcom.ExecuteNonQuery()
-                        sqlCon.Close()
+                TransDet = sqlCon.BeginTransaction(IsolationLevel.ReadCommitted, "DetallesGastos")
 
+                Dim command As SqlCommand = sqlCon.CreateCommand()
+                command.Connection = sqlCon
+                command.Transaction = TransDet
+
+                Dim query As String
+
+                ''Distribucion de gastos
+                For i As Integer = 0 To distribucionGastosTb.Rows.Count - 1
+                    'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},'{8}',{9},{10})"
+                    'cadenaConsulta = String.Format(cadenaConsulta, 0, distribucionGastosTb.Rows(i)("idSucursal"),
+                    '                               distribucionGastosTb.Rows(i)("idMetdProrrateo"), distribucionGastosTb.Rows(i)("idCuentaContable"),
+                    '                               distribucionGastosTb.Rows(i)("ptjImporte"), CDec(distribucionGastosTb.Rows(i)("importe")),
+                    '                               Poliza.FechaPoliza.ToString("dd-mm-yyyy"), 0, ("C|" + CStr(Poliza.Codigo)), 0, 0)
+                    query = "EXEC saveProrrateo 2, 0,       {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, '{11}'"
+                    query = String.Format(query,
+                                          "NULL",
+                                          Controlador.Sesion.MiEmpresa.Empndx,
+                                          "NULL",
+                                          "NULL",
+                                          distribucionGastosTb.Rows(i)("idMetdProrrateo"),
+                                          distribucionGastosTb.Rows(i)("idCuentaContable"),
+                                          1,
+                                          Poliza.Codigo,
+                                          1,
+                                          CDec(distribucionGastosTb.Rows(i)("importe")),
+                                          100,
+                                          Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"))
+                    command.CommandText = query
+                    ''Leer los valores regresados por el Procedimiento Almacenado
+                    Dim readCommand As SqlDataReader = command.ExecuteReader()
+                    readCommand.Read()
+                    errorValue = CInt(readCommand(0))
+                    Dim a As String = CStr(readCommand(1))
+                    idGastoDepartamental = CInt(readCommand(2))
+                    readCommand.Close()
+                    'sqlcom.ExecuteNonQuery()
+
+                    If (errorValue > 0) Then
+                        Exit For
+                    End If
+                Next
+
+                ''Detalle de Distribucion de gastos
+                If Not errorValue > 0 Then
+                    Dim ConsultaCompleta As String = ""
+                    'Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                    For i As Integer = 0 To (detalleDistGastosTb.Rows.Count - 1)
+                        'query = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje,id_proveedor) values({0},{1},{2},'{3}',{4},{5},{6}) "
+                        'String.Format(query, detalleDistGastosTb.Rows(i)("detSucursal"), detalleDistGastosTb.Rows(i)("detMetdProrrateo"),
+                        '                               detalleDistGastosTb.Rows(i)("detCuenta"), ("C|" + CStr(Poliza.Codigo)), detalleDistGastosTb.Rows(i)("detCentroCostos"),
+                        '                               detalleDistGastosTb.Rows(i)("detPorcentaje"), 0)
+                        query = "EXEC saveProrrateo 3, {0},       {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}'"
+
+                        query = String.Format(query,
+                                              idGastoDepartamental,
+                                              "NULL",
+                                              Controlador.Sesion.MiEmpresa.Empndx,
+                                              "NULL",
+                                              "NULL",
+                                              detalleDistGastosTb.Rows(i)("detMetdProrrateo"),
+                                              detalleDistGastosTb.Rows(i)("detCuenta"),
+                                              1,
+                                              Poliza.Codigo,
+                                              detalleDistGastosTb.Rows(i)("detCentroCostos"),
+                                              CDec(1),
+                                              detalleDistGastosTb.Rows(i)("detPorcentaje"),
+                                              Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"))
+
+
+                        command.CommandText = query
+
+                        Dim readCommand As SqlDataReader = command.ExecuteReader()
+                        readCommand.Read()
+                        errorValue = CInt(readCommand(0))
+                        idGastoDepartamental = CInt(readCommand(2))
+                        readCommand.Close()
+
+                        If (errorValue > 0) Then
+                            Exit For
+                        End If
                     Next
+                End If
 
-                Catch ex As Exception
 
-                End Try
+
+                If errorValue > 0 Then
+                    Trans.Rollback()
+                    TransDet.Rollback()
+                    Cancelar = True
+                    sqlCon.Close()
+                    MessageBox.Show("Error al guardar los detalles de prorrateo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                Else
+                    Trans.Commit()
+                    TransDet.Commit()
+                    sqlCon.Close()
+                    MessageBox.Show("La Póliza ha sido grabada con el folio " & Poliza.NumeroPoliza, "¡Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+                'Dim sqlcom As New SqlCommand(ConsultaCompleta, sqlCone)
+                'Dim adp As New SqlDataAdapter(sqlcom)
+
+                'sqlCone.Open()
+                'sqlcom.ExecuteNonQuery()
+                'sqlCone.Close()
+
+                'sqlCon.Close()
+                'Catch ex As Exception
+                '    Trans.Rollback()
+                '    Cancelar = True
+                '    MessageBox.Show(ex.Message, "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'End Try
 
                 ''Ingresar datos de prorrateo a tabla "GastosDepartamentosDetFG"
-                Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                Try
-                    For i As Integer = 0 To (detalleDistGastosTb.Rows.Count - 1)
-                        Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje,id_proveedor) values({0},{1},{2},'{3}',{4},{5},{6})"
-                        cadenaConsulta = String.Format(cadenaConsulta, detalleDistGastosTb.Rows(i)("detSucursal"), detalleDistGastosTb.Rows(i)("detMetdProrrateo"),
-                                                       detalleDistGastosTb.Rows(i)("detCuenta"), ("C|" + CStr(Poliza.Codigo)), detalleDistGastosTb.Rows(i)("detCentroCostos"),
-                                                       detalleDistGastosTb.Rows(i)("detPorcentaje"), 0)
-
-                        Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCone)
-                        Dim adp As New SqlDataAdapter(sqlcom)
-
-                        sqlCone.Open()
-                        sqlcom.ExecuteNonQuery()
-                        sqlCone.Close()
-
-
-                    Next
-                Catch ex As Exception
-
-                End Try
-                MessageBox.Show("La P�liza ha sido grabada con el folio " & Poliza.NumeroPoliza, "�Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Limpiar()
                 Me.txtConcepto.Enabled = False
             End If
         Catch ex As Exception
             Trans.Rollback()
             Cancelar = True
-            MessageBox.Show(ex.Message, "�Atenci�n!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -503,8 +581,9 @@ Public Class PolizaDiario
             Dim Ventana As New frmDistribuciondeGastos
             frmDistribuciondeGastos.valor = If(e.ColumnIndex = Me.clmCargo.Index, Me.dgvPoliza.CurrentRow.Cells(Me.clmCargo.Index).Value(),
                                                     Me.dgvPoliza.CurrentRow.Cells(Me.clmAbono.Index).Value())
-            If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-                If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+
+            If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI And (e.ColumnIndex = clmAbono.Index Or e.ColumnIndex = clmCargo.Index) Then
+                If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
 
                     For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 2)
                         If distribucionGastosTb.Rows.Count Then
@@ -704,20 +783,26 @@ Public Class PolizaDiario
     End Sub
 
     Private Sub grid_CellBeginEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles dgvPoliza.CellBeginEdit
+        ''No realizar la verificacion si esta en busqueda
         If Buscar Then
             e.Cancel = True
         End If
 
+        ''No realizar la verificacion en la columna concepto
+        If e.ColumnIndex = clmConcepto.Index Then
+            Exit Sub
+        End If
+
         If dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0 Or dgvPoliza.Rows(e.RowIndex).Cells(e.ColumnIndex).Value Is Nothing Then
             If e.ColumnIndex = clmCargo.Index And dgvPoliza.Rows(e.RowIndex).Cells(clmAbono.Index).Value <> 0 Then
-                If MessageBox.Show("La operacion se establecera como Cargo, �Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If MessageBox.Show("La operacion se establecera como Cargo, ¿Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                     CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
                     dgvPoliza.Rows(e.RowIndex).Cells(clmAbono.Index).Value = 0
                 Else
                     e.Cancel = True
                 End If
             ElseIf e.ColumnIndex = clmAbono.Index And dgvPoliza.Rows(e.RowIndex).Cells(clmCargo.Index).Value <> 0 Then
-                If MessageBox.Show("La operacion se establecera como Abono, �Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If MessageBox.Show("La operacion se establecera como Abono, ¿Esta seguro?", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                     CType(dgvPoliza.Rows(e.RowIndex).DataBoundItem, CN.PolizaDetalleClass).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
                     dgvPoliza.Rows(e.RowIndex).Cells(clmCargo.Index).Value = 0
                 Else
@@ -754,7 +839,7 @@ Public Class PolizaDiario
                 Cuenta.Obtener(Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value)
                 If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
                     Dim Ventana As New frmDistribuciondeGastosconsulta
-                    frmDistribuciondeGastosconsulta.factura = "C|" + CStr(Me.Poliza.Codigo)
+                    frmDistribuciondeGastosconsulta.idpoliza = Me.Poliza.Codigo
                     frmDistribuciondeGastosconsulta.idcuentacontable = Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value
                     If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                     End If

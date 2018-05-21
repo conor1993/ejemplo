@@ -90,7 +90,14 @@ Public Class frmDistribuciondeGastosconsulta
             Controlador.LlenarComboMetodosdeProrrateo(clmMetodoProrrateo)
 
             Dim datos As New DataSet
-            Dim query = "EXEC  Consultardepartamentalizacion  '" + factura + "' , " + idcuentacontable.ToString()
+            Dim query As String
+
+            If factura Is Nothing Then
+                query = "EXEC  Consultardepartamentalizacion  NULL , " + idcuentacontable.ToString() + ", " + poliza.ToString
+            Else
+                query = "EXEC  Consultardepartamentalizacion  '" + factura + "' , " + idcuentacontable.ToString() + ", NULL"
+            End If
+
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 Dim adapter As New SqlDataAdapter()
                 adapter.SelectCommand = New SqlCommand(query, connection)
@@ -102,8 +109,6 @@ Public Class frmDistribuciondeGastosconsulta
                 dgvMetodos.Rows(0).Cells(clmImporte.Index).Value = datos.Tables(0).Rows(1).Item(4)
                 Me.txtImporte.Text = datos.Tables(0).Rows(1).Item(4)
             End Using
-
-
   
             Dim total As Decimal
             valor1 = datos.Tables(0).Rows(1).Item(4)
