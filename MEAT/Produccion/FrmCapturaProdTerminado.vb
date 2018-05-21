@@ -762,9 +762,9 @@ Public Class FrmCapturaProdTerminado
             corte.Save()
             Trans.Commit()
 
-            'If Controlador.Configuracion.Produccion.ImprimirEtiquetasCortes Then
-            '    Imprimir()
-            'End If
+            If Controlador.Configuracion.Produccion.ImprimirEtiquetasCortes Then
+                Imprimir()
+            End If
 
             Dim Etiquetas As DataSet = LoteCorteDetalle.Obtener(Me.txtLoteCorte.Text.Trim)
 

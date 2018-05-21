@@ -1,6 +1,7 @@
 Imports CN = ClasesNegocio
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports Integra.Clases
+Imports System.Data.SqlClient
 
 Public Class RegistroChequeForm
     Implements InterfaceForm
@@ -14,6 +15,7 @@ Public Class RegistroChequeForm
     Private chkEstatus As CondicionEnum = CondicionEnum.ACTIVOS
     Private TipoCambio As CN.TipoCambioClass
     Private IdBanco As Integer
+    Dim Buscar As Boolean = False
     Dim MovBancos As CN.MovimientosBancosClass
     Dim ConfigCol As New CN.ConfigImpresionChequesCollectionClass
     Dim UltimaCuentaEditada As CN.CuentaContableClass = Nothing
@@ -37,7 +39,7 @@ Public Class RegistroChequeForm
         MtbEstados.StateSalir = ""
         mtb.ToolBarButtonStatus = MtbEstados
         Me.mtb.Buttons(0).ToolTipText = "Busca los Registros de Cheque Registrados"
-        Me.mtb.Buttons(2).ToolTipText = "Limpia todos los datos que ya hayan sido capturados."
+        Me.mtb.Buttons(2).ToolTipText = "Limpia todos los datos que ya hayan sido capturadHaos."
         Me.mtb.Buttons(3).ToolTipText = "Cancela la acción actual."
         Me.mtb.Buttons(5).ToolTipText = "Crea un nuevo Registro de cheque."
         Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Cheque o los cambios que se le hayan Realizado."
@@ -189,9 +191,9 @@ Public Class RegistroChequeForm
                         mtb.sbCambiarEstadoBotones("Cancelar")
                     End If
                 Next
-                If Not IsNothing(cheque) Then
-                    cheque.Cuenta = Cuenta
-                    txtImporte.Text = cheque.Importe.ToString("C2")
+                If Not IsNothing(Cheque) Then
+                    Cheque.Cuenta = Cuenta
+                    txtImporte.Text = Cheque.Importe.ToString("C2")
                 End If
             Else
                 txtCuenta.Clear()
@@ -239,21 +241,24 @@ Public Class RegistroChequeForm
         txtPoliza.Clear()
         txtCargo.Text = "0.00"
         txtAbono.Text = "0.00"
+        Me.dgvDistribuciondeGastos.Rows.Clear()
+        Me.dgvdistribuciongastosdet.Rows.Clear()
+        Buscar = False
         chkElectronico.Checked = False
         chkAnticipo.Checked = False
     End Sub
 
     Public Sub Mostrar() Implements InterfaceForm.Mostrar
-        cmbBanco.SelectedValue = cheque.Cuenta.Banco.DescripcionCta
+        cmbBanco.SelectedValue = Cheque.Cuenta.Banco.DescripcionCta
         RellenarCuentas()
         For Each item As ListViewItem In lv.Items
-            If IsNothing(item.Tag) And IsNothing(cheque.Cuenta) Then
+            If IsNothing(item.Tag) And IsNothing(Cheque.Cuenta) Then
                 item.Selected = True
                 txtCuenta.Text = String.Format("{0} - {1}")
                 txtSaldo.Text = "0.00".ToString("C")
-            ElseIf Not IsNothing(item.Tag) And Not IsNothing(cheque.Cuenta) Then
+            ElseIf Not IsNothing(item.Tag) And Not IsNothing(Cheque.Cuenta) Then
                 Dim tmp As CN.CuentaClass = DirectCast(item.Tag, CN.CuentaClass)
-                If tmp.Cuenta = cheque.Cuenta.Cuenta Then
+                If tmp.Cuenta = Cheque.Cuenta.Cuenta Then
                     item.Selected = True
                     Cuenta = tmp
                     txtCuenta.Text = String.Format("{0} - {1}", item.SubItems(0).Text, item.SubItems(1).Text)
@@ -265,9 +270,9 @@ Public Class RegistroChequeForm
         Me.cmbBeneficiario.Text = Cheque.Beneficiario.Beneficiario
         Me.txtCodBeneficiario.Text = Cheque.Beneficiario.Codigo
         txtImporte.Text = Cheque.Importe.ToString("C2")
-        txtConcepto.Text = cheque.Concepto
-        chkAnticipo.Checked = cheque.Anticipo
-        Select Case cheque.Medio
+        txtConcepto.Text = Cheque.Concepto
+        chkAnticipo.Checked = Cheque.Anticipo
+        Select Case Cheque.Medio
             Case ClasesNegocio.BancosMovimientosMedio.CHEQUE
                 chkElectronico.Checked = False
 
@@ -275,8 +280,9 @@ Public Class RegistroChequeForm
                 chkElectronico.Checked = True
         End Select
         txtReferencia.Text = Cheque.Referencia
-        txtFolio.Text = cheque.Folio
-        MostrarPolizaFlexGrid(cheque.Poliza)
+        txtFolio.Text = Cheque.Folio
+        DgvCuentas.Enabled = True
+        MostrarPolizaFlexGrid(Cheque.Poliza)
     End Sub
 
     Public Function Validar() As String Implements InterfaceForm.Validar
@@ -308,10 +314,10 @@ Public Class RegistroChequeForm
         End If
         If Not Bl Then
             Cadena = Nothing
-            cheque.Anticipo = chkAnticipo.Checked
-            cheque.Beneficiario = DirectCast(cmbBeneficiario.SelectedItem, CN.BeneficiarioClass)
-            cheque.Concepto = txtConcepto.Text
-            cheque.Cuenta = Cuenta
+            Cheque.Anticipo = chkAnticipo.Checked
+            Cheque.Beneficiario = DirectCast(cmbBeneficiario.SelectedItem, CN.BeneficiarioClass)
+            Cheque.Concepto = txtConcepto.Text
+            Cheque.Cuenta = Cuenta
             Cheque.FechaDocumento = dtp.Value
             If chkElectronico.Checked Then
                 Cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO
@@ -326,14 +332,14 @@ Public Class RegistroChequeForm
             Cheque.TipoCambio = txtTipoCambio.Text
             Cheque.TipoMovimiento = ClasesNegocio.BancosMovimientosTipo.RETIRO
         End If
-            Return Cadena
+        Return Cadena
     End Function
 #End Region
 
 #Region " ToolBar "
     Private Sub mtb_ClickBorrar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar
         Cancelar = True
-        If cheque.Borrar() Then
+        If Cheque.Borrar() Then
             Limpiar()
             Lectura()
         Else
@@ -344,7 +350,7 @@ Public Class RegistroChequeForm
     End Sub
 
     Private Sub mtb_ClickCancelar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickCancelar
-        cheque = Nothing
+        Cheque = Nothing
         Lectura()
         Limpiar()
         Cheques = New CN.ChequeCollectionClass
@@ -422,7 +428,51 @@ Public Class RegistroChequeForm
                                 Exit Sub
                             End If
 
-                            Trans.Commit() ''Se escriben los datos en la tabla, si no ha pasado ningun error
+                            Trans.Commit() ''Se escriben los datos en la tabla de UsrBanCheques, si no ha pasado ningun error
+
+                            'Ingresar los datos de prorrateo a la base de datos
+                            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                            Try
+                                For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
+                                    Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},'{8}',{9},{10})"
+                                    cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value,
+                                                                   dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value,
+                                                                   dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value, CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value),
+                                                                   Cheque.FechaDocumento.ToString("dd-mm-yyyy"), 0, "C|" + CStr(Cheque.Poliza.Codigo), Cheque.Beneficiario.Codigo, 0)
+                                    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
+                                    Dim adp As New SqlDataAdapter(sqlcom)
+
+                                    sqlCon.Open()
+                                    sqlcom.ExecuteNonQuery()
+                                    sqlCon.Close()
+
+                                Next
+
+                            Catch ex As Exception
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End Try
+
+                            ''Ingresar datos de prorrateo a tabla "GastosDepartamentosDetFG"
+                            Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                            Try
+                                For i As Integer = 0 To (dgvdistribuciongastosdet.Rows.Count - 1)
+                                    Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje,id_proveedor) values({0},{1},{2},'{3}',{4},{5},{6})"
+                                    cadenaConsulta = String.Format(cadenaConsulta, dgvdistribuciongastosdet.Rows(i).Cells(sucursal1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Prorrateo1.Index).Value,
+                                                                   dgvdistribuciongastosdet.Rows(i).Cells(Cuenta1.Index).Value, "C|" + CStr(Cheque.Poliza.Codigo), dgvdistribuciongastosdet.Rows(i).Cells(cod_centro.Index).Value,
+                                                                   dgvdistribuciongastosdet.Rows(i).Cells(idporcentaje.Index).Value, Cheque.Beneficiario.Codigo)
+
+                                    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCone)
+                                    Dim adp As New SqlDataAdapter(sqlcom)
+
+                                    sqlCone.Open()
+                                    sqlcom.ExecuteNonQuery()
+                                    sqlCone.Close()
+
+
+                                Next
+                            Catch ex As Exception
+                                MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End Try
 
                             MessageBox.Show(String.Format("Número de Poliza Generado:{0}{1}", vbCrLf, Cheque.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             mtb_ClickImprimir(sender, e, Cancelar)
@@ -447,6 +497,8 @@ Public Class RegistroChequeForm
     End Sub
 
     Private Sub mtb_ClickLimpiar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickLimpiar
+        
+        Cheque = Nothing
         Limpiar()
     End Sub
 
@@ -469,13 +521,13 @@ Public Class RegistroChequeForm
     End Sub
 
     Private Sub mtb_ClickImprimir(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As System.Boolean) Handles mtb.ClickImprimir
-        If Not IsNothing(cheque) Then
-            ImprimirCheque.Cheque = cheque
+        If Not IsNothing(Cheque) Then
+            ImprimirCheque.Cheque = Cheque
             ImprimirCheque.Banco = IdBanco
             ' ppDg.ShowDialog()
-            If Not cheque.Emitido Then
-                If cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO Then
-                    PagoElectronico.Cheque = cheque
+            If Not Cheque.Emitido Then
+                If Cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO Then
+                    PagoElectronico.Cheque = Cheque
                     pDg.Document = PagoElectronico
                     If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
                         Try
@@ -490,7 +542,7 @@ Public Class RegistroChequeForm
                     End If
                 Else
                     If MessageBox.Show("¿Desea imprimir el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
-                        ImprimirCheque.Cheque = cheque
+                        ImprimirCheque.Cheque = Cheque
                         ImprimirCheque.AbonoEnCuenta = MessageBox.Show("¿Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                         pDg.Document = ImprimirCheque
                         If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
@@ -507,14 +559,14 @@ Public Class RegistroChequeForm
                     End If
                 End If
             Else
-                If Not cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO Then MessageBox.Show(String.Format("Este cheque ya fue emitido el {0}.", cheque.FechaEmision.ToString("dd MMM' de 'yyyy"), "Cheque ya emitido", MessageBoxButtons.OK, MessageBoxIcon.Error))
+                If Not Cheque.Medio = ClasesNegocio.BancosMovimientosMedio.ELECTRONICO Then MessageBox.Show(String.Format("Este cheque ya fue emitido el {0}.", Cheque.FechaEmision.ToString("dd MMM' de 'yyyy"), "Cheque ya emitido", MessageBoxButtons.OK, MessageBoxIcon.Error))
             End If
         End If
     End Sub
 #End Region
 
 #Region " Otros "
-    Private Sub cheque_Mensajes(ByVal sender As Object, ByVal Message As ClasesNegocio.MensajeClass) Handles cheque.Mensajes
+    Private Sub cheque_Mensajes(ByVal sender As Object, ByVal Message As ClasesNegocio.MensajeClass) Handles Cheque.Mensajes
         MessageBox.Show(Message.Mensaje, Message.Titulo, MessageBoxButtons.OK, Message.Tipo)
     End Sub
 
@@ -600,9 +652,9 @@ Public Class RegistroChequeForm
         Try
             If Not (Me.txtImporte.Text = "") Then
                 If Not bl Then
-                    If Not IsNothing(cheque) Then
-                        cheque.Importe = Me.txtImporte.Text
-                        Me.txtImporteLetra.Text = cheque.ImporteLetra.ToUpper
+                    If Not IsNothing(Cheque) Then
+                        Cheque.Importe = Me.txtImporte.Text
+                        Me.txtImporteLetra.Text = Cheque.ImporteLetra.ToUpper
                         bl = True
                         Me.ValorGridCuentas(0, 6, Me.txtImporte.Text * Me.txtTipoCambio.Text)
                         bl = False
@@ -738,16 +790,17 @@ Public Class RegistroChequeForm
                 '    Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
                 '    Me.DgvCuentas.Rows.Add()
                 'Else
-                    For a As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
-                        'If Me.DgvCuentas.Rows(a).Cells("ClmDescripcion").Value = Beneficiarios.Item(cmbBeneficiario.SelectedIndex).Proveedor.CuentaContable2.NombreCuenta Then
-                        If Me.DgvCuentas.Rows(a).Cells("ClmDescripcion").Value = Cta.NombreCuenta Then
-                            Exit Sub
-                        End If
-                        ' Exit Sub
-                        'End If
-                    Next
+                For a As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
+                    'If Me.DgvCuentas.Rows(a).Cells("ClmDescripcion").Value = Beneficiarios.Item(cmbBeneficiario.SelectedIndex).Proveedor.CuentaContable2.NombreCuenta Then
+                    If Me.DgvCuentas.Rows(a).Cells("ClmDescripcion").Value = Cta.NombreCuenta Then
+                        Exit Sub
+                    End If
+                    ' Exit Sub
+                    'End If
+                Next
 
-                If Me.ActiveControl.Name = "DgvCuentas" Then
+                If Me.ActiveControl IsNot Nothing AndAlso Me.ActiveControl.Name = "DgvCuentas" Then
+                    Me.DgvCuentas.CurrentRow.Cells("clmidcuentacont").Value = Cta.Codigo
                     Me.DgvCuentas.CurrentRow.Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                     Me.DgvCuentas.CurrentRow.Cells("ClmSubCta").Value = Cta.SubCuenta
                     Me.DgvCuentas.CurrentRow.Cells("ClmSsbCta").Value = Cta.SSubCuenta
@@ -760,6 +813,7 @@ Public Class RegistroChequeForm
                         Me.DgvCuentas.Rows(i).ReadOnly = False
                     End If
                 Else
+                    Me.DgvCuentas.Rows(i - 1).Cells("clmidcuentacont").Value = Cta.Codigo
                     Me.DgvCuentas.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                     Me.DgvCuentas.Rows(i - 1).Cells("ClmSubCta").Value = Cta.SubCuenta
                     Me.DgvCuentas.Rows(i - 1).Cells("ClmSsbCta").Value = Cta.SSubCuenta
@@ -773,6 +827,7 @@ Public Class RegistroChequeForm
                 'End If
             Else
                 Me.DgvCuentas.Rows.Add()
+                Me.DgvCuentas.Rows(i).Cells("clmidcuentacont").Value = Cta.Codigo
                 Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
                 Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = Cta.SubCuenta
                 Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = Cta.SSubCuenta
@@ -825,7 +880,7 @@ Public Class RegistroChequeForm
     End Function
 
     Private Sub GenerarPoliza()
-        cheque.Poliza = Nothing
+        Cheque.Poliza = Nothing
         Dim Empresa As New CN.EmpresaClass(Controlador.Sesion.MiEmpresa.Empndx)
         Dim Poliza As New CN.PolizaClass
         Poliza.Concepto = txtConcepto.Text
@@ -875,7 +930,7 @@ Public Class RegistroChequeForm
                 End If
             End If
         Next
-        cheque.Poliza = Poliza
+        Cheque.Poliza = Poliza
     End Sub
 
     Private Sub RellenarGridCtasProveedor(ByVal Cta As ClasesNegocio.CuentaContableClass)
@@ -900,7 +955,7 @@ Public Class RegistroChequeForm
         LimpiarGridCuentas()
         For i As Integer = 0 To Poliza.Detalles.Count - 1
             'Me.DgvCuentas.Rows.Add()
-            If i > 0 Then
+            If i = 10 Then
                 Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
             Else
                 RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
@@ -914,7 +969,7 @@ Public Class RegistroChequeForm
         txtPoliza.Text = Poliza.NumeroPoliza
     End Sub
 
-    Private Sub DgvCuentas_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvCuentas.CellBeginEdit
+    Private Sub DgvCuentas_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs)
         If Me.txtImporte.Text > 0 Then
             If e.RowIndex > 0 Then
                 If IsNothing(Me.DgvCuentas.Rows(e.RowIndex - 1).Cells("ClmCtaMayor").Value) Then
@@ -938,6 +993,116 @@ Public Class RegistroChequeForm
     End Sub
 
     Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
+        If Buscar Then
+            Exit Sub
+        End If
+
+        Dim formato As String = "C4"
+        Try
+
+            ''------------------------------------------------------------------------------------------------------------------------------------------
+            ''------------------------------------------------------------------------------------------------------------------------------------------
+
+            ''------------------------------------------------------------
+            Dim ren As Integer = 0
+            Dim rendet As Integer = 0
+            ''------------------------------------------------------------
+
+            'Select Case e.ColumnIndex
+            'Case Me.ClmCargo.Index
+            Dim Cuenta As New CN.CuentaContableClass
+            Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value)
+            If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+
+                Dim Ventana As New frmDistribuciondeGastos
+                frmDistribuciondeGastos.valor1 = If(e.ColumnIndex = Me.ClmCargo.Index, Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value(),
+                                                    Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value())
+                If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+                    If (dgvDistribuciondeGastos.Rows.Count) >= 1 Then
+                        ren = dgvDistribuciondeGastos.Rows.Count
+                    End If
+
+                    For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 2
+
+                        Me.dgvDistribuciondeGastos.Rows.Add()
+                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
+                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
+                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
+                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
+                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+
+                        If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
+                            rendet = dgvdistribuciongastosdet.Rows.Count
+                        End If
+
+                        For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
+                            Me.dgvdistribuciongastosdet.Rows.Add()
+                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.sucursal1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value
+                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value
+                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
+                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
+                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
+                        Next
+                    Next
+                End If
+            End If
+            'Case Me.ClmAbono.Index
+            '    Dim Cuenta As New CN.CuentaContableClass
+            '    Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value)
+            '    If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+            '        Dim Ventana As New frmDistribuciondeGastos
+            '        frmDistribuciondeGastos.valor = Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value()
+            '        If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+            '            Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
+
+            '            If (dgvDistribuciondeGastos.Rows.Count) >= 1 Then
+            '                ren = dgvDistribuciondeGastos.Rows.Count
+            '            End If
+
+            '            For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
+            '                Me.dgvDistribuciondeGastos.Rows.Add()
+            '                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
+            '                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
+            '                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
+            '                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
+            '                Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
+
+            '                If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
+            '                    rendet = dgvdistribuciongastosdet.Rows.Count
+            '                End If
+
+            '                For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
+            '                    Me.dgvdistribuciongastosdet.Rows.Add()
+            '                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.sucursal1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmSucursal.Index).Value
+            '                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmMetodoProrrateo.Index).Value
+            '                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
+            '                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
+            '                    Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
+            '                Next
+            '            Next
+            '        End If
+            '    End If
+            'End Select
+            ''-----------------------------------------------------------------------------------------------------------------------------------------
+            ''-----------------------------------------------------------------------------------------------------------------------------------------
+
+            If e.ColumnIndex = Me.ClmCargo.Index Or e.ColumnIndex = Me.ClmAbono.Index Then
+                If String.IsNullOrEmpty(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+                    Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0.ToString(formato)
+                Else
+                    Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString().Replace("$", "")
+                    If Not IsNumeric(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+                        MsgBox("Teclee una Cantidad Correcta", MsgBoxStyle.Exclamation, "Error")
+                        Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0.ToString(formato)
+                    Else
+                        Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = CDec(Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value).ToString(formato)
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            Me.DgvCuentas.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = 0.ToString(formato)
+        End Try
         Select Case e.ColumnIndex
             Case 0 To 3
                 'Dim tmp As CN.CuentaContableClass
@@ -1056,7 +1221,7 @@ Public Class RegistroChequeForm
 
 #End Region
 
-    Private Sub txtCargo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub txtCargo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCargo.TextChanged
         If Not bl Then
             bl = True
             txtCargo.Text = Me.txtCargo.Text 'txtCargo.Valor.ToString("C")
@@ -1064,7 +1229,7 @@ Public Class RegistroChequeForm
         End If
     End Sub
 
-    Private Sub txtAbono_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub txtAbono_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAbono.TextChanged
         If Not bl Then
             bl = True
             txtAbono.Text = Me.txtAbono.Text 'txtAbono.Valor.ToString("C")
@@ -1073,6 +1238,7 @@ Public Class RegistroChequeForm
     End Sub
 
     Private Sub mtb_ClickBuscar(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As System.Boolean) Handles mtb.ClickBuscar
+        Cheque = Nothing
         Dim BuscarCheques As New BuscarChequeForm
         BuscarCheques.Icon = Me.Icon
         BuscarCheques.chkAnt.Checked = False
@@ -1085,8 +1251,11 @@ Public Class RegistroChequeForm
         BuscarCheques.Label1.Enabled = True
         BuscarCheques.dgv.Columns(3).Visible = True
         BuscarCheques.TipoMovimientos = ClasesNegocio.BancosMovimientosTipo.RETIRO
+
+        Buscar = True
+
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
-            cheque = BuscarCheques.Cheque
+            Cheque = BuscarCheques.Cheque
             Mostrar()
         End If
     End Sub
@@ -1168,4 +1337,27 @@ Public Class RegistroChequeForm
         End If
     End Sub
 
+    Private Sub DgvCuentas_CellContentDoubleClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentDoubleClick
+        Try
+            If Buscar Then
+                Dim Cuenta As New CN.CuentaContableClass
+                Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value)
+                If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+                    Dim Ventana As New frmDistribuciondeGastosconsulta
+                    frmDistribuciondeGastosconsulta.factura = "C|" + CStr(Cheque.Poliza.Codigo)
+                    frmDistribuciondeGastosconsulta.idcuentacontable = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
+                    If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub DgvCuentas_CellBeginEdit_1(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DgvCuentas.CellBeginEdit
+        If Buscar Then
+            e.Cancel = True
+        End If
+    End Sub
 End Class

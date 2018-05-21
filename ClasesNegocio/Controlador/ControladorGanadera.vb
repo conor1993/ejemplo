@@ -2209,7 +2209,7 @@ Partial Public Class ControladorGanadera
         Dim FacturasVenta As New FacturasCollectionClass
         Dim Ordenamiento As New OC.SortExpression(New OC.SortClause(HC.CabFacturasFields.FolFactura, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
 
-        FacturasVentaColeccion.GetMulti(Filtro, 0, Ordenamiento, Relaciones)
+        FacturasVentaColeccion.GetMulti(Filtro, 0, Ordenamiento)
 
         If Not FacturasVentaColeccion.Count > 0 Then
             Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.GENERAL, 2, "No se encontraton facturas para esta opcion")
