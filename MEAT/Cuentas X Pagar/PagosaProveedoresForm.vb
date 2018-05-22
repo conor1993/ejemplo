@@ -1138,6 +1138,7 @@ Public Class PagosaProveedoresForm
             Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
             Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
             Reporte.SetParameterValue("Modulo", "")
+            Reporte.SetParameterValue("NoFactura", DgvFacturas.CurrentRow.Cells(1).Value)
 
             Dim pre As New ClasesNegocio.PreVisualizarForm
             pre.Reporte = Reporte
