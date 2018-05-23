@@ -219,7 +219,7 @@ Public Class RegistroChequeForm
 
     Public Sub Lectura() Implements InterfaceForm.Lectura
         pan.Enabled = False
-        Me.DgvCuentas.Enabled = False
+        'Me.DgvCuentas.Enabled = False
         Me.txtCargo.Enabled = False
         Me.txtAbono.Enabled = False
         Me.txtImporte.Enabled = False
@@ -955,11 +955,11 @@ Public Class RegistroChequeForm
         LimpiarGridCuentas()
         For i As Integer = 0 To Poliza.Detalles.Count - 1
             'Me.DgvCuentas.Rows.Add()
-            If i = 10 Then
-                Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
-            Else
-                RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
-            End If
+            'If i = 10 Then
+            '    Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
+            'Else
+            RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
+            'End If
             If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
                 Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
             Else
