@@ -81,6 +81,7 @@ Partial Class RegistroChequeForm
         Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmConcepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmidcuentacont = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -144,7 +145,7 @@ Partial Class RegistroChequeForm
         Me.lblTitulo.Location = New System.Drawing.Point(50, 0)
         Me.lblTitulo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(711, 30)
+        Me.lblTitulo.Size = New System.Drawing.Size(844, 30)
         Me.lblTitulo.TabIndex = 1
         Me.lblTitulo.Text = "Label1"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -178,7 +179,7 @@ Partial Class RegistroChequeForm
         Me.pan.Controls.Add(Me.txtBanco)
         Me.pan.Location = New System.Drawing.Point(55, 33)
         Me.pan.Name = "pan"
-        Me.pan.Size = New System.Drawing.Size(696, 331)
+        Me.pan.Size = New System.Drawing.Size(826, 331)
         Me.pan.TabIndex = 2
         '
         'txtTipoCambio
@@ -323,7 +324,7 @@ Partial Class RegistroChequeForm
         Me.gpoCuentas.Controls.Add(Me.txtCuenta)
         Me.gpoCuentas.Location = New System.Drawing.Point(10, 38)
         Me.gpoCuentas.Name = "gpoCuentas"
-        Me.gpoCuentas.Size = New System.Drawing.Size(680, 147)
+        Me.gpoCuentas.Size = New System.Drawing.Size(810, 147)
         Me.gpoCuentas.TabIndex = 4
         Me.gpoCuentas.TabStop = False
         Me.gpoCuentas.Text = "Cuentas"
@@ -549,7 +550,7 @@ Partial Class RegistroChequeForm
         Me.GrpCuentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GrpCuentas.Location = New System.Drawing.Point(65, 370)
         Me.GrpCuentas.Name = "GrpCuentas"
-        Me.GrpCuentas.Size = New System.Drawing.Size(674, 161)
+        Me.GrpCuentas.Size = New System.Drawing.Size(821, 161)
         Me.GrpCuentas.TabIndex = 146
         Me.GrpCuentas.TabStop = False
         '
@@ -566,7 +567,7 @@ Partial Class RegistroChequeForm
         'txtAbono
         '
         Me.txtAbono.Enabled = False
-        Me.txtAbono.Location = New System.Drawing.Point(566, 137)
+        Me.txtAbono.Location = New System.Drawing.Point(704, 137)
         Me.txtAbono.Name = "txtAbono"
         Me.txtAbono.Size = New System.Drawing.Size(100, 20)
         Me.txtAbono.TabIndex = 2
@@ -574,7 +575,7 @@ Partial Class RegistroChequeForm
         'txtCargo
         '
         Me.txtCargo.Enabled = False
-        Me.txtCargo.Location = New System.Drawing.Point(462, 137)
+        Me.txtCargo.Location = New System.Drawing.Point(600, 137)
         Me.txtCargo.Name = "txtCargo"
         Me.txtCargo.Size = New System.Drawing.Size(100, 20)
         Me.txtCargo.TabIndex = 1
@@ -591,7 +592,7 @@ Partial Class RegistroChequeForm
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DgvCuentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono, Me.clmidcuentacont, Me.clmPosicion})
+        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.clmConcepto, Me.ClmCargo, Me.ClmAbono, Me.clmidcuentacont, Me.clmPosicion})
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -612,7 +613,7 @@ Partial Class RegistroChequeForm
         Me.DgvCuentas.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DgvCuentas.RowHeadersVisible = False
         Me.DgvCuentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvCuentas.Size = New System.Drawing.Size(663, 117)
+        Me.DgvCuentas.Size = New System.Drawing.Size(813, 117)
         Me.DgvCuentas.TabIndex = 0
         '
         'ClmCtaMayor
@@ -650,6 +651,13 @@ Partial Class RegistroChequeForm
         Me.ClmDescripcion.Name = "ClmDescripcion"
         Me.ClmDescripcion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ClmDescripcion.Width = 150
+        '
+        'clmConcepto
+        '
+        Me.clmConcepto.DataPropertyName = "Concepto"
+        Me.clmConcepto.HeaderText = "Concepto"
+        Me.clmConcepto.Name = "clmConcepto"
+        Me.clmConcepto.Width = 150
         '
         'ClmCargo
         '
@@ -690,7 +698,7 @@ Partial Class RegistroChequeForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(760, 560)
+        Me.ClientSize = New System.Drawing.Size(893, 560)
         Me.Controls.Add(Me.GrpCuentas)
         Me.Controls.Add(Me.pan)
         Me.Controls.Add(Me.mtb)
@@ -698,7 +706,7 @@ Partial Class RegistroChequeForm
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(766, 588)
+        Me.MaximumSize = New System.Drawing.Size(10000, 5889)
         Me.MinimumSize = New System.Drawing.Size(766, 588)
         Me.Name = "RegistroChequeForm"
         Me.Text = "Registro de Cheques y Pagos electrónicos"
@@ -768,6 +776,7 @@ Partial Class RegistroChequeForm
     Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmSssCta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmConcepto As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmidcuentacont As System.Windows.Forms.DataGridViewTextBoxColumn

@@ -35,12 +35,12 @@ Public Class RegistroIngresosForm
         MtbEstados.StateEditar = "001010000"
         MtbEstados.StateImprimir = ""
         MtbEstados.StateSalir = ""
-        Me.mtb.Buttons(0).ToolTipText = "Busca los Registros de Depósitos Registrados"
+        Me.mtb.Buttons(0).ToolTipText = "Busca los Registros de Depï¿½sitos Registrados"
         Me.mtb.Buttons(2).ToolTipText = "Limpia todos los datos que ya hayan sido capturados."
-        Me.mtb.Buttons(3).ToolTipText = "Cancela la acción actual."
-        Me.mtb.Buttons(5).ToolTipText = "Crea un nuevo Registro de depósitos."
-        Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Depósito o los cambios que se le hayan Realizado."
-        Me.mtb.Buttons(10).ToolTipText = "Imprime Los resgistros de Depósitos Registrados."
+        Me.mtb.Buttons(3).ToolTipText = "Cancela la acciï¿½n actual."
+        Me.mtb.Buttons(5).ToolTipText = "Crea un nuevo Registro de depï¿½sitos."
+        Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Depï¿½sito o los cambios que se le hayan Realizado."
+        Me.mtb.Buttons(10).ToolTipText = "Imprime Los resgistros de Depï¿½sitos Registrados."
         Me.mtb.Buttons(12).ToolTipText = "Cierra la Ventana Ignorando los cambios que no hayan sido Guardados."
         mtb.ToolBarButtonStatus = MtbEstados
         mtb.sbCambiarEstadoBotones("Cancelar")
@@ -342,7 +342,7 @@ Public Class RegistroIngresosForm
 
     Private Sub mtb_ClickEditar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickEditar
         'Escritura()
-        MessageBox.Show("No está habilitada la edición para este módulo.", "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        MessageBox.Show("No estï¿½ habilitada la ediciï¿½n para este mï¿½dulo.", "Acciï¿½n no permitida", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
@@ -383,14 +383,14 @@ Public Class RegistroIngresosForm
 
                         Trans.Commit() ''Se escriben los datos en la tabla, si no ha pasado ningun error
 
-                        MessageBox.Show(String.Format("Número de Póliza Generado:{0}{1}", vbCrLf, Cheque.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show(String.Format("Nï¿½mero de Pï¿½liza Generado:{0}{1}", vbCrLf, Cheque.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         mtb_ClickImprimir(sender, e, Cancelar)
                         Limpiar()
                         Lectura()
                         Cancelar = False
                     End If
                 Else
-                    MessageBox.Show("No se puede generar el depósito por que no esta cuadrada la póliza.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("No se puede generar el depï¿½sito por que no esta cuadrada la pï¿½liza.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Else
                 MessageBox.Show(Validar, "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -505,7 +505,7 @@ Public Class RegistroIngresosForm
                 Trans.Commit()
                 TransDet.Commit()
                 sqlCon.Close()
-                'MessageBox.Show("La Póliza ha sido grabada con el folio " & Poliza.NumeroPoliza, "¡Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show("La Pï¿½liza ha sido grabada con el folio " & Poliza.NumeroPoliza, "ï¿½Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
             'Dim sqlcom As New SqlCommand(ConsultaCompleta, sqlCone)
             'Dim adp As New SqlDataAdapter(sqlcom)
@@ -518,7 +518,7 @@ Public Class RegistroIngresosForm
             'Catch ex As Exception
             '    Trans.Rollback()
             '    Cancelar = True
-            '    MessageBox.Show(ex.Message, "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '    MessageBox.Show(ex.Message, "ï¿½Atenciï¿½n!", MessageBoxButtons.OK, MessageBoxIcon.Error)
             'End Try
 
             ''Ingresar datos de prorrateo a tabla "GastosDepartamentosDetFG"
@@ -558,7 +558,7 @@ Public Class RegistroIngresosForm
         '            If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
         '                Try
         '                    PagoElectronico.Print()
-        '                    If MessageBox.Show("¿Se imprimió el comprobante?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+        '                    If MessageBox.Show("ï¿½Se imprimiï¿½ el comprobante?", "Confirmaciï¿½n de Impresiï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
         '                        PagoElectronico.ImpresionExitosa()
         '                        Ingreso.Guardar()
         '                    End If
@@ -567,14 +567,14 @@ Public Class RegistroIngresosForm
         '                End Try
         '            End If
         '        Else
-        '            If MessageBox.Show("¿Desea imprimir el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+        '            If MessageBox.Show("ï¿½Desea imprimir el cheque?", "Confirmaciï¿½n de Impresiï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
         '                ImprimirCheque.Cheque = Ingreso
-        '                ImprimirCheque.AbonoEnCuenta = MessageBox.Show("¿Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        '                ImprimirCheque.AbonoEnCuenta = MessageBox.Show("ï¿½Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
         '                pDg.Document = ImprimirCheque
         '                If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
         '                    Try
         '                        ImprimirCheque.Print()
-        '                        If MessageBox.Show("¿Se imprimió el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+        '                        If MessageBox.Show("ï¿½Se imprimiï¿½ el cheque?", "Confirmaciï¿½n de Impresiï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
         '                            ImprimirCheque.ImpresionExitosa()
         '                            Ingreso.Guardar()
         '                        End If
@@ -1167,7 +1167,7 @@ Public Class RegistroIngresosForm
                 If Me.DgvCuentas.CurrentRow.Index = 0 Then
                     Exit Sub
                 End If
-                If MessageBox.Show("¿Esta seguro de eliminar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.No Then
+                If MessageBox.Show("ï¿½Esta seguro de eliminar el registro?", "Confirmaciï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.No Then
                     Exit Sub
                 Else
                     Me.DgvCuentas.Rows.Remove(Me.DgvCuentas.CurrentRow)
@@ -1208,7 +1208,7 @@ Public Class RegistroIngresosForm
             Next
 
         Catch ex As Exception
-            MessageBox.Show("No se pudo cargar", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("No se pudo cargar el grid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 

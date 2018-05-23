@@ -725,7 +725,7 @@ Public Class RegistroChequeForm
                         Cheque.Importe = Me.txtImporte.Text
                         Me.txtImporteLetra.Text = Cheque.ImporteLetra.ToUpper
                         bl = True
-                        Me.ValorGridCuentas(0, 6, Me.txtImporte.Text * Me.txtTipoCambio.Text)
+                        Me.ValorGridCuentas(0, 7, Me.txtImporte.Text * Me.txtTipoCambio.Text)
                         bl = False
                     End If
                 End If
@@ -745,8 +745,9 @@ Public Class RegistroChequeForm
         If IsNothing(CtaCont) Then
             'fg.Rows(Renglon).UserData = Nothing
             ValorGridCuentas(Renglon, 4, "")
-            ValorGridCuentas(Renglon, 5, 0D)
+            ValorGridCuentas(Renglon, 5, "")
             ValorGridCuentas(Renglon, 6, 0D)
+            ValorGridCuentas(Renglon, 7, 0D)
         Else
             If CtaCont.Bancos = SiNoEnum.NO Then ' And CtaCont.Afectable = SiNoEnum.SI Then
                 'fg.Rows(Renglon).UserData = CtaCont
@@ -759,6 +760,7 @@ Public Class RegistroChequeForm
                 'If CtaCont.Afectable = SiNoEnum.NO Then sMensaje &= "* No es Afectable" & vbCrLf
                 ' fg.Rows(Renglon).UserData = Nothing
                 ValorGridCuentas(Renglon, 4, "")
+                ValorGridCuentas(Renglon, 5, "")
                 'ValorGridCuentas(Renglon, 5, 0D)
                 'ValorGridCuentas(Renglon, 6, 0D)
                 MessageBox.Show(sMensaje, "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -979,6 +981,7 @@ Public Class RegistroChequeForm
                     polizaDet.Importe = Me.DgvCuentas.Rows(r.Index).Cells("ClmCargo").Value
                     polizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
                     polizaDet.Posicion = r.Index
+                    polizaDet.Concepto = Me.DgvCuentas.Rows(r.Index).Cells("clmConcepto").Value
                     Poliza.AgregarDetalle(polizaDet)
                     'ElseIf ValorFlexGrid(r.Index, 7) > 0 Then
                 Else
@@ -994,6 +997,7 @@ Public Class RegistroChequeForm
                         polizaDet.Importe = Me.DgvCuentas.Rows(r.Index).Cells("ClmAbono").Value
                         polizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
                         polizaDet.Posicion = r.Index
+                        polizaDet.Concepto = Me.DgvCuentas.Rows(r.Index).Cells("clmConcepto").Value
                         Poliza.AgregarDetalle(polizaDet)
                     End If
                 End If
@@ -1044,8 +1048,8 @@ Public Class RegistroChequeForm
                 If IsNothing(Me.DgvCuentas.Rows(e.RowIndex - 1).Cells("ClmCtaMayor").Value) Then
                     e.Cancel = True
                 Else
-                    If ValorGridCuentas(e.RowIndex - 1, 5) > 0 Or ValorGridCuentas(e.RowIndex - 1, 6) > 0 Then
-                        If (VerificarBalance() = 0) And ValorGridCuentas(e.RowIndex, 5) = 0 Then e.Cancel = True
+                    If ValorGridCuentas(e.RowIndex - 1, 6) > 0 Or ValorGridCuentas(e.RowIndex - 1, 7) > 0 Then
+                        If (VerificarBalance() = 0) And ValorGridCuentas(e.RowIndex, 6) = 0 Then e.Cancel = True
                     Else
                         e.Cancel = True
                     End If
@@ -1195,7 +1199,7 @@ Public Class RegistroChequeForm
                     Case Else
                 End Select
                 PasarCuenta(UltimaCuentaEditada, e.RowIndex)
-            Case 5
+            Case 6
                 DgvCuentas.CurrentCell.Value = CDec(DgvCuentas.CurrentCell.Value)
                 If VerificarBalance() < 0 Then
                     ValorGridCuentas(e.RowIndex, e.ColumnIndex, 0)
@@ -1211,8 +1215,8 @@ Public Class RegistroChequeForm
                 If IsNothing(Me.DgvCuentas.Rows(e.RowIndex).Cells("ClmCtaMayor").Value) Then
                     Exit Sub
                 Else
-                    If ValorGridCuentas(e.RowIndex, 5) > 0 Or ValorGridCuentas(e.RowIndex, 6) > 0 Then
-                        If (VerificarBalance() = 0) And ValorGridCuentas(e.RowIndex, 5) = 0 Then
+                    If ValorGridCuentas(e.RowIndex, 6) > 0 Or ValorGridCuentas(e.RowIndex, 7) > 0 Then
+                        If (VerificarBalance() = 0) And ValorGridCuentas(e.RowIndex, 6) = 0 Then
                             Exit Sub
                         End If
                     Else
@@ -1444,6 +1448,7 @@ Public Class RegistroChequeForm
 
                 Me.DgvCuentas.Rows(i).Cells("clmidcuentacont").Value = row("IdCuentaContable").ToString()
                 Me.DgvCuentas.Rows(i).Cells("clmPosicion").Value = row("Posicion").ToString()
+                Me.DgvCuentas.Rows(i).Cells("clmConcepto").Value = row("Concepto").ToString()
 
                 i = i + 1
             Next

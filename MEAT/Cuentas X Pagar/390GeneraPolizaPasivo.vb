@@ -252,8 +252,9 @@ Public Class _390GeneraPolizaPasivo
             Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
             Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
             Reporte.SetParameterValue("Modulo", "")
+            Reporte.SetParameterValue("NoFactura", DgvFacturas.CurrentRow.Cells("NoFactura").Value)
 
-            Dim pre As New ClasesNegocio.PreVisualizarForm
+            Dim pre As New CN.PreVisualizarForm
             pre.Reporte = Reporte
             pre.ShowDialog()
 
@@ -284,6 +285,7 @@ Public Class _390GeneraPolizaPasivo
                         Poliza.TipoPoliza = ClasesNegocio.PolizaTipoPolizaEnum.DIARIO
                         Poliza.TipoError = ClasesNegocio.ErroresPolizaEnum.NINGUNO
                         Poliza.Importe = CDec(Me.txtCargo.Text)
+
 
                         If Me.txtCargo.Text <> Me.txtAbono.Text Then
                             If MessageBox.Show("¡La Poliza esta Descuadrada!, ¿Aun asi desea Guardarla?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
@@ -344,32 +346,32 @@ Public Class _390GeneraPolizaPasivo
                 ''            fin   IMPRESIONS DE LA POLIZA
                 ''---------------------------------------------------
 
-                        FacturasCabCol = New CN.FacturaCabCXPColeccion
-                        Dim Contabilizada As Char = "N"
-                        Dim IdProveedor As Integer = -1
-                        If Me.CmbProveedor.SelectedIndex > 0 Then
-                            IdProveedor = Me.CmbProveedor.SelectedValue
-                        End If
-                        FacturasCabCol.Obtener(Controlador.Sesion.Empndx, Me.dtpFechaConta.Value.ToShortDateString, Contabilizada, IdProveedor)
-                        If FacturasCabCol.Count > 0 Then
-                            For Each fac As CN.FacturasCabCXPClass In FacturasCabCol
-                                fac.IdPoliza = Poliza.Codigo
-                                fac.Contabilizada = "S"
-                                If Not fac.Guardar(Trans) Then
-                                    Trans.Rollback()
-                                    MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                    Exit Sub
-                                End If
-                            Next
-                        Else
+                FacturasCabCol = New CN.FacturaCabCXPColeccion
+                Dim Contabilizada As Char = "N"
+                Dim IdProveedor As Integer = -1
+                If Me.CmbProveedor.SelectedIndex > 0 Then
+                    IdProveedor = Me.CmbProveedor.SelectedValue
+                End If
+                FacturasCabCol.Obtener(Controlador.Sesion.Empndx, Me.dtpFechaConta.Value.ToShortDateString, Contabilizada, IdProveedor)
+                If FacturasCabCol.Count > 0 Then
+                    For Each fac As CN.FacturasCabCXPClass In FacturasCabCol
+                        fac.IdPoliza = Poliza.Codigo
+                        fac.Contabilizada = "S"
+                        If Not fac.Guardar(Trans) Then
                             Trans.Rollback()
                             MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             Exit Sub
                         End If
+                    Next
+                Else
+                    Trans.Rollback()
+                    MessageBox.Show("Ocurrió un error", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
 
 
-                      
-                    
+
+
                 For i As Integer = 0 To Me.dgvGastos.Rows.Count - 1
                     If dgvGastos.Rows(i).Cells(chkb.Index).Value = True Then
                         If Me.dgvGastos.Rows(i).Cells(Me.Importe.Index).Value = 0 Then
