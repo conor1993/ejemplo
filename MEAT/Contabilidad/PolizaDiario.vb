@@ -570,8 +570,6 @@ Public Class PolizaDiario
             Dim ren As Integer = 0
             Dim rendet As Integer = 0
 
-
-
             Me.dgvPoliza.Refresh()
 
             'Select Case e.ColumnIndex
@@ -581,7 +579,7 @@ Public Class PolizaDiario
             Dim Ventana As New frmDistribuciondeGastos
             frmDistribuciondeGastos.valor = If(e.ColumnIndex = Me.clmCargo.Index, Me.dgvPoliza.CurrentRow.Cells(Me.clmCargo.Index).Value(),
                                                     Me.dgvPoliza.CurrentRow.Cells(Me.clmAbono.Index).Value())
-
+            '------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI And (e.ColumnIndex = clmAbono.Index Or e.ColumnIndex = clmCargo.Index) Then
                 If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
 
@@ -623,6 +621,7 @@ Public Class PolizaDiario
                     Next
                 End If
             End If
+            '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             ObtenerTotal()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
