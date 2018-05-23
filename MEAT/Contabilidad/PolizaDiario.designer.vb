@@ -42,8 +42,9 @@ Partial Class PolizaDiario
         Me.dgvPoliza = New System.Windows.Forms.DataGridView()
         Me.PolizaDetalleC = New ClasesNegocio.PolizaDetalleCollectionClass()
         Me.clmIdCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdGastoDepartamental = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PosicionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmPosicion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmCuentaContablePri = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CtaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SCtaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -247,7 +248,7 @@ Partial Class PolizaDiario
         '
         Me.dgvPoliza.AutoGenerateColumns = False
         Me.dgvPoliza.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvPoliza.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIdCuentaContable, Me.PolizaDataGridViewTextBoxColumn, Me.PosicionDataGridViewTextBoxColumn, Me.clmCuentaContablePri, Me.CtaDataGridViewTextBoxColumn, Me.SCtaDataGridViewTextBoxColumn, Me.SSCtaDataGridViewTextBoxColumn, Me.SSSCtaDataGridViewTextBoxColumn, Me.clmDescripcion, Me.clmConcepto, Me.clmCargo, Me.clmAbono, Me.ImporteDataGridViewTextBoxColumn})
+        Me.dgvPoliza.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIdCuentaContable, Me.IdGastoDepartamental, Me.PolizaDataGridViewTextBoxColumn, Me.clmPosicion, Me.clmCuentaContablePri, Me.CtaDataGridViewTextBoxColumn, Me.SCtaDataGridViewTextBoxColumn, Me.SSCtaDataGridViewTextBoxColumn, Me.SSSCtaDataGridViewTextBoxColumn, Me.clmDescripcion, Me.clmConcepto, Me.clmCargo, Me.clmAbono, Me.ImporteDataGridViewTextBoxColumn})
         Me.dgvPoliza.DataSource = Me.PolizaDetalleC
         Me.dgvPoliza.Location = New System.Drawing.Point(55, 173)
         Me.dgvPoliza.MultiSelect = False
@@ -270,6 +271,13 @@ Partial Class PolizaDiario
         Me.clmIdCuentaContable.Name = "clmIdCuentaContable"
         Me.clmIdCuentaContable.Visible = False
         '
+        'IdGastoDepartamental
+        '
+        Me.IdGastoDepartamental.DataPropertyName = "ID_GastoDepartamental"
+        Me.IdGastoDepartamental.HeaderText = "IdGastoDepartamental"
+        Me.IdGastoDepartamental.Name = "IdGastoDepartamental"
+        Me.IdGastoDepartamental.Visible = False
+        '
         'PolizaDataGridViewTextBoxColumn
         '
         Me.PolizaDataGridViewTextBoxColumn.DataPropertyName = "Poliza"
@@ -277,12 +285,12 @@ Partial Class PolizaDiario
         Me.PolizaDataGridViewTextBoxColumn.Name = "PolizaDataGridViewTextBoxColumn"
         Me.PolizaDataGridViewTextBoxColumn.Visible = False
         '
-        'PosicionDataGridViewTextBoxColumn
+        'clmPosicion
         '
-        Me.PosicionDataGridViewTextBoxColumn.DataPropertyName = "Posicion"
-        Me.PosicionDataGridViewTextBoxColumn.HeaderText = "Posicion"
-        Me.PosicionDataGridViewTextBoxColumn.Name = "PosicionDataGridViewTextBoxColumn"
-        Me.PosicionDataGridViewTextBoxColumn.Visible = False
+        Me.clmPosicion.DataPropertyName = "Posicion"
+        Me.clmPosicion.HeaderText = "Posicion"
+        Me.clmPosicion.Name = "clmPosicion"
+        Me.clmPosicion.Visible = False
         '
         'clmCuentaContablePri
         '
@@ -404,8 +412,9 @@ Partial Class PolizaDiario
     Friend WithEvents txtDiferencia As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents clmIdCuentaContable As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IdGastoDepartamental As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PolizaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PosicionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmPosicion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmCuentaContablePri As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CtaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SCtaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
