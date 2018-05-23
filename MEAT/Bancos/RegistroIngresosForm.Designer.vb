@@ -23,12 +23,12 @@ Partial Class RegistroIngresosForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gpo = New System.Windows.Forms.GroupBox()
         Me.tab = New System.Windows.Forms.TableLayoutPanel()
         Me.DgvCuentas = New System.Windows.Forms.DataGridView()
@@ -78,6 +78,7 @@ Partial Class RegistroIngresosForm
         Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmIdCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.posicion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gpo.SuspendLayout()
         Me.tab.SuspendLayout()
         CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,7 +122,7 @@ Partial Class RegistroIngresosForm
         Me.DgvCuentas.AllowUserToAddRows = False
         Me.DgvCuentas.AllowUserToDeleteRows = False
         Me.DgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono, Me.clmIdCuentaContable})
+        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono, Me.clmIdCuentaContable, Me.posicion})
         Me.DgvCuentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvCuentas.Location = New System.Drawing.Point(3, 3)
         Me.DgvCuentas.Name = "DgvCuentas"
@@ -539,33 +540,33 @@ Partial Class RegistroIngresosForm
         '
         'ClmCtaMayor
         '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmCtaMayor.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmCtaMayor.DefaultCellStyle = DataGridViewCellStyle1
         Me.ClmCtaMayor.HeaderText = "Cta. Mayor"
         Me.ClmCtaMayor.Name = "ClmCtaMayor"
         Me.ClmCtaMayor.Width = 85
         '
         'ClmSubCta
         '
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSubCta.DefaultCellStyle = DataGridViewCellStyle14
-        Me.ClmSubCta.HeaderText = "Sub Cta."
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSubCta.DefaultCellStyle = DataGridViewCellStyle2
+        Me.ClmSubCta.HeaderText = "Sub Cta"
         Me.ClmSubCta.Name = "ClmSubCta"
         Me.ClmSubCta.Width = 75
         '
         'ClmSsbCta
         '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSsbCta.DefaultCellStyle = DataGridViewCellStyle15
-        Me.ClmSsbCta.HeaderText = "Ssb Cta."
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSsbCta.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ClmSsbCta.HeaderText = "Ssb Cta"
         Me.ClmSsbCta.Name = "ClmSsbCta"
         Me.ClmSsbCta.Width = 75
         '
         'ClmSssCta
         '
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSssCta.DefaultCellStyle = DataGridViewCellStyle16
-        Me.ClmSssCta.HeaderText = "Sss Cta."
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSssCta.DefaultCellStyle = DataGridViewCellStyle4
+        Me.ClmSssCta.HeaderText = "Sss Cta"
         Me.ClmSssCta.Name = "ClmSssCta"
         Me.ClmSssCta.Width = 75
         '
@@ -578,21 +579,21 @@ Partial Class RegistroIngresosForm
         '
         'ClmCargo
         '
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.PapayaWhip
-        DataGridViewCellStyle17.Format = "C2"
-        DataGridViewCellStyle17.NullValue = Nothing
-        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.PapayaWhip
+        DataGridViewCellStyle5.Format = "C2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle5
         Me.ClmCargo.HeaderText = "Cargo"
         Me.ClmCargo.Name = "ClmCargo"
         '
         'ClmAbono
         '
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.Wheat
-        DataGridViewCellStyle18.Format = "C2"
-        DataGridViewCellStyle18.NullValue = Nothing
-        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Wheat
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle6
         Me.ClmAbono.HeaderText = "Abono"
         Me.ClmAbono.Name = "ClmAbono"
         '
@@ -601,6 +602,12 @@ Partial Class RegistroIngresosForm
         Me.clmIdCuentaContable.HeaderText = "Id Cuenta Contable"
         Me.clmIdCuentaContable.Name = "clmIdCuentaContable"
         Me.clmIdCuentaContable.Visible = False
+        '
+        'posicion
+        '
+        Me.posicion.HeaderText = "Posicion"
+        Me.posicion.Name = "posicion"
+        Me.posicion.Visible = False
         '
         'RegistroIngresosForm
         '
@@ -681,4 +688,5 @@ Partial Class RegistroIngresosForm
     Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmIdCuentaContable As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents posicion As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

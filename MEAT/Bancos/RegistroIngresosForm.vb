@@ -64,7 +64,7 @@ Public Class RegistroIngresosForm
         detalleDistGastosTb.Columns.Add("detMetdProrrateo", GetType(Integer))
         detalleDistGastosTb.Columns.Add("detCuenta", GetType(Integer))
         detalleDistGastosTb.Columns.Add("detCentroCostos", GetType(Integer))
-        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Decimal))
 
     End Sub
 #End Region
@@ -1107,6 +1107,8 @@ Public Class RegistroIngresosForm
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
             Cheque = BuscarCheques.Cheque
             Mostrar()
+            LimpiarGridCuentas()
+            RellenarCuentasstore(Cheque.IdPoliza)
         End If
     End Sub
 
@@ -1177,6 +1179,39 @@ Public Class RegistroIngresosForm
         End If
     End Sub
 
+    Private Sub RellenarCuentasstore(ByVal idPoliza As Integer)
+        Try
+            Dim i As Integer = 0
+            Dim datos As New DataSet
+            Dim query = "EXEC  ConsultaProrrateo {0}"
+            query = String.Format(query, idPoliza)
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim adapter As New SqlDataAdapter()
+                adapter.SelectCommand = New SqlCommand(query, connection)
+                adapter.Fill(datos)
+            End Using
+            LimpiarGridCuentas()
+            For Each row As DataRow In datos.Tables(0).Rows
+                Me.DgvCuentas.Rows.Add()
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("Cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("SubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
+
+                Me.DgvCuentas.Rows(i).Cells("clmIdCuentaContable").Value = row("IdCuentaContable").ToString()
+                Me.DgvCuentas.Rows(i).Cells("posicion").Value = row("Posicion").ToString()
+
+                i = i + 1
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("No se pudo cargar", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
     Private Sub DgvCuentas_CellContentDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentDoubleClick
 
         Try
@@ -1194,6 +1229,7 @@ Public Class RegistroIngresosForm
         Catch ex As Exception
 
         End Try
+
     End Sub
 
     Private Sub DgvCuentas_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentClick
