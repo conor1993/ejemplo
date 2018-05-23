@@ -15,6 +15,7 @@ Public Class frmDistribuciondeGastosconsulta
     Public Shared importe As Decimal
     Public Shared ptjimporte As Decimal
     Public Shared conteo As Decimal
+    Public Shared posicion As Decimal = -1
 
 #Region "propiedades publicas"
     Public Property valor1 As Decimal
@@ -92,11 +93,17 @@ Public Class frmDistribuciondeGastosconsulta
             Dim datos As New DataSet
             Dim query As String
 
-            If factura Is Nothing Then
-                query = "EXEC  Consultardepartamentalizacion  NULL , " + idcuentacontable.ToString() + ", " + poliza.ToString
+            If posicion <> -1 Then
+                query = "EXEC  Consultardepartamentalizacion 1, NULL , " + idcuentacontable.ToString() + ", " + poliza.ToString + ", " + posicion.ToString()
             Else
-                query = "EXEC  Consultardepartamentalizacion  '" + factura + "' , " + idcuentacontable.ToString() + ", NULL"
+                If factura Is Nothing Then
+                    query = "EXEC  Consultardepartamentalizacion 0, NULL , " + idcuentacontable.ToString() + ", " + poliza.ToString + ", NULL"
+                Else
+                    query = "EXEC  Consultardepartamentalizacion 0, '" + factura + "' , " + idcuentacontable.ToString() + ", NULL" + ", NULL"
+                End If
             End If
+
+
 
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 Dim adapter As New SqlDataAdapter()
@@ -109,7 +116,7 @@ Public Class frmDistribuciondeGastosconsulta
                 dgvMetodos.Rows(0).Cells(clmImporte.Index).Value = datos.Tables(0).Rows(1).Item(4)
                 Me.txtImporte.Text = datos.Tables(0).Rows(1).Item(4)
             End Using
-  
+
             Dim total As Decimal
             valor1 = datos.Tables(0).Rows(1).Item(4)
             total = valor1 / (dgvMetodos.Rows.Count)
