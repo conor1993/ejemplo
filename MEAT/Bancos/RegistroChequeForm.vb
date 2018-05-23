@@ -20,6 +20,9 @@ Public Class RegistroChequeForm
     Dim ConfigCol As New CN.ConfigImpresionChequesCollectionClass
     Dim UltimaCuentaEditada As CN.CuentaContableClass = Nothing
     Private bl As Boolean = False
+    ''Para guardar el prorrateo
+    Dim distribucionGastosTb As New DataTable
+    Dim detalleDistGastosTb As New DataTable
 #End Region
 
 #Region " Forma "
@@ -47,6 +50,22 @@ Public Class RegistroChequeForm
         'Me.mtb.Buttons(8).ToolTipText = "Permite Modificar el Banco."
         Me.mtb.Buttons(10).ToolTipText = "Imprime Los resgistros de Cheques Registrados."
         Me.mtb.Buttons(12).ToolTipText = "Cierra la Ventana Ignorando los cambios que no hayan sido Guardados."
+
+        distribucionGastosTb.Columns.Add("rowNumber", GetType(Integer))
+        distribucionGastosTb.PrimaryKey = New DataColumn() {distribucionGastosTb.Columns("rowNumber")}
+        'distribucionGastosTb.Columns.Add("idPoliza", GetType(Integer))
+        distribucionGastosTb.Columns.Add("idSucursal", GetType(Integer))
+        distribucionGastosTb.Columns.Add("idMetdProrrateo", GetType(Integer))
+        distribucionGastosTb.Columns.Add("idCuentaContable", GetType(Integer))
+        distribucionGastosTb.Columns.Add("importe", GetType(Decimal))
+        distribucionGastosTb.Columns.Add("ptjImporte", GetType(Decimal))
+
+        detalleDistGastosTb.Columns.Add("rowNumber", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detSucursal", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detMetdProrrateo", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detCuenta", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detCentroCostos", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Decimal))
 
         mtb.sbCambiarEstadoBotones("Cancelar")
         Cheques.Obtener(ClasesNegocio.BancosMovimientosTipo.RETIRO, chkEstatus)
@@ -241,8 +260,6 @@ Public Class RegistroChequeForm
         txtPoliza.Clear()
         txtCargo.Text = "0.00"
         txtAbono.Text = "0.00"
-        Me.dgvDistribuciondeGastos.Rows.Clear()
-        Me.dgvdistribuciongastosdet.Rows.Clear()
         Buscar = False
         chkElectronico.Checked = False
         chkAnticipo.Checked = False
@@ -364,6 +381,8 @@ Public Class RegistroChequeForm
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "GuardarCheques")
+        Dim TransDet As SqlTransaction
+
         Try
             Dim SaldoAnterior As Decimal = Cuenta.SaldoActual
             Cancelar = True
@@ -428,51 +447,101 @@ Public Class RegistroChequeForm
                                 Exit Sub
                             End If
 
-                            Trans.Commit() ''Se escriben los datos en la tabla de UsrBanCheques, si no ha pasado ningun error
-
-                            'Ingresar los datos de prorrateo a la base de datos
                             Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                            Try
-                                For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
-                                    Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},'{8}',{9},{10})"
-                                    cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value,
-                                                                   dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value, dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value,
-                                                                   dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value, CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value),
-                                                                   Cheque.FechaDocumento.ToString("dd-mm-yyyy"), 0, "C|" + CStr(Cheque.Poliza.Codigo), Cheque.Beneficiario.Codigo, 0)
-                                    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
-                                    Dim adp As New SqlDataAdapter(sqlcom)
+                            Dim errorValue As Integer = 0
+                            Dim idGastoDepartamental As Integer = 0
 
-                                    sqlCon.Open()
-                                    sqlcom.ExecuteNonQuery()
-                                    sqlCon.Close()
+                            sqlCon.Open()
 
+                            TransDet = sqlCon.BeginTransaction(IsolationLevel.ReadCommitted, "DetallesGastos")
+
+                            Dim command As SqlCommand = sqlCon.CreateCommand()
+                            command.Connection = sqlCon
+                            command.Transaction = TransDet
+
+                            Dim query As String
+
+                            ''Distribucion de gastos
+                            For i As Integer = 0 To distribucionGastosTb.Rows.Count - 1
+                                'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},'{8}',{9},{10})"
+                                'cadenaConsulta = String.Format(cadenaConsulta, 0, distribucionGastosTb.Rows(i)("idSucursal"),
+                                '                               distribucionGastosTb.Rows(i)("idMetdProrrateo"), distribucionGastosTb.Rows(i)("idCuentaContable"),
+                                '                               distribucionGastosTb.Rows(i)("ptjImporte"), CDec(distribucionGastosTb.Rows(i)("importe")),
+                                '                               Poliza.FechaPoliza.ToString("dd-mm-yyyy"), 0, ("C|" + CStr(Poliza.Codigo)), 0, 0)
+                                query = "EXEC saveProrrateo 4, 0,       {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, '{11}', {12}"
+                                query = String.Format(query,
+                                                      "NULL",
+                                                      Controlador.Sesion.MiEmpresa.Empndx,
+                                                      "NULL",
+                                                      "NULL",
+                                                      distribucionGastosTb.Rows(i)("idMetdProrrateo"),
+                                                      distribucionGastosTb.Rows(i)("idCuentaContable"),
+                                                      1,
+                                                      Cheque.Poliza.Codigo,
+                                                      1,
+                                                      CDec(distribucionGastosTb.Rows(i)("importe")),
+                                                      100,
+                                                      Cheque.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                                      distribucionGastosTb.Rows(i)("rowNumber"))
+                                command.CommandText = query
+                                ''Leer los valores regresados por el Procedimiento Almacenado
+                                Dim readCommand As SqlDataReader = command.ExecuteReader()
+                                readCommand.Read()
+                                errorValue = CInt(readCommand(0))
+                                Dim a As String = CStr(readCommand(1))
+                                idGastoDepartamental = CInt(readCommand(2))
+                                readCommand.Close()
+                                'sqlcom.ExecuteNonQuery()
+                                ''Agregar detalles de 
+                                For j As Integer = 0 To (detalleDistGastosTb.Rows.Count - 1)
+                                    If detalleDistGastosTb.Rows(j)("rowNumber") = distribucionGastosTb.Rows(i)("rowNumber") Then
+                                        query = "EXEC saveProrrateo 3, {0},       {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}"
+
+                                        query = String.Format(query,
+                                                              idGastoDepartamental,
+                                                              "NULL",
+                                                              Controlador.Sesion.MiEmpresa.Empndx,
+                                                              "NULL",
+                                                              "NULL",
+                                                              detalleDistGastosTb.Rows(j)("detMetdProrrateo"),
+                                                              detalleDistGastosTb.Rows(j)("detCuenta"),
+                                                              1,
+                                                              Cheque.Poliza.Codigo,
+                                                              detalleDistGastosTb.Rows(j)("detCentroCostos"),
+                                                              CDec(1),
+                                                              detalleDistGastosTb.Rows(j)("detPorcentaje"),
+                                                              Cheque.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                                              detalleDistGastosTb.Rows(j)("rowNumber"))
+
+                                        command.CommandText = query
+                                        Dim readCommand2 As SqlDataReader = command.ExecuteReader
+                                        readCommand2.Read()
+                                        errorValue = CInt(readCommand2(0))
+                                        idGastoDepartamental = CInt(readCommand2(2))
+                                        readCommand2.Close()
+                                    End If
                                 Next
 
-                            Catch ex As Exception
-                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            End Try
-
-                            ''Ingresar datos de prorrateo a tabla "GastosDepartamentosDetFG"
-                            Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                            Try
-                                For i As Integer = 0 To (dgvdistribuciongastosdet.Rows.Count - 1)
-                                    Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje,id_proveedor) values({0},{1},{2},'{3}',{4},{5},{6})"
-                                    cadenaConsulta = String.Format(cadenaConsulta, dgvdistribuciongastosdet.Rows(i).Cells(sucursal1.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(Prorrateo1.Index).Value,
-                                                                   dgvdistribuciongastosdet.Rows(i).Cells(Cuenta1.Index).Value, "C|" + CStr(Cheque.Poliza.Codigo), dgvdistribuciongastosdet.Rows(i).Cells(cod_centro.Index).Value,
-                                                                   dgvdistribuciongastosdet.Rows(i).Cells(idporcentaje.Index).Value, Cheque.Beneficiario.Codigo)
-
-                                    Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCone)
-                                    Dim adp As New SqlDataAdapter(sqlcom)
-
-                                    sqlCone.Open()
-                                    sqlcom.ExecuteNonQuery()
-                                    sqlCone.Close()
+                                If (errorValue > 0) Then
+                                    Exit For
+                                End If
+                            Next
 
 
-                                Next
-                            Catch ex As Exception
-                                MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            End Try
+
+                            If errorValue > 0 Then
+                                Trans.Rollback()
+                                TransDet.Rollback()
+                                Cancelar = True
+                                sqlCon.Close()
+                                MessageBox.Show("Error al guardar los detalles de prorrateo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                Exit Sub
+                            Else
+                                Trans.Commit()
+                                TransDet.Commit()
+                                sqlCon.Close()
+                                MessageBox.Show("La Póliza ha sido grabada con el folio " & Cheque.Poliza.NumeroPoliza, "¡Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            End If
 
                             MessageBox.Show(String.Format("Número de Poliza Generado:{0}{1}", vbCrLf, Cheque.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             mtb_ClickImprimir(sender, e, Cancelar)
@@ -497,7 +566,7 @@ Public Class RegistroChequeForm
     End Sub
 
     Private Sub mtb_ClickLimpiar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickLimpiar
-        
+
         Cheque = Nothing
         Limpiar()
     End Sub
@@ -792,9 +861,9 @@ Public Class RegistroChequeForm
                 'Else
                 For a As Integer = 0 To Me.DgvCuentas.Rows.Count - 1
                     'If Me.DgvCuentas.Rows(a).Cells("ClmDescripcion").Value = Beneficiarios.Item(cmbBeneficiario.SelectedIndex).Proveedor.CuentaContable2.NombreCuenta Then
-                    If Me.DgvCuentas.Rows(a).Cells("ClmDescripcion").Value = Cta.NombreCuenta Then
-                        Exit Sub
-                    End If
+                    'If Me.DgvCuentas.Rows(a).Cells("ClmDescripcion").Value = Cta.NombreCuenta Then
+                    '    Exit Sub
+                    'End If
                     ' Exit Sub
                     'End If
                 Next
@@ -999,50 +1068,49 @@ Public Class RegistroChequeForm
 
         Dim formato As String = "C4"
         Try
-
-            ''------------------------------------------------------------------------------------------------------------------------------------------
-            ''------------------------------------------------------------------------------------------------------------------------------------------
-
-            ''------------------------------------------------------------
-            Dim ren As Integer = 0
-            Dim rendet As Integer = 0
-            ''------------------------------------------------------------
-
-            'Select Case e.ColumnIndex
-            'Case Me.ClmCargo.Index
             Dim Cuenta As New CN.CuentaContableClass
             Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value)
-            If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
-
-                Dim Ventana As New frmDistribuciondeGastos
-                frmDistribuciondeGastos.valor1 = If(e.ColumnIndex = Me.ClmCargo.Index, Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value(),
+            Dim Ventana As New frmDistribuciondeGastos
+            frmDistribuciondeGastos.valor = If(e.ColumnIndex = Me.ClmCargo.Index, Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value(),
                                                     Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value())
+            Dim rowNumber As Integer = Me.DgvCuentas.CurrentRow.Index + 1
+            If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI And (e.ColumnIndex = ClmAbono.Index Or e.ColumnIndex = ClmCargo.Index) Then
                 If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
 
-                    If (dgvDistribuciondeGastos.Rows.Count) >= 1 Then
-                        ren = dgvDistribuciondeGastos.Rows.Count
-                    End If
+                    For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 2)
+                        If distribucionGastosTb.Rows.Count Then
 
-                    For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 2
-
-                        Me.dgvDistribuciondeGastos.Rows.Add()
-                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
-                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
-                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
-                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
-                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
-
-                        If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
-                            rendet = dgvdistribuciongastosdet.Rows.Count
+                            ''Checar si la fila actual ya existe en el DataTable, si ya existe removerla de ambas tablas
+                            For j As Integer = distribucionGastosTb.Rows.Count - 1 To 0 Step -1
+                                If distribucionGastosTb.Rows(j)("rowNumber") = Me.DgvCuentas.CurrentRow.Index Then
+                                    For k As Integer = detalleDistGastosTb.Rows.Count - 1 To 0 Step -1
+                                        If detalleDistGastosTb.Rows(k)("rowNumber") = Me.DgvCuentas.CurrentRow.Index Then
+                                            detalleDistGastosTb.Rows(k).Delete()
+                                        End If
+                                    Next
+                                    distribucionGastosTb.Rows(j).Delete()
+                                End If
+                            Next
                         End If
+                        ''Aqui se agregan los datos de la Distribucion de gastos al DataTable 'distribucionGastosTb'
+                        distribucionGastosTb.Rows.Add(
+                            Me.DgvCuentas.CurrentRow.Index,
+                            Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value,
+                            Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value,
+                            Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value,
+                            Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmImporte.Index).Value,
+                            Ventana.txtPorcentaje.Text)
+
+                        'If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
+                        '    rendet = dgvdistribuciongastosdet.Rows.Count
+                        'End If
 
                         For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
-                            Me.dgvdistribuciongastosdet.Rows.Add()
-                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.sucursal1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value
-                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value
-                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
-                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
-                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
+
+                            ''Aqui se agregan los detalles de la Distribucion de gastos al DataTable 'detalleDistGastosTb'
+                            detalleDistGastosTb.Rows.Add(Me.DgvCuentas.CurrentRow.Index, Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value,
+                                Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value, Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value,
+                                Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value, Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value)
                         Next
                     Next
                 End If
@@ -1158,10 +1226,6 @@ Public Class RegistroChequeForm
             Else
                 txtAbono.Text = "0.00"
             End If
-            'Else
-            'Exit Sub
-            'txtImporte.Focus()
-            'End If
         End If
 
     End Sub
@@ -1256,7 +1320,7 @@ Public Class RegistroChequeForm
 
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
             Cheque = BuscarCheques.Cheque
-            Mostrar()
+            RellenarCuentasstore(Cheque.Poliza.Codigo)
         End If
     End Sub
 
@@ -1344,12 +1408,46 @@ Public Class RegistroChequeForm
                 Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value)
                 If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
                     Dim Ventana As New frmDistribuciondeGastosconsulta
-                    frmDistribuciondeGastosconsulta.factura = "C|" + CStr(Cheque.Poliza.Codigo)
+                    frmDistribuciondeGastosconsulta.idpoliza = Cheque.Poliza.Codigo
                     frmDistribuciondeGastosconsulta.idcuentacontable = Me.DgvCuentas.CurrentRow.Cells(Me.clmidcuentacont.Index).Value
+                    frmDistribuciondeGastosconsulta.posicion = Me.DgvCuentas.CurrentRow.Cells(Me.clmPosicion.Index).Value
                     If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                     End If
                 End If
             End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub RellenarCuentasstore(idpoliza As Integer)
+        Try
+            Dim i As Integer = 0
+            Dim datos As New DataSet
+            Dim query = "EXEC  ConsultaProrrateo {0}"
+            query = String.Format(query, idpoliza)
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim adapter As New SqlDataAdapter()
+                adapter.SelectCommand = New SqlCommand(query, connection)
+                adapter.Fill(datos)
+            End Using
+            LimpiarGridCuentas()
+            For Each row As DataRow In datos.Tables(0).Rows
+                Me.DgvCuentas.Rows.Add()
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("Cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("SubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
+
+                Me.DgvCuentas.Rows(i).Cells("clmidcuentacont").Value = row("IdCuentaContable").ToString()
+                Me.DgvCuentas.Rows(i).Cells("clmPosicion").Value = row("Posicion").ToString()
+
+                i = i + 1
+            Next
+
         Catch ex As Exception
 
         End Try
