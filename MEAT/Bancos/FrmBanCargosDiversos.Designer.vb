@@ -22,62 +22,67 @@ Partial Class FrmBanCargosDiversos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.pan = New System.Windows.Forms.Panel
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox
-        Me.chkAnticipo = New System.Windows.Forms.CheckBox
-        Me.txtImporte = New System.Windows.Forms.TextBox
-        Me.txtTipoCambio = New System.Windows.Forms.TextBox
-        Me.txtPoliza = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.txtReferencia = New System.Windows.Forms.TextBox
-        Me.txtConcepto = New System.Windows.Forms.TextBox
-        Me.txtImporteLetra = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.dtp = New System.Windows.Forms.DateTimePicker
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.gpoCuentas = New System.Windows.Forms.GroupBox
-        Me.lv = New System.Windows.Forms.ListView
-        Me.chCuenta = New System.Windows.Forms.ColumnHeader
-        Me.chDescripcion = New System.Windows.Forms.ColumnHeader
-        Me.chTipoMoneda = New System.Windows.Forms.ColumnHeader
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.txtSaldo = New System.Windows.Forms.TextBox
-        Me.txtCuenta = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.lblRef = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.cmbBanco = New System.Windows.Forms.ComboBox
-        Me.Bancos = New ClasesNegocio.BancosCollectionClass
-        Me.txtBanco = New System.Windows.Forms.TextBox
-        Me.chkElectronico = New System.Windows.Forms.CheckBox
-        Me.gpo = New System.Windows.Forms.GroupBox
-        Me.tab = New System.Windows.Forms.TableLayoutPanel
-        Me.DgvCuentas = New System.Windows.Forms.DataGridView
-        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.txtAbono = New System.Windows.Forms.TextBox
-        Me.txtCargo = New System.Windows.Forms.TextBox
-        Me.Cargos = New ClasesNegocio.ChequeCollectionClass
-        Me.ImprimirCheque = New ClasesNegocio.PrintDocumentChequeClass
-        Me.PagoElectronico = New ClasesNegocio.PrintDocumentPagoElectronicoClass
-        Me.pDg = New System.Windows.Forms.PrintDialog
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.pan = New System.Windows.Forms.Panel()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.chkAnticipo = New System.Windows.Forms.CheckBox()
+        Me.txtImporte = New System.Windows.Forms.TextBox()
+        Me.txtTipoCambio = New System.Windows.Forms.TextBox()
+        Me.txtPoliza = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtReferencia = New System.Windows.Forms.TextBox()
+        Me.txtConcepto = New System.Windows.Forms.TextBox()
+        Me.txtImporteLetra = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.dtp = New System.Windows.Forms.DateTimePicker()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.gpoCuentas = New System.Windows.Forms.GroupBox()
+        Me.lv = New System.Windows.Forms.ListView()
+        Me.chCuenta = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.chDescripcion = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.chTipoMoneda = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtSaldo = New System.Windows.Forms.TextBox()
+        Me.txtCuenta = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblRef = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmbBanco = New System.Windows.Forms.ComboBox()
+        Me.Bancos = New ClasesNegocio.BancosCollectionClass()
+        Me.txtBanco = New System.Windows.Forms.TextBox()
+        Me.chkElectronico = New System.Windows.Forms.CheckBox()
+        Me.gpo = New System.Windows.Forms.GroupBox()
+        Me.tab = New System.Windows.Forms.TableLayoutPanel()
+        Me.DgvCuentas = New System.Windows.Forms.DataGridView()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtAbono = New System.Windows.Forms.TextBox()
+        Me.txtCargo = New System.Windows.Forms.TextBox()
+        Me.Cargos = New ClasesNegocio.ChequeCollectionClass()
+        Me.ImprimirCheque = New ClasesNegocio.PrintDocumentChequeClass()
+        Me.PagoElectronico = New ClasesNegocio.PrintDocumentPagoElectronicoClass()
+        Me.pDg = New System.Windows.Forms.PrintDialog()
+        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.posicion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pan.SuspendLayout()
         Me.gpoCuentas.SuspendLayout()
         Me.gpo.SuspendLayout()
@@ -114,7 +119,7 @@ Partial Class FrmBanCargosDiversos
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 534)
+        Me.mtb.Size = New System.Drawing.Size(50, 530)
         Me.mtb.TabIndex = 5
         '
         'lblTitulo
@@ -126,7 +131,7 @@ Partial Class FrmBanCargosDiversos
         Me.lblTitulo.Location = New System.Drawing.Point(50, 0)
         Me.lblTitulo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(708, 30)
+        Me.lblTitulo.Size = New System.Drawing.Size(700, 30)
         Me.lblTitulo.TabIndex = 6
         Me.lblTitulo.Text = "Label1"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -280,7 +285,7 @@ Partial Class FrmBanCargosDiversos
         'gpoCuentas
         '
         Me.gpoCuentas.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpoCuentas.Controls.Add(Me.lv)
         Me.gpoCuentas.Controls.Add(Me.Label6)
         Me.gpoCuentas.Controls.Add(Me.txtSaldo)
@@ -295,8 +300,8 @@ Partial Class FrmBanCargosDiversos
         'lv
         '
         Me.lv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lv.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.chCuenta, Me.chDescripcion, Me.chTipoMoneda})
         Me.lv.FullRowSelect = True
         Me.lv.Location = New System.Drawing.Point(6, 19)
@@ -433,8 +438,8 @@ Partial Class FrmBanCargosDiversos
         'gpo
         '
         Me.gpo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpo.Controls.Add(Me.tab)
         Me.gpo.Location = New System.Drawing.Point(54, 341)
         Me.gpo.Name = "gpo"
@@ -445,8 +450,8 @@ Partial Class FrmBanCargosDiversos
         'tab
         '
         Me.tab.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tab.ColumnCount = 1
         Me.tab.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tab.Controls.Add(Me.DgvCuentas, 0, 0)
@@ -464,75 +469,38 @@ Partial Class FrmBanCargosDiversos
         '
         Me.DgvCuentas.AllowUserToAddRows = False
         Me.DgvCuentas.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvCuentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono})
+        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono, Me.IdCuentaContable, Me.posicion})
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvCuentas.DefaultCellStyle = DataGridViewCellStyle8
         Me.DgvCuentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvCuentas.Location = New System.Drawing.Point(3, 3)
         Me.DgvCuentas.Name = "DgvCuentas"
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvCuentas.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DgvCuentas.RowHeadersVisible = False
         Me.DgvCuentas.Size = New System.Drawing.Size(676, 112)
         Me.DgvCuentas.TabIndex = 5
-        '
-        'ClmCtaMayor
-        '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmCtaMayor.DefaultCellStyle = DataGridViewCellStyle13
-        Me.ClmCtaMayor.HeaderText = "Cta. May"
-        Me.ClmCtaMayor.Name = "ClmCtaMayor"
-        Me.ClmCtaMayor.Width = 75
-        '
-        'ClmSubCta
-        '
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSubCta.DefaultCellStyle = DataGridViewCellStyle14
-        Me.ClmSubCta.HeaderText = "Sub Cta."
-        Me.ClmSubCta.Name = "ClmSubCta"
-        Me.ClmSubCta.Width = 75
-        '
-        'ClmSsbCta
-        '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSsbCta.DefaultCellStyle = DataGridViewCellStyle15
-        Me.ClmSsbCta.HeaderText = "Ssb Cta."
-        Me.ClmSsbCta.Name = "ClmSsbCta"
-        Me.ClmSsbCta.Width = 75
-        '
-        'ClmSssCta
-        '
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSssCta.DefaultCellStyle = DataGridViewCellStyle16
-        Me.ClmSssCta.HeaderText = "Sss Cta."
-        Me.ClmSssCta.Name = "ClmSssCta"
-        Me.ClmSssCta.Width = 75
-        '
-        'ClmDescripcion
-        '
-        Me.ClmDescripcion.HeaderText = "Descripción"
-        Me.ClmDescripcion.Name = "ClmDescripcion"
-        Me.ClmDescripcion.ReadOnly = True
-        Me.ClmDescripcion.Width = 150
-        '
-        'ClmCargo
-        '
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.PapayaWhip
-        DataGridViewCellStyle17.Format = "C2"
-        DataGridViewCellStyle17.NullValue = Nothing
-        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle17
-        Me.ClmCargo.HeaderText = "Cargo"
-        Me.ClmCargo.Name = "ClmCargo"
-        Me.ClmCargo.Width = 90
-        '
-        'ClmAbono
-        '
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.Wheat
-        DataGridViewCellStyle18.Format = "C2"
-        DataGridViewCellStyle18.NullValue = Nothing
-        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle18
-        Me.ClmAbono.HeaderText = "Abono"
-        Me.ClmAbono.Name = "ClmAbono"
-        Me.ClmAbono.Width = 90
         '
         'Panel1
         '
@@ -587,8 +555,12 @@ Partial Class FrmBanCargosDiversos
         Me.Cargos.AllowEdit = True
         Me.Cargos.AllowNew = True
         Me.Cargos.AllowRemove = True
+        Me.Cargos.MaximoElementosSeleccionados = 1
+        Me.Cargos.MensajeLimiteMaximo = "Ya se selecciono el maximo de elementos permitidos"
+        Me.Cargos.MostrarAlertas = False
         Me.Cargos.Name = Nothing
         Me.Cargos.RaiseListChangedEvents = True
+        Me.Cargos.Transaction = Nothing
         '
         'ImprimirCheque
         '
@@ -604,11 +576,91 @@ Partial Class FrmBanCargosDiversos
         '
         Me.pDg.UseEXDialog = True
         '
+        'ClmCtaMayor
+        '
+        Me.ClmCtaMayor.DataPropertyName = "Cta"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmCtaMayor.DefaultCellStyle = DataGridViewCellStyle2
+        Me.ClmCtaMayor.HeaderText = "Cta. May"
+        Me.ClmCtaMayor.Name = "ClmCtaMayor"
+        Me.ClmCtaMayor.Width = 75
+        '
+        'ClmSubCta
+        '
+        Me.ClmSubCta.DataPropertyName = "SubCta"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSubCta.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ClmSubCta.HeaderText = "Sub Cta."
+        Me.ClmSubCta.Name = "ClmSubCta"
+        Me.ClmSubCta.Width = 75
+        '
+        'ClmSsbCta
+        '
+        Me.ClmSsbCta.DataPropertyName = "SSubCta"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSsbCta.DefaultCellStyle = DataGridViewCellStyle4
+        Me.ClmSsbCta.HeaderText = "Ssb Cta."
+        Me.ClmSsbCta.Name = "ClmSsbCta"
+        Me.ClmSsbCta.Width = 75
+        '
+        'ClmSssCta
+        '
+        Me.ClmSssCta.DataPropertyName = "SSSubCta"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSssCta.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ClmSssCta.HeaderText = "Sss Cta."
+        Me.ClmSssCta.Name = "ClmSssCta"
+        Me.ClmSssCta.Width = 75
+        '
+        'ClmDescripcion
+        '
+        Me.ClmDescripcion.DataPropertyName = "NomCuenta"
+        Me.ClmDescripcion.HeaderText = "Descripción"
+        Me.ClmDescripcion.Name = "ClmDescripcion"
+        Me.ClmDescripcion.ReadOnly = True
+        Me.ClmDescripcion.Width = 150
+        '
+        'ClmCargo
+        '
+        Me.ClmCargo.DataPropertyName = "Cargo"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.PapayaWhip
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle6
+        Me.ClmCargo.HeaderText = "Cargo"
+        Me.ClmCargo.Name = "ClmCargo"
+        Me.ClmCargo.Width = 90
+        '
+        'ClmAbono
+        '
+        Me.ClmAbono.DataPropertyName = "Abono"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Wheat
+        DataGridViewCellStyle7.Format = "C2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle7
+        Me.ClmAbono.HeaderText = "Abono"
+        Me.ClmAbono.Name = "ClmAbono"
+        Me.ClmAbono.Width = 90
+        '
+        'IdCuentaContable
+        '
+        Me.IdCuentaContable.DataPropertyName = "IdCuentaContable"
+        Me.IdCuentaContable.HeaderText = "IdCuentaContable"
+        Me.IdCuentaContable.Name = "IdCuentaContable"
+        '
+        'posicion
+        '
+        Me.posicion.DataPropertyName = "posicion"
+        Me.posicion.HeaderText = "posicion"
+        Me.posicion.Name = "posicion"
+        '
         'FrmBanCargosDiversos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(758, 534)
+        Me.ClientSize = New System.Drawing.Size(750, 530)
         Me.Controls.Add(Me.gpo)
         Me.Controls.Add(Me.pan)
         Me.Controls.Add(Me.lblTitulo)
@@ -671,6 +723,9 @@ Partial Class FrmBanCargosDiversos
     Friend WithEvents txtAbono As System.Windows.Forms.TextBox
     Friend WithEvents txtCargo As System.Windows.Forms.TextBox
     Friend WithEvents txtImporte As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents chkAnticipo As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents ClmCtaMayor As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmSubCta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -678,7 +733,6 @@ Partial Class FrmBanCargosDiversos
     Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents chkAnticipo As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents IdCuentaContable As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents posicion As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

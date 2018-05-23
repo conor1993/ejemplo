@@ -538,6 +538,8 @@ Public Class PagosaProveedoresForm
                     If bbl Then
                         GenerarPoliza()
                         If cheque.Guardar(Tran) Then
+
+                            imprimir(cheque.Poliza)
                             ''--------------------------------------------------------------------------
                             ''--------------------------------------------------------------------------
 
@@ -1047,7 +1049,8 @@ Public Class PagosaProveedoresForm
             End If
         Next
         cheque.Poliza = Poliza
-        imprimir(Poliza)
+        'imprimir(Poliza)
+
     End Sub
 
     Private Function obtenerdatasetPoliza(Poliza As ClasesNegocio.PolizaClass) As DataSet
@@ -1116,7 +1119,6 @@ Public Class PagosaProveedoresForm
 
     Private Function imprimir(Poliza As ClasesNegocio.PolizaClass)
         Try
-
             ''obtener  datos de la poliza guardada
             Dim datos As New DataSet
             datos = obtenerdatasetPoliza(Poliza)
@@ -1136,6 +1138,7 @@ Public Class PagosaProveedoresForm
             Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
             Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
             Reporte.SetParameterValue("Modulo", "")
+            Reporte.SetParameterValue("NoFactura", DgvFacturas.CurrentRow.Cells(1).Value)
 
             Dim pre As New ClasesNegocio.PreVisualizarForm
             pre.Reporte = Reporte
