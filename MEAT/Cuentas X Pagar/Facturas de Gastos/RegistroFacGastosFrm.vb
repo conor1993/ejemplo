@@ -767,6 +767,7 @@ Public Class RegistroFacGastosFrm
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
 
         Dim Tran As New HC.Transaction(IsolationLevel.ReadCommitted, "Fac")
+        Dim TransDet As SqlTransaction
         Dim Trans As New IntegraLab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "Poliza")
         Try
             If Validar() Then
@@ -779,71 +780,114 @@ Public Class RegistroFacGastosFrm
                         Det.Guardar(Tran)
                     Next
                     Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                    ''Ingresar datos de prorrateo a tabla "GastosDepartamentalesFG"
+                    Dim errorValue As Integer = 0
+                    Dim idGastoDepartamental As Integer = 0
                     Try
+                        ''------------------------------guardar prorrateo---------------------------------------------------------------------------------------------------------------
+                        ''--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+                        sqlCon.Open()
+
+                        TransDet = sqlCon.BeginTransaction(IsolationLevel.ReadCommitted, "DetallesGastos")
+
+                        Dim command As SqlCommand = sqlCon.CreateCommand()
+                        command.Connection = sqlCon
+                        command.Transaction = TransDet
+
+                        Dim query As String
+
                         For i As Integer = 0 To dgvDistribuciondeGastos.Rows.Count - 1
 
+                            query = "EXEC saveProrrateo 4, 0,       {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, '{11}',{12}"
+                            query = String.Format(query,
+                                                  Factura.NoFactura,
+                                                  Controlador.Sesion.MiEmpresa.Empndx,
+                                                  "NULL",
+                                                  Factura.IdProveedor,
+                                                   dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value,
+                                                   dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value,
+                                                  1,
+                                                  "NULL",
+                                                  1,
+                                                  CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value),
+                                                  100,
+                                                  DtpFechaFactura.Text,
+                                                  "null")
+                            command.CommandText = query
+                            ''Leer los valores regresados por el Procedimiento Almacenado
+                            Dim readCommand As SqlDataReader = command.ExecuteReader()
+                            readCommand.Read()
+                            errorValue = CInt(readCommand(0))
+                            Dim a As String = CStr(readCommand(1))
+                            idGastoDepartamental = CInt(readCommand(2))
+                            readCommand.Close()
+                            'sqlcom.ExecuteNonQuery()
 
-                            Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},'{6}',{7},'{8}',{9},{10})"
-                            cadenaConsulta = String.Format(cadenaConsulta, 0, dgvDistribuciondeGastos.Rows(i).Cells(clmSucursal.Index).Value,
-                                                           dgvDistribuciondeGastos.Rows(i).Cells(clmMetodoProrrateo.Index).Value,
-                                                           dgvDistribuciondeGastos.Rows(i).Cells(clmCuentaContable.Index).Value,
-                                                           dgvDistribuciondeGastos.Rows(i).Cells(clmPorcentaje.Index).Value,
-                                                           CDec(dgvDistribuciondeGastos.Rows(i).Cells(clmImporte.Index).Value), DtpFechaFactura.Text, 0,
-                                                           Factura.NoFactura, Factura.IdProveedor, Factura.IdEmpresa)
-                            Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCon)
-                            Dim adp As New SqlDataAdapter(sqlcom)
+                            If (errorValue > 0) Then
+                                Exit For
+                            End If
+                            ''Detalle de Distribucion de gastos
+                            If Not errorValue > 0 Then
+                                Dim ConsultaCompleta As String = ""
 
-                            'Dim tb As New DataTable
-                            'sqlCon.Open()
-                            '    adp.Fill(tb)
-                            '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
-                            '    Me.dgvDistribuciondeGastos.DataSource = tb
+                                For j As Integer = 0 To (dgvdistribuciongastosdet.Rows.Count - 1)
+                                    If dgvDistribuciondeGastos.Rows(i).Cells(rowid.Index).Value = dgvdistribuciongastosdet.Rows(j).Cells(row.Index).Value Then
 
-                            sqlCon.Open()
-                            sqlcom.ExecuteNonQuery()
+                                        query = "EXEC saveProrrateo 3, {0},       {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}',{13}"
+
+                                        query = String.Format(query,
+                                                              idGastoDepartamental,
+                                                              Factura.NoFactura,
+                                                              Controlador.Sesion.MiEmpresa.Empndx,
+                                                              "NULL",
+                                                  Factura.IdProveedor,
+                                                       dgvdistribuciongastosdet.Rows(j).Cells(Prorrateo1.Index).Value,
+                                                        dgvdistribuciongastosdet.Rows(j).Cells(Cuenta1.Index).Value,
+                                                              1,
+                                                              "NULL",
+                                                              dgvdistribuciongastosdet.Rows(j).Cells(cod_centro.Index).Value,
+                                                              CDec(1),
+                                                              dgvdistribuciongastosdet.Rows(j).Cells(idporcentaje.Index).Value,
+                                                              DtpFechaFactura.Text,
+                                                              "NULL")
+
+
+                                        command.CommandText = query
+
+                                        Dim readCommands As SqlDataReader = command.ExecuteReader()
+                                        readCommands.Read()
+                                        errorValue = CInt(readCommands(0))
+                                        idGastoDepartamental = CInt(readCommands(2))
+                                        readCommands.Close()
+
+                                        If (errorValue > 0) Then
+                                            Exit For
+                                        End If
+                                    End If
+                                Next
+                            End If
+                        Next
+
+                        If errorValue > 0 Then
+                            Trans.Rollback()
+                            TransDet.Rollback()
+                            Cancelar = True
                             sqlCon.Close()
-
-                        Next
+                            MessageBox.Show("Error al guardar los detalles de prorrateo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Exit Sub
+                        End If
 
                     Catch ex As Exception
-
-                    End Try
-
-                    ''Ingresar datos de prorrateo a tabla "GastosDepartamentosDetFG"
-                    Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                    Try
-                        For i As Integer = 0 To (dgvdistribuciongastosdet.Rows.Count - 1)
-                            Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje,id_proveedor) values({0},{1},{2},'{3}',{4},{5},{6})"
-                            cadenaConsulta = String.Format(cadenaConsulta, dgvdistribuciongastosdet.Rows(i).Cells(sucursal1.Index).Value,
-                                                           dgvdistribuciongastosdet.Rows(i).Cells(Prorrateo1.Index).Value,
-                                                           dgvdistribuciongastosdet.Rows(i).Cells(Cuenta1.Index).Value, Factura.NoFactura,
-                                                           dgvdistribuciongastosdet.Rows(i).Cells(cod_centro.Index).Value, dgvdistribuciongastosdet.Rows(i).Cells(idporcentaje.Index).Value,
-                                                           Factura.IdProveedor)
-
-                            Dim sqlcom As New SqlCommand(cadenaConsulta, sqlCone)
-                            Dim adp As New SqlDataAdapter(sqlcom)
-
-                            'Dim tb As New DataTable
-                            'sqlCon.Open()
-                            '    adp.Fill(tb)
-                            '    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
-                            '    Me.dgvDistribuciondeGastos.DataSource = tb
-                            sqlCone.Open()
-                            sqlcom.ExecuteNonQuery()
-                            sqlCone.Close()
-
-
-                        Next
-                    Catch ex As Exception
-
+                        Trans.Rollback()
+                        TransDet.Rollback()
+                        Cancelar = True
+                        MessageBox.Show("Error al guardar los detalles de prorrateo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
 
                     Tran.Commit()
-
+                    TransDet.Commit()
                     sqlCon.Close()
-                    sqlCone.Close()
-
                     MsgBox("La Factura se ha Guardado Satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
                     Limpiar()
                     Deshabilitar()
@@ -1057,7 +1101,7 @@ Public Class RegistroFacGastosFrm
                         Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
                         Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
                         Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
-
+                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.rowid.Index).Value = Me.DgvCuentas.CurrentRow.Index
                         If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
                             rendet = dgvdistribuciongastosdet.Rows.Count
                         End If
@@ -1069,47 +1113,12 @@ Public Class RegistroFacGastosFrm
                             Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
                             Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
                             Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
+                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.row.Index).Value = Me.DgvCuentas.CurrentRow.Index
                         Next
                     Next
                 End If
             End If
-            '    Case Me.ClmAbono.Index
-            'Dim Cuenta As New CN.CuentaContableClass
-            'Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value)
-            'If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
-            '    Dim Ventana As New frmDistribuciondeGastos
-            '    frmDistribuciondeGastos.valor1 = Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value()
-            '    If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-            '        Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
 
-            '        If (dgvDistribuciondeGastos.Rows.Count) >= 1 Then
-            '            ren = dgvDistribuciondeGastos.Rows.Count
-            '        End If
-
-            '        For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 2
-            '            Me.dgvDistribuciondeGastos.Rows.Add()
-            '            Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
-            '            Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
-            '            Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
-            '            Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
-            '            Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
-
-            '            If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
-            '                rendet = dgvdistribuciongastosdet.Rows.Count
-            '            End If
-
-            '            For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
-            '                Me.dgvdistribuciongastosdet.Rows.Add()
-            '                Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.sucursal1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value
-            '                Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value
-            '                Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.DgvCuentas.CurrentRow.Cells(Me.clmIDCuenta.Index).Value
-            '                Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
-            '                Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
-            '            Next
-            '        Next
-            '    End If
-            'End If
-            'End Select
             If e.ColumnIndex = Me.ClmCargo.Index Or e.ColumnIndex = Me.ClmAbono.Index Then
                 SumaCargo = 0
                 SumaAbono = 0
