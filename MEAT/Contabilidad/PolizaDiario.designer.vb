@@ -20,9 +20,9 @@ Partial Class PolizaDiario
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -40,8 +40,8 @@ Partial Class PolizaDiario
         Me.txtDiferencia = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvPoliza = New System.Windows.Forms.DataGridView()
-        Me.PolizaDetalleC = New ClasesNegocio.PolizaDetalleCollectionClass()
         Me.clmIdCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdGastoDepartamental = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PosicionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmCuentaContablePri = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -54,6 +54,7 @@ Partial Class PolizaDiario
         Me.clmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PolizaDetalleC = New ClasesNegocio.PolizaDetalleCollectionClass()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvPoliza, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -247,7 +248,7 @@ Partial Class PolizaDiario
         '
         Me.dgvPoliza.AutoGenerateColumns = False
         Me.dgvPoliza.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvPoliza.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIdCuentaContable, Me.PolizaDataGridViewTextBoxColumn, Me.PosicionDataGridViewTextBoxColumn, Me.clmCuentaContablePri, Me.CtaDataGridViewTextBoxColumn, Me.SCtaDataGridViewTextBoxColumn, Me.SSCtaDataGridViewTextBoxColumn, Me.SSSCtaDataGridViewTextBoxColumn, Me.clmDescripcion, Me.clmConcepto, Me.clmCargo, Me.clmAbono, Me.ImporteDataGridViewTextBoxColumn})
+        Me.dgvPoliza.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmIdCuentaContable, Me.IdGastoDepartamental, Me.PolizaDataGridViewTextBoxColumn, Me.PosicionDataGridViewTextBoxColumn, Me.clmCuentaContablePri, Me.CtaDataGridViewTextBoxColumn, Me.SCtaDataGridViewTextBoxColumn, Me.SSCtaDataGridViewTextBoxColumn, Me.SSSCtaDataGridViewTextBoxColumn, Me.clmDescripcion, Me.clmConcepto, Me.clmCargo, Me.clmAbono, Me.ImporteDataGridViewTextBoxColumn})
         Me.dgvPoliza.DataSource = Me.PolizaDetalleC
         Me.dgvPoliza.Location = New System.Drawing.Point(55, 173)
         Me.dgvPoliza.MultiSelect = False
@@ -255,20 +256,19 @@ Partial Class PolizaDiario
         Me.dgvPoliza.Size = New System.Drawing.Size(844, 252)
         Me.dgvPoliza.TabIndex = 168
         '
-        'PolizaDetalleC
-        '
-        Me.PolizaDetalleC.AllowEdit = True
-        Me.PolizaDetalleC.AllowNew = True
-        Me.PolizaDetalleC.AllowRemove = True
-        Me.PolizaDetalleC.Name = Nothing
-        Me.PolizaDetalleC.RaiseListChangedEvents = True
-        '
         'clmIdCuentaContable
         '
         Me.clmIdCuentaContable.DataPropertyName = "IdCuentaContable"
         Me.clmIdCuentaContable.HeaderText = "IdCuentaContable"
         Me.clmIdCuentaContable.Name = "clmIdCuentaContable"
         Me.clmIdCuentaContable.Visible = False
+        '
+        'IdGastoDepartamental
+        '
+        Me.IdGastoDepartamental.DataPropertyName = "ID_GastoDepartamental"
+        Me.IdGastoDepartamental.HeaderText = "IdGastoDepartamental"
+        Me.IdGastoDepartamental.Name = "IdGastoDepartamental"
+        Me.IdGastoDepartamental.Visible = False
         '
         'PolizaDataGridViewTextBoxColumn
         '
@@ -336,32 +336,40 @@ Partial Class PolizaDiario
         'clmCargo
         '
         Me.clmCargo.DataPropertyName = "Cargo"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = "0"
-        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = "0"
+        Me.clmCargo.DefaultCellStyle = DataGridViewCellStyle4
         Me.clmCargo.HeaderText = "Cargo"
         Me.clmCargo.Name = "clmCargo"
         '
         'clmAbono
         '
         Me.clmAbono.DataPropertyName = "Abono"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = "0"
-        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = "0"
+        Me.clmAbono.DefaultCellStyle = DataGridViewCellStyle5
         Me.clmAbono.HeaderText = "Abono"
         Me.clmAbono.Name = "clmAbono"
         '
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.Visible = False
+        '
+        'PolizaDetalleC
+        '
+        Me.PolizaDetalleC.AllowEdit = True
+        Me.PolizaDetalleC.AllowNew = True
+        Me.PolizaDetalleC.AllowRemove = True
+        Me.PolizaDetalleC.Name = Nothing
+        Me.PolizaDetalleC.RaiseListChangedEvents = True
         '
         'PolizaDiario
         '
@@ -404,6 +412,7 @@ Partial Class PolizaDiario
     Friend WithEvents txtDiferencia As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents clmIdCuentaContable As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IdGastoDepartamental As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PolizaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PosicionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmCuentaContablePri As System.Windows.Forms.DataGridViewTextBoxColumn
