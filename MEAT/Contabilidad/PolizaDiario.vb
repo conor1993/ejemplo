@@ -51,7 +51,7 @@ Public Class PolizaDiario
         detalleDistGastosTb.Columns.Add("detMetdProrrateo", GetType(Integer))
         detalleDistGastosTb.Columns.Add("detCuenta", GetType(Integer))
         detalleDistGastosTb.Columns.Add("detCentroCostos", GetType(Integer))
-        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Decimal))
 
         mtb.sbCambiarEstadoBotones("Cancelar")
         'Me.gridDetalle.RowCount = 0
@@ -889,6 +889,7 @@ Public Class PolizaDiario
                 If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
                     Dim Ventana As New frmDistribuciondeGastosconsulta
                     frmDistribuciondeGastosconsulta.idpoliza = Me.Poliza.Codigo
+                    frmDistribuciondeGastosconsulta.posicion = Me.dgvPoliza.CurrentRow.Cells(Me.clmPosicion.Index).Value
                     frmDistribuciondeGastosconsulta.idcuentacontable = Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value
                     If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                     End If
