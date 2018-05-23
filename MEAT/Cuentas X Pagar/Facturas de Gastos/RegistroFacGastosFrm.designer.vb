@@ -712,6 +712,7 @@ Partial Class RegistroFacGastosFrm
         Me.dgvdistribuciongastosdet.RowHeadersVisible = False
         Me.dgvdistribuciongastosdet.Size = New System.Drawing.Size(235, 88)
         Me.dgvdistribuciongastosdet.TabIndex = 162
+        Me.dgvdistribuciongastosdet.Visible = False
         '
         'sucursal1
         '
@@ -904,6 +905,7 @@ Partial Class RegistroFacGastosFrm
         Me.dgvDistribuciondeGastos.RowHeadersVisible = False
         Me.dgvDistribuciondeGastos.Size = New System.Drawing.Size(410, 104)
         Me.dgvDistribuciondeGastos.TabIndex = 161
+        Me.dgvDistribuciondeGastos.Visible = False
         '
         'clmIdPoliza
         '
