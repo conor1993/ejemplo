@@ -500,6 +500,7 @@ Public Class FrmBanCargosDiversos
         cmbBanco.Text = "Seleccione un Banco..."
         Me.txtAbono.Enabled = True
         Me.txtCargo.Enabled = True
+        Me.txtConcepto.Enabled = True
     End Sub
 
     Private Sub mtb_ClickSalir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickSalir
@@ -1153,9 +1154,11 @@ Public Class FrmBanCargosDiversos
         Catch ex As Exception
 
         End Try
+
     End Sub
 
-    Private Sub DgvCuentas_CellContentDoubleClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentDoubleClick
+
+    Private Sub DgvCuentas_CellContentDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentDoubleClick
         Try
             If Buscar Then
                 Dim Cuenta As New CN.CuentaContableClass

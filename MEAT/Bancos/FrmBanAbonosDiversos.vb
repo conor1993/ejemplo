@@ -1,9 +1,12 @@
 Imports CN = ClasesNegocio
 Imports Integra.Clases
-Imports HC = IntegraLab.ORM.HelperClasses
+Imports HC = Integralab.ORM.HelperClasses
+Imports System.Data.SqlClient
 
 Public Class FrmBanAbonosDiversos
     Implements InterfaceForm
+    Dim distribucionGastosTb As New DataTable
+    Dim detalleDistGastosTb As New DataTable
 
 #Region " Declaraciones "
     Private WithEvents Cargo As CN.ChequeClass
@@ -32,8 +35,8 @@ Public Class FrmBanAbonosDiversos
         Me.mtb.Buttons(0).ToolTipText = "Busca los Registros de Depósitos Registrados"
         Me.mtb.Buttons(2).ToolTipText = "Limpia todos los datos que ya hayan sido capturados."
         Me.mtb.Buttons(3).ToolTipText = "Cancela la acción actual."
-        Me.mtb.Buttons(5).ToolTipText = "Crea un nuevo Registro de depósitos."
-        Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Depósito o los cambios que se le hayan Realizado."
+        Me.mtb.Buttons(5).ToolTipText = "Crea un nuevo Registro de depositos."
+        Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Depósitos o los cambios que se le hayan Realizado."
         Me.mtb.Buttons(10).ToolTipText = "Imprime Los resgistros de Depósitos Registrados."
         Me.mtb.Buttons(12).ToolTipText = "Cierra la Ventana Ignorando los cambios que no hayan sido Guardados."
         mtb.ToolBarButtonStatus = MtbEstados
@@ -42,6 +45,24 @@ Public Class FrmBanAbonosDiversos
         RellenarBancos()
         Lectura()
         LimpiarBancos()
+
+        ''Inicializar tabla de Distribucion de gastos y detalle de gastos
+        distribucionGastosTb.Columns.Add("rowNumber", GetType(Integer))
+        distribucionGastosTb.PrimaryKey = New DataColumn() {distribucionGastosTb.Columns("rowNumber")}
+        'distribucionGastosTb.Columns.Add("idPoliza", GetType(Integer))
+        distribucionGastosTb.Columns.Add("idSucursal", GetType(Integer))
+        distribucionGastosTb.Columns.Add("idMetdProrrateo", GetType(Integer))
+        distribucionGastosTb.Columns.Add("idCuentaContable", GetType(Integer))
+        distribucionGastosTb.Columns.Add("importe", GetType(Decimal))
+        distribucionGastosTb.Columns.Add("ptjImporte", GetType(Decimal))
+
+        detalleDistGastosTb.Columns.Add("rowNumber", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detSucursal", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detMetdProrrateo", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detCuenta", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detCentroCostos", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Decimal))
+
     End Sub
 
 
@@ -292,7 +313,7 @@ Public Class FrmBanAbonosDiversos
 
     Private Sub mtb_ClickEditar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickEditar
         'Escritura()
-        MessageBox.Show("No está habilitada la edición para este módulo.", "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        MessageBox.Show("No esta habilitada la edición para este modulo.", "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
@@ -336,14 +357,14 @@ Public Class FrmBanAbonosDiversos
                         Cuenta.ObtenerEntidad.Save()
 
                         Trans.Commit()
-                        MessageBox.Show(String.Format("Número de Póliza Generado:{0}{1}", vbCrLf, Cargo.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show(String.Format("Numero de Poliza Generado:{0}{1}", vbCrLf, Cargo.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         'mtb_ClickImprimir(sender, e, Cancelar)
                         Limpiar()
                         Lectura()
                         Cancelar = False
                     End If
                 Else
-                    MessageBox.Show("No se puede generar el depósito por que no esta cuadrada la póliza.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("No se puede generar el deposito por que no esta cuadrada la poliza.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Else
                 MessageBox.Show(Validar, "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -352,6 +373,140 @@ Public Class FrmBanAbonosDiversos
             Abonos.Obtener(ClasesNegocio.BancosMovimientosTipo.DEPOSITO, chkEstatus)
         Catch ex As Exception
             Trans.Rollback()
+            MessageBox.Show(ex.Message, "", MessageBoxButtons.OK)
+        End Try
+        Try
+
+            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            Dim errorValue As Integer = 0
+            Dim idGastoDepartamental As Integer = 0
+            Dim TransDet As SqlTransaction
+            Dim Poliza As New CN.PolizaClass
+
+            sqlCon.Open()
+
+            TransDet = sqlCon.BeginTransaction(IsolationLevel.ReadCommitted, "DetallesGastos")
+
+            Dim command As SqlCommand = sqlCon.CreateCommand()
+            command.Connection = sqlCon
+            command.Transaction = TransDet
+
+            Poliza.FechaCaptura = dtp.Value.ToString("dd'/'MM'/'yyyy hh:mm:ss")
+            Dim query As String
+            For i As Integer = 0 To distribucionGastosTb.Rows.Count - 1
+                'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentalesFG(IdPoliza,IdSucursal,IdMetodo,Cuenta,Ptj_Importe,Importe,Fecha,Estatus,Factura,Idprovedor,EmpresaId) VALUES({0},{1},{2},{3},{4},{5},{6},{7},'{8}',{9},{10})"
+                'cadenaConsulta = String.Format(cadenaConsulta, 0, distribucionGastosTb.Rows(i)("idSucursal"),
+                '                               distribucionGastosTb.Rows(i)("idMetdProrrateo"), distribucionGastosTb.Rows(i)("idCuentaContable"),
+                '                               distribucionGastosTb.Rows(i)("ptjImporte"), CDec(distribucionGastosTb.Rows(i)("importe")),
+                '                               Poliza.FechaPoliza.ToString("dd-mm-yyyy"), 0, ("C|" + CStr(Poliza.Codigo)), 0, 0)
+                query = "EXEC saveProrrateo 4, 0,       {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, '{11}', {12}"
+                query = String.Format(query,
+                                      "NULL",
+                                      Controlador.Sesion.MiEmpresa.Empndx,
+                                      "NULL",
+                                      "NULL",
+                                      distribucionGastosTb.Rows(i)("idMetdProrrateo"),
+                                      distribucionGastosTb.Rows(i)("idCuentaContable"),
+                                      1,
+                                      Cargo.Poliza.Codigo,
+                                      1,
+                                      CDec(distribucionGastosTb.Rows(i)("importe")),
+                                      100,
+                                      Cargo.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                      distribucionGastosTb.Rows(i)("rowNumber"))
+
+                command.CommandText = query
+                ''Leer los valores regresados por el Procedimiento Almacenado
+                Dim readCommand As SqlDataReader = command.ExecuteReader()
+                readCommand.Read()
+                errorValue = CInt(readCommand(0))
+                Dim a As String = CStr(readCommand(1))
+                idGastoDepartamental = CInt(readCommand(2))
+                readCommand.Close()
+                'sqlcom.ExecuteNonQuery()
+
+                If (errorValue > 0) Then
+                    Exit For
+                End If
+            Next
+
+            ''Detalle de Distribucion de gastos
+            If Not errorValue > 0 Then
+                Dim ConsultaCompleta As String = ""
+                'Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                For i As Integer = 0 To (detalleDistGastosTb.Rows.Count - 1)
+                    'query = "INSERT INTO GastosDepartamentosDetFG(IdSucursal,IdMetodoProrrateo,IdCuentaContable,Factura,Cod_CentroCostos,Porcentaje,id_proveedor) values({0},{1},{2},'{3}',{4},{5},{6}) "
+                    'String.Format(query, detalleDistGastosTb.Rows(i)("detSucursal"), detalleDistGastosTb.Rows(i)("detMetdProrrateo"),
+                    '                               detalleDistGastosTb.Rows(i)("detCuenta"), ("C|" + CStr(Poliza.Codigo)), detalleDistGastosTb.Rows(i)("detCentroCostos"),
+                    '                               detalleDistGastosTb.Rows(i)("detPorcentaje"), 0)
+                    query = "EXEC saveProrrateo 3, {0},       {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}"
+
+                    query = String.Format(query,
+                                          idGastoDepartamental,
+                                          "NULL",
+                                          Controlador.Sesion.MiEmpresa.Empndx,
+                                          "NULL",
+                                          "NULL",
+                                          detalleDistGastosTb.Rows(i)("detMetdProrrateo"),
+                                          detalleDistGastosTb.Rows(i)("detCuenta"),
+                                          1,
+                                          Cargo.Poliza.Codigo,
+                                          detalleDistGastosTb.Rows(i)("detCentroCostos"),
+                                          CDec(1),
+                                          detalleDistGastosTb.Rows(i)("detPorcentaje"),
+                                          Cargo.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                          "Null")
+
+                    command.CommandText = query
+
+                    Dim readCommand As SqlDataReader = command.ExecuteReader()
+                    readCommand.Read()
+                    errorValue = CInt(readCommand(0))
+                    idGastoDepartamental = CInt(readCommand(2))
+                    readCommand.Close()
+
+                    If (errorValue > 0) Then
+                        Exit For
+                    End If
+                Next
+            End If
+
+
+
+            If errorValue > 0 Then
+                Trans.Rollback()
+                TransDet.Rollback()
+                Cancelar = True
+                sqlCon.Close()
+                MessageBox.Show("Error al guardar los detalles de prorrateo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            Else
+                Trans.Commit()
+                TransDet.Commit()
+                sqlCon.Close()
+                'MessageBox.Show("La P?liza ha sido grabada con el folio " & Poliza.NumeroPoliza, "?Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+            'Dim sqlcom As New SqlCommand(ConsultaCompleta, sqlCone)
+            'Dim adp As New SqlDataAdapter(sqlcom)
+
+            'sqlCone.Open()
+            'sqlcom.ExecuteNonQuery()
+            'sqlCone.Close()
+
+            'sqlCon.Close()
+            'Catch ex As Exception
+            '    Trans.Rollback()
+            '    Cancelar = True
+            '    MessageBox.Show(ex.Message, "?Atenci?n!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'End Try
+
+            ''Ingresar datos de prorrateo a tabla "GastosDepartamentosDetFG"
+            Limpiar()
+            Me.txtConcepto.Enabled = False
+
+        Catch ex As Exception
+            Trans.Rollback()
+            Cancelar = True
             MessageBox.Show(ex.Message, "", MessageBoxButtons.OK)
         End Try
     End Sub
@@ -384,7 +539,7 @@ Public Class FrmBanAbonosDiversos
                     If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
                         Try
                             PagoElectronico.Print()
-                            If MessageBox.Show("¿Se imprimió el comprobante?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+                            If MessageBox.Show("¿Se imprimira el comprobante?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
                                 PagoElectronico.ImpresionExitosa()
                                 Cargo.Guardar()
                             End If
@@ -400,7 +555,7 @@ Public Class FrmBanAbonosDiversos
                         If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
                             Try
                                 ImprimirCheque.Print()
-                                If MessageBox.Show("¿Se imprimió el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+                                If MessageBox.Show("¿Se imprimira el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
                                     ImprimirCheque.ImpresionExitosa()
                                     Cargo.Guardar()
                                 End If
@@ -641,6 +796,10 @@ Public Class FrmBanAbonosDiversos
     End Sub
 
     Private Sub DgvCuentas_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellEndEdit
+
+        Dim cuenta As New CN.CuentaContableClass
+        Dim ventana As New frmDistribuciondeGastos
+
         Select Case e.ColumnIndex
             Case 0 To 3
                 Dim tmp As CN.CuentaContableClass
@@ -671,6 +830,58 @@ Public Class FrmBanAbonosDiversos
                     MessageBox.Show("La suma de los Cargos sobrepasa a la suma de los Abonos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
         End Select
+
+        'Pro-Rateo
+        cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(idCuentaContable.Index).Value)
+        frmDistribuciondeGastos.valor = If(e.ColumnIndex = Me.ClmCargo.Index, Me.DgvCuentas.CurrentRow.Cells(Me.ClmCargo.Index).Value(),
+                                                    Me.DgvCuentas.CurrentRow.Cells(Me.ClmAbono.Index).Value())
+        If ((cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI) And (e.ColumnIndex = ClmAbono.Index Or e.ColumnIndex = ClmCargo.Index)) Then
+            If ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+                'Codigo Bradum
+
+                For i As Integer = 0 To (ventana.dgvMetodos.Rows.Count - 2)
+                    If distribucionGastosTb.Rows.Count Then
+
+                        ''Checar si la fila actual ya existe en el DataTable, si ya existe removerla de ambas tablas
+                        For j As Integer = distribucionGastosTb.Rows.Count - 1 To 0 Step -1
+                            If distribucionGastosTb.Rows(j)("rowNumber") = Me.DgvCuentas.CurrentRow.Index Then
+                                For k As Integer = detalleDistGastosTb.Rows.Count - 1 To 0 Step -1
+                                    If detalleDistGastosTb.Rows(k)("rowNumber") = Me.DgvCuentas.CurrentRow.Index Then
+                                        detalleDistGastosTb.Rows(k).Delete()
+                                    End If
+                                Next
+                                distribucionGastosTb.Rows(j).Delete()
+                            End If
+                        Next
+                    End If
+
+                    ''Aqui se agregan los datos de la Distribucion de gastos al DataTable 'distribucionGastosTb'
+
+                    distribucionGastosTb.Rows.Add(
+                    Me.DgvCuentas.CurrentRow.Index,
+                    ventana.dgvMetodos.CurrentRow.Cells(ventana.clmSucursal.Index).Value,
+                    ventana.dgvMetodos.CurrentRow.Cells(ventana.clmMetodoProrrateo.Index).Value,
+                    Me.DgvCuentas.CurrentRow.Cells(Me.idCuentaContable.Index).Value,
+                    ventana.dgvMetodos.CurrentRow.Cells(ventana.clmImporte.Index).Value,
+                    ventana.txtPorcentaje.Text)
+
+
+                    'If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
+                    '    rendet = dgvdistribuciongastosdet.Rows.Count
+                    'End If
+
+                    For j As Integer = 0 To ventana.dgvDetalledeProrrateo.Rows.Count - 1
+
+                        ''Aqui se agregan los detalles de la Distribucion de gastos al DataTable 'detalleDistGastosTb'
+                        detalleDistGastosTb.Rows.Add(Me.DgvCuentas.CurrentRow.Index, ventana.dgvMetodos.CurrentRow.Cells(ventana.clmSucursal.Index).Value,
+                            ventana.dgvMetodos.CurrentRow.Cells(ventana.clmMetodoProrrateo.Index).Value, Me.DgvCuentas.CurrentRow.Cells(Me.idCuentaContable.Index).Value,
+                            ventana.dgvDetalledeProrrateo.Rows(j).Cells(ventana.Cve_Depto.Index).Value, ventana.dgvDetalledeProrrateo.Rows(j).Cells(ventana.clmPorcentaje.Index).Value)
+                    Next
+                Next
+
+            End If
+        End If
+
     End Sub
 
     Private Function ValorGridCuentas(ByVal Renglon As Integer, ByVal Columna As Integer, Optional ByVal Valor As Object = Nothing) As Object
@@ -716,6 +927,7 @@ Public Class FrmBanAbonosDiversos
                     Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
                     Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
                     Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+                    Me.DgvCuentas.Rows(i).Cells("IdCuentaContable").Value = Cta.Codigo
                     Me.DgvCuentas.Rows.Add()
                 Else
                     Me.DgvCuentas.Rows(i - 1).Cells("ClmCtaMayor").Value = Cta.CuentaMayor
@@ -725,6 +937,7 @@ Public Class FrmBanAbonosDiversos
                     Me.DgvCuentas.Rows(i - 1).Cells("ClmDescripcion").Value = Cta.NombreCuenta
                     Me.DgvCuentas.Rows(i - 1).Cells("ClmCargo").Value = 0
                     Me.DgvCuentas.Rows(i - 1).Cells("ClmAbono").Value = 0
+                    Me.DgvCuentas.Rows(i - 1).Cells("IdCuentaContable").Value = Cta.Codigo
                     Me.DgvCuentas.Rows.Add()
                 End If
             Else
@@ -736,6 +949,7 @@ Public Class FrmBanAbonosDiversos
                 Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = Cta.NombreCuenta
                 Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = 0
                 Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = 0
+                Me.DgvCuentas.Rows(i).Cells("IdCuentaContable").Value = Cta.Codigo
                 Me.DgvCuentas.Rows.Add()
             End If
 
@@ -826,11 +1040,11 @@ Public Class FrmBanAbonosDiversos
         LimpiarGridCuentas()
         For i As Integer = 0 To Poliza.Detalles.Count - 1
             'Me.DgvCuentas.Rows.Add()
-            If i > 0 Then
-                Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
-            Else
-                RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
-            End If
+            'If i > 0 Then
+            'Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
+            'Else
+            RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
+            'End If
             If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
                 Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
             Else
@@ -866,6 +1080,8 @@ Public Class FrmBanAbonosDiversos
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
             Cargo = BuscarCheques.Cheque
             Mostrar()
+            LimpiarGridCuentas()
+            RellenarCuentasstore(Cargo.IdPoliza)
         End If
     End Sub
 
@@ -926,5 +1142,54 @@ Public Class FrmBanAbonosDiversos
             End If
         End If
     End Sub
+    Private Sub RellenarCuentasstore(ByVal idPoliza As Integer)
+        Try
+            Dim i As Integer = 0
+            Dim datos As New DataSet
+            Dim query = "EXEC  ConsultaProrrateo {0}"
+            query = String.Format(query, idPoliza)
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim adapter As New SqlDataAdapter()
+                adapter.SelectCommand = New SqlCommand(query, connection)
+                adapter.Fill(datos)
+            End Using
+            LimpiarGridCuentas()
+            For Each row As DataRow In datos.Tables(0).Rows
+                Me.DgvCuentas.Rows.Add()
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("Cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("SubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
 
+                Me.DgvCuentas.Rows(i).Cells("clmIdCuentaContable").Value = row("IdCuentaContable").ToString()
+                Me.DgvCuentas.Rows(i).Cells("posicion").Value = row("Posicion").ToString()
+
+                i = i + 1
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("No se pudo cargar el Grid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub DgvCuentas_CellContentDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvCuentas.CellContentDoubleClick
+        Try
+            If Buscar Then
+                Dim Cuenta As New CN.CuentaContableClass
+                Cuenta.Obtener(Me.DgvCuentas.CurrentRow.Cells(Me.idCuentaContable.Index).Value)
+                If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
+                    Dim Ventana As New frmDistribuciondeGastosconsulta
+                    frmDistribuciondeGastosconsulta.idpoliza = Cargo.Poliza.Codigo
+                    frmDistribuciondeGastosconsulta.idcuentacontable = Me.DgvCuentas.CurrentRow.Cells(Me.idCuentaContable.Index).Value
+                    If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class
