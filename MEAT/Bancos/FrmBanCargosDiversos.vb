@@ -57,7 +57,7 @@ Public Class FrmBanCargosDiversos
         detalleDistGastosTb.Columns.Add("detMetdProrrateo", GetType(Integer))
         detalleDistGastosTb.Columns.Add("detCuenta", GetType(Integer))
         detalleDistGastosTb.Columns.Add("detCentroCostos", GetType(Integer))
-        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Integer))
+        detalleDistGastosTb.Columns.Add("detPorcentaje", GetType(Decimal))
 
         mtb.sbCambiarEstadoBotones("Cancelar")
         Cargos.Obtener(ClasesNegocio.BancosMovimientosTipo.CARGO_DIVERSO, chkEstatus)
@@ -408,47 +408,49 @@ Public Class FrmBanCargosDiversos
                             If (errorValue > 0) Then
                                 Exit For
                             End If
+                            ''Detalle de Distribucion de gastos
+                            If Not errorValue > 0 Then
+                                Dim ConsultaCompleta As String = ""
+
+                                For j As Integer = 0 To (detalleDistGastosTb.Rows.Count - 1)
+                                    If detalleDistGastosTb.Rows(j)("rowNumber") = distribucionGastosTb.Rows(i)("rowNumber") Then
+
+                                        query = "EXEC saveProrrateo 3, {0},       {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}',{13}"
+
+                                        query = String.Format(query,
+                                                              idGastoDepartamental,
+                                                              "NULL",
+                                                              Controlador.Sesion.MiEmpresa.Empndx,
+                                                              "NULL",
+                                                              "NULL",
+                                                              detalleDistGastosTb.Rows(j)("detMetdProrrateo"),
+                                                              detalleDistGastosTb.Rows(j)("detCuenta"),
+                                                              1,
+                                                              Cargo.Poliza.Codigo,
+                                                              detalleDistGastosTb.Rows(j)("detCentroCostos"),
+                                                              CDec(1),
+                                                              detalleDistGastosTb.Rows(j)("detPorcentaje"),
+                                                              Cargo.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                                              "NULL")
+
+
+                                        command.CommandText = query
+
+                                        Dim readCommands As SqlDataReader = command.ExecuteReader()
+                                        readCommands.Read()
+                                        errorValue = CInt(readCommands(0))
+                                        idGastoDepartamental = CInt(readCommands(2))
+                                        readCommands.Close()
+
+                                        If (errorValue > 0) Then
+                                            Exit For
+                                        End If
+                                    End If
+                        Next
+                            End If
                         Next
 
-                        ''Detalle de Distribucion de gastos
-                        If Not errorValue > 0 Then
-                            Dim ConsultaCompleta As String = ""
 
-                            For i As Integer = 0 To (detalleDistGastosTb.Rows.Count - 1)
-
-
-                                query = "EXEC saveProrrateo 3, {0},       {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}',{13}"
-
-                                query = String.Format(query,
-                                                      idGastoDepartamental,
-                                                      "NULL",
-                                                      Controlador.Sesion.MiEmpresa.Empndx,
-                                                      "NULL",
-                                                      "NULL",
-                                                      detalleDistGastosTb.Rows(i)("detMetdProrrateo"),
-                                                      detalleDistGastosTb.Rows(i)("detCuenta"),
-                                                      1,
-                                                      Cargo.Poliza.Codigo,
-                                                      detalleDistGastosTb.Rows(i)("detCentroCostos"),
-                                                      CDec(1),
-                                                      detalleDistGastosTb.Rows(i)("detPorcentaje"),
-                                                      Cargo.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
-                                                      "NULL")
-
-
-                                command.CommandText = query
-
-                                Dim readCommand As SqlDataReader = command.ExecuteReader()
-                                readCommand.Read()
-                                errorValue = CInt(readCommand(0))
-                                idGastoDepartamental = CInt(readCommand(2))
-                                readCommand.Close()
-
-                                If (errorValue > 0) Then
-                                    Exit For
-                                End If
-                            Next
-                        End If
 
                         If errorValue > 0 Then
                             Trans.Rollback()
@@ -1015,20 +1017,20 @@ Public Class FrmBanCargosDiversos
     End Sub
 
     Private Sub MostrarPolizaFlexGrid(ByVal Poliza As CN.PolizaClass)
-        LimpiarGridCuentas()
-        For i As Integer = 0 To Poliza.Detalles.Count - 1
-            'Me.DgvCuentas.Rows.Add()
-            If i > 0 Then
-                Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
-            Else
-                RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
-            End If
-            If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
-                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
-            Else
-                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
-            End If
-        Next
+        'LimpiarGridCuentas()
+        'For i As Integer = 0 To Poliza.Detalles.Count - 1
+        '    'Me.DgvCuentas.Rows.Add()
+        '    If i > 0 Then
+        '        Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
+        '    Else
+        '        RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
+        '    End If
+        '    If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
+        '        Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
+        '    Else
+        '        Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
+        '    End If
+        'Next
         txtPoliza.Text = Poliza.NumeroPoliza
     End Sub
 #End Region
