@@ -649,12 +649,14 @@ Partial Class FrmBanCargosDiversos
         Me.IdCuentaContable.DataPropertyName = "IdCuentaContable"
         Me.IdCuentaContable.HeaderText = "IdCuentaContable"
         Me.IdCuentaContable.Name = "IdCuentaContable"
+        Me.IdCuentaContable.Visible = False
         '
         'posicion
         '
         Me.posicion.DataPropertyName = "posicion"
         Me.posicion.HeaderText = "posicion"
         Me.posicion.Name = "posicion"
+        Me.posicion.Visible = False
         '
         'FrmBanCargosDiversos
         '

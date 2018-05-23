@@ -135,21 +135,6 @@ Public Class PolizaDiario
             If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
                 Dim CodPoliza As Integer = Ventana.DgvPolizas.SelectedRows(0).Cells(Ventana.clmCodigo.Index).Value
                 Dim dt As New DataTable
-                dt.Columns.Add("IdCuentaContable", GetType(Integer))
-                dt.Columns.Add("ID_GastoDepartamental", GetType(Integer))
-                dt.Columns.Add("Poliza", GetType(ClasesNegocio.PolizaClass))
-                dt.Columns.Add("Posicion", GetType(Integer))
-                dt.Columns.Add("CuentaContable", GetType(String))
-                dt.Columns.Add("Cta", GetType(Integer))
-                dt.Columns.Add("SCta", GetType(Integer))
-                dt.Columns.Add("SSCta", GetType(Integer))
-                dt.Columns.Add("SSSCta", GetType(Integer))
-                dt.Columns.Add("NombreCta", GetType(String))
-                dt.Columns.Add("Concepto", GetType(String))
-                dt.Columns.Add("Cargo", GetType(Decimal))
-                dt.Columns.Add("Abono", GetType(Decimal))
-                dt.Columns.Add("Importe", GetType(Decimal))
-
 
                 Poliza = New CN.PolizaClass(CodPoliza)
 
@@ -616,11 +601,6 @@ Public Class PolizaDiario
 
     Private Sub grid_Cell3(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvPoliza.CellEndEdit
         Try
-            Dim ren As Integer = 0
-            Dim rendet As Integer = 0
-
-
-
             Me.dgvPoliza.Refresh()
 
             'Select Case e.ColumnIndex
@@ -641,7 +621,7 @@ Public Class PolizaDiario
                             For j As Integer = distribucionGastosTb.Rows.Count - 1 To 0 Step -1
                                 If distribucionGastosTb.Rows(j)("rowNumber") = Me.dgvPoliza.CurrentRow.Index Then
                                     For k As Integer = detalleDistGastosTb.Rows.Count - 1 To 0 Step -1
-                                        If detalleDistGastosTb.Rows(k)("rowNumber") = Me.dgvPoliza.CurrentRow.Index + 1 Then
+                                        If detalleDistGastosTb.Rows(k)("rowNumber") = Me.dgvPoliza.CurrentRow.Index Then
                                             detalleDistGastosTb.Rows(k).Delete()
                                         End If
                                     Next
@@ -676,87 +656,6 @@ Public Class PolizaDiario
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-        '' FECHA: 11/05/2018 Favor de remover si ha pasado mas de 1 dia y medio''
-        '    Dim ren As Integer = 0
-        '    Dim rendet As Integer = 0
-
-        '    Me.dgvPoliza.Refresh()
-        '    Select Case e.ColumnIndex
-        '        Case Me.ClmCargo.Index
-        '            Dim Cuenta As New CN.CuentaContableClass
-        '            Cuenta.Obtener(Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value)
-        '            If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
-
-        '                Dim Ventana As New frmDistribuciondeGastos
-        '                frmDistribuciondeGastos.valor = Me.dgvPoliza.CurrentRow.Cells(Me.clmCargo.Index).Value()
-        '                If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-
-        '                    If (dgvDistribuciondeGastos.Rows.Count) >= 1 Then
-        '                        ren = dgvDistribuciondeGastos.Rows.Count
-        '                    End If
-
-        '                    For i As Integer = 0 To (Ventana.dgvMetodos.Rows.Count - 2)
-
-        '                        Me.dgvDistribuciondeGastos.Rows.Add()
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
-
-        '                        If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
-        '                            rendet = dgvdistribuciongastosdet.Rows.Count
-        '                        End If
-
-        '                        For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
-        '                            Me.dgvdistribuciongastosdet.Rows.Add()
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.sucursal1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmSucursal.Index).Value
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvMetodos.CurrentRow.Cells(Ventana.clmMetodoProrrateo.Index).Value
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
-        '                        Next
-        '                    Next
-        '                End If
-        '            End If
-        '        Case Me.ClmAbono.Index
-        '            Dim Cuenta As New CN.CuentaContableClass
-        '            Cuenta.Obtener(Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value)
-        '            If Cuenta.Departamentalizable = Integra.Clases.SiNoEnum.SI Then
-        '                Dim Ventana As New frmDistribuciondeGastos
-        '                frmDistribuciondeGastos.valor = Me.dgvPoliza.CurrentRow.Cells(Me.clmAbono.Index).Value()
-        '                If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
-        '                    Me.dgvDistribuciondeGastos.AutoGenerateColumns = False
-
-        '                    If (dgvDistribuciondeGastos.Rows.Count) >= 1 Then
-        '                        ren = dgvDistribuciondeGastos.Rows.Count
-        '                    End If
-
-        '                    For i As Integer = 0 To Ventana.dgvMetodos.Rows.Count - 1
-        '                        Me.dgvDistribuciondeGastos.Rows.Add()
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmCuentaContable.Index).Value = Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmSucursal.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmSucursal.Index).Value
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmMetodoProrrateo.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmMetodoProrrateo.Index).Value
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmImporte.Index).Value = Ventana.dgvMetodos.Rows(i).Cells(Ventana.clmImporte.Index).Value
-        '                        Me.dgvDistribuciondeGastos.Rows(i + ren).Cells(Me.clmPorcentaje.Index).Value = Ventana.txtPorcentaje.Text
-
-        '                        If (dgvdistribuciongastosdet.Rows.Count) >= 1 Then
-        '                            rendet = dgvdistribuciongastosdet.Rows.Count
-        '                        End If
-
-        '                        For j As Integer = 0 To Ventana.dgvDetalledeProrrateo.Rows.Count - 1
-        '                            Me.dgvdistribuciongastosdet.Rows.Add()
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.sucursal1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmSucursal.Index).Value
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Prorrateo1.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmMetodoProrrateo.Index).Value
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.Cuenta1.Index).Value = Me.dgvPoliza.CurrentRow.Cells(Me.clmIdCuentaContable.Index).Value
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.cod_centro.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.Cve_Depto.Index).Value
-        '                            Me.dgvdistribuciongastosdet.Rows(j + rendet).Cells(Me.idporcentaje.Index).Value = Ventana.dgvDetalledeProrrateo.Rows(j).Cells(Ventana.clmPorcentaje.Index).Value
-        '                        Next
-        '                    Next
-        '                End If
-        '            End If
-        '    End Select
-
     End Sub
 
     Private Sub grid_DataError(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewDataErrorEventArgs) Handles dgvPoliza.DataError
