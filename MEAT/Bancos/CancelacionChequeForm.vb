@@ -1,6 +1,7 @@
 Imports CN = ClasesNegocio
 Imports Integra.Clases
 Imports HC = IntegraLab.ORM.HelperClasses
+Imports System.Data.SqlClient
 
 Public Class CancelacionChequeForm
     Implements InterfaceForm
@@ -792,6 +793,7 @@ Public Class CancelacionChequeForm
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
             cheque = BuscarCheques.Cheque
             Mostrar()
+            RellenarCuentasstore(cheque.Poliza.Codigo)
             bol = False
         End If
         Cancelar = bol
@@ -820,5 +822,39 @@ Public Class CancelacionChequeForm
             'txtImporte.Focus()
             'End If
         End If
+    End Sub
+
+    Private Sub RellenarCuentasstore(idpoliza As Integer)
+        Try
+            Dim i As Integer = 0
+            Dim datos As New DataSet
+            Dim query = "EXEC  ConsultaProrrateo {0}"
+            query = String.Format(query, idpoliza)
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim adapter As New SqlDataAdapter()
+                adapter.SelectCommand = New SqlCommand(query, connection)
+                adapter.Fill(datos)
+            End Using
+            LimpiarGridCuentas()
+            For Each row As DataRow In datos.Tables(0).Rows
+                Me.DgvCuentas.Rows.Add()
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("Cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("SubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
+
+                Me.DgvCuentas.Rows(i).Cells("clmidcuentacont").Value = row("IdCuentaContable").ToString()
+                'Me.DgvCuentas.Rows(i).Cells("clmPosicion").Value = row("Posicion").ToString()
+                'Me.DgvCuentas.Rows(i).Cells("clmConcepto").Value = row("Concepto").ToString()
+
+                i = i + 1
+            Next
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
