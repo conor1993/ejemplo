@@ -20,12 +20,12 @@ Partial Class FrmBanAbonosDiversos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.pan = New System.Windows.Forms.Panel()
@@ -536,32 +536,32 @@ Partial Class FrmBanAbonosDiversos
         '
         'ClmCtaMayor
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmCtaMayor.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmCtaMayor.DefaultCellStyle = DataGridViewCellStyle1
         Me.ClmCtaMayor.HeaderText = "Cta. May"
         Me.ClmCtaMayor.Name = "ClmCtaMayor"
         Me.ClmCtaMayor.Width = 75
         '
         'ClmSubCta
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSubCta.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSubCta.DefaultCellStyle = DataGridViewCellStyle2
         Me.ClmSubCta.HeaderText = "Sub Cta."
         Me.ClmSubCta.Name = "ClmSubCta"
         Me.ClmSubCta.Width = 75
         '
         'ClmSsbCta
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSsbCta.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSsbCta.DefaultCellStyle = DataGridViewCellStyle3
         Me.ClmSsbCta.HeaderText = "Ssb Cta."
         Me.ClmSsbCta.Name = "ClmSsbCta"
         Me.ClmSsbCta.Width = 75
         '
         'ClmSssCta
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ClmSssCta.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ClmSssCta.DefaultCellStyle = DataGridViewCellStyle4
         Me.ClmSssCta.HeaderText = "Sss Cta."
         Me.ClmSssCta.Name = "ClmSssCta"
         Me.ClmSssCta.Width = 75
@@ -575,22 +575,22 @@ Partial Class FrmBanAbonosDiversos
         '
         'ClmCargo
         '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.PapayaWhip
-        DataGridViewCellStyle11.Format = "C2"
-        DataGridViewCellStyle11.NullValue = Nothing
-        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.PapayaWhip
+        DataGridViewCellStyle5.Format = "C2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.ClmCargo.DefaultCellStyle = DataGridViewCellStyle5
         Me.ClmCargo.HeaderText = "Cargo"
         Me.ClmCargo.Name = "ClmCargo"
         Me.ClmCargo.Width = 90
         '
         'ClmAbono
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Wheat
-        DataGridViewCellStyle12.Format = "C2"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Wheat
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.ClmAbono.DefaultCellStyle = DataGridViewCellStyle6
         Me.ClmAbono.HeaderText = "Abono"
         Me.ClmAbono.Name = "ClmAbono"
         Me.ClmAbono.Width = 90
@@ -599,11 +599,13 @@ Partial Class FrmBanAbonosDiversos
         '
         Me.idCuentaContable.HeaderText = "Cuenta Contable"
         Me.idCuentaContable.Name = "idCuentaContable"
+        Me.idCuentaContable.Visible = False
         '
         'posicion
         '
         Me.posicion.HeaderText = "Posicón"
         Me.posicion.Name = "posicion"
+        Me.posicion.Visible = False
         '
         'FrmBanAbonosDiversos
         '

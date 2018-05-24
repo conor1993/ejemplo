@@ -1030,6 +1030,12 @@ Public Class ChequeClass
         Try
             If cheques.Validar(Me) Then
                 tr.Add(Entity)
+
+                ''Causaba un error en Transpasos bancarios porque lo contaba como nulo. wth
+                If Entity.PolizaId = 0 Then
+                    Entity.PolizaId = 0
+                End If
+
                 Entity.Save()
                 tr.Add(Entity.Cuenta)
                 Entity.Cuenta.Save()
