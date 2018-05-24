@@ -22,10 +22,10 @@ Partial Class frmTraspasodeCuentas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.lblTitulo = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblTitulo = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'mtb
