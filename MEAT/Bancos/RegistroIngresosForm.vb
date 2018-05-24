@@ -383,14 +383,14 @@ Public Class RegistroIngresosForm
 
                         Trans.Commit() ''Se escriben los datos en la tabla, si no ha pasado ningun error
 
-                        MessageBox.Show(String.Format("N�mero de P�liza Generado:{0}{1}", vbCrLf, Cheque.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show(String.Format("Número de Póliza Generado:{0}{1}", vbCrLf, Cheque.Poliza.NumeroPoliza), "Poliza Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         mtb_ClickImprimir(sender, e, Cancelar)
                         Limpiar()
                         Lectura()
                         Cancelar = False
                     End If
                 Else
-                    MessageBox.Show("No se puede generar el dep�sito por que no esta cuadrada la p�liza.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("No se puede generar el depósito por que no esta cuadrada la póliza.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Else
                 MessageBox.Show(Validar, "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Error)
