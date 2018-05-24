@@ -606,31 +606,34 @@ Public Class frmFacturacionEspecial
 
                     Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                     Dim cmd As New SqlCommand
-                    'Try
+
+                    Dim query As String = "EXEC saveProrrateo 1, 0,       '{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, '{11}',{12}"
+                    query = String.Format(query,
+                                          FacturaCabecero.NoFactura.ToString(),
+                                          Controlador.Sesion.MiEmpresa.Empndx,
+                                          txtCodigoCliente.Text,
+                                          "NULL",
+                                          Me.cmbmetodo.SelectedValue,
+                                          PolizaDet2.IdCuentaContable,
+                                          Me.cmbsucursal.SelectedValue,
+                                          0,
+                                          DomFiscalCte2.IdDepartamento,
+                                          CDec(txtTotal.Text),
+                                          100,
+                                          Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                          "NULL")
+
+
+
+
 
                     sqlCon.Open()
                     cmd.Connection = sqlCon
-                    cmd.CommandText = "INSERT INTO GastosDepartamentalesFG(IdPoliza, IdSucursal, IdMetodo, Cuenta, Ptj_Importe, Importe, Fecha, Estatus, Factura, Idprovedor, EmpresaId) VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & String.Format("{0:yyyyMMdd}", Poliza.FechaCaptura) & "','" & 0 & "','" & txtFolioFactura.Text & "','" & CmbCliente.SelectedValue & "','" & Poliza.EmpresaId & "')"
+                    cmd.CommandText = query
+                    '"INSERT INTO GastosDepartamentalesFG VALUES('" & 0 & "','" & cmbsucursal.SelectedValue & "','" & 100 & "','" & CInt(txtTotal.Text) & "','" & cmbmetodo.SelectedValue & "','" & Cliente.Idcuentaventa& "','" & Poliza.FechaCaptura & "','" & 0 & "','" & txtFolioFactura.Text & "','" & txtCodigoCliente.Text & "','" & Controlador.Sesion.MiEmpresa.Empndx & "')"
                     cmd.ExecuteNonQuery()
                     sqlCon.Close()
 
-                    'Catch exe As Exception
-                    '    MsgBox(exe.Message)
-                    'End Try
-                    Dim sqlCone As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
-                    'Try
-
-                    'Dim cadenaConsulta As String = "INSERT INTO GastosDepartamentosDetFG
-                    'cadenaConsulta = String.Format(cadenaConsulta, cmbsucursal.SelectedValue, cmbmetodo.SelectedValue, PolizaDet2.IdCuentaContable, txtFolioFactura.Text, 3, 100, CmbCliente.SelectedValue)
-                    sqlCone.Open()
-                    cmd.Connection = sqlCone
-                    cmd.CommandText = "INSERT INTO GastosDepartamentosDetFG(IdSucursal, IdMetodoProrrateo, IdCuentaContable, Factura, Cod_CentroCostos, Porcentaje, ID_Proveedor) VALUES('" & cmbsucursal.SelectedValue & "','" & cmbmetodo.SelectedValue & "','" & CuentaContableV & "','" & txtFolioFactura.Text & "','" & DomFiscalCte2.IdDepartamento & "','" & 100 & "'," & 0 & ")"
-                    cmd.ExecuteNonQuery()
-                    sqlCone.Close()
-
-                    '        Catch exe As Exception
-                    '    MsgBox(exe.Message)
-                    'End Try
                 End If
                 TransG.Commit()
 
