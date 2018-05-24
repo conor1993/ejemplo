@@ -22,51 +22,29 @@ Partial Class frmCapturaInventarioProd
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.DgvProductos = New System.Windows.Forms.DataGridView
-        Me.LoteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FolioEtiquetaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IdCorteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CorteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IdProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PiezasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.KilosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IdFolioMovimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CodigoBarraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.GradosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IdClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaCapturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaMovimeintoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.EntidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SeleccionadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ContenedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CapturaInventarioCajasC = New ClasesNegocio.CapturaInventarioCajasCollection
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtFolioEtiqueta = New IntegraLab.Controles.TextBoxMejorado
-        Me.txtCodigoProducto = New IntegraLab.Controles.TextBoxMejorado
-        Me.cmbProducto = New IntegraLab.Controles.ComboBoxMejorado
-        Me.txtPiezas = New IntegraLab.Controles.TextBoxMejorado
-        Me.txtKilos = New IntegraLab.Controles.TextBoxMejorado
-        Me.dtFechaMov = New System.Windows.Forms.DateTimePicker
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.btnAgregar = New System.Windows.Forms.Button
-        Me.btnLeerExcel = New System.Windows.Forms.Button
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CmbAlmacenes = New IntegraLab.Controles.ComboBoxMejorado
-        Me.txtCodigoAlmacen = New IntegraLab.Controles.TextBoxMejorado
-        Me.Label6 = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtFolioEtiqueta = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtCodigoProducto = New IntegraLab.Controles.TextBoxMejorado()
+        Me.cmbProducto = New IntegraLab.Controles.ComboBoxMejorado()
+        Me.txtPiezas = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtKilos = New IntegraLab.Controles.TextBoxMejorado()
+        Me.dtFechaMov = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.btnLeerExcel = New System.Windows.Forms.Button()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CmbAlmacenes = New IntegraLab.Controles.ComboBoxMejorado()
+        Me.txtCodigoAlmacen = New IntegraLab.Controles.TextBoxMejorado()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.DgvProductos = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -96,196 +74,6 @@ Partial Class frmCapturaInventarioProd
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Lista de Productos"
-        '
-        'DgvProductos
-        '
-        Me.DgvProductos.AllowUserToAddRows = False
-        Me.DgvProductos.AllowUserToResizeRows = False
-        Me.DgvProductos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DgvProductos.AutoGenerateColumns = False
-        Me.DgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvProductos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.LoteDataGridViewTextBoxColumn, Me.FolioEtiquetaDataGridViewTextBoxColumn, Me.IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn, Me.IdCorteDataGridViewTextBoxColumn, Me.CorteDataGridViewTextBoxColumn, Me.IdProductoDataGridViewTextBoxColumn, Me.ProductoDataGridViewTextBoxColumn, Me.PiezasDataGridViewTextBoxColumn, Me.KilosDataGridViewTextBoxColumn, Me.IdFolioMovimientoDataGridViewTextBoxColumn, Me.CodigoBarraDataGridViewTextBoxColumn, Me.GradosDataGridViewTextBoxColumn, Me.IdClienteDataGridViewTextBoxColumn, Me.FechaCapturaDataGridViewTextBoxColumn, Me.FechaMovimeintoDataGridViewTextBoxColumn, Me.EntidadDataGridViewTextBoxColumn, Me.SeleccionadoDataGridViewCheckBoxColumn, Me.IndiceEnContenedorDataGridViewTextBoxColumn, Me.ContenedorDataGridViewTextBoxColumn})
-        Me.DgvProductos.DataSource = Me.CapturaInventarioCajasC
-        Me.DgvProductos.Location = New System.Drawing.Point(6, 19)
-        Me.DgvProductos.Name = "DgvProductos"
-        Me.DgvProductos.ReadOnly = True
-        Me.DgvProductos.RowHeadersVisible = False
-        Me.DgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvProductos.Size = New System.Drawing.Size(808, 405)
-        Me.DgvProductos.TabIndex = 0
-        '
-        'LoteDataGridViewTextBoxColumn
-        '
-        Me.LoteDataGridViewTextBoxColumn.DataPropertyName = "Lote"
-        Me.LoteDataGridViewTextBoxColumn.HeaderText = "Lote Corte"
-        Me.LoteDataGridViewTextBoxColumn.Name = "LoteDataGridViewTextBoxColumn"
-        Me.LoteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.LoteDataGridViewTextBoxColumn.Visible = False
-        '
-        'FolioEtiquetaDataGridViewTextBoxColumn
-        '
-        Me.FolioEtiquetaDataGridViewTextBoxColumn.DataPropertyName = "FolioEtiqueta"
-        Me.FolioEtiquetaDataGridViewTextBoxColumn.HeaderText = "Folio Etiqueta"
-        Me.FolioEtiquetaDataGridViewTextBoxColumn.Name = "FolioEtiquetaDataGridViewTextBoxColumn"
-        Me.FolioEtiquetaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FolioEtiquetaDataGridViewTextBoxColumn.Visible = False
-        '
-        'IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn
-        '
-        Me.IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn.DataPropertyName = "IdFolioEtiquetaReferencia"
-        Me.IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn.HeaderText = "Folio Etiqueta Referencia"
-        Me.IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn.Name = "IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn"
-        Me.IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdFolioEtiquetaReferenciaDataGridViewTextBoxColumn.Width = 140
-        '
-        'IdCorteDataGridViewTextBoxColumn
-        '
-        Me.IdCorteDataGridViewTextBoxColumn.DataPropertyName = "IdCorte"
-        Me.IdCorteDataGridViewTextBoxColumn.HeaderText = "Código Corte"
-        Me.IdCorteDataGridViewTextBoxColumn.Name = "IdCorteDataGridViewTextBoxColumn"
-        Me.IdCorteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdCorteDataGridViewTextBoxColumn.Visible = False
-        '
-        'CorteDataGridViewTextBoxColumn
-        '
-        Me.CorteDataGridViewTextBoxColumn.DataPropertyName = "Corte"
-        Me.CorteDataGridViewTextBoxColumn.HeaderText = "Corte"
-        Me.CorteDataGridViewTextBoxColumn.Name = "CorteDataGridViewTextBoxColumn"
-        Me.CorteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CorteDataGridViewTextBoxColumn.Visible = False
-        '
-        'IdProductoDataGridViewTextBoxColumn
-        '
-        Me.IdProductoDataGridViewTextBoxColumn.DataPropertyName = "IdProducto"
-        Me.IdProductoDataGridViewTextBoxColumn.HeaderText = "Código Producto"
-        Me.IdProductoDataGridViewTextBoxColumn.Name = "IdProductoDataGridViewTextBoxColumn"
-        Me.IdProductoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdProductoDataGridViewTextBoxColumn.Visible = False
-        '
-        'ProductoDataGridViewTextBoxColumn
-        '
-        Me.ProductoDataGridViewTextBoxColumn.DataPropertyName = "Producto"
-        Me.ProductoDataGridViewTextBoxColumn.HeaderText = "Producto"
-        Me.ProductoDataGridViewTextBoxColumn.Name = "ProductoDataGridViewTextBoxColumn"
-        Me.ProductoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProductoDataGridViewTextBoxColumn.Width = 230
-        '
-        'PiezasDataGridViewTextBoxColumn
-        '
-        Me.PiezasDataGridViewTextBoxColumn.DataPropertyName = "Piezas"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = "0"
-        Me.PiezasDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.PiezasDataGridViewTextBoxColumn.HeaderText = "Piezas"
-        Me.PiezasDataGridViewTextBoxColumn.Name = "PiezasDataGridViewTextBoxColumn"
-        Me.PiezasDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PiezasDataGridViewTextBoxColumn.Width = 70
-        '
-        'KilosDataGridViewTextBoxColumn
-        '
-        Me.KilosDataGridViewTextBoxColumn.DataPropertyName = "Kilos"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = "0"
-        Me.KilosDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
-        Me.KilosDataGridViewTextBoxColumn.HeaderText = "Kilos"
-        Me.KilosDataGridViewTextBoxColumn.Name = "KilosDataGridViewTextBoxColumn"
-        Me.KilosDataGridViewTextBoxColumn.ReadOnly = True
-        Me.KilosDataGridViewTextBoxColumn.Width = 70
-        '
-        'IdFolioMovimientoDataGridViewTextBoxColumn
-        '
-        Me.IdFolioMovimientoDataGridViewTextBoxColumn.DataPropertyName = "IdFolioMovimiento"
-        Me.IdFolioMovimientoDataGridViewTextBoxColumn.HeaderText = "Folio Movimiento"
-        Me.IdFolioMovimientoDataGridViewTextBoxColumn.Name = "IdFolioMovimientoDataGridViewTextBoxColumn"
-        Me.IdFolioMovimientoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdFolioMovimientoDataGridViewTextBoxColumn.Visible = False
-        '
-        'CodigoBarraDataGridViewTextBoxColumn
-        '
-        Me.CodigoBarraDataGridViewTextBoxColumn.DataPropertyName = "CodigoBarra"
-        Me.CodigoBarraDataGridViewTextBoxColumn.HeaderText = "Código Barra"
-        Me.CodigoBarraDataGridViewTextBoxColumn.Name = "CodigoBarraDataGridViewTextBoxColumn"
-        Me.CodigoBarraDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CodigoBarraDataGridViewTextBoxColumn.Width = 170
-        '
-        'GradosDataGridViewTextBoxColumn
-        '
-        Me.GradosDataGridViewTextBoxColumn.DataPropertyName = "Grados"
-        Me.GradosDataGridViewTextBoxColumn.HeaderText = "Grados"
-        Me.GradosDataGridViewTextBoxColumn.Name = "GradosDataGridViewTextBoxColumn"
-        Me.GradosDataGridViewTextBoxColumn.ReadOnly = True
-        Me.GradosDataGridViewTextBoxColumn.Visible = False
-        '
-        'IdClienteDataGridViewTextBoxColumn
-        '
-        Me.IdClienteDataGridViewTextBoxColumn.DataPropertyName = "IdCliente"
-        Me.IdClienteDataGridViewTextBoxColumn.HeaderText = "Código Cliente"
-        Me.IdClienteDataGridViewTextBoxColumn.Name = "IdClienteDataGridViewTextBoxColumn"
-        Me.IdClienteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdClienteDataGridViewTextBoxColumn.Visible = False
-        '
-        'FechaCapturaDataGridViewTextBoxColumn
-        '
-        Me.FechaCapturaDataGridViewTextBoxColumn.DataPropertyName = "FechaCaptura"
-        Me.FechaCapturaDataGridViewTextBoxColumn.HeaderText = "Fecha Captura"
-        Me.FechaCapturaDataGridViewTextBoxColumn.Name = "FechaCapturaDataGridViewTextBoxColumn"
-        Me.FechaCapturaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaCapturaDataGridViewTextBoxColumn.Visible = False
-        '
-        'FechaMovimeintoDataGridViewTextBoxColumn
-        '
-        Me.FechaMovimeintoDataGridViewTextBoxColumn.DataPropertyName = "FechaMovimeinto"
-        Me.FechaMovimeintoDataGridViewTextBoxColumn.HeaderText = "Fecha Movimiento"
-        Me.FechaMovimeintoDataGridViewTextBoxColumn.Name = "FechaMovimeintoDataGridViewTextBoxColumn"
-        Me.FechaMovimeintoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EntidadDataGridViewTextBoxColumn
-        '
-        Me.EntidadDataGridViewTextBoxColumn.DataPropertyName = "Entidad"
-        Me.EntidadDataGridViewTextBoxColumn.HeaderText = "Entidad"
-        Me.EntidadDataGridViewTextBoxColumn.Name = "EntidadDataGridViewTextBoxColumn"
-        Me.EntidadDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EntidadDataGridViewTextBoxColumn.Visible = False
-        '
-        'SeleccionadoDataGridViewCheckBoxColumn
-        '
-        Me.SeleccionadoDataGridViewCheckBoxColumn.DataPropertyName = "Seleccionado"
-        Me.SeleccionadoDataGridViewCheckBoxColumn.HeaderText = "Seleccionado"
-        Me.SeleccionadoDataGridViewCheckBoxColumn.Name = "SeleccionadoDataGridViewCheckBoxColumn"
-        Me.SeleccionadoDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.SeleccionadoDataGridViewCheckBoxColumn.Visible = False
-        '
-        'IndiceEnContenedorDataGridViewTextBoxColumn
-        '
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.DataPropertyName = "IndiceEnContenedor"
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.HeaderText = "IndiceEnContenedor"
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.Name = "IndiceEnContenedorDataGridViewTextBoxColumn"
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IndiceEnContenedorDataGridViewTextBoxColumn.Visible = False
-        '
-        'ContenedorDataGridViewTextBoxColumn
-        '
-        Me.ContenedorDataGridViewTextBoxColumn.DataPropertyName = "Contenedor"
-        Me.ContenedorDataGridViewTextBoxColumn.HeaderText = "Contenedor"
-        Me.ContenedorDataGridViewTextBoxColumn.Name = "ContenedorDataGridViewTextBoxColumn"
-        Me.ContenedorDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ContenedorDataGridViewTextBoxColumn.Visible = False
-        '
-        'CapturaInventarioCajasC
-        '
-        Me.CapturaInventarioCajasC.AllowEdit = True
-        Me.CapturaInventarioCajasC.AllowNew = False
-        Me.CapturaInventarioCajasC.AllowRemove = True
-        Me.CapturaInventarioCajasC.MaximoElementosSeleccionados = 1
-        Me.CapturaInventarioCajasC.MensajeLimiteMaximo = "Ya se selecciono el maximo de elementos permitidos"
-        Me.CapturaInventarioCajasC.MostrarAlertas = False
-        Me.CapturaInventarioCajasC.Name = Nothing
-        Me.CapturaInventarioCajasC.RaiseListChangedEvents = True
-        Me.CapturaInventarioCajasC.Transaction = Nothing
         '
         'mtb
         '
@@ -520,6 +308,22 @@ Partial Class frmCapturaInventarioProd
         Me.Label6.Text = "Almacén:"
         Me.Label6.Visible = False
         '
+        'DgvProductos
+        '
+        Me.DgvProductos.AllowUserToAddRows = False
+        Me.DgvProductos.AllowUserToResizeRows = False
+        Me.DgvProductos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvProductos.Location = New System.Drawing.Point(6, 19)
+        Me.DgvProductos.Name = "DgvProductos"
+        Me.DgvProductos.ReadOnly = True
+        Me.DgvProductos.RowHeadersVisible = False
+        Me.DgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DgvProductos.Size = New System.Drawing.Size(808, 405)
+        Me.DgvProductos.TabIndex = 0
+        '
         'frmCapturaInventarioProd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -557,7 +361,6 @@ Partial Class frmCapturaInventarioProd
     End Sub
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents DgvProductos As System.Windows.Forms.DataGridView
     Friend WithEvents CajaDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents VicerasDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents mtb As MEAToolBar.MEAToolBar
@@ -599,4 +402,5 @@ Partial Class frmCapturaInventarioProd
     Friend WithEvents CmbAlmacenes As IntegraLab.Controles.ComboBoxMejorado
     Friend WithEvents txtCodigoAlmacen As IntegraLab.Controles.TextBoxMejorado
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents DgvProductos As System.Windows.Forms.DataGridView
 End Class

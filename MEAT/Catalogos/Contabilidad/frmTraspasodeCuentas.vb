@@ -56,7 +56,7 @@ Public Class frmTraspasodeCuentas
                     Dim PasarCuentasAcumulados As New CN.AcumuladodeCuentasContablesClass
                     PasarCuentasAcumulados.Codigo = CuentasContables(i).Codigo
                     PasarCuentasAcumulados.Ejercicio = PeriodosContables(0).Ejercicio
-                    If Not PasarCuentasAcumulados.Obtener(PasarCuentasAcumulados.Codigo, PasarCuentasAcumulados.Codigo) Then
+                    If Not PasarCuentasAcumulados.Obtener(PasarCuentasAcumulados.Codigo, PasarCuentasAcumulados.Ejercicio) Then
                         If Not PasarCuentasAcumulados.Guardar(Trans) Then
                             Trans.Rollback()
                         End If
