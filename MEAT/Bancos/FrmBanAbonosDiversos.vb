@@ -324,7 +324,7 @@ Public Class FrmBanAbonosDiversos
             If IsNothing(Validar()) Then
                 If VerificarBalance() = 0 Then
                     GenerarPoliza()
-                    If Cargo.Guardar() Then
+                    If Cargo.Guardar(Trans) Then
                         'guardar movimiento en tabla de movimientos bancarios
                         Dim MovBancos As New CN.MovimientosBancosClass
                         MovBancos.NumPoliza = Cargo.Poliza.Codigo
@@ -524,6 +524,7 @@ Public Class FrmBanAbonosDiversos
         cmbBanco.Text = "Seleccione un Banco..."
         Me.txtCargo.Enabled = True
         Me.txtAbono.Enabled = True
+        Me.txtConcepto.Enabled = True
     End Sub
 
     Private Sub mtb_ClickSalir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickSalir
@@ -1082,6 +1083,7 @@ Public Class FrmBanAbonosDiversos
             Mostrar()
             LimpiarGridCuentas()
             RellenarCuentasstore(Cargo.IdPoliza)
+            DgvCuentas.Enabled = True
         End If
     End Sub
 
@@ -1164,7 +1166,7 @@ Public Class FrmBanAbonosDiversos
                 Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
                 Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
 
-                Me.DgvCuentas.Rows(i).Cells("clmIdCuentaContable").Value = row("IdCuentaContable").ToString()
+                Me.DgvCuentas.Rows(i).Cells("idCuentaContable").Value = row("IdCuentaContable").ToString()
                 Me.DgvCuentas.Rows(i).Cells("posicion").Value = row("Posicion").ToString()
 
                 i = i + 1
