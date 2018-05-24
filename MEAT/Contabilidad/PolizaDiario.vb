@@ -477,7 +477,7 @@ Public Class PolizaDiario
                     Trans.Commit()
                     TransDet.Commit()
                     sqlCon.Close()
-                    imprimir(Poliza)
+                    '' imprimir(Poliza)
                     MessageBox.Show("La Póliza ha sido grabada con el folio " & Poliza.NumeroPoliza, "¡Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
                 'Dim sqlcom As New SqlCommand(ConsultaCompleta, sqlCone)
@@ -801,133 +801,6 @@ Public Class PolizaDiario
         End Try
     End Sub
 
-    'Private Sub guardarDetallePoliza(ByVal numPoliza As String)
 
-    '    Dim transaction As SqlTransaction
-    '    Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
 
-    '        connection.Open()
-    '        Dim command As SqlCommand = connection.CreateCommand()
-    '        transaction = connection.BeginTransaction("SampleTransaction")
-    '        command.Connection = connection
-    '        command.Transaction = transaction
-    '        Dim query As String
-
-    '        Try
-    '            For Each row As DataGridViewRow In dgvPoliza.Rows
-    '                If Not row.IsNewRow Then
-    '                    query = "EXEC ActualizarConcepto_UCPD '{0}', '{1}', {2}"
-    '                    query = String.Format(query, numPoliza, row.Cells(clmConcepto.Index).Value.ToString(), row.Index + 1)
-    '                    command.CommandText = query
-    '                    command.ExecuteNonQuery()
-    '                End If
-    '            Next
-    '            command.Transaction.Commit()
-    '            connection.Close()
-    '        Catch ex As Exception
-    '            connection.Close()
-    '            MessageBox.Show("No se pudo agregar descricion del concepto de uno de los productos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '        End Try
-
-    '    End Using
-    'End Sub
-    Private Function obtenerdatasetPoliza(Poliza As ClasesNegocio.PolizaClass) As DataSet
-
-        Dim cuentac, cuentac1, cuentac2, cuentac3 As New CN.CuentaContableClass
-        Dim detalles As New CN.PolizaDetalleCollectionClass
-        detalles = Poliza.Detalles
-        Dim padre, padre1, padre2, padre3 As String
-        Dim ds As New DataSet()
-        Dim dt As New DataTable()
-        Try
-            ''--------------------------------
-            ds.Tables.Add(dt)
-            dt.Columns.Add("cta")
-            dt.Columns.Add("subcta")
-            dt.Columns.Add("ssubcta")
-            dt.Columns.Add("sssubcta")
-            dt.Columns.Add("nomcuenta1")
-            dt.Columns.Add("nomcuenta2")
-            dt.Columns.Add("nomcuenta3")
-            dt.Columns.Add("nomcuenta4")
-            dt.Columns.Add("origen")
-            dt.Columns.Add("poliza")
-            dt.Columns.Add("fecha")
-            dt.Columns.Add("importe")
-            dt.Columns.Add("cargo")
-            dt.Columns.Add("abono")
-
-            ''elemntos del tatset -------------------------------------
-
-            For Each item As CN.PolizaDetalleClass In detalles
-
-                cuentac = item.CuentaContable
-                padre = cuentac.NombreCuenta
-
-                If (cuentac.Nivel = 1) Then
-                    padre = cuentac.NombreCuenta
-                End If
-
-                If (cuentac.Nivel = 2) Then
-                    padre1 = cuentac.NombreCuenta
-                    padre = cuentac.CuentaPadre.NombreCuenta
-                End If
-
-                If (cuentac.Nivel = 3) Then
-                    padre2 = cuentac.NombreCuenta
-                    padre1 = cuentac.CuentaPadre.NombreCuenta
-                    padre = cuentac.CuentaPadre.CuentaPadre.NombreCuenta
-                End If
-
-                If (cuentac.Nivel = 4) Then
-                    padre3 = cuentac.NombreCuenta
-                    padre2 = cuentac.CuentaPadre.NombreCuenta
-                    padre1 = cuentac.CuentaPadre.CuentaPadre.NombreCuenta
-                    padre1 = cuentac.CuentaPadre.CuentaPadre.CuentaPadre.NombreCuenta
-                End If
-
-                dt.Rows.Add(item.Cta, item.SCta, item.SSCta, item.SSSCta, padre, padre1, padre2, padre3, Poliza.Origen, Poliza.NumeroPoliza, Poliza.FechaPoliza, item.Importe, item.Cargo, item.Abono)
-            Next
-
-        Catch ex As Exception
-
-        End Try
-        Return ds
-    End Function
-    Private Function imprimir(Poliza As ClasesNegocio.PolizaClass)
-        Try
-
-            ''obtener  datos de la poliza guardada
-            Dim datos As New DataSet
-
-            datos = obtenerdatasetPoliza(Poliza)
-
-            ''------------------------------------
-
-            'Dim datos As New DataSet
-            'Dim query = "EXEC  rptcuentascontables 1"
-            'Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
-            '    Dim adapter As New SqlDataAdapter()
-            '    adapter.SelectCommand = New SqlCommand(query, connection)
-            '    adapter.Fill(datos)
-            'End Using
-
-            Dim Reporte As New Rptpolizapasivo
-            Reporte.SetDataSource(datos.Tables(0))
-            Reporte.SetParameterValue("Empresa", Controlador.Empresa.Nombre)
-            Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
-            Reporte.SetParameterValue("Modulo", "")
-            Reporte.SetParameterValue("NoFactura", "")
-
-            Dim pre As New CN.PreVisualizarForm
-            pre.Reporte = Reporte
-            pre.ShowDialog()
-
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
-        Finally
-            Cursor = Cursors.Default
-        End Try
-
-    End Function
 End Class
