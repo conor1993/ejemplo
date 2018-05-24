@@ -391,6 +391,7 @@ Public Class RegistroChequeForm
                     MsgBox("No se ha registrado ninguna Configuración de Impresión de Cheque", MsgBoxStyle.Exclamation, "Aviso")
                     Exit Sub
                 End If
+
                 Dim Enc As Boolean = False
                 For Each ConfigImp As CN.ConfigImpresionChequeClass In ConfigCol
                     If ConfigImp.IdBanco = IdBanco Then
@@ -912,12 +913,12 @@ Public Class RegistroChequeForm
                 Me.DgvCuentas.Rows(i + 1).ReadOnly = False
             End If
 
-            If Me.DgvCuentas.Rows.Count > 1 Then
-                ' For j As Integer = 0 To Me.DgvCuentas.Columns.Count - 3
-                Me.DgvCuentas.Rows(0).ReadOnly = True
-                Me.DgvCuentas.Rows(1).ReadOnly = False
-                'Next
-            End If
+            'If Me.DgvCuentas.Rows.Count > 1 Then
+            '    ' For j As Integer = 0 To Me.DgvCuentas.Columns.Count - 3
+            '    Me.DgvCuentas.Rows(0).ReadOnly = True
+            '    Me.DgvCuentas.Rows(1).ReadOnly = False
+            '    'Next
+            'End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
@@ -1026,19 +1027,19 @@ Public Class RegistroChequeForm
 
     Private Sub MostrarPolizaFlexGrid(ByVal Poliza As CN.PolizaClass)
         LimpiarGridCuentas()
-        For i As Integer = 0 To Poliza.Detalles.Count - 1
-            'Me.DgvCuentas.Rows.Add()
-            'If i = 10 Then
-            '    Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
-            'Else
-            RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
-            'End If
-            If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
-                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
-            Else
-                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
-            End If
-        Next
+        'For i As Integer = 0 To Poliza.Detalles.Count - 1
+        '    'Me.DgvCuentas.Rows.Add()
+        '    'If i = 10 Then
+        '    '    Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
+        '    'Else
+        '    RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
+        '    'End If
+        '    If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
+        '        Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
+        '    Else
+        '        Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
+        '    End If
+        'Next
         txtPoliza.Text = Poliza.NumeroPoliza
     End Sub
 
@@ -1324,6 +1325,7 @@ Public Class RegistroChequeForm
 
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
             Cheque = BuscarCheques.Cheque
+            Mostrar()
             RellenarCuentasstore(Cheque.Poliza.Codigo)
         End If
     End Sub
