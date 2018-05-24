@@ -87,6 +87,7 @@ Partial Class CancelacionChequeForm
         Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmidcuentacont = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIdGastoDept = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pan.SuspendLayout()
         Me.gpoCuentas.SuspendLayout()
         Me.gpo.SuspendLayout()
@@ -600,7 +601,7 @@ Partial Class CancelacionChequeForm
         Me.DgvCuentas.AllowUserToAddRows = False
         Me.DgvCuentas.AllowUserToDeleteRows = False
         Me.DgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono, Me.clmidcuentacont})
+        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono, Me.clmidcuentacont, Me.clmIdGastoDept})
         Me.DgvCuentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvCuentas.Location = New System.Drawing.Point(3, 3)
         Me.DgvCuentas.Name = "DgvCuentas"
@@ -726,6 +727,12 @@ Partial Class CancelacionChequeForm
         Me.clmidcuentacont.Name = "clmidcuentacont"
         Me.clmidcuentacont.Visible = False
         '
+        'clmIdGastoDept
+        '
+        Me.clmIdGastoDept.HeaderText = "IdGastoDept"
+        Me.clmIdGastoDept.Name = "clmIdGastoDept"
+        Me.clmIdGastoDept.Visible = False
+        '
         'CancelacionChequeForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -813,4 +820,5 @@ Partial Class CancelacionChequeForm
     Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmidcuentacont As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmIdGastoDept As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
