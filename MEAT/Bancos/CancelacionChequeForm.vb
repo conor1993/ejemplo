@@ -238,7 +238,8 @@ Public Class CancelacionChequeForm
         txtFolio.Text = cheque.Folio
         Me.lblEstatus.Text = cheque.Estatus.ToString
         Me.lblEstatus.Visible = True
-        MostrarPolizaFlexGrid(cheque.Poliza)
+        txtPoliza.Text = cheque.Poliza.NumeroPoliza
+        'MostrarPolizaFlexGrid(cheque.Poliza)
         Me.txtAbono.Text = Me.txtImporte.Text
         Me.txtCargo.Text = Me.txtImporte.Text
     End Sub
@@ -334,6 +335,11 @@ Public Class CancelacionChequeForm
                         Trans.Add(Cuenta.ObtenerEntidad)
                         Cuenta.ObtenerEntidad.Save()
 
+                        If Not RemoverProrrateo(cheque.IdPoliza) Then
+                            Trans.Rollback()
+                            Cancelar = True
+                            Exit Sub
+                        End If
                         Trans.Commit() ''Se escriben los datos en la tabla, si no ha pasado ningun error
 
                         MsgBox("El Cheque ha sido Cancelado Satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
@@ -845,7 +851,8 @@ Public Class CancelacionChequeForm
                 Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
                 Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
                 Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
-
+                Me.DgvCuentas.Rows(i).Cells("clmIdGastoDept").Value = row("ID_GastoDepartamental").ToString()
+                Me.cheque.Poliza.Codigo.ToString()
                 Me.DgvCuentas.Rows(i).Cells("clmidcuentacont").Value = row("IdCuentaContable").ToString()
                 'Me.DgvCuentas.Rows(i).Cells("clmPosicion").Value = row("Posicion").ToString()
                 'Me.DgvCuentas.Rows(i).Cells("clmConcepto").Value = row("Concepto").ToString()
@@ -857,4 +864,35 @@ Public Class CancelacionChequeForm
 
         End Try
     End Sub
+
+    Private Function RemoverProrrateo(idpoliza As Integer) As Boolean
+        Try
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim query = "EXEC RemoverDepartamentalizacion " & idpoliza
+                Dim command As New SqlCommand
+                command.Connection = connection
+                command.CommandText = query
+
+                Dim errorValue As Integer
+                Dim errorMessage As String
+
+                connection.Open()
+                Dim readCommand As SqlDataReader = Command.ExecuteReader()
+                readCommand.Read()
+                errorValue = CInt(readCommand(0))
+                errorMessage = CStr(readCommand(1))
+                readCommand.Close()
+
+                If errorValue > 0 Then
+                    MessageBox.Show(errorMessage, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK)
+                    Return False
+                End If
+
+                Return True
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK)
+            Return False
+        End Try
+    End Function
 End Class
