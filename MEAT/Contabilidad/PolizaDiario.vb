@@ -118,6 +118,12 @@ Public Class PolizaDiario
                 Exit Sub
             End If
 
+            If Not RemoverProrrateo(Poliza.Codigo) Then
+                Trans.Rollback()
+                Cancelar = True
+                Exit Sub
+            End If
+
             Trans.Commit()
             MessageBox.Show("La Poliza ha sido cancelada", "¡Correcto!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Limpiar()
@@ -799,35 +805,35 @@ Public Class PolizaDiario
         End Try
     End Sub
 
-    'Private Sub guardarDetallePoliza(ByVal numPoliza As String)
+    Private Function RemoverProrrateo(idpoliza As Integer) As Boolean
+        Try
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim query = "EXEC RemoverDepartamentalizacion " & idpoliza
+                Dim command As New SqlCommand
+                command.Connection = connection
+                command.CommandText = query
 
-    '    Dim transaction As SqlTransaction
-    '    Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim errorValue As Integer
+                Dim errorMessage As String
 
-    '        connection.Open()
-    '        Dim command As SqlCommand = connection.CreateCommand()
-    '        transaction = connection.BeginTransaction("SampleTransaction")
-    '        command.Connection = connection
-    '        command.Transaction = transaction
-    '        Dim query As String
+                connection.Open()
+                Dim readCommand As SqlDataReader = Command.ExecuteReader()
+                readCommand.Read()
+                errorValue = CInt(readCommand(0))
+                errorMessage = CStr(readCommand(1))
+                readCommand.Close()
 
-    '        Try
-    '            For Each row As DataGridViewRow In dgvPoliza.Rows
-    '                If Not row.IsNewRow Then
-    '                    query = "EXEC ActualizarConcepto_UCPD '{0}', '{1}', {2}"
-    '                    query = String.Format(query, numPoliza, row.Cells(clmConcepto.Index).Value.ToString(), row.Index + 1)
-    '                    command.CommandText = query
-    '                    command.ExecuteNonQuery()
-    '                End If
-    '            Next
-    '            command.Transaction.Commit()
-    '            connection.Close()
-    '        Catch ex As Exception
-    '            connection.Close()
-    '            MessageBox.Show("No se pudo agregar descricion del concepto de uno de los productos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '        End Try
+                If errorValue > 0 Then
+                    MessageBox.Show(errorMessage, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK)
+                    Return False
+                End If
 
-    '    End Using
-    'End Sub
+                Return True
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK)
+            Return False
+        End Try
+    End Function
 
 End Class
