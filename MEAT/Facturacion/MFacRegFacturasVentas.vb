@@ -1461,7 +1461,7 @@ Public Class MFacRegFacturasVentas
                 Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
                 Dim cmd As New SqlCommand
 
-                Dim query As String = "EXEC saveProrrateo 1, 0,       '{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, '{11}'"
+                Dim query As String = "EXEC saveProrrateo 1, 0,       '{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, '{11}',{12}"
                 query = String.Format(query,
                                       FacturaCabecero.NoFactura.ToString(),
                                       Controlador.Sesion.MiEmpresa.Empndx,
@@ -1474,7 +1474,8 @@ Public Class MFacRegFacturasVentas
                                       DomFiscalCte.IdDepartamento,
                                       CDec(txtTotal.Text),
                                       100,
-                                      Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"))
+                                      Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                      "NULL")
 
 
 

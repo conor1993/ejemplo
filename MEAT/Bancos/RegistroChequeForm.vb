@@ -481,7 +481,7 @@ Public Class RegistroChequeForm
                                                       1,
                                                       CDec(distribucionGastosTb.Rows(i)("importe")),
                                                       100,
-                                                      Cheque.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                                      Cheque.Poliza.FechaPoliza.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
                                                       distribucionGastosTb.Rows(i)("rowNumber"))
                                 command.CommandText = query
                                 ''Leer los valores regresados por el Procedimiento Almacenado
@@ -510,7 +510,7 @@ Public Class RegistroChequeForm
                                                               detalleDistGastosTb.Rows(j)("detCentroCostos"),
                                                               CDec(1),
                                                               detalleDistGastosTb.Rows(j)("detPorcentaje"),
-                                                              Cheque.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                                              Cheque.Poliza.FechaPoliza.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
                                                               detalleDistGastosTb.Rows(j)("rowNumber"))
 
                                         command.CommandText = query

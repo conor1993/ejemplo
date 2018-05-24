@@ -412,7 +412,7 @@ Public Class FrmBanAbonosDiversos
                                       1,
                                       CDec(distribucionGastosTb.Rows(i)("importe")),
                                       100,
-                                      Cargo.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                      Cargo.Poliza.FechaPoliza.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
                                       distribucionGastosTb.Rows(i)("rowNumber"))
 
                 command.CommandText = query
@@ -454,7 +454,7 @@ Public Class FrmBanAbonosDiversos
                                           detalleDistGastosTb.Rows(i)("detCentroCostos"),
                                           CDec(1),
                                           detalleDistGastosTb.Rows(i)("detPorcentaje"),
-                                          Cargo.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                          Cargo.Poliza.FechaPoliza.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
                                           "Null")
 
                     command.CommandText = query

@@ -433,7 +433,7 @@ Public Class RegistroIngresosForm
                                       1,
                                       CDec(distribucionGastosTb.Rows(i)("importe")),
                                       100,
-                                      Cheque.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                      Cheque.Poliza.FechaPoliza.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
                                       distribucionGastosTb.Rows(i)("rowNumber"))
 
                 command.CommandText = query
@@ -475,7 +475,7 @@ Public Class RegistroIngresosForm
                                           detalleDistGastosTb.Rows(i)("detCentroCostos"),
                                           CDec(1),
                                           detalleDistGastosTb.Rows(i)("detPorcentaje"),
-                                          Cheque.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                          Cheque.Poliza.FechaPoliza.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
                                           "Null")
 
                     command.CommandText = query
