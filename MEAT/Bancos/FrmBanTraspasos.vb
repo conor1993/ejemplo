@@ -208,7 +208,7 @@ Public Class FrmBanTraspasos
         pan.Enabled = True
         Me.DgvCuentas.Enabled = True
         Me.txtReferencia.Enabled = True
-        ' Me.txtImporte.Enabled = True
+        Me.txtImporte.Enabled = True
         Me.txtConcepto.Enabled = True
         Me.txtTipoCambio.Enabled = True
         Me.txtPoliza.Enabled = True
