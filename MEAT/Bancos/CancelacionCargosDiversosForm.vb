@@ -779,7 +779,7 @@ Public Class CancelacionCargosDiversosForm
                 Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
                 Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
                 Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
-                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()If
 
                 Me.DgvCuentas.Rows(i).Cells("idCuentaContable").Value = row("IdCuentaContable").ToString()
                 Me.DgvCuentas.Rows(i).Cells("posicion").Value = row("Posicion").ToString()
