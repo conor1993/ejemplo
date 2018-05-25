@@ -22,61 +22,63 @@ Partial Class CancelacionIngresosForm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.pan = New System.Windows.Forms.Panel
-        Me.chkAnticipo = New System.Windows.Forms.CheckBox
-        Me.lblEstatus = New System.Windows.Forms.Label
-        Me.txtPoliza = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.txtReferencia = New System.Windows.Forms.TextBox
-        Me.chkElectronico = New System.Windows.Forms.CheckBox
-        Me.txtConcepto = New System.Windows.Forms.TextBox
-        Me.txtImporteLetra = New System.Windows.Forms.TextBox
-        Me.txtTipoCambio = New Integra.Controles.TextboxDecimal
-        Me.txtImporte = New Integra.Controles.TextboxDecimal
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.dtp = New System.Windows.Forms.DateTimePicker
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.gpoCuentas = New System.Windows.Forms.GroupBox
-        Me.lv = New System.Windows.Forms.ListView
-        Me.chCuenta = New System.Windows.Forms.ColumnHeader
-        Me.chDescripcion = New System.Windows.Forms.ColumnHeader
-        Me.chTipoMoneda = New System.Windows.Forms.ColumnHeader
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.txtSaldo = New System.Windows.Forms.TextBox
-        Me.txtCuenta = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.lblRef = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.cmbBanco = New System.Windows.Forms.ComboBox
-        Me.Bancos = New ClasesNegocio.BancosCollectionClass
-        Me.txtBanco = New System.Windows.Forms.TextBox
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.Ingresos = New ClasesNegocio.ChequeCollectionClass
-        Me.ImprimirCheque = New ClasesNegocio.PrintDocumentChequeClass
-        Me.PagoElectronico = New ClasesNegocio.PrintDocumentPagoElectronicoClass
-        Me.pDg = New System.Windows.Forms.PrintDialog
-        Me.gpo = New System.Windows.Forms.GroupBox
-        Me.tab = New System.Windows.Forms.TableLayoutPanel
-        Me.DgvCuentas = New System.Windows.Forms.DataGridView
-        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.txtAbono = New Integra.Controles.TextboxDecimal
-        Me.txtCargo = New Integra.Controles.TextboxDecimal
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.pan = New System.Windows.Forms.Panel()
+        Me.chkAnticipo = New System.Windows.Forms.CheckBox()
+        Me.lblEstatus = New System.Windows.Forms.Label()
+        Me.txtPoliza = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtReferencia = New System.Windows.Forms.TextBox()
+        Me.chkElectronico = New System.Windows.Forms.CheckBox()
+        Me.txtConcepto = New System.Windows.Forms.TextBox()
+        Me.txtImporteLetra = New System.Windows.Forms.TextBox()
+        Me.txtTipoCambio = New Integra.Controles.TextboxDecimal()
+        Me.txtImporte = New Integra.Controles.TextboxDecimal()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.dtp = New System.Windows.Forms.DateTimePicker()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.gpoCuentas = New System.Windows.Forms.GroupBox()
+        Me.lv = New System.Windows.Forms.ListView()
+        Me.chCuenta = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.chDescripcion = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.chTipoMoneda = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtSaldo = New System.Windows.Forms.TextBox()
+        Me.txtCuenta = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblRef = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmbBanco = New System.Windows.Forms.ComboBox()
+        Me.Bancos = New ClasesNegocio.BancosCollectionClass()
+        Me.txtBanco = New System.Windows.Forms.TextBox()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.Ingresos = New ClasesNegocio.ChequeCollectionClass()
+        Me.ImprimirCheque = New ClasesNegocio.PrintDocumentChequeClass()
+        Me.PagoElectronico = New ClasesNegocio.PrintDocumentPagoElectronicoClass()
+        Me.pDg = New System.Windows.Forms.PrintDialog()
+        Me.gpo = New System.Windows.Forms.GroupBox()
+        Me.tab = New System.Windows.Forms.TableLayoutPanel()
+        Me.DgvCuentas = New System.Windows.Forms.DataGridView()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtAbono = New Integra.Controles.TextboxDecimal()
+        Me.txtCargo = New Integra.Controles.TextboxDecimal()
+        Me.ClmCtaMayor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSubCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSsbCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmSssCta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClmAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdCuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Posicion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pan.SuspendLayout()
         Me.gpoCuentas.SuspendLayout()
         Me.gpo.SuspendLayout()
@@ -254,7 +256,7 @@ Partial Class CancelacionIngresosForm
         'gpoCuentas
         '
         Me.gpoCuentas.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpoCuentas.Controls.Add(Me.lv)
         Me.gpoCuentas.Controls.Add(Me.Label6)
         Me.gpoCuentas.Controls.Add(Me.txtSaldo)
@@ -269,8 +271,8 @@ Partial Class CancelacionIngresosForm
         'lv
         '
         Me.lv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lv.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.chCuenta, Me.chDescripcion, Me.chTipoMoneda})
         Me.lv.FullRowSelect = True
         Me.lv.Location = New System.Drawing.Point(6, 19)
@@ -421,13 +423,13 @@ Partial Class CancelacionIngresosForm
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 556)
+        Me.mtb.Size = New System.Drawing.Size(50, 560)
         Me.mtb.TabIndex = 8
         '
         'lblTitulo
         '
         Me.lblTitulo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTitulo.BackColor = System.Drawing.Color.SteelBlue
         Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
@@ -444,8 +446,12 @@ Partial Class CancelacionIngresosForm
         Me.Ingresos.AllowEdit = True
         Me.Ingresos.AllowNew = True
         Me.Ingresos.AllowRemove = True
+        Me.Ingresos.MaximoElementosSeleccionados = 1
+        Me.Ingresos.MensajeLimiteMaximo = "Ya se selecciono el maximo de elementos permitidos"
+        Me.Ingresos.MostrarAlertas = False
         Me.Ingresos.Name = Nothing
         Me.Ingresos.RaiseListChangedEvents = True
+        Me.Ingresos.Transaction = Nothing
         '
         'ImprimirCheque
         '
@@ -464,8 +470,8 @@ Partial Class CancelacionIngresosForm
         'gpo
         '
         Me.gpo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpo.Controls.Add(Me.tab)
         Me.gpo.Location = New System.Drawing.Point(54, 344)
         Me.gpo.Name = "gpo"
@@ -476,8 +482,8 @@ Partial Class CancelacionIngresosForm
         'tab
         '
         Me.tab.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tab.ColumnCount = 1
         Me.tab.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tab.Controls.Add(Me.DgvCuentas, 0, 0)
@@ -496,13 +502,58 @@ Partial Class CancelacionIngresosForm
         Me.DgvCuentas.AllowUserToAddRows = False
         Me.DgvCuentas.AllowUserToDeleteRows = False
         Me.DgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono})
+        Me.DgvCuentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmCtaMayor, Me.ClmSubCta, Me.ClmSsbCta, Me.ClmSssCta, Me.ClmDescripcion, Me.ClmCargo, Me.ClmAbono, Me.IdCuentaContable, Me.Posicion})
         Me.DgvCuentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvCuentas.Location = New System.Drawing.Point(3, 3)
         Me.DgvCuentas.Name = "DgvCuentas"
         Me.DgvCuentas.RowHeadersVisible = False
         Me.DgvCuentas.Size = New System.Drawing.Size(677, 134)
         Me.DgvCuentas.TabIndex = 5
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.txtAbono)
+        Me.Panel1.Controls.Add(Me.txtCargo)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 148)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(683, 30)
+        Me.Panel1.TabIndex = 4
+        '
+        'txtAbono
+        '
+        Me.txtAbono.BackColor = System.Drawing.Color.LemonChiffon
+        Me.txtAbono.Decimales = CType(2UI, UInteger)
+        Me.txtAbono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAbono.ForeColor = System.Drawing.Color.SaddleBrown
+        Me.txtAbono.Location = New System.Drawing.Point(585, 4)
+        Me.txtAbono.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtAbono.Name = "txtAbono"
+        Me.txtAbono.ReadOnly = True
+        Me.txtAbono.Signo = Integra.Controles.TextboxDecimal.RespuestaEnum.NO
+        Me.txtAbono.Size = New System.Drawing.Size(90, 22)
+        Me.txtAbono.TabIndex = 1
+        Me.txtAbono.TabStop = False
+        Me.txtAbono.Text = "0.00"
+        Me.txtAbono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtCargo
+        '
+        Me.txtCargo.BackColor = System.Drawing.Color.LemonChiffon
+        Me.txtCargo.Decimales = CType(2UI, UInteger)
+        Me.txtCargo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCargo.ForeColor = System.Drawing.Color.SaddleBrown
+        Me.txtCargo.Location = New System.Drawing.Point(496, 4)
+        Me.txtCargo.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtCargo.Name = "txtCargo"
+        Me.txtCargo.ReadOnly = True
+        Me.txtCargo.Signo = Integra.Controles.TextboxDecimal.RespuestaEnum.NO
+        Me.txtCargo.Size = New System.Drawing.Size(90, 22)
+        Me.txtCargo.TabIndex = 0
+        Me.txtCargo.TabStop = False
+        Me.txtCargo.Text = "0.00"
+        Me.txtCargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'ClmCtaMayor
         '
@@ -569,56 +620,23 @@ Partial Class CancelacionIngresosForm
         Me.ClmAbono.Name = "ClmAbono"
         Me.ClmAbono.ReadOnly = True
         '
-        'Panel1
+        'IdCuentaContable
         '
-        Me.Panel1.Controls.Add(Me.txtAbono)
-        Me.Panel1.Controls.Add(Me.txtCargo)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 148)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(683, 30)
-        Me.Panel1.TabIndex = 4
+        Me.IdCuentaContable.HeaderText = "IdCuentaContable"
+        Me.IdCuentaContable.Name = "IdCuentaContable"
+        Me.IdCuentaContable.Visible = False
         '
-        'txtAbono
+        'Posicion
         '
-        Me.txtAbono.BackColor = System.Drawing.Color.LemonChiffon
-        Me.txtAbono.Decimales = CType(2UI, UInteger)
-        Me.txtAbono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAbono.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.txtAbono.Location = New System.Drawing.Point(585, 4)
-        Me.txtAbono.Margin = New System.Windows.Forms.Padding(0)
-        Me.txtAbono.Name = "txtAbono"
-        Me.txtAbono.ReadOnly = True
-        Me.txtAbono.Signo = Integra.Controles.TextboxDecimal.RespuestaEnum.NO
-        Me.txtAbono.Size = New System.Drawing.Size(90, 22)
-        Me.txtAbono.TabIndex = 1
-        Me.txtAbono.TabStop = False
-        Me.txtAbono.Text = "0.00"
-        Me.txtAbono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtCargo
-        '
-        Me.txtCargo.BackColor = System.Drawing.Color.LemonChiffon
-        Me.txtCargo.Decimales = CType(2UI, UInteger)
-        Me.txtCargo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCargo.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.txtCargo.Location = New System.Drawing.Point(496, 4)
-        Me.txtCargo.Margin = New System.Windows.Forms.Padding(0)
-        Me.txtCargo.Name = "txtCargo"
-        Me.txtCargo.ReadOnly = True
-        Me.txtCargo.Signo = Integra.Controles.TextboxDecimal.RespuestaEnum.NO
-        Me.txtCargo.Size = New System.Drawing.Size(90, 22)
-        Me.txtCargo.TabIndex = 0
-        Me.txtCargo.TabStop = False
-        Me.txtCargo.Text = "0.00"
-        Me.txtCargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.Posicion.HeaderText = "Posicion"
+        Me.Posicion.Name = "Posicion"
+        Me.Posicion.Visible = False
         '
         'CancelacionIngresosForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(760, 556)
+        Me.ClientSize = New System.Drawing.Size(760, 560)
         Me.Controls.Add(Me.gpo)
         Me.Controls.Add(Me.pan)
         Me.Controls.Add(Me.mtb)
@@ -679,6 +697,12 @@ Partial Class CancelacionIngresosForm
     Friend WithEvents gpo As System.Windows.Forms.GroupBox
     Friend WithEvents tab As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents DgvCuentas As System.Windows.Forms.DataGridView
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents txtAbono As Integra.Controles.TextboxDecimal
+    Friend WithEvents txtCargo As Integra.Controles.TextboxDecimal
+    Friend WithEvents Bancos As ClasesNegocio.BancosCollectionClass
+    Friend WithEvents lblEstatus As System.Windows.Forms.Label
+    Friend WithEvents chkAnticipo As System.Windows.Forms.CheckBox
     Friend WithEvents ClmCtaMayor As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmSubCta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmSsbCta As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -686,10 +710,6 @@ Partial Class CancelacionIngresosForm
     Friend WithEvents ClmDescripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmCargo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ClmAbono As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents txtAbono As Integra.Controles.TextboxDecimal
-    Friend WithEvents txtCargo As Integra.Controles.TextboxDecimal
-    Friend WithEvents Bancos As ClasesNegocio.BancosCollectionClass
-    Friend WithEvents lblEstatus As System.Windows.Forms.Label
-    Friend WithEvents chkAnticipo As System.Windows.Forms.CheckBox
+    Friend WithEvents IdCuentaContable As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Posicion As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
