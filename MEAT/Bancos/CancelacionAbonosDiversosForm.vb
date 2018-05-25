@@ -1,6 +1,7 @@
 Imports CN = ClasesNegocio
 Imports Integra.Clases
-Imports HC = IntegraLab.ORM.HelperClasses
+Imports HC = Integralab.ORM.HelperClasses
+Imports System.Data.SqlClient
 
 Public Class CancelacionAbonosDiversosForm
     Implements InterfaceForm
@@ -233,7 +234,8 @@ Public Class CancelacionAbonosDiversosForm
         ' txtFolio.Text = abonodiverso.Folio
         Me.lblEstatus.Text = abonodiverso.Estatus.ToString
         Me.lblEstatus.Visible = True
-        MostrarPolizaFlexGrid(abonodiverso.Poliza)
+        'MostrarPolizaFlexGrid(abonodiverso.Poliza)
+        txtPoliza.Text = abonodiverso.Poliza.NumeroPoliza
         Me.txtAbono.Text = Me.txtImporte.Text
         Me.txtCargo.Text = Me.txtImporte.Text
     End Sub
@@ -253,7 +255,7 @@ Public Class CancelacionAbonosDiversosForm
         '    Cadena &= "* Beneficiario" & vbCrLf
         '    Bl = True
         'End If
-        If txtImporte.text = 0 Then
+        If txtImporte.Text = 0 Then
             Cadena &= "* Importe" & vbCrLf
             Bl = True
         End If
@@ -273,7 +275,7 @@ Public Class CancelacionAbonosDiversosForm
             abonodiverso.Cuenta = Cuenta
             abonodiverso.FechaDocumento = dtp.Value
             abonodiverso.Folio = txtReferencia.Text
-            abonodiverso.Importe = txtImporte.text
+            abonodiverso.Importe = txtImporte.Text
             abonodiverso.Origen = ClasesNegocio.BancosMovimientosOrigen.BANCOS
             abonodiverso.Resguardo = SiNoEnum.SI
             abonodiverso.TipoCambio = txtTipoCambio.Valor
@@ -321,6 +323,12 @@ Public Class CancelacionAbonosDiversosForm
                             Trans.Rollback()
                             Cancelar = True
                             MsgBox("El Cargo Diverso no pudo ser Cancelado...", MsgBoxStyle.Critical, "Error")
+                            Exit Sub
+                        End If
+
+                        If Not RemoverProrrateo(abonodiverso.Poliza.Codigo) Then
+                            Trans.Rollback()
+                            Cancelar = True
                             Exit Sub
                         End If
 
@@ -373,7 +381,7 @@ Public Class CancelacionAbonosDiversosForm
         If IsNothing(Validar()) Then
             If VerificarBalance() = 0 Then
                 Dim bbl As Boolean
-                If (txtSaldo.Valor - txtImporte.text) < 0 Then
+                If (txtSaldo.Valor - txtImporte.Text) < 0 Then
                     bbl = False
                     If MessageBox.Show("El importe de este cheque sobrepasa el saldo en la cuenta, ¿Desea continuar con la generación del Cheque?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then bbl = True
                 Else
@@ -684,11 +692,11 @@ Public Class CancelacionAbonosDiversosForm
             Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
             Poliza.FechaCaptura = Now
             Poliza.FechaPoliza = Now
-            Poliza.Importe = txtImporte.text
+            Poliza.Importe = txtImporte.Text
             Poliza.Origen = ClasesNegocio.PolizaOrigenEnum.BANCOS
             Poliza.TipoCambio = txtTipoCambio.Text
             Poliza.TipoPoliza = ClasesNegocio.PolizaTipoPolizaEnum.CANCELACION
-            Poliza.TipoError = 0    
+            Poliza.TipoError = 0
             Poliza.Referencia = abonodiverso.Poliza.Codigo
             'ojo
             For Each r As System.Windows.Forms.DataGridViewRow In Me.DgvCuentas.Rows
@@ -734,23 +742,24 @@ Public Class CancelacionAbonosDiversosForm
 
     End Sub
 
-    Private Sub MostrarPolizaFlexGrid(ByVal Poliza As CN.PolizaClass)
-        LimpiarGridCuentas()
-        For i As Integer = 0 To Poliza.Detalles.Count - 1
-            'Me.DgvCuentas.Rows.Add()
-            If i > 0 Then
-                Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
-            Else
-                RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
-            End If
-            If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
-                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
-            Else
-                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
-            End If
-        Next
-        txtPoliza.Text = Poliza.NumeroPoliza
-    End Sub
+    '' FECHA 25/05/2018 deprecated''
+    'Private Sub MostrarPolizaFlexGrid(ByVal Poliza As CN.PolizaClass)
+    '    LimpiarGridCuentas()
+    '    For i As Integer = 0 To Poliza.Detalles.Count - 1
+    '        'Me.DgvCuentas.Rows.Add()
+    '        If i > 0 Then
+    '            Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
+    '        Else
+    '            RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
+    '        End If
+    '        If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
+    '            Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
+    '        Else
+    '            Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
+    '        End If
+    '    Next
+    '    txtPoliza.Text = Poliza.NumeroPoliza
+    'End Sub
 
 #End Region
 
@@ -779,6 +788,8 @@ Public Class CancelacionAbonosDiversosForm
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
             abonodiverso = BuscarCheques.Cheque
             Mostrar()
+            LimpiarGridCuentas()
+            RellenarCuentasStore(abonodiverso.IdPoliza)
             bol = False
         End If
         Cancelar = bol
@@ -808,4 +819,70 @@ Public Class CancelacionAbonosDiversosForm
             'End If
         End If
     End Sub
+
+    '' Usado para llenar el grid de cuentas mediante el SP ConsultaProrrateo
+    Private Sub RellenarCuentasStore(ByVal idPoliza As Integer)
+        Try
+            Dim i As Integer = 0
+            Dim datos As New DataSet
+            Dim query = "EXEC  ConsultaProrrateo {0}"
+            query = String.Format(query, idPoliza)
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim adapter As New SqlDataAdapter()
+                adapter.SelectCommand = New SqlCommand(query, connection)
+                adapter.Fill(datos)
+            End Using
+            LimpiarGridCuentas()
+            For Each row As DataRow In datos.Tables(0).Rows
+                Me.DgvCuentas.Rows.Add()
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("Cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("SubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
+
+                Me.DgvCuentas.Rows(i).Cells("idCuentaContable").Value = row("IdCuentaContable").ToString()
+                Me.DgvCuentas.Rows(i).Cells("posicion").Value = row("Posicion").ToString()
+
+                i = i + 1
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("No se pudo cargar el Grid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    '' Remueve los datos de prorrateo de la poliza en las tablas GastosDepartamentalesFG y GastosDepartamentosDetFG
+    Private Function RemoverProrrateo(idpoliza As Integer) As Boolean
+        Try
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim query = "EXEC RemoverDepartamentalizacion " & idpoliza
+                Dim command As New SqlCommand
+                command.Connection = connection
+                command.CommandText = query
+
+                Dim errorValue As Integer
+                Dim errorMessage As String
+
+                connection.Open()
+                Dim readCommand As SqlDataReader = command.ExecuteReader()
+                readCommand.Read()
+                errorValue = CInt(readCommand(0))
+                errorMessage = CStr(readCommand(1))
+                readCommand.Close()
+
+                If errorValue > 0 Then
+                    MessageBox.Show(errorMessage, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK)
+                    Return False
+                End If
+
+                Return True
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK)
+            Return False
+        End Try
+    End Function
 End Class
