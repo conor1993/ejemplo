@@ -1,6 +1,7 @@
 Imports CN = ClasesNegocio
 Imports Integra.Clases
 Imports HC = IntegraLab.ORM.HelperClasses
+Imports System.Data.SqlClient
 
 Public Class CancelacionCargosDiversosForm
     Implements InterfaceForm
@@ -330,9 +331,17 @@ Public Class CancelacionCargosDiversosForm
                             Exit Sub
                         End If
 
+                        If Not RemoverProrrateo(cargodiverso.Poliza.Codigo) Then
+                            Trans.Rollback()
+                            Cancelar = True
+                            Exit Sub
+                        End If
+
                         Cuenta.SaldoActual -= MovBancos.Importe
                         Trans.Add(Cuenta.ObtenerEntidad)
                         Cuenta.ObtenerEntidad.Save()
+
+
                         Trans.Commit()
 
                         MsgBox("El Cargo Diverso ha sido Cancelado Satisfactoriamente...", MsgBoxStyle.Information, "Aviso")
@@ -549,74 +558,6 @@ Public Class CancelacionCargosDiversosForm
         End If
     End Sub
 
-    'ojo
-    'Private Sub fg_AfterEdit(ByVal sender As Object, ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) Handles fg.AfterEdit
-    '    Select Case e.Col
-    '        Case 1 To 4
-    '            Dim tmp As CN.CuentaContableClass
-    '            tmp = CtasCont.ObtenerCuentaContable(ValorFlexGrid(e.Row, 1), ValorFlexGrid(e.Row, 2), ValorFlexGrid(e.Row, 3), ValorFlexGrid(e.Row, 4))
-    '            PasarCuenta(tmp, e.Row)
-    '        Case 5
-    '            'Buscar Cuenta Por Nombre
-    '            CtasCont.Obtener(Nothing, ValorFlexGrid(e.Row, 5))
-    '            Dim tmp As CN.CuentaContableClass
-    '            Select Case CtasCont.Count
-    '                Case 1
-    '                    tmp = CtasCont(0)
-    '                Case Is > 1
-    '                    SelCuentaContableForm.CuentasContables = CtasCont
-    '                    If SelCuentaContableForm.ShowDialog = Windows.Forms.DialogResult.OK Then
-    '                        tmp = SelCuentaContableForm.CuentaContable
-    '                    End If
-    '                Case Else
-    '            End Select
-    '            PasarCuenta(tmp, e.Row)
-    '        Case 6
-    '            If VerificarBalance() < 0 Then
-    '                ValorFlexGrid(e.Row, e.Col, 0)
-    '                MessageBox.Show("La suma de los Cargos sobrepasa a la suma de los Abonos.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '            End If
-    '    End Select
-    'End Sub
-
-    'Private Sub fg_BeforeEdit(ByVal sender As Object, ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) Handles fg.BeforeEdit
-    '    If txtImporte.Valor > 0 Then
-    '        If e.Row > 0 Then
-    '            If IsNothing(fg.Rows(e.Row - 1).UserData) Then
-    '                e.Cancel = True
-    '            Else
-    '                If ValorFlexGrid(e.Row - 1, 6) > 0 Or ValorFlexGrid(e.Row - 1, 7) > 0 Then
-    '                    If (VerificarBalance() = 0) And ValorFlexGrid(e.Row, 6) = 0 Then e.Cancel = True
-    '                Else
-    '                    e.Cancel = True
-    '                End If
-    '            End If
-    '        End If
-    '    Else
-    '        e.Cancel = True
-    '        txtImporte.Focus()
-    '    End If
-    'End Sub
-
-    'Private Sub fg_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles fg.KeyDown
-    '    Select Case e.KeyCode
-    '        Case Keys.Delete
-    '            If fg.RowSel > 1 Then fg.Rows.Remove(fg.RowSel)
-    '        Case Keys.F3
-    '            Dim BuscarCuentas As New BusquedaCuentasContablesForm
-    '            BuscarCuentas.BloquearCaracteristicas = True
-    '            BuscarCuentas.Bancos = CheckState.Unchecked
-    '            BuscarCuentas.Afectables = CheckState.Checked
-    '            If BuscarCuentas.ShowDialog = Windows.Forms.DialogResult.OK Then
-    '                If fg.RowSel > 1 Then
-    '                    Dim cta As New ClasesNegocios.CuentaContableClass
-    '                    cta = BuscarCuentas.CuentaContable
-    '                    RellenarFilaFlexGrid(fg.Rows(fg.RowSel), cta)
-    '                End If
-    '            End If
-    '    End Select
-    'End Sub
-
     Private Sub LimpiarGridCuentas()
         Me.DgvCuentas.Rows.Clear()
         'fg.Rows.RemoveRange(1, fg.Rows.Count - 1)
@@ -742,19 +683,19 @@ Public Class CancelacionCargosDiversosForm
 
     Private Sub MostrarPolizaFlexGrid(ByVal Poliza As CN.PolizaClass)
         LimpiarGridCuentas()
-        For i As Integer = 0 To Poliza.Detalles.Count - 1
-            'Me.DgvCuentas.Rows.Add()
-            If i > 0 Then
-                Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
-            Else
-                RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
-            End If
-            If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
-                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
-            Else
-                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
-            End If
-        Next
+        'For i As Integer = 0 To Poliza.Detalles.Count - 1
+        '    'Me.DgvCuentas.Rows.Add()
+        '    If i > 0 Then
+        '        Me.RellenarGridCtasProveedor(Poliza.Detalles(i).CuentaContable)
+        '    Else
+        '        RellenarGridCuentas(Poliza.Detalles(i).CuentaContable)
+        '    End If
+        '    If Poliza.Detalles(i).Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO Then
+        '        Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = Poliza.Detalles(i).Importe.ToString("C2")
+        '    Else
+        '        Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = Poliza.Detalles(i).Importe.ToString("C2")
+        '    End If
+        'Next
         txtPoliza.Text = Poliza.NumeroPoliza
     End Sub
 
@@ -785,6 +726,8 @@ Public Class CancelacionCargosDiversosForm
         If BuscarCheques.ShowDialog = Windows.Forms.DialogResult.OK Then
             cargodiverso = BuscarCheques.Cheque
             Mostrar()
+            LimpiarGridCuentas()
+            RellenarCuentasstore(cargodiverso.IdPoliza)
             bol = False
         End If
         Cancelar = bol
@@ -814,4 +757,70 @@ Public Class CancelacionCargosDiversosForm
             'End If
         End If
     End Sub
+
+    '' Usado para llenar el grid de cuentas mediante el SP ConsultaProrrateo
+    Private Sub RellenarCuentasstore(ByVal idPoliza As Integer)
+        Try
+            Dim i As Integer = 0
+            Dim datos As New DataSet
+            Dim query = "EXEC  ConsultaProrrateo {0}"
+            query = String.Format(query, idPoliza)
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim adapter As New SqlDataAdapter()
+                adapter.SelectCommand = New SqlCommand(query, connection)
+                adapter.Fill(datos)
+            End Using
+            LimpiarGridCuentas()
+            For Each row As DataRow In datos.Tables(0).Rows
+                Me.DgvCuentas.Rows.Add()
+                Me.DgvCuentas.Rows(i).Cells("ClmCtaMayor").Value = row("Cta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSubCta").Value = row("SubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSsbCta").Value = row("SSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmSssCta").Value = row("SSSubCta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmDescripcion").Value = row("NomCuenta").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmCargo").Value = row("Cargo").ToString()
+                Me.DgvCuentas.Rows(i).Cells("ClmAbono").Value = row("Abono").ToString()
+
+                Me.DgvCuentas.Rows(i).Cells("idCuentaContable").Value = row("IdCuentaContable").ToString()
+                Me.DgvCuentas.Rows(i).Cells("posicion").Value = row("Posicion").ToString()
+
+                i = i + 1
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show("No se pudo cargar el Grid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    '' Remueve los datos de prorrateo de la poliza en las tablas GastosDepartamentalesFG y GastosDepartamentosDetFG
+    Private Function RemoverProrrateo(idpoliza As Integer) As Boolean
+        Try
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim query = "EXEC RemoverDepartamentalizacion " & idpoliza
+                Dim command As New SqlCommand
+                command.Connection = connection
+                command.CommandText = query
+
+                Dim errorValue As Integer
+                Dim errorMessage As String
+
+                connection.Open()
+                Dim readCommand As SqlDataReader = command.ExecuteReader()
+                readCommand.Read()
+                errorValue = CInt(readCommand(0))
+                errorMessage = CStr(readCommand(1))
+                readCommand.Close()
+
+                If errorValue > 0 Then
+                    MessageBox.Show(errorMessage, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK)
+                    Return False
+                End If
+
+                Return True
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK)
+            Return False
+        End Try
+    End Function
 End Class

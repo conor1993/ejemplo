@@ -32,12 +32,12 @@ Public Class FrmBanAbonosDiversos
         MtbEstados.StateEditar = "001010000"
         MtbEstados.StateImprimir = ""
         MtbEstados.StateSalir = ""
-        Me.mtb.Buttons(0).ToolTipText = "Busca los Registros de Depósitos Registrados"
+        Me.mtb.Buttons(0).ToolTipText = "Busca los Registros de Depï¿½sitos Registrados"
         Me.mtb.Buttons(2).ToolTipText = "Limpia todos los datos que ya hayan sido capturados."
-        Me.mtb.Buttons(3).ToolTipText = "Cancela la acción actual."
+        Me.mtb.Buttons(3).ToolTipText = "Cancela la acciï¿½n actual."
         Me.mtb.Buttons(5).ToolTipText = "Crea un nuevo Registro de depositos."
-        Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Depósitos o los cambios que se le hayan Realizado."
-        Me.mtb.Buttons(10).ToolTipText = "Imprime Los resgistros de Depósitos Registrados."
+        Me.mtb.Buttons(6).ToolTipText = "Guarda el Registro de Depï¿½sitos o los cambios que se le hayan Realizado."
+        Me.mtb.Buttons(10).ToolTipText = "Imprime Los resgistros de Depï¿½sitos Registrados."
         Me.mtb.Buttons(12).ToolTipText = "Cierra la Ventana Ignorando los cambios que no hayan sido Guardados."
         mtb.ToolBarButtonStatus = MtbEstados
         mtb.sbCambiarEstadoBotones("Cancelar")
@@ -313,7 +313,7 @@ Public Class FrmBanAbonosDiversos
 
     Private Sub mtb_ClickEditar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickEditar
         'Escritura()
-        MessageBox.Show("No esta habilitada la edición para este modulo.", "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        MessageBox.Show("No esta habilitada la ediciï¿½n para este modulo.", "Acciï¿½n no permitida", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
@@ -362,6 +362,10 @@ Public Class FrmBanAbonosDiversos
                         Limpiar()
                         Lectura()
                         Cancelar = False
+                    Else
+                        Trans.Rollback()
+                        Cancelar = True
+                        Exit Sub
                     End If
                 Else
                     MessageBox.Show("No se puede generar el deposito por que no esta cuadrada la poliza.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -412,7 +416,7 @@ Public Class FrmBanAbonosDiversos
                                       1,
                                       CDec(distribucionGastosTb.Rows(i)("importe")),
                                       100,
-                                      Cargo.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                      Cargo.Poliza.FechaPoliza.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
                                       distribucionGastosTb.Rows(i)("rowNumber"))
 
                 command.CommandText = query
@@ -454,7 +458,7 @@ Public Class FrmBanAbonosDiversos
                                           detalleDistGastosTb.Rows(i)("detCentroCostos"),
                                           CDec(1),
                                           detalleDistGastosTb.Rows(i)("detPorcentaje"),
-                                          Cargo.Poliza.FechaCaptura.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
+                                          Cargo.Poliza.FechaPoliza.ToString("dd'/'MM'/'yyyy hh:mm:ss"),
                                           "Null")
 
                     command.CommandText = query
@@ -540,7 +544,7 @@ Public Class FrmBanAbonosDiversos
                     If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
                         Try
                             PagoElectronico.Print()
-                            If MessageBox.Show("¿Se imprimira el comprobante?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+                            If MessageBox.Show("ï¿½Se imprimira el comprobante?", "Confirmaciï¿½n de Impresiï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
                                 PagoElectronico.ImpresionExitosa()
                                 Cargo.Guardar()
                             End If
@@ -549,14 +553,14 @@ Public Class FrmBanAbonosDiversos
                         End Try
                     End If
                 Else
-                    If MessageBox.Show("¿Desea imprimir el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+                    If MessageBox.Show("ï¿½Desea imprimir el cheque?", "Confirmaciï¿½n de Impresiï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
                         ImprimirCheque.Cheque = Cargo
-                        ImprimirCheque.AbonoEnCuenta = MessageBox.Show("¿Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                        ImprimirCheque.AbonoEnCuenta = MessageBox.Show("ï¿½Es para abono en cuenta?", "Tipo de Cheque", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                         pDg.Document = ImprimirCheque
                         If pDg.ShowDialog = Windows.Forms.DialogResult.OK Then
                             Try
                                 ImprimirCheque.Print()
-                                If MessageBox.Show("¿Se imprimira el cheque?", "Confirmación de Impresión", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+                                If MessageBox.Show("ï¿½Se imprimira el cheque?", "Confirmaciï¿½n de Impresiï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
                                     ImprimirCheque.ImpresionExitosa()
                                     Cargo.Guardar()
                                 End If
@@ -1133,7 +1137,7 @@ Public Class FrmBanAbonosDiversos
                 If Me.DgvCuentas.CurrentRow.Index = 0 Then
                     Exit Sub
                 End If
-                If MessageBox.Show("¿Esta seguro de eliminar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.No Then
+                If MessageBox.Show("ï¿½Esta seguro de eliminar el registro?", "Confirmaciï¿½n", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.No Then
                     Exit Sub
                 Else
                     Me.DgvCuentas.Rows.Remove(Me.DgvCuentas.CurrentRow)
