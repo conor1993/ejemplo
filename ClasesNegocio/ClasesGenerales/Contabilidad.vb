@@ -80,6 +80,7 @@ Public Class CuentaContableClass
         Dim indiceC As Integer = 1
         Dim indiceP As Integer = 1
         For Each prop As Reflection.PropertyInfo In Entity.GetType.GetProperties
+          
             Select Case prop.Name
                 Case "Abonos" & indiceA.ToString("00")
                     prop.SetValue(Entity, 0D, Reflection.BindingFlags.SetProperty, Nothing, Nothing, Nothing)

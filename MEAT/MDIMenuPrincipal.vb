@@ -1551,4 +1551,13 @@ Public Class MDIMenuPrincipal
     Private Sub DepartartamentosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DepartartamentosToolStripMenuItem.Click
         Abrir(frmRptDepartamentosDos)
     End Sub
+
+    Private Sub CierresContablesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CierresContablesToolStripMenuItem.Click
+        Abrir(BusquedaCuentasContablesForm)
+
+    End Sub
+
+    Private Sub CancelaciónDeCierresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CancelaciónDeCierresToolStripMenuItem.Click
+
+    End Sub
 End Class
