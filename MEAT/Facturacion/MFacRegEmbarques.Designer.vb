@@ -23,6 +23,10 @@ Partial Class MFacRegEmbarques
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -40,10 +44,6 @@ Partial Class MFacRegEmbarques
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.chkParaExportacion = New System.Windows.Forms.CheckBox()
@@ -73,6 +73,15 @@ Partial Class MFacRegEmbarques
         Me.txtKgrsCortes = New System.Windows.Forms.TextBox()
         Me.txtPzasCortes = New System.Windows.Forms.TextBox()
         Me.dgvRelaciondeCortes = New System.Windows.Forms.DataGridView()
+        Me.Etiqueta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIdCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmDesCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Piezas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Kilos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LoteCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmIdPreCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCorPrecioEspecial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmfetiqueta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -126,15 +135,6 @@ Partial Class MFacRegEmbarques
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Etiqueta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmIdCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmDesCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Piezas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Kilos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LoteCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmIdPreCorte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCorPrecioEspecial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmfetiqueta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -454,8 +454,8 @@ Partial Class MFacRegEmbarques
         Me.dgvRelaciondeCortes.AllowUserToOrderColumns = True
         Me.dgvRelaciondeCortes.AllowUserToResizeRows = False
         Me.dgvRelaciondeCortes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvRelaciondeCortes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvRelaciondeCortes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Etiqueta, Me.clmIdCorte, Me.clmDesCorte, Me.Piezas, Me.Kilos, Me.LoteCorte, Me.clmIdPreCorte, Me.clmCorPrecioEspecial, Me.clmfetiqueta})
         Me.dgvRelaciondeCortes.Location = New System.Drawing.Point(6, 19)
@@ -464,6 +464,82 @@ Partial Class MFacRegEmbarques
         Me.dgvRelaciondeCortes.RowHeadersVisible = False
         Me.dgvRelaciondeCortes.Size = New System.Drawing.Size(640, 193)
         Me.dgvRelaciondeCortes.TabIndex = 6
+        '
+        'Etiqueta
+        '
+        Me.Etiqueta.DataPropertyName = "IdFolioEtiqueta"
+        Me.Etiqueta.HeaderText = "Etiqueta"
+        Me.Etiqueta.Name = "Etiqueta"
+        '
+        'clmIdCorte
+        '
+        Me.clmIdCorte.DataPropertyName = "IdProducto"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.clmIdCorte.DefaultCellStyle = DataGridViewCellStyle1
+        Me.clmIdCorte.HeaderText = "Codigo"
+        Me.clmIdCorte.Name = "clmIdCorte"
+        Me.clmIdCorte.ReadOnly = True
+        Me.clmIdCorte.Width = 50
+        '
+        'clmDesCorte
+        '
+        Me.clmDesCorte.DataPropertyName = "Producto"
+        Me.clmDesCorte.HeaderText = "Descripción"
+        Me.clmDesCorte.Name = "clmDesCorte"
+        Me.clmDesCorte.ReadOnly = True
+        Me.clmDesCorte.Width = 210
+        '
+        'Piezas
+        '
+        Me.Piezas.DataPropertyName = "CantPzas"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Piezas.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Piezas.HeaderText = "Piezas"
+        Me.Piezas.Name = "Piezas"
+        Me.Piezas.ReadOnly = True
+        Me.Piezas.Width = 90
+        '
+        'Kilos
+        '
+        Me.Kilos.DataPropertyName = "CantKgrs"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Kilos.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Kilos.HeaderText = "Kilos"
+        Me.Kilos.Name = "Kilos"
+        Me.Kilos.ReadOnly = True
+        Me.Kilos.Width = 90
+        '
+        'LoteCorte
+        '
+        Me.LoteCorte.DataPropertyName = "LoteCorte"
+        Me.LoteCorte.HeaderText = "LoteCorte"
+        Me.LoteCorte.Name = "LoteCorte"
+        Me.LoteCorte.Visible = False
+        '
+        'clmIdPreCorte
+        '
+        Me.clmIdPreCorte.DataPropertyName = "IdPrecorte"
+        Me.clmIdPreCorte.HeaderText = "IdPrecorte"
+        Me.clmIdPreCorte.Name = "clmIdPreCorte"
+        Me.clmIdPreCorte.Visible = False
+        '
+        'clmCorPrecioEspecial
+        '
+        Me.clmCorPrecioEspecial.DataPropertyName = "Precio"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "C2"
+        Me.clmCorPrecioEspecial.DefaultCellStyle = DataGridViewCellStyle4
+        Me.clmCorPrecioEspecial.HeaderText = "Precio"
+        Me.clmCorPrecioEspecial.Name = "clmCorPrecioEspecial"
+        Me.clmCorPrecioEspecial.ReadOnly = True
+        Me.clmCorPrecioEspecial.Width = 80
+        '
+        'clmfetiqueta
+        '
+        Me.clmfetiqueta.DataPropertyName = "IdFolioEtiqueta"
+        Me.clmfetiqueta.HeaderText = "clmfetiqueta"
+        Me.clmfetiqueta.Name = "clmfetiqueta"
+        Me.clmfetiqueta.Visible = False
         '
         'mtb
         '
@@ -566,8 +642,8 @@ Partial Class MFacRegEmbarques
         Me.DgvCanales.AllowUserToOrderColumns = True
         Me.DgvCanales.AllowUserToResizeRows = False
         Me.DgvCanales.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvCanales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvCanales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ClmEtiqueta, Me.clmCodigoCanal, Me.clmDesCanal, Me.clmPiezas, Me.clmKilos, Me.clmCanPrecioEspecial})
         Me.DgvCanales.Location = New System.Drawing.Point(10, 19)
@@ -680,8 +756,8 @@ Partial Class MFacRegEmbarques
         Me.DgvProductos.AllowUserToOrderColumns = True
         Me.DgvProductos.AllowUserToResizeRows = False
         Me.DgvProductos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvProductos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmProdLoteSacrificio, Me.clmProdCodigo, Me.clmProdDescripcion, Me.clmProdPiezas, Me.clmProdKilos, Me.clmProPrecioEspecial})
         Me.DgvProductos.Location = New System.Drawing.Point(12, 19)
@@ -759,7 +835,7 @@ Partial Class MFacRegEmbarques
         Me.dgvServicios.AllowUserToDeleteRows = False
         Me.dgvServicios.AllowUserToResizeRows = False
         Me.dgvServicios.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.dgvServicios.AutoGenerateColumns = False
         Me.dgvServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvServicios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSeleccion, Me.CodigoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn})
@@ -991,82 +1067,6 @@ Partial Class MFacRegEmbarques
         Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
         Me.DataGridViewTextBoxColumn19.ReadOnly = True
         Me.DataGridViewTextBoxColumn19.Width = 300
-        '
-        'Etiqueta
-        '
-        Me.Etiqueta.DataPropertyName = "IdFolioEtiqueta"
-        Me.Etiqueta.HeaderText = "Etiqueta"
-        Me.Etiqueta.Name = "Etiqueta"
-        '
-        'clmIdCorte
-        '
-        Me.clmIdCorte.DataPropertyName = "IdProducto"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.clmIdCorte.DefaultCellStyle = DataGridViewCellStyle1
-        Me.clmIdCorte.HeaderText = "Codigo"
-        Me.clmIdCorte.Name = "clmIdCorte"
-        Me.clmIdCorte.ReadOnly = True
-        Me.clmIdCorte.Width = 50
-        '
-        'clmDesCorte
-        '
-        Me.clmDesCorte.DataPropertyName = "Producto"
-        Me.clmDesCorte.HeaderText = "Descripción"
-        Me.clmDesCorte.Name = "clmDesCorte"
-        Me.clmDesCorte.ReadOnly = True
-        Me.clmDesCorte.Width = 210
-        '
-        'Piezas
-        '
-        Me.Piezas.DataPropertyName = "CantPzas"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Piezas.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Piezas.HeaderText = "Piezas"
-        Me.Piezas.Name = "Piezas"
-        Me.Piezas.ReadOnly = True
-        Me.Piezas.Width = 90
-        '
-        'Kilos
-        '
-        Me.Kilos.DataPropertyName = "CantKgrs"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Kilos.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Kilos.HeaderText = "Kilos"
-        Me.Kilos.Name = "Kilos"
-        Me.Kilos.ReadOnly = True
-        Me.Kilos.Width = 90
-        '
-        'LoteCorte
-        '
-        Me.LoteCorte.DataPropertyName = "LoteCorte"
-        Me.LoteCorte.HeaderText = "LoteCorte"
-        Me.LoteCorte.Name = "LoteCorte"
-        Me.LoteCorte.Visible = False
-        '
-        'clmIdPreCorte
-        '
-        Me.clmIdPreCorte.DataPropertyName = "IdPrecorte"
-        Me.clmIdPreCorte.HeaderText = "IdPrecorte"
-        Me.clmIdPreCorte.Name = "clmIdPreCorte"
-        Me.clmIdPreCorte.Visible = False
-        '
-        'clmCorPrecioEspecial
-        '
-        Me.clmCorPrecioEspecial.DataPropertyName = "Precio"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "C2"
-        Me.clmCorPrecioEspecial.DefaultCellStyle = DataGridViewCellStyle4
-        Me.clmCorPrecioEspecial.HeaderText = "Precio"
-        Me.clmCorPrecioEspecial.Name = "clmCorPrecioEspecial"
-        Me.clmCorPrecioEspecial.ReadOnly = True
-        Me.clmCorPrecioEspecial.Width = 80
-        '
-        'clmfetiqueta
-        '
-        Me.clmfetiqueta.DataPropertyName = "IdFolioEtiqueta"
-        Me.clmfetiqueta.HeaderText = "clmfetiqueta"
-        Me.clmfetiqueta.Name = "clmfetiqueta"
-        Me.clmfetiqueta.Visible = False
         '
         'MFacRegEmbarques
         '
