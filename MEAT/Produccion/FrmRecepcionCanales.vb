@@ -182,6 +182,7 @@ Public Class FrmRecepcionCanales
         End Try
     End Sub
 
+
     Private Function Guardar(ByVal consecutivo As Integer, Optional ByVal CerrarLote As Boolean = False) As Boolean
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
 
@@ -460,7 +461,7 @@ Public Class FrmRecepcionCanales
 
             MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-           
+
 
             Me.txtPeso.Text = "0.00"
 
@@ -626,6 +627,7 @@ Public Class FrmRecepcionCanales
                 Return False
             End If
 
+
             Almacen.FechaMovimiento = Me.dtpFechaCaptura.Value
             Almacen.FechaCaptura = Now
             Almacen.IdCodMovimiento = Config.EntradaCanalAlmacen
@@ -639,7 +641,7 @@ Public Class FrmRecepcionCanales
             Almacen.Func = "I"
 
             If Not Almacen.Guardar() Then
-                'Trans.Rollback()
+                Trans.Rollback()
                 Return False
             End If
 
@@ -762,7 +764,8 @@ Public Class FrmRecepcionCanales
             HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
             Return True
         Catch ex As Exception
-            'Trans.Rollback()
+            Trans.Rollback()
+            HC.DbUtils.ActualConnectionString = HC.DbUtils.ActualConnectionString.Replace("MEATIDE", "MEATLA20")
             MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
