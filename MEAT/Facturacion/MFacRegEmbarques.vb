@@ -854,6 +854,8 @@ Public Class MFacRegEmbarques
                     Bandera = False
                 End If
 
+
+
                 Reporte.SetDataSource(TablaEmbarque.Tables(0))
                 Reporte.SetParameterValue(0, Bandera)
                 Reporte.SetParameterValue(1, Controlador.Sesion.MiEmpresa.Empnom)
