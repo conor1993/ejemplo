@@ -4,6 +4,7 @@ Imports ECS = Integralab.ORMSeguridad.EntityClasses
 Imports EC = Integralab.ORM.EntityClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports CC = Integralab.ORM.CollectionClasses
+Imports System.Data.SqlClient
 
 Public Class ClientesIntroductoresClass
     Inherits ClassBase(Of EC.MfacCatClientesEntity)
@@ -498,23 +499,40 @@ Public Class ClientesIntroductoresClass
         Return Entity.Nombre
     End Function
 
-    Public Function ObtenerSaldoDeuda() As Decimal
+    Public Function ObtenerSaldoDeuda(ByVal claveCliente As Integer) As Decimal
         Try
-            Dim Saldo As Decimal
-            Dim FacturasCol As New CC.FacturasClientesCabCollection
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                connection.Open()
+                Dim command As SqlCommand
+                Dim query As String
+                Dim reader As SqlDataReader
 
-            FacturasCol.GetMulti(HC.FacturasClientesCabFields.IdClienteCargo = Me.Codigo And HC.FacturasClientesCabFields.Estatus = "V")
-            For Each Fact As EC.FacturasClientesCabEntity In FacturasCol
-                Saldo += Fact.Total
-            Next
+                query = "SELECT SUM(SubTotal + ImpteIVA) AS Total FROM CabFacturas WHERE Cve_Cliente = '{0}' AND Status = 'V'"
+                query = String.Format(query, claveCliente)
+                command = connection.CreateCommand()
+                command.CommandText = query
+                reader = command.ExecuteReader()
+                reader.Read()
+                If IsDBNull(reader.GetValue(0)) Then
+                    Return 0
+                Else
+                    Console.WriteLine(reader.GetValue(0))
+                    Return reader.GetValue(0)
+                End If
+            End Using
+            'Dim Saldo As Decimal
+            'Dim FacturasCol As New CC.FacturasClientesCabCollection
 
-            Dim Pagos As New CC.PagoDeCtesCollection
-            Pagos.GetMulti(HC.PagoDeCtesFields.CveCliente = Me.Codigo And HC.PagoDeCtesFields.Estatus = "V")
-            For Each Pago As EC.PagoDeCtesEntity In Pagos
-                Saldo += Pago.SaldoFactura
-            Next
+            'FacturasCol.GetMulti(HC.FacturasClientesCabFields.IdClienteCargo = Me.Codigo And HC.FacturasClientesCabFields.Estatus = "V")
+            'For Each Fact As EC.FacturasClientesCabEntity In FacturasCol
+            '    Saldo += Fact.Total
+            'Next
 
-            Return Saldo
+            'Dim Pagos As New CC.PagoDeCtesCollection
+            'Pagos.GetMulti(HC.PagoDeCtesFields.CveCliente = Me.Codigo And HC.PagoDeCtesFields.Estatus = "V")
+            'For Each Pago As EC.PagoDeCtesEntity In Pagos
+            '    Saldo += Pago.SaldoFactura
+            'Nextx
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
             Return -1

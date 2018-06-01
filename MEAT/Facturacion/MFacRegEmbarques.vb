@@ -5,6 +5,7 @@ Imports CC = IntegraLab.ORM.CollectionClasses
 Imports EC = IntegraLab.ORM.EntityClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports TC = IntegraLab.ORM.TypedViewClasses
+Imports System.Data.SqlClient
 
 Public Class MFacRegEmbarques
 
@@ -135,36 +136,51 @@ Public Class MFacRegEmbarques
                     FacturasCol.GetMulti(HC.CabFacturasFields.CveCliente = Me.CmbCliente.SelectedValue And (HC.CabFacturasFields.Status = "V" Or _
                                      HC.CabFacturasFields.Status = "A"))
 
-
-
-                    For Each Fact As EC.CabFacturasEntity In FacturasCol
-                        If Fact.FecVenci < Now Then
-
-                            If MessageBox.Show("El cliente tiene facturas vencidas, ¿Quiere realizar el embarque?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                                Dim Ventana As New FrmAutorizacion
-                                Ventana.Icon = Me.Icon
-                                Autorizo = False
-
-                                'If Ventana.ShowDialog = Windows.Forms.DialogResult.Cancel Then
-                                '    Limpiar()
-                                '    Deshabilitar()
-                                '    Me.mtb.sbCambiarEstadoBotones("Cancelar")
-                                '    Exit Sub
-                                'Else
-                                '    Autorizo = True
-                                '    Exit Sub
-                                'End If
-
-                                Autorizo = True
-
-                            Else
-                                Limpiar()
-                                Deshabilitar()
-                                Me.mtb.sbCambiarEstadoBotones("Cancelar")
-                                Exit Sub
-                            End If
+                    If VigenciaFacturas(Cliente.Codigo) = False Then
+                        If (MessageBox.Show("El cliente tiene facturas vencidas, ¿Quiere realizar el embarque?",
+                                                                                        "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No) Then
+                            Limpiar()
+                            Deshabilitar()
+                            Me.mtb.sbCambiarEstadoBotones("Cancelar")
+                            Exit Sub
                         End If
-                    Next
+                    End If
+
+                    Autorizo = False 'No entiedo porque se hace esto
+                    Autorizo = True
+
+                    'Verifica si exsisten facturas vencidas
+
+
+                    'For Each Fact As EC.CabFacturasEntity In FacturasCol
+                    '    If Fact.FecVenci < Now Then
+
+                    '        If MessageBox.Show("El cliente tiene facturas vencidas, ¿Quiere realizar el embarque?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                    '            Dim Ventana As New FrmAutorizacion
+                    '            Ventana.Icon = Me.Icon
+                    '            Autorizo = False
+
+                    '            'If Ventana.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+                    '            '    Limpiar()
+                    '            '    Deshabilitar()
+                    '            '    Me.mtb.sbCambiarEstadoBotones("Cancelar")
+                    '            '    Exit Sub
+                    '            'Else
+                    '            '    Autorizo = True
+                    '            '    Exit Sub
+                    '            'End If
+
+                    '            Autorizo = True
+
+                    '        Else
+                    '            Limpiar()
+                    '            Deshabilitar()
+                    '            Me.mtb.sbCambiarEstadoBotones("Cancelar")
+                    '            Exit Sub
+                    '        End If
+                    '    End If
+                    'Next
+
                 ElseIf Modo = 2 Then
                     If Not PuntosCol.Count > 0 Then
                         CmbCliente.SelectedValue = Embarque.IdCliente
@@ -819,7 +835,7 @@ Public Class MFacRegEmbarques
     Private Function Imprimir() As Boolean
         Try
             If Not chkParaExportacion.Checked Then
-                Dim TablaEmbarque As DataSet = Integralab.ORM.StoredProcedureCallerClasses.RetrievalProcedures.UspRptEmbarques(1, Me.txtFolioEmbarque.Text, 0, False)
+                Dim TablaEmbarque As DataSet = IntegraLab.ORM.StoredProcedureCallerClasses.RetrievalProcedures.UspRptEmbarques(1, Me.txtFolioEmbarque.Text, 0, False)
                 'Dim DatosEmbarque As New Embarques
                 'For Each Renglon As DataRow In TablaEmbarque.Tables(0).Rows
                 '    DatosEmbarque.DataTable1.AddDataTable1Row(Renglon("IdFolioEmbarque"), Renglon("fechaembarque"), Renglon("Nombre"), Renglon("Vehiculo"), Renglon("chofer"), Renglon("TotalPiezas"), _
@@ -837,6 +853,8 @@ Public Class MFacRegEmbarques
                 Else
                     Bandera = False
                 End If
+
+
 
                 Reporte.SetDataSource(TablaEmbarque.Tables(0))
                 Reporte.SetParameterValue(0, Bandera)
@@ -1053,7 +1071,7 @@ Public Class MFacRegEmbarques
                                 listaProductos.Add(Fila.Cells(Me.clmDesCorte.Index).Value.ToString.Trim)
                             End If
 
-                            'MsgBox("No se encontro el precio de un producto, Capture los precios para el cliente", MsgBoxStyle.Exclamation, "Aviso")
+                            'MsgBox("No se encontro el precio de un producto, Capture los precios para el cliente", MsgBoxStyle.Exclamation, "Aviso") 0205180020006
                             'Return 1
                         End If
                     End If
@@ -1061,8 +1079,8 @@ Public Class MFacRegEmbarques
 
                 Dim ImpDisponible As Decimal
 
-                ImpDisponible = Cliente.LimiteCredito - Cliente.ObtenerSaldoDeuda
-
+                ImpDisponible = Cliente.LimiteCredito - Cliente.ObtenerSaldoDeuda(Cliente.Codigo)
+                Console.WriteLine("Prueba")
                 If Importe > ImpDisponible Then
                     Return 2
                 End If
@@ -1274,7 +1292,7 @@ Public Class MFacRegEmbarques
 
             Dim Cliente As New CN.ClientesIntroductoresClass(CInt(Me.CmbCliente.SelectedValue))
 
-            If Not Cliente.DiasCredito = 0 And Not Cliente.LimiteCredito = 0 Then
+            If (Not Cliente.DiasCredito = 0) And (Not Cliente.LimiteCredito = 0) Then
                 Dim Limite As Integer = Me.ChecarCredito
 
                 If Limite = 1 Then
@@ -2464,6 +2482,38 @@ Public Class MFacRegEmbarques
             End If
         End If
     End Sub
+
+    Private Function VigenciaFacturas(ByVal codigo As Integer) As Boolean
+
+        Try
+            Dim command As New SqlCommand
+            Dim reader As SqlDataReader
+            Dim query As String
+
+            query = "SELECT Fec_Venci AS Fecha FROM CabFacturas WHERE Cve_Cliente = '{0}'"
+            query = String.Format(query, codigo)
+            Using connecion As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                connecion.Open()
+                command.Connection = connecion
+                command.CommandText = query
+                reader = command.ExecuteReader()
+
+                'Dim contador As Integer = 0
+                While reader.Read
+                    'Si encuantra una fecha que sea menor a la fecha actual regresa falso(significa que encontro 1 fecha vencida)
+                    Console.WriteLine(reader.GetValue(0))
+                    If (reader.GetValue(0).ToString() < Date.Now.ToString()) Then
+                        Return False
+                    End If
+                    'contador += 1
+                End While
+                'Si las fechas no se menores a la fecha actual de la pc que se usa regresa true(significa que todas esta vijentes)
+                Return True
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error al tratar de bucar las fechas en la base de datos", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
 
 End Class
 

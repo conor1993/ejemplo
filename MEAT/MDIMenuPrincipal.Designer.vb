@@ -2950,7 +2950,7 @@ Partial Class MDIMenuPrincipal
         'SqlConnection1
         '
         Me.SqlConnection1.ConnectionString = "Data Source=INTEGRASRV;Initial Catalog=GANADERA;Persist Security Info=True;User I" & _
-    "D=sa;Password=1nt3gr@2006"
+            "D=sa;Password=1nt3gr@2006"
         Me.SqlConnection1.FireInfoMessageEventOnUserErrors = False
         '
         'DerechosAMenusToolStripMenuItem

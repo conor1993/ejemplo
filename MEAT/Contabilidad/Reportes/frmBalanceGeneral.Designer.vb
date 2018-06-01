@@ -167,9 +167,9 @@ Partial Class frmBalanceGeneral
         Me.dgvCuentasContables.AllowUserToDeleteRows = False
         Me.dgvCuentasContables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCuentasContables.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigoCuenta, Me.clmCuentaDescripcion, Me.clmCodigoTitulo, Me.clmDescripcionTitulo, Me.clmCodigoSubtitulo, Me.clmDescripcionSubtitulo, Me.clmSaldo})
-        Me.dgvCuentasContables.Location = New System.Drawing.Point(200, 127)
+        Me.dgvCuentasContables.Location = New System.Drawing.Point(247, 127)
         Me.dgvCuentasContables.Name = "dgvCuentasContables"
-        Me.dgvCuentasContables.Size = New System.Drawing.Size(105, 49)
+        Me.dgvCuentasContables.Size = New System.Drawing.Size(86, 52)
         Me.dgvCuentasContables.TabIndex = 44
         Me.dgvCuentasContables.Visible = False
         '
@@ -216,7 +216,7 @@ Partial Class frmBalanceGeneral
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(59, 105)
+        Me.Button1.Location = New System.Drawing.Point(116, 127)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(84, 37)
         Me.Button1.TabIndex = 45
@@ -227,7 +227,7 @@ Partial Class frmBalanceGeneral
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(306, 178)
+        Me.ClientSize = New System.Drawing.Size(336, 191)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.dgvCuentasContables)
         Me.Controls.Add(Me.lblTitulo)

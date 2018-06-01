@@ -135,7 +135,7 @@ Public Class frmBalanceGeneral
         For i As Integer = 0 To Me.dgvCuentasContables.Rows.Count - 1 ' DgvDatos.Rows.Count - 1
             'titulo para el estado de resultado
             e.Graphics.DrawString("BALANCE GENERAL DE " & Controlador.Sesion.MiEmpresa.Empnom, fnt, Drawing.Brushes.Black, 100, 30)
-            e.Graphics.DrawString("DEL MES " & Me.ultcmbMes.SelectedText, fnt, Drawing.Brushes.Black, 200, 45)
+            e.Graphics.DrawString("DEL MES " & Me.ultcmbMes.Text, fnt, Drawing.Brushes.Black, 200, 45)
             e.Graphics.DrawString("AL " & Now.Day & " DEL " & Now.Month.ToString, fnt, Drawing.Brushes.Black, 200, 60)
             'tx = 20
             'ty = 75
