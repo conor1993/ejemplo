@@ -461,8 +461,6 @@ Public Class FrmRecepcionCanales
 
             MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-
-
             Me.txtPeso.Text = "0.00"
 
             Return True
@@ -491,7 +489,7 @@ Public Class FrmRecepcionCanales
             RecepCabCol.GetMulti(HC.MscrecepcionCanalesCabFields.FolioSacrificio = Me.txtLoteSacrificio.Text.Trim)
 
             If Not RecepCabColCount > 0 Then
-                Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
+                Folio = New FoliosClass
                 Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen
                 Folio.Año = Now.Year
                 Folio.Mes = Now.ToString("MM")
@@ -745,7 +743,7 @@ Public Class FrmRecepcionCanales
                 End If
             End If
 
-            'Trans.Commit()
+            Trans.Commit()
             'MessageBox.Show("Se ha guardado la Recepción con el Folio: " & Me.txtLoteSacrificio.Text & Me.txtNoRes.Text & "-" & Me.txtLado.Text, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             'If Configproduccion.ImprimirEtiquetasCanales = True Then

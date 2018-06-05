@@ -78,7 +78,7 @@ Public Class FoliosClass
                             HC.MgcnfFoliadoresFields.Año = Año And _
                             HC.MgcnfFoliadoresFields.Mes = Mes, 1, sort)
 
-            If (Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales Or Folio.Codigo = CodigodeFolios.NotaCredito) Then
+            If (Folio.Codigo = CodigodeFolios.FacturasVentasyCorrales Or Folio.Codigo = CodigodeFolios.NotaCredito Or Folio.Codigo = CodigodeFolios.EntradaCanalesAlmacen Or Folio.Codigo = CodigodeFolios.MovimientosdeAlmacen) Then
 
                 'Dim AnioInt As Integer = CInt(Año)
                 'Dim MesInt As Integer = CInt(Mes)
@@ -114,7 +114,7 @@ Public Class FoliosClass
 
                     Folio.Consecutivo += 1
 
-                    
+
                 End If
 
                 trans.Add(Folio)
