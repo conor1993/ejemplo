@@ -442,6 +442,7 @@ Partial Class MDIMenuPrincipal
         Me.CachedRptVentasPorProducto4 = New MEAT.CachedRptVentasPorProducto()
         Me.CachedRptVentasPorProducto5 = New MEAT.CachedRptVentasPorProducto()
         Me.reportDocument1 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+        Me.InventarioValorizadoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -2300,14 +2301,14 @@ Partial Class MDIMenuPrincipal
         '
         Me.MovimientosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem2, Me.GeneralesToolStripMenuItem1})
         Me.MovimientosToolStripMenuItem.Name = "MovimientosToolStripMenuItem"
-        Me.MovimientosToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.MovimientosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.MovimientosToolStripMenuItem.Text = "Movimientos"
         '
         'ProducciónToolStripMenuItem2
         '
         Me.ProducciónToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransferenciasCajasToolStripMenuItem})
         Me.ProducciónToolStripMenuItem2.Name = "ProducciónToolStripMenuItem2"
-        Me.ProducciónToolStripMenuItem2.Size = New System.Drawing.Size(135, 22)
+        Me.ProducciónToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
         Me.ProducciónToolStripMenuItem2.Text = "Producción"
         '
         'TransferenciasCajasToolStripMenuItem
@@ -2320,7 +2321,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.GeneralesToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalidaDeMaterialesToolStripMenuItem, Me.SalidaDeMedicamentoToolStripMenuItem, Me.PreparaciónDeFormulasToolStripMenuItem1, Me.ProcesoDeGranoRToolStripMenuItem, Me.OtrasEntradasDeAlmacénToolStripMenuItem1, Me.OtrasSalidasDeAlmacénToolStripMenuItem1, Me.ToolStripMenuItem21, Me.CargaPorInicioDeSistemaToolStripMenuItem})
         Me.GeneralesToolStripMenuItem1.Name = "GeneralesToolStripMenuItem1"
-        Me.GeneralesToolStripMenuItem1.Size = New System.Drawing.Size(135, 22)
+        Me.GeneralesToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.GeneralesToolStripMenuItem1.Text = "Generales"
         '
         'SalidaDeMaterialesToolStripMenuItem
@@ -2374,14 +2375,14 @@ Partial Class MDIMenuPrincipal
         '
         Me.InventarioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem1, Me.GeneralToolStripMenuItem})
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
-        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.InventarioToolStripMenuItem.Text = "Inventario"
         '
         'ProducciónToolStripMenuItem1
         '
         Me.ProducciónToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem12, Me.ToolStripMenuItem11, Me.ToolStripMenuItem10, Me.ToolStripMenuItem7, Me.ToolStripMenuItem9})
         Me.ProducciónToolStripMenuItem1.Name = "ProducciónToolStripMenuItem1"
-        Me.ProducciónToolStripMenuItem1.Size = New System.Drawing.Size(135, 22)
+        Me.ProducciónToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.ProducciónToolStripMenuItem1.Text = "Producción"
         '
         'ToolStripMenuItem12
@@ -2419,7 +2420,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.GeneralToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeMarbetesToolStripMenuItem, Me.CapturaInventarioToolStripMenuItem, Me.AnalisisDeInventarioToolStripMenuItem, Me.InventarioFisicoToolStripMenuItem, Me.SustituciónDeInventarioToolStripMenuItem})
         Me.GeneralToolStripMenuItem.Name = "GeneralToolStripMenuItem"
-        Me.GeneralToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.GeneralToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.GeneralToolStripMenuItem.Text = "General"
         '
         'ReporteDeMarbetesToolStripMenuItem
@@ -2455,20 +2456,20 @@ Partial Class MDIMenuPrincipal
         'ToolStripSeparator17
         '
         Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
-        Me.ToolStripSeparator17.Size = New System.Drawing.Size(141, 6)
+        Me.ToolStripSeparator17.Size = New System.Drawing.Size(149, 6)
         '
         'ReportesToolStripMenuItem4
         '
         Me.ReportesToolStripMenuItem4.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem3, Me.GeneralToolStripMenuItem2})
         Me.ReportesToolStripMenuItem4.Name = "ReportesToolStripMenuItem4"
-        Me.ReportesToolStripMenuItem4.Size = New System.Drawing.Size(144, 22)
+        Me.ReportesToolStripMenuItem4.Size = New System.Drawing.Size(152, 22)
         Me.ReportesToolStripMenuItem4.Text = "Reportes"
         '
         'ProducciónToolStripMenuItem3
         '
-        Me.ProducciónToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.KArdexToolStripMenuItem1, Me.MovimientosDeAlmacénToolStripMenuItem, Me.MovimientosDeAlmacénPorProductoToolStripMenuItem, Me.TarjetaAuxiliarDeCortesToolStripMenuItem, Me.TransferenciasDeCajasToolStripMenuItem})
+        Me.ProducciónToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.KArdexToolStripMenuItem1, Me.MovimientosDeAlmacénToolStripMenuItem, Me.MovimientosDeAlmacénPorProductoToolStripMenuItem, Me.TarjetaAuxiliarDeCortesToolStripMenuItem, Me.TransferenciasDeCajasToolStripMenuItem, Me.InventarioValorizadoToolStripMenuItem1})
         Me.ProducciónToolStripMenuItem3.Name = "ProducciónToolStripMenuItem3"
-        Me.ProducciónToolStripMenuItem3.Size = New System.Drawing.Size(135, 22)
+        Me.ProducciónToolStripMenuItem3.Size = New System.Drawing.Size(152, 22)
         Me.ProducciónToolStripMenuItem3.Text = "Produccion"
         '
         'KArdexToolStripMenuItem1
@@ -2505,7 +2506,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.GeneralToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventarioValorizadoToolStripMenuItem, Me.KardexToolStripMenuItem, Me.InventarioPorProductoToolStripMenuItem, Me.MovimientosDeAlmacénToolStripMenuItem1, Me.MovimientosDeAlmacénPorProductoToolStripMenuItem1})
         Me.GeneralToolStripMenuItem2.Name = "GeneralToolStripMenuItem2"
-        Me.GeneralToolStripMenuItem2.Size = New System.Drawing.Size(135, 22)
+        Me.GeneralToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
         Me.GeneralToolStripMenuItem2.Text = "General"
         '
         'InventarioValorizadoToolStripMenuItem
@@ -2950,7 +2951,7 @@ Partial Class MDIMenuPrincipal
         'SqlConnection1
         '
         Me.SqlConnection1.ConnectionString = "Data Source=INTEGRASRV;Initial Catalog=GANADERA;Persist Security Info=True;User I" & _
-            "D=sa;Password=1nt3gr@2006"
+    "D=sa;Password=1nt3gr@2006"
         Me.SqlConnection1.FireInfoMessageEventOnUserErrors = False
         '
         'DerechosAMenusToolStripMenuItem
@@ -2977,6 +2978,12 @@ Partial Class MDIMenuPrincipal
         '
         Me.tmHora.Enabled = True
         Me.tmHora.Interval = 1000
+        '
+        'InventarioValorizadoToolStripMenuItem1
+        '
+        Me.InventarioValorizadoToolStripMenuItem1.Name = "InventarioValorizadoToolStripMenuItem1"
+        Me.InventarioValorizadoToolStripMenuItem1.Size = New System.Drawing.Size(283, 22)
+        Me.InventarioValorizadoToolStripMenuItem1.Text = "Inventario valorizado"
         '
         'MDIMenuPrincipal
         '
@@ -3423,4 +3430,5 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents CachedRptVentasPorProducto4 As MEAT.CachedRptVentasPorProducto
     Friend WithEvents CachedRptVentasPorProducto5 As MEAT.CachedRptVentasPorProducto
     Friend WithEvents reportDocument1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
+    Friend WithEvents InventarioValorizadoToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 End Class

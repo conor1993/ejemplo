@@ -182,7 +182,6 @@ Public Class FrmRecepcionCanales
         End Try
     End Sub
 
-
     Private Function Guardar(ByVal consecutivo As Integer, Optional ByVal CerrarLote As Boolean = False) As Boolean
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Transaccion")
 
@@ -689,6 +688,7 @@ Public Class FrmRecepcionCanales
                 Return False
             End If
 
+
             'clase para el control de inventarios
             Inventario.IdCodAlmacen = Almacen.IdCodAlmacen
             Inventario.IdCodProducto = AlmacenDetalle.IdCodProducto
@@ -702,6 +702,7 @@ Public Class FrmRecepcionCanales
             Inventario.NumOpc = 1
             Inventario.Año = Now.Year
             Inventario.Mes = Now.Month
+            Inventario.costopromedio = CDec(lblCostoXKilo.Text)
 
             'llama el guardar del inventario de productos
             If Not Inventario.Guardar() Then

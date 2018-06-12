@@ -5,7 +5,7 @@ Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports System.Data.SqlClient
 Imports ClasesNegocio
 
-Public Class rptInventarioValorizado
+Public Class frmpinventariovalorizado
 
 #Region "Miembros"
     Dim Editar As Boolean = False
@@ -97,7 +97,7 @@ Public Class rptInventarioValorizado
         Me.cmbAlmacen.Enabled = True
         Me.txtAlmacen.Enabled = True
         Me.DataGridView1.ReadOnly = False
-        
+
     End Sub
 
     Private Sub Limpiar()
@@ -106,7 +106,7 @@ Public Class rptInventarioValorizado
         Me.txtAlmacen.Clear()
         'cmbAlmacen.SelectedValue = "Seleccione Almacen"
         Me.DataGridView1.Rows.Clear()
-        
+
     End Sub
 
     Private Sub HABILITAR()
@@ -122,7 +122,7 @@ Public Class rptInventarioValorizado
         Me.clmTotal.ReadOnly = True
         Me.DataGridView1.Enabled = True
 
-       
+
     End Sub
 
     Private Sub DESHABILITAR()
@@ -138,7 +138,7 @@ Public Class rptInventarioValorizado
         Me.clmCosto.ReadOnly = True
         Me.clmTotal.ReadOnly = True
         Me.DataGridView1.Enabled = False
-       
+
     End Sub
 
     Private Sub obtenerPlazas()
@@ -181,7 +181,7 @@ Public Class rptInventarioValorizado
             Dim sqlCom As SqlCommand
             Dim sqlDataAdapter As SqlDataAdapter
             Dim listaproductos As New DataTable
-            
+
 
             cadenaConsulta = "select codigo, nombre " & _
                             "from mcatalmacenes " & _
@@ -219,7 +219,7 @@ Public Class rptInventarioValorizado
             Dim listaproductos As New DataTable
 
             cadenaConsulta = "select codigo, nombre " & _
-                            "from mcatalmacenes " 
+                            "from mcatalmacenes "
 
             sqlCom = New SqlCommand(cadenaConsulta, sqlCon)
             sqlDataAdapter = New SqlDataAdapter(sqlCom)
@@ -255,24 +255,23 @@ Public Class rptInventarioValorizado
                 Me.cmbAlmacen.SelectedIndex = Me.AlmacenCollectionClass1.Count - 1
             End If
 
-            cadenaConsulta = "SELECT    Inv.AlmacenId, Alm.Nombre AS Almacen, " & _
-                            "           Inv.ProductoId, Prod.PdDescripcion AS Producto,uni.umdesccorta, " & _
+            cadenaConsulta = "SELECT    Inv.idcodalmacen, Alm.Nombre AS Almacen, " & _
+                            "           Inv.idcodproducto as ProductoId, Prod.Descripcion AS Producto,'KG' AS  umdesccorta, " & _
                             "           Plaz.PLIdPlaza AS IdPlaza, Plaz.PLDescripcion AS Plaza, " & _
-                            "           (SELECT     TOP 1 CantidadExistencia " & _
-                            "           FROM       MInvAlmacen " & _
-                            "           WHERE      ProductoId = Inv.ProductoId AND AlmacenId = Inv.AlmacenId " & _
+                            "           (SELECT     TOP 1 ExistKilos " & _
+                            "           FROM       MscinventarioProducto " & _
+                            "           WHERE      idcodproducto = Inv.idcodproducto AND idcodalmacen = Inv.idcodalmacen " & _
                             "           ORDER BY Año DESC, Mes DESC) AS Existencia, " & _
-                            "           (SELECT     TOP 1 CostoPromedio " & _
-                            "           FROM  MInvAlmacen " & _
-                            "           WHERE      ProductoId = Inv.ProductoId AND AlmacenId = Inv.AlmacenId " & _
+                            "           (SELECT     TOP 1 CostoProm " & _
+                            "           FROM  MscinventarioProducto " & _
+                            "           WHERE      idcodproducto = Inv.idcodproducto AND idcodalmacen = Inv.idcodalmacen " & _
                             "           ORDER BY Año DESC, Mes DESC) AS Costo " & _
-                            "FROM       MInvAlmacen AS Inv INNER JOIN MCatAlmacenes AS Alm ON Inv.AlmacenId = Alm.Codigo " & _
-                            "                              INNER JOIN MCatCompProductos AS Prod ON Inv.ProductoId = Prod.PdIdProducto " & _
-                            "                              INNER JOIN mcatcompunidadmedida AS uni ON uni.umidunidadmedida=prod.pdidunidadmedida " & _
+                            "FROM       MscinventarioProducto AS Inv INNER JOIN MCatAlmacenes AS Alm ON Inv.idcodalmacen = Alm.Codigo " & _
+                            "                              INNER JOIN MSCCatProductos AS Prod ON Inv.idcodproducto = Prod.IdProducto " & _
                             "                              INNER JOIN MCatGenPlazas AS Plaz ON Alm.Plaza = Plaz.PLIdPlaza " & _
                             "where      Plaz.PLIdPlaza = " & Me.cmbPlaza.SelectedValue & _
-                            "           And inv.almacenid = " & Me.cmbAlmacen.SelectedValue & _
-                            "GROUP BY   Inv.AlmacenId, Alm.Nombre, Inv.ProductoId, Prod.PdDescripcion, uni.umdesccorta, Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
+                            "           And inv.idcodalmacen = " & Me.cmbAlmacen.SelectedValue & _
+                            "GROUP BY   Inv.idcodalmacen, Alm.Nombre,Inv.idcodproducto, Prod.Descripcion,  Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
                             "ORDER BY   Plaza, Almacen, Producto"
 
             sqlCom = New SqlCommand(cadenaConsulta, sqlCon)
@@ -281,7 +280,7 @@ Public Class rptInventarioValorizado
             sqlDataAdapter.Fill(listaproductos)
             Me.datosGrid = listaproductos
 
-           
+
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error ")
         Finally
@@ -299,23 +298,22 @@ Public Class rptInventarioValorizado
             Dim sqlDataAdapter As SqlDataAdapter
             Dim listaproductos As New DataTable
 
-            cadenaConsulta = "SELECT    Inv.AlmacenId, Alm.Nombre AS Almacen, " & _
-                            "           Inv.ProductoId, Prod.PdDescripcion AS Producto,uni.umdesccorta, " & _
+            cadenaConsulta = "SELECT    Inv.idcodalmacen, Alm.Nombre AS Almacen, " & _
+                            "           Inv.idcodproducto as ProductoId, Prod.Descripcion AS Producto,'KG' AS  umdesccorta, " & _
                             "           Plaz.PLIdPlaza AS IdPlaza, Plaz.PLDescripcion AS Plaza, " & _
-                            "           (SELECT     TOP 1 CantidadExistencia " & _
-                            "           FROM       MInvAlmacen " & _
-                            "           WHERE      ProductoId = Inv.ProductoId AND AlmacenId = Inv.AlmacenId " & _
+                            "           (SELECT     TOP 1 ExistKilos " & _
+                            "           FROM       MscinventarioProducto " & _
+                            "           WHERE      idcodproducto = Inv.idcodproducto AND idcodalmacen = Inv.idcodalmacen " & _
                             "           ORDER BY Año DESC, Mes DESC) AS Existencia, " & _
-                            "           (SELECT     TOP 1 CostoPromedio " & _
-                            "           FROM  MInvAlmacen " & _
-                            "           WHERE      ProductoId = Inv.ProductoId AND AlmacenId = Inv.AlmacenId " & _
+                            "           (SELECT     TOP 1 CostoProm " & _
+                            "           FROM  MscinventarioProducto " & _
+                            "           WHERE      idcodproducto = Inv.idcodproducto AND idcodalmacen = Inv.idcodalmacen " & _
                             "           ORDER BY Año DESC, Mes DESC) AS Costo " & _
-                            "FROM       MInvAlmacen AS Inv INNER JOIN MCatAlmacenes AS Alm ON Inv.AlmacenId = Alm.Codigo " & _
-                            "                              INNER JOIN MCatCompProductos AS Prod ON Inv.ProductoId = Prod.PdIdProducto " & _
-                            "                              INNER JOIN mcatcompunidadmedida AS uni ON uni.umidunidadmedida=prod.pdidunidadmedida " & _
+                            "FROM       MscinventarioProducto AS Inv INNER JOIN MCatAlmacenes AS Alm ON Inv.idcodalmacen = Alm.Codigo " & _
+                            "                              INNER JOIN MSCCatProductos AS Prod ON Inv.idcodproducto = Prod.IdProducto " & _
                             "                              INNER JOIN MCatGenPlazas AS Plaz ON Alm.Plaza = Plaz.PLIdPlaza " & _
                             "where      Plaz.PLIdPlaza = " & Me.cmbPlaza.SelectedValue & _
-                            " GROUP BY   Inv.AlmacenId, Alm.Nombre,Inv.ProductoId, Prod.PdDescripcion, uni.umdesccorta, Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
+                            "GROUP BY   Inv.idcodalmacen, Alm.Nombre,Inv.idcodproducto, Prod.Descripcion,  Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
                             "ORDER BY   Plaza, Almacen, Producto"
 
             sqlCom = New SqlCommand(cadenaConsulta, sqlCon)
@@ -345,30 +343,29 @@ Public Class rptInventarioValorizado
 
 
 
-            cadenaConsulta = "SELECT    Inv.AlmacenId, Alm.Nombre AS Almacen, " & _
-                            "           Inv.ProductoId, Prod.PdDescripcion AS Producto,uni.umdesccorta, " & _
+            cadenaConsulta = "SELECT    Inv.idcodalmacen, Alm.Nombre AS Almacen, " & _
+                            "           Inv.idcodproducto as ProductoId, Prod.Descripcion AS Producto,'KG' AS  umdesccorta, " & _
                             "           Plaz.PLIdPlaza AS IdPlaza, Plaz.PLDescripcion AS Plaza, " & _
-                            "           (SELECT     TOP 1 CantidadExistencia " & _
-                            "           FROM       MInvAlmacen " & _
-                            "           WHERE      ProductoId = Inv.ProductoId AND AlmacenId = Inv.AlmacenId " & _
+                            "           (SELECT     TOP 1 ExistKilos " & _
+                            "           FROM       MscinventarioProducto " & _
+                            "           WHERE      idcodproducto = Inv.idcodproducto AND idcodalmacen = Inv.idcodalmacen " & _
                             "           ORDER BY Año DESC, Mes DESC) AS Existencia, " & _
-                            "           (SELECT     TOP 1 CostoPromedio " & _
-                            "           FROM  MInvAlmacen " & _
-                            "           WHERE      ProductoId = Inv.ProductoId AND AlmacenId = Inv.AlmacenId " & _
+                            "           (SELECT     TOP 1 CostoProm " & _
+                            "           FROM  MscinventarioProducto " & _
+                            "           WHERE      idcodproducto = Inv.idcodproducto AND idcodalmacen = Inv.idcodalmacen " & _
                             "           ORDER BY Año DESC, Mes DESC) AS Costo " & _
-                            "FROM       MInvAlmacen AS Inv INNER JOIN MCatAlmacenes AS Alm ON Inv.AlmacenId = Alm.Codigo " & _
-                            "                              INNER JOIN MCatCompProductos AS Prod ON Inv.ProductoId = Prod.PdIdProducto " & _
-                            "                              INNER JOIN mcatcompunidadmedida AS uni ON uni.umidunidadmedida=prod.pdidunidadmedida " & _
+                            "FROM       MscinventarioProducto AS Inv INNER JOIN MCatAlmacenes AS Alm ON Inv.idcodalmacen = Alm.Codigo " & _
+                            "                              INNER JOIN MSCCatProductos AS Prod ON Inv.idcodproducto = Prod.IdProducto " & _
                             "                              INNER JOIN MCatGenPlazas AS Plaz ON Alm.Plaza = Plaz.PLIdPlaza " & _
-                            "where      inv.almacenid = " & Me.cmbAlmacen.SelectedValue & _
-                            "GROUP BY   Inv.AlmacenId, Alm.Nombre, Inv.ProductoId, Prod.PdDescripcion, uni.umdesccorta, Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
+                            "where      inv.idcodalmacen = " & Me.cmbAlmacen.SelectedValue & _
+                            "GROUP BY   Inv.idcodalmacen, Alm.Nombre,Inv.idcodproducto, Prod.Descripcion,  Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
                             "ORDER BY   Plaza, Almacen, Producto"
 
             sqlCom = New SqlCommand(cadenaConsulta, sqlCon)
             sqlDataAdapter = New SqlDataAdapter(sqlCom)
             sqlCon.Open()
             sqlDataAdapter.Fill(listaproductos)
-           Me.datosGrid = listaproductos
+            Me.datosGrid = listaproductos
 
 
         Catch ex As Exception
@@ -388,22 +385,21 @@ Public Class rptInventarioValorizado
             Dim sqlDataAdapter As SqlDataAdapter
             Dim listaproductos As New DataTable
 
-            cadenaConsulta = "SELECT    Inv.AlmacenId, Alm.Nombre AS Almacen, " & _
-                            "           Inv.ProductoId, Prod.PdDescripcion AS Producto,uni.umdesccorta, " & _
+            cadenaConsulta = "SELECT    Inv.idcodalmacen, Alm.Nombre AS Almacen, " & _
+                            "           Inv.idcodproducto, Prod.Descripcion AS Producto,'KG' AS  umdesccorta, " & _
                             "           Plaz.PLIdPlaza AS IdPlaza, Plaz.PLDescripcion AS Plaza, " & _
                             "           (SELECT     TOP 1 CantidadExistencia " & _
-                            "           FROM       MInvAlmacen " & _
-                            "           WHERE      ProductoId = Inv.ProductoId AND AlmacenId = Inv.AlmacenId " & _
+                            "           FROM       MscinventarioProducto " & _
+                            "           WHERE      idcodproducto = Inv.idcodproducto AND AlmacenId = Inv.idcodalmacen " & _
                             "           ORDER BY Año DESC, Mes DESC) AS Existencia, " & _
                             "           (SELECT     TOP 1 CostoPromedio " & _
-                            "           FROM  MInvAlmacen " & _
-                            "           WHERE      ProductoId = Inv.ProductoId AND AlmacenId = Inv.AlmacenId " & _
+                            "           FROM  MscinventarioProducto " & _
+                            "           WHERE      idcodproducto = Inv.idcodproducto AND AlmacenId = Inv.idcodalmacen " & _
                             "           ORDER BY Año DESC, Mes DESC) AS Costo " & _
-                            "FROM       MInvAlmacen AS Inv INNER JOIN MCatAlmacenes AS Alm ON Inv.AlmacenId = Alm.Codigo " & _
-                            "                              INNER JOIN MCatCompProductos AS Prod ON Inv.ProductoId = Prod.PdIdProducto " & _
-                            "                              INNER JOIN mcatcompunidadmedida AS uni ON uni.umidunidadmedida=prod.pdidunidadmedida " & _
+                            "FROM       MscinventarioProducto AS Inv INNER JOIN MCatAlmacenes AS Alm ON Inv.idcodalmacen = Alm.Codigo " & _
+                            "                              INNER JOIN MSCCatProductos AS Prod ON Inv.idcodproducto = Prod.PdIdProducto " & _
                             "                              INNER JOIN MCatGenPlazas AS Plaz ON Alm.Plaza = Plaz.PLIdPlaza " & _
-                            "GROUP BY   Inv.AlmacenId, Alm.Nombre,Inv.ProductoId, Prod.PdDescripcion, uni.umdesccorta, Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
+                            "GROUP BY   Inv.idcodalmacen, Alm.Nombre,Inv.idcodproducto, Prod.Descripcion,  Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
                             "ORDER BY   Plaza, Almacen, Producto"
 
             sqlCom = New SqlCommand(cadenaConsulta, sqlCon)
@@ -536,7 +532,7 @@ Public Class rptInventarioValorizado
 #End Region
 
     Private Sub cmbPlaza_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPlaza.SelectedIndexChanged
-        
+
         If Me.cmbPlaza.SelectedIndex > -1 Then
             If Not Me.cmbPlaza.SelectedIndex = Me.PlazaCol.Count - 1 Then
                 Me.AlmacenCollectionClass1.Obtener(CondicionEnum.ACTIVOS, CInt(Me.cmbPlaza.SelectedValue))
@@ -619,7 +615,7 @@ Public Class rptInventarioValorizado
 
     Private Sub cmbAlmacen_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbAlmacen.SelectedIndexChanged
         If Me.cmbPlaza.SelectedIndex > -1 Then
-           
+
             If Me.cmbPlaza.SelectedIndex = Me.PlazaCol.Count - 1 And Me.cmbAlmacen.SelectedIndex = Me.AlmacenCollectionClass1.Count - 1 Then
                 If Me.cmbPlaza.Text = "Todas Las Plazas" And Me.cmbAlmacen.Text = "Todos Los Almacenes" Then
                     If Me.txtPlaza.Text = "0" Or Me.txtPlaza.Text = "" Then

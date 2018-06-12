@@ -1560,4 +1560,8 @@ Public Class MDIMenuPrincipal
     Private Sub CancelaciónDeCierresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CancelaciónDeCierresToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub InventarioValorizadoToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles InventarioValorizadoToolStripMenuItem1.Click
+        Abrir(frmpInventarioValorizado)
+    End Sub
 End Class
