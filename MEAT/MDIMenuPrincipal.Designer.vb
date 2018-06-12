@@ -208,6 +208,7 @@ Partial Class MDIMenuPrincipal
         Me.CortesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RendimientosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RendimientosporFechaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IntegralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DecomisosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReprocesosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -1549,7 +1550,7 @@ Partial Class MDIMenuPrincipal
         '
         'ReportesToolStripMenuItem6
         '
-        Me.ReportesToolStripMenuItem6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RecepcionCanalToolStripMenuItem, Me.CortesToolStripMenuItem, Me.ProductToolStripMenuItem, Me.RendimientosToolStripMenuItem, Me.IntegralToolStripMenuItem, Me.DecomisosToolStripMenuItem, Me.ReprocesosToolStripMenuItem, Me.AntigüedadDeCajasToolStripMenuItem})
+        Me.ReportesToolStripMenuItem6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RecepcionCanalToolStripMenuItem, Me.CortesToolStripMenuItem, Me.ProductToolStripMenuItem, Me.RendimientosToolStripMenuItem, Me.RendimientosporFechaToolStripMenuItem, Me.IntegralToolStripMenuItem, Me.DecomisosToolStripMenuItem, Me.ReprocesosToolStripMenuItem, Me.AntigüedadDeCajasToolStripMenuItem})
         Me.ReportesToolStripMenuItem6.Name = "ReportesToolStripMenuItem6"
         Me.ReportesToolStripMenuItem6.Size = New System.Drawing.Size(292, 22)
         Me.ReportesToolStripMenuItem6.Text = "Reportes"
@@ -1557,49 +1558,55 @@ Partial Class MDIMenuPrincipal
         'RecepcionCanalToolStripMenuItem
         '
         Me.RecepcionCanalToolStripMenuItem.Name = "RecepcionCanalToolStripMenuItem"
-        Me.RecepcionCanalToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.RecepcionCanalToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.RecepcionCanalToolStripMenuItem.Text = "Canales"
         '
         'CortesToolStripMenuItem
         '
         Me.CortesToolStripMenuItem.Name = "CortesToolStripMenuItem"
-        Me.CortesToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.CortesToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.CortesToolStripMenuItem.Text = "Cortes"
         '
         'ProductToolStripMenuItem
         '
         Me.ProductToolStripMenuItem.Name = "ProductToolStripMenuItem"
-        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.ProductToolStripMenuItem.Text = "Productos"
         '
         'RendimientosToolStripMenuItem
         '
         Me.RendimientosToolStripMenuItem.Name = "RendimientosToolStripMenuItem"
-        Me.RendimientosToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.RendimientosToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.RendimientosToolStripMenuItem.Text = "Rendimientos"
+        '
+        'RendimientosporFechaToolStripMenuItem
+        '
+        Me.RendimientosporFechaToolStripMenuItem.Name = "RendimientosporFechaToolStripMenuItem"
+        Me.RendimientosporFechaToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.RendimientosporFechaToolStripMenuItem.Text = "Rendimientos por Fecha"
         '
         'IntegralToolStripMenuItem
         '
         Me.IntegralToolStripMenuItem.Name = "IntegralToolStripMenuItem"
-        Me.IntegralToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.IntegralToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.IntegralToolStripMenuItem.Text = "Integral"
         '
         'DecomisosToolStripMenuItem
         '
         Me.DecomisosToolStripMenuItem.Name = "DecomisosToolStripMenuItem"
-        Me.DecomisosToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.DecomisosToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.DecomisosToolStripMenuItem.Text = "Decomisos"
         '
         'ReprocesosToolStripMenuItem
         '
         Me.ReprocesosToolStripMenuItem.Name = "ReprocesosToolStripMenuItem"
-        Me.ReprocesosToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.ReprocesosToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.ReprocesosToolStripMenuItem.Text = "Reprocesos"
         '
         'AntigüedadDeCajasToolStripMenuItem
         '
         Me.AntigüedadDeCajasToolStripMenuItem.Name = "AntigüedadDeCajasToolStripMenuItem"
-        Me.AntigüedadDeCajasToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.AntigüedadDeCajasToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.AntigüedadDeCajasToolStripMenuItem.Text = "Antigüedad de Cajas"
         '
         'ToolStripMenuItem14
@@ -2950,7 +2957,7 @@ Partial Class MDIMenuPrincipal
         'SqlConnection1
         '
         Me.SqlConnection1.ConnectionString = "Data Source=INTEGRASRV;Initial Catalog=GANADERA;Persist Security Info=True;User I" & _
-            "D=sa;Password=1nt3gr@2006"
+    "D=sa;Password=1nt3gr@2006"
         Me.SqlConnection1.FireInfoMessageEventOnUserErrors = False
         '
         'DerechosAMenusToolStripMenuItem
@@ -3423,4 +3430,5 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents CachedRptVentasPorProducto4 As MEAT.CachedRptVentasPorProducto
     Friend WithEvents CachedRptVentasPorProducto5 As MEAT.CachedRptVentasPorProducto
     Friend WithEvents reportDocument1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
+    Friend WithEvents RendimientosporFechaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

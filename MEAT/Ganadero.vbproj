@@ -1888,6 +1888,12 @@
     <Compile Include="Polizas\frmPolizaFacturaRecibaVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Produccion\FrmReporteCanal_CortePorFecha.Designer.vb">
+      <DependentUpon>FrmReporteCanal_CortePorFecha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\FrmReporteCanal_CortePorFecha.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Produccion\fmrAvisoAntesReimprimirEtiqeutas.Designer.vb">
       <DependentUpon>fmrAvisoAntesReimprimirEtiqeutas.vb</DependentUpon>
     </Compile>
@@ -3277,6 +3283,12 @@
       <DependentUpon>RptPiezasCanalCorte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Produccion\Reportes\RptPiezasCanalCortePorFecha.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptPiezasCanalCortePorFecha.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Produccion\Reportes\RptProductos.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -4356,6 +4368,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmPolizaFacturaRecibaVenta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produccion\FrmReporteCanal_CortePorFecha.resx">
+      <DependentUpon>FrmReporteCanal_CortePorFecha.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produccion\fmrAvisoAntesReimprimirEtiqeutas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>fmrAvisoAntesReimprimirEtiqeutas.vb</DependentUpon>
@@ -5182,6 +5198,10 @@
     <EmbeddedResource Include="Produccion\Reportes\RptPiezasCanalCorte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptPiezasCanalCorte.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion\Reportes\RptPiezasCanalCortePorFecha.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptPiezasCanalCortePorFecha.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Produccion\Reportes\RptProductos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
