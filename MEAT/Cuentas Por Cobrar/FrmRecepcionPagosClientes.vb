@@ -3,8 +3,9 @@ Imports TC = IntegraLab.ORM.TypedViewClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports CC = IntegraLab.ORM.CollectionClasses
-Imports EC = Integralab.ORM.EntityClasses
+Imports EC = IntegraLab.ORM.EntityClasses
 Imports System.Net.NetworkInformation
+Imports System.Data.SqlClient
 
 Public Class FrmRecepcionPagosClientes
 
@@ -206,15 +207,30 @@ Public Class FrmRecepcionPagosClientes
     Private Sub CmbClientes_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbClientes.SelectedIndexChanged
         Try
             Dim Filtro As New OC.PredicateExpression
+
+            Dim _idUsuario As Integer = 0
+            If Not Me.CmbClientes.SelectedValue Is Nothing Then
+                _idUsuario = Me.CmbClientes.SelectedValue
+            End If
+
             Me.DgvFacturas.DataSource = Nothing
+            Dim dt As New DataTable
+            Dim query As String = "ConsultaPagosdeCliente"
+            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            Dim command As New SqlCommand(query, sqlCon)
+            command.CommandType = CommandType.StoredProcedure
+            command.Parameters.Add(New SqlParameter("@V_ID_Cliente", _idUsuario))
+            'command.Parameters.Add(New"@FechaInicial", SqlDbType.DateTime).value = Me.DtpFechaInicial.Value.ToShortDateString
+            Dim adapter As New SqlDataAdapter(command)
+            adapter.Fill(dt)
 
-            Filtro.Add(HC.VwCxcfacturasClientesFields.IdClienteCargo = Me.CmbClientes.SelectedValue And HC.VwCxcfacturasClientesFields.SaldoFactura <> 0)
+            'Filtro.Add(HC.VwCxcfacturasClientesFields.IdClienteCargo = Me.CmbClientes.SelectedValue And HC.VwCxcfacturasClientesFields.SaldoFactura <> 0)
 
-            Dim Vista As New TC.VwCxcfacturasClientesTypedView
-            Vista.Fill(0, Nothing, True, Filtro)
+            'Dim Vista As New TC.VwCxcfacturasClientesTypedView
+            'Vista.Fill(0, Nothing, True, Filtro)
 
             Me.DgvFacturas.AutoGenerateColumns = False
-            Me.DgvFacturas.DataSource = Vista
+            Me.DgvFacturas.DataSource = dt
 
             'For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
             'Me.DgvFacturas.Rows(i).Cells(Me.clmApagar.Index).Value = Me.DgvFacturas.Rows(i).Cells(Me.clmSaldo.Index).Value
