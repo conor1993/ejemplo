@@ -64,13 +64,11 @@ Public Class FrmRecepcionPagosClientes
                 If CBool(Me.DgvFacturas.Rows(i).Cells(Me.clmChk.Index).Value) Then
                     Total += Me.DgvFacturas.Rows(i).Cells(Me.clmApagar.Index).Value
 
-                    If DgvFacturas.Rows(i).Tag IsNot Nothing Then
-                        TotalNotasCredito += CType(DgvFacturas.Rows(i).Tag, CN.FacturasClientesCabClass).TotalNotasCreditoPorAplicar
-                    End If
+                    TotalNotasCredito += CDec(DgvFacturas.Rows(i).Cells(Me.clmImporteNotaCredito.Index).Value)
                 End If
                 Saldo += Me.DgvFacturas.Rows(i).Cells(Me.clmSaldo.Index).Value
             Next
-            txtImporteTotal.Text = (Total + TotalNotasCredito).ToString("C2")
+            txtImporteTotal.Text = (Total - TotalNotasCredito).ToString("C2")
             txtImportePago.Text = Total.ToString("C2")
             txtSaldoActual.Text = Saldo.ToString("C2")
             txtNotasCredito.Text = TotalNotasCredito.ToString("C2")
@@ -136,7 +134,7 @@ Public Class FrmRecepcionPagosClientes
                     NotasCreditoAplicar.ShowDialog()
                 End If
             End If
-            DgvFacturas.Rows(RowIndex).Cells(clmImporteNotaCredito.Index).Value = Factura.TotalNotasCreditoPorAplicar
+            'DgvFacturas.Rows(RowIndex).Cells(clmImporteNotaCredito.Index).Value = Factura.TotalNotasCreditoPorAplicar
             DgvFacturas.Rows(RowIndex).Cells(Me.clmApagar.Index).Value = DgvFacturas.Rows(RowIndex).Cells(Me.clmSaldo.Index).Value - DgvFacturas.Rows(RowIndex).Cells(clmImporteNotaCredito.Index).Value
         End If
     End Sub
@@ -699,7 +697,7 @@ Public Class FrmRecepcionPagosClientes
 
     Private Sub DgvFacturas_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvFacturas.CellDoubleClick
         If e.ColumnIndex = clmImporteNotaCredito.Index Then
-            AplicacionNotasCredito(e.RowIndex, True)
+            'AplicacionNotasCredito(e.RowIndex, True)
             Sumar()
         End If
     End Sub
@@ -798,10 +796,10 @@ Public Class FrmRecepcionPagosClientes
                     DgvFacturas.Rows(e.RowIndex).Cells(clmImporteNotaCredito.Index).Value = 0D
                 Else
                     Me.DgvFacturas.Rows(e.RowIndex).Cells(Me.clmChk.Index).Value = True
-                    DgvFacturas.Rows(e.RowIndex).Tag = New CN.FacturasClientesCabClass(DgvFacturas.Rows(e.RowIndex).Cells(clmSerie.Index).Value.ToString(), DgvFacturas.Rows(e.RowIndex).Cells(ClmNoFactura.Index).Value.ToString())
+                    'DgvFacturas.Rows(e.RowIndex).Tag = New CN.FacturasClientesCabClass(DgvFacturas.Rows(e.RowIndex).Cells(clmSerie.Index).Value.ToString(), DgvFacturas.Rows(e.RowIndex).Cells(ClmNoFactura.Index).Value.ToString())
                 End If
 
-                AplicacionNotasCredito(e.RowIndex)
+                'AplicacionNotasCredito(e.RowIndex)
                 Sumar()
             End If
         Catch ex As Exception
