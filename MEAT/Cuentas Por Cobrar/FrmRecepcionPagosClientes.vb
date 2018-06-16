@@ -68,7 +68,9 @@ Public Class FrmRecepcionPagosClientes
                 End If
                 Saldo += Me.DgvFacturas.Rows(i).Cells(Me.clmSaldo.Index).Value
             Next
-            txtImporteTotal.Text = (Total - TotalNotasCredito).ToString("C2")
+
+
+            txtImporteTotal.Text = Total.ToString("C2") 'If((Total - TotalNotasCredito) < 0, 0.ToString("C2"), (Total - TotalNotasCredito).ToString("C2"))
             txtImportePago.Text = Total.ToString("C2")
             txtSaldoActual.Text = Saldo.ToString("C2")
             txtNotasCredito.Text = TotalNotasCredito.ToString("C2")
@@ -100,6 +102,11 @@ Public Class FrmRecepcionPagosClientes
                 MessageBox.Show("Seleccione una Factura a Pagar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Return False
             End If
+
+            'If CDec(Me.txtImportePago.Text) > CDec(Me.txtImporteTotal.Text) Then
+            '    MessageBox.Show("El pago es mayor al saldo de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            '    Return False
+            'End If
 
             Return True
         Catch ex As Exception
@@ -218,7 +225,6 @@ Public Class FrmRecepcionPagosClientes
             Dim command As New SqlCommand(query, sqlCon)
             command.CommandType = CommandType.StoredProcedure
             command.Parameters.Add(New SqlParameter("@V_ID_Cliente", _idUsuario))
-            'command.Parameters.Add(New"@FechaInicial", SqlDbType.DateTime).value = Me.DtpFechaInicial.Value.ToShortDateString
             Dim adapter As New SqlDataAdapter(command)
             adapter.Fill(dt)
 
@@ -709,6 +715,10 @@ Public Class FrmRecepcionPagosClientes
                     Me.DgvFacturas.CurrentRow.Cells(Me.clmApagar.Index).Value = "$0.00"
                 Else
                     Me.DgvFacturas.CurrentRow.Cells(Me.clmChk.Index).Value = True
+                End If
+                If CDec(Me.DgvFacturas.CurrentRow.Cells(Me.clmApagar.Index).Value) > Me.DgvFacturas.CurrentRow.Cells(Me.clmSaldo.Index).Value Then
+                    MessageBox.Show("El pago es mayor al saldo de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Me.DgvFacturas.CurrentRow.Cells(Me.clmApagar.Index).Value = DgvFacturas.Rows(e.RowIndex).Cells(clmSaldo.Index).Value
                 End If
                 Sumar()
             Case Me.clmChk.Index

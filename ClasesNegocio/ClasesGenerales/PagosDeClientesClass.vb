@@ -266,8 +266,8 @@ Public Class PagosDeClientesClass
 
             'buscar codigo de cliente principal de factura, ya que la factura se pudo haber elaborado para 
             'clientes varios pero el cargo se lo hicieron a un cliente en especifico.
-            FiltroFacturas.Add(New OC.FieldCompareRangePredicate(HC.FacturasClientesCabFields.NoFactura, Lista.ToArray))
-            FiltroFacturas.Add(HC.FacturasClientesCabFields.IdClienteCargo = PagosColeccion(0).Cve_cliente)
+            FiltroFacturas.Add(New OC.FieldCompareRangePredicate(HC.CabFacturasFields.FolFactura, Lista.ToArray))
+            FiltroFacturas.Add(HC.CabFacturasFields.CveCliente = PagosColeccion(0).Cve_cliente)
             FacturasACancelar.GetMulti(FiltroFacturas)
 
             'Buscar las notas de credito afectadas en este pago
@@ -307,7 +307,7 @@ Public Class PagosDeClientesClass
                 Next
                 'Se actualiza el estatus de la factura
                 _Facturas = New EC.CabFacturasEntity
-                If _Facturas.FetchUsingPK("", Pago.NoFactura) Then
+                If _Facturas.FetchUsingPK(Pago.NoFactura) Then
                     If Encuentra < 1 Then
                         _Facturas.Status = "V"
                     Else
