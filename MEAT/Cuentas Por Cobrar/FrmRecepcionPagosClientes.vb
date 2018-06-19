@@ -18,7 +18,6 @@ Public Class FrmRecepcionPagosClientes
     Private Cuentas As CN.CuentaCollectionClass
     Private Cuenta As CN.CuentaClass
     Private _Folio As String = ""
-    Private ConceptodePago As String
     Private PagosCol As CN.PagosDeClientesCollectionClass
     Private _NotaCredito As CN.NotaCreditoDetClass
 
@@ -27,6 +26,7 @@ Public Class FrmRecepcionPagosClientes
 #Region "Metodos"
 
     Sub Limpiar()
+        Me.DgvFacturas.Columns(Me.clmApagar.Index).Visible = True
         Me.CmbClientes.SelectedIndex = -1
         Me.txtChequesPos.Text = "0"
         Me.txtDocumento.Text = ""
@@ -493,7 +493,7 @@ Public Class FrmRecepcionPagosClientes
             Me.Poliza = New CN.PolizaClass
 
             'se guarda la poliza en contabilidad
-            Poliza.Concepto = "Deposito del Cliente: " & Trim(Me.CmbClientes.Text) & " a la Facturas: " & ConceptodePago
+            Poliza.Concepto = "Deposito del Cliente: " & Trim(Me.CmbClientes.Text)
             Poliza.EmpresaId = Controlador.Sesion.MiEmpresa.Empndx
             Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
             Poliza.FechaCaptura = Now

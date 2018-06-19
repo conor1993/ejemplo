@@ -1,8 +1,9 @@
 Imports CN = ClasesNegocio
-Imports HC = Integralab.ORM.HelperClasses
+Imports HC = IntegraLab.ORM.HelperClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
-Imports TC = Integralab.ORM.TypedViewClasses
-Imports CC = Integralab.ORM.CollectionClasses
+Imports TC = IntegraLab.ORM.TypedViewClasses
+Imports CC = IntegraLab.ORM.CollectionClasses
+Imports System.Data.SqlClient
 
 Public Class FrmBusquedaPagoClientes
 
@@ -163,20 +164,20 @@ Public Class FrmBusquedaPagoClientes
     End Sub
 
     Private Sub dgvPagos_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgvPagos.Click
-        Try
-            If Me.dgvPagos.SelectedRows.Count > 0 Then
-                Dim IdCliente As Integer
-                Dim FolioPago As String
-                IdCliente = Me.dgvPagos.SelectedRows(0).Cells(Me.clmIdCliente.Index).Value
-                FolioPago = Me.dgvPagos.SelectedRows(0).Cells(Me.clmFolioIngreso.Index).Value
-                Me.PagosDeClientesC.Obtener(IdCliente, FolioPago)
+        'Try
+        '    If Me.dgvPagos.SelectedRows.Count > 0 Then
+        '        Dim IdCliente As Integer
+        '        Dim FolioPago As String
+        '        IdCliente = Me.dgvPagos.SelectedRows(0).Cells(Me.clmIdCliente.Index).Value
+        '        FolioPago = Me.dgvPagos.SelectedRows(0).Cells(Me.clmFolioIngreso.Index).Value
+        '        Me.PagosDeClientesC.Obtener(IdCliente, FolioPago)
 
-                Me.DgvFacturas.AutoGenerateColumns = False
-                Me.DgvFacturas.DataSource = Me.PagosDeClientesC
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
-        End Try
+        '        Me.DgvFacturas.AutoGenerateColumns = False
+        '        Me.DgvFacturas.DataSource = Me.PagosDeClientesC
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        'End Try
     End Sub
 
     Private Sub dgvPagos_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgvPagos.DoubleClick
@@ -194,10 +195,22 @@ Public Class FrmBusquedaPagoClientes
                 Dim FolioPago As String
                 IdCliente = Me.dgvPagos.SelectedRows(0).Cells(Me.clmIdCliente.Index).Value
                 FolioPago = Me.dgvPagos.SelectedRows(0).Cells(Me.clmFolioIngreso.Index).Value
-                Me.PagosDeClientesC.Obtener(IdCliente, FolioPago)
+                'Me.PagosDeClientesC.Obtener(IdCliente, FolioPago)
+
+                Dim dt As New DataTable
+                Dim query As String = "ConsultaPagosdeClientes"
+                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim command As New SqlCommand(query, sqlCon)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.Add(New SqlParameter("@V_Op", 2))
+                command.Parameters.Add(New SqlParameter("@V_Id_Cliente", 0))
+                command.Parameters.Add(New SqlParameter("@V_Folio_Ingreso", FolioPago))
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(dt)
 
                 Me.DgvFacturas.AutoGenerateColumns = False
-                Me.DgvFacturas.DataSource = Me.PagosDeClientesC
+                Me.DgvFacturas.DataSource = dt
+                'Me.DgvFacturas.DataSource = Me.PagosDeClientesC
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
