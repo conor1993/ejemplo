@@ -367,6 +367,7 @@ Public Class CatCuentaContableForm
 
             If blc Then
                 If Cuenta.Guardar(Trans) Then
+                    guardarCuentaContableAcumulado()
                     'MsgBox("Se ha guardado la cuenta contable", MsgBoxStyle.Information, Controlador.Sesion.MiEmpresa.Empnom)
                     Limpiar()
                     Lectura()
@@ -1021,5 +1022,62 @@ Public Class CatCuentaContableForm
         buscacuentaSsscta()
     End Sub
     ''----------------------------------------------------------------------------------------------------
+
+    Private Sub guardarCuentaContableAcumulado()
+
+        Dim queryConsulta As String = "SELECT MAX(Ejercicio) AS Ejercicio FROM UsrGralPeriodosCont"
+        Dim queryCodigoCuenta As String = "SELECT codigo FROM usrContCuentas WHERE Cta = '{0}' AND SubCta = '{1}' AND SSubCta = '{2}' AND SSSubCta = '{3}'"
+        Dim queryregistrar As String = "INSERT INTO AcumuladoCuentasContables  (Codigo,Ejercicio) VALUES ({0}, {1})"
+        Dim ejercicio As Integer = 0
+        Dim codigoCuenta As Integer = 0
+
+        Try
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+
+                connection.Open()
+                'Busca el año
+                Using cmdConultaEjercicio As New SqlCommand(queryConsulta, connection)
+
+                    Dim reader As SqlDataReader
+                    reader = cmdConultaEjercicio.ExecuteReader()
+                    reader.Read()
+                    If (reader.HasRows) Then
+                        ejercicio = reader.GetValue(0)
+                    Else
+                        MessageBox.Show("No se encontro ningun a ejercicio disponible en el periodo contable " +
+                                        " \nNecesita dar de a alta ejercicio", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Return
+                    End If
+                    reader.Close()
+
+                End Using
+
+                queryCodigoCuenta = String.Format(queryCodigoCuenta, txtCta.Text, txtSCta.Text, txtSSCta.Text, txtSSSCta.Text)
+                'Busca codico de cuenta que se registro
+                Using cmdCodigoCuenta As New SqlCommand(queryCodigoCuenta, connection)
+
+                    Dim reader As SqlDataReader
+                    reader = cmdCodigoCuenta.ExecuteReader()
+                    reader.Read()
+                    If (reader.HasRows) Then
+                        codigoCuenta = reader.GetValue(0)
+                    Else
+                        MessageBox.Show("La cuenta no se ha registrado correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                    reader.Close()
+
+                End Using
+
+                queryregistrar = String.Format(queryregistrar, codigoCuenta, ejercicio)
+                Using cmdRegistrarAcumulado As New SqlCommand(queryregistrar, connection)
+                    cmdRegistrarAcumulado.ExecuteNonQuery()
+                End Using
+
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error al tratar de buscar informacion en la base de datos: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 
 End Class

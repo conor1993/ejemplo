@@ -344,7 +344,7 @@ Public Class BusquedaCuentasContablesForm
             Dim Lista As New TC.VwContCuentasTypedView
             Lista.Fill(0, Nothing, True, Filtro)
 
-            Me.dgv.AutoGenerateColumns = False
+            'Me.dgv.AutoGenerateColumns = False
             Me.dgv.DataSource = Lista
         Catch ex As Exception
             MessageBox.Show(ex.Message, "MEAT", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -426,15 +426,20 @@ Public Class BusquedaCuentasContablesForm
     End Sub
 
     Private Sub dgv_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgv.DoubleClick
-        If Me.dgv.SelectedRows.Count > 0 Then
-            Cuenta = New ClasesNegocio.CuentaContableClass
+        'If Me.dgv.SelectedRows.Count > 0 Then
+        '    Cuenta = New ClasesNegocio.CuentaContableClass
 
-            If Me.Cuenta.Obtener(Integer.Parse(Me.dgv.SelectedRows(0).Cells(Me.clmCodigo.Index).Value.ToString)) Then
-                Me.DialogResult = Windows.Forms.DialogResult.OK
-            Else
-                Me.DialogResult = Windows.Forms.DialogResult.Cancel
-            End If
-        End If
+        '    If Me.Cuenta.Obtener(Integer.Parse(Me.dgv.SelectedRows(0).Cells(Me.clmCodigo.Index).Value.ToString)) Then
+        '        Me.DialogResult = Windows.Forms.DialogResult.OK
+        '    Else
+        '        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        '    End If
+        'End If
+        Dim cierreContable As New frmCierreContableAnual(dgv.CurrentRow.Cells("clmCodigo").Value)
+        Me.Visible = False
+        cierreContable.StartPosition = FormStartPosition.CenterScreen
+        cierreContable.Show()
+
     End Sub
 
     Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
@@ -442,17 +447,23 @@ Public Class BusquedaCuentasContablesForm
     End Sub
 
     Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
-        If Me.dgv.SelectedRows.Count > 0 Then
-            Cuenta = New ClasesNegocio.CuentaContableClass
+        'If Me.dgv.SelectedRows.Count > 0 Then
+        '    Cuenta = New ClasesNegocio.CuentaContableClass
 
-            If Me.Cuenta.Obtener(Integer.Parse(Me.dgv.SelectedRows(0).Cells(Me.clmCodigo.Index).Value.ToString)) Then
-                Me.DialogResult = Windows.Forms.DialogResult.OK
-            Else
-                Me.DialogResult = Windows.Forms.DialogResult.Cancel
-            End If
-        Else
-            Me.DialogResult = Windows.Forms.DialogResult.Cancel
-        End If
+        '    If Me.Cuenta.Obtener(Integer.Parse(Me.dgv.SelectedRows(0).Cells(Me.clmCodigo.Index).Value.ToString)) Then
+        '        Me.DialogResult = Windows.Forms.DialogResult.OK
+        '    Else
+        '        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        '    End If
+        'Else
+        '    Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        'End If
+
+        Dim cierreContable As New frmCierreContableAnual(dgv.CurrentRow.Cells("clmCodigo").Value)
+        Me.Visible = False
+        cierreContable.StartPosition = FormStartPosition.CenterScreen
+        cierreContable.Show()
+
     End Sub
 
     Private Sub txtNombre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress, txtCta.KeyPress, txtSCta.KeyPress, txtSSCta.KeyPress, txtSSSCta.KeyPress
