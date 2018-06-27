@@ -14,7 +14,7 @@ Public Class frmpinventariovalorizado
     Dim datosGrid As New DataTable
 #End Region
 
-    Private Sub rptInventarioValorizado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmpinventariovalorizado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             'Barra de botones de la ToolBar...
             Dim MtbEstados As New MEAToolBar.MEAToolBar.ToolBarButtonStatusStructure
