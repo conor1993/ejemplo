@@ -5,7 +5,7 @@ Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Public Class PagosDeClientesClass
     Inherits ClassBase(Of EC.PagoDeCtesEntity)
 
-    Private _Facturas As EC.FacturasClientesCabEntity
+    Private _Facturas As EC.CabFacturasEntity
     Private _Cliente As ClientesIntroductoresClass
     Private _FacturasClientes As FacturasClientesCabClass
     Public IdClienteFactura As Integer
@@ -250,7 +250,7 @@ Public Class PagosDeClientesClass
             'se agregaron estas variables para buscar el codigo del cliente principal de la factura.
             'ya que la factura se pudo haber elaborado para clientes varios pero el cargo se lo hicieron
             ' a un cliente en especifico.
-            Dim FacturasACancelar As New CC.FacturasClientesCabCollection
+            Dim FacturasACancelar As New CC.CabFacturasCollection
             Dim FiltroFacturas As New OC.PredicateExpression
 
             Dim Lista As New List(Of String)
@@ -266,8 +266,8 @@ Public Class PagosDeClientesClass
 
             'buscar codigo de cliente principal de factura, ya que la factura se pudo haber elaborado para 
             'clientes varios pero el cargo se lo hicieron a un cliente en especifico.
-            FiltroFacturas.Add(New OC.FieldCompareRangePredicate(HC.FacturasClientesCabFields.NoFactura, Lista.ToArray))
-            FiltroFacturas.Add(HC.FacturasClientesCabFields.IdClienteCargo = PagosColeccion(0).Cve_cliente)
+            FiltroFacturas.Add(New OC.FieldCompareRangePredicate(HC.CabFacturasFields.FolFactura, Lista.ToArray))
+            FiltroFacturas.Add(HC.CabFacturasFields.CveCliente = PagosColeccion(0).Cve_cliente)
             FacturasACancelar.GetMulti(FiltroFacturas)
 
             'Buscar las notas de credito afectadas en este pago
@@ -302,16 +302,16 @@ Public Class PagosDeClientesClass
                 'en un principio trae el que esta guardado en la tabla pagosdeclientes con el codigo de idclientecargo, pero 
                 'para afectar las facturas y que cambien de estatus se debe tomar el idcliente que se encuentra en la tabla
                 'facturasclientescan y no el cve_cliente de pagodeclientes
-                For Each FacturasACan As EC.FacturasClientesCabEntity In FacturasACancelar
-                    Pago.Cve_cliente = FacturasACan.IdCliente
+                For Each FacturasACan As EC.CabFacturasEntity In FacturasACancelar
+                    Pago.Cve_cliente = FacturasACan.CveCliente
                 Next
                 'Se actualiza el estatus de la factura
-                _Facturas = New EC.FacturasClientesCabEntity
-                If _Facturas.FetchUsingPK("", Pago.NoFactura) Then
+                _Facturas = New EC.CabFacturasEntity
+                If _Facturas.FetchUsingPK(Pago.NoFactura) Then
                     If Encuentra < 1 Then
-                        _Facturas.Estatus = "V"
+                        _Facturas.Status = "V"
                     Else
-                        _Facturas.Estatus = "A"
+                        _Facturas.Status = "A"
                     End If
                     Trans.Add(_Facturas)
                     If Not _Facturas.Save Then
@@ -439,11 +439,11 @@ Public Class PagosDeClientesClass
 
             'Se afecta el estatus de la factura para indicar que ha sido abonada o pagada
             '_Facturas = New EC.FacturasClientesCabEntity(Entity.FolFactura, Entity.CveCliente)'instrucción primera con el codigo del cliente que se hace el cobro
-            _Facturas = New EC.FacturasClientesCabEntity("", Entity.FolFactura) 'instrucción que sustituye con el código del cliente que tiene esa factura
+            _Facturas = New EC.CabFacturasEntity(Entity.FolFactura.ToString()) 'instrucción que sustituye con el código del cliente que tiene esa factura
             If Me.SaldoFactura > 0 Then
-                _Facturas.Estatus = "A"
+                _Facturas.Status = "A"
             Else
-                _Facturas.Estatus = "P"
+                _Facturas.Status = "P"
             End If
 
             Trans.Add(_Facturas)

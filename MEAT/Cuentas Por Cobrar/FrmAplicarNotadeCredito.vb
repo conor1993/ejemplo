@@ -47,7 +47,8 @@ Public Class FrmAplicarNotadeCredito
 
 #Region "Eventos"
     Private Sub FrmAplicarNotadeCredito_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Utilerias.RunControlException(Me, "InicializarForma")
+        'Utilerias.RunControlException(Me, "InicializarForma")
+        InicializarForma()
     End Sub
 
     Private Sub mtb_ClickSalir(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickSalir

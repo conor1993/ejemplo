@@ -3,8 +3,9 @@ Imports TC = IntegraLab.ORM.TypedViewClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports CC = IntegraLab.ORM.CollectionClasses
-Imports EC = Integralab.ORM.EntityClasses
+Imports EC = IntegraLab.ORM.EntityClasses
 Imports System.Net.NetworkInformation
+Imports System.Data.SqlClient
 
 Public Class FrmRecepcionPagosClientes
 
@@ -17,7 +18,6 @@ Public Class FrmRecepcionPagosClientes
     Private Cuentas As CN.CuentaCollectionClass
     Private Cuenta As CN.CuentaClass
     Private _Folio As String = ""
-    Private ConceptodePago As String
     Private PagosCol As CN.PagosDeClientesCollectionClass
     Private _NotaCredito As CN.NotaCreditoDetClass
 
@@ -26,6 +26,7 @@ Public Class FrmRecepcionPagosClientes
 #Region "Metodos"
 
     Sub Limpiar()
+        Me.DgvFacturas.Columns(Me.clmApagar.Index).Visible = True
         Me.CmbClientes.SelectedIndex = -1
         Me.txtChequesPos.Text = "0"
         Me.txtDocumento.Text = ""
@@ -63,13 +64,13 @@ Public Class FrmRecepcionPagosClientes
                 If CBool(Me.DgvFacturas.Rows(i).Cells(Me.clmChk.Index).Value) Then
                     Total += Me.DgvFacturas.Rows(i).Cells(Me.clmApagar.Index).Value
 
-                    If DgvFacturas.Rows(i).Tag IsNot Nothing Then
-                        TotalNotasCredito += CType(DgvFacturas.Rows(i).Tag, CN.FacturasClientesCabClass).TotalNotasCreditoPorAplicar
-                    End If
+                    TotalNotasCredito += CDec(DgvFacturas.Rows(i).Cells(Me.clmImporteNotaCredito.Index).Value)
                 End If
                 Saldo += Me.DgvFacturas.Rows(i).Cells(Me.clmSaldo.Index).Value
             Next
-            txtImporteTotal.Text = (Total + TotalNotasCredito).ToString("C2")
+
+
+            txtImporteTotal.Text = Total.ToString("C2") 'If((Total - TotalNotasCredito) < 0, 0.ToString("C2"), (Total - TotalNotasCredito).ToString("C2"))
             txtImportePago.Text = Total.ToString("C2")
             txtSaldoActual.Text = Saldo.ToString("C2")
             txtNotasCredito.Text = TotalNotasCredito.ToString("C2")
@@ -101,6 +102,11 @@ Public Class FrmRecepcionPagosClientes
                 MessageBox.Show("Seleccione una Factura a Pagar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Return False
             End If
+
+            'If CDec(Me.txtImportePago.Text) > CDec(Me.txtImporteTotal.Text) Then
+            '    MessageBox.Show("El pago es mayor al saldo de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            '    Return False
+            'End If
 
             Return True
         Catch ex As Exception
@@ -135,7 +141,7 @@ Public Class FrmRecepcionPagosClientes
                     NotasCreditoAplicar.ShowDialog()
                 End If
             End If
-            DgvFacturas.Rows(RowIndex).Cells(clmImporteNotaCredito.Index).Value = Factura.TotalNotasCreditoPorAplicar
+            'DgvFacturas.Rows(RowIndex).Cells(clmImporteNotaCredito.Index).Value = Factura.TotalNotasCreditoPorAplicar
             DgvFacturas.Rows(RowIndex).Cells(Me.clmApagar.Index).Value = DgvFacturas.Rows(RowIndex).Cells(Me.clmSaldo.Index).Value - DgvFacturas.Rows(RowIndex).Cells(clmImporteNotaCredito.Index).Value
         End If
     End Sub
@@ -206,15 +212,31 @@ Public Class FrmRecepcionPagosClientes
     Private Sub CmbClientes_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbClientes.SelectedIndexChanged
         Try
             Dim Filtro As New OC.PredicateExpression
+
+            Dim _idUsuario As Integer = 0
+            If Not Me.CmbClientes.SelectedValue Is Nothing Then
+                _idUsuario = Me.CmbClientes.SelectedValue
+            End If
+
             Me.DgvFacturas.DataSource = Nothing
+            Dim dt As New DataTable
+            Dim query As String = "ConsultaPagosdeClientes"
+            Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+            Dim command As New SqlCommand(query, sqlCon)
+            command.CommandType = CommandType.StoredProcedure
+            command.Parameters.Add(New SqlParameter("@V_Op", 1))
+            command.Parameters.Add(New SqlParameter("@V_Id_Cliente", _idUsuario))
+            command.Parameters.Add(New SqlParameter("@V_Folio_Ingreso", ""))
+            Dim adapter As New SqlDataAdapter(command)
+            adapter.Fill(dt)
 
-            Filtro.Add(HC.VwCxcfacturasClientesFields.IdClienteCargo = Me.CmbClientes.SelectedValue And HC.VwCxcfacturasClientesFields.SaldoFactura <> 0)
+            'Filtro.Add(HC.VwCxcfacturasClientesFields.IdClienteCargo = Me.CmbClientes.SelectedValue And HC.VwCxcfacturasClientesFields.SaldoFactura <> 0)
 
-            Dim Vista As New TC.VwCxcfacturasClientesTypedView
-            Vista.Fill(0, Nothing, True, Filtro)
+            'Dim Vista As New TC.VwCxcfacturasClientesTypedView
+            'Vista.Fill(0, Nothing, True, Filtro)
 
             Me.DgvFacturas.AutoGenerateColumns = False
-            Me.DgvFacturas.DataSource = Vista
+            Me.DgvFacturas.DataSource = dt
 
             'For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
             'Me.DgvFacturas.Rows(i).Cells(Me.clmApagar.Index).Value = Me.DgvFacturas.Rows(i).Cells(Me.clmSaldo.Index).Value
@@ -362,6 +384,8 @@ Public Class FrmRecepcionPagosClientes
             Limpiar()
             Dim Ventana As New FrmBusquedaPagoClientes
             If Ventana.ShowDialog = Windows.Forms.DialogResult.OK Then
+                Me.DgvFacturas.Columns(Me.clmApagar.Index).Visible = False
+
                 Dim IdCliente As Integer = Ventana.dgvPagos.SelectedRows(0).Cells(Ventana.clmIdCliente.Index).Value
                 Dim FolioIngreso As String = Ventana.dgvPagos.SelectedRows(0).Cells(Ventana.clmFolioIngreso.Index).Value
                 Dim FolioFact As String = Ventana.DgvFacturas.Rows(0).Cells(Ventana.NoFactura.Index).Value
@@ -379,8 +403,20 @@ Public Class FrmRecepcionPagosClientes
                 PagosCol.Obtener(IdCliente, FolioIngreso)
                 'Coleccion.Obtener(FolioFact, FolioIngreso)
 
-                Me.DgvFacturas.AutoGenerateColumns = False
-                Me.DgvFacturas.DataSource = PagosCol
+                'Me.DgvFacturas.AutoGenerateColumns = False
+                'Me.DgvFacturas.DataSource = PagosCol
+                Me.DgvFacturas.DataSource = Nothing
+                Dim dt As New DataTable
+                Dim query As String = "ConsultaPagosdeClientes"
+                Dim sqlCon As New SqlClient.SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim command As New SqlCommand(query, sqlCon)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.Add(New SqlParameter("@V_Op", 2))
+                command.Parameters.Add(New SqlParameter("@V_Id_Cliente", 0))
+                command.Parameters.Add(New SqlParameter("@V_Folio_Ingreso", FolioIngreso))
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(dt)
+                Me.DgvFacturas.DataSource = dt
                 Me.DgvFacturas.Enabled = False
 
                 For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
@@ -391,12 +427,12 @@ Public Class FrmRecepcionPagosClientes
                 Dim Saldo As Decimal = 0D
                 Dim TotalNotasCredito As Decimal = 0D
                 For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
-                    Dim Pago As CN.PagosDeClientesClass = CType(DgvFacturas.Rows(i).DataBoundItem, CN.PagosDeClientesClass)
-                    DgvFacturas.Rows(i).Cells(Me.clmImporteNotaCredito.Index).Value = Pago.ImporteNotaCredito
-                    DgvFacturas.Rows(i).Cells(clmTotal.Index).Value = Pago.ImporteFactura
+                    'Dim Pago As CN.PagosDeClientesClass = CType(DgvFacturas.Rows(i).DataBoundItem, CN.PagosDeClientesClass)
+                    'DgvFacturas.Rows(i).Cells(Me.clmImporteNotaCredito.Index).Value = Pago.ImporteNotaCredito
+                    'DgvFacturas.Rows(i).Cells(clmTotal.Index).Value = Pago.ImporteFactura
                     Total += Me.DgvFacturas.Rows(i).Cells(Me.clmAbono.Index).Value
                     Saldo += Me.DgvFacturas.Rows(i).Cells(Me.clmSaldo.Index).Value
-                    TotalNotasCredito += Pago.ImporteNotaCredito
+                    TotalNotasCredito += Me.DgvFacturas.Rows(i).Cells(Me.clmImporteNotaCredito.Index).Value
                 Next
                 txtNotasCredito.Text = TotalNotasCredito.ToString("C2")
                 Me.txtImporteTotal.Text = (Total + TotalNotasCredito).ToString("C2")
@@ -407,7 +443,7 @@ Public Class FrmRecepcionPagosClientes
                 If PagoClientes.Estatus = ClasesNegocio.EstatusChar.VIGENTE Then
                     MovBancosCol.Obtener(PagoClientes.IdPoliza, "Y", ClasesNegocio.CondicionEnum.ACTIVOS)
                 Else
-                    MovBancosCol.Obtener(PagoClientes.IdPoliza, "Y", ClasesNegocio.CondicionEnum.INACTIVOS)
+                    MovBancosCol.Obtener(PagoClientes.IdPoliza, "Y", ClasesNegocio.CondicionEnum.ACTIVOS)
                 End If
 
                 Cuenta = New CN.CuentaClass(MovBancosCol(0).CtaBancaria)
@@ -457,7 +493,7 @@ Public Class FrmRecepcionPagosClientes
             Me.Poliza = New CN.PolizaClass
 
             'se guarda la poliza en contabilidad
-            Poliza.Concepto = "Deposito del Cliente: " & Trim(Me.CmbClientes.Text) & " a la Facturas: " & ConceptodePago
+            Poliza.Concepto = "Deposito del Cliente: " & Trim(Me.CmbClientes.Text)
             Poliza.EmpresaId = Controlador.Sesion.MiEmpresa.Empndx
             Poliza.Estatus = ClasesNegocio.PolizaEstatusEnum.ACTIVA
             Poliza.FechaCaptura = Now
@@ -528,6 +564,8 @@ Public Class FrmRecepcionPagosClientes
             For i As Integer = 0 To Me.DgvFacturas.Rows.Count - 1
 
                 If CBool(Me.DgvFacturas.Rows(i).Cells(Me.clmChk.Index).Value) Then
+                    '' Agregamos el nombre de la factura 
+
                     'band = True
                     ' Se registra el pago del cliente
                     Me.PagoClientes = New CN.PagosDeClientesClass
@@ -683,7 +721,7 @@ Public Class FrmRecepcionPagosClientes
 
     Private Sub DgvFacturas_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvFacturas.CellDoubleClick
         If e.ColumnIndex = clmImporteNotaCredito.Index Then
-            AplicacionNotasCredito(e.RowIndex, True)
+            'AplicacionNotasCredito(e.RowIndex, True)
             Sumar()
         End If
     End Sub
@@ -695,6 +733,10 @@ Public Class FrmRecepcionPagosClientes
                     Me.DgvFacturas.CurrentRow.Cells(Me.clmApagar.Index).Value = "$0.00"
                 Else
                     Me.DgvFacturas.CurrentRow.Cells(Me.clmChk.Index).Value = True
+                End If
+                If CDec(Me.DgvFacturas.CurrentRow.Cells(Me.clmApagar.Index).Value) > Me.DgvFacturas.CurrentRow.Cells(Me.clmSaldo.Index).Value Then
+                    MessageBox.Show("El pago es mayor al saldo de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Me.DgvFacturas.CurrentRow.Cells(Me.clmApagar.Index).Value = DgvFacturas.Rows(e.RowIndex).Cells(clmSaldo.Index).Value
                 End If
                 Sumar()
             Case Me.clmChk.Index
@@ -782,10 +824,10 @@ Public Class FrmRecepcionPagosClientes
                     DgvFacturas.Rows(e.RowIndex).Cells(clmImporteNotaCredito.Index).Value = 0D
                 Else
                     Me.DgvFacturas.Rows(e.RowIndex).Cells(Me.clmChk.Index).Value = True
-                    DgvFacturas.Rows(e.RowIndex).Tag = New CN.FacturasClientesCabClass(DgvFacturas.Rows(e.RowIndex).Cells(clmSerie.Index).Value.ToString(), DgvFacturas.Rows(e.RowIndex).Cells(ClmNoFactura.Index).Value.ToString())
+                    'DgvFacturas.Rows(e.RowIndex).Tag = New CN.FacturasClientesCabClass(DgvFacturas.Rows(e.RowIndex).Cells(clmSerie.Index).Value.ToString(), DgvFacturas.Rows(e.RowIndex).Cells(ClmNoFactura.Index).Value.ToString())
                 End If
 
-                AplicacionNotasCredito(e.RowIndex)
+                'AplicacionNotasCredito(e.RowIndex)
                 Sumar()
             End If
         Catch ex As Exception

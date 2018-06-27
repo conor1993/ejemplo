@@ -22,39 +22,29 @@ Partial Class BusquedaCuentasContablesForm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.txtNombre = New System.Windows.Forms.TextBox
-        Me.txtCta = New Integra.Controles.TextboxNumerico
-        Me.txtSCta = New Integra.Controles.TextboxNumerico
-        Me.txtSSCta = New Integra.Controles.TextboxNumerico
-        Me.txtSSSCta = New Integra.Controles.TextboxNumerico
-        Me.gpoCaracteristicas = New System.Windows.Forms.GroupBox
-        Me.chkBan = New System.Windows.Forms.CheckBox
-        Me.chkIna = New System.Windows.Forms.CheckBox
-        Me.chkDep = New System.Windows.Forms.CheckBox
-        Me.chkAfe = New System.Windows.Forms.CheckBox
-        Me.chkPre = New System.Windows.Forms.CheckBox
-        Me.chkRes = New System.Windows.Forms.CheckBox
-        Me.gpoNaturaleza = New System.Windows.Forms.GroupBox
-        Me.rdbAcr = New System.Windows.Forms.RadioButton
-        Me.rdbDeu = New System.Windows.Forms.RadioButton
-        Me.btnLimpiar = New System.Windows.Forms.Button
-        Me.btnBuscar = New System.Windows.Forms.Button
-        Me.btnAceptar = New System.Windows.Forms.Button
-        Me.btnCancelar = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.dgv = New System.Windows.Forms.DataGridView
-        Me.NombreCuentaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CuentaContableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NaturalezaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.AfectableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ResultadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PresupuestoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DepartamentalizableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.BancosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.InactivaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Cuentas = New ClasesNegocio.CuentaContableCollectionClass
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.txtNombre = New System.Windows.Forms.TextBox()
+        Me.txtCta = New Integra.Controles.TextboxNumerico()
+        Me.txtSCta = New Integra.Controles.TextboxNumerico()
+        Me.txtSSCta = New Integra.Controles.TextboxNumerico()
+        Me.txtSSSCta = New Integra.Controles.TextboxNumerico()
+        Me.gpoCaracteristicas = New System.Windows.Forms.GroupBox()
+        Me.chkBan = New System.Windows.Forms.CheckBox()
+        Me.chkIna = New System.Windows.Forms.CheckBox()
+        Me.chkDep = New System.Windows.Forms.CheckBox()
+        Me.chkAfe = New System.Windows.Forms.CheckBox()
+        Me.chkPre = New System.Windows.Forms.CheckBox()
+        Me.chkRes = New System.Windows.Forms.CheckBox()
+        Me.gpoNaturaleza = New System.Windows.Forms.GroupBox()
+        Me.rdbAcr = New System.Windows.Forms.RadioButton()
+        Me.rdbDeu = New System.Windows.Forms.RadioButton()
+        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.clmCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gpoCaracteristicas.SuspendLayout()
         Me.gpoNaturaleza.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -295,10 +285,8 @@ Partial Class BusquedaCuentasContablesForm
         Me.dgv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgv.AutoGenerateColumns = False
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreCuentaDataGridViewTextBoxColumn, Me.CuentaContableDataGridViewTextBoxColumn, Me.NaturalezaDataGridViewTextBoxColumn, Me.AfectableDataGridViewTextBoxColumn, Me.ResultadoDataGridViewTextBoxColumn, Me.PresupuestoDataGridViewTextBoxColumn, Me.DepartamentalizableDataGridViewTextBoxColumn, Me.BancosDataGridViewTextBoxColumn, Me.InactivaDataGridViewTextBoxColumn, Me.clmCodigo})
-        Me.dgv.DataSource = Me.Cuentas
+        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigo})
         Me.dgv.Location = New System.Drawing.Point(12, 109)
         Me.dgv.MultiSelect = False
         Me.dgv.Name = "dgv"
@@ -308,89 +296,13 @@ Partial Class BusquedaCuentasContablesForm
         Me.dgv.Size = New System.Drawing.Size(899, 324)
         Me.dgv.TabIndex = 10
         '
-        'NombreCuentaDataGridViewTextBoxColumn
-        '
-        Me.NombreCuentaDataGridViewTextBoxColumn.DataPropertyName = "NombreCuenta"
-        Me.NombreCuentaDataGridViewTextBoxColumn.Frozen = True
-        Me.NombreCuentaDataGridViewTextBoxColumn.HeaderText = "Nombre de Cuenta"
-        Me.NombreCuentaDataGridViewTextBoxColumn.Name = "NombreCuentaDataGridViewTextBoxColumn"
-        Me.NombreCuentaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NombreCuentaDataGridViewTextBoxColumn.Width = 200
-        '
-        'CuentaContableDataGridViewTextBoxColumn
-        '
-        Me.CuentaContableDataGridViewTextBoxColumn.DataPropertyName = "CuentaContable"
-        Me.CuentaContableDataGridViewTextBoxColumn.Frozen = True
-        Me.CuentaContableDataGridViewTextBoxColumn.HeaderText = "Cuenta Contable"
-        Me.CuentaContableDataGridViewTextBoxColumn.Name = "CuentaContableDataGridViewTextBoxColumn"
-        Me.CuentaContableDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CuentaContableDataGridViewTextBoxColumn.Width = 250
-        '
-        'NaturalezaDataGridViewTextBoxColumn
-        '
-        Me.NaturalezaDataGridViewTextBoxColumn.DataPropertyName = "Naturaleza"
-        Me.NaturalezaDataGridViewTextBoxColumn.HeaderText = "Naturaleza"
-        Me.NaturalezaDataGridViewTextBoxColumn.Name = "NaturalezaDataGridViewTextBoxColumn"
-        Me.NaturalezaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'AfectableDataGridViewTextBoxColumn
-        '
-        Me.AfectableDataGridViewTextBoxColumn.DataPropertyName = "Afectable"
-        Me.AfectableDataGridViewTextBoxColumn.HeaderText = "Afectable"
-        Me.AfectableDataGridViewTextBoxColumn.Name = "AfectableDataGridViewTextBoxColumn"
-        Me.AfectableDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ResultadoDataGridViewTextBoxColumn
-        '
-        Me.ResultadoDataGridViewTextBoxColumn.DataPropertyName = "Resultado"
-        Me.ResultadoDataGridViewTextBoxColumn.HeaderText = "Resultado"
-        Me.ResultadoDataGridViewTextBoxColumn.Name = "ResultadoDataGridViewTextBoxColumn"
-        Me.ResultadoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PresupuestoDataGridViewTextBoxColumn
-        '
-        Me.PresupuestoDataGridViewTextBoxColumn.DataPropertyName = "Presupuesto"
-        Me.PresupuestoDataGridViewTextBoxColumn.HeaderText = "Presupuesto"
-        Me.PresupuestoDataGridViewTextBoxColumn.Name = "PresupuestoDataGridViewTextBoxColumn"
-        Me.PresupuestoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DepartamentalizableDataGridViewTextBoxColumn
-        '
-        Me.DepartamentalizableDataGridViewTextBoxColumn.DataPropertyName = "Departamentalizable"
-        Me.DepartamentalizableDataGridViewTextBoxColumn.HeaderText = "Departamentalizable"
-        Me.DepartamentalizableDataGridViewTextBoxColumn.Name = "DepartamentalizableDataGridViewTextBoxColumn"
-        Me.DepartamentalizableDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DepartamentalizableDataGridViewTextBoxColumn.Width = 110
-        '
-        'BancosDataGridViewTextBoxColumn
-        '
-        Me.BancosDataGridViewTextBoxColumn.DataPropertyName = "Bancos"
-        Me.BancosDataGridViewTextBoxColumn.HeaderText = "Bancos"
-        Me.BancosDataGridViewTextBoxColumn.Name = "BancosDataGridViewTextBoxColumn"
-        Me.BancosDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InactivaDataGridViewTextBoxColumn
-        '
-        Me.InactivaDataGridViewTextBoxColumn.DataPropertyName = "Inactiva"
-        Me.InactivaDataGridViewTextBoxColumn.HeaderText = "Inactiva"
-        Me.InactivaDataGridViewTextBoxColumn.Name = "InactivaDataGridViewTextBoxColumn"
-        Me.InactivaDataGridViewTextBoxColumn.ReadOnly = True
-        '
         'clmCodigo
         '
-        Me.clmCodigo.DataPropertyName = "Codigo"
+        Me.clmCodigo.DataPropertyName = "codigo"
         Me.clmCodigo.HeaderText = "Codigo"
         Me.clmCodigo.Name = "clmCodigo"
         Me.clmCodigo.ReadOnly = True
         Me.clmCodigo.Visible = False
-        '
-        'Cuentas
-        '
-        Me.Cuentas.AllowEdit = True
-        Me.Cuentas.AllowNew = True
-        Me.Cuentas.AllowRemove = True
-        Me.Cuentas.Name = Nothing
-        Me.Cuentas.RaiseListChangedEvents = True
         '
         'BusquedaCuentasContablesForm
         '
