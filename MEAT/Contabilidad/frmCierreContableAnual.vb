@@ -86,40 +86,47 @@ Public Class frmCierreContableAnual
     'Cierre Contable
     Private Sub btn_IniciarCierre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_IniciarCierre.Click
 
-        If (MessageBox.Show("¿Estas seguro que desea cerrar el ejercicio?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK) Then
+        If (tb_nombreEjercicioActual.TextLength = 0 And tb_cuentaEjercicioActual.TextLength = 0) Then
 
-            'Dim query As String = "EXEC spCierreAnual '{0}', '{1}'"
-            'query = String.Format(query, tb_anioContable.Text, codigoCuentaActual)
+            MessageBox.Show("Antes de cerrar el año debe seleccionar una cuenta, para buscar una cuenta, debe seleccionar la caja de texto de ejercicio actual y presionar F3 ", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            'Dim transaction As SqlTransaction
+        Else
 
-            'Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
-            '    connection.Open()
-            '    Dim command As New SqlCommand(query, connection)
+            If (MessageBox.Show("¿Estas seguro que desea cerrar el ejercicio?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK) Then
 
-            '    transaction = connection.BeginTransaction("SampleTransaction")
-            '    command.Transaction = transaction
+                Dim query As String = "EXEC spCierreAnual '{0}', '{1}'"
+                query = String.Format(query, tb_anioContable.Text, codigoCuentaActual)
 
-            '    Try
-            '        command.ExecuteNonQuery()
-            '        transaction.Commit()
-            '    Catch ex As Exception
-            '        transaction.Rollback()
-            '        MessageBox.Show("No se lograron registrar los datos en la base de dato" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            '        Return
-            '    End Try
-            '    connection.Close()
-            'End Using
+                Dim transaction As SqlTransaction
 
-            generaPolizas()
+                Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                    connection.Open()
+                    Dim command As New SqlCommand(query, connection)
 
-            lbl_porcentaje.Visible = True
-            pb_cierreAnual.Visible = True
-            timer_progressbar.Start()
-            btn_IniciarCierre.Enabled = False
-            actualizarNombreEjercicioActual()
+                    transaction = connection.BeginTransaction("SampleTransaction")
+                    command.Transaction = transaction
+
+                    Try
+                        command.ExecuteNonQuery()
+                        transaction.Commit()
+                    Catch ex As Exception
+                        transaction.Rollback()
+                        MessageBox.Show("No se lograron registrar los datos en la base de dato" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Return
+                    End Try
+                    connection.Close()
+                End Using
+
+                generaPolizas()
+
+                lbl_porcentaje.Visible = True
+                pb_cierreAnual.Visible = True
+                timer_progressbar.Start()
+                btn_IniciarCierre.Enabled = False
+                actualizarNombreEjercicioActual()
+            End If
+
         End If
-
     End Sub
 
     'Animacion progress bar con el timer
@@ -192,49 +199,52 @@ Public Class frmCierreContableAnual
         'poliza.TipoPoliza = PolizaTipoPolizaEnum.DIARIO
         'poliza.TipoError = ErroresPolizaEnum.NINGUNO
 
-        obtenerIDPlolizaDetalle()
+        Dim idPoliza As Integer = obtenerIDPlolizaDetalle()
 
-        Dim tablaDetalle As DataTable = buscarTablaPolizaDetalle() 'busca y regresa tabla con los movimientos del año que se esta cerrando
-        Dim posicion As Integer = 0 'se usa para los consecutivos en detalle(tabla en sql)
-        Dim polizaDet As New CN.PolizaDetalleClass
+        If idPoliza = 0 Then
+            MessageBox.Show("No se logró obtener ID de la póliza de la base de datos (tabla usrContPolizasDetalle).", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            Dim tablaDetalle As DataTable = buscarTablaPolizaDetalle() 'busca y regresa tabla con los movimientos del año que se esta cerrando
+            Dim posicion As Integer = 0 'se usa para los consecutivos en detalle(tabla en sql)
+            Dim polizaDet As New CN.PolizaDetalleClass
 
-        Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
-            connection.Open()
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                connection.Open()
 
-            Dim command As SqlCommand = connection.CreateCommand()
-            Dim transaction As SqlTransaction
+                Dim command As SqlCommand = connection.CreateCommand()
+                Dim transaction As SqlTransaction
 
-            transaction = connection.BeginTransaction("SampleTransaction")
+                transaction = connection.BeginTransaction("SampleTransaction")
 
-            command.Connection = connection
-            command.Transaction = transaction
+                command.Connection = connection
+                command.Transaction = transaction
 
-            Try
-                For Each filas As DataRow In tablaDetalle.Rows 'ciclo se repite como el numero de filas de la tabla
-                    If (filas(0) = codigoCuentaActual) Then '
-                        'polizaDet.Posicion = 1
-                        'polizaDet.IdCuentaContable = filas(0)
-                        'polizaDet.Operacion = PolizaOperacionEnum.CARGO
-                        'polizaDet.Importe = filas(1)
-                        'poliza.AgregarDetalle(polizaDet)
+                Try
+                    For Each filas As DataRow In tablaDetalle.Rows 'ciclo se repite como el numero de filas de la tabla
+                        If (filas(0) = codigoCuentaActual) Then '
+                            'polizaDet.Posicion = 1
+                            'polizaDet.IdCuentaContable = filas(0)
+                            'polizaDet.Operacion = PolizaOperacionEnum.CARGO
+                            'polizaDet.Importe = filas(1)
+                            'poliza.AgregarDetalle(polizaDet)
 
-                    Else
-                        'posicion += 1
-                        'polizaDet.Posicion = posicion
-                        'polizaDet.IdCuentaContable = filas(0)
-                        'polizaDet.Operacion = PolizaOperacionEnum.CARGO
-                        'polizaDet.Importe = filas(1)
-                        'poliza.AgregarDetalle(polizaDet)
+                        Else
+                            'posicion += 1
+                            'polizaDet.Posicion = posicion
+                            'polizaDet.IdCuentaContable = filas(0)
+                            'polizaDet.Operacion = PolizaOperacionEnum.CARGO
+                            'polizaDet.Importe = filas(1)
+                            'poliza.AgregarDetalle(polizaDet)
 
-                    End If
-                Next
-                transaction.Commit()
-            Catch ex As Exception
-                transaction.Rollback()
-                MessageBox.Show("Erro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-
-        End Using
+                        End If
+                    Next
+                    transaction.Commit()
+                Catch ex As Exception
+                    transaction.Rollback()
+                    MessageBox.Show("Erro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End Using
+        End If
     End Sub
 
     'abre formulario de busqueda para seleccionar la cuanta a la que se va
@@ -281,8 +291,24 @@ Public Class frmCierreContableAnual
         End If
     End Sub
 
-    Private Sub obtenerIDPlolizaDetalle()
-        Throw New NotImplementedException
-    End Sub
+    'Como la tabla usrContPolizasDetalle(de la base de datos) el id no tiene auto incremento, se hace un select para generarlo(autoindrementar)
+    Private Function obtenerIDPlolizaDetalle() As Integer
+
+        Dim query As String = "select top 1 PolizaId from usrContPolizasDetalle order by PolizaId desc"
+        Dim idPoliza As Integer = 0
+        Using connecition As New SqlConnection(HC.DbUtils.ActualConnectionString)
+            connecition.Open()
+            Try
+                Dim command As New SqlCommand(query, connecition)
+                Dim reader As SqlDataReader
+                reader = command.ExecuteReader()
+                reader.Read()
+                idPoliza = Convert.ToInt32(reader.GetValue(0)) + 1
+            Catch ex As Exception
+                'si la poliza regresa 0 entonces se manda mensaje de erro en un condicion despues de llamar este metodo
+            End Try
+        End Using
+        Return idPoliza
+    End Function
 
 End Class

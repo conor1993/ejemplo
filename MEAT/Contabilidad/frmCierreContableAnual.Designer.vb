@@ -42,6 +42,7 @@ Partial Class frmCierreContableAnual
         Me.pb_cierreAnual = New System.Windows.Forms.ProgressBar()
         Me.lbl_porcentaje = New System.Windows.Forms.Label()
         Me.timer_progressbar = New System.Windows.Forms.Timer(Me.components)
+        Me.lbl_Informacion = New System.Windows.Forms.Label()
         Me.sp_CierreContable.Panel1.SuspendLayout()
         Me.sp_CierreContable.Panel2.SuspendLayout()
         Me.sp_CierreContable.SuspendLayout()
@@ -56,6 +57,7 @@ Partial Class frmCierreContableAnual
         '
         'sp_CierreContable.Panel1
         '
+        Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_Informacion)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_nombreEjercicioActual)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_nombreEjercicioAnterior)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_cuentaEjercicioActual)
@@ -74,7 +76,7 @@ Partial Class frmCierreContableAnual
         Me.sp_CierreContable.Panel2.Controls.Add(Me.lbl_info1)
         Me.sp_CierreContable.Panel2.Controls.Add(Me.lbl_descripcion)
         Me.sp_CierreContable.Size = New System.Drawing.Size(413, 332)
-        Me.sp_CierreContable.SplitterDistance = 158
+        Me.sp_CierreContable.SplitterDistance = 163
         Me.sp_CierreContable.SplitterWidth = 10
         Me.sp_CierreContable.TabIndex = 1
         '
@@ -245,6 +247,16 @@ Partial Class frmCierreContableAnual
         'timer_progressbar
         '
         '
+        'lbl_Informacion
+        '
+        Me.lbl_Informacion.AutoSize = True
+        Me.lbl_Informacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Informacion.Location = New System.Drawing.Point(20, 144)
+        Me.lbl_Informacion.Name = "lbl_Informacion"
+        Me.lbl_Informacion.Size = New System.Drawing.Size(327, 12)
+        Me.lbl_Informacion.TabIndex = 8
+        Me.lbl_Informacion.Text = "<Seleccione caja de texto y presione F3 pra buscar una Cuenta>"
+        '
         'frmCierreContableAnual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -286,4 +298,5 @@ Partial Class frmCierreContableAnual
     Friend WithEvents lbl_info3 As System.Windows.Forms.Label
     Friend WithEvents lbl_info2 As System.Windows.Forms.Label
     Friend WithEvents lbl_info1 As System.Windows.Forms.Label
+    Friend WithEvents lbl_Informacion As System.Windows.Forms.Label
 End Class
