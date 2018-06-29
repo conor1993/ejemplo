@@ -9,6 +9,10 @@ Public Class BusquedaCuentasContablesForm
     Private Cuenta As ClasesNegocio.CuentaContableClass
     Private Bus As New Integra.Clases.BusquedaClass(Of ClasesNegocio.CuentaContableClass)
 
+    'Estas variables solo se usan al generar poliza en el cierre anual
+    Public cierreCodigoCuenta As Integer
+    '----------------------------------------------------------------
+
     Public IdCuentaContableBusqueda As Integer
 
 #Region "Propiedades"
@@ -426,20 +430,17 @@ Public Class BusquedaCuentasContablesForm
     End Sub
 
     Private Sub dgv_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgv.DoubleClick
-        'If Me.dgv.SelectedRows.Count > 0 Then
-        '    Cuenta = New ClasesNegocio.CuentaContableClass
+        If Me.dgv.SelectedRows.Count > 0 Then
+            Cuenta = New ClasesNegocio.CuentaContableClass
 
-        '    If Me.Cuenta.Obtener(Integer.Parse(Me.dgv.SelectedRows(0).Cells(Me.clmCodigo.Index).Value.ToString)) Then
-        '        Me.DialogResult = Windows.Forms.DialogResult.OK
-        '    Else
-        '        Me.DialogResult = Windows.Forms.DialogResult.Cancel
-        '    End If
-        'End If
-        Dim cierreContable As New frmCierreContableAnual(dgv.CurrentRow.Cells("clmCodigo").Value)
-        Me.Visible = False
-        cierreContable.StartPosition = FormStartPosition.CenterScreen
-        cierreContable.Show()
-
+            If Me.Cuenta.Obtener(Integer.Parse(Me.dgv.SelectedRows(0).Cells("clmCodigo").Value.ToString)) Then
+                Me.DialogResult = Windows.Forms.DialogResult.OK
+            Else
+                Me.DialogResult = Windows.Forms.DialogResult.Cancel
+            End If
+        End If
+        'solo se utliza en le cierre contable anual
+        cierreCodigoCuenta = Me.dgv.SelectedRows(0).Cells("clmCodigo").Value
     End Sub
 
     Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
@@ -447,23 +448,19 @@ Public Class BusquedaCuentasContablesForm
     End Sub
 
     Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
-        'If Me.dgv.SelectedRows.Count > 0 Then
-        '    Cuenta = New ClasesNegocio.CuentaContableClass
+        If Me.dgv.SelectedRows.Count > 0 Then
+            Cuenta = New ClasesNegocio.CuentaContableClass
 
-        '    If Me.Cuenta.Obtener(Integer.Parse(Me.dgv.SelectedRows(0).Cells(Me.clmCodigo.Index).Value.ToString)) Then
-        '        Me.DialogResult = Windows.Forms.DialogResult.OK
-        '    Else
-        '        Me.DialogResult = Windows.Forms.DialogResult.Cancel
-        '    End If
-        'Else
-        '    Me.DialogResult = Windows.Forms.DialogResult.Cancel
-        'End If
-
-        Dim cierreContable As New frmCierreContableAnual(dgv.CurrentRow.Cells("clmCodigo").Value)
-        Me.Visible = False
-        cierreContable.StartPosition = FormStartPosition.CenterScreen
-        cierreContable.Show()
-
+            If Me.Cuenta.Obtener(Integer.Parse(Me.dgv.SelectedRows(0).Cells("clmCodigo").Value.ToString)) Then
+                Me.DialogResult = Windows.Forms.DialogResult.OK
+            Else
+                Me.DialogResult = Windows.Forms.DialogResult.Cancel
+            End If
+        Else
+            Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        End If
+        'solo se utliza en le cierre contable anual
+        cierreCodigoCuenta = Me.dgv.SelectedRows(0).Cells("clmCodigo").Value
     End Sub
 
     Private Sub txtNombre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress, txtCta.KeyPress, txtSCta.KeyPress, txtSSCta.KeyPress, txtSSSCta.KeyPress

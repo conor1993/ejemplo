@@ -1553,8 +1553,8 @@ Public Class MDIMenuPrincipal
     End Sub
 
     Private Sub CierresContablesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CierresContablesToolStripMenuItem.Click
-        Abrir(BusquedaCuentasContablesForm)
 
+        Abrir(frmCierreContableAnual)
 
     End Sub
 
