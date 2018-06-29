@@ -85,27 +85,18 @@ Public Class frmCierreContableAnual
 
     'Cierre Contable
     Private Sub btn_IniciarCierre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_IniciarCierre.Click
-
         If (tb_nombreEjercicioActual.TextLength = 0 And tb_cuentaEjercicioActual.TextLength = 0) Then
-
             MessageBox.Show("Antes de cerrar el año debe seleccionar una cuenta, para buscar una cuenta, debe seleccionar la caja de texto de ejercicio actual y presionar F3 ", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
         Else
-
             If (MessageBox.Show("¿Estas seguro que desea cerrar el ejercicio?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK) Then
-
                 Dim query As String = "EXEC spCierreAnual '{0}', '{1}'"
                 query = String.Format(query, tb_anioContable.Text, codigoCuentaActual)
-
                 Dim transaction As SqlTransaction
-
                 Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                     connection.Open()
                     Dim command As New SqlCommand(query, connection)
-
                     transaction = connection.BeginTransaction("SampleTransaction")
                     command.Transaction = transaction
-
                     Try
                         command.ExecuteNonQuery()
                         transaction.Commit()
@@ -116,16 +107,12 @@ Public Class frmCierreContableAnual
                     End Try
                     connection.Close()
                 End Using
-
-                generaPolizas()
-
                 lbl_porcentaje.Visible = True
                 pb_cierreAnual.Visible = True
                 timer_progressbar.Start()
                 btn_IniciarCierre.Enabled = False
                 actualizarNombreEjercicioActual()
             End If
-
         End If
     End Sub
 
@@ -182,35 +169,19 @@ Public Class frmCierreContableAnual
         Return tablaDetalle
     End Function
 
-    'Una vez que se cierra el ejercicio se llama este metodo para generar la poliza
-    Private Sub generaPolizas()
-        'se agrega la poliza como los demas modulos
-        'Cheque.Poliza = Nothing
-        'Dim Empresa As New CN.EmpresaClass(Controlador.Sesion.MiEmpresa.Empndx)
-        ''Se crear instacia de objeto poliza para setear los datos de esta
-        'Dim poliza As New PolizaClass
-        'poliza.Concepto = tb_nombreEjercicioActual.Text
-        'poliza.Estatus = PolizaEstatusEnum.APLICADA
-        'poliza.FechaCaptura = Now
-        'poliza.FechaPoliza = "31/12/" + tb_anioContable.Text
-        'poliza.Importe = buscarImporteTotal()
-        'poliza.Origen = PolizaOrigenEnum.CONTABILIDAD
-        'poliza.TipoCambio = 1 'esta es una constante
-        'poliza.TipoPoliza = PolizaTipoPolizaEnum.DIARIO
-        'poliza.TipoError = ErroresPolizaEnum.NINGUNO
-
-        Dim idPoliza As Integer = obtenerIDPlolizaDetalle()
-
+    'Una vez que se cierra el ejercicio se llama este metodo para generar la poliza detalle
+    Private Sub generaPolizaDetalle()
+        Dim idPoliza As Integer = obtenerIDPlolizaDetalle() 'la tabla poliza detalle no tiene autocintementar, aqui se genera
         If idPoliza = 0 Then
             MessageBox.Show("No se logró obtener ID de la póliza de la base de datos (tabla usrContPolizasDetalle).", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             Dim tablaDetalle As DataTable = buscarTablaPolizaDetalle() 'busca y regresa tabla con los movimientos del año que se esta cerrando
-            Dim posicion As Integer = 0 'se usa para los consecutivos en detalle(tabla en sql)
-            Dim polizaDet As New CN.PolizaDetalleClass
+            Dim posicion As Integer = 0 'posicion de las cuentas de la tabla poliza detalles
 
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 connection.Open()
 
+                Dim query As String
                 Dim command As SqlCommand = connection.CreateCommand()
                 Dim transaction As SqlTransaction
 
@@ -221,27 +192,23 @@ Public Class frmCierreContableAnual
 
                 Try
                     For Each filas As DataRow In tablaDetalle.Rows 'ciclo se repite como el numero de filas de la tabla
-                        If (filas(0) = codigoCuentaActual) Then '
-                            'polizaDet.Posicion = 1
-                            'polizaDet.IdCuentaContable = filas(0)
-                            'polizaDet.Operacion = PolizaOperacionEnum.CARGO
-                            'polizaDet.Importe = filas(1)
-                            'poliza.AgregarDetalle(polizaDet)
-
+                        If (filas(0) = codigoCuentaActual) Then
+                            query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
+                            query = String.Format(query, idPoliza, posicion, filas(0), "C", filas(1))
+                            command.CommandText = query
+                            command.ExecuteNonQuery()
                         Else
-                            'posicion += 1
-                            'polizaDet.Posicion = posicion
-                            'polizaDet.IdCuentaContable = filas(0)
-                            'polizaDet.Operacion = PolizaOperacionEnum.CARGO
-                            'polizaDet.Importe = filas(1)
-                            'poliza.AgregarDetalle(polizaDet)
-
+                            posicion += 1
+                            query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
+                            query = String.Format(query, idPoliza, posicion, filas(0), "A", filas(1))
+                            command.CommandText = query
+                            command.ExecuteNonQuery()
                         End If
                     Next
                     transaction.Commit()
                 Catch ex As Exception
                     transaction.Rollback()
-                    MessageBox.Show("Erro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Error al tratar de registrar la poliza detalle en la base de dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End Using
         End If
@@ -273,7 +240,7 @@ Public Class frmCierreContableAnual
                 tb_nombreEjercicioActual.Text = reader.GetValue(1).ToString()
                 tb_nombreEjercicioActual.TextAlign = HorizontalAlignment.Center
             Catch ex As Exception
-                MessageBox.Show("Ocurrio un error al buscar la cuenta: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Ocurrio un error al buscar la cuenta: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
             connection.Close()
         End Using
@@ -294,7 +261,7 @@ Public Class frmCierreContableAnual
     'Como la tabla usrContPolizasDetalle(de la base de datos) el id no tiene auto incremento, se hace un select para generarlo(autoindrementar)
     Private Function obtenerIDPlolizaDetalle() As Integer
 
-        Dim query As String = "select top 1 PolizaId from usrContPolizasDetalle order by PolizaId desc"
+        Dim query As String = "select top 1 Codigo from usrContPolizas order by Codigo desc"
         Dim idPoliza As Integer = 0
         Using connecition As New SqlConnection(HC.DbUtils.ActualConnectionString)
             connecition.Open()
@@ -303,7 +270,7 @@ Public Class frmCierreContableAnual
                 Dim reader As SqlDataReader
                 reader = command.ExecuteReader()
                 reader.Read()
-                idPoliza = Convert.ToInt32(reader.GetValue(0)) + 1
+                idPoliza = Convert.ToInt32(reader.GetValue(0))
             Catch ex As Exception
                 'si la poliza regresa 0 entonces se manda mensaje de erro en un condicion despues de llamar este metodo
             End Try
