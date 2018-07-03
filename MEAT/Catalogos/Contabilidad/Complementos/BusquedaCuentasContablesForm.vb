@@ -10,7 +10,7 @@ Public Class BusquedaCuentasContablesForm
     Private Bus As New Integra.Clases.BusquedaClass(Of ClasesNegocio.CuentaContableClass)
 
     'Estas variables solo se usan al generar poliza en el cierre anual
-    Public cierreCodigoCuenta As Integer
+    'Public cierreCodigoCuenta As Integer
     '----------------------------------------------------------------
 
     Public IdCuentaContableBusqueda As Integer
@@ -440,7 +440,7 @@ Public Class BusquedaCuentasContablesForm
             End If
         End If
         'solo se utliza en le cierre contable anual
-        cierreCodigoCuenta = Me.dgv.SelectedRows(0).Cells("clmCodigo").Value
+        'cierreCodigoCuenta = Me.dgv.SelectedRows(0).Cells("clmCodigo").Value
     End Sub
 
     Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
@@ -460,7 +460,7 @@ Public Class BusquedaCuentasContablesForm
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
         End If
         'solo se utliza en le cierre contable anual
-        cierreCodigoCuenta = Me.dgv.SelectedRows(0).Cells("clmCodigo").Value
+        'cierreCodigoCuenta = Me.dgv.SelectedRows(0).Cells("clmCodigo").Value
     End Sub
 
     Private Sub txtNombre_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress, txtCta.KeyPress, txtSCta.KeyPress, txtSSCta.KeyPress, txtSSSCta.KeyPress
