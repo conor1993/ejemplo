@@ -26,7 +26,7 @@ Public Class frmCierreContableAnual
 
     'Mueatra el resultado del ejercicio anterior
     Private Sub cargarCuentaAnterior()
-        Dim query As String = "SELECT (CC.Cta + '-' + CC.SubCta + '-' + CC.SSubCta + '-' + CC.SSSubCta) AS Cuenta, CC.NomCuenta, ACC.SaldoFinEjer FROM AcumuladoCuentasContables" +
+        Dim query As String = "SELECT (CC.Cta + '-' + CC.SubCta + '-' + CC.SSubCta + '-' + CC.SSSubCta) AS Cuenta, CC.NomCuenta FROM AcumuladoCuentasContables" +
             " ACC INNER JOIN usrContPolizasDetalle CPD on ACC.Codigo = CPD.CuentaContableId INNER JOIN usrContPolizas CP on CP.Codigo = CPD.PolizaId INNER JOIN" +
             " UsrGralPeriodosCont GPC on GPC.PolizaCierre = CPD.PolizaId INNER JOIN usrContCuentas CC on CC.codigo = ACC.Codigo WHERE ACC.Ejercicio = {0} AND" +
             " CPD.OperacionCA = 'C' AND GPC.Ejercicio = {0}"
@@ -43,16 +43,6 @@ Public Class frmCierreContableAnual
                     tb_cuentaEjercicioAterior.TextAlign = HorizontalAlignment.Center
                     tb_nombreEjercicioAnterior.Text = reader.GetValue(1).ToString()
                     tb_nombreEjercicioAnterior.TextAlign = HorizontalAlignment.Center
-
-                    If (reader(2) = 0) Then
-                        lbl_ResultadoAnterior.Text = "Resultado de Cierre = " + reader.GetValue(2).ToString()
-                    ElseIf (reader(2) > 0) Then
-                        lbl_ResultadoAnterior.Text = "Ganancias = " + reader.GetValue(2).ToString()
-                        lbl_ResultadoAnterior.ForeColor = Color.Green
-                    Else
-                        lbl_ResultadoAnterior.Text = "Perdidas = " + reader.GetValue(2).ToString()
-                        lbl_ResultadoAnterior.ForeColor = Color.Red
-                    End If
                 Else
                     MessageBox.Show("No se tiene registrado ningún cierre antes del año " + tb_anioContable.Text, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
@@ -124,6 +114,7 @@ Public Class frmCierreContableAnual
                     End Try
                     connection.Close()
                 End Using
+                sumaTotalCuentas()
                 generarPolizaCab()
                 generarPolizaDetalle()
                 polizaCierre()
@@ -181,8 +172,9 @@ Public Class frmCierreContableAnual
     'Busca en tabla acumulados el total de cada una de las cuentas del año del cierra para hacer poliza detalle
     Private Function buscarTablaPolizaDetalle()
         Dim tablaDetalle As New DataTable()
-        Dim query As String = "SELECT Codigo, SaldoFinEjer AS Importe FROM AcumuladoCuentasContables WHERE Ejercicio = {0}"
-        query = String.Format(query, tb_anioContable.Text)
+        Dim query As String = "SELECT  ACC.Codigo, SaldoFinEjer, Operacion = case when CC.Titulo IN (4, 7) then 'C' when CC.Titulo IN(5 ,6 ,8) then 'A' End " +
+            "FROM AcumuladoCuentasContables ACC INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE Ejercicio = {0} AND (Titulo in (4,5,6,7,8) OR ACC.Codigo = {1})"
+        query = String.Format(query, tb_anioContable.Text, codigoCuentaActual)
         Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
             connection.Open()
             Try
@@ -192,9 +184,9 @@ Public Class frmCierreContableAnual
                 dataAdapter.Dispose()
             Catch ex As Exception
                 MessageBox.Show("No se logro acceder a los datos de la cuentas acumuladas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+                End Try
             connection.Close()
-        End Using
+            End Using
         Return tablaDetalle
     End Function
 
@@ -219,18 +211,15 @@ Public Class frmCierreContableAnual
                         If (filas(0) = codigoCuentaActual) Then
                             posicion += 1
                             query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
+                            query = String.Format(query, idPoliza, posicion, filas(0), "A", filas(1))
+                            command.CommandText = query
+                            command.ExecuteNonQuery()
+                        ElseIf (filas(2) = "C") Then
+                            posicion += 1
+                            query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
                             query = String.Format(query, idPoliza, posicion, filas(0), "C", filas(1))
                             command.CommandText = query
                             command.ExecuteNonQuery()
-                            If (filas(1) = 0) Then
-                                lbl_ResultadoActual.Text = "Resuldato de Cierre = " + filas(1).ToString()
-                            ElseIf (filas(1) < 0) Then 'muestra el resultado del ejercicio actual
-                                lbl_ResultadoActual.Text = "Perdidas = " + filas(1).ToString()
-                                lbl_ResultadoActual.ForeColor = Color.Red
-                            Else
-                                lbl_ResultadoActual.Text = "Ganancias = " + filas(1).ToString()
-                                lbl_ResultadoActual.ForeColor = Color.Green
-                            End If
                         Else
                             posicion += 1
                             query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
@@ -379,7 +368,7 @@ Public Class frmCierreContableAnual
         End Using
     End Sub
 
-    'relaciona la poliza con el campo de polizacierre de la tabla periodos+
+    'relaciona la poliza con el campo de polizacierre de la tabla periodos
     Private Sub polizaCierre()
         Dim idPoliza As Integer = obtenerIDPloliza()
         Dim query As String = "update UsrGralPeriodosCont set PolizaCierre = {0} where Ejercicio = {1}"
@@ -392,6 +381,35 @@ Public Class frmCierreContableAnual
                 command.ExecuteNonQuery()
             Catch ex As Exception
                 MessageBox.Show("No se pudo relacionar la poliza con el periodo que se esta cerrando: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            connection.Close()
+        End Using
+    End Sub
+
+    'busca tabla que regresa el total de la cuentas y reliza la operacion de cierre contable para guardarlo en la cuenta seleccionda(en la variable codigoCuentaActual)
+    'registra la cuenta donde se guarda el total y la del año siguiente
+    Private Sub sumaTotalCuentas()
+        Dim tablacuentas As DataTable = buscarTablaPolizaDetalle()
+        Dim total As Double = 0
+        For Each filas As DataRow In tablacuentas.Rows
+            If IsDBNull(filas(2)) Then
+                'no hace nada
+            ElseIf filas(2) = "C" Then
+                total += filas(1)
+            Else
+                total -= filas(1)
+            End If
+        Next
+
+        Dim query As String = "EXEC RegistrarCuentaCierre {0}, {1}, {2}"
+        query = String.Format(query, codigoCuentaActual, tb_anioContable.Text, total)
+        Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+            connection.Open()
+            Try
+                Dim command As New SqlCommand(query, connection)
+                command.ExecuteNonQuery()
+            Catch ex As Exception
+                MessageBox.Show("No se registro la cuenta de cierre, verificar con administrador del sistema " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
             connection.Close()
         End Using

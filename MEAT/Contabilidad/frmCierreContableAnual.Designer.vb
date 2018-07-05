@@ -24,7 +24,6 @@ Partial Class frmCierreContableAnual
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.sp_CierreContable = New System.Windows.Forms.SplitContainer()
-        Me.lbl_ResultadoActual = New System.Windows.Forms.Label()
         Me.lbl_Informacion = New System.Windows.Forms.Label()
         Me.tb_nombreEjercicioActual = New System.Windows.Forms.TextBox()
         Me.tb_nombreEjercicioAnterior = New System.Windows.Forms.TextBox()
@@ -43,7 +42,6 @@ Partial Class frmCierreContableAnual
         Me.pb_cierreAnual = New System.Windows.Forms.ProgressBar()
         Me.lbl_porcentaje = New System.Windows.Forms.Label()
         Me.timer_progressbar = New System.Windows.Forms.Timer(Me.components)
-        Me.lbl_ResultadoAnterior = New System.Windows.Forms.Label()
         Me.sp_CierreContable.Panel1.SuspendLayout()
         Me.sp_CierreContable.Panel2.SuspendLayout()
         Me.sp_CierreContable.SuspendLayout()
@@ -59,8 +57,6 @@ Partial Class frmCierreContableAnual
         '
         'sp_CierreContable.Panel1
         '
-        Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_ResultadoAnterior)
-        Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_ResultadoActual)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_Informacion)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_nombreEjercicioActual)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_nombreEjercicioAnterior)
@@ -82,15 +78,6 @@ Partial Class frmCierreContableAnual
         Me.sp_CierreContable.SplitterDistance = 164
         Me.sp_CierreContable.SplitterWidth = 10
         Me.sp_CierreContable.TabIndex = 1
-        '
-        'lbl_ResultadoActual
-        '
-        Me.lbl_ResultadoActual.AutoSize = True
-        Me.lbl_ResultadoActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_ResultadoActual.Location = New System.Drawing.Point(212, 101)
-        Me.lbl_ResultadoActual.Name = "lbl_ResultadoActual"
-        Me.lbl_ResultadoActual.Size = New System.Drawing.Size(0, 15)
-        Me.lbl_ResultadoActual.TabIndex = 9
         '
         'lbl_Informacion
         '
@@ -260,15 +247,6 @@ Partial Class frmCierreContableAnual
         'timer_progressbar
         '
         '
-        'lbl_ResultadoAnterior
-        '
-        Me.lbl_ResultadoAnterior.AutoSize = True
-        Me.lbl_ResultadoAnterior.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_ResultadoAnterior.Location = New System.Drawing.Point(212, 50)
-        Me.lbl_ResultadoAnterior.Name = "lbl_ResultadoAnterior"
-        Me.lbl_ResultadoAnterior.Size = New System.Drawing.Size(0, 15)
-        Me.lbl_ResultadoAnterior.TabIndex = 10
-        '
         'frmCierreContableAnual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -310,6 +288,4 @@ Partial Class frmCierreContableAnual
     Friend WithEvents lbl_info2 As System.Windows.Forms.Label
     Friend WithEvents lbl_info1 As System.Windows.Forms.Label
     Friend WithEvents lbl_Informacion As System.Windows.Forms.Label
-    Friend WithEvents lbl_ResultadoActual As System.Windows.Forms.Label
-    Friend WithEvents lbl_ResultadoAnterior As System.Windows.Forms.Label
 End Class
