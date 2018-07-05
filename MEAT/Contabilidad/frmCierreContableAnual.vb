@@ -210,7 +210,7 @@ Public Class frmCierreContableAnual
                     For Each filas As DataRow In tablaDetalle.Rows 'ciclo se repite como el numero de filas de la tabla
                         If (filas(0) = codigoCuentaActual) Then
                             posicion += 1
-                            query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
+                            query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe, Concepto) VALUES ({0}, {1}, {2}, '{3}', {4}, 'Cuenta de Cierre')"
                             query = String.Format(query, idPoliza, posicion, filas(0), "A", filas(1))
                             command.CommandText = query
                             command.ExecuteNonQuery()
@@ -220,10 +220,18 @@ Public Class frmCierreContableAnual
                             query = String.Format(query, idPoliza, posicion, filas(0), "C", filas(1))
                             command.CommandText = query
                             command.ExecuteNonQuery()
+                            query = "EXEC RegistrarCuentaCierre 2, {0}, {1}, {2}"
+                            query = String.Format(query, filas(0), tb_anioContable.Text, filas(1))
+                            command.CommandText = query
+                            command.ExecuteNonQuery()
                         Else
                             posicion += 1
                             query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
                             query = String.Format(query, idPoliza, posicion, filas(0), "A", filas(1))
+                            command.CommandText = query
+                            command.ExecuteNonQuery()
+                            query = "EXEC RegistrarCuentaCierre 2, {0}, {1}, {2}"
+                            query = String.Format(query, filas(0), tb_anioContable.Text, filas(1))
                             command.CommandText = query
                             command.ExecuteNonQuery()
                         End If
@@ -401,7 +409,7 @@ Public Class frmCierreContableAnual
             End If
         Next
 
-        Dim query As String = "EXEC RegistrarCuentaCierre {0}, {1}, {2}"
+        Dim query As String = "EXEC RegistrarCuentaCierre 1, {0}, {1}, {2}"
         query = String.Format(query, codigoCuentaActual, tb_anioContable.Text, total)
         Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
             connection.Open()
