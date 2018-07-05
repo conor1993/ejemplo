@@ -138,8 +138,8 @@ Public Class frmCierreContableAnual
     Private Sub generarPolizaCab()
         Dim idEmpresa As String = Controlador.Sesion.MiEmpresa.Empid
         Dim tipoPoliza As String = "D"
-        Dim mes As Integer = Date.Now.Month.ToString()
-        Dim anio As Integer = Date.Now.Year.ToString()
+        Dim mes As String = Date.Now.Month.ToString()
+        Dim anio As String = Date.Now.Year.ToString()
         Dim folio As Integer = buscarFolio(idEmpresa.ToString(), tipoPoliza, mes) 'busca el consecutivo del folio 
         Dim fechaPolizaCaptura As String = Date.Now.ToString("dd/MM/yyy")
         Dim importe As String = buscarImporteCierre()
@@ -152,8 +152,8 @@ Public Class frmCierreContableAnual
 
         Dim query As String =
             "INSERT INTO usrContPolizas (EmpresaId, TipoPoliza, Mes, Ano, Folio, FechaPoliza, FechaCaptura, Importe, Concepto, Origen, TipoError,Estatus, TipoCambio)" +
-            "VALUES({0}, '{1}', {2}, {3}, {4}, {5}, {6}, {7}, '{8}', '{9}', {10}, {11}, {12})"
-        query = String.Format(query, idEmpresa, tipoPoliza, mes, anio, folio, fechaPolizaCaptura, fechaPolizaCaptura, importe, tb_nombreEjercicioActual.Text, origen, tipoErro, estatus, tipoCambio)
+            "VALUES({0}, '{1}', {2}, {3}, {4}, '{5}', '{6}', {7}, '{8}', '{9}', {10}, {11}, {12})"
+        query = String.Format(query, idEmpresa, tipoPoliza, mes, anio, folio, "31/12/" + anio, fechaPolizaCaptura, importe, tb_nombreEjercicioActual.Text, origen, tipoErro, estatus, tipoCambio)
         Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
             connection.Open()
             Try
