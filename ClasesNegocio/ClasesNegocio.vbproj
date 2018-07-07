@@ -1185,6 +1185,30 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Contabilidad\Clases\ConfiguracionContableClass.vb" />
+    <Compile Include="Contabilidad\Reportes\rptBalanceGeneralActivos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneralActivos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\rptBalanceGeneralCapital.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneralCapital.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\rptBalanceGeneralPasivos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneralPasivos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\rptBalanceGeneralX.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneralX.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Cuentas X Cobrar\Corrales\Reportes\DSetCatCausaMuertes.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3141,6 +3165,22 @@
     <EmbeddedResource Include="ClasesRosalba\Reportes\rptABCUnidadesMedida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptABCUnidadesMedida.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptBalanceGeneralActivos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneralActivos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptBalanceGeneralCapital.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneralCapital.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptBalanceGeneralPasivos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneralPasivos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptBalanceGeneralX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneralX.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Cuentas X Cobrar\Corrales\Reportes\rptCatCausaMuertes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -1180,6 +1180,12 @@
     <Compile Include="Agrojs - Control de Che Dev\frmRegistroPagosChequesDevueltos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Contabilidad\Reportes\rptBalanceGeneral.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneral.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Cuentas Por Cobrar\frmBusquedaNotas.designer.vb">
       <DependentUpon>frmBusquedaNotas.vb</DependentUpon>
     </Compile>
@@ -3934,6 +3940,10 @@
     <EmbeddedResource Include="Agrojs - Control de Che Dev\frmRegistroPagosChequesDevueltos.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmRegistroPagosChequesDevueltos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptBalanceGeneral.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneral.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Cuentas Por Cobrar\frmBusquedaNotas.resx">
       <DependentUpon>frmBusquedaNotas.vb</DependentUpon>
