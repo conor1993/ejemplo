@@ -1054,6 +1054,12 @@
     <Compile Include="Contabilidad\Complementos\frmDistribuciondeGastos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Contabilidad\frmBusquedaCuentaCierre.Designer.vb">
+      <DependentUpon>frmBusquedaCuentaCierre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\frmBusquedaCuentaCierre.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Contabilidad\frmCierreContableAnual.Designer.vb">
       <DependentUpon>frmCierreContableAnual.vb</DependentUpon>
     </Compile>
@@ -3854,6 +3860,9 @@
     <EmbeddedResource Include="Contabilidad\Complementos\frmDistribuciondeGastos.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmDistribuciondeGastos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\frmBusquedaCuentaCierre.resx">
+      <DependentUpon>frmBusquedaCuentaCierre.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\frmCierreContableAnual.resx">
       <DependentUpon>frmCierreContableAnual.vb</DependentUpon>

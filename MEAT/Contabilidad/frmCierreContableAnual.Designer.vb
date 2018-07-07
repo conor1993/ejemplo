@@ -24,15 +24,15 @@ Partial Class frmCierreContableAnual
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.sp_CierreContable = New System.Windows.Forms.SplitContainer()
+        Me.lbl_Informacion = New System.Windows.Forms.Label()
         Me.tb_nombreEjercicioActual = New System.Windows.Forms.TextBox()
         Me.tb_nombreEjercicioAnterior = New System.Windows.Forms.TextBox()
         Me.tb_cuentaEjercicioActual = New System.Windows.Forms.TextBox()
         Me.tb_cuentaEjercicioAterior = New System.Windows.Forms.TextBox()
         Me.tb_anioContable = New System.Windows.Forms.TextBox()
-        Me.lbl_resultadoAnterior = New System.Windows.Forms.Label()
-        Me.lbl_ejercicioAnterior = New System.Windows.Forms.Label()
+        Me.lbl_DescActual = New System.Windows.Forms.Label()
+        Me.lbl_DescAnterior = New System.Windows.Forms.Label()
         Me.lbl_anio = New System.Windows.Forms.Label()
-        Me.lbl_info5 = New System.Windows.Forms.Label()
         Me.lbl_info4 = New System.Windows.Forms.Label()
         Me.lbl_info3 = New System.Windows.Forms.Label()
         Me.lbl_info2 = New System.Windows.Forms.Label()
@@ -50,37 +50,48 @@ Partial Class frmCierreContableAnual
         'sp_CierreContable
         '
         Me.sp_CierreContable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.sp_CierreContable.IsSplitterFixed = True
         Me.sp_CierreContable.Location = New System.Drawing.Point(12, 12)
         Me.sp_CierreContable.Name = "sp_CierreContable"
         Me.sp_CierreContable.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
         'sp_CierreContable.Panel1
         '
+        Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_Informacion)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_nombreEjercicioActual)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_nombreEjercicioAnterior)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_cuentaEjercicioActual)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_cuentaEjercicioAterior)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_anioContable)
-        Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_resultadoAnterior)
-        Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_ejercicioAnterior)
+        Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_DescActual)
+        Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_DescAnterior)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_anio)
         '
         'sp_CierreContable.Panel2
         '
-        Me.sp_CierreContable.Panel2.Controls.Add(Me.lbl_info5)
         Me.sp_CierreContable.Panel2.Controls.Add(Me.lbl_info4)
         Me.sp_CierreContable.Panel2.Controls.Add(Me.lbl_info3)
         Me.sp_CierreContable.Panel2.Controls.Add(Me.lbl_info2)
         Me.sp_CierreContable.Panel2.Controls.Add(Me.lbl_info1)
         Me.sp_CierreContable.Panel2.Controls.Add(Me.lbl_descripcion)
-        Me.sp_CierreContable.Size = New System.Drawing.Size(413, 332)
-        Me.sp_CierreContable.SplitterDistance = 158
+        Me.sp_CierreContable.Size = New System.Drawing.Size(413, 311)
+        Me.sp_CierreContable.SplitterDistance = 164
         Me.sp_CierreContable.SplitterWidth = 10
         Me.sp_CierreContable.TabIndex = 1
         '
+        'lbl_Informacion
+        '
+        Me.lbl_Informacion.AutoSize = True
+        Me.lbl_Informacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Informacion.Location = New System.Drawing.Point(20, 144)
+        Me.lbl_Informacion.Name = "lbl_Informacion"
+        Me.lbl_Informacion.Size = New System.Drawing.Size(327, 12)
+        Me.lbl_Informacion.TabIndex = 8
+        Me.lbl_Informacion.Text = "<Seleccione caja de texto y presione F3 pra buscar una Cuenta>"
+        '
         'tb_nombreEjercicioActual
         '
-        Me.tb_nombreEjercicioActual.BackColor = System.Drawing.SystemColors.Window
+        Me.tb_nombreEjercicioActual.BackColor = System.Drawing.Color.LightYellow
         Me.tb_nombreEjercicioActual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tb_nombreEjercicioActual.Location = New System.Drawing.Point(144, 121)
         Me.tb_nombreEjercicioActual.Name = "tb_nombreEjercicioActual"
@@ -100,7 +111,7 @@ Partial Class frmCierreContableAnual
         '
         'tb_cuentaEjercicioActual
         '
-        Me.tb_cuentaEjercicioActual.BackColor = System.Drawing.SystemColors.Window
+        Me.tb_cuentaEjercicioActual.BackColor = System.Drawing.Color.LightYellow
         Me.tb_cuentaEjercicioActual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tb_cuentaEjercicioActual.Location = New System.Drawing.Point(17, 121)
         Me.tb_cuentaEjercicioActual.Name = "tb_cuentaEjercicioActual"
@@ -128,25 +139,25 @@ Partial Class frmCierreContableAnual
         Me.tb_anioContable.Size = New System.Drawing.Size(60, 20)
         Me.tb_anioContable.TabIndex = 3
         '
-        'lbl_resultadoAnterior
+        'lbl_DescActual
         '
-        Me.lbl_resultadoAnterior.AutoSize = True
-        Me.lbl_resultadoAnterior.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_resultadoAnterior.Location = New System.Drawing.Point(14, 101)
-        Me.lbl_resultadoAnterior.Name = "lbl_resultadoAnterior"
-        Me.lbl_resultadoAnterior.Size = New System.Drawing.Size(187, 16)
-        Me.lbl_resultadoAnterior.TabIndex = 2
-        Me.lbl_resultadoAnterior.Text = "Resultado de Ejercicio Actual:"
+        Me.lbl_DescActual.AutoSize = True
+        Me.lbl_DescActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_DescActual.Location = New System.Drawing.Point(14, 101)
+        Me.lbl_DescActual.Name = "lbl_DescActual"
+        Me.lbl_DescActual.Size = New System.Drawing.Size(187, 16)
+        Me.lbl_DescActual.TabIndex = 2
+        Me.lbl_DescActual.Text = "Resultado de Ejercicio Actual:"
         '
-        'lbl_ejercicioAnterior
+        'lbl_DescAnterior
         '
-        Me.lbl_ejercicioAnterior.AutoSize = True
-        Me.lbl_ejercicioAnterior.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_ejercicioAnterior.Location = New System.Drawing.Point(14, 50)
-        Me.lbl_ejercicioAnterior.Name = "lbl_ejercicioAnterior"
-        Me.lbl_ejercicioAnterior.Size = New System.Drawing.Size(192, 16)
-        Me.lbl_ejercicioAnterior.TabIndex = 1
-        Me.lbl_ejercicioAnterior.Text = "Resultado de Ejercicio Anterio:"
+        Me.lbl_DescAnterior.AutoSize = True
+        Me.lbl_DescAnterior.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_DescAnterior.Location = New System.Drawing.Point(14, 50)
+        Me.lbl_DescAnterior.Name = "lbl_DescAnterior"
+        Me.lbl_DescAnterior.Size = New System.Drawing.Size(192, 16)
+        Me.lbl_DescAnterior.TabIndex = 1
+        Me.lbl_DescAnterior.Text = "Resultado de Ejercicio Anterio:"
         '
         'lbl_anio
         '
@@ -157,15 +168,6 @@ Partial Class frmCierreContableAnual
         Me.lbl_anio.Size = New System.Drawing.Size(92, 16)
         Me.lbl_anio.TabIndex = 0
         Me.lbl_anio.Text = "Año Contable:"
-        '
-        'lbl_info5
-        '
-        Me.lbl_info5.AutoSize = True
-        Me.lbl_info5.Location = New System.Drawing.Point(48, 134)
-        Me.lbl_info5.Name = "lbl_info5"
-        Me.lbl_info5.Size = New System.Drawing.Size(254, 13)
-        Me.lbl_info5.TabIndex = 5
-        Me.lbl_info5.Text = "-  Generar Póliza de Traspaso a Ejercicios Anteriores"
         '
         'lbl_info4
         '
@@ -216,7 +218,7 @@ Partial Class frmCierreContableAnual
         'btn_IniciarCierre
         '
         Me.btn_IniciarCierre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_IniciarCierre.Location = New System.Drawing.Point(311, 360)
+        Me.btn_IniciarCierre.Location = New System.Drawing.Point(311, 347)
         Me.btn_IniciarCierre.Name = "btn_IniciarCierre"
         Me.btn_IniciarCierre.Size = New System.Drawing.Size(114, 29)
         Me.btn_IniciarCierre.TabIndex = 2
@@ -225,7 +227,7 @@ Partial Class frmCierreContableAnual
         '
         'pb_cierreAnual
         '
-        Me.pb_cierreAnual.Location = New System.Drawing.Point(30, 368)
+        Me.pb_cierreAnual.Location = New System.Drawing.Point(30, 355)
         Me.pb_cierreAnual.Name = "pb_cierreAnual"
         Me.pb_cierreAnual.Size = New System.Drawing.Size(275, 10)
         Me.pb_cierreAnual.Style = System.Windows.Forms.ProgressBarStyle.Continuous
@@ -235,7 +237,7 @@ Partial Class frmCierreContableAnual
         'lbl_porcentaje
         '
         Me.lbl_porcentaje.AutoSize = True
-        Me.lbl_porcentaje.Location = New System.Drawing.Point(164, 347)
+        Me.lbl_porcentaje.Location = New System.Drawing.Point(164, 334)
         Me.lbl_porcentaje.Name = "lbl_porcentaje"
         Me.lbl_porcentaje.Size = New System.Drawing.Size(21, 13)
         Me.lbl_porcentaje.TabIndex = 4
@@ -249,7 +251,7 @@ Partial Class frmCierreContableAnual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(437, 401)
+        Me.ClientSize = New System.Drawing.Size(437, 394)
         Me.Controls.Add(Me.lbl_porcentaje)
         Me.Controls.Add(Me.pb_cierreAnual)
         Me.Controls.Add(Me.btn_IniciarCierre)
@@ -273,17 +275,17 @@ Partial Class frmCierreContableAnual
     Friend WithEvents tb_cuentaEjercicioActual As System.Windows.Forms.TextBox
     Friend WithEvents tb_cuentaEjercicioAterior As System.Windows.Forms.TextBox
     Friend WithEvents tb_anioContable As System.Windows.Forms.TextBox
-    Friend WithEvents lbl_resultadoAnterior As System.Windows.Forms.Label
-    Friend WithEvents lbl_ejercicioAnterior As System.Windows.Forms.Label
+    Friend WithEvents lbl_DescActual As System.Windows.Forms.Label
+    Friend WithEvents lbl_DescAnterior As System.Windows.Forms.Label
     Friend WithEvents lbl_anio As System.Windows.Forms.Label
     Friend WithEvents lbl_descripcion As System.Windows.Forms.Label
     Friend WithEvents btn_IniciarCierre As System.Windows.Forms.Button
     Friend WithEvents pb_cierreAnual As System.Windows.Forms.ProgressBar
     Friend WithEvents lbl_porcentaje As System.Windows.Forms.Label
     Friend WithEvents timer_progressbar As System.Windows.Forms.Timer
-    Friend WithEvents lbl_info5 As System.Windows.Forms.Label
     Friend WithEvents lbl_info4 As System.Windows.Forms.Label
     Friend WithEvents lbl_info3 As System.Windows.Forms.Label
     Friend WithEvents lbl_info2 As System.Windows.Forms.Label
     Friend WithEvents lbl_info1 As System.Windows.Forms.Label
+    Friend WithEvents lbl_Informacion As System.Windows.Forms.Label
 End Class
