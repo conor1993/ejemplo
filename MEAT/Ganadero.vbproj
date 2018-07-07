@@ -1186,6 +1186,20 @@
     <Compile Include="Agrojs - Control de Che Dev\frmRegistroPagosChequesDevueltos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Contabilidad\Reportes\resultadoestado.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>resultadoestado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\resultadoestado.vb">
+      <DependentUpon>resultadoestado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\rptestadoresultados.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptestadoresultados.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Cuentas Por Cobrar\frmBusquedaNotas.designer.vb">
       <DependentUpon>frmBusquedaNotas.vb</DependentUpon>
     </Compile>
@@ -3944,6 +3958,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmRegistroPagosChequesDevueltos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptestadoresultados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptestadoresultados.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cuentas Por Cobrar\frmBusquedaNotas.resx">
       <DependentUpon>frmBusquedaNotas.vb</DependentUpon>
     </EmbeddedResource>
@@ -5270,6 +5288,17 @@
     <Content Include="cx.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Contabilidad\Reportes\resultadoestado.xsc">
+      <DependentUpon>resultadoestado.xsd</DependentUpon>
+    </None>
+    <None Include="Contabilidad\Reportes\resultadoestado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>resultadoestado.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Contabilidad\Reportes\resultadoestado.xss">
+      <DependentUpon>resultadoestado.xsd</DependentUpon>
+    </None>
     <None Include="Facturacion\DataSet\Embarques.xsc">
       <DependentUpon>Embarques.xsd</DependentUpon>
     </None>
