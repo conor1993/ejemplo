@@ -1,9 +1,11 @@
 Imports ClasesNegocio
-Imports EC = Integralab.ORM.EntityClasses
-Imports CC = Integralab.ORM.CollectionClasses
-Imports HC = Integralab.ORM.HelperClasses
+Imports ECS = IntegraLab.ORMSeguridad.EntityClasses
+Imports EC = IntegraLab.ORM.EntityClasses
+Imports CC = IntegraLab.ORM.CollectionClasses
+Imports HC = IntegraLab.ORM.HelperClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Imports System.Drawing.Printing
+Imports System.Data.SqlClient
 
 Public Class frmBalanceGeneral
 
@@ -13,19 +15,29 @@ Public Class frmBalanceGeneral
 
 #Region "Metodos"
     Public Sub InicializarForma()
-
+        '' Llenar el combo de Ejercicio (años)
+        Using conn As New SqlConnection(HC.DbUtils.ActualConnectionString)
+            conn.Open()
+            Dim dt As New DataTable
+            Dim command As New SqlCommand("SELECT Ejercicio FROM UsrGralPeriodosCont")
+            command.Connection = conn
+            Dim adapter As New SqlDataAdapter(command)
+            adapter.Fill(dt)
+            ultCmbEjercicio.DataSource = dt
+        End Using
     End Sub
 
     Public Sub Limpiar()
         Estado = FormState.Limpiar
         ultcmbMes.Clear()
+        ultCmbEjercicio.Clear()
     End Sub
 
     Public Function Guardar(ByVal Trans As HC.Transaction) As Boolean
-        Me.CalcularSaldo()
+        'Me.CalcularSaldo()
         'PictureBox1.Visible = True
         'Me.Refresh()
-        Me.OnPrintPage()
+        'Me.OnPrintPage()
         'Estado = FormState.Guardar
         'PictureBox1.Visible = True
         'Me.Refresh()
@@ -46,6 +58,34 @@ Public Class frmBalanceGeneral
         '    PictureBox1.Visible = False
         '    Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.BALANCE_GENERAL, 0)
         'End If
+        Try
+            '' Variables necesarias para el reporte
+            Dim Reporte As New rptBalanceGeneral
+            'Dim Reporte As New rptBalanceGeneralX
+            Dim Previsualizar As New PreVisualizarForm
+            Dim dt As New DataTable
+
+            ''Obtener los datos desde el procedimiento almacenado "AcumuladosCuentasContablesConsulta"''
+            Dim command As New SqlCommand("AcumuladosCuentasContablesConsulta")
+            Using conn As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                command.Connection = conn
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.AddWithValue("V_Op", 1)
+                command.Parameters.AddWithValue("V_Ejercicio", Me.ultCmbEjercicio.Value)
+                command.Parameters.AddWithValue("V_Mes", Me.ultcmbMes.Value)
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(dt)
+            End Using
+
+            Reporte.SetDataSource(dt)
+            Reporte.SetParameterValue("EmpresaNombre", Controlador.Sesion.MiEmpresa.Empnom)
+            Reporte.SetParameterValue("Ejercicio", Me.ultCmbEjercicio.Value)
+            Reporte.SetParameterValue("Mes", Me.ultcmbMes.SelectedItem.DisplayText)
+            Previsualizar.Reporte = Reporte
+            Previsualizar.ShowDialog()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Function
 
     Public Sub Salir()
@@ -64,7 +104,7 @@ Public Class frmBalanceGeneral
                                     " FROM usrContCuentas Cc INNER JOIN ClasificadordeEstadosFinancieros Cef ON Cef.codigo=Cc.Titulo" & _
                                     "						  left JOIN DetalleClasificadordeEstadosFinancieros Def ON def.Codigo = Cc.Subtitulo" & _
                                     " WHERE SubCta='0000' AND ceF.cODIGO BETWEEN 1 AND 3"
-        Using ad As New SqlClient.SqlDataAdapter("", Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)
+        Using ad As New SqlClient.SqlDataAdapter("", IntegraLab.ORM.HelperClasses.DbUtils.ActualConnectionString)
             ad.SelectCommand.Connection.Open()
             ad.SelectCommand.CommandText = Query1
             ad.SelectCommand.Prepare()
@@ -78,41 +118,46 @@ Public Class frmBalanceGeneral
             Dim Balance As New BalanceGeneralClass
             Dim CuentaCon As New CuentaContableClass
             Balance.IdCuenta = Me.dgvCuentasContables.Rows(i).Cells(Me.clmCodigoCuenta.Index).Value
-            Balance.Ejercicio = 2010
-            Select Case Me.ultcmbMes.SelectedIndex
-                Case 0
-                    Balance.CalcularSaldo(MesEnum2.ENERO)
-                Case 1
-                    Balance.CalcularSaldo(MesEnum2.FEBRERO)
-                Case 2
-                    Balance.CalcularSaldo(MesEnum2.MARZO)
-                Case 3
-                    Balance.CalcularSaldo(MesEnum2.ABRIL)
-                Case 4
-                    Balance.CalcularSaldo(MesEnum2.MAYO)
-                Case 5
-                    Balance.CalcularSaldo(MesEnum2.JUNIO)
-                Case 6
-                    Balance.CalcularSaldo(MesEnum2.JULIO)
-                Case 7
-                    Balance.CalcularSaldo(MesEnum2.AGOSTO)
-                Case 8
-                    Balance.CalcularSaldo(MesEnum2.SEPTIEMBRE)
-                Case 9
-                    Balance.CalcularSaldo(MesEnum2.OCTUBRE)
-                Case 10
-                    Balance.CalcularSaldo(MesEnum2.NOVIEMBRE)
-                Case 11
-                    Balance.CalcularSaldo(MesEnum2.DICIEMBRE)
-            End Select
+            Balance.Ejercicio = CInt(Me.ultCmbEjercicio.Value)
+            'Select Case Me.ultcmbMes.SelectedIndex
+            '    Case 0
+            '        Balance.CalcularSaldo(MesEnum2.ENERO)
+            '    Case 1
+            '        Balance.CalcularSaldo(MesEnum2.FEBRERO)
+            '    Case 2
+            '        Balance.CalcularSaldo(MesEnum2.MARZO)
+            '    Case 3
+            '        Balance.CalcularSaldo(MesEnum2.ABRIL)
+            '    Case 4
+            '        Balance.CalcularSaldo(MesEnum2.MAYO)
+            '    Case 5
+            '        Balance.CalcularSaldo(MesEnum2.JUNIO)
+            '    Case 6
+            '        Balance.CalcularSaldo(MesEnum2.JULIO)
+            '    Case 7
+            '        Balance.CalcularSaldo(MesEnum2.AGOSTO)
+            '    Case 8
+            '        Balance.CalcularSaldo(MesEnum2.SEPTIEMBRE)
+            '    Case 9
+            '        Balance.CalcularSaldo(MesEnum2.OCTUBRE)
+            '    Case 10
+            '        Balance.CalcularSaldo(MesEnum2.NOVIEMBRE)
+            '    Case 11
+            '        Balance.CalcularSaldo(MesEnum2.DICIEMBRE)
+            'End Select
+            ' 
+            '' Los meses se empiezan a contar desde el 1, entonces se envia el mes tomando el index de ultCmbMes que empieza de 0 y se le suma 1
+            Balance.CalcularSaldo(Me.ultcmbMes.SelectedIndex + 1)
             Me.dgvCuentasContables.Rows(i).Cells(Me.clmSaldo.Index).Value = Balance.Saldo
+
         Next
+
 
     End Sub
     'metodos para traer la informacion a imprimir en balance general
     Private Sub PrintBalance_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintBalance.PrintPage
         Dim Ejercio As Integer
-        Ejercio = 2010
+        Ejercio = 2017
         Dim fn As New Drawing.Font("Courier New", 10)
         Dim fnt As New Drawing.Font("Courier New", 12)
         'imprimir en documento.
@@ -178,7 +223,7 @@ Public Class frmBalanceGeneral
             Else
                 tx = 450
             End If
-           
+
 
 
             'nombre de la cuenta mayor

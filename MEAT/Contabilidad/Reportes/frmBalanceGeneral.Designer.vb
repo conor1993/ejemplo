@@ -23,18 +23,18 @@ Partial Class frmBalanceGeneral
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem6 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem7 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem8 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem9 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem10 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem11 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem12 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem13 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem14 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem15 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem16 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem17 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem18 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem19 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem20 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem21 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem22 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem23 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem24 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBalanceGeneral))
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -52,8 +52,11 @@ Partial Class frmBalanceGeneral
         Me.clmDescripcionSubtitulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmSaldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ultCmbEjercicio = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
         CType(Me.ultcmbMes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvCuentasContables, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ultCmbEjercicio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MEAToolBar1
@@ -90,44 +93,44 @@ Partial Class frmBalanceGeneral
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.Label1.Location = New System.Drawing.Point(56, 71)
+        Me.Label1.Location = New System.Drawing.Point(56, 46)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(107, 17)
+        Me.Label1.Size = New System.Drawing.Size(38, 17)
         Me.Label1.TabIndex = 40
-        Me.Label1.Text = "Mes a Generar:"
+        Me.Label1.Text = "Mes:"
         '
         'ultcmbMes
         '
         Me.ultcmbMes.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest
-        ValueListItem1.DataValue = CType(1, Byte)
-        ValueListItem1.DisplayText = "ENERO"
-        ValueListItem2.DataValue = CType(2, Byte)
-        ValueListItem2.DisplayText = "FEBRERO"
-        ValueListItem3.DataValue = CType(3, Byte)
-        ValueListItem3.DisplayText = "MARZO"
-        ValueListItem4.DataValue = CType(4, Byte)
-        ValueListItem4.DisplayText = "ABRIL"
-        ValueListItem5.DataValue = CType(5, Byte)
-        ValueListItem5.DisplayText = "MAYO"
-        ValueListItem6.DataValue = CType(6, Byte)
-        ValueListItem6.DisplayText = "JUNIO"
-        ValueListItem7.DataValue = CType(7, Byte)
-        ValueListItem7.DisplayText = "JULIO"
-        ValueListItem8.DataValue = CType(8, Byte)
-        ValueListItem8.DisplayText = "AGOSTO"
-        ValueListItem9.DataValue = CType(9, Byte)
-        ValueListItem9.DisplayText = "SEPTIEMBRE"
-        ValueListItem10.DataValue = CType(10, Byte)
-        ValueListItem10.DisplayText = "OCTUBRE"
-        ValueListItem11.DataValue = CType(11, Byte)
-        ValueListItem11.DisplayText = "NOVIEMBRE"
-        ValueListItem12.DataValue = CType(12, Byte)
-        ValueListItem12.DisplayText = "DICIEMBRE"
-        Me.ultcmbMes.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2, ValueListItem3, ValueListItem4, ValueListItem5, ValueListItem6, ValueListItem7, ValueListItem8, ValueListItem9, ValueListItem10, ValueListItem11, ValueListItem12})
-        Me.ultcmbMes.Location = New System.Drawing.Point(169, 71)
+        ValueListItem13.DataValue = CType(1, Byte)
+        ValueListItem13.DisplayText = "ENERO"
+        ValueListItem14.DataValue = CType(2, Byte)
+        ValueListItem14.DisplayText = "FEBRERO"
+        ValueListItem15.DataValue = CType(3, Byte)
+        ValueListItem15.DisplayText = "MARZO"
+        ValueListItem16.DataValue = CType(4, Byte)
+        ValueListItem16.DisplayText = "ABRIL"
+        ValueListItem17.DataValue = CType(5, Byte)
+        ValueListItem17.DisplayText = "MAYO"
+        ValueListItem18.DataValue = CType(6, Byte)
+        ValueListItem18.DisplayText = "JUNIO"
+        ValueListItem19.DataValue = CType(7, Byte)
+        ValueListItem19.DisplayText = "JULIO"
+        ValueListItem20.DataValue = CType(8, Byte)
+        ValueListItem20.DisplayText = "AGOSTO"
+        ValueListItem21.DataValue = CType(9, Byte)
+        ValueListItem21.DisplayText = "SEPTIEMBRE"
+        ValueListItem22.DataValue = CType(10, Byte)
+        ValueListItem22.DisplayText = "OCTUBRE"
+        ValueListItem23.DataValue = CType(11, Byte)
+        ValueListItem23.DisplayText = "NOVIEMBRE"
+        ValueListItem24.DataValue = CType(12, Byte)
+        ValueListItem24.DisplayText = "DICIEMBRE"
+        Me.ultcmbMes.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem13, ValueListItem14, ValueListItem15, ValueListItem16, ValueListItem17, ValueListItem18, ValueListItem19, ValueListItem20, ValueListItem21, ValueListItem22, ValueListItem23, ValueListItem24})
+        Me.ultcmbMes.Location = New System.Drawing.Point(100, 44)
         Me.ultcmbMes.Name = "ultcmbMes"
         Me.ultcmbMes.NullText = "Seleccione el Mes"
-        Me.ultcmbMes.Size = New System.Drawing.Size(121, 21)
+        Me.ultcmbMes.Size = New System.Drawing.Size(150, 21)
         Me.ultcmbMes.TabIndex = 41
         Me.ultcmbMes.Text = "Seleccione el Mes"
         '
@@ -167,11 +170,10 @@ Partial Class frmBalanceGeneral
         Me.dgvCuentasContables.AllowUserToDeleteRows = False
         Me.dgvCuentasContables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCuentasContables.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigoCuenta, Me.clmCuentaDescripcion, Me.clmCodigoTitulo, Me.clmDescripcionTitulo, Me.clmCodigoSubtitulo, Me.clmDescripcionSubtitulo, Me.clmSaldo})
-        Me.dgvCuentasContables.Location = New System.Drawing.Point(247, 127)
+        Me.dgvCuentasContables.Location = New System.Drawing.Point(0, 170)
         Me.dgvCuentasContables.Name = "dgvCuentasContables"
-        Me.dgvCuentasContables.Size = New System.Drawing.Size(86, 52)
+        Me.dgvCuentasContables.Size = New System.Drawing.Size(579, 241)
         Me.dgvCuentasContables.TabIndex = 44
-        Me.dgvCuentasContables.Visible = False
         '
         'clmCodigoCuenta
         '
@@ -223,11 +225,35 @@ Partial Class frmBalanceGeneral
         Me.Button1.Text = "Generar"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.Label2.Location = New System.Drawing.Point(56, 81)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(37, 17)
+        Me.Label2.TabIndex = 46
+        Me.Label2.Text = "Año:"
+        '
+        'ultCmbEjercicio
+        '
+        Me.ultCmbEjercicio.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest
+        Me.ultCmbEjercicio.DisplayMember = "Ejercicio"
+        Me.ultCmbEjercicio.Location = New System.Drawing.Point(100, 79)
+        Me.ultCmbEjercicio.Name = "ultCmbEjercicio"
+        Me.ultCmbEjercicio.NullText = "Seleccione el Mes"
+        Me.ultCmbEjercicio.Size = New System.Drawing.Size(150, 21)
+        Me.ultCmbEjercicio.TabIndex = 47
+        Me.ultCmbEjercicio.Text = "Seleccione el Año"
+        Me.ultCmbEjercicio.ValueMember = "Ejercicio"
+        '
         'frmBalanceGeneral
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(336, 191)
+        Me.ClientSize = New System.Drawing.Size(591, 414)
+        Me.Controls.Add(Me.ultCmbEjercicio)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.dgvCuentasContables)
         Me.Controls.Add(Me.lblTitulo)
@@ -238,6 +264,7 @@ Partial Class frmBalanceGeneral
         Me.Text = "Balance General"
         CType(Me.ultcmbMes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCuentasContables, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ultCmbEjercicio, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -258,4 +285,6 @@ Partial Class frmBalanceGeneral
     Friend WithEvents clmDescripcionSubtitulo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmSaldo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents ultCmbEjercicio As Infragistics.Win.UltraWinEditors.UltraComboEditor
 End Class

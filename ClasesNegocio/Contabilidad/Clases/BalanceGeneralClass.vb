@@ -1,5 +1,6 @@
 Imports IC = Integra.Clases
-Imports EC = IntegraLab.ORM.EntityClasses
+Imports ECS = Integralab.ORMSeguridad.EntityClasses
+Imports EC = Integralab.ORM.EntityClasses
 Imports CC = IntegraLab.ORM.CollectionClasses
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports SC = SD.LLBLGen.Pro.ORMSupportClasses
