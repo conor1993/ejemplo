@@ -118,10 +118,39 @@ Public Class frmCierreContableAnual
                 generarPolizaCab()
                 generarPolizaDetalle()
                 polizaCierre()
+                actualizarCuentas()
 
                 timer_progressbar.Start()
             End If
         End If
+    End Sub
+
+    Private Sub actualizarCuentas()
+        Dim queryTabla As String = "SELECT ACC.Codigo, SaldoFinEjer FROM AcumuladoCuentasContables ACC " +
+            "INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE Ejercicio = {0} AND Titulo IN (1,2,3)"
+        Dim tablaCuentas As DataTable = buscarTabla(querytabla)
+        Dim query As String = "EXEC RegistrarCuentaCierre 1, {0}, {1}, {2}"
+        
+        Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+            connection.Open()
+            Dim command As SqlCommand = connection.CreateCommand()
+            Dim transaction As SqlTransaction
+            transaction = connection.BeginTransaction("SampleTransaction")
+            command.Connection = connection
+            command.Transaction = transaction
+            Try
+                For Each filas As DataRow In tablaCuentas.Rows
+                    query = String.Format(query, filas(0), tb_anioContable.Text, filas(1))
+                    command.CommandText = query
+                    command.ExecuteNonQuery()
+                Next
+                transaction.Commit()
+            Catch ex As Exception
+                transaction.Rollback()
+                MessageBox.Show("No se lograron actualizar los saldo del siguiente año de las cuentas 1, 2 y 3. Consulte al Adminitrador del Sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            connection.Close()
+        End Using
     End Sub
 
     'Animacion progress bar con el timer
@@ -169,11 +198,9 @@ Public Class frmCierreContableAnual
 
     End Sub
 
-    'Busca en tabla acumulados el total de cada una de las cuentas del año del cierra para hacer poliza detalle
-    Private Function buscarTablaPolizaDetalle()
+    'Busca en tabla acumulados el total de cada una de las cuentas tipo del 4 al 7 y la cuenta del cierra(activo) para hacer poliza detalle
+    Private Function buscarTabla(ByVal query As String)
         Dim tablaDetalle As New DataTable()
-        Dim query As String = "SELECT  ACC.Codigo, SaldoFinEjer, Operacion = case when CC.Titulo IN (4, 7) then 'C' when CC.Titulo IN(5 ,6 ,8) then 'A' End " +
-            "FROM AcumuladoCuentasContables ACC INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE Ejercicio = {0} AND (Titulo in (4,5,6,7,8) OR ACC.Codigo = {1})"
         query = String.Format(query, tb_anioContable.Text, codigoCuentaActual)
         Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
             connection.Open()
@@ -184,9 +211,9 @@ Public Class frmCierreContableAnual
                 dataAdapter.Dispose()
             Catch ex As Exception
                 MessageBox.Show("No se logro acceder a los datos de la cuentas acumuladas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
+            End Try
             connection.Close()
-            End Using
+        End Using
         Return tablaDetalle
     End Function
 
@@ -196,7 +223,9 @@ Public Class frmCierreContableAnual
         If idPoliza = 0 Then
             MessageBox.Show("No se logró obtener ID de la póliza de la base de datos (tabla usrContPolizasDetalle).", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            Dim tablaDetalle As DataTable = buscarTablaPolizaDetalle() 'busca y regresa tabla con los movimientos del año que se esta cerrando
+            Dim queryTabla As String = "SELECT  ACC.Codigo, SaldoFinEjer, Operacion = case when CC.Titulo IN (4) then 'C' when CC.Titulo IN(5 ,6 ,7) then 'A' End " +
+            "FROM AcumuladoCuentasContables ACC INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE Ejercicio = {0} AND (Titulo in (4,5,6,7) OR ACC.Codigo = {1})"
+            Dim tablaDetalle As DataTable = buscarTabla(queryTabla) 'busca y regresa tabla con los movimientos del año que se esta cerrando
             Dim posicion As Integer = 0 'posicion de las cuentas de la tabla poliza detalles
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 connection.Open()
@@ -211,7 +240,12 @@ Public Class frmCierreContableAnual
                         If (filas(0) = codigoCuentaActual) Then
                             posicion += 1
                             query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe, Concepto) VALUES ({0}, {1}, {2}, '{3}', {4}, 'Cuenta de Cierre')"
-                            query = String.Format(query, idPoliza, posicion, filas(0), "A", filas(1))
+                            If (filas(1) > 0) Then
+                                query = String.Format(query, idPoliza, posicion, filas(0), "A", filas(1))
+                            Else
+                                filas(1) = -(filas(1))
+                                query = String.Format(query, idPoliza, posicion, filas(0), "C", filas(1))
+                            End If
                             command.CommandText = query
                             command.ExecuteNonQuery()
                         ElseIf (filas(2) = "C") Then
@@ -220,18 +254,10 @@ Public Class frmCierreContableAnual
                             query = String.Format(query, idPoliza, posicion, filas(0), "C", filas(1))
                             command.CommandText = query
                             command.ExecuteNonQuery()
-                            query = "EXEC RegistrarCuentaCierre 2, {0}, {1}, {2}"
-                            query = String.Format(query, filas(0), tb_anioContable.Text, filas(1))
-                            command.CommandText = query
-                            command.ExecuteNonQuery()
                         Else
                             posicion += 1
                             query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
                             query = String.Format(query, idPoliza, posicion, filas(0), "A", filas(1))
-                            command.CommandText = query
-                            command.ExecuteNonQuery()
-                            query = "EXEC RegistrarCuentaCierre 2, {0}, {1}, {2}"
-                            query = String.Format(query, filas(0), tb_anioContable.Text, filas(1))
                             command.CommandText = query
                             command.ExecuteNonQuery()
                         End If
@@ -397,7 +423,9 @@ Public Class frmCierreContableAnual
     'busca tabla que regresa el total de la cuentas y reliza la operacion de cierre contable para guardarlo en la cuenta seleccionda(en la variable codigoCuentaActual)
     'registra la cuenta donde se guarda el total y la del año siguiente
     Private Sub sumaTotalCuentas()
-        Dim tablacuentas As DataTable = buscarTablaPolizaDetalle()
+        Dim queryTabla As String = "SELECT  ACC.Codigo, SaldoFinEjer, Operacion = case when CC.Titulo IN (4) then 'C' when CC.Titulo IN(5 ,6 ,7) then 'A' End " +
+            "FROM AcumuladoCuentasContables ACC INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE Ejercicio = {0} AND (Titulo in (4,5,6,7) OR ACC.Codigo = {1})"
+        Dim tablacuentas As DataTable = buscarTabla(queryTabla)
         Dim total As Double = 0
         For Each filas As DataRow In tablacuentas.Rows
             If IsDBNull(filas(2)) Then
