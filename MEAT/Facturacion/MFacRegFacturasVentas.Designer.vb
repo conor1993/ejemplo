@@ -152,7 +152,7 @@ Partial Class MFacRegFacturasVentas
         Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
         Me.pdDocumento = New System.Drawing.Printing.PrintDocument()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.CuentaControl = New IntegraLab.ORM.CollectionClasses.CfgCtrlCtasCollection()
+        Me.CuentaControl = New Integralab.ORM.CollectionClasses.CfgCtrlCtasCollection()
         Me.txtSumaCargo = New System.Windows.Forms.TextBox()
         Me.txtSumaAbono = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
@@ -169,8 +169,8 @@ Partial Class MFacRegFacturasVentas
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Label25)
         Me.GroupBox1.Controls.Add(Me.cmbmetodo)
         Me.GroupBox1.Controls.Add(Me.Label24)
@@ -990,8 +990,8 @@ Partial Class MFacRegFacturasVentas
         '
         Me.dgvDetalle.AllowUserToAddRows = False
         Me.dgvDetalle.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1223,7 +1223,7 @@ Partial Class MFacRegFacturasVentas
         Me.CuentaControl.Capacity = 32
         Me.CuentaControl.ConcurrencyPredicateFactoryToUse = Nothing
         Me.CuentaControl.DoNotPerformAddIfPresent = False
-        Me.CuentaControl.EntityFactoryToUse = New IntegraLab.ORM.FactoryClasses.CfgCtrlCtasEntityFactory()
+        Me.CuentaControl.EntityFactoryToUse = New Integralab.ORM.FactoryClasses.CfgCtrlCtasEntityFactory()
         Me.CuentaControl.IsReadOnly = False
         Me.CuentaControl.MaxNumberOfItemsToReturn = CType(0, Long)
         Me.CuentaControl.SortClauses = Nothing
