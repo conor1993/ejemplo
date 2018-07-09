@@ -91,7 +91,6 @@ Public Class frmCierreContableAnual
             If (MessageBox.Show("¿Estas seguro que desea cerrar el ejercicio?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK) Then
                 lbl_porcentaje.Visible = True
                 pb_cierreAnual.Visible = True
-                pb_cierreAnual.ForeColor = Color.Red
                 btn_IniciarCierre.Enabled = False
 
                 Dim query As String = "EXEC spCierreAnual '{0}', '{1}'"
@@ -119,7 +118,6 @@ Public Class frmCierreContableAnual
                 generarPolizaDetalle()
                 polizaCierre()
                 actualizarCuentas()
-
                 timer_progressbar.Start()
             End If
         End If
@@ -127,10 +125,10 @@ Public Class frmCierreContableAnual
 
     Private Sub actualizarCuentas()
         Dim queryTabla As String = "SELECT ACC.Codigo, SaldoFinEjer FROM AcumuladoCuentasContables ACC " +
-            "INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE Ejercicio = {0} AND Titulo IN (1,2,3)"
+            "INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE Ejercicio = {0} AND Titulo IN (1,2,3) AND SaldoFinEjer <> 0"
         Dim tablaCuentas As DataTable = buscarTabla(querytabla)
-        Dim query As String = "EXEC RegistrarCuentaCierre 1, {0}, {1}, {2}"
-        
+        Dim query As String
+
         Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
             connection.Open()
             Dim command As SqlCommand = connection.CreateCommand()
@@ -140,11 +138,13 @@ Public Class frmCierreContableAnual
             command.Transaction = transaction
             Try
                 For Each filas As DataRow In tablaCuentas.Rows
+                    query = "EXEC RegistrarCuentaCierre 2, {0}, {1}, {2}"
                     query = String.Format(query, filas(0), tb_anioContable.Text, filas(1))
                     command.CommandText = query
                     command.ExecuteNonQuery()
                 Next
                 transaction.Commit()
+                codigoCuentaActual = 0 'se iguala a cero si se realizo todo el cierre sin errores para madar mensaje de confirmacion en el timer
             Catch ex As Exception
                 transaction.Rollback()
                 MessageBox.Show("No se lograron actualizar los saldo del siguiente año de las cuentas 1, 2 y 3. Consulte al Adminitrador del Sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -155,11 +155,13 @@ Public Class frmCierreContableAnual
 
     'Animacion progress bar con el timer
     Private Sub timer_progressbar_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer_progressbar.Tick
-        pb_cierreAnual.Increment(100)
+        pb_cierreAnual.Increment(800)
         lbl_porcentaje.Text = pb_cierreAnual.Value.ToString() + "%"
         If pb_cierreAnual.Value = 100 Then
             timer_progressbar.Stop()
-            MessageBox.Show("El ejercicio se ha cerrado con éxito", "Cierre de ejercicio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If codigoCuentaActual = 0 Then
+                MessageBox.Show("El ejercicio se ha cerrado con éxito", "Cierre de ejercicio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         End If
     End Sub
 
@@ -175,7 +177,7 @@ Public Class frmCierreContableAnual
         Dim concepto As String = tb_nombreEjercicioActual.Text
         Dim origen As String = "C"
         Dim tipoErro As String = "0"
-        Dim estatus As String = "2"
+        Dim estatus As String = "1" 'Vigente
         Dim tipoCambio As String = "1"
         'Dim numeroPoliza As String = tipoPoliza + anio.ToString() + mes.ToString("0#") + folio.ToString("000#")
 
@@ -195,7 +197,6 @@ Public Class frmCierreContableAnual
         End Using
 
         registrarFolioCierrePeriodo()
-
     End Sub
 
     'Busca en tabla acumulados el total de cada una de las cuentas tipo del 4 al 7 y la cuenta del cierra(activo) para hacer poliza detalle
