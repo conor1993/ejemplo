@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class rptBalanceGeneral
+Public Class RptBalanceGeneral
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class rptBalanceGeneral
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "rptBalanceGeneral.rpt"
+            Return "RptBalanceGeneral.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class rptBalanceGeneral
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "MEAT.rptBalanceGeneral.rpt"
+            Return "ClasesNegocio.RptBalanceGeneral.rpt"
         End Get
         Set
             'Do nothing
@@ -118,7 +118,7 @@ Public Class rptBalanceGeneral
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedrptBalanceGeneral
+Public Class CachedRptBalanceGeneral
     Inherits Component
     Implements ICachedReport
     
@@ -160,7 +160,7 @@ Public Class CachedrptBalanceGeneral
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As rptBalanceGeneral = New rptBalanceGeneral()
+        Dim rpt As RptBalanceGeneral = New RptBalanceGeneral()
         rpt.Site = Me.Site
         Return rpt
     End Function

@@ -1194,6 +1194,12 @@
     <Compile Include="Contabilidad\Reportes\resultadoestado.vb">
       <DependentUpon>resultadoestado.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Contabilidad\Reportes\rptBalanceGeneral.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneral.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Contabilidad\Reportes\rptestadoresultados.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3957,6 +3963,10 @@
     <EmbeddedResource Include="Agrojs - Control de Che Dev\frmRegistroPagosChequesDevueltos.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmRegistroPagosChequesDevueltos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptBalanceGeneral.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneral.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\Reportes\rptestadoresultados.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
