@@ -174,6 +174,7 @@ Partial Class frmBalanceGeneral
         Me.dgvCuentasContables.Name = "dgvCuentasContables"
         Me.dgvCuentasContables.Size = New System.Drawing.Size(579, 241)
         Me.dgvCuentasContables.TabIndex = 44
+        Me.dgvCuentasContables.Visible = False
         '
         'clmCodigoCuenta
         '
@@ -251,7 +252,7 @@ Partial Class frmBalanceGeneral
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(591, 414)
+        Me.ClientSize = New System.Drawing.Size(324, 243)
         Me.Controls.Add(Me.ultCmbEjercicio)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
