@@ -3,6 +3,7 @@ Imports EC = Integralab.ORM.EntityClasses
 Imports CC = Integralab.ORM.CollectionClasses
 Imports HC = Integralab.ORM.HelperClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
+
 Imports System.Drawing.Printing
 Public Class frmEstadodeResultados
 
@@ -24,7 +25,7 @@ Public Class frmEstadodeResultados
         Me.CalcularSaldo()
         'PictureBox1.Visible = True
         'Me.Refresh()
-        Me.OnPrintPage()
+        'Me.OnPrintPage()
         'Estado = FormState.Guardar
         'PictureBox1.Visible = True
         'Me.Refresh()
@@ -54,13 +55,14 @@ Public Class frmEstadodeResultados
     'calcular los saldos para estado de resultados
     Private Sub CalcularSaldo()
         Dim dt As New DataTable, dt2 As New DataTable
+        Dim ds As New DataSet
         Dim Query1 As String = "SELECT  Cc.Codigo," & _
                                     "          NomCuenta," & _
                                     "          Titulo," & _
                                     "          Cef.Descripcion as TituloDes," & _
-                                    "          SubTitulo" & _
+                                    "          SubTitulo ,0 Saldo" & _
                                     " FROM usrContCuentas Cc INNER JOIN ClasificadordeEstadosFinancieros Cef ON Cef.codigo=Cc.Titulo" & _
-                                    " WHERE SubCta='0000' AND ceF.cODIGO BETWEEN 4 AND 8" & _
+                                    " WHERE SubCta='0000' AND   ceF.cODIGO BETWEEN 4 AND 8" & _
                                     " Order by Cef.Codigo,Cc.Codigo"
         Using ad As New SqlClient.SqlDataAdapter("", Integralab.ORM.HelperClasses.DbUtils.ActualConnectionString)
             ad.SelectCommand.Connection.Open()
@@ -76,7 +78,8 @@ Public Class frmEstadodeResultados
             Dim Balance As New BalanceGeneralClass
             Dim CuentaCon As New CuentaContableClass
             Balance.IdCuenta = Me.dgvCuentasContables.Rows(i).Cells(Me.clmCodigoCuenta.Index).Value
-            Balance.Ejercicio = 2010
+            
+            Balance.Ejercicio = 2018
             Select Case Me.ultcmbMes.SelectedIndex
                 Case 0
                     Balance.CalcularSaldo(MesEnum2.ENERO)
@@ -103,15 +106,39 @@ Public Class frmEstadodeResultados
                 Case 11
                     Balance.CalcularSaldo(MesEnum2.DICIEMBRE)
             End Select
+
             Me.dgvCuentasContables.Rows(i).Cells(Me.clmSaldo.Index).Value = Balance.Saldo
+            dt.Rows(i).Item("Saldo") = Balance.Saldo
+
+            If dgvCuentasContables.Rows(i).Cells(Me.clmCodigoTitulo.Index).Value = 4 Then
+                dt.Rows(i).Item("TituloDes") = "INGRESOS"
+            Else
+                dt.Rows(i).Item("TituloDes") = "EGRESOS"
+            End If
+
         Next
+        ''usar crystal report -----------------------------------------------------------
+
+        Try
+            ds.Tables.Add(dt)
+            Dim Reporte As New rptestadoresultados
+            Reporte.SetDataSource(ds.Tables(0))
+            Dim pre As New ClasesNegocio.PreVisualizarForm
+            pre.Reporte = Reporte
+            pre.ShowDialog()
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        Finally
+            Cursor = Cursors.Default
+        End Try
 
     End Sub
     'metodos para traer la informacion a imprimir en estado de resultados
     
     Private Sub PrintBalance_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintBalance.PrintPage
         Dim Ejercio As Integer
-        Ejercio = 2010
+        Ejercio = 2018
 
         'tamaño de letras para la impresion del documento
         Dim fn As New Drawing.Font("Courier New", 10)
@@ -221,6 +248,9 @@ Public Class frmEstadodeResultados
         prtPrev.ShowDialog()
 
     End Sub
+
+
+
 #End Region
 
 #Region "Eventos"

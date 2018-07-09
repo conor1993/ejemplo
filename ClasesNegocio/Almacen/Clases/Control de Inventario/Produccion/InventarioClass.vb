@@ -139,6 +139,15 @@ Public Class InventarioClass
         End Set
     End Property
 
+    Property costopromedio() As Decimal
+        Get
+            Return Inventario.CostoProm
+        End Get
+        Set(ByVal value As Decimal)
+            Inventario.CostoProm = value
+        End Set
+    End Property
+
     Private Property Estatus() As EstatusEnum Implements IEntidad.Estatus
         Get
 
@@ -166,6 +175,10 @@ Public Class InventarioClass
 
             If inv.FetchUsingPK(Me.IdCodAlmacen, Me.IdCodProducto, Me.Año, Me.Mes) Then
                 If Me.NumOpc = 1 Then
+
+                    inv.UltimoCosto = inv.CostoProm
+                    inv.CostoProm = calcularcoststopromedio(inv.ExistKilos, inv.CostoProm, Me.EntKilos, Me.costopromedio)
+
                     inv.ExistKilos += Me.EntKilos
                     inv.ExistPzas += Me.EntPzas
                     inv.EntKilos += Me.EntKilos
@@ -255,7 +268,13 @@ Public Class InventarioClass
                     invNuevo.FechaUltimaEntrada = Now
                     invNuevo.ExtKilosInicial = 0D
                     invNuevo.ExtPiezasInicial = 0D
-
+                    Try
+                        invNuevo.CostoProm = Me.costopromedio
+                        invNuevo.UltimoCosto = Me.costopromedio
+                    Catch ex As Exception
+                        invNuevo.CostoProm = 0
+                        invNuevo.UltimoCosto = 0
+                    End Try
                     invNuevo.Save()
                 End If
             End If
@@ -276,6 +295,13 @@ Public Class InventarioClass
         End Try
     End Function
 
+    Private Function calcularcoststopromedio(ExistKilos As Decimal, CostoProm As Decimal, EntKilos As Decimal, costopromedio As Decimal) As Decimal
+        Dim costo As Decimal
+        costo = ((ExistKilos * CostoProm) + (EntKilos * costopromedio))
+        costo = costo / (EntKilos + ExistKilos)
+        Return costo
+    End Function
+
     Public Function Guardar() As Boolean
         Try
             If Not (Año > 1 And Mes >= 1) Then
@@ -288,6 +314,10 @@ Public Class InventarioClass
 
             If inv.FetchUsingPK(Me.IdCodAlmacen, Me.IdCodProducto, Me.Año, Me.Mes) Then
                 If Me.NumOpc = 1 Then
+                    ''afectar costo
+
+                    inv.UltimoCosto = inv.CostoProm
+                    inv.CostoProm = calcularcoststopromedio(inv.ExistKilos, inv.CostoProm, Me.EntKilos, Me.costopromedio)
                     inv.ExistKilos += Me.EntKilos
                     inv.ExistPzas += Me.EntPzas
                     inv.EntKilos += Me.EntKilos
@@ -377,7 +407,13 @@ Public Class InventarioClass
                     invNuevo.FechaUltimaEntrada = Now
                     invNuevo.ExtKilosInicial = 0D
                     invNuevo.ExtPiezasInicial = 0D
-
+                    Try
+                        invNuevo.CostoProm = Me.costopromedio
+                        invNuevo.UltimoCosto = Me.costopromedio
+                    Catch ex As Exception
+                        invNuevo.CostoProm = 0
+                        invNuevo.UltimoCosto = 0
+                    End Try
                     invNuevo.Save()
                 End If
             End If
@@ -411,5 +447,10 @@ Public Class InventarioClass
     Public Function Guardar2() As Boolean Implements IEntidad.Guardar
 
     End Function
+
+
+
+
 #End Region
+
 End Class

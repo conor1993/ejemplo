@@ -361,7 +361,7 @@ Public Class rptInventarioValorizado
                             "                              INNER JOIN mcatcompunidadmedida AS uni ON uni.umidunidadmedida=prod.pdidunidadmedida " & _
                             "                              INNER JOIN MCatGenPlazas AS Plaz ON Alm.Plaza = Plaz.PLIdPlaza " & _
                             "where      inv.almacenid = " & Me.cmbAlmacen.SelectedValue & _
-                            "GROUP BY   Inv.AlmacenId, Alm.Nombre, Inv.ProductoId, Prod.PdDescripcion, umi.umdescorta, Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
+                            "GROUP BY   Inv.AlmacenId, Alm.Nombre, Inv.ProductoId, Prod.PdDescripcion, uni.umdesccorta, Plaz.PLIdPlaza, Plaz.PLDescripcion " & _
                             "ORDER BY   Plaza, Almacen, Producto"
 
             sqlCom = New SqlCommand(cadenaConsulta, sqlCon)

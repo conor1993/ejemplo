@@ -44,6 +44,7 @@ Public Class FrmCapturaProdTerminado
     Private precioxkilo As Decimal
     Private kilosrecividos As Decimal
     Private kilostot As Decimal
+    Private precioxkilocons As Decimal
 #End Region
 
 #Region "Metodos"
@@ -713,7 +714,7 @@ Public Class FrmCapturaProdTerminado
                 .Kilos = CDec(Me.txtPeso.Text)
                 .Piezas = CInt(Me.txtPiezas.Text)
                 'Modificar
-                .AgregarDetalle(CInt(Me.txtCodSubCorte.Text), .Kilos, .Piezas, precioxkilo, 0D)
+                .AgregarDetalle(CInt(Me.txtCodSubCorte.Text), .Kilos, .Piezas, precioxkilocons, 0D)
 
                 .Guardar(Trans)
             End With
@@ -781,6 +782,8 @@ Public Class FrmCapturaProdTerminado
             End If
 
 
+
+
             'Me.cmbClientes.SelectedIndex = 0
 
             Sumar()
@@ -793,6 +796,8 @@ Public Class FrmCapturaProdTerminado
             'End If
 
             'Me.txtPeso.SelectAll()
+
+
 
             Return True
         Catch ex As Exception
@@ -1682,7 +1687,7 @@ Public Class FrmCapturaProdTerminado
         If Me.cmbCortes.SelectedValue <> Nothing Then
             Me.buscarcortes(Me.cmbCortes.SelectedValue.ToString())
             'exec Usp_MSCLoteCortesCon 5, '190218051' , '2', '', ''
-
+            obtenerprecioxkilo(txtCodSubCorte.Text,txtLoteCorte.text)
 
         End If
 
@@ -1933,4 +1938,33 @@ Public Class FrmCapturaProdTerminado
     '    End Using
     '    Return True
     'End Function
+
+    Private Sub obtenerprecioxkilo(codsubcorte As String, lotecorte As String)
+
+        Dim precioxkilo As Decimal = 0
+        Dim transaction As SqlTransaction
+        Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+            connection.Open()
+            Dim command As SqlCommand = connection.CreateCommand()
+            transaction = connection.BeginTransaction("SampleTransaction")
+            command.Connection = connection
+            command.Transaction = transaction
+            Dim query As String = " select PrecioXKilo from  MSCLoteCortesDetProductos where LoteCorte = {0}  and ID_Producto = {1} "
+            Try
+                query = String.Format(query, lotecorte, codsubcorte)
+                command.CommandText = query
+                command.ExecuteNonQuery()
+
+                Dim Rs As SqlDataReader = command.ExecuteReader()
+                Rs.Read()
+                precioxkilocons = Rs(0).ToString()
+                Rs.Close()
+                command.Transaction.Commit()
+                connection.Close()
+            Catch ex As Exception
+                command.Transaction.Rollback()
+            End Try
+        End Using
+    End Sub
+
 End Class

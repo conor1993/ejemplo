@@ -37,7 +37,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Publicaciones\MEAT\1.1.58\</PublishUrl>
+    <PublishUrl>C:\Publicaciones\MEAT\1.1.63\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -52,8 +52,8 @@
     <MinimumRequiredVersion>1.0.14.62</MinimumRequiredVersion>
     <WebPage>index.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>58</ApplicationRevision>
-    <ApplicationVersion>1.1.1.58</ApplicationVersion>
+    <ApplicationRevision>63</ApplicationRevision>
+    <ApplicationVersion>1.1.1.63</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -300,6 +300,12 @@
       <DependentUpon>frmOtrasEntradasProduccion.vb</DependentUpon>
     </Compile>
     <Compile Include="Almacenes\frmOtrasEntradasProduccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacenes\frmpInventarioValorizado.designer.vb">
+      <DependentUpon>frmpInventarioValorizado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Almacenes\frmpInventarioValorizado.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Almacenes\Inventarios\FrmAlmRecalculodeExistenciasProduccion.Designer.vb">
@@ -1179,6 +1185,26 @@
     </Compile>
     <Compile Include="Agrojs - Control de Che Dev\frmRegistroPagosChequesDevueltos.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\resultadoestado.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>resultadoestado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\resultadoestado.vb">
+      <DependentUpon>resultadoestado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\rptBalanceGeneral.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneral.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\rptestadoresultados.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptestadoresultados.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Cuentas Por Cobrar\frmBusquedaNotas.designer.vb">
       <DependentUpon>frmBusquedaNotas.vb</DependentUpon>
@@ -3380,6 +3406,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmOtrasEntradasProduccion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Almacenes\frmpInventarioValorizado.resx">
+      <DependentUpon>frmpInventarioValorizado.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Almacenes\Inventarios\FrmAlmRecalculodeExistenciasProduccion.resx">
       <DependentUpon>FrmAlmRecalculodeExistenciasProduccion.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3934,6 +3963,14 @@
     <EmbeddedResource Include="Agrojs - Control de Che Dev\frmRegistroPagosChequesDevueltos.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmRegistroPagosChequesDevueltos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptBalanceGeneral.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneral.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptestadoresultados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptestadoresultados.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Cuentas Por Cobrar\frmBusquedaNotas.resx">
       <DependentUpon>frmBusquedaNotas.vb</DependentUpon>
@@ -5261,6 +5298,17 @@
     <Content Include="cx.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Contabilidad\Reportes\resultadoestado.xsc">
+      <DependentUpon>resultadoestado.xsd</DependentUpon>
+    </None>
+    <None Include="Contabilidad\Reportes\resultadoestado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>resultadoestado.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Contabilidad\Reportes\resultadoestado.xss">
+      <DependentUpon>resultadoestado.xsd</DependentUpon>
+    </None>
     <None Include="Facturacion\DataSet\Embarques.xsc">
       <DependentUpon>Embarques.xsd</DependentUpon>
     </None>
