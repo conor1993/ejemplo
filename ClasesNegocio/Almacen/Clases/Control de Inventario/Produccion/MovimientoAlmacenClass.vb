@@ -265,6 +265,7 @@ Public Class MovimientoAlmacenClass
             det.CostoUnitario = costo
             det.IVA = iva
 
+
             Me.Detalle.Add(det)
 
             Return True
@@ -378,7 +379,7 @@ Public Class MovimientoAlmacenClass
                     .IdCodProducto = det.IdProducto
                     .Mes = Now.Month
                     .Año = Now.Year
-
+                    .costopromedio = det.CostoUnitario
                     If Me.TipoMovimiento.Direccion = DireccionEnum.ENTRADAS Then
                         .EntKilos = det.Kilos
                         .EntPzas = det.Piezas

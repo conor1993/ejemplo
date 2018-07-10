@@ -462,8 +462,10 @@ Namespace AlmacenGeneral
                     If direccion = DireccionEnum.ENTRADAS Then
                         .UltimoCosto = costo
                         If .CantidadExistencia >= 0 Then
-                            .CostoPromedio = (.CantidadExistencia * .CostoPromedio + cantidad * costo) / _
-                                        (.CantidadExistencia + cantidad)
+                            .CostoPromedio = ((.CantidadExistencia - cantidad) * .CostoPromedio + cantidad * costo) / _
+                                        (.CantidadExistencia)
+                            '.CostoPromedio = (.CantidadExistencia * .CostoPromedio + cantidad * costo) / _
+                            '            (.CantidadExistencia + cantidad)
                         Else
                             .CostoPromedio = (0 * .CostoPromedio + cantidad * costo) / _
                                         (0 + cantidad)

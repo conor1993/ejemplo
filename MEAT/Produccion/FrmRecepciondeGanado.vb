@@ -122,7 +122,7 @@ Public Class FrmRecepciondeGanado
             RecepcionGanado.Estatus = "V"
             RecepcionGanado.IdUsuario = Controlador.Sesion.Usrndx
             RecepcionGanado.TipoGanado = Me.CmbTipoGanado.SelectedItem
-
+            RecepcionGanado.KilosComp = RecepcionGanado.KilosPrimeraPesada - RecepcionGanado.KilosSegundaPesada
             'RecepcionGanado.IdProveedor = IIf(cmbProveedor.SelectedValue = String.Empty, 0, cmbProveedor.SelectedValue)
             'RecepcionGanado.CveCompradorGanado = IIf(cmbComprador.SelectedValue = String.Empty, 0, cmbComprador.SelectedValue)
             'RecepcionGanado.CveLugarCompra = IIf(CmbLugarCompra.SelectedValue = String.Empty, 0, CmbLugarCompra.SelectedValue)

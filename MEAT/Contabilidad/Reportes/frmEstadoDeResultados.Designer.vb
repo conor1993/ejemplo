@@ -22,36 +22,36 @@ Partial Class frmEstadodeResultados
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem6 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem7 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem8 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem9 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem10 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem11 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem12 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
+        Me.components = New System.ComponentModel.Container()
+        Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem6 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem7 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem8 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem9 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem10 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem11 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem12 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEstadodeResultados))
-        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.ultcmbMes = New Infragistics.Win.UltraWinEditors.UltraComboEditor
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.dgvCuentasContables = New System.Windows.Forms.DataGridView
-        Me.clmCodigoCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCuentaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCodigoTitulo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmDescripcionTitulo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmCodigoSubtitulo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmDescripcionSubtitulo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.clmSaldo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PrintBalance = New System.Drawing.Printing.PrintDocument
-        Me.ppDg = New System.Windows.Forms.PrintPreviewDialog
-        Me.pDg = New System.Windows.Forms.PrintDialog
+        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ultcmbMes = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.dgvCuentasContables = New System.Windows.Forms.DataGridView()
+        Me.clmCodigoCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCuentaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCodigoTitulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmDescripcionTitulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCodigoSubtitulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmDescripcionSubtitulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmSaldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrintBalance = New System.Drawing.Printing.PrintDocument()
+        Me.ppDg = New System.Windows.Forms.PrintPreviewDialog()
+        Me.pDg = New System.Windows.Forms.PrintDialog()
         CType(Me.ultcmbMes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvCuentasContables, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +84,7 @@ Partial Class frmEstadodeResultados
         Me.MEAToolBar1.MostrarSalir = True
         Me.MEAToolBar1.Name = "MEAToolBar1"
         Me.MEAToolBar1.ShowToolTips = True
-        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 405)
+        Me.MEAToolBar1.Size = New System.Drawing.Size(50, 266)
         Me.MEAToolBar1.TabIndex = 39
         '
         'Label1
@@ -162,9 +162,8 @@ Partial Class frmEstadodeResultados
         Me.dgvCuentasContables.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmCodigoCuenta, Me.clmCuentaDescripcion, Me.clmCodigoTitulo, Me.clmDescripcionTitulo, Me.clmCodigoSubtitulo, Me.clmDescripcionSubtitulo, Me.clmSaldo})
         Me.dgvCuentasContables.Location = New System.Drawing.Point(213, 127)
         Me.dgvCuentasContables.Name = "dgvCuentasContables"
-        Me.dgvCuentasContables.Size = New System.Drawing.Size(105, 49)
+        Me.dgvCuentasContables.Size = New System.Drawing.Size(752, 253)
         Me.dgvCuentasContables.TabIndex = 45
-        Me.dgvCuentasContables.Visible = False
         '
         'clmCodigoCuenta
         '
@@ -228,7 +227,7 @@ Partial Class frmEstadodeResultados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(316, 172)
+        Me.ClientSize = New System.Drawing.Size(1001, 469)
         Me.Controls.Add(Me.dgvCuentasContables)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.PictureBox1)

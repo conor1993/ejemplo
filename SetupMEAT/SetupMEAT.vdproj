@@ -1157,7 +1157,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                                                                                          "
+                "FrameworkVersion" = "8:2.0.50727                                                                                           "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -1169,7 +1169,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ClasesComunes, Version=1.0.6761.14711, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:ClasesComunes, Version=1.0.6764.18105, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_02B9ABA473DFCE6001E84D84A955D9AC"
@@ -1820,7 +1820,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FactDigital.XmlSerializers, Version=0.1.3.17400, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:FactDigital.XmlSerializers, Version=0.1.3.31133, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4CE73066739E3A8CA4916A703D0847F7"
@@ -1944,7 +1944,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FacDigitalConfiguracion, Version=1.0.1.17404, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:FacDigitalConfiguracion, Version=1.0.1.31137, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_600993CAA3B3499E59CD53F8A6561A79"
@@ -2006,7 +2006,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ORMFactDigital, Version=1.0.0.17398, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:ORMFactDigital, Version=1.0.0.31130, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_66E3726F5297CDA12A3DCB2BA301D41C"
@@ -2435,7 +2435,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CNFactDigital, Version=1.0.0.17399, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:CNFactDigital, Version=1.0.0.31131, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_D60440C69C168DF52368C98F3FECA348"
@@ -2641,7 +2641,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FactDigital, Version=0.1.3.17400, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:FactDigital, Version=0.1.3.31133, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_F47BCF623152A80FB78DBADD67D34383"
@@ -2767,14 +2767,14 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Sistema MEAT"
         "ProductCode" = "8:{D8188806-9FC7-4190-B96E-17174AE62DAC}"
-        "PackageCode" = "8:{0FDFB6CB-B367-404C-B3F6-CBFF7DBD4FFC}"
+        "PackageCode" = "8:{D01F820B-906E-46F2-BB1A-E6A6F7B0261F}"
         "UpgradeCode" = "8:{C5F5FBA7-C07F-4B29-8113-CD91EAF3371B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.58"
+        "ProductVersion" = "8:1.1.63"
         "Manufacturer" = "8:IntegraLab"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

@@ -1565,4 +1565,9 @@ Public Class MDIMenuPrincipal
     Private Sub RendimientosporFechaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RendimientosporFechaToolStripMenuItem.Click
         Abrir(FrmReporteCanal_CortePorFecha)
     End Sub
+
+    Private Sub InventarioValorizadoToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles InventarioValorizadoToolStripMenuItem1.Click
+        Abrir(frmpinventariovalorizado)
+    End Sub
+
 End Class
