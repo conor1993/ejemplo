@@ -1060,6 +1060,12 @@
     <Compile Include="Contabilidad\frmBusquedaCuentaCierre.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Contabilidad\frmCancelaciondeCierre.Designer.vb">
+      <DependentUpon>frmCancelaciondeCierre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\frmCancelaciondeCierre.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Contabilidad\frmCierreContableAnual.Designer.vb">
       <DependentUpon>frmCierreContableAnual.vb</DependentUpon>
     </Compile>
@@ -3864,6 +3870,9 @@
     <EmbeddedResource Include="Contabilidad\frmBusquedaCuentaCierre.resx">
       <DependentUpon>frmBusquedaCuentaCierre.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\frmCancelaciondeCierre.resx">
+      <DependentUpon>frmCancelaciondeCierre.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\frmCierreContableAnual.resx">
       <DependentUpon>frmCierreContableAnual.vb</DependentUpon>
     </EmbeddedResource>
@@ -5376,7 +5385,7 @@
     </BootstrapperPackage>
     <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
       <Visible>False</Visible>
-      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework 4.0</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>

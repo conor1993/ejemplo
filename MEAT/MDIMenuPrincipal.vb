@@ -1559,7 +1559,7 @@ Public Class MDIMenuPrincipal
     End Sub
 
     Private Sub CancelaciónDeCierresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CancelaciónDeCierresToolStripMenuItem.Click
-
+        Abrir(frmCancelaciondeCierre)
     End Sub
 
     Private Sub RendimientosporFechaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RendimientosporFechaToolStripMenuItem.Click
