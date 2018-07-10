@@ -22,15 +22,19 @@ Partial Class FrmRptDiariosPolizas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.dtpFechaFinal = New System.Windows.Forms.DateTimePicker
-        Me.dtpFechaInicial = New System.Windows.Forms.DateTimePicker
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.lblTitulo = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.dtpFechaFinal = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaInicial = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.rdtnormal = New System.Windows.Forms.RadioButton()
+        Me.rdtpagina = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'mtb
@@ -60,7 +64,7 @@ Partial Class FrmRptDiariosPolizas
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 174)
+        Me.mtb.Size = New System.Drawing.Size(50, 247)
         Me.mtb.TabIndex = 39
         '
         'GroupBox1
@@ -119,16 +123,50 @@ Partial Class FrmRptDiariosPolizas
         Me.lblTitulo.Location = New System.Drawing.Point(50, 0)
         Me.lblTitulo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(323, 29)
+        Me.lblTitulo.Size = New System.Drawing.Size(359, 29)
         Me.lblTitulo.TabIndex = 41
         Me.lblTitulo.Text = "Reporte de Diario de Pólizas"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.rdtpagina)
+        Me.GroupBox2.Controls.Add(Me.rdtnormal)
+        Me.GroupBox2.Location = New System.Drawing.Point(68, 135)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(265, 86)
+        Me.GroupBox2.TabIndex = 42
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Tipo de Impresíon"
+        '
+        'rdtnormal
+        '
+        Me.rdtnormal.AutoSize = True
+        Me.rdtnormal.Location = New System.Drawing.Point(24, 34)
+        Me.rdtnormal.Name = "rdtnormal"
+        Me.rdtnormal.Size = New System.Drawing.Size(71, 17)
+        Me.rdtnormal.TabIndex = 0
+        Me.rdtnormal.TabStop = True
+        Me.rdtnormal.Text = "NORMAL"
+        Me.rdtnormal.UseVisualStyleBackColor = True
+        '
+        'rdtpagina
+        '
+        Me.rdtpagina.AutoSize = True
+        Me.rdtpagina.Location = New System.Drawing.Point(130, 34)
+        Me.rdtpagina.Name = "rdtpagina"
+        Me.rdtpagina.Size = New System.Drawing.Size(132, 17)
+        Me.rdtpagina.TabIndex = 1
+        Me.rdtpagina.TabStop = True
+        Me.rdtpagina.Text = "POLIZA POR PÁGINA"
+        Me.rdtpagina.UseVisualStyleBackColor = True
         '
         'FrmRptDiariosPolizas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(373, 174)
+        Me.ClientSize = New System.Drawing.Size(409, 247)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.mtb)
@@ -136,6 +174,8 @@ Partial Class FrmRptDiariosPolizas
         Me.Text = "Reporte de Diario de Pólizas"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -147,4 +187,7 @@ Partial Class FrmRptDiariosPolizas
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents dtpFechaFinal As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtpFechaInicial As System.Windows.Forms.DateTimePicker
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents rdtpagina As System.Windows.Forms.RadioButton
+    Friend WithEvents rdtnormal As System.Windows.Forms.RadioButton
 End Class

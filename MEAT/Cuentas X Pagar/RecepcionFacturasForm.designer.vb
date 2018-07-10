@@ -686,6 +686,7 @@ Partial Class RecepcionFacturasForm
         Me.dgvdistribuciongastosdet.RowHeadersVisible = False
         Me.dgvdistribuciongastosdet.Size = New System.Drawing.Size(235, 88)
         Me.dgvdistribuciongastosdet.TabIndex = 166
+        Me.dgvdistribuciongastosdet.Visible = False
         '
         'sucursal1
         '
@@ -747,6 +748,7 @@ Partial Class RecepcionFacturasForm
         Me.dgvDistribuciondeGastos.RowHeadersVisible = False
         Me.dgvDistribuciondeGastos.Size = New System.Drawing.Size(410, 104)
         Me.dgvDistribuciondeGastos.TabIndex = 165
+        Me.dgvDistribuciondeGastos.Visible = False
         '
         'clmIdPoliza
         '

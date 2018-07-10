@@ -23,7 +23,7 @@ Partial Class frmConsultaSaldo
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -35,11 +35,11 @@ Partial Class frmConsultaSaldo
         Me.txtSubCuenta = New System.Windows.Forms.TextBox()
         Me.txtCuenta = New System.Windows.Forms.TextBox()
         Me.dgvConsulta = New System.Windows.Forms.DataGridView()
-        Me.txtSaldoInicial = New System.Windows.Forms.TextBox()
         Me.cmlPeriodo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmlCargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmlAbono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmlSaldos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.txtSaldoInicial = New System.Windows.Forms.TextBox()
         CType(Me.dgvConsulta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -52,7 +52,7 @@ Partial Class frmConsultaSaldo
         Me.lblTitulo.Location = New System.Drawing.Point(50, 0)
         Me.lblTitulo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(595, 29)
+        Me.lblTitulo.Size = New System.Drawing.Size(676, 29)
         Me.lblTitulo.TabIndex = 1
         Me.lblTitulo.Text = "CONSULTA DE SALDOS CONTABILIDAD GENERAL"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -174,18 +174,10 @@ Partial Class frmConsultaSaldo
         Me.dgvConsulta.Size = New System.Drawing.Size(523, 309)
         Me.dgvConsulta.TabIndex = 66
         '
-        'txtSaldoInicial
-        '
-        Me.txtSaldoInicial.Location = New System.Drawing.Point(456, 102)
-        Me.txtSaldoInicial.Name = "txtSaldoInicial"
-        Me.txtSaldoInicial.ReadOnly = True
-        Me.txtSaldoInicial.Size = New System.Drawing.Size(126, 20)
-        Me.txtSaldoInicial.TabIndex = 67
-        '
         'cmlPeriodo
         '
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmlPeriodo.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmlPeriodo.DefaultCellStyle = DataGridViewCellStyle2
         Me.cmlPeriodo.HeaderText = "Periodo"
         Me.cmlPeriodo.Name = "cmlPeriodo"
         Me.cmlPeriodo.ReadOnly = True
@@ -213,11 +205,19 @@ Partial Class frmConsultaSaldo
         Me.cmlSaldos.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.cmlSaldos.Width = 130
         '
+        'txtSaldoInicial
+        '
+        Me.txtSaldoInicial.Location = New System.Drawing.Point(456, 102)
+        Me.txtSaldoInicial.Name = "txtSaldoInicial"
+        Me.txtSaldoInicial.ReadOnly = True
+        Me.txtSaldoInicial.Size = New System.Drawing.Size(126, 20)
+        Me.txtSaldoInicial.TabIndex = 67
+        '
         'frmConsultaSaldo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(645, 468)
+        Me.ClientSize = New System.Drawing.Size(726, 468)
         Me.Controls.Add(Me.txtSaldoInicial)
         Me.Controls.Add(Me.dgvConsulta)
         Me.Controls.Add(Me.txtCuenta)
