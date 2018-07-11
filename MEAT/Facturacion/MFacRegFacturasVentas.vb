@@ -1288,6 +1288,42 @@ Public Class MFacRegFacturasVentas
             Exit Function
         End If
 
+
+        'Credito
+        If (Me.rdCredito.Checked) Then
+            '(Emitir Error si FormaPago <> Por definir)
+            If (Me.cmbformadepago.SelectedValue <> 99) Then
+                MessageBox.Show("Debe seleccionar Forma de Pago Por Definir sí la Factura es a Crédito.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Function
+            End If
+
+            '(Emitir Error MetodoPago <> Pago en parcialidades o diferido)
+            If (Me.cmbmetododepago.SelectedValue <> "PPD") Then
+                MessageBox.Show("Debe seleccionar Método de Pago en Parcialidades o Diferido sí la Factura es a Crédito.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Function
+            End If
+        End If
+
+        
+
+        'Contado
+        If (Me.rdContado.Checked) Then
+            '(Emitir Error si FormaPago == Por definir)
+            If (Me.cmbformadepago.SelectedValue = 99) Then
+                MessageBox.Show("No se puede seleccionar Forma de Pago Por Definir sí la Factura es a Contado.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Function
+            End If
+
+            '(Emitir Error MetodoPago == Pago en parcialidades o diferido)
+            If (Me.cmbmetododepago.SelectedValue <> "PUE") Then
+                MessageBox.Show("Debe seleccionar Método de Pago en una sola Exhibición sí la Factura es a Contado.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Function
+            End If
+        End If
+        
+        'MessageBox.Show("Llegando a las validaciones", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        'Exit Function
+
         Cursor = Cursors.WaitCursor
         MEAToolBar1.Enabled = False
         Application.DoEvents()
@@ -2270,4 +2306,5 @@ Public Class MFacRegFacturasVentas
         ' CargoyAbono(dgvCuentasContables)
     End Sub
 
+    
 End Class

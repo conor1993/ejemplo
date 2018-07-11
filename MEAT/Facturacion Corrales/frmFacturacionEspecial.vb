@@ -451,6 +451,40 @@ Public Class frmFacturacionEspecial
                 Folio.Año = Year(dtFechaFactura.Value)
                 Folio.Mes = Month(dtFechaFactura.Value)
 
+                'Credito
+                If (Me.rdCredito.Checked) Then
+                    '(Emitir Error si FormaPago <> Por definir)
+                    If (Me.cmbformadepago.SelectedValue <> 99) Then
+                        MessageBox.Show("Debe seleccionar Forma de Pago Por Definir sí la Factura es a Crédito.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Return False
+                    End If
+
+                    '(Emitir Error MetodoPago <> Pago en parcialidades o diferido)
+                    If (Me.cmbmetododepago.SelectedValue <> "PPD") Then
+                        MessageBox.Show("Debe seleccionar Método de Pago en Parcialidades o Diferido sí la Factura es a Crédito.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Return False
+                    End If
+                End If
+
+
+
+                'Contado
+                If (Me.rdContado.Checked) Then
+                    '(Emitir Error si FormaPago == Por definir)
+                    If (Me.cmbformadepago.SelectedValue = 99) Then
+                        MessageBox.Show("No se puede seleccionar Forma de Pago Por Definir sí la Factura es a Contado.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Return False
+                    End If
+
+                    '(Emitir Error MetodoPago == Pago en parcialidades o diferido)
+                    If (Me.cmbmetododepago.SelectedValue <> "PUE") Then
+                        MessageBox.Show("Debe seleccionar Método de Pago en una sola Exhibición sí la Factura es a Contado.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Return False
+                    End If
+                End If
+
+                'MessageBox.Show("Llegando a las validaciones", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                'Return False
 
                 If Not Folio.Guardar(Trans) Then
                     Trans.Rollback()
@@ -1359,6 +1393,8 @@ Public Class frmFacturacionEspecial
             Else
                 Trans.Rollback()
                 Cancelar = True
+                MEAToolBar1.Enabled = True
+                Cursor = Cursors.Default
                 'Me.Limpiar()
                 'Me.Deshabilitar()
             End If
@@ -2097,7 +2133,7 @@ Public Class frmFacturacionEspecial
                 End If
                 If e.ColumnIndex = clmDescripcionEspecial.Index Then
                     If Me.clmDescripcionEspecial.Visible = True Then
-                        dgvDetalle.Rows(e.RowIndex).Cells(clmProductoServicio.Index).Value = "01010101"
+                        'dgvDetalle.Rows(e.RowIndex).Cells(clmProductoServicio.Index).Value = "01010101"
                         dgvDetalle.Rows(e.RowIndex).Cells(clmUnidadSat.Index).Value = "XNA"
                         dgvDetalle.Rows(e.RowIndex).Cells(clmUnidad.Index).Value = "N/A"
                         dgvDetalle.Rows(e.RowIndex).Cells(clmIVA.Index).Value = CDec(0).ToString("F2")
