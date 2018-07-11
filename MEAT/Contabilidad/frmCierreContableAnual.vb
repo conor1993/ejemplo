@@ -244,7 +244,7 @@ Public Class frmCierreContableAnual
                     For Each filas As DataRow In tablaDetalle.Rows 'ciclo se repite como el numero de filas de la tabla
                         If (filas(0) = codigoCuentaActual) Then
                             posicion += 1
-                            query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe, Concepto) VALUES ({0}, {1}, {2}, '{3}', {4}, 'Cuenta de Cierre')"
+                            query = "INSERT INTO usrContPolizasDetalle (PolizaId, Posicion, CuentaContableId, OperacionCA, Importe) VALUES ({0}, {1}, {2}, '{3}', {4})"
                             If (filas(1) > 0) Then
                                 query = String.Format(query, idPoliza, posicion, filas(0), "A", filas(1))
                             Else
@@ -270,7 +270,7 @@ Public Class frmCierreContableAnual
                     transaction.Commit()
                 Catch ex As Exception
                     transaction.Rollback()
-                    MessageBox.Show("Error al tratar de registrar la poliza detalle en la base de dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Error al tratar de registrar la poliza detalle en la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
                 connection.Close()
             End Using
@@ -487,4 +487,33 @@ Public Class frmCierreContableAnual
         End Using
     End Function
 
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Try
+            Dim dataSet As New DataSet
+            Dim query = "SELECT CC.codigo AS Codigo, CC.NomCuenta AS Concepto, CC.Titulo, ACC.SaldoFinEjer AS Importe, Tipo = CASE WHEN CC.Titulo = 4 THEN '1' WHEN CC.Titulo IN (5, 6, 7) THEN '0' END " +
+                "FROM AcumuladoCuentasContables ACC INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE ACC.Ejercicio = '{0}' " +
+                "AND (Titulo in (4,5,6,7) OR ACC.Codigo = '{1}')"
+            query = String.Format(query, tb_anioContable.Text, codigoCuentaActual)
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                Dim adapter As New SqlDataAdapter()
+                adapter.SelectCommand = New SqlCommand(query, connection)
+                adapter.Fill(dataSet)
+            End Using
+
+            Dim Reporte As New rptCierreContable
+            Reporte.SetDataSource(dataSet.Tables(0))
+            Reporte.SetParameterValue("EmpresaNombre", Controlador.Empresa.Nombre)
+            'Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
+            'Reporte.SetParameterValue("Modulo", "Catalogos\Contabilidad\Cuentas Contables")
+
+            Dim Pre As New ClasesNegocio.PreVisualizarForm
+            pre.Reporte = Reporte
+            pre.ShowDialog()
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        Finally
+            Cursor = Cursors.Default
+        End Try
+    End Sub
 End Class

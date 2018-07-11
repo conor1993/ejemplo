@@ -1090,6 +1090,14 @@
     <Compile Include="Contabilidad\frmSeleccionarPeriodo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Contabilidad\Reportes\CierreContable.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CierreContable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\CierreContable.vb">
+      <DependentUpon>CierreContable.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Contabilidad\Reportes\frmRptDepartamentosDos.Designer.vb">
       <DependentUpon>frmRptDepartamentosDos.vb</DependentUpon>
     </Compile>
@@ -1204,6 +1212,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptBalanceGeneral.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\rptCierreContable.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Contabilidad\Reportes\rptestadoresultados.vb">
@@ -3906,6 +3917,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmSeleccionarPeriodo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptCierreContable.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\Reportes\frmRptDepartamentosDos.resx">
       <DependentUpon>frmRptDepartamentosDos.vb</DependentUpon>
     </EmbeddedResource>
@@ -5307,6 +5321,17 @@
     <Content Include="cx.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Contabilidad\Reportes\CierreContable.xsc">
+      <DependentUpon>CierreContable.xsd</DependentUpon>
+    </None>
+    <None Include="Contabilidad\Reportes\CierreContable.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CierreContable.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Contabilidad\Reportes\CierreContable.xss">
+      <DependentUpon>CierreContable.xsd</DependentUpon>
+    </None>
     <None Include="Contabilidad\Reportes\resultadoestado.xsc">
       <DependentUpon>resultadoestado.xsd</DependentUpon>
     </None>
