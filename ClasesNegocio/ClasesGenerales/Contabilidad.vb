@@ -2191,7 +2191,9 @@ Public Class PolizaCollectionClass
         Emision_de_Polizas_por_Pagina
     End Enum
 
-    Public Shared Function Imprimir(ByVal Sesion As ECS.SesionesEntity, ByVal Tipo As TipoReporte, Optional ByVal Filtro As SC.IPredicate = Nothing) As Boolean
+
+
+    Public Shared Function Imprimir(ByVal Sesion As ECS.SesionesEntity, ByVal Tipo As TipoReporte, Optional ByVal Filtro As SC.IPredicate = Nothing, Optional ByVal impresion As Integer = 0) As Boolean
         Dim FechaInicio As DateTime
         Dim FechaFinal As DateTime
         Dim Previsualizar As New PreVisualizarForm
@@ -2224,7 +2226,13 @@ Public Class PolizaCollectionClass
             Dim lsModulo As String
             If Tipo = TipoReporte.Diarios_de_Polizas Then
                 dtPolizas.Tables.Add(DiariosPolizas(Polizas))
-                Reporte = New RptDiariosPolizas()
+                If (impresion = 1) Then
+                    Reporte = New RptDiariosPolizasporpagina()
+                Else
+                    Reporte = New RptDiariosPolizas()
+                End If
+
+
                 lsModulo = "Contabilidad/Procesos Mensuales/Reporte de Diarios de Póliza"
             ElseIf Tipo = TipoReporte.Emision_de_Polizas Then
                 dtPolizas.Tables.Add(EmisionPolizas(Polizas))

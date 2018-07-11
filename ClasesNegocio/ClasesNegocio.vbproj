@@ -2373,6 +2373,12 @@
       <DependentUpon>rptDepartamentos2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\RptDiariosPolizasporpagina.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptDiariosPolizasporpagina.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\RptEmisionPolizas_por_pagina.vb">
       <DependentUpon>RptEmisionPolizas_por_pagina.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -3659,6 +3665,10 @@
     <EmbeddedResource Include="Reportes\rptDepartamentos2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDepartamentos2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RptDiariosPolizasporpagina.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptDiariosPolizasporpagina.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RptEmisionPolizas_por_pagina.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

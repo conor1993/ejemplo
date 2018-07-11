@@ -2741,7 +2741,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Sistema MEAT"
         "ProductCode" = "8:{D8188806-9FC7-4190-B96E-17174AE62DAC}"
-        "PackageCode" = "8:{40D0B4AE-3500-4E15-92E7-2FFE4C6D402F}"
+        "PackageCode" = "8:{982B4E21-D9B2-418F-B4C0-0D2FF983E857}"
         "UpgradeCode" = "8:{C5F5FBA7-C07F-4B29-8113-CD91EAF3371B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

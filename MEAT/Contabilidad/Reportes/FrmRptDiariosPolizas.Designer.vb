@@ -32,7 +32,7 @@ Partial Class FrmRptDiariosPolizas
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.rdtnormal = New System.Windows.Forms.RadioButton()
-        Me.rdtpagina = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -64,7 +64,7 @@ Partial Class FrmRptDiariosPolizas
         Me.mtb.MostrarSalir = True
         Me.mtb.Name = "mtb"
         Me.mtb.ShowToolTips = True
-        Me.mtb.Size = New System.Drawing.Size(50, 247)
+        Me.mtb.Size = New System.Drawing.Size(50, 231)
         Me.mtb.TabIndex = 39
         '
         'GroupBox1
@@ -123,26 +123,25 @@ Partial Class FrmRptDiariosPolizas
         Me.lblTitulo.Location = New System.Drawing.Point(50, 0)
         Me.lblTitulo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(359, 29)
+        Me.lblTitulo.Size = New System.Drawing.Size(349, 29)
         Me.lblTitulo.TabIndex = 41
         Me.lblTitulo.Text = "Reporte de Diario de Pólizas"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.rdtpagina)
+        Me.GroupBox2.Controls.Add(Me.RadioButton2)
         Me.GroupBox2.Controls.Add(Me.rdtnormal)
-        Me.GroupBox2.Location = New System.Drawing.Point(68, 135)
+        Me.GroupBox2.Location = New System.Drawing.Point(55, 148)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(265, 86)
+        Me.GroupBox2.Size = New System.Drawing.Size(213, 71)
         Me.GroupBox2.TabIndex = 42
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Tipo de Impresíon"
         '
         'rdtnormal
         '
         Me.rdtnormal.AutoSize = True
-        Me.rdtnormal.Location = New System.Drawing.Point(24, 34)
+        Me.rdtnormal.Location = New System.Drawing.Point(6, 33)
         Me.rdtnormal.Name = "rdtnormal"
         Me.rdtnormal.Size = New System.Drawing.Size(71, 17)
         Me.rdtnormal.TabIndex = 0
@@ -150,22 +149,22 @@ Partial Class FrmRptDiariosPolizas
         Me.rdtnormal.Text = "NORMAL"
         Me.rdtnormal.UseVisualStyleBackColor = True
         '
-        'rdtpagina
+        'RadioButton2
         '
-        Me.rdtpagina.AutoSize = True
-        Me.rdtpagina.Location = New System.Drawing.Point(130, 34)
-        Me.rdtpagina.Name = "rdtpagina"
-        Me.rdtpagina.Size = New System.Drawing.Size(132, 17)
-        Me.rdtpagina.TabIndex = 1
-        Me.rdtpagina.TabStop = True
-        Me.rdtpagina.Text = "POLIZA POR PÁGINA"
-        Me.rdtpagina.UseVisualStyleBackColor = True
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(80, 33)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(127, 17)
+        Me.RadioButton2.TabIndex = 1
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "PILIZA POR PÁGINA"
+        Me.RadioButton2.UseVisualStyleBackColor = True
         '
         'FrmRptDiariosPolizas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(409, 247)
+        Me.ClientSize = New System.Drawing.Size(399, 231)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.GroupBox1)
@@ -188,6 +187,6 @@ Partial Class FrmRptDiariosPolizas
     Friend WithEvents dtpFechaFinal As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtpFechaInicial As System.Windows.Forms.DateTimePicker
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents rdtpagina As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
     Friend WithEvents rdtnormal As System.Windows.Forms.RadioButton
 End Class
