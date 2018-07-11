@@ -42,7 +42,6 @@ Partial Class frmCierreContableAnual
         Me.pb_cierreAnual = New System.Windows.Forms.ProgressBar()
         Me.lbl_porcentaje = New System.Windows.Forms.Label()
         Me.timer_progressbar = New System.Windows.Forms.Timer(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.sp_CierreContable.Panel1.SuspendLayout()
         Me.sp_CierreContable.Panel2.SuspendLayout()
         Me.sp_CierreContable.SuspendLayout()
@@ -58,7 +57,6 @@ Partial Class frmCierreContableAnual
         '
         'sp_CierreContable.Panel1
         '
-        Me.sp_CierreContable.Panel1.Controls.Add(Me.Button1)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.lbl_Informacion)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_nombreEjercicioActual)
         Me.sp_CierreContable.Panel1.Controls.Add(Me.tb_nombreEjercicioAnterior)
@@ -250,15 +248,6 @@ Partial Class frmCierreContableAnual
         'timer_progressbar
         '
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(317, 14)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Reporte"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'frmCierreContableAnual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -300,5 +289,4 @@ Partial Class frmCierreContableAnual
     Friend WithEvents lbl_info2 As System.Windows.Forms.Label
     Friend WithEvents lbl_info1 As System.Windows.Forms.Label
     Friend WithEvents lbl_Informacion As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

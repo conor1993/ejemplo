@@ -26,10 +26,8 @@ Public Class frmCierreContableAnual
 
     'Mueatra el resultado del ejercicio anterior
     Private Sub cargarCuentaAnterior()
-        Dim query As String = "SELECT (CC.Cta + '-' + CC.SubCta + '-' + CC.SSubCta + '-' + CC.SSSubCta) AS Cuenta, CC.NomCuenta FROM AcumuladoCuentasContables" +
-            " ACC INNER JOIN usrContPolizasDetalle CPD on ACC.Codigo = CPD.CuentaContableId INNER JOIN usrContPolizas CP on CP.Codigo = CPD.PolizaId INNER JOIN" +
-            " UsrGralPeriodosCont GPC on GPC.PolizaCierre = CPD.PolizaId INNER JOIN usrContCuentas CC on CC.codigo = ACC.Codigo WHERE ACC.Ejercicio = {0} AND" +
-            " CPD.OperacionCA = 'C' AND GPC.Ejercicio = {0}"
+        Dim query As String = " SELECT (UCC.Cta + '-' + UCC.SubCta + '-' + UCC.SSubCta + '-' + UCC.SSSubCta) AS Cuenta, UCC.NomCuenta FROM " +
+            "CuentasCierres CC INNER JOIN  usrContCuentas UCC ON CC.ID_Cuenta = UCC.codigo WHERE CC.Ejercicio = {0}"
         query = String.Format(query, Convert.ToInt32(tb_anioContable.Text) - 1)
         Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
             connection.Open()
@@ -122,6 +120,9 @@ Public Class frmCierreContableAnual
                     polizaCierre()
                     actualizarCuentas()
                     timer_progressbar.Start()
+                    MessageBox.Show("Se a realizado el cierre contable. ", "Cierre de ejercicio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    mostrarReporte()
+                    Dispose()
                 End If
             End If
         End If
@@ -148,7 +149,6 @@ Public Class frmCierreContableAnual
                     command.ExecuteNonQuery()
                 Next
                 transaction.Commit()
-                codigoCuentaActual = 0 'se iguala a cero si se realizo todo el cierre sin errores para madar mensaje de confirmacion en el timer
             Catch ex As Exception
                 transaction.Rollback()
                 MessageBox.Show("No se lograron actualizar los saldo del siguiente año de las cuentas 1, 2 y 3. Consulte al Adminitrador del Sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -163,9 +163,6 @@ Public Class frmCierreContableAnual
         lbl_porcentaje.Text = pb_cierreAnual.Value.ToString() + "%"
         If pb_cierreAnual.Value = 100 Then
             timer_progressbar.Stop()
-            If codigoCuentaActual = 0 Then
-                MessageBox.Show("El ejercicio se ha cerrado con éxito", "Cierre de ejercicio", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
         End If
     End Sub
 
@@ -487,9 +484,10 @@ Public Class frmCierreContableAnual
         End Using
     End Function
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    'metodo que sirve para mostrar el reporte con los totales del cierre contable
+    Private Sub mostrarReporte()
         Try
-            Dim dataSet As New DataSet
+            Dim tablaDatos As New DataTable
             Dim query = "SELECT CC.codigo AS Codigo, CC.NomCuenta AS Concepto, CC.Titulo, ACC.SaldoFinEjer AS Importe, Tipo = CASE WHEN CC.Titulo = 4 THEN '1' WHEN CC.Titulo IN (5, 6, 7) THEN '0' END " +
                 "FROM AcumuladoCuentasContables ACC INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE ACC.Ejercicio = '{0}' " +
                 "AND (Titulo in (4,5,6,7) OR ACC.Codigo = '{1}')"
@@ -497,18 +495,28 @@ Public Class frmCierreContableAnual
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 Dim adapter As New SqlDataAdapter()
                 adapter.SelectCommand = New SqlCommand(query, connection)
-                adapter.Fill(dataSet)
+                adapter.Fill(tablaDatos)
             End Using
 
+            For Each row As DataRow In tablaDatos.Rows
+                If row(2) = 3 Then
+                    If row(3) >= 0 Then
+                        row(4) = "0"
+                    Else
+                        row(4) = "1"
+                        row(3) = -row(3)
+                    End If
+                End If
+            Next
+
             Dim Reporte As New rptCierreContable
-            Reporte.SetDataSource(dataSet.Tables(0))
+            Reporte.SetDataSource(tablaDatos)
             Reporte.SetParameterValue("EmpresaNombre", Controlador.Empresa.Nombre)
-            'Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
-            'Reporte.SetParameterValue("Modulo", "Catalogos\Contabilidad\Cuentas Contables")
+            Reporte.SetParameterValue("Fecha", Date.Now.ToString("dd/MM/yyy"))
 
             Dim Pre As New ClasesNegocio.PreVisualizarForm
-            pre.Reporte = Reporte
-            pre.ShowDialog()
+            Pre.Reporte = Reporte
+            Pre.ShowDialog()
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
@@ -516,4 +524,5 @@ Public Class frmCierreContableAnual
             Cursor = Cursors.Default
         End Try
     End Sub
+
 End Class

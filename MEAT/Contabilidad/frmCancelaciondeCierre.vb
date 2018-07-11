@@ -8,24 +8,28 @@ Public Class frmCancelaciondeCierre
     End Sub
 
     Private Sub btn_CancelarAnio_Click(sender As Object, e As EventArgs) Handles btn_CancelarAnio.Click
-
-        Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
-            connection.Open()
-            Dim query As String = "EXEC cancelacionCierre {0}"
-            query = String.Format(query, tb_Anio.Text)
-            Try
-                Dim command As New SqlCommand(query, connection)
-                command.ExecuteNonQuery()
-                lbl_Pocentaje.Visible = True
-                pb_Cancelaranio.Visible = True
-                btn_CancelarAnio.Enabled = False
-                timer_cancelaranio.Start()
-                MessageBox.Show("Se ha realizado la cancelacion del ejercicio " + tb_Anio.Text + " con exito.", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBox.Show("No se logro cancelar el cierre anual anterior " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-            connection.Close()
-        End Using
+        If (MessageBox.Show("Al cancelar el cierre del ejercicio " + tb_Anio.Text + " se eliminaran los registro del año actual. " +
+                            "¿Desea continuar?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK) Then
+            Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+                connection.Open()
+                Dim query As String = "EXEC cancelacionCierre {0}"
+                query = String.Format(query, tb_Anio.Text)
+                Try
+                    Dim command As New SqlCommand(query, connection)
+                    command.ExecuteNonQuery()
+                    lbl_Pocentaje.Visible = True
+                    pb_Cancelaranio.Visible = True
+                    btn_CancelarAnio.Enabled = False
+                    timer_cancelaranio.Start()
+                    MessageBox.Show("Se ha realizado la cancelacion del ejercicio " + tb_Anio.Text + " con exito.", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Catch ex As Exception
+                    MessageBox.Show("No se logro cancelar el cierre anual anterior " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+                connection.Close()
+            End Using
+            Dispose()
+        End If
+        
     End Sub
 
     Private Sub cargaEjercicioAnterior()
