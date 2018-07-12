@@ -545,7 +545,7 @@ Public Class FacturasDetalleClass
                 Return MyBase.Cantidad
             Else
                 Return 0
-            End If            
+            End If
         End Get
         Set(ByVal value As Decimal)
             MyBase.Cantidad = value
@@ -557,7 +557,7 @@ Public Class FacturasDetalleClass
                 Return MyBase.CostoUni
             Else
                 Return 0
-            End If            
+            End If
         End Get
         Set(ByVal value As Decimal)
             MyBase.CostoUni = value

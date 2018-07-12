@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: jueves, 12 de julio de 2018 16:37:46
+' // Code is generated on: jueves, 12 de julio de 2018 17:43:09
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -68,6 +68,32 @@ Namespace Integralab.ORM.EntityClasses
 			InitClassEmpty(CreateValidator())
 		End Sub
 
+
+		''' <summary>CTor</summary>
+		''' <param name="folFactura">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="cveRenglon">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		Public Sub New(folFactura As System.String, cveRenglon As System.Int16)
+
+			InitClassFetch(folFactura, cveRenglon, CreateValidator(), Nothing)
+		End Sub
+
+		''' <summary>CTor</summary>
+		''' <param name="folFactura">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="cveRenglon">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch as well</param>
+		Public Sub New(folFactura As System.String, cveRenglon As System.Int16, prefetchPathToUse As IPrefetchPath)
+
+			InitClassFetch(folFactura, cveRenglon, CreateValidator(), prefetchPathToUse)
+		End Sub
+
+		''' <summary>CTor</summary>
+		''' <param name="folFactura">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="cveRenglon">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="validator">The custom validator Object for this DetFacturasEntity</param>
+		Public Sub New(folFactura As System.String, cveRenglon As System.Int16, validator As IValidator)
+
+			InitClassFetch(folFactura, cveRenglon, validator, Nothing)
+		End Sub
 
 
 		''' <summary>Private CTor for deserialization</summary>
@@ -272,6 +298,84 @@ Namespace Integralab.ORM.EntityClasses
 		
 	
 
+		''' <summary>Fetches the contents of this entity from the persistent storage Imports the primary key.</summary>
+		''' <param name="folFactura">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="cveRenglon">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <returns>True if succeeded, False otherwise.</returns>
+		Public Function FetchUsingPK(folFactura As System.String, cveRenglon As System.Int16) As Boolean
+			Return FetchUsingPK(folFactura, cveRenglon, Nothing, Nothing)
+		End Function
+
+		''' <summary>Fetches the contents of this entity from the persistent storage Imports the primary key.</summary>
+		''' <param name="folFactura">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="cveRenglon">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch as well</param>
+		''' <returns>True if succeeded, False otherwise.</returns>
+		Public Function FetchUsingPK(folFactura As System.String, cveRenglon As System.Int16, prefetchPathToUse As IPrefetchPath) As Boolean
+			Return FetchUsingPK(folFactura, cveRenglon, prefetchPathToUse, Nothing)
+		End Function
+
+		''' <summary>Fetches the contents of this entity from the persistent storage Imports the primary key.</summary>
+		''' <param name="folFactura">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="cveRenglon">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch as well</param>
+		''' <param name="contextToUse">The context to fetch the prefetch path with.</param>
+		''' <returns>True if succeeded, False otherwise.</returns>
+		Public Function FetchUsingPK(folFactura As System.String, cveRenglon As System.Int16, prefetchPathToUse As IPrefetchPath, contextToUse As Context) As Boolean
+			Return Fetch(folFactura, cveRenglon, prefetchPathToUse, contextToUse)
+		End Function
+
+		''' <summary>Refetches the Entity from the persistent storage. Refetch is used to re-load an Entity which is marked "Out-of-sync", due to a save action. Refetching an empty Entity has no effect. </summary>
+		''' <returns>true if Refetch succeeded, False otherwise</returns>
+		''' <exception cref="System.ApplicationException">When an exception is caught during the save process. The caught exception is set as the
+		''' inner exception. Encapsulation of database-related exceptions is necessary since these exceptions do not have a common exception framework implemented.</exception>
+		Public Overrides Overloads Function Refetch() As Boolean
+			Return Fetch(Me.FolFactura, Me.CveRenglon, Nothing, Nothing)
+		End Function
+
+		''' <summary>Deletes the Entity from the persistent storage. This method succeeds also when the Entity is not present.</summary>
+		''' <param name="deleteRestriction">Predicate expression, meant for concurrency checks in a delete query. Overrules the predicate returned by a set ConcurrencyPredicateFactory object.</param>
+		''' <returns>true if Delete succeeded, False otherwise</returns>
+		''' <exception cref="ORMQueryExecutionException">When an exception is caught during the delete process. The caught exception is set as the
+		''' inner exception. Encapsulation of database-related exceptions is necessary since these exceptions do not have a common exception framework implemented.</exception>
+		Public Overrides Overloads Function Delete(deleteRestriction As IPredicate) As Boolean
+			Dim transactionStartedInThisScope As Boolean = False
+			Dim transactionManager As Transaction = Nothing
+			If (Me.LLBLGenProIsInHierarchyOfType=InheritanceHierarchyType.TargetPerEntity) AndAlso Me.LLBLGenProIsSubType Then
+				If Not MyBase.ParticipatesInTransaction Then
+					transactionManager = New Transaction(IsolationLevel.ReadCommitted, "SaveRecursively")
+					transactionManager.Add(Me)
+					transactionStartedInThisScope = True
+				End If
+			End If
+			Try
+				OnValidateEntityBeforeDelete()
+				OnDelete()
+				Dim dao As IDao = CreateDAOInstance()
+				Dim wasSuccesful As Boolean = dao.DeleteExisting(MyBase.Fields, MyBase.Transaction, deleteRestriction)
+				If wasSuccesful Then
+					MyBase.Delete(deleteRestriction)
+				Else
+					If Not deleteRestriction Is Nothing Then
+						Throw New ORMConcurrencyException("The delete action of an entity failed, probably due to the set delete restriction provided. The entity which failed is enclosed.", Me)
+					End If
+				End If
+				If transactionStartedInThisScope Then
+					transactionManager.Commit()
+				End If
+				Return wasSuccesful
+			Catch
+				If transactionStartedInThisScope Then
+					transactionManager.Rollback()
+				End If
+				Throw
+			Finally
+				If transactionStartedInThisScope Then
+					transactionManager.Dispose()
+				End If
+				OnDeleteComplete()
+			End Try
+		End Function
 
 		''' <summary>Returns true if the original value for the field with the fieldIndex passed in, read from the persistent storage was NULL, False otherwise.
 		''' Should Not be used For testing If the current value Is NULL, use <see cref="TestCurrentFieldValueForNull"/> For that.</summary>
@@ -439,6 +543,22 @@ Namespace Integralab.ORM.EntityClasses
 		End Function
 
 	
+		''' <summary>Performs the update action of an existing Entity to the persistent storage.</summary>
+		''' <returns>true if succeeded, False otherwise</returns>
+		Protected Overrides Overloads Function UpdateEntity() As Boolean
+			Dim dao As DetFacturasDAO = CType(CreateDAOInstance(), DetFacturasDAO)
+			Return dao.UpdateExisting(MyBase.Fields, MyBase.Transaction)
+		End Function
+		
+		
+		''' <summary>Performs the update action of an existing Entity to the persistent storage.</summary>
+		''' <param name="updateRestriction">Predicate expression, meant for concurrency checks in an Update query</param>
+		''' <returns>true if succeeded, False otherwise</returns>
+		Protected Overrides Overloads Function UpdateEntity(updateRestriction As IPredicate) As Boolean
+			Dim dao As DetFacturasDAO = CType(CreateDAOInstance(), DetFacturasDAO)
+			Return dao.UpdateExisting(MyBase.Fields, MyBase.Transaction, updateRestriction)
+		End Function
+	
 		''' <summary>Initializes the class with empty data, as if it is a new Entity.</summary>
 		''' <param name="validatorToUse">The validator Object for this DetFacturasEntity</param>
 		Protected Overridable Sub InitClassEmpty(validatorToUse As IValidator)
@@ -461,6 +581,27 @@ Namespace Integralab.ORM.EntityClasses
 		End Function
 		
 
+		''' <summary>Initializes the the entity and fetches the data related to the entity in this entity.</summary>
+		''' <param name="folFactura">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="cveRenglon">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="validator">The validator Object for this DetFacturasEntity</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch as well</param>
+		Protected Overridable Sub InitClassFetch(folFactura As System.String, cveRenglon As System.Int16, validator As IValidator, prefetchPathToUse As IPrefetchPath)
+			OnInitializing()
+			InitClassMembers()
+			
+			MyBase.Fields = CreateFields()
+			Dim wasSuccesful As Boolean = Fetch(folFactura, cveRenglon, prefetchPathToUse, Nothing)
+			MyBase.IsNew = Not wasSuccesful
+			MyBase.Validator = validator
+
+			
+			' __LLBLGENPRO_USER_CODE_REGION_START InitClassFetch
+			' __LLBLGENPRO_USER_CODE_REGION_END
+			
+
+			OnInitialized()
+		End Sub
 
 		''' <summary>Initializes the class members</summary>
 		Private Sub InitClassMembers()
@@ -628,38 +769,23 @@ Namespace Integralab.ORM.EntityClasses
 
 
 
-		''' <summary>Refetches the Entity from the persistent storage. Refetch is used to re-load an Entity which is marked "Out-of-sync", due to a save action. 
-		''' Refetching an empty Entity has no effect. 
-		''' Because this entity doesn't have a primary key defined, this routine does nothing. </summary>
-		''' <returns>true</returns>
-		Public Overrides Overloads Function Refetch() As Boolean
-			Return True
-		End Function
-		
-		''' <summary>Deletes the Entity from the persistent storage. This method succeeds also when the Entity is not present.</summary>
-		''' <param name="deleteRestriction">Predicate expression, meant for concurrency checks in a delete query. Overrules the predicate returned
-		''' by a set ConcurrencyPredicateFactory object.</param>
-		''' <returns>true if Delete succeeded, False otherwise</returns>
-		''' <exception cref="ORMQueryExecutionException">When an exception is caught during the delete process. The caught exception is set as the
-		''' inner exception. Encapsulation of database-related exceptions is necessary since these exceptions do not have a common exception framework
-		''' implemented.</exception>
-		Public Overrides Overloads Function Delete(deleteRestriction As IPredicate) As Boolean
-			Return True
-		End Function
-		
-		''' <summary>Performs the update action of an existing Entity to the persistent storage.
-		''' Because this entity doesn't have a primary key defined, this routine does nothing. </summary>
-		''' <returns>true</returns>
-		Protected Overrides Overloads Function UpdateEntity() As Boolean
-			Return True
-		End Function
-		
-		''' <summary>Performs the update action of an existing Entity to the persistent storage.
-		''' Because this entity doesn't have a primary key defined, this routine does nothing. </summary>
-		''' <param name="updateRestriction">Predicate expression, meant for concurrency checks in an Update query</param>
-		''' <returns>true</returns>
-		Protected Overrides Overloads Function UpdateEntity(updateRestriction As IPredicate) As Boolean
-			Return True
+		''' <summary>Fetches the entity from the persistent storage. Fetch simply reads the entity into an EntityFields Object. </summary>
+		''' <param name="folFactura">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="cveRenglon">PK value for DetFacturas which data should be fetched into this DetFacturas Object</param>
+		''' <param name="prefetchPathToUse">the PrefetchPath which defines the graph of objects to fetch as well</param>
+		''' <param name="contextToUse">The context to fetch the prefetch path with.</param>
+		''' <returns>True if succeeded, False otherwise.</returns>
+		Private Function Fetch(folFactura As System.String, cveRenglon As System.Int16, prefetchPathToUse As IPrefetchPath, contextToUse As Context) As Boolean
+			Try
+				OnFetch()
+				Dim dao As IDao = Me.CreateDAOInstance()
+				MyBase.Fields(CInt(DetFacturasFieldIndex.FolFactura)).ForcedCurrentValueWrite(folFactura)
+				MyBase.Fields(CInt(DetFacturasFieldIndex.CveRenglon)).ForcedCurrentValueWrite(cveRenglon)
+				dao.FetchExisting(Me, MyBase.Transaction, prefetchPathToUse, contextToUse)
+				Return (MyBase.Fields.State = EntityState.Fetched)
+			Finally
+				OnFetchComplete()
+			End Try
 		End Function
 
 		''' <summary>Creates the DAO instance For this type</summary>
@@ -759,7 +885,7 @@ Namespace Integralab.ORM.EntityClasses
 		''' <remarks>
 		''' Mapped on table field: "DetFacturas"."Fol_Factura"<br/>
 		''' Table field type characteristics (type, precision, scale, length): Char, 0, 0, 20<br/>
-		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, True, False
 		''' </remarks>
 		Public Overridable Property [FolFactura]() As System.String
 			Get
@@ -779,7 +905,7 @@ Namespace Integralab.ORM.EntityClasses
 		''' <remarks>
 		''' Mapped on table field: "DetFacturas"."Cve_Renglon"<br/>
 		''' Table field type characteristics (type, precision, scale, length): SmallInt, 5, 0, 0<br/>
-		''' Table field behavior characteristics (is nullable, is PK, is identity): False, False, False
+		''' Table field behavior characteristics (is nullable, is PK, is identity): False, True, False
 		''' </remarks>
 		Public Overridable Property [CveRenglon]() As System.Int16
 			Get

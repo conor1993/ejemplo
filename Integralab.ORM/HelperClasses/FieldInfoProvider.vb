@@ -7,7 +7,7 @@
 ' class or you modify / extend the templates used to generate this code.
 '//////////////////////////////////////////////////////////////
 ' Code is generated using LLBLGen Pro version: 2.0.0.0
-' Code is generated on: jueves, 12 de julio de 2018 16:37:27
+' Code is generated on: jueves, 12 de julio de 2018 17:42:57
 ' Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' Templates vendor: Solutions Design.
 ' Templates version: 
@@ -1569,8 +1569,8 @@ Namespace Integralab.ORM.HelperClasses
 		End Sub
 		''' <summary>Inits DetFacturasEntity's FieldInfo objects</summary>
 		Private Sub InitDetFacturasEntityInfos()
-			MyBase.AddElementFieldInfo("DetFacturasEntity", "FolFactura", GetType(System.String), False, True, False, False, CInt(DetFacturasFieldIndex.FolFactura), 20, 0, 0)
-			MyBase.AddElementFieldInfo("DetFacturasEntity", "CveRenglon", GetType(System.Int16), False, False, False, False, CInt(DetFacturasFieldIndex.CveRenglon), 0, 0, 5)
+			MyBase.AddElementFieldInfo("DetFacturasEntity", "FolFactura", GetType(System.String), True, True, False, False, CInt(DetFacturasFieldIndex.FolFactura), 20, 0, 0)
+			MyBase.AddElementFieldInfo("DetFacturasEntity", "CveRenglon", GetType(System.Int16), True, False, False, False, CInt(DetFacturasFieldIndex.CveRenglon), 0, 0, 5)
 			MyBase.AddElementFieldInfo("DetFacturasEntity", "FecFactura", GetType(System.DateTime), False, False, False, False, CInt(DetFacturasFieldIndex.FecFactura), 0, 0, 0)
 			MyBase.AddElementFieldInfo("DetFacturasEntity", "TipoFactu", GetType(System.Int16), False, False, False, False, CInt(DetFacturasFieldIndex.TipoFactu), 0, 0, 5)
 			MyBase.AddElementFieldInfo("DetFacturasEntity", "CveAlmacen", GetType(System.Int16), False, False, False, False, CInt(DetFacturasFieldIndex.CveAlmacen), 0, 0, 5)
