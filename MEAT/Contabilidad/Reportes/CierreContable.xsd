@@ -12,7 +12,7 @@
   <xs:element name="CierreContable" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="CierreContable" msprop:Generator_UserDSName="CierreContable">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CierrenContable" msprop:Generator_TableClassName="CierrenContableDataTable" msprop:Generator_TableVarName="tableCierrenContable" msprop:Generator_TablePropName="CierrenContable" msprop:Generator_RowDeletingName="CierrenContableRowDeleting" msprop:Generator_RowChangingName="CierrenContableRowChanging" msprop:Generator_RowEvHandlerName="CierrenContableRowChangeEventHandler" msprop:Generator_RowDeletedName="CierrenContableRowDeleted" msprop:Generator_UserTableName="CierrenContable" msprop:Generator_RowChangedName="CierrenContableRowChanged" msprop:Generator_RowEvArgName="CierrenContableRowChangeEvent" msprop:Generator_RowClassName="CierrenContableRow">
+        <xs:element name="CierrenContable" msprop:Generator_TableClassName="CierrenContableDataTable" msprop:Generator_TableVarName="tableCierrenContable" msprop:Generator_RowChangedName="CierrenContableRowChanged" msprop:Generator_TablePropName="CierrenContable" msprop:Generator_RowDeletingName="CierrenContableRowDeleting" msprop:Generator_RowChangingName="CierrenContableRowChanging" msprop:Generator_RowEvHandlerName="CierrenContableRowChangeEventHandler" msprop:Generator_RowDeletedName="CierrenContableRowDeleted" msprop:Generator_RowClassName="CierrenContableRow" msprop:Generator_UserTableName="CierrenContable" msprop:Generator_RowEvArgName="CierrenContableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:int" minOccurs="0" />
@@ -20,6 +20,7 @@
               <xs:element name="Titulo" msprop:Generator_ColumnVarNameInTable="columnTitulo" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_UserColumnName="Titulo" type="xs:int" minOccurs="0" />
               <xs:element name="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_UserColumnName="Importe" type="xs:double" minOccurs="0" />
               <xs:element name="Tipo" msprop:Generator_ColumnVarNameInTable="columnTipo" msprop:Generator_ColumnPropNameInRow="Tipo" msprop:Generator_ColumnPropNameInTable="TipoColumn" msprop:Generator_UserColumnName="Tipo" type="xs:string" minOccurs="0" />
+              <xs:element name="Cuenta" msprop:Generator_ColumnVarNameInTable="columnCuenta" msprop:Generator_ColumnPropNameInRow="Cuenta" msprop:Generator_ColumnPropNameInTable="CuentaColumn" msprop:Generator_UserColumnName="Cuenta" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
