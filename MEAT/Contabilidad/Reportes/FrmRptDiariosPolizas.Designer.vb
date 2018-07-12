@@ -31,8 +31,8 @@ Partial Class FrmRptDiariosPolizas
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.rdtnormal = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.rdtnormal = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -137,17 +137,7 @@ Partial Class FrmRptDiariosPolizas
         Me.GroupBox2.Size = New System.Drawing.Size(213, 71)
         Me.GroupBox2.TabIndex = 42
         Me.GroupBox2.TabStop = False
-        '
-        'rdtnormal
-        '
-        Me.rdtnormal.AutoSize = True
-        Me.rdtnormal.Location = New System.Drawing.Point(6, 33)
-        Me.rdtnormal.Name = "rdtnormal"
-        Me.rdtnormal.Size = New System.Drawing.Size(71, 17)
-        Me.rdtnormal.TabIndex = 0
-        Me.rdtnormal.TabStop = True
-        Me.rdtnormal.Text = "NORMAL"
-        Me.rdtnormal.UseVisualStyleBackColor = True
+        Me.GroupBox2.Text = "Tipo de Impresion"
         '
         'RadioButton2
         '
@@ -159,6 +149,17 @@ Partial Class FrmRptDiariosPolizas
         Me.RadioButton2.TabStop = True
         Me.RadioButton2.Text = "PILIZA POR PÁGINA"
         Me.RadioButton2.UseVisualStyleBackColor = True
+        '
+        'rdtnormal
+        '
+        Me.rdtnormal.AutoSize = True
+        Me.rdtnormal.Location = New System.Drawing.Point(6, 33)
+        Me.rdtnormal.Name = "rdtnormal"
+        Me.rdtnormal.Size = New System.Drawing.Size(71, 17)
+        Me.rdtnormal.TabIndex = 0
+        Me.rdtnormal.TabStop = True
+        Me.rdtnormal.Text = "NORMAL"
+        Me.rdtnormal.UseVisualStyleBackColor = True
         '
         'FrmRptDiariosPolizas
         '

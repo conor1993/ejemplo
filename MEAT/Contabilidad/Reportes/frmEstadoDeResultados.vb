@@ -78,7 +78,7 @@ Public Class frmEstadodeResultados
             Dim Balance As New BalanceGeneralClass
             Dim CuentaCon As New CuentaContableClass
             Balance.IdCuenta = Me.dgvCuentasContables.Rows(i).Cells(Me.clmCodigoCuenta.Index).Value
-            
+            'cambiar
             Balance.Ejercicio = 2018
             Select Case Me.ultcmbMes.SelectedIndex
                 Case 0
