@@ -138,6 +138,7 @@ Partial Class frmCierreContableAnual
         Me.tb_anioContable.ReadOnly = True
         Me.tb_anioContable.Size = New System.Drawing.Size(60, 20)
         Me.tb_anioContable.TabIndex = 3
+        Me.tb_anioContable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lbl_DescActual
         '

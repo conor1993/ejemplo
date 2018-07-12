@@ -5078,21 +5078,21 @@ Partial Public Class ControladorGanadera
         Previsualizar.ShowDialog()
     End Sub
 
-    Public Sub ReporteMayorGeneral(ByVal Mes As MesEnum2)
+    Public Sub ReporteMayorGeneral(ByVal Mes As MesEnum2, ByVal anio As Integer)
         Dim Previsualizar As New PreVisualizarForm
         Dim Reporte As New RptMayorGeneral
         Dim ds As New DataSet
         Dim dt As New dsRptMayorGeneral.MayorGeneralDataTable
-        Dim CuentasContables As CC.CuentaContableCollection = ObtenerCuentasMaestras()
-        Dim FechaInicial As Date = Date.Parse(Now.Year & "-" & CInt(Mes).ToString.PadLeft(2, "0") & "-" & "01")
-        Dim FechaFinal As Date = Date.Parse(Now.Year & "-" & (Mes + 1).ToString.PadLeft(2, "0") & "-" & "01").AddDays(-1)
+        Dim CuentasContables As CC.CuentaContableCollection = ObtenerCuentasMaestras() 'Regresa las cuentas mayores, activas y de ambas naturaleza(A,D)
+        Dim FechaInicial As Date = Date.Parse(anio & "-" & CInt(Mes).ToString.PadLeft(2, "0") & "-" & "01") 'inicio del mes seleccionado
+        Dim FechaFinal As Date = Date.Parse(anio & "-" & (Mes + 1).ToString.PadLeft(2, "0") & "-" & "01").AddDays(-1) 'ultimo dia del mes selecionado
 
-        For Each Cuenta As EC.CuentaContableEntity In CuentasContables
-            Dim CuentaContable As New CuentaContableClass(Cuenta)
-            Dim SaldoAnterior As Decimal = CuentaContable.CalcularSaldoInicial(FechaInicial.AddDays(-1), True)
-            Dim Saldo As Decimal = SaldoAnterior, Cargos As Decimal = 0D, Abonos As Decimal = 0D
+        For Each Cuenta As EC.CuentaContableEntity In CuentasContables 'Hace un ciclo por cada una de las cuetas anteriormente
+            Dim CuentaContable As New CuentaContableClass(Cuenta) '??
+            Dim SaldoAnterior As Decimal = CuentaContable.CalcularSaldoInicial(FechaInicial.AddDays(-1), True) 'toma el valor del año inicial y lo asigna como saldo anterior(mes anterior) Error? <----------------
+            Dim Saldo As Decimal = SaldoAnterior, Cargos As Decimal = 0D, Abonos As Decimal = 0D 'setea los datos del mes seleccionado
 
-            For Each PolizaDetalle As EC.PolizaDetalleEntity In CuentaContable.ObtenerPolizasDetalleEnRangoDeFechas(FechaInicial, FechaFinal, True)
+            For Each PolizaDetalle As EC.PolizaDetalleEntity In CuentaContable.ObtenerPolizasDetalleEnRangoDeFechas(FechaInicial, FechaFinal, True) '<-------- nunca recorre el ciclo, Error?
                 Dim PolizaDet As New PolizaDetalleClass(PolizaDetalle)
                 Cargos += PolizaDet.Cargo
                 Abonos += PolizaDet.Abono

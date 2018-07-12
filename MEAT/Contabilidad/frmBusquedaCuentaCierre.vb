@@ -13,7 +13,7 @@ Public Class frmBusquedaCuentaCierre
     Private Sub frmBusquedaCuentaCierre_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim query As String = "SELECT codigo, NomCuenta, (Cta + '-' + SubCta + '-' + SSubCta + '-' + SSSubCta) AS Cuenta, Naturaleza, SaldoAnoAnt, SaldoIniEjerc, " +
             "BooAfectable = CASE WHEN BooAfectable = 1 THEN 'Si' ELSE 'No' END, BooInactiva =  CASE WHEN BooInactiva = 1 THEN 'Si' ELSE 'No' END " +
-            "from usrContCuentas  where Titulo = 3"
+            "from usrContCuentas  where Titulo = 3and BooAfectable = 1 and BooInactiva = 0"
         cargarDgv(query)
     End Sub
     'iguala  a la variable publica el codigo de la cuenta para pasarla al formualrio del cierre
@@ -50,6 +50,7 @@ Public Class frmBusquedaCuentaCierre
                 adapter.Fill(tableCuentas)
                 adapter.Dispose()
                 dgvCuentasContables.DataSource = tableCuentas
+                dgvCuentasContables.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
             Catch ex As Exception
                 MessageBox.Show("Ocurrio un error al tratrar de cargar las cuentas contables: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
