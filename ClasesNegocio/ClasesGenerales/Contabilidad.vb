@@ -1008,7 +1008,8 @@ Public Class CuentaContableClass
         End If
 
         Filtro.Add(HC.PolizaFields.FechaPoliza <= FechaTope)
-        Filtro.Add(HC.PolizaFields.Estatus = 2)
+        'Filtro.Add(HC.PolizaFields.Estatus = 2)
+        Filtro.Add(HC.PolizaFields.Estatus = 1)
         Relacion.Add(EC.PolizaDetalleEntity.Relations.PolizaEntityUsingPolizaId)
         PolizasDetalle.GetMulti(Filtro, 0, Nothing, Relacion)
 

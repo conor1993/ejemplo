@@ -353,7 +353,6 @@ Public Class CatCuentaContableForm
     End Sub
 
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
-        Cancelar = True
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Guardar Cuenta")
         If IsNothing(Validar()) Then
             'If Not Cuenta.CuentaEntrada.Codigo = 0 And Cuenta.CuentaSalida.Codigo = 0 Or Cuenta.CuentaEntrada.Codigo = 0 And Not Cuenta.CuentaSalida.Codigo = 0 Then
@@ -1010,22 +1009,22 @@ Public Class CatCuentaContableForm
         End If
     End Sub
 
-    Private Sub txtCta_Leave(sender As System.Object, e As System.EventArgs) Handles txtCta.Leave
+    Private Sub txtCta_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCta.Leave
         buscacuentaCta()
     End Sub
 
-    Private Sub txtSCta_Leave(sender As System.Object, e As System.EventArgs) Handles txtSCta.Leave
+    Private Sub txtSCta_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSCta.Leave
         buscacuentaScta()
     End Sub
 
-    Private Sub txtSSSCta_Leave(sender As System.Object, e As System.EventArgs) Handles txtSSSCta.Leave
+    Private Sub txtSSSCta_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSSSCta.Leave
         buscacuentaSsscta()
     End Sub
     ''----------------------------------------------------------------------------------------------------
 
     Private Sub guardarCuentaContableAcumulado()
 
-        Dim queryConsulta As String = "SELECT MAX(Ejercicio) AS Ejercicio FROM UsrGralPeriodosCont"
+        Dim queryConsulta As String = "SELECT TOP 1 Ejercicio FROM UsrGralPeriodosCont WHERE Estatus = 1"
         Dim queryCodigoCuenta As String = "SELECT codigo FROM usrContCuentas WHERE Cta = '{0}' AND SubCta = '{1}' AND SSubCta = '{2}' AND SSSubCta = '{3}'"
         Dim queryregistrar As String = "INSERT INTO AcumuladoCuentasContables  (Codigo,Ejercicio) VALUES ({0}, {1})"
         Dim ejercicio As Integer = 0
@@ -1078,6 +1077,5 @@ Public Class CatCuentaContableForm
             MessageBox.Show("Error al tratar de buscar informacion en la base de datos: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
 
 End Class

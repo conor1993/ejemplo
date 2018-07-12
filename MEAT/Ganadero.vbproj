@@ -13,7 +13,7 @@
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>CC6AE4373A3A2BB0320C07F03075D185B7F1FF33</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ganadero_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
     <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>JSLogo32.ico</ApplicationIcon>
@@ -1066,6 +1066,12 @@
     <Compile Include="Contabilidad\frmBusquedaCuentaCierre.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Contabilidad\frmCancelaciondeCierre.Designer.vb">
+      <DependentUpon>frmCancelaciondeCierre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\frmCancelaciondeCierre.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Contabilidad\frmCierreContableAnual.Designer.vb">
       <DependentUpon>frmCierreContableAnual.vb</DependentUpon>
     </Compile>
@@ -1083,6 +1089,14 @@
     </Compile>
     <Compile Include="Contabilidad\frmSeleccionarPeriodo.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\CierreContable.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CierreContable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\CierreContable.vb">
+      <DependentUpon>CierreContable.xsd</DependentUpon>
     </Compile>
     <Compile Include="Contabilidad\Reportes\frmRptDepartamentosDos.Designer.vb">
       <DependentUpon>frmRptDepartamentosDos.vb</DependentUpon>
@@ -1198,6 +1212,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptBalanceGeneral.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\Reportes\rptCierreContable.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Contabilidad\Reportes\rptestadoresultados.vb">
@@ -3887,6 +3904,9 @@
     <EmbeddedResource Include="Contabilidad\frmBusquedaCuentaCierre.resx">
       <DependentUpon>frmBusquedaCuentaCierre.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\frmCancelaciondeCierre.resx">
+      <DependentUpon>frmCancelaciondeCierre.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\frmCierreContableAnual.resx">
       <DependentUpon>frmCierreContableAnual.vb</DependentUpon>
     </EmbeddedResource>
@@ -3896,6 +3916,9 @@
     <EmbeddedResource Include="Contabilidad\frmSeleccionarPeriodo.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSeleccionarPeriodo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\Reportes\rptCierreContable.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\Reportes\frmRptDepartamentosDos.resx">
       <DependentUpon>frmRptDepartamentosDos.vb</DependentUpon>
@@ -5298,6 +5321,17 @@
     <Content Include="cx.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Contabilidad\Reportes\CierreContable.xsc">
+      <DependentUpon>CierreContable.xsd</DependentUpon>
+    </None>
+    <None Include="Contabilidad\Reportes\CierreContable.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CierreContable.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Contabilidad\Reportes\CierreContable.xss">
+      <DependentUpon>CierreContable.xsd</DependentUpon>
+    </None>
     <None Include="Contabilidad\Reportes\resultadoestado.xsc">
       <DependentUpon>resultadoestado.xsd</DependentUpon>
     </None>
@@ -5414,7 +5448,7 @@
     </BootstrapperPackage>
     <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
       <Visible>False</Visible>
-      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework 4.0</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
