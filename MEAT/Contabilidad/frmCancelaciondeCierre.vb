@@ -8,7 +8,7 @@ Public Class frmCancelaciondeCierre
     End Sub
 
     Private Sub btn_CancelarAnio_Click(sender As Object, e As EventArgs) Handles btn_CancelarAnio.Click
-        If (MessageBox.Show("Al cancelar el cierre del ejercicio " + tb_Anio.Text + " se eliminaran los registro del año actual. " +
+        If (MessageBox.Show("Al cancelar el cierre del ejercicio " + tb_Anio.Text + " se eliminaran los movimientos del año en curso. " +
                             "¿Desea continuar?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK) Then
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 connection.Open()
@@ -29,7 +29,7 @@ Public Class frmCancelaciondeCierre
             End Using
             Dispose()
         End If
-        
+
     End Sub
 
     Private Sub cargaEjercicioAnterior()
