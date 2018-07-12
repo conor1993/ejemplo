@@ -488,8 +488,8 @@ Public Class frmCierreContableAnual
     Private Sub mostrarReporte()
         Try
             Dim tablaDatos As New DataTable
-            Dim query = "SELECT CC.codigo AS Codigo, CC.NomCuenta AS Concepto, CC.Titulo, ACC.SaldoFinEjer AS Importe, Tipo = CASE WHEN CC.Titulo = 4 THEN '1' WHEN CC.Titulo IN (5, 6, 7) THEN '0' END " +
-                "FROM AcumuladoCuentasContables ACC INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE ACC.Ejercicio = '{0}' " +
+            Dim query = "SELECT CC.codigo AS Codigo, CC.NomCuenta AS Concepto, CC.Titulo, ACC.SaldoFinEjer AS Importe, Tipo = CASE WHEN CC.Titulo = 4 THEN '1' WHEN CC.Titulo IN (5, 6, 7) THEN '0' END, " +
+                "(Cta +'-' + SubCta +'-' + SSubCta +'-' + SSSubCta) AS Cuenta FROM AcumuladoCuentasContables ACC INNER JOIN usrContCuentas CC ON ACC.Codigo = CC.codigo WHERE ACC.Ejercicio = '{0}' " +
                 "AND (Titulo in (4,5,6,7) OR ACC.Codigo = '{1}')"
             query = String.Format(query, tb_anioContable.Text, codigoCuentaActual)
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
@@ -513,7 +513,7 @@ Public Class frmCierreContableAnual
             Reporte.SetDataSource(tablaDatos)
             Reporte.SetParameterValue("EmpresaNombre", Controlador.Empresa.Nombre)
             Reporte.SetParameterValue("Fecha", Date.Now.ToString("dd/MM/yyy"))
-
+            Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnom)
             Dim Pre As New ClasesNegocio.PreVisualizarForm
             Pre.Reporte = Reporte
             Pre.ShowDialog()

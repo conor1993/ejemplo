@@ -293,6 +293,8 @@ Partial Public Class CierreContable
         
         Private columnTipo As Global.System.Data.DataColumn
         
+        Private columnCuenta As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -369,6 +371,14 @@ Partial Public Class CierreContable
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CuentaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCuenta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -405,9 +415,9 @@ Partial Public Class CierreContable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddCierrenContableRow(ByVal Codigo As Integer, ByVal Concepto As String, ByVal Titulo As Integer, ByVal Importe As Double, ByVal Tipo As String) As CierrenContableRow
+        Public Overloads Function AddCierrenContableRow(ByVal Codigo As Integer, ByVal Concepto As String, ByVal Titulo As Integer, ByVal Importe As Double, ByVal Tipo As String, ByVal Cuenta As String) As CierrenContableRow
             Dim rowCierrenContableRow As CierrenContableRow = CType(Me.NewRow,CierrenContableRow)
-            Dim columnValuesArray() As Object = New Object() {Codigo, Concepto, Titulo, Importe, Tipo}
+            Dim columnValuesArray() As Object = New Object() {Codigo, Concepto, Titulo, Importe, Tipo, Cuenta}
             rowCierrenContableRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCierrenContableRow)
             Return rowCierrenContableRow
@@ -435,6 +445,7 @@ Partial Public Class CierreContable
             Me.columnTitulo = MyBase.Columns("Titulo")
             Me.columnImporte = MyBase.Columns("Importe")
             Me.columnTipo = MyBase.Columns("Tipo")
+            Me.columnCuenta = MyBase.Columns("Cuenta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -450,6 +461,8 @@ Partial Public Class CierreContable
             MyBase.Columns.Add(Me.columnImporte)
             Me.columnTipo = New Global.System.Data.DataColumn("Tipo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTipo)
+            Me.columnCuenta = New Global.System.Data.DataColumn("Cuenta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCuenta)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -671,6 +684,21 @@ Partial Public Class CierreContable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Cuenta() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCierrenContable.CuentaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cuenta' de la tabla 'CierrenContable' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCierrenContable.CuentaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsCodigoNull() As Boolean
             Return Me.IsNull(Me.tableCierrenContable.CodigoColumn)
         End Function
@@ -727,6 +755,18 @@ Partial Public Class CierreContable
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetTipoNull()
             Me(Me.tableCierrenContable.TipoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCuentaNull() As Boolean
+            Return Me.IsNull(Me.tableCierrenContable.CuentaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCuentaNull()
+            Me(Me.tableCierrenContable.CuentaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

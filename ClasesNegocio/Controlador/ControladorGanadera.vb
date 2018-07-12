@@ -2191,7 +2191,8 @@ Partial Public Class ControladorGanadera
 
     Public Function ObtenerFacturasDeVenta(Optional ByVal Folio As String = "", Optional ByVal Fechas As RangoFechas = Nothing, Optional ByVal Cliente As Integer = 0, Optional ByVal Estatus As EstatusChar = EstatusChar.TODOS, Optional ByVal TipoFactura As TipoFacturaEnum = TipoFacturaEnum.VENTA_DE_PRODUCTO, Optional ByVal TipoComprobante As String = "I") As FacturasCollectionClass
         Dim Filtro As OC.PredicateExpression = FiltroFacturasdeVenta(TipoFactura, Folio, Fechas, Cliente, Estatus, TipoComprobante)
-        Return ObtenerFacturasdeVentayCorrales(Filtro)
+        Dim relaciones = New OC.RelationCollection()
+        Return ObtenerFacturasdeVentayCorrales(Filtro, relaciones, TipoComprobante)
     End Function
 
 
@@ -2204,7 +2205,7 @@ Partial Public Class ControladorGanadera
         Return ObtenerFacturasdeVentayCorrales(Filtro)
     End Function
 
-    Private Function ObtenerFacturasdeVentayCorrales(ByRef Filtro As OC.PredicateExpression, Optional ByVal Relaciones As OC.RelationCollection = Nothing) As FacturasCollectionClass
+    Private Function ObtenerFacturasdeVentayCorrales(ByRef Filtro As OC.PredicateExpression, Optional ByVal Relaciones As OC.RelationCollection = Nothing, Optional ByVal TipoComprobante As String = "I") As FacturasCollectionClass
         Dim FacturasVentaColeccion As New CC.CabFacturasCollection
         Dim FacturasVenta As New FacturasCollectionClass
         Dim Ordenamiento As New OC.SortExpression(New OC.SortClause(HC.CabFacturasFields.FolFactura, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
@@ -2215,7 +2216,18 @@ Partial Public Class ControladorGanadera
             Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.GENERAL, 2, "No se encontraton facturas para esta opcion")
         Else
             For Each FacturaVenta As EC.CabFacturasEntity In FacturasVentaColeccion
-                FacturasVenta.Add(FacturaVenta)
+                Try
+                    If TipoComprobante = "E" Then
+                        If (Not String.IsNullOrEmpty(FacturaVenta.Serie)) Then
+                            FacturaVenta.FolFactura = FacturaVenta.Serie + FacturaVenta.FolFactura
+                        End If
+
+                    End If
+                    FacturasVenta.Add(FacturaVenta)
+                Catch ex As Exception
+
+                End Try
+                
             Next
         End If
         Return FacturasVenta
@@ -5066,21 +5078,21 @@ Partial Public Class ControladorGanadera
         Previsualizar.ShowDialog()
     End Sub
 
-    Public Sub ReporteMayorGeneral(ByVal Mes As MesEnum2)
+    Public Sub ReporteMayorGeneral(ByVal Mes As MesEnum2, ByVal anio As Integer)
         Dim Previsualizar As New PreVisualizarForm
         Dim Reporte As New RptMayorGeneral
         Dim ds As New DataSet
         Dim dt As New dsRptMayorGeneral.MayorGeneralDataTable
-        Dim CuentasContables As CC.CuentaContableCollection = ObtenerCuentasMaestras()
-        Dim FechaInicial As Date = Date.Parse(Now.Year & "-" & CInt(Mes).ToString.PadLeft(2, "0") & "-" & "01")
-        Dim FechaFinal As Date = Date.Parse(Now.Year & "-" & (Mes + 1).ToString.PadLeft(2, "0") & "-" & "01").AddDays(-1)
+        Dim CuentasContables As CC.CuentaContableCollection = ObtenerCuentasMaestras() 'Regresa las cuentas mayores, activas y de ambas naturaleza(A,D)
+        Dim FechaInicial As Date = Date.Parse(anio & "-" & CInt(Mes).ToString.PadLeft(2, "0") & "-" & "01") 'inicio del mes seleccionado
+        Dim FechaFinal As Date = Date.Parse(anio & "-" & (Mes + 1).ToString.PadLeft(2, "0") & "-" & "01").AddDays(-1) 'ultimo dia del mes selecionado
 
-        For Each Cuenta As EC.CuentaContableEntity In CuentasContables
-            Dim CuentaContable As New CuentaContableClass(Cuenta)
-            Dim SaldoAnterior As Decimal = CuentaContable.CalcularSaldoInicial(FechaInicial.AddDays(-1), True)
-            Dim Saldo As Decimal = SaldoAnterior, Cargos As Decimal = 0D, Abonos As Decimal = 0D
+        For Each Cuenta As EC.CuentaContableEntity In CuentasContables 'Hace un ciclo por cada una de las cuetas anteriormente
+            Dim CuentaContable As New CuentaContableClass(Cuenta) '??
+            Dim SaldoAnterior As Decimal = CuentaContable.CalcularSaldoInicial(FechaInicial.AddDays(-1), True) 'toma el valor del año inicial y lo asigna como saldo anterior(mes anterior) Error? <----------------
+            Dim Saldo As Decimal = SaldoAnterior, Cargos As Decimal = 0D, Abonos As Decimal = 0D 'setea los datos del mes seleccionado
 
-            For Each PolizaDetalle As EC.PolizaDetalleEntity In CuentaContable.ObtenerPolizasDetalleEnRangoDeFechas(FechaInicial, FechaFinal, True)
+            For Each PolizaDetalle As EC.PolizaDetalleEntity In CuentaContable.ObtenerPolizasDetalleEnRangoDeFechas(FechaInicial, FechaFinal, True) '<-------- nunca recorre el ciclo, Error?
                 Dim PolizaDet As New PolizaDetalleClass(PolizaDetalle)
                 Cargos += PolizaDet.Cargo
                 Abonos += PolizaDet.Abono
