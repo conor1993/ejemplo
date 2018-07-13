@@ -2216,17 +2216,18 @@ Partial Public Class ControladorGanadera
             Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.GENERAL, 2, "No se encontraton facturas para esta opcion")
         Else
             For Each FacturaVenta As EC.CabFacturasEntity In FacturasVentaColeccion
-                Try
-                    If TipoComprobante = "E" Then
-                        If (Not String.IsNullOrEmpty(FacturaVenta.Serie)) Then
-                            FacturaVenta.FolFactura = FacturaVenta.Serie + FacturaVenta.FolFactura
-                        End If
+                'FacturaVenta.FolFactura = FacturaVenta.Serie.Trim() + FacturaVenta.FolFactura.Trim()
+                'Try
+                '    If TipoComprobante = "E" Then
+                '        If (Not String.IsNullOrEmpty(FacturaVenta.Serie)) Then
 
-                    End If
-                    FacturasVenta.Add(FacturaVenta)
-                Catch ex As Exception
+                '        End If
 
-                End Try
+                '    End If
+                FacturasVenta.Add(FacturaVenta)
+                'Catch ex As Exception
+
+                'End Try
                 
             Next
         End If

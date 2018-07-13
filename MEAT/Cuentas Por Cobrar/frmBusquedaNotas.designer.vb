@@ -54,14 +54,15 @@ Partial Class frmBusquedaNotas
         Me.txtFolio = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvFacturasCabecero = New System.Windows.Forms.DataGridView()
-        Me.clmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbClientes = New System.Windows.Forms.ComboBox()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.clmSerie = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clmCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox3.SuspendLayout()
         CType(Me.dgvFacturasDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -324,7 +325,7 @@ Partial Class frmBusquedaNotas
         Me.dgvFacturasCabecero.AllowUserToAddRows = False
         Me.dgvFacturasCabecero.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvFacturasCabecero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvFacturasCabecero.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmNoFactura, Me.clmFecha, Me.clmImporte, Me.clmCliente})
+        Me.dgvFacturasCabecero.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSerie, Me.clmNoFactura, Me.clmFecha, Me.clmImporte, Me.clmCliente})
         Me.dgvFacturasCabecero.Location = New System.Drawing.Point(60, 115)
         Me.dgvFacturasCabecero.MultiSelect = False
         Me.dgvFacturasCabecero.Name = "dgvFacturasCabecero"
@@ -335,43 +336,6 @@ Partial Class frmBusquedaNotas
         Me.dgvFacturasCabecero.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvFacturasCabecero.Size = New System.Drawing.Size(789, 170)
         Me.dgvFacturasCabecero.TabIndex = 55
-        '
-        'clmNoFactura
-        '
-        Me.clmNoFactura.DataPropertyName = "FolFactura"
-        Me.clmNoFactura.FillWeight = 15.0!
-        Me.clmNoFactura.HeaderText = "Factura"
-        Me.clmNoFactura.Name = "clmNoFactura"
-        Me.clmNoFactura.ReadOnly = True
-        '
-        'clmFecha
-        '
-        Me.clmFecha.DataPropertyName = "FecFactura"
-        DataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm"
-        Me.clmFecha.DefaultCellStyle = DataGridViewCellStyle4
-        Me.clmFecha.FillWeight = 20.0!
-        Me.clmFecha.HeaderText = "Fecha "
-        Me.clmFecha.Name = "clmFecha"
-        Me.clmFecha.ReadOnly = True
-        '
-        'clmImporte
-        '
-        Me.clmImporte.DataPropertyName = "SubTotal"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle5
-        Me.clmImporte.FillWeight = 20.0!
-        Me.clmImporte.HeaderText = "Importe"
-        Me.clmImporte.Name = "clmImporte"
-        Me.clmImporte.ReadOnly = True
-        '
-        'clmCliente
-        '
-        Me.clmCliente.DataPropertyName = "NomCliente"
-        Me.clmCliente.FillWeight = 45.0!
-        Me.clmCliente.HeaderText = "cliente"
-        Me.clmCliente.Name = "clmCliente"
-        Me.clmCliente.ReadOnly = True
         '
         'Label1
         '
@@ -409,6 +373,52 @@ Partial Class frmBusquedaNotas
         Me.btnAceptar.TabIndex = 65
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'clmSerie
+        '
+        Me.clmSerie.DataPropertyName = "Serie"
+        Me.clmSerie.FillWeight = 20.30457!
+        Me.clmSerie.HeaderText = "Serie"
+        Me.clmSerie.Name = "clmSerie"
+        Me.clmSerie.ReadOnly = True
+        Me.clmSerie.Visible = False
+        '
+        'clmNoFactura
+        '
+        Me.clmNoFactura.DataPropertyName = "FolFactura"
+        Me.clmNoFactura.FillWeight = 26.95432!
+        Me.clmNoFactura.HeaderText = "Factura"
+        Me.clmNoFactura.Name = "clmNoFactura"
+        Me.clmNoFactura.ReadOnly = True
+        '
+        'clmFecha
+        '
+        Me.clmFecha.DataPropertyName = "FecFactura"
+        DataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm"
+        Me.clmFecha.DefaultCellStyle = DataGridViewCellStyle4
+        Me.clmFecha.FillWeight = 35.93909!
+        Me.clmFecha.HeaderText = "Fecha "
+        Me.clmFecha.Name = "clmFecha"
+        Me.clmFecha.ReadOnly = True
+        '
+        'clmImporte
+        '
+        Me.clmImporte.DataPropertyName = "SubTotal"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle5
+        Me.clmImporte.FillWeight = 35.93909!
+        Me.clmImporte.HeaderText = "Importe"
+        Me.clmImporte.Name = "clmImporte"
+        Me.clmImporte.ReadOnly = True
+        '
+        'clmCliente
+        '
+        Me.clmCliente.DataPropertyName = "NomCliente"
+        Me.clmCliente.FillWeight = 80.86295!
+        Me.clmCliente.HeaderText = "Cliente"
+        Me.clmCliente.Name = "clmCliente"
+        Me.clmCliente.ReadOnly = True
         '
         'frmBusquedaNotas
         '
@@ -463,10 +473,6 @@ Partial Class frmBusquedaNotas
     Friend WithEvents cmbClientes As System.Windows.Forms.ComboBox
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents btnAceptar As System.Windows.Forms.Button
-    Friend WithEvents clmNoFactura As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmFecha As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmCliente As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmTipoGanado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmCabezas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmKilos As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -475,4 +481,9 @@ Partial Class frmBusquedaNotas
     Friend WithEvents clmCantidad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmPrecioUnitario As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmImporteDetalle As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmSerie As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmNoFactura As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmFecha As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmCliente As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
