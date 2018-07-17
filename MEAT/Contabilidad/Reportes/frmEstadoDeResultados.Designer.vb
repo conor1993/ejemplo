@@ -164,6 +164,7 @@ Partial Class frmEstadodeResultados
         Me.dgvCuentasContables.Name = "dgvCuentasContables"
         Me.dgvCuentasContables.Size = New System.Drawing.Size(752, 253)
         Me.dgvCuentasContables.TabIndex = 45
+        Me.dgvCuentasContables.Visible = False
         '
         'clmCodigoCuenta
         '
@@ -227,7 +228,7 @@ Partial Class frmEstadodeResultados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1001, 469)
+        Me.ClientSize = New System.Drawing.Size(346, 213)
         Me.Controls.Add(Me.dgvCuentasContables)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.PictureBox1)

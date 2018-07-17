@@ -22,29 +22,29 @@ Partial Class frmRptAuxiliarCuentas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.txtFinCuentaDescripcion = New System.Windows.Forms.TextBox
-        Me.txtFinCuentaP4 = New System.Windows.Forms.TextBox
-        Me.txtFinCuentaP3 = New System.Windows.Forms.TextBox
-        Me.txtFinCuentaP2 = New System.Windows.Forms.TextBox
-        Me.txtFinCuentaP1 = New System.Windows.Forms.TextBox
-        Me.txtIniCuentaDescripcion = New System.Windows.Forms.TextBox
-        Me.txtIniCuentaP4 = New System.Windows.Forms.TextBox
-        Me.txtIniCuentaP3 = New System.Windows.Forms.TextBox
-        Me.txtIniCuentaP2 = New System.Windows.Forms.TextBox
-        Me.txtIniCuentaP1 = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.ultdtpFinal = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.ultdtpInicial = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtFinCuentaDescripcion = New System.Windows.Forms.TextBox()
+        Me.txtFinCuentaP4 = New System.Windows.Forms.TextBox()
+        Me.txtFinCuentaP3 = New System.Windows.Forms.TextBox()
+        Me.txtFinCuentaP2 = New System.Windows.Forms.TextBox()
+        Me.txtFinCuentaP1 = New System.Windows.Forms.TextBox()
+        Me.txtIniCuentaDescripcion = New System.Windows.Forms.TextBox()
+        Me.txtIniCuentaP4 = New System.Windows.Forms.TextBox()
+        Me.txtIniCuentaP3 = New System.Windows.Forms.TextBox()
+        Me.txtIniCuentaP2 = New System.Windows.Forms.TextBox()
+        Me.txtIniCuentaP1 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.ultdtpFinal = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ultdtpInicial = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -84,8 +84,7 @@ Partial Class frmRptAuxiliarCuentas
         '
         'PictureBox1
         '
-        'Me.PictureBox1.Image = Global.FLEXI.My.Resources.Resources.barraProgreso
-        Me.PictureBox1.Location = New System.Drawing.Point(339, 134)
+        Me.PictureBox1.Location = New System.Drawing.Point(422, 138)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(183, 20)
         Me.PictureBox1.TabIndex = 42
@@ -100,7 +99,7 @@ Partial Class frmRptAuxiliarCuentas
         Me.lblTitulo.Location = New System.Drawing.Point(53, 0)
         Me.lblTitulo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(479, 29)
+        Me.lblTitulo.Size = New System.Drawing.Size(552, 29)
         Me.lblTitulo.TabIndex = 44
         Me.lblTitulo.Text = "Reporte Auxiliar de Cuentas"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -121,7 +120,7 @@ Partial Class frmRptAuxiliarCuentas
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(56, 34)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(466, 75)
+        Me.GroupBox1.Size = New System.Drawing.Size(549, 75)
         Me.GroupBox1.TabIndex = 45
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cuenta Contable"
@@ -234,23 +233,23 @@ Partial Class frmRptAuxiliarCuentas
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Location = New System.Drawing.Point(56, 115)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(277, 48)
+        Me.GroupBox2.Size = New System.Drawing.Size(360, 48)
         Me.GroupBox2.TabIndex = 46
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Rango de Fechas"
         '
         'ultdtpFinal
         '
-        Me.ultdtpFinal.Location = New System.Drawing.Point(182, 19)
+        Me.ultdtpFinal.Location = New System.Drawing.Point(223, 19)
         Me.ultdtpFinal.MaskInput = "{date}"
         Me.ultdtpFinal.Name = "ultdtpFinal"
-        Me.ultdtpFinal.Size = New System.Drawing.Size(83, 21)
+        Me.ultdtpFinal.Size = New System.Drawing.Size(106, 21)
         Me.ultdtpFinal.TabIndex = 3
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(138, 23)
+        Me.Label4.Location = New System.Drawing.Point(179, 23)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(38, 13)
         Me.Label4.TabIndex = 2
@@ -261,7 +260,7 @@ Partial Class frmRptAuxiliarCuentas
         Me.ultdtpInicial.Location = New System.Drawing.Point(49, 19)
         Me.ultdtpInicial.MaskInput = "{date}"
         Me.ultdtpInicial.Name = "ultdtpInicial"
-        Me.ultdtpInicial.Size = New System.Drawing.Size(83, 21)
+        Me.ultdtpInicial.Size = New System.Drawing.Size(104, 21)
         Me.ultdtpInicial.TabIndex = 1
         '
         'Label3
@@ -287,7 +286,7 @@ Partial Class frmRptAuxiliarCuentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(530, 189)
+        Me.ClientSize = New System.Drawing.Size(617, 189)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)

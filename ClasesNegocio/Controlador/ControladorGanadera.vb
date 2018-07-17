@@ -2191,7 +2191,8 @@ Partial Public Class ControladorGanadera
 
     Public Function ObtenerFacturasDeVenta(Optional ByVal Folio As String = "", Optional ByVal Fechas As RangoFechas = Nothing, Optional ByVal Cliente As Integer = 0, Optional ByVal Estatus As EstatusChar = EstatusChar.TODOS, Optional ByVal TipoFactura As TipoFacturaEnum = TipoFacturaEnum.VENTA_DE_PRODUCTO, Optional ByVal TipoComprobante As String = "I") As FacturasCollectionClass
         Dim Filtro As OC.PredicateExpression = FiltroFacturasdeVenta(TipoFactura, Folio, Fechas, Cliente, Estatus, TipoComprobante)
-        Return ObtenerFacturasdeVentayCorrales(Filtro)
+        Dim relaciones = New OC.RelationCollection()
+        Return ObtenerFacturasdeVentayCorrales(Filtro, relaciones, TipoComprobante)
     End Function
 
 
@@ -2204,7 +2205,7 @@ Partial Public Class ControladorGanadera
         Return ObtenerFacturasdeVentayCorrales(Filtro)
     End Function
 
-    Private Function ObtenerFacturasdeVentayCorrales(ByRef Filtro As OC.PredicateExpression, Optional ByVal Relaciones As OC.RelationCollection = Nothing) As FacturasCollectionClass
+    Private Function ObtenerFacturasdeVentayCorrales(ByRef Filtro As OC.PredicateExpression, Optional ByVal Relaciones As OC.RelationCollection = Nothing, Optional ByVal TipoComprobante As String = "I") As FacturasCollectionClass
         Dim FacturasVentaColeccion As New CC.CabFacturasCollection
         Dim FacturasVenta As New FacturasCollectionClass
         Dim Ordenamiento As New OC.SortExpression(New OC.SortClause(HC.CabFacturasFields.FolFactura, SD.LLBLGen.Pro.ORMSupportClasses.SortOperator.Descending))
@@ -2215,7 +2216,19 @@ Partial Public Class ControladorGanadera
             Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.GENERAL, 2, "No se encontraton facturas para esta opcion")
         Else
             For Each FacturaVenta As EC.CabFacturasEntity In FacturasVentaColeccion
+                'FacturaVenta.FolFactura = FacturaVenta.Serie.Trim() + FacturaVenta.FolFactura.Trim()
+                'Try
+                '    If TipoComprobante = "E" Then
+                '        If (Not String.IsNullOrEmpty(FacturaVenta.Serie)) Then
+
+                '        End If
+
+                '    End If
                 FacturasVenta.Add(FacturaVenta)
+                'Catch ex As Exception
+
+                'End Try
+                
             Next
         End If
         Return FacturasVenta

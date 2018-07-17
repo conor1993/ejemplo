@@ -1921,7 +1921,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.ActualizarSaldosToolStripMenuItem.Name = "ActualizarSaldosToolStripMenuItem"
         Me.ActualizarSaldosToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
-        Me.ActualizarSaldosToolStripMenuItem.Text = "Actualizar Saldos"
+        Me.ActualizarSaldosToolStripMenuItem.Text = "Recalculo de saldos"
         '
         'DesactualizaciónDeSaldosToolStripMenuItem
         '
@@ -2309,7 +2309,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.MovimientosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem2, Me.GeneralesToolStripMenuItem1})
         Me.MovimientosToolStripMenuItem.Name = "MovimientosToolStripMenuItem"
-        Me.MovimientosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MovimientosToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
         Me.MovimientosToolStripMenuItem.Text = "Movimientos"
         '
         'ProducciónToolStripMenuItem2
@@ -2383,7 +2383,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.InventarioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem1, Me.GeneralToolStripMenuItem})
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
-        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
         Me.InventarioToolStripMenuItem.Text = "Inventario"
         '
         'ProducciónToolStripMenuItem1
@@ -2464,13 +2464,13 @@ Partial Class MDIMenuPrincipal
         'ToolStripSeparator17
         '
         Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
-        Me.ToolStripSeparator17.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator17.Size = New System.Drawing.Size(141, 6)
         '
         'ReportesToolStripMenuItem4
         '
         Me.ReportesToolStripMenuItem4.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem3, Me.GeneralToolStripMenuItem2})
         Me.ReportesToolStripMenuItem4.Name = "ReportesToolStripMenuItem4"
-        Me.ReportesToolStripMenuItem4.Size = New System.Drawing.Size(152, 22)
+        Me.ReportesToolStripMenuItem4.Size = New System.Drawing.Size(144, 22)
         Me.ReportesToolStripMenuItem4.Text = "Reportes"
         '
         'ProducciónToolStripMenuItem3

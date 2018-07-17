@@ -243,7 +243,7 @@ Partial Class frmBalanceGeneral
         Me.ultCmbEjercicio.Name = "ultCmbEjercicio"
         Me.ultCmbEjercicio.NullText = "Seleccione el Mes"
         Me.ultCmbEjercicio.Size = New System.Drawing.Size(150, 21)
-        Me.ultCmbEjercicio.TabIndex = 47
+        Me.ultCmbEjercicio.TabIndex = 42
         Me.ultCmbEjercicio.Text = "Seleccione el Año"
         Me.ultCmbEjercicio.ValueMember = "Ejercicio"
         '

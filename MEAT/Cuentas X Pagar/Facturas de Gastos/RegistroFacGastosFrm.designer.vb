@@ -92,6 +92,12 @@ Partial Class RegistroFacGastosFrm
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.dgvdistribuciongastosdet = New System.Windows.Forms.DataGridView()
+        Me.sucursal1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Prorrateo1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cuenta1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cod_centro = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idporcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.row = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtSumaCargo = New System.Windows.Forms.TextBox()
         Me.txtSumaAbono = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
@@ -107,13 +113,6 @@ Partial Class RegistroFacGastosFrm
         Me.Label25 = New System.Windows.Forms.Label()
         Me.UUID = New System.Windows.Forms.MaskedTextBox()
         Me.dgvDistribuciondeGastos = New System.Windows.Forms.DataGridView()
-        Me.LabelBorrar = New System.Windows.Forms.Label()
-        Me.sucursal1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Prorrateo1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cuenta1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cod_centro = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.idporcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.row = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmIdPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmSucursal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmMetodoProrrateo = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -121,6 +120,7 @@ Partial Class RegistroFacGastosFrm
         Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmPorcentaje = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.rowid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelBorrar = New System.Windows.Forms.Label()
         CType(Me.DgvCuentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -714,6 +714,38 @@ Partial Class RegistroFacGastosFrm
         Me.dgvdistribuciongastosdet.RowHeadersVisible = False
         Me.dgvdistribuciongastosdet.Size = New System.Drawing.Size(235, 88)
         Me.dgvdistribuciongastosdet.TabIndex = 162
+        Me.dgvdistribuciongastosdet.Visible = False
+        '
+        'sucursal1
+        '
+        Me.sucursal1.HeaderText = "Sucursal"
+        Me.sucursal1.Name = "sucursal1"
+        '
+        'Prorrateo1
+        '
+        Me.Prorrateo1.HeaderText = "Metodo Prorrateo"
+        Me.Prorrateo1.Name = "Prorrateo1"
+        '
+        'Cuenta1
+        '
+        Me.Cuenta1.HeaderText = "Cuenta Contable"
+        Me.Cuenta1.Name = "Cuenta1"
+        '
+        'cod_centro
+        '
+        Me.cod_centro.HeaderText = "Centro Costos"
+        Me.cod_centro.Name = "cod_centro"
+        '
+        'idporcentaje
+        '
+        Me.idporcentaje.HeaderText = "Porcentaje"
+        Me.idporcentaje.Name = "idporcentaje"
+        '
+        'row
+        '
+        Me.row.DataPropertyName = "row"
+        Me.row.HeaderText = "row"
+        Me.row.Name = "row"
         '
         'txtSumaCargo
         '
@@ -881,46 +913,7 @@ Partial Class RegistroFacGastosFrm
         Me.dgvDistribuciondeGastos.RowHeadersVisible = False
         Me.dgvDistribuciondeGastos.Size = New System.Drawing.Size(410, 104)
         Me.dgvDistribuciondeGastos.TabIndex = 161
-        '
-        'LabelBorrar
-        '
-        Me.LabelBorrar.AutoSize = True
-        Me.LabelBorrar.Location = New System.Drawing.Point(4, 307)
-        Me.LabelBorrar.Name = "LabelBorrar"
-        Me.LabelBorrar.Size = New System.Drawing.Size(43, 13)
-        Me.LabelBorrar.TabIndex = 163
-        Me.LabelBorrar.Text = "Eliminar"
-        '
-        'sucursal1
-        '
-        Me.sucursal1.HeaderText = "Sucursal"
-        Me.sucursal1.Name = "sucursal1"
-        '
-        'Prorrateo1
-        '
-        Me.Prorrateo1.HeaderText = "Metodo Prorrateo"
-        Me.Prorrateo1.Name = "Prorrateo1"
-        '
-        'Cuenta1
-        '
-        Me.Cuenta1.HeaderText = "Cuenta Contable"
-        Me.Cuenta1.Name = "Cuenta1"
-        '
-        'cod_centro
-        '
-        Me.cod_centro.HeaderText = "Centro Costos"
-        Me.cod_centro.Name = "cod_centro"
-        '
-        'idporcentaje
-        '
-        Me.idporcentaje.HeaderText = "Porcentaje"
-        Me.idporcentaje.Name = "idporcentaje"
-        '
-        'row
-        '
-        Me.row.DataPropertyName = "row"
-        Me.row.HeaderText = "row"
-        Me.row.Name = "row"
+        Me.dgvDistribuciondeGastos.Visible = False
         '
         'clmIdPoliza
         '
@@ -963,6 +956,15 @@ Partial Class RegistroFacGastosFrm
         Me.rowid.DataPropertyName = "rowid"
         Me.rowid.HeaderText = "rowid"
         Me.rowid.Name = "rowid"
+        '
+        'LabelBorrar
+        '
+        Me.LabelBorrar.AutoSize = True
+        Me.LabelBorrar.Location = New System.Drawing.Point(4, 307)
+        Me.LabelBorrar.Name = "LabelBorrar"
+        Me.LabelBorrar.Size = New System.Drawing.Size(43, 13)
+        Me.LabelBorrar.TabIndex = 163
+        Me.LabelBorrar.Text = "Eliminar"
         '
         'RegistroFacGastosFrm
         '

@@ -22,35 +22,35 @@ Partial Class frmConsultaAnaliticaSaldos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.lblTitulo = New System.Windows.Forms.Label
-        Me.mtb = New MEAToolBar.MEAToolBar
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtSubCta = New Integralab.Controles.TextBoxMejorado
-        Me.txtCta = New Integralab.Controles.TextBoxMejorado
-        Me.txtSSSubCta = New Integralab.Controles.TextBoxMejorado
-        Me.txtSSubCta = New Integralab.Controles.TextBoxMejorado
-        Me.txtNombreCuenta = New Integralab.Controles.TextBoxMejorado
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.txtSaldoAnterior = New Integralab.Controles.TextBoxMejorado
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.txtSaldoActual = New Integralab.Controles.TextBoxMejorado
-        Me.txtAbonoMes = New Integralab.Controles.TextBoxMejorado
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.txtCargoMes = New Integralab.Controles.TextBoxMejorado
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.DataGridViewTextBoxFecha = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxConcepto = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Operacion2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PolizaDetalleC = New ClasesNegocio.PolizaDetalleCollectionClass
-        Me.CuentaContableC = New ClasesNegocio.CuentaContableCollectionClass
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.mtb = New MEAToolBar.MEAToolBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtSubCta = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtCta = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtSSSubCta = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtSSubCta = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtNombreCuenta = New IntegraLab.Controles.TextBoxMejorado()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtSaldoAnterior = New IntegraLab.Controles.TextBoxMejorado()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtSaldoActual = New IntegraLab.Controles.TextBoxMejorado()
+        Me.txtAbonoMes = New IntegraLab.Controles.TextBoxMejorado()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtCargoMes = New IntegraLab.Controles.TextBoxMejorado()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxConcepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Operacion2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PolizaDetalleC = New ClasesNegocio.PolizaDetalleCollectionClass()
+        Me.CuentaContableC = New ClasesNegocio.CuentaContableCollectionClass()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -119,7 +119,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtSubCta.SiguienteControl = Nothing
         Me.txtSubCta.Size = New System.Drawing.Size(45, 20)
         Me.txtSubCta.TabIndex = 9
-        Me.txtSubCta.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtSubCta.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtSubCta.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtSubCta.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'txtCta
         '
@@ -133,7 +135,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtCta.SiguienteControl = Nothing
         Me.txtCta.Size = New System.Drawing.Size(45, 20)
         Me.txtCta.TabIndex = 10
-        Me.txtCta.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtCta.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtCta.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtCta.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'txtSSSubCta
         '
@@ -147,7 +151,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtSSSubCta.SiguienteControl = Nothing
         Me.txtSSSubCta.Size = New System.Drawing.Size(45, 20)
         Me.txtSSSubCta.TabIndex = 11
-        Me.txtSSSubCta.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtSSSubCta.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtSSSubCta.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtSSSubCta.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'txtSSubCta
         '
@@ -161,7 +167,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtSSubCta.SiguienteControl = Nothing
         Me.txtSSubCta.Size = New System.Drawing.Size(45, 20)
         Me.txtSSubCta.TabIndex = 12
-        Me.txtSSubCta.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtSSubCta.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Numerico
+        Me.txtSSubCta.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtSSubCta.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'txtNombreCuenta
         '
@@ -174,7 +182,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtNombreCuenta.SiguienteControl = Nothing
         Me.txtNombreCuenta.Size = New System.Drawing.Size(350, 20)
         Me.txtNombreCuenta.TabIndex = 13
-        Me.txtNombreCuenta.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
+        Me.txtNombreCuenta.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Cadena
+        Me.txtNombreCuenta.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtNombreCuenta.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'DateTimePicker1
         '
@@ -208,7 +218,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtSaldoAnterior.SiguienteControl = Nothing
         Me.txtSaldoAnterior.Size = New System.Drawing.Size(113, 20)
         Me.txtSaldoAnterior.TabIndex = 17
-        Me.txtSaldoAnterior.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Moneda
+        Me.txtSaldoAnterior.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Moneda
+        Me.txtSaldoAnterior.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtSaldoAnterior.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'Label3
         '
@@ -241,7 +253,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtSaldoActual.SiguienteControl = Nothing
         Me.txtSaldoActual.Size = New System.Drawing.Size(113, 20)
         Me.txtSaldoActual.TabIndex = 19
-        Me.txtSaldoActual.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Moneda
+        Me.txtSaldoActual.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Moneda
+        Me.txtSaldoActual.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtSaldoActual.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'txtAbonoMes
         '
@@ -256,7 +270,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtAbonoMes.SiguienteControl = Nothing
         Me.txtAbonoMes.Size = New System.Drawing.Size(113, 20)
         Me.txtAbonoMes.TabIndex = 23
-        Me.txtAbonoMes.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Moneda
+        Me.txtAbonoMes.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Moneda
+        Me.txtAbonoMes.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtAbonoMes.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'Label5
         '
@@ -280,7 +296,9 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.txtCargoMes.SiguienteControl = Nothing
         Me.txtCargoMes.Size = New System.Drawing.Size(113, 20)
         Me.txtCargoMes.TabIndex = 21
-        Me.txtCargoMes.TipoValor = Integralab.Controles.TextBoxMejorado.TipoValorEnum.Moneda
+        Me.txtCargoMes.TipoValor = IntegraLab.Controles.TextBoxMejorado.TipoValorEnum.Moneda
+        Me.txtCargoMes.ValorMaximo = New Decimal(New Integer() {999999999, 0, 0, 0})
+        Me.txtCargoMes.ValorMinimo = New Decimal(New Integer() {0, 0, 0, 0})
         '
         'Label6
         '
@@ -297,8 +315,8 @@ Partial Class frmConsultaAnaliticaSaldos
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxFecha, Me.PolizaDataGridViewTextBoxColumn, Me.DataGridViewTextBoxConcepto, Me.Operacion2DataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn})

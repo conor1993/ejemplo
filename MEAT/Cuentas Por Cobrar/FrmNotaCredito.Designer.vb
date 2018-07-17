@@ -129,6 +129,8 @@ Partial Class FrmNotaCredito
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtUUID = New System.Windows.Forms.TextBox()
+        Me.txtSerieFolio = New System.Windows.Forms.TextBox()
+        Me.txtSerieFactura = New System.Windows.Forms.TextBox()
         Me.GroupBox3.SuspendLayout()
         CType(Me.dgvCuentasContables, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -195,7 +197,7 @@ Partial Class FrmNotaCredito
         '
         'txtFolioFactura
         '
-        Me.txtFolioFactura.Location = New System.Drawing.Point(99, 13)
+        Me.txtFolioFactura.Location = New System.Drawing.Point(715, 14)
         Me.txtFolioFactura.Name = "txtFolioFactura"
         Me.txtFolioFactura.ReadOnly = True
         Me.txtFolioFactura.Size = New System.Drawing.Size(90, 20)
@@ -643,6 +645,8 @@ Partial Class FrmNotaCredito
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtSerieFactura)
+        Me.GroupBox1.Controls.Add(Me.txtSerieFolio)
         Me.GroupBox1.Controls.Add(Me.txtFolioRelacion)
         Me.GroupBox1.Controls.Add(Me.lblRelacion)
         Me.GroupBox1.Controls.Add(Me.txtRelacion)
@@ -1077,6 +1081,22 @@ Partial Class FrmNotaCredito
         Me.txtUUID.Size = New System.Drawing.Size(377, 20)
         Me.txtUUID.TabIndex = 167
         '
+        'txtSerieFolio
+        '
+        Me.txtSerieFolio.Location = New System.Drawing.Point(99, 13)
+        Me.txtSerieFolio.Name = "txtSerieFolio"
+        Me.txtSerieFolio.ReadOnly = True
+        Me.txtSerieFolio.Size = New System.Drawing.Size(90, 20)
+        Me.txtSerieFolio.TabIndex = 180
+        '
+        'txtSerieFactura
+        '
+        Me.txtSerieFactura.Location = New System.Drawing.Point(619, 13)
+        Me.txtSerieFactura.Name = "txtSerieFactura"
+        Me.txtSerieFactura.ReadOnly = True
+        Me.txtSerieFactura.Size = New System.Drawing.Size(90, 20)
+        Me.txtSerieFactura.TabIndex = 181
+        '
         'FrmNotaCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1198,4 +1218,6 @@ Partial Class FrmNotaCredito
     Friend WithEvents btnRelacion As System.Windows.Forms.Button
     Friend WithEvents lblRelacion As System.Windows.Forms.Label
     Friend WithEvents txtFolioRelacion As System.Windows.Forms.TextBox
+    Friend WithEvents txtSerieFactura As System.Windows.Forms.TextBox
+    Friend WithEvents txtSerieFolio As System.Windows.Forms.TextBox
 End Class

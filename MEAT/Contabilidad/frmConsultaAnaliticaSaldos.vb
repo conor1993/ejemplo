@@ -2,6 +2,7 @@ Imports EC = IntegraLab.ORM.EntityClasses
 Imports CC = IntegraLab.ORM.CollectionClasses
 Imports HC = IntegraLab.ORM.HelperClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
+Imports CN = ClasesNegocio
 Imports System.Reflection
 
 Public Class frmConsultaAnaliticaSaldos
@@ -177,5 +178,26 @@ Public Class frmConsultaAnaliticaSaldos
 
     Private Sub frmConsultaAnaliticaSaldos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Limpiar()
+    End Sub
+
+    Private Sub txtCta_KeyDown(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles txtCta.KeyDown
+        Dim CtasBan As New CN.CuentaCollectionClass
+        If e.KeyCode = Keys.F3 Then
+            Try
+                Dim buscarCuenta As New BusquedaCuentasContablesForm
+                buscarCuenta.BloquearCaracteristicas = True
+                If buscarCuenta.ShowDialog = Windows.Forms.DialogResult.OK Then
+                    CtasBan.Obtener(buscarCuenta.CuentaContable.Codigo)
+                    txtCta.Text = buscarCuenta.CuentaContable.CuentaMayor
+                    txtSubCta.Text = buscarCuenta.CuentaContable.SubCuenta
+                    txtSSubCta.Text = buscarCuenta.CuentaContable.SSubCuenta
+                    txtSSSubCta.Text = buscarCuenta.CuentaContable.SSSubCuenta
+                    txtNombreCuenta.Text = buscarCuenta.CuentaContable.NombreCuenta
+                    ConsultarCuenta()
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+            End Try
+        End If
     End Sub
 End Class

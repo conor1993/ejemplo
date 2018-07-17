@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' //////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 30 de abril de 2018 09:07:35
+' // Code is generated on: jueves, 12 de julio de 2018 17:43:12
 ' // Code is generated using templates: SD.TemplateBindings.SqlServerSpecific.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -676,7 +676,7 @@ Namespace Integralab.ORM.HelperClasses
         ''' <summary>Inits CabFacturasEntity's mappings</summary>
         Private Sub InitCabFacturasEntityMappings()
             MyBase.AddElementMapping("CabFacturasEntity", "", "dbo", "CabFacturas", 35)
-            MyBase.AddElementFieldMapping("CabFacturasEntity", "FolFactura", "Fol_Factura", False, CInt(SqlDbType.Char), 8, 0, 0, False, "", Nothing, GetType(System.String), 0)
+            MyBase.AddElementFieldMapping("CabFacturasEntity", "FolFactura", "Fol_Factura", False, CInt(SqlDbType.Char), 20, 0, 0, False, "", Nothing, GetType(System.String), 0)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FecFactura", "Fec_Factura", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 1)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "FecCaptura", "Fec_Captura", True, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 2)
             MyBase.AddElementFieldMapping("CabFacturasEntity", "Referencia", "Referencia", True, CInt(SqlDbType.Int), 0, 0, 10, False, "", Nothing, GetType(System.Int32), 3)
@@ -1645,7 +1645,7 @@ Namespace Integralab.ORM.HelperClasses
         ''' <summary>Inits DetFacturasEntity's mappings</summary>
         Private Sub InitDetFacturasEntityMappings()
             MyBase.AddElementMapping("DetFacturasEntity", "", "dbo", "DetFacturas", 28)
-            MyBase.AddElementFieldMapping("DetFacturasEntity", "FolFactura", "Fol_Factura", False, CInt(SqlDbType.Char), 8, 0, 0, False, "", Nothing, GetType(System.String), 0)
+            MyBase.AddElementFieldMapping("DetFacturasEntity", "FolFactura", "Fol_Factura", False, CInt(SqlDbType.Char), 20, 0, 0, False, "", Nothing, GetType(System.String), 0)
             MyBase.AddElementFieldMapping("DetFacturasEntity", "CveRenglon", "Cve_Renglon", False, CInt(SqlDbType.SmallInt), 0, 0, 5, False, "", Nothing, GetType(System.Int16), 1)
             MyBase.AddElementFieldMapping("DetFacturasEntity", "FecFactura", "Fec_Factura", False, CInt(SqlDbType.DateTime), 0, 0, 0, False, "", Nothing, GetType(System.DateTime), 2)
             MyBase.AddElementFieldMapping("DetFacturasEntity", "TipoFactu", "TipoFactu", False, CInt(SqlDbType.SmallInt), 0, 0, 5, False, "", Nothing, GetType(System.Int16), 3)

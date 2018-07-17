@@ -110,6 +110,7 @@ Public Class frmBusquedaNotas
         cmbClientes.SelectedIndex = -1
         If busquedaNotas Then
             Me.Text = "Busqueda de Notas de Credito"
+            Me.dgvFacturasCabecero.Columns("clmSerie").Visible = True
         End If
     End Sub
     Private Sub Acciones_Menu(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar, mtb.ClickBuscar, mtb.ClickCancelar, mtb.ClickEditar, mtb.ClickGuardar, mtb.ClickImprimir, mtb.ClickLimpiar, mtb.ClickNuevo, mtb.ClickSalir
