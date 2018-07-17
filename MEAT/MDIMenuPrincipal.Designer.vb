@@ -261,6 +261,7 @@ Partial Class MDIMenuPrincipal
         Me.PagosDeClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CarteraPorTipoProductoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CarteraPorVendedorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EstadoDeCuentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContabilidadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CapturaDePolizasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActualizarSaldosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -296,7 +297,6 @@ Partial Class MDIMenuPrincipal
         Me.AuxiliarDeCuentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MayorGeneralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BalanzaDeComprobaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RelacionesAnalitícasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DepartartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BancosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovimientosDiariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -359,6 +359,7 @@ Partial Class MDIMenuPrincipal
         Me.MovimientosDeAlmacénPorProductoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TarjetaAuxiliarDeCortesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransferenciasDeCajasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InventarioValorizadoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.GeneralToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioValorizadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KardexToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -443,7 +444,6 @@ Partial Class MDIMenuPrincipal
         Me.CachedRptVentasPorProducto4 = New MEAT.CachedRptVentasPorProducto()
         Me.CachedRptVentasPorProducto5 = New MEAT.CachedRptVentasPorProducto()
         Me.reportDocument1 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
-        Me.InventarioValorizadoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -1111,37 +1111,37 @@ Partial Class MDIMenuPrincipal
         'RecepciónDeCompraToolStripMenuItem1
         '
         Me.RecepciónDeCompraToolStripMenuItem1.Name = "RecepciónDeCompraToolStripMenuItem1"
-        Me.RecepciónDeCompraToolStripMenuItem1.Size = New System.Drawing.Size(351, 22)
+        Me.RecepciónDeCompraToolStripMenuItem1.Size = New System.Drawing.Size(349, 22)
         Me.RecepciónDeCompraToolStripMenuItem1.Text = "Compras de Ganado"
         '
         'MermasToolStripMenuItem
         '
         Me.MermasToolStripMenuItem.Name = "MermasToolStripMenuItem"
-        Me.MermasToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
+        Me.MermasToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
         Me.MermasToolStripMenuItem.Text = "De Mermas"
         '
         'DeTransferenciasRecepcionLotesToolStripMenuItem
         '
         Me.DeTransferenciasRecepcionLotesToolStripMenuItem.Name = "DeTransferenciasRecepcionLotesToolStripMenuItem"
-        Me.DeTransferenciasRecepcionLotesToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
+        Me.DeTransferenciasRecepcionLotesToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
         Me.DeTransferenciasRecepcionLotesToolStripMenuItem.Text = "De Transferencias de Recepcion a Lotes de Engorda"
         '
         'DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem
         '
         Me.DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem.Name = "DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem"
-        Me.DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
+        Me.DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
         Me.DeTransferenciasDeRecepcionTotalizadoPorLotesToolStripMenuItem.Text = "De Transferencias de Recepcion Totalizado por Lotes"
         '
         'ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem
         '
         Me.ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem.Name = "ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem"
-        Me.ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
+        Me.ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
         Me.ProrrateosDeCostosPorCierreDeRecibaToolStripMenuItem.Text = "Prorrateos de Costos por Cierre de Reciba"
         '
         'DeSalidasDeCorralDeRecepcionToolStripMenuItem
         '
         Me.DeSalidasDeCorralDeRecepcionToolStripMenuItem.Name = "DeSalidasDeCorralDeRecepcionToolStripMenuItem"
-        Me.DeSalidasDeCorralDeRecepcionToolStripMenuItem.Size = New System.Drawing.Size(351, 22)
+        Me.DeSalidasDeCorralDeRecepcionToolStripMenuItem.Size = New System.Drawing.Size(349, 22)
         Me.DeSalidasDeCorralDeRecepcionToolStripMenuItem.Text = "De Salidas de Corral de Recepcion"
         '
         'CorralesToolStripMenuItem1
@@ -1203,25 +1203,25 @@ Partial Class MDIMenuPrincipal
         'ARastroToolStripMenuItem2
         '
         Me.ARastroToolStripMenuItem2.Name = "ARastroToolStripMenuItem2"
-        Me.ARastroToolStripMenuItem2.Size = New System.Drawing.Size(166, 22)
+        Me.ARastroToolStripMenuItem2.Size = New System.Drawing.Size(165, 22)
         Me.ARastroToolStripMenuItem2.Text = "a Rastro"
         '
         'AVentaToolStripMenuItem
         '
         Me.AVentaToolStripMenuItem.Name = "AVentaToolStripMenuItem"
-        Me.AVentaToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.AVentaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.AVentaToolStripMenuItem.Text = "a Venta"
         '
         'PorMuerteToolStripMenuItem2
         '
         Me.PorMuerteToolStripMenuItem2.Name = "PorMuerteToolStripMenuItem2"
-        Me.PorMuerteToolStripMenuItem2.Size = New System.Drawing.Size(166, 22)
+        Me.PorMuerteToolStripMenuItem2.Size = New System.Drawing.Size(165, 22)
         Me.PorMuerteToolStripMenuItem2.Text = "por Muerte"
         '
         'PorTransferenciaToolStripMenuItem
         '
         Me.PorTransferenciaToolStripMenuItem.Name = "PorTransferenciaToolStripMenuItem"
-        Me.PorTransferenciaToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.PorTransferenciaToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.PorTransferenciaToolStripMenuItem.Text = "por Transferencia"
         '
         'ToolStripSeparator8
@@ -1631,7 +1631,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.FacturacionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguracionFacturaciontsmi, Me.FacturaDeCortesToolStripMenuItem, Me.RegistroDeFacturasToolStripMenuItem, Me.DevoluciónVentaToolStripMenuItem, Me.ToolStripMenuItem4, Me.ReportesToolStripMenuItem5})
         Me.FacturacionToolStripMenuItem.Name = "FacturacionToolStripMenuItem"
-        Me.FacturacionToolStripMenuItem.Size = New System.Drawing.Size(54, 19)
+        Me.FacturacionToolStripMenuItem.Size = New System.Drawing.Size(53, 19)
         Me.FacturacionToolStripMenuItem.Text = "Ventas"
         '
         'ConfiguracionFacturaciontsmi
@@ -1868,7 +1868,7 @@ Partial Class MDIMenuPrincipal
         '
         'ReportesToolStripMenuItem3
         '
-        Me.ReportesToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstadoDeCuenta, Me.Saldos, Me.PagosDeClientesToolStripMenuItem, Me.CarteraPorTipoProductoToolStripMenuItem, Me.CarteraPorVendedorToolStripMenuItem})
+        Me.ReportesToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstadoDeCuenta, Me.Saldos, Me.PagosDeClientesToolStripMenuItem, Me.CarteraPorTipoProductoToolStripMenuItem, Me.CarteraPorVendedorToolStripMenuItem, Me.EstadoDeCuentasToolStripMenuItem})
         Me.ReportesToolStripMenuItem3.Name = "ReportesToolStripMenuItem3"
         Me.ReportesToolStripMenuItem3.Size = New System.Drawing.Size(241, 22)
         Me.ReportesToolStripMenuItem3.Text = "Reportes"
@@ -1876,32 +1876,38 @@ Partial Class MDIMenuPrincipal
         'EstadoDeCuenta
         '
         Me.EstadoDeCuenta.Name = "EstadoDeCuenta"
-        Me.EstadoDeCuenta.Size = New System.Drawing.Size(228, 22)
+        Me.EstadoDeCuenta.Size = New System.Drawing.Size(252, 22)
         Me.EstadoDeCuenta.Text = "Estado de Cuenta"
         '
         'Saldos
         '
         Me.Saldos.Name = "Saldos"
-        Me.Saldos.Size = New System.Drawing.Size(228, 22)
+        Me.Saldos.Size = New System.Drawing.Size(252, 22)
         Me.Saldos.Text = "Saldos"
         '
         'PagosDeClientesToolStripMenuItem
         '
         Me.PagosDeClientesToolStripMenuItem.Name = "PagosDeClientesToolStripMenuItem"
-        Me.PagosDeClientesToolStripMenuItem.Size = New System.Drawing.Size(228, 22)
+        Me.PagosDeClientesToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
         Me.PagosDeClientesToolStripMenuItem.Text = "Pagos de Clientes"
         '
         'CarteraPorTipoProductoToolStripMenuItem
         '
         Me.CarteraPorTipoProductoToolStripMenuItem.Name = "CarteraPorTipoProductoToolStripMenuItem"
-        Me.CarteraPorTipoProductoToolStripMenuItem.Size = New System.Drawing.Size(228, 22)
+        Me.CarteraPorTipoProductoToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
         Me.CarteraPorTipoProductoToolStripMenuItem.Text = "Cartera Por Tipo de Producto"
         '
         'CarteraPorVendedorToolStripMenuItem
         '
         Me.CarteraPorVendedorToolStripMenuItem.Name = "CarteraPorVendedorToolStripMenuItem"
-        Me.CarteraPorVendedorToolStripMenuItem.Size = New System.Drawing.Size(228, 22)
+        Me.CarteraPorVendedorToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
         Me.CarteraPorVendedorToolStripMenuItem.Text = "Cartera Por Vendedor"
+        '
+        'EstadoDeCuentasToolStripMenuItem
+        '
+        Me.EstadoDeCuentasToolStripMenuItem.Name = "EstadoDeCuentasToolStripMenuItem"
+        Me.EstadoDeCuentasToolStripMenuItem.Size = New System.Drawing.Size(252, 22)
+        Me.EstadoDeCuentasToolStripMenuItem.Text = "Estado de Cuentas de Provedores "
         '
         'ContabilidadToolStripMenuItem
         '
@@ -1920,7 +1926,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.ActualizarSaldosToolStripMenuItem.Name = "ActualizarSaldosToolStripMenuItem"
         Me.ActualizarSaldosToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
-        Me.ActualizarSaldosToolStripMenuItem.Text = "Actualizar Saldos"
+        Me.ActualizarSaldosToolStripMenuItem.Text = "Recalculo de saldos"
         '
         'DesactualizaciónDeSaldosToolStripMenuItem
         '
@@ -2064,7 +2070,7 @@ Partial Class MDIMenuPrincipal
         '
         'ReportesToolStripMenuItem8
         '
-        Me.ReportesToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BalanceGeneralToolStripMenuItem, Me.EsatdoDeResultadosToolStripMenuItem, Me.ReporteDeDiariosDePólizasToolStripMenuItem, Me.ReporteDeEmisiónDePólizasToolStripMenuItem, Me.ReporteVerificadorDePólizasToolStripMenuItem, Me.AuxiliarDeCuentasToolStripMenuItem, Me.MayorGeneralToolStripMenuItem, Me.BalanzaDeComprobaciónToolStripMenuItem, Me.RelacionesAnalitícasToolStripMenuItem, Me.DepartartamentosToolStripMenuItem})
+        Me.ReportesToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BalanceGeneralToolStripMenuItem, Me.EsatdoDeResultadosToolStripMenuItem, Me.ReporteDeDiariosDePólizasToolStripMenuItem, Me.ReporteDeEmisiónDePólizasToolStripMenuItem, Me.ReporteVerificadorDePólizasToolStripMenuItem, Me.AuxiliarDeCuentasToolStripMenuItem, Me.MayorGeneralToolStripMenuItem, Me.BalanzaDeComprobaciónToolStripMenuItem, Me.DepartartamentosToolStripMenuItem})
         Me.ReportesToolStripMenuItem8.Name = "ReportesToolStripMenuItem8"
         Me.ReportesToolStripMenuItem8.Size = New System.Drawing.Size(215, 22)
         Me.ReportesToolStripMenuItem8.Text = "Reportes"
@@ -2116,12 +2122,6 @@ Partial Class MDIMenuPrincipal
         Me.BalanzaDeComprobaciónToolStripMenuItem.Name = "BalanzaDeComprobaciónToolStripMenuItem"
         Me.BalanzaDeComprobaciónToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.BalanzaDeComprobaciónToolStripMenuItem.Text = "Balanza de Comprobación"
-        '
-        'RelacionesAnalitícasToolStripMenuItem
-        '
-        Me.RelacionesAnalitícasToolStripMenuItem.Name = "RelacionesAnalitícasToolStripMenuItem"
-        Me.RelacionesAnalitícasToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-        Me.RelacionesAnalitícasToolStripMenuItem.Text = "Relaciones Analitícas"
         '
         'DepartartamentosToolStripMenuItem
         '
@@ -2308,7 +2308,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.MovimientosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem2, Me.GeneralesToolStripMenuItem1})
         Me.MovimientosToolStripMenuItem.Name = "MovimientosToolStripMenuItem"
-        Me.MovimientosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MovimientosToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
         Me.MovimientosToolStripMenuItem.Text = "Movimientos"
         '
         'ProducciónToolStripMenuItem2
@@ -2321,7 +2321,7 @@ Partial Class MDIMenuPrincipal
         'TransferenciasCajasToolStripMenuItem
         '
         Me.TransferenciasCajasToolStripMenuItem.Name = "TransferenciasCajasToolStripMenuItem"
-        Me.TransferenciasCajasToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.TransferenciasCajasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TransferenciasCajasToolStripMenuItem.Text = "Transferencias Cajas"
         '
         'GeneralesToolStripMenuItem1
@@ -2382,14 +2382,14 @@ Partial Class MDIMenuPrincipal
         '
         Me.InventarioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem1, Me.GeneralToolStripMenuItem})
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
-        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
         Me.InventarioToolStripMenuItem.Text = "Inventario"
         '
         'ProducciónToolStripMenuItem1
         '
         Me.ProducciónToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem12, Me.ToolStripMenuItem11, Me.ToolStripMenuItem10, Me.ToolStripMenuItem7, Me.ToolStripMenuItem9})
         Me.ProducciónToolStripMenuItem1.Name = "ProducciónToolStripMenuItem1"
-        Me.ProducciónToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ProducciónToolStripMenuItem1.Size = New System.Drawing.Size(135, 22)
         Me.ProducciónToolStripMenuItem1.Text = "Producción"
         '
         'ToolStripMenuItem12
@@ -2427,7 +2427,7 @@ Partial Class MDIMenuPrincipal
         '
         Me.GeneralToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeMarbetesToolStripMenuItem, Me.CapturaInventarioToolStripMenuItem, Me.AnalisisDeInventarioToolStripMenuItem, Me.InventarioFisicoToolStripMenuItem, Me.SustituciónDeInventarioToolStripMenuItem})
         Me.GeneralToolStripMenuItem.Name = "GeneralToolStripMenuItem"
-        Me.GeneralToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GeneralToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.GeneralToolStripMenuItem.Text = "General"
         '
         'ReporteDeMarbetesToolStripMenuItem
@@ -2463,20 +2463,20 @@ Partial Class MDIMenuPrincipal
         'ToolStripSeparator17
         '
         Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
-        Me.ToolStripSeparator17.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator17.Size = New System.Drawing.Size(141, 6)
         '
         'ReportesToolStripMenuItem4
         '
         Me.ReportesToolStripMenuItem4.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProducciónToolStripMenuItem3, Me.GeneralToolStripMenuItem2})
         Me.ReportesToolStripMenuItem4.Name = "ReportesToolStripMenuItem4"
-        Me.ReportesToolStripMenuItem4.Size = New System.Drawing.Size(152, 22)
+        Me.ReportesToolStripMenuItem4.Size = New System.Drawing.Size(144, 22)
         Me.ReportesToolStripMenuItem4.Text = "Reportes"
         '
         'ProducciónToolStripMenuItem3
         '
         Me.ProducciónToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.KArdexToolStripMenuItem1, Me.MovimientosDeAlmacénToolStripMenuItem, Me.MovimientosDeAlmacénPorProductoToolStripMenuItem, Me.TarjetaAuxiliarDeCortesToolStripMenuItem, Me.TransferenciasDeCajasToolStripMenuItem, Me.InventarioValorizadoToolStripMenuItem1})
         Me.ProducciónToolStripMenuItem3.Name = "ProducciónToolStripMenuItem3"
-        Me.ProducciónToolStripMenuItem3.Size = New System.Drawing.Size(152, 22)
+        Me.ProducciónToolStripMenuItem3.Size = New System.Drawing.Size(135, 22)
         Me.ProducciónToolStripMenuItem3.Text = "Produccion"
         '
         'KArdexToolStripMenuItem1
@@ -2509,11 +2509,17 @@ Partial Class MDIMenuPrincipal
         Me.TransferenciasDeCajasToolStripMenuItem.Size = New System.Drawing.Size(283, 22)
         Me.TransferenciasDeCajasToolStripMenuItem.Text = "Transferencias de Cajas"
         '
+        'InventarioValorizadoToolStripMenuItem1
+        '
+        Me.InventarioValorizadoToolStripMenuItem1.Name = "InventarioValorizadoToolStripMenuItem1"
+        Me.InventarioValorizadoToolStripMenuItem1.Size = New System.Drawing.Size(283, 22)
+        Me.InventarioValorizadoToolStripMenuItem1.Text = "Inventario valorizado"
+        '
         'GeneralToolStripMenuItem2
         '
         Me.GeneralToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventarioValorizadoToolStripMenuItem, Me.KardexToolStripMenuItem, Me.InventarioPorProductoToolStripMenuItem, Me.MovimientosDeAlmacénToolStripMenuItem1, Me.MovimientosDeAlmacénPorProductoToolStripMenuItem1})
         Me.GeneralToolStripMenuItem2.Name = "GeneralToolStripMenuItem2"
-        Me.GeneralToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
+        Me.GeneralToolStripMenuItem2.Size = New System.Drawing.Size(135, 22)
         Me.GeneralToolStripMenuItem2.Text = "General"
         '
         'InventarioValorizadoToolStripMenuItem
@@ -2958,7 +2964,7 @@ Partial Class MDIMenuPrincipal
         'SqlConnection1
         '
         Me.SqlConnection1.ConnectionString = "Data Source=INTEGRASRV;Initial Catalog=GANADERA;Persist Security Info=True;User I" & _
-    "D=sa;Password=1nt3gr@2006"
+            "D=sa;Password=1nt3gr@2006"
         Me.SqlConnection1.FireInfoMessageEventOnUserErrors = False
         '
         'DerechosAMenusToolStripMenuItem
@@ -2985,12 +2991,6 @@ Partial Class MDIMenuPrincipal
         '
         Me.tmHora.Enabled = True
         Me.tmHora.Interval = 1000
-        '
-        'InventarioValorizadoToolStripMenuItem1
-        '
-        Me.InventarioValorizadoToolStripMenuItem1.Name = "InventarioValorizadoToolStripMenuItem1"
-        Me.InventarioValorizadoToolStripMenuItem1.Size = New System.Drawing.Size(283, 22)
-        Me.InventarioValorizadoToolStripMenuItem1.Text = "Inventario valorizado"
         '
         'MDIMenuPrincipal
         '
@@ -3305,7 +3305,6 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents MayorGeneralToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InventarioValorizadoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BalanzaDeComprobaciónToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RelacionesAnalitícasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MovimientosDeAlmacénToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SalidaDeMedicamentoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem21 As System.Windows.Forms.ToolStripSeparator
@@ -3439,4 +3438,5 @@ Partial Class MDIMenuPrincipal
     Friend WithEvents reportDocument1 As CrystalDecisions.CrystalReports.Engine.ReportDocument
     Friend WithEvents RendimientosporFechaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InventarioValorizadoToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EstadoDeCuentasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

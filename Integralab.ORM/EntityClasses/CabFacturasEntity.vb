@@ -2,7 +2,7 @@
 ' // This is generated code. 
 ' ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ' // Code is generated using LLBLGen Pro version: 2.0.0.0
-' // Code is generated on: lunes, 30 de abril de 2018 09:07:34
+' // Code is generated on: jueves, 12 de julio de 2018 17:43:09
 ' // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET20
 ' // Templates vendor: Solutions Design.
 ' // Templates version: 
@@ -1159,7 +1159,7 @@ Namespace Integralab.ORM.EntityClasses
 		''' </summary>
 		''' <remarks>
 		''' Mapped on table field: "CabFacturas"."Fol_Factura"<br/>
-		''' Table field type characteristics (type, precision, scale, length): Char, 0, 0, 8<br/>
+		''' Table field type characteristics (type, precision, scale, length): Char, 0, 0, 20<br/>
 		''' Table field behavior characteristics (is nullable, is PK, is identity): False, True, False
 		''' </remarks>
 		Public Overridable Property [FolFactura]() As System.String

@@ -22,26 +22,30 @@ Partial Class frmRptBalanzaDeComprobacion
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem6 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem7 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem8 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem9 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem10 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem11 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Dim ValueListItem12 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem
-        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.ultcmbMes = New Infragistics.Win.UltraWinEditors.UltraComboEditor
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.lblTitulo = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem6 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem7 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem8 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem9 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem10 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem11 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem12 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Me.MEAToolBar1 = New MEAToolBar.MEAToolBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ultcmbMes = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.rdtSimplificado = New System.Windows.Forms.RadioButton()
+        Me.rdtDetallado = New System.Windows.Forms.RadioButton()
         CType(Me.ultcmbMes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MEAToolBar1
@@ -121,8 +125,7 @@ Partial Class frmRptBalanzaDeComprobacion
         '
         'PictureBox1
         '
-        'Me.PictureBox1.Image = Global.FLEXI.My.Resources.Resources.barraProgreso
-        Me.PictureBox1.Location = New System.Drawing.Point(125, 119)
+        Me.PictureBox1.Location = New System.Drawing.Point(114, 180)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(201, 20)
         Me.PictureBox1.TabIndex = 42
@@ -142,11 +145,44 @@ Partial Class frmRptBalanzaDeComprobacion
         Me.lblTitulo.Text = "BALANZA DE COMPROBACIÓN"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.rdtSimplificado)
+        Me.GroupBox1.Controls.Add(Me.rdtDetallado)
+        Me.GroupBox1.Location = New System.Drawing.Point(91, 98)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(260, 76)
+        Me.GroupBox1.TabIndex = 44
+        Me.GroupBox1.TabStop = False
+        '
+        'rdtSimplificado
+        '
+        Me.rdtSimplificado.AutoSize = True
+        Me.rdtSimplificado.Location = New System.Drawing.Point(152, 33)
+        Me.rdtSimplificado.Name = "rdtSimplificado"
+        Me.rdtSimplificado.Size = New System.Drawing.Size(81, 17)
+        Me.rdtSimplificado.TabIndex = 1
+        Me.rdtSimplificado.TabStop = True
+        Me.rdtSimplificado.Text = "Simplificado"
+        Me.rdtSimplificado.UseVisualStyleBackColor = True
+        '
+        'rdtDetallado
+        '
+        Me.rdtDetallado.AutoSize = True
+        Me.rdtDetallado.Location = New System.Drawing.Point(7, 33)
+        Me.rdtDetallado.Name = "rdtDetallado"
+        Me.rdtDetallado.Size = New System.Drawing.Size(70, 17)
+        Me.rdtDetallado.TabIndex = 0
+        Me.rdtDetallado.TabStop = True
+        Me.rdtDetallado.Text = "Detallado"
+        Me.rdtDetallado.UseVisualStyleBackColor = True
+        '
         'frmRptBalanzaDeComprobacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(420, 178)
+        Me.ClientSize = New System.Drawing.Size(456, 227)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ultcmbMes)
@@ -156,6 +192,8 @@ Partial Class frmRptBalanzaDeComprobacion
         Me.Text = "Balanza de Comprobación"
         CType(Me.ultcmbMes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -165,4 +203,7 @@ Partial Class frmRptBalanzaDeComprobacion
     Friend WithEvents ultcmbMes As Infragistics.Win.UltraWinEditors.UltraComboEditor
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents rdtSimplificado As System.Windows.Forms.RadioButton
+    Friend WithEvents rdtDetallado As System.Windows.Forms.RadioButton
 End Class

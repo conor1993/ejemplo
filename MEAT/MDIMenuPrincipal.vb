@@ -1055,7 +1055,7 @@ Public Class MDIMenuPrincipal
         Abrir(frmRptBalanzaDeComprobacion)
     End Sub
 
-    Private Sub RelacionesAnalitícasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RelacionesAnalitícasToolStripMenuItem.Click
+    Private Sub RelacionesAnalitícasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Abrir(frmRptRelacionesAnaliticas)
     End Sub
 
@@ -1553,9 +1553,7 @@ Public Class MDIMenuPrincipal
     End Sub
 
     Private Sub CierresContablesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CierresContablesToolStripMenuItem.Click
-
         Abrir(frmCierreContableAnual)
-
     End Sub
 
     Private Sub CancelaciónDeCierresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CancelaciónDeCierresToolStripMenuItem.Click
@@ -1570,4 +1568,7 @@ Public Class MDIMenuPrincipal
         Abrir(frmpinventariovalorizado)
     End Sub
 
+    Private Sub EstadoDeCuentasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EstadoDeCuentasToolStripMenuItem.Click
+        Abrir(frmEstadoCuentasProvedores)
+    End Sub
 End Class

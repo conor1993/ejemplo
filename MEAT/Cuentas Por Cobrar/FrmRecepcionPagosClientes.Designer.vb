@@ -91,6 +91,7 @@ Partial Class FrmRecepcionPagosClientes
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CachedcrEmisionOrdenCompra1 = New MEAT.CachedcrEmisionOrdenCompra()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DgvFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -778,4 +779,5 @@ Partial Class FrmRecepcionPagosClientes
     Friend WithEvents clmApagar As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmIdCliente As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmSerie As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CachedcrEmisionOrdenCompra1 As CachedcrEmisionOrdenCompra
 End Class

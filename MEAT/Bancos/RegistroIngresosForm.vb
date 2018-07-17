@@ -192,6 +192,7 @@ Public Class RegistroIngresosForm
         Me.txtAbono.Enabled = True
         Me.txtCargo.Enabled = True
         Me.txtImporte.Enabled = False
+        Me.txtConcepto.Enabled = True
     End Sub
 
     Public Sub Lectura() Implements InterfaceForm.Lectura

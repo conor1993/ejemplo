@@ -19,8 +19,13 @@ Public Class FrmRptDiariosPolizas
     Private Function Imprimir() As Boolean
         If Me.Validate() Then
             'PolizaCollectionClass.Imprimir(Controlador.Sesion, PolizaCollectionClass.TipoReporte.Diarios_de_Polizas, New OC.FieldBetweenPredicate(HC.PolizaFields.FechaPoliza, dtpFechaInicial.Value, dtpFechaFinal.Value.AddDays(1)) And HC.PolizaFields.Estatus = 2)    ----  con estatus = 2 son las polizaas aplicadas
+            If (rdtnormal.Checked) Then
+                PolizaCollectionClass.Imprimir(Controlador.Sesion, PolizaCollectionClass.TipoReporte.Diarios_de_Polizas, New OC.FieldBetweenPredicate(HC.PolizaFields.FechaPoliza, dtpFechaInicial.Value, dtpFechaFinal.Value.AddDays(1)) And HC.PolizaFields.Estatus = 1, 0)
+            Else
+                PolizaCollectionClass.Imprimir(Controlador.Sesion, PolizaCollectionClass.TipoReporte.Diarios_de_Polizas, New OC.FieldBetweenPredicate(HC.PolizaFields.FechaPoliza, dtpFechaInicial.Value, dtpFechaFinal.Value.AddDays(1)) And HC.PolizaFields.Estatus = 1, 1)
+            End If
 
-            PolizaCollectionClass.Imprimir(Controlador.Sesion, PolizaCollectionClass.TipoReporte.Diarios_de_Polizas, New OC.FieldBetweenPredicate(HC.PolizaFields.FechaPoliza, dtpFechaInicial.Value, dtpFechaFinal.Value.AddDays(1)) And HC.PolizaFields.Estatus = 1)
+
         End If
     End Function
 #End Region
@@ -42,6 +47,7 @@ Public Class FrmRptDiariosPolizas
 
     Private Sub FrmRptDiariosPolizas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Limpiar()
+        rdtnormal.Checked = True
     End Sub
 
     Private Sub dtpFechaInicial_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles dtpFechaInicial.Validating
