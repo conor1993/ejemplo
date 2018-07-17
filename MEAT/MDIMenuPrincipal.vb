@@ -1570,4 +1570,7 @@ Public Class MDIMenuPrincipal
         Abrir(frmpinventariovalorizado)
     End Sub
 
+    Private Sub EstadoDeCuentasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EstadoDeCuentasToolStripMenuItem.Click
+        Abrir(frmEstadoCuentasProvedores)
+    End Sub
 End Class
