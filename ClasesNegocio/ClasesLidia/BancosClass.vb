@@ -273,7 +273,7 @@ Public Class BancosCollectionClass
         Try
             Me.Clear()
             If Not Descripcion = "" Then
-                BancoCollection.GetMulti(HC.BancosFields.DescripcionCorta Mod String.Format("%{0}%", Descripcion))
+                BancoCollection.GetMulti(HC.BancosFields.Descripcion Mod String.Format("%{0}%", Descripcion))
             Else
                 BancoCollection.GetMulti(Nothing)
             End If

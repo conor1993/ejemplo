@@ -1055,7 +1055,7 @@ Public Class MDIMenuPrincipal
         Abrir(frmRptBalanzaDeComprobacion)
     End Sub
 
-    Private Sub RelacionesAnalitícasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RelacionesAnalitícasToolStripMenuItem.Click
+    Private Sub RelacionesAnalitícasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Abrir(frmRptRelacionesAnaliticas)
     End Sub
 
