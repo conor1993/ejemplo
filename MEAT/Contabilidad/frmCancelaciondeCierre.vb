@@ -8,8 +8,8 @@ Public Class frmCancelaciondeCierre
     End Sub
 
     Private Sub btn_CancelarAnio_Click(sender As Object, e As EventArgs) Handles btn_CancelarAnio.Click
-        If (MessageBox.Show("Se eliminaran todos los moviminetos del cierre contable " + tb_Anio.Text + ". ¿Desea continuar? " +
-                            "¿Desea continuar?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK) Then
+        If (MessageBox.Show("Se eliminaran todos los moviminetos del cierre contable " + (Int32.Parse(tb_Anio.Text) + 1).ToString() + ". ¿Desea continuar? ",
+                            "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK) Then
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 connection.Open()
                 Dim query As String = "EXEC cancelacionCierre {0}"

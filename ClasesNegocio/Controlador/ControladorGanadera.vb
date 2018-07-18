@@ -5111,7 +5111,7 @@ Partial Public Class ControladorGanadera
         'End If
         'ds.Tables.Add(dt)
 
-        Dim query As String = "SELECT  AC.Codigo AS IdCuentaContable, CC.Naturaleza, CC.Cta, CC.SubCta, CC.SSubCta, CC.SSSubCta, CC.NomCuenta AS DescripcionCuentaContable, " +
+        Dim query As String = "SELECT  AC.Codigo AS IdCuentaContable, 'Naturaleza' =  CASE WHEN CC.Naturaleza = 'A' THEN 'Acreedoras' WHEN CC.Naturaleza = 'D' THEN 'Deudoras' END, CC.Cta, CC.SubCta, CC.SSubCta, CC.SSSubCta, CC.NomCuenta AS DescripcionCuentaContable, " +
             "AC.SaldoIniEjer AS SaldoAnterior, AC.Cargos{0} AS Cargo, AC.Abonos{0} AS Abono, AC.SaldoFinEjer AS SaldoActual " +
             "FROM AcumuladoCuentasContables AC INNER JOIN usrContCuentas CC ON AC.Codigo = CC.codigo " +
             "WHERE CC.SubCta = '0000' AND CC.SSubCta = '0000' AND CC.SSSubCta = '0000' AND Ejercicio = {1} ORDER BY Cta"
@@ -5137,8 +5137,8 @@ Partial Public Class ControladorGanadera
         Reporte.SetParameterValue(0, Sesion.MiEmpresa.Empnom)
         Reporte.SetParameterValue(1, Sesion.MiUsuario.Usrnomcom)
         Reporte.SetParameterValue(2, "Contabilidad/Reportes/Mayor General")
-        Reporte.SetParameterValue(3, Me.Culture.DateTimeFormat.GetMonthName(Mes).ToUpper())
-        Reporte.SetParameterValue(4, ordenar)
+        Reporte.SetParameterValue(3, Me.Culture.DateTimeFormat.GetMonthName(Convert.ToInt32(Mes)).ToUpper())
+        'Reporte.SetParameterValue(4, ordenar)
         Previsualizar.Reporte = Reporte
         Previsualizar.ShowDialog()
 
