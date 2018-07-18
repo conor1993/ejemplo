@@ -5079,45 +5079,69 @@ Partial Public Class ControladorGanadera
         Previsualizar.ShowDialog()
     End Sub
 
-    Public Sub ReporteMayorGeneral(ByVal Mes As MesEnum2, ByVal anio As Integer)
+    Public Sub ReporteMayorGeneral(ByVal Mes As String, ByVal ejercicio As String, ByVal ordenar As Boolean)
         Dim Previsualizar As New PreVisualizarForm
         Dim Reporte As New RptMayorGeneral
-        Dim ds As New DataSet
-        Dim dt As New dsRptMayorGeneral.MayorGeneralDataTable
-        Dim CuentasContables As CC.CuentaContableCollection = ObtenerCuentasMaestras() 'Regresa las cuentas mayores, activas y de ambas naturaleza(A,D)
-        Dim FechaInicial As Date = Date.Parse(anio & "-" & CInt(Mes).ToString.PadLeft(2, "0") & "-" & "01") 'inicio del mes seleccionado
-        Dim FechaFinal As Date = Date.Parse(anio & "-" & (Mes + 1).ToString.PadLeft(2, "0") & "-" & "01").AddDays(-1) 'ultimo dia del mes selecionado
+        'Dim ds As New DataSet
+        'Dim dt As New dsRptMayorGeneral.MayorGeneralDataTable
+        'Dim CuentasContables As CC.CuentaContableCollection = ObtenerCuentasMaestras() 'Regresa las cuentas mayores, activas y de ambas naturaleza(A,D)
+        'Dim FechaInicial As Date = Date.Parse(anio & "-" & CInt(Mes).ToString.PadLeft(2, "0") & "-" & "01") 'inicio del mes seleccionado
+        'Dim FechaFinal As Date = Date.Parse(anio & "-" & (Mes + 1).ToString.PadLeft(2, "0") & "-" & "01").AddDays(-1) 'ultimo dia del mes selecionado
 
-        For Each Cuenta As EC.CuentaContableEntity In CuentasContables 'Hace un ciclo por cada una de las cuetas anteriormente
-            Dim CuentaContable As New CuentaContableClass(Cuenta) '??
-            Dim SaldoAnterior As Decimal = CuentaContable.CalcularSaldoInicial(FechaInicial.AddDays(-1), True) 'toma el valor del año inicial y lo asigna como saldo anterior(mes anterior) Error? <----------------
-            Dim Saldo As Decimal = SaldoAnterior, Cargos As Decimal = 0D, Abonos As Decimal = 0D 'setea los datos del mes seleccionado
+        'For Each Cuenta As EC.CuentaContableEntity In CuentasContables 'Hace un ciclo por cada una de las cuetas anteriormente
+        '    Dim CuentaContable As New CuentaContableClass(Cuenta) '??
+        '    Dim SaldoAnterior As Decimal = CuentaContable.CalcularSaldoInicial(FechaInicial.AddDays(-1), True) 'toma el valor del año inicial y lo asigna como saldo anterior(mes anterior) Error? <----------------
+        '    Dim Saldo As Decimal = SaldoAnterior, Cargos As Decimal = 0D, Abonos As Decimal = 0D 'setea los datos del mes seleccionado
 
-            For Each PolizaDetalle As EC.PolizaDetalleEntity In CuentaContable.ObtenerPolizasDetalleEnRangoDeFechas(FechaInicial, FechaFinal, True) '<-------- nunca recorre el ciclo, Error?
-                Dim PolizaDet As New PolizaDetalleClass(PolizaDetalle)
-                Cargos += PolizaDet.Cargo
-                Abonos += PolizaDet.Abono
+        '    For Each PolizaDetalle As EC.PolizaDetalleEntity In CuentaContable.ObtenerPolizasDetalleEnRangoDeFechas(FechaInicial, FechaFinal, True) '<-------- nunca recorre el ciclo, Error?
+        '        Dim PolizaDet As New PolizaDetalleClass(PolizaDetalle)
+        '        Cargos += PolizaDet.Cargo
+        '        Abonos += PolizaDet.Abono
 
-                If CuentaContable.Naturaleza = CuentaContableNaturalezaEnum.ACREEDORA Then
-                    Saldo += PolizaDet.Abono - PolizaDet.Cargo
-                Else
-                    Saldo += PolizaDet.Cargo - PolizaDet.Abono
-                End If
-            Next
-            dt.AddMayorGeneralRow(Cuenta.Codigo, CuentaContable.DescripcionNaturaleza & "S", Cuenta.NomCuenta, Cuenta.Cta, Cuenta.SubCta, Cuenta.SsubCta, Cuenta.SssubCta, SaldoAnterior, Cargos, Abonos, Saldo)
-        Next
+        '        If CuentaContable.Naturaleza = CuentaContableNaturalezaEnum.ACREEDORA Then
+        '            Saldo += PolizaDet.Abono - PolizaDet.Cargo
+        '        Else
+        '            Saldo += PolizaDet.Cargo - PolizaDet.Abono
+        '        End If
+        '    Next
+        '    dt.AddMayorGeneralRow(Cuenta.Codigo, CuentaContable.DescripcionNaturaleza & "S", Cuenta.NomCuenta, Cuenta.Cta, Cuenta.SubCta, Cuenta.SsubCta, Cuenta.SssubCta, SaldoAnterior, Cargos, Abonos, Saldo)
+        'Next
+        'If Not dt.Rows.Count > 0 Then
+        '    Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.MAYOR_GENERAL, 0)
+        'End If
+        'ds.Tables.Add(dt)
 
-        If Not dt.Rows.Count > 0 Then
-            Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.MAYOR_GENERAL, 0)
-        End If
-        ds.Tables.Add(dt)
-        Reporte.SetDataSource(ds)
+        Dim query As String = "SELECT  AC.Codigo AS IdCuentaContable, CC.Naturaleza, CC.Cta, CC.SubCta, CC.SSubCta, CC.SSSubCta, CC.NomCuenta AS DescripcionCuentaContable, " +
+            "AC.SaldoIniEjer AS SaldoAnterior, AC.Cargos{0} AS Cargo, AC.Abonos{0} AS Abono, AC.SaldoFinEjer AS SaldoActual " +
+            "FROM AcumuladoCuentasContables AC INNER JOIN usrContCuentas CC ON AC.Codigo = CC.codigo " +
+            "WHERE CC.SubCta = '0000' AND CC.SSubCta = '0000' AND CC.SSSubCta = '0000' AND Ejercicio = {1} ORDER BY Cta"
+        query = String.Format(query, Mes, Ejercicio)
+        Console.WriteLine(query)
+        Dim tablaReporte As New DataTable
+        Dim adapter As New SqlDataAdapter
+        Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
+            connection.Open()
+            Try
+
+                Dim command As New SqlCommand(query, connection)
+                adapter.SelectCommand = command
+                adapter.Fill(tablaReporte)
+            Catch ex As Exception
+                MessageBox.Show("Ocurrio un error al tratar de consultar las cuentas en la base de datos: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            connection.Close()
+        End Using
+
+
+        Reporte.SetDataSource(tablaReporte)
         Reporte.SetParameterValue(0, Sesion.MiEmpresa.Empnom)
         Reporte.SetParameterValue(1, Sesion.MiUsuario.Usrnomcom)
         Reporte.SetParameterValue(2, "Contabilidad/Reportes/Mayor General")
         Reporte.SetParameterValue(3, Me.Culture.DateTimeFormat.GetMonthName(Mes).ToUpper())
+        Reporte.SetParameterValue(4, ordenar)
         Previsualizar.Reporte = Reporte
         Previsualizar.ShowDialog()
+
     End Sub
 
     Public Sub ReporteBalanzaDeComprobacion(ByVal Mes As MesEnum2)

@@ -54,6 +54,7 @@ Partial Class frmRptMayorGeneral
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ucbe_Ejercicio = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
+        Me.cbOrdenar = New System.Windows.Forms.CheckBox()
         CType(Me.ultcmbMes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ucbe_Ejercicio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -136,7 +137,7 @@ Partial Class frmRptMayorGeneral
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(71, 146)
+        Me.PictureBox1.Location = New System.Drawing.Point(71, 178)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(201, 20)
         Me.PictureBox1.TabIndex = 42
@@ -201,11 +202,22 @@ Partial Class frmRptMayorGeneral
         Me.ucbe_Ejercicio.TabIndex = 46
         Me.ucbe_Ejercicio.Text = "Ejercicio"
         '
+        'cbOrdenar
+        '
+        Me.cbOrdenar.AutoSize = True
+        Me.cbOrdenar.Location = New System.Drawing.Point(59, 144)
+        Me.cbOrdenar.Name = "cbOrdenar"
+        Me.cbOrdenar.Size = New System.Drawing.Size(215, 17)
+        Me.cbOrdenar.TabIndex = 47
+        Me.cbOrdenar.Text = "Ordenar Cuentas(Acreedoras-Deudoras)"
+        Me.cbOrdenar.UseVisualStyleBackColor = True
+        '
         'frmRptMayorGeneral
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(306, 178)
+        Me.ClientSize = New System.Drawing.Size(306, 210)
+        Me.Controls.Add(Me.cbOrdenar)
         Me.Controls.Add(Me.ucbe_Ejercicio)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblTitulo)
@@ -229,4 +241,5 @@ Partial Class frmRptMayorGeneral
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents ucbe_Ejercicio As Infragistics.Win.UltraWinEditors.UltraComboEditor
+    Friend WithEvents cbOrdenar As System.Windows.Forms.CheckBox
 End Class
