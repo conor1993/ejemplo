@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmRptMayorGeneral
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmRptMayorGeneral
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ValueListItem13 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
@@ -54,7 +54,6 @@ Partial Class frmRptMayorGeneral
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ucbe_Ejercicio = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
-        Me.cbOrdenar = New System.Windows.Forms.CheckBox()
         CType(Me.ultcmbMes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ucbe_Ejercicio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,7 +136,7 @@ Partial Class frmRptMayorGeneral
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(71, 178)
+        Me.PictureBox1.Location = New System.Drawing.Point(71, 149)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(201, 20)
         Me.PictureBox1.TabIndex = 42
@@ -202,22 +201,11 @@ Partial Class frmRptMayorGeneral
         Me.ucbe_Ejercicio.TabIndex = 46
         Me.ucbe_Ejercicio.Text = "Ejercicio"
         '
-        'cbOrdenar
-        '
-        Me.cbOrdenar.AutoSize = True
-        Me.cbOrdenar.Location = New System.Drawing.Point(59, 144)
-        Me.cbOrdenar.Name = "cbOrdenar"
-        Me.cbOrdenar.Size = New System.Drawing.Size(215, 17)
-        Me.cbOrdenar.TabIndex = 47
-        Me.cbOrdenar.Text = "Ordenar Cuentas(Acreedoras-Deudoras)"
-        Me.cbOrdenar.UseVisualStyleBackColor = True
-        '
         'frmRptMayorGeneral
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(306, 210)
-        Me.Controls.Add(Me.cbOrdenar)
+        Me.ClientSize = New System.Drawing.Size(306, 191)
         Me.Controls.Add(Me.ucbe_Ejercicio)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblTitulo)
@@ -241,5 +229,4 @@ Partial Class frmRptMayorGeneral
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents ucbe_Ejercicio As Infragistics.Win.UltraWinEditors.UltraComboEditor
-    Friend WithEvents cbOrdenar As System.Windows.Forms.CheckBox
 End Class

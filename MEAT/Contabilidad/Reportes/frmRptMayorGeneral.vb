@@ -19,13 +19,14 @@ Public Class frmRptMayorGeneral
     Public Sub Limpiar()
         Estado = FormState.Limpiar
         ultcmbMes.Clear()
+        ucbe_Ejercicio.Clear()
     End Sub
 
     Public Sub Imprimir()
         Estado = FormState.Imprimir
 
         If (ultcmbMes.SelectedItem IsNot Nothing And ucbe_Ejercicio.SelectedItem IsNot Nothing) Then
-            Controlador.ReporteMayorGeneral(ultcmbMes.Value, ucbe_Ejercicio.Value, cbOrdenar.Checked)
+            Controlador.ReporteMayorGeneral(ultcmbMes.Value, ucbe_Ejercicio.Value)
         Else
             MessageBox.Show("Debe seleccionar el Mes y Año", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If

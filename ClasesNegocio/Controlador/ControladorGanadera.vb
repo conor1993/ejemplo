@@ -5079,7 +5079,7 @@ Partial Public Class ControladorGanadera
         Previsualizar.ShowDialog()
     End Sub
 
-    Public Sub ReporteMayorGeneral(ByVal Mes As String, ByVal ejercicio As String, ByVal ordenar As Boolean)
+    Public Sub ReporteMayorGeneral(ByVal Mes As String, ByVal ejercicio As String)
         Dim Previsualizar As New PreVisualizarForm
         Dim Reporte As New RptMayorGeneral
         'Dim ds As New DataSet
@@ -5115,7 +5115,7 @@ Partial Public Class ControladorGanadera
             "AC.SaldoIniEjer AS SaldoAnterior, AC.Cargos{0} AS Cargo, AC.Abonos{0} AS Abono, AC.SaldoFinEjer AS SaldoActual " +
             "FROM AcumuladoCuentasContables AC INNER JOIN usrContCuentas CC ON AC.Codigo = CC.codigo " +
             "WHERE CC.SubCta = '0000' AND CC.SSubCta = '0000' AND CC.SSSubCta = '0000' AND Ejercicio = {1} ORDER BY Cta"
-        query = String.Format(query, Mes, Ejercicio)
+        query = String.Format(query, Mes, ejercicio)
         Console.WriteLine(query)
         Dim tablaReporte As New DataTable
         Dim adapter As New SqlDataAdapter
