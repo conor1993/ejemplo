@@ -84,14 +84,14 @@ Public Class LecturaBasculaClass
                 Case LecturaBasculaClass.TipoLectura.GRAMOS
                     Select Case tipoRetorno
                         Case LecturaBasculaClass.TipoLectura.KILOGRAMOS
-                            peso = peso / 100D
+                            peso = peso / 1000D
                         Case LecturaBasculaClass.TipoLectura.TONELADAS
                             peso /= 1000000D
                     End Select
                 Case LecturaBasculaClass.TipoLectura.KILOGRAMOS
                     Select Case tipoRetorno
                         Case LecturaBasculaClass.TipoLectura.GRAMOS
-                            peso = peso * 100D
+                            peso = peso * 1000D
                         Case LecturaBasculaClass.TipoLectura.TONELADAS
                             peso /= 100D
                     End Select
