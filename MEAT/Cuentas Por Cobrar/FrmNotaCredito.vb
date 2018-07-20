@@ -152,6 +152,8 @@ Public Class FrmNotaCredito
         Try
             Dim Consultas As New frmBusquedaNotas
             Consultas.busquedaNotas = False
+
+            Consultas.Clientes_Get = Me.CmbCliente.SelectedValue
             Consultas.FormPrincipal = Me
             Consultas.Text = "Busqueda de Facturas"
             Dim Clientes As New ClientesIntroductoresClass
@@ -2407,7 +2409,11 @@ Public Class FrmNotaCredito
     End Sub
 
     Private Sub btnRelacion_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnRelacion.MouseClick
-        Me.buscarCFDI()
-    End Sub
+        If (Me.CmbCliente.SelectedValue > 0) Then
+            Me.buscarCFDI()
+        Else
+            MessageBox.Show("Debe seleccionar un Cliente antes de agregar la relación", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
 
+    End Sub
 End Class
