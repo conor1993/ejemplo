@@ -5,8 +5,8 @@ Imports HC = IntegraLab.ORM.HelperClasses
 Imports OC = SD.LLBLGen.Pro.ORMSupportClasses
 Public Class frmBusquedaNotas
     Public TipoFactura As TipoFacturaEnum
+    Public Clientes_Get As Integer
     Dim Renglones As Integer
-
     Public busquedaNotas As Boolean = False
     Dim frmPrincipal As FrmNotaCredito
     Public Property FormPrincipal As FrmNotaCredito
@@ -32,7 +32,7 @@ Public Class frmBusquedaNotas
         Dim Clientes As CC.MfacCatClientesCollection = Nothing '= Controlador.ObtenerClientes(CondicionEnum.ACTIVOS)
 
         Me.cmbClientes.DataSource = Nothing
-        Me.cmbClientes.ValueMember = "IdCliente"
+        Me.cmbClientes.ValueMember = "Codigo"
         Me.cmbClientes.DisplayMember = "Nombre"
         Me.cmbClientes.DataSource = Clientes
         Me.cmbClientes.SelectedIndex = -1
@@ -62,19 +62,23 @@ Public Class frmBusquedaNotas
                 If IsNothing(cmbClientes.SelectedValue) Then
                     Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, 0, Estatus, TipoFactura)
                 Else
-                    Dim cliente As ClasesNegocio.ClientesIntroductoresClass
-                    cliente = Me.cmbClientes.SelectedValue
-                    Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura)
+                    'Dim cliente As ClasesNegocio.ClientesIntroductoresClass
+                    'cliente = Me.cmbClientes.SelectedValue
+                    Dim clienteAux As Integer
+                    clienteAux = Me.cmbClientes.SelectedValue
+                    Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, clienteAux, Estatus, TipoFactura)
                 End If
             End If
-            
+
             If busquedaNotas = True Then
                 If IsNothing(cmbClientes.SelectedValue) Then
                     Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, 0, Estatus, TipoFactura, "E")
                 Else
-                    Dim cliente As ClasesNegocio.ClientesIntroductoresClass
-                    cliente = Me.cmbClientes.SelectedValue
-                    Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, cliente.Codigo, Estatus, TipoFactura, "E")
+                    'Dim cliente As ClasesNegocio.ClientesIntroductoresClass
+                    'cliente = Me.cmbClientes.SelectedValue
+                    Dim clienteAux As Integer
+                    clienteAux = Me.cmbClientes.SelectedValue
+                    Me.dgvFacturasCabecero.DataSource = Controlador.ObtenerFacturasDeVenta(txtFolio.Text, RangodeFechas, clienteAux, Estatus, TipoFactura, "E")
                 End If
             End If
 
@@ -107,10 +111,20 @@ Public Class frmBusquedaNotas
         Dim clientes As New ClientesIntroductoresColeccion
         clientes.Obtener(ClasesNegocio.CondicionEstatusEnum.ACTIVO)
         cmbClientes.DataSource = clientes
-        cmbClientes.SelectedIndex = -1
+
+        
         If busquedaNotas Then
             Me.Text = "Busqueda de Notas de Credito"
             Me.dgvFacturasCabecero.Columns("clmSerie").Visible = True
+            cmbClientes.SelectedIndex = -1
+        Else
+            Try
+                'Me.Clientes_Get = New ClientesIntroductoresClass()
+
+                Me.cmbClientes.SelectedValue = Me.Clientes_Get
+            Catch ex As Exception
+
+            End Try
         End If
     End Sub
     Private Sub Acciones_Menu(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickBorrar, mtb.ClickBuscar, mtb.ClickCancelar, mtb.ClickEditar, mtb.ClickGuardar, mtb.ClickImprimir, mtb.ClickLimpiar, mtb.ClickNuevo, mtb.ClickSalir
