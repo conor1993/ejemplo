@@ -528,6 +528,82 @@ Public Class AcumuladodeCuentasContablesClass
         End Try
     End Function
 
+    Public Shadows Function Guardar2(ByVal Trans As HC.Transaction, Optional ByVal Referencia As Boolean = False, Optional ByVal AcuCuentaCont As EC.AcumuladoCuentasContablesEntity = Nothing) As Boolean
+        ' Dim tr As New HC.Transaction(IsolationLevel.ReadCommitted, "Cuentas")
+        Try
+            Dim cuentas As New CuentaContableCollectionClass
+            If Trans IsNot Nothing Then
+                Trans.Add(Entity)
+            End If
+
+            If Not Entity.IsNew Then
+
+                Dim AcumuladosCol As New CC.AcumuladoCuentasContablesCollection
+                AcumuladosCol.GetMulti(HC.AcumuladoCuentasContablesFields.Codigo = Entity.Codigo And HC.AcumuladoCuentasContablesFields.Ejercicio = Entity.Ejercicio)
+
+                For Each item As EC.AcumuladoCuentasContablesEntity In AcumuladosCol
+                    Trans.Add(item)
+
+                    If item.Codigo = Entity.Codigo And item.Ejercicio = Entity.Ejercicio Then
+                        'actualiza cargos
+                        item.Cargos01 += Entity.Cargos01
+                        item.Cargos02 += Entity.Cargos02
+                        item.Cargos03 += Entity.Cargos03
+                        item.Cargos04 += Entity.Cargos04
+                        item.Cargos05 += Entity.Cargos05
+                        item.Cargos06 += Entity.Cargos06
+                        item.Cargos07 += Entity.Cargos07
+                        item.Cargos08 += Entity.Cargos08
+                        item.Cargos09 += Entity.Cargos09
+                        item.Cargos10 += Entity.Cargos10
+                        item.Cargos11 += Entity.Cargos11
+                        item.Cargos12 += Entity.Cargos12
+                        'actualiza abonos
+                        item.Abonos01 += Entity.Abonos01
+                        item.Abonos02 += Entity.Abonos02
+                        item.Abonos03 += Entity.Abonos03
+                        item.Abonos04 += Entity.Abonos04
+                        item.Abonos05 += Entity.Abonos05
+                        item.Abonos06 += Entity.Abonos06
+                        item.Abonos07 += Entity.Abonos07
+                        item.Abonos08 += Entity.Abonos08
+                        item.Abonos09 += Entity.Abonos09
+                        item.Abonos10 += Entity.Abonos10
+                        item.Abonos11 += Entity.Abonos11
+                        item.Abonos12 += Entity.Abonos12
+                        'actualiza presupuestos
+                        item.Presup01 += Entity.Presup01
+                        item.Presup02 += Entity.Presup02
+                        item.Presup03 += Entity.Presup03
+                        item.Presup04 += Entity.Presup04
+                        item.Presup05 += Entity.Presup05
+                        item.Presup06 += Entity.Presup06
+                        item.Presup07 += Entity.Presup07
+                        item.Presup08 += Entity.Presup08
+                        item.Presup09 += Entity.Presup09
+                        item.Presup10 += Entity.Presup10
+                        item.Presup11 += Entity.Presup11
+                        item.Presup12 += Entity.Presup12
+                    End If
+                    item.Save()
+                Next
+                ''Trans.Commit()
+                Return True
+            Else
+
+                Trans.Add(Entity)
+                If Entity.Save() Then
+                    ''Trans.Commit()
+                    Return True
+                End If
+            End If
+        Catch ex As Exception
+            Trans.Rollback()
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+            Return False
+        End Try
+    End Function
+
     'Private Sub AplicarCambiosCuentasHijas(ByVal Cuenta As EC.CuentaContableEntity, ByRef transaccion As HC.Transaction)
     '    Try
     '        For Each hija As EC.CuentaContableEntity In Cuenta.CuentasHijas

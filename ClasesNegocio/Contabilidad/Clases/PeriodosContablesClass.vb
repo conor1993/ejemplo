@@ -139,5 +139,7 @@ Public Class PeriodosContablesCollectionClass
             Return -1
         End Try
     End Function
+
+
     
 End Class

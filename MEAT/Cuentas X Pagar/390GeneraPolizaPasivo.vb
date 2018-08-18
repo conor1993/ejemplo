@@ -10,8 +10,10 @@ Public Class _390GeneraPolizaPasivo
     Dim TiposProveedores As CN.TipoProveedorCollectionClass
     Dim Poliza As CN.PolizaClass
     Dim FacturasCabCol As CN.FacturaCabCXPColeccion
-    Dim AcumCuentas As New CN.AcumuladodeCuentasContablesClass
+    Dim AcumCuentas As CN.AcumuladodeCuentasContablesClass
     Dim EjercicioContable As New CN.PeriodosContablesClass
+    Dim anio As Integer
+    Dim MesEnum2 As Integer
 
     Private Sub _390GeneraPolizaPasivo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -273,9 +275,20 @@ Public Class _390GeneraPolizaPasivo
         Dim Trans As New HC.Transaction(IsolationLevel.ReadCommitted, "Guardar")
         Try
 
-            ''----- obtener ejerciciocontable actual  -------
+            ' ''----- validfacion del ejercicio actual -----------
+            Dim acum As New CN.Acumuladocuentas
+            anio = dtpFechaConta.Value.Year
+            MesEnum2 = dtpFechaConta.Value.Month
+            EjercicioContable.Obtener(anio)
+            If (EjercicioContable.Estatus = 0) Then
 
-            EjercicioContable.Obtener(2018)
+                Trans.Rollback()
+                MessageBox.Show("El ejercicio actual no se encuentra activo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            Else
+
+            End If
+            ''--------------------------------------------------
 
             If Me.DgvFacturas.Rows.Count > 0 Then
                 For j As Integer = 0 To DgvFacturas.Rows.Count - 1
@@ -319,26 +332,7 @@ Public Class _390GeneraPolizaPasivo
                                 End With
                                 PolizaDet.Posicion = i + 1
                                 Poliza.Detalles2.Add(PolizaDet)
-
-
-                                ''------------------------ guardar  en acumcuentacontable---------------------------
-                                AcumCuentas.Obtener(PolizaDet.IdCuentaContable, 2018)
-
-
                             End If
-                            'With Me.DgvFacturas.Rows(i)
-                            '    PolizaDet = New CN.PolizaDetalleClass
-                            '    PolizaDet.IdCuentaContable = .Cells(Me.clmCodigo.Index).Value
-                            '    If Not .Cells(Me.clmCargo.Index).Value = 0 Then
-                            '        PolizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.CARGO
-                            '        PolizaDet.Importe = .Cells(Me.clmCargo.Index).Value
-                            '    Else
-                            '        PolizaDet.Operacion = ClasesNegocio.PolizaOperacionEnum.ABONO
-                            '        PolizaDet.Importe = .Cells(Me.clmAbono.Index).Value
-                            '    End If
-                            'End With
-                            'PolizaDet.Posicion = i + 1
-                            'Poliza.Detalles2.Add(PolizaDet)
                         Next
                     End If
                 Next
@@ -349,17 +343,8 @@ Public Class _390GeneraPolizaPasivo
                     Exit Sub
                 End If
 
+                acum.Guardar2(Trans, anio, MesEnum2, Poliza)
 
-
-                ''---------------------------------------------------
-                ''              IMPRESIONS DE LA POLIZA
-                ''---------------------------------------------------
-
-
-
-                ''---------------------------------------------------
-                ''            fin   IMPRESIONS DE LA POLIZA
-                ''---------------------------------------------------
 
                 FacturasCabCol = New CN.FacturaCabCXPColeccion
                 Dim Contabilizada As Char = "N"

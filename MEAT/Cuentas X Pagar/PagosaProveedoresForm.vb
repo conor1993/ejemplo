@@ -521,6 +521,9 @@ Public Class PagosaProveedoresForm
     Private Sub mtb_ClickGuardar(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles mtb.ClickGuardar
         Dim Tran As New Integralab.ORM.HelperClasses.Transaction(IsolationLevel.ReadCommitted, "PagoProveedores")
         Try
+
+
+
             If IsNothing(Validar()) Then
                 If VerificarBalance() = 0 Then
                     Dim bbl As Boolean
