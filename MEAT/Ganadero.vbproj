@@ -1235,6 +1235,12 @@
     <Compile Include="Cuentas Por Cobrar\frmTipoNota.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Cuentas Por Cobrar\Reportes\frmEstadoCuentasProvedores.Designer.vb">
+      <DependentUpon>frmEstadoCuentasProvedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Cuentas Por Cobrar\Reportes\frmEstadoCuentasProvedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Engorda\Formulas\frmProgramacionFormulas.Designer.vb">
       <DependentUpon>frmProgramacionFormulas.vb</DependentUpon>
     </Compile>
@@ -4001,6 +4007,9 @@
     <EmbeddedResource Include="Cuentas Por Cobrar\frmTipoNota.resx">
       <DependentUpon>frmTipoNota.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cuentas Por Cobrar\Reportes\frmEstadoCuentasProvedores.resx">
+      <DependentUpon>frmEstadoCuentasProvedores.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engorda\Formulas\frmProgramacionFormulas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmProgramacionFormulas.vb</DependentUpon>
@@ -5779,7 +5788,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Cuentas Por Cobrar\Reportes\" />
     <Folder Include="My Project\DataSources\" />
     <Folder Include="Queries\1.0.11.12\" />
   </ItemGroup>

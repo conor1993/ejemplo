@@ -48,7 +48,8 @@ Public Class FrmReporteCanal_CortePorFecha
                 Dim command As New SqlCommand(query, sqlCon)
                 command.CommandType = CommandType.StoredProcedure
                 command.Parameters.Add(New SqlParameter("@FechaInicial", Me.DtpFechaInicial.Value.ToShortDateString))
-                command.Parameters.Add(New SqlParameter("@FechaFinal", Me.DtpFechaFinal.Value.AddDays(1).ToShortDateString))
+                'command.Parameters.Add(New SqlParameter("@FechaFinal", Me.DtpFechaFinal.Value.AddDays(1).ToShortDateString))
+                command.Parameters.Add(New SqlParameter("@FechaFinal", Me.DtpFechaFinal.Value.ToShortDateString))
                 'command.Parameters.Add(New"@FechaInicial", SqlDbType.DateTime).value = Me.DtpFechaInicial.Value.ToShortDateString
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(Tabla)
@@ -74,7 +75,7 @@ Public Class FrmReporteCanal_CortePorFecha
                     Reporte.SetParameterValue("Modulo", "Produccion")
                     Reporte.SetParameterValue("Usuario", Controlador.Sesion.MiUsuario.Usrnomcom)
                     Reporte.SetParameterValue("FechaInicial", Me.DtpFechaInicial.Value.ToShortDateString)
-                    Reporte.SetParameterValue("FechaFinal", Me.DtpFechaFinal.Value.AddDays(1).ToShortDateString)
+                    Reporte.SetParameterValue("FechaFinal", Me.DtpFechaFinal.Value.ToShortDateString)
                     Dim VerReporte As New FrmReportes
                     VerReporte.CRV.ReportSource = Reporte
                     VerReporte.Show()

@@ -31,6 +31,10 @@ Public Class FrmNotaCredito
 #Region "Metodos"
     Private Sub Habilitar()
         Me.txtFolioFactura.Enabled = True
+        Me.txtSerieFactura.Enabled = True
+        Me.txtSerieFolio.Enabled = True
+
+
         Me.dtFechaFactura.Enabled = True
         Me.dtpFechaVencimiento.Enabled = True
         Me.txtCodigoCliente.Enabled = True
@@ -56,6 +60,10 @@ Public Class FrmNotaCredito
 
     Private Sub Deshabilitar()
         Me.txtFolioFactura.Enabled = False
+        Me.txtSerieFactura.Enabled = False
+        Me.txtSerieFolio.Enabled = False
+
+
         Me.dtFechaFactura.Enabled = False
         Me.dtpFechaVencimiento.Enabled = False
         Me.txtCodigoCliente.Enabled = False
@@ -87,6 +95,10 @@ Public Class FrmNotaCredito
         Me.txtDiasCredito.Text = "0"
         Me.txtDireccion.Text = ""
         Me.txtFolioFactura.Text = ""
+
+        Me.txtSerieFactura.Text = ""
+        Me.txtSerieFolio.Text = ""
+
         Me.txtIVA.Text = "0"
         Me.txtObservaciones.Text = ""
         Me.txtRFC.Text = ""
@@ -140,6 +152,8 @@ Public Class FrmNotaCredito
         Try
             Dim Consultas As New frmBusquedaNotas
             Consultas.busquedaNotas = False
+
+            Consultas.Clientes_Get = Me.CmbCliente.SelectedValue
             Consultas.FormPrincipal = Me
             Consultas.Text = "Busqueda de Facturas"
             Dim Clientes As New ClientesIntroductoresClass
@@ -176,6 +190,17 @@ Public Class FrmNotaCredito
                 If btnRelacion.Enabled = False Then
                     Me.txtUUID.Text = Me.FacturaCabecero.Uuid
                     Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
+
+                    If (String.IsNullOrEmpty(FacturaCabecero.Serie)) Then
+                        Me.txtSerieFolio.Text = FacturaCabecero.NoFactura
+                        Me.txtSerieFactura.Text = ""
+
+                    Else
+                        Me.txtSerieFactura.Text = FacturaCabecero.Serie
+                        Me.txtSerieFolio.Text = FacturaCabecero.Serie + FacturaCabecero.NoFactura
+                    End If
+
+
                 Else
                     Me.txtRelacion.Text = Me.FacturaCabecero.Uuid
                     Me.txtFolioRelacion.Text = Me.FacturaCabecero.FolFactura
@@ -788,6 +813,16 @@ Public Class FrmNotaCredito
                 'asignar datos a cabecero de factura
                 'Mee
                 Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
+
+                If (String.IsNullOrEmpty(FacturaCabecero.Serie)) Then
+                    Me.txtSerieFolio.Text = FacturaCabecero.NoFactura
+                    Me.txtSerieFactura.Text = ""
+
+                Else
+                    Me.txtSerieFactura.Text = FacturaCabecero.Serie
+                    Me.txtSerieFolio.Text = FacturaCabecero.Serie + FacturaCabecero.NoFactura
+                End If
+
                 FacturaCabecero.FechaFactura = Me.dtFechaFactura.Value
                 FacturaCabecero.FechaVencimiento = Me.dtpFechaVencimiento.Value
                 FacturaCabecero.SubTotal = CDec(Me.txtSubTotal.Text)
@@ -852,7 +887,7 @@ Public Class FrmNotaCredito
                 Procesar.Start()
                 Trans.Commit()
                 Cursor.Current = Cursors.Default
-                MessageBox.Show("La Nota de Crédito de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("La Nota de Crédito de Reciba a Venta se ha realizado satisfactoriamente con el folio: " & IIf(String.IsNullOrEmpty(FacturaCabecero.Serie) = True, "", FacturaCabecero.Serie.ToString()) & FacturaCabecero.FolFactura, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 FacturaCabecero.Estatus = "C"
                 Controlador.RealizarFacturasdeVenta(FacturaCabecero, Now, ClasesNegocio.TipoFacturaEnum.FACTURACION_DE_VENTA_DE_CORRAL, Trans)
@@ -1257,7 +1292,7 @@ Public Class FrmNotaCredito
             If FacturaCabecero.Estatus = "P" Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtFolioFactura.Text & " por que se encuentra pagada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtSerieFactura.Text + Me.txtFolioFactura.Text & " por que se encuentra pagada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
 
@@ -1265,7 +1300,7 @@ Public Class FrmNotaCredito
             If FacturaCabecero.Estatus = "A" Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtFolioFactura.Text & " por que se encuentra abonada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtSerieFactura.Text + Me.txtFolioFactura.Text & " por que se encuentra abonada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
 
@@ -1273,7 +1308,7 @@ Public Class FrmNotaCredito
             If FacturaCabecero.Estatus = "C" Then
                 Trans.Rollback()
                 Cancelar = True
-                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtFolioFactura.Text & " por que se encuentra cancelada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("No se puede cancelar la Nota de Crédito: " & Me.txtSerieFactura.Text + Me.txtFolioFactura.Text & " por que se encuentra cancelada", Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End If
 
@@ -1367,7 +1402,7 @@ Public Class FrmNotaCredito
             Cursor = Cursors.Default
             Me.Limpiar()
             MEAToolBar1.Enabled = True
-            MessageBox.Show("Se ha cancelado la Nota de Crédito:" & Me.txtFolioFactura.Text, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Se ha cancelado la Nota de Crédito:" & Me.txtSerieFactura.Text + Me.txtFolioFactura.Text, Controlador.Sesion.MiEmpresa.Empnom, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             Cursor = Cursors.Default
             MEAToolBar1.Enabled = True
@@ -1395,7 +1430,17 @@ Public Class FrmNotaCredito
             If Consultas.ShowDialog = Windows.Forms.DialogResult.OK Then
 
                 FacturaCabecero = CType(Consultas.dgvFacturasCabecero.SelectedRows(0).DataBoundItem, FacturasClass)
-                Me.txtFolioFactura.Text = FacturaCabecero.Serie + FacturaCabecero.NoFactura.ToString()
+                Me.txtFolioFactura.Text = FacturaCabecero.NoFactura
+
+                If (String.IsNullOrEmpty(FacturaCabecero.Serie)) Then
+                    Me.txtSerieFolio.Text = FacturaCabecero.NoFactura
+                    Me.txtSerieFactura.Text = ""
+
+                Else
+                    Me.txtSerieFactura.Text = FacturaCabecero.Serie
+                    Me.txtSerieFolio.Text = FacturaCabecero.Serie + FacturaCabecero.NoFactura
+                End If
+
                 Me.txtRelacion.Text = FacturaCabecero.RelacionCfdi
                 'Me.dgvDetalle.AutoGenerateColumns = False
                 'Me.dgvDetalle.DataSource = FacturaCabecero.Detalles
@@ -2364,7 +2409,11 @@ Public Class FrmNotaCredito
     End Sub
 
     Private Sub btnRelacion_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnRelacion.MouseClick
-        Me.buscarCFDI()
-    End Sub
+        If (Me.CmbCliente.SelectedValue > 0) Then
+            Me.buscarCFDI()
+        Else
+            MessageBox.Show("Debe seleccionar un Cliente antes de agregar la relación", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
 
+    End Sub
 End Class

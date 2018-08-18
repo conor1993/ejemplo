@@ -92,6 +92,8 @@ Partial Class FrmNotaCredito
         Me.ultcmbDomiciliosFiscales = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtSerieFactura = New System.Windows.Forms.TextBox()
+        Me.txtSerieFolio = New System.Windows.Forms.TextBox()
         Me.txtFolioRelacion = New System.Windows.Forms.TextBox()
         Me.lblRelacion = New System.Windows.Forms.Label()
         Me.txtRelacion = New System.Windows.Forms.TextBox()
@@ -195,7 +197,7 @@ Partial Class FrmNotaCredito
         '
         'txtFolioFactura
         '
-        Me.txtFolioFactura.Location = New System.Drawing.Point(99, 13)
+        Me.txtFolioFactura.Location = New System.Drawing.Point(715, 14)
         Me.txtFolioFactura.Name = "txtFolioFactura"
         Me.txtFolioFactura.ReadOnly = True
         Me.txtFolioFactura.Size = New System.Drawing.Size(90, 20)
@@ -483,9 +485,9 @@ Partial Class FrmNotaCredito
         '
         'txtCodigoCliente
         '
-        Me.txtCodigoCliente.Location = New System.Drawing.Point(99, 87)
+        Me.txtCodigoCliente.Location = New System.Drawing.Point(99, 64)
         Me.txtCodigoCliente.Name = "txtCodigoCliente"
-        Me.txtCodigoCliente.Size = New System.Drawing.Size(65, 20)
+        Me.txtCodigoCliente.Size = New System.Drawing.Size(88, 20)
         Me.txtCodigoCliente.TabIndex = 100
         '
         'txtRFC
@@ -508,7 +510,7 @@ Partial Class FrmNotaCredito
         'LblClaveCliente
         '
         Me.LblClaveCliente.AutoSize = True
-        Me.LblClaveCliente.Location = New System.Drawing.Point(8, 90)
+        Me.LblClaveCliente.Location = New System.Drawing.Point(8, 67)
         Me.LblClaveCliente.Name = "LblClaveCliente"
         Me.LblClaveCliente.Size = New System.Drawing.Size(45, 13)
         Me.LblClaveCliente.TabIndex = 102
@@ -534,7 +536,7 @@ Partial Class FrmNotaCredito
         '
         Me.dtpFechaVencimiento.Enabled = False
         Me.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaVencimiento.Location = New System.Drawing.Point(312, 59)
+        Me.dtpFechaVencimiento.Location = New System.Drawing.Point(307, 38)
         Me.dtpFechaVencimiento.Name = "dtpFechaVencimiento"
         Me.dtpFechaVencimiento.Size = New System.Drawing.Size(88, 20)
         Me.dtpFechaVencimiento.TabIndex = 119
@@ -543,7 +545,7 @@ Partial Class FrmNotaCredito
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(202, 62)
+        Me.Label18.Location = New System.Drawing.Point(199, 41)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(104, 13)
         Me.Label18.TabIndex = 121
@@ -552,7 +554,7 @@ Partial Class FrmNotaCredito
         'dtFechaFactura
         '
         Me.dtFechaFactura.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtFechaFactura.Location = New System.Drawing.Point(99, 59)
+        Me.dtFechaFactura.Location = New System.Drawing.Point(99, 38)
         Me.dtFechaFactura.Name = "dtFechaFactura"
         Me.dtFechaFactura.Size = New System.Drawing.Size(88, 20)
         Me.dtFechaFactura.TabIndex = 118
@@ -561,7 +563,7 @@ Partial Class FrmNotaCredito
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 61)
+        Me.Label4.Location = New System.Drawing.Point(7, 40)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(43, 13)
         Me.Label4.TabIndex = 120
@@ -625,7 +627,7 @@ Partial Class FrmNotaCredito
         Me.ultcmbDomiciliosFiscales.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.ultcmbDomiciliosFiscales.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.ultcmbDomiciliosFiscales.DisplayMember = "Domicilio"
-        Me.ultcmbDomiciliosFiscales.Location = New System.Drawing.Point(158, 156)
+        Me.ultcmbDomiciliosFiscales.Location = New System.Drawing.Point(158, 158)
         Me.ultcmbDomiciliosFiscales.Name = "ultcmbDomiciliosFiscales"
         Me.ultcmbDomiciliosFiscales.Size = New System.Drawing.Size(514, 22)
         Me.ultcmbDomiciliosFiscales.TabIndex = 126
@@ -635,7 +637,7 @@ Partial Class FrmNotaCredito
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(66, 160)
+        Me.Label3.Location = New System.Drawing.Point(66, 162)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 13)
         Me.Label3.TabIndex = 127
@@ -643,6 +645,8 @@ Partial Class FrmNotaCredito
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtSerieFactura)
+        Me.GroupBox1.Controls.Add(Me.txtSerieFolio)
         Me.GroupBox1.Controls.Add(Me.txtFolioRelacion)
         Me.GroupBox1.Controls.Add(Me.lblRelacion)
         Me.GroupBox1.Controls.Add(Me.txtRelacion)
@@ -684,6 +688,22 @@ Partial Class FrmNotaCredito
         Me.GroupBox1.TabIndex = 128
         Me.GroupBox1.TabStop = False
         '
+        'txtSerieFactura
+        '
+        Me.txtSerieFactura.Location = New System.Drawing.Point(619, 13)
+        Me.txtSerieFactura.Name = "txtSerieFactura"
+        Me.txtSerieFactura.ReadOnly = True
+        Me.txtSerieFactura.Size = New System.Drawing.Size(90, 20)
+        Me.txtSerieFactura.TabIndex = 181
+        '
+        'txtSerieFolio
+        '
+        Me.txtSerieFolio.Location = New System.Drawing.Point(99, 13)
+        Me.txtSerieFolio.Name = "txtSerieFolio"
+        Me.txtSerieFolio.ReadOnly = True
+        Me.txtSerieFolio.Size = New System.Drawing.Size(90, 20)
+        Me.txtSerieFolio.TabIndex = 180
+        '
         'txtFolioRelacion
         '
         Me.txtFolioRelacion.Location = New System.Drawing.Point(609, 36)
@@ -696,7 +716,7 @@ Partial Class FrmNotaCredito
         '
         Me.lblRelacion.AutoSize = True
         Me.lblRelacion.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.lblRelacion.Location = New System.Drawing.Point(7, 39)
+        Me.lblRelacion.Location = New System.Drawing.Point(7, 94)
         Me.lblRelacion.Name = "lblRelacion"
         Me.lblRelacion.Size = New System.Drawing.Size(79, 13)
         Me.lblRelacion.TabIndex = 178
@@ -705,15 +725,15 @@ Partial Class FrmNotaCredito
         'txtRelacion
         '
         Me.txtRelacion.BackColor = System.Drawing.SystemColors.Window
-        Me.txtRelacion.Location = New System.Drawing.Point(99, 36)
+        Me.txtRelacion.Location = New System.Drawing.Point(99, 91)
         Me.txtRelacion.Name = "txtRelacion"
         Me.txtRelacion.ReadOnly = True
-        Me.txtRelacion.Size = New System.Drawing.Size(377, 20)
+        Me.txtRelacion.Size = New System.Drawing.Size(396, 20)
         Me.txtRelacion.TabIndex = 177
         '
         'btnRelacion
         '
-        Me.btnRelacion.Location = New System.Drawing.Point(483, 36)
+        Me.btnRelacion.Location = New System.Drawing.Point(501, 90)
         Me.btnRelacion.Name = "btnRelacion"
         Me.btnRelacion.Size = New System.Drawing.Size(112, 20)
         Me.btnRelacion.TabIndex = 175
@@ -725,7 +745,7 @@ Partial Class FrmNotaCredito
         Me.CmbCliente.DisplayMember = "Nombre"
         Me.CmbCliente.FormattingEnabled = True
         Me.CmbCliente.ItemHeight = 13
-        Me.CmbCliente.Location = New System.Drawing.Point(201, 86)
+        Me.CmbCliente.Location = New System.Drawing.Point(202, 63)
         Me.CmbCliente.Name = "CmbCliente"
         Me.CmbCliente.Size = New System.Drawing.Size(412, 21)
         Me.CmbCliente.TabIndex = 129
@@ -866,7 +886,7 @@ Partial Class FrmNotaCredito
         Me.OptExternos.Checked = True
         Me.OptExternos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OptExternos.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.OptExternos.Location = New System.Drawing.Point(55, 25)
+        Me.OptExternos.Location = New System.Drawing.Point(86, 25)
         Me.OptExternos.Name = "OptExternos"
         Me.OptExternos.Size = New System.Drawing.Size(50, 17)
         Me.OptExternos.TabIndex = 17
@@ -1198,4 +1218,6 @@ Partial Class FrmNotaCredito
     Friend WithEvents btnRelacion As System.Windows.Forms.Button
     Friend WithEvents lblRelacion As System.Windows.Forms.Label
     Friend WithEvents txtFolioRelacion As System.Windows.Forms.TextBox
+    Friend WithEvents txtSerieFactura As System.Windows.Forms.TextBox
+    Friend WithEvents txtSerieFolio As System.Windows.Forms.TextBox
 End Class

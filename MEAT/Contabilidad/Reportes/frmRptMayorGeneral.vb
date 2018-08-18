@@ -19,15 +19,16 @@ Public Class frmRptMayorGeneral
     Public Sub Limpiar()
         Estado = FormState.Limpiar
         ultcmbMes.Clear()
+        ucbe_Ejercicio.Clear()
     End Sub
 
     Public Sub Imprimir()
         Estado = FormState.Imprimir
 
-        If ultcmbMes.SelectedItem IsNot Nothing Then
-            Controlador.ReporteMayorGeneral(CType(ultcmbMes.SelectedItem.DataValue, MesEnum2), ucbe_Ejercicio.Value)
+        If (ultcmbMes.SelectedItem IsNot Nothing And ucbe_Ejercicio.SelectedItem IsNot Nothing) Then
+            Controlador.ReporteMayorGeneral(ultcmbMes.Value, ucbe_Ejercicio.Value)
         Else
-            Throw New BusinessException(CategoriaEnumException.VALIDACION, ModuloEnum.BALANCE_GENERAL, 0)
+            MessageBox.Show("Debe seleccionar el Mes y Año", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -62,6 +63,25 @@ Public Class frmRptMayorGeneral
     Private Sub frmBalanceGeneral_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         InicializarForma()
         cargarEjercicio()
+
+        'Diccionario para combobox
+        Dim cbMeses As New Dictionary(Of String, String)
+        cbMeses.Add("Enero", "01")
+        cbMeses.Add("Febrero", "02")
+        cbMeses.Add("Marzo", "03")
+        cbMeses.Add("Abril", "04")
+        cbMeses.Add("Mayo", "05")
+        cbMeses.Add("Junio", "06")
+        cbMeses.Add("Julio", "07")
+        cbMeses.Add("Agosto", "08")
+        cbMeses.Add("Septiembre", "09")
+        cbMeses.Add("Octubre", "10")
+        cbMeses.Add("Noviembre", "11")
+        cbMeses.Add("Diciembre", "12")
+
+        ultcmbMes.DisplayMember = "Key"
+        ultcmbMes.ValueMember = "Value"
+        ultcmbMes.DataSource = New BindingSource(cbMeses, Nothing)
     End Sub
 
     Private Sub Acciones(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs, ByRef Cancelar As Boolean) Handles MEAToolBar1.ClickLimpiar, MEAToolBar1.ClickImprimir, MEAToolBar1.ClickSalir

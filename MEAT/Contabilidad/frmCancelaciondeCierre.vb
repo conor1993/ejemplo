@@ -8,8 +8,8 @@ Public Class frmCancelaciondeCierre
     End Sub
 
     Private Sub btn_CancelarAnio_Click(sender As Object, e As EventArgs) Handles btn_CancelarAnio.Click
-        If (MessageBox.Show("Al cancelar el cierre del ejercicio " + tb_Anio.Text + " se eliminaran los movimientos del año en curso. " +
-                            "¿Desea continuar?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK) Then
+        If (MessageBox.Show("Se eliminaran todos los moviminetos del cierre contable " + (Int32.Parse(tb_Anio.Text) + 1).ToString() + ". ¿Desea continuar? ",
+                            "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK) Then
             Using connection As New SqlConnection(HC.DbUtils.ActualConnectionString)
                 connection.Open()
                 Dim query As String = "EXEC cancelacionCierre {0}"
@@ -44,12 +44,15 @@ Public Class frmCancelaciondeCierre
                 If reader.HasRows Then
                     tb_Anio.Text = reader.GetValue(0).ToString()
                 Else
-                    MessageBox.Show("No se encontró ningún ejercicio cerrado", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("No se puede cancelar cierre contable porque no se ha realizado ningún cierre.",
+                                    "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    btn_CancelarAnio.Enabled = False
                 End If
                 connection.Close()
             End Using
         Catch ex As Exception
             MessageBox.Show("No se logro cargar el ejercicio anterior", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Dispose()
         End Try
     End Sub
 

@@ -23,12 +23,12 @@ Partial Class frmBusquedaNotas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mtb = New MEAToolBar.MEAToolBar()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -54,6 +54,7 @@ Partial Class frmBusquedaNotas
         Me.txtFolio = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvFacturasCabecero = New System.Windows.Forms.DataGridView()
+        Me.clmSerie = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmNoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clmImporte = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -148,30 +149,30 @@ Partial Class frmBusquedaNotas
         '
         'clmCabezas
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N0"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.clmCabezas.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle19.Format = "N0"
+        DataGridViewCellStyle19.NullValue = Nothing
+        Me.clmCabezas.DefaultCellStyle = DataGridViewCellStyle19
         Me.clmCabezas.HeaderText = "Cabezas"
         Me.clmCabezas.Name = "clmCabezas"
         Me.clmCabezas.ReadOnly = True
         '
         'clmKilos
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.clmKilos.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle20.Format = "N2"
+        DataGridViewCellStyle20.NullValue = Nothing
+        Me.clmKilos.DefaultCellStyle = DataGridViewCellStyle20
         Me.clmKilos.HeaderText = "Kilos"
         Me.clmKilos.Name = "clmKilos"
         Me.clmKilos.ReadOnly = True
         '
         'clmPrecioxKilo
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.clmPrecioxKilo.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle21.Format = "C2"
+        DataGridViewCellStyle21.NullValue = Nothing
+        Me.clmPrecioxKilo.DefaultCellStyle = DataGridViewCellStyle21
         Me.clmPrecioxKilo.HeaderText = "Precio x Kilo"
         Me.clmPrecioxKilo.Name = "clmPrecioxKilo"
         Me.clmPrecioxKilo.ReadOnly = True
@@ -324,22 +325,31 @@ Partial Class frmBusquedaNotas
         Me.dgvFacturasCabecero.AllowUserToAddRows = False
         Me.dgvFacturasCabecero.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvFacturasCabecero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvFacturasCabecero.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmNoFactura, Me.clmFecha, Me.clmImporte, Me.clmCliente})
+        Me.dgvFacturasCabecero.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmSerie, Me.clmNoFactura, Me.clmFecha, Me.clmImporte, Me.clmCliente})
         Me.dgvFacturasCabecero.Location = New System.Drawing.Point(60, 115)
         Me.dgvFacturasCabecero.MultiSelect = False
         Me.dgvFacturasCabecero.Name = "dgvFacturasCabecero"
         Me.dgvFacturasCabecero.ReadOnly = True
         Me.dgvFacturasCabecero.RowHeadersVisible = False
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvFacturasCabecero.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvFacturasCabecero.RowsDefaultCellStyle = DataGridViewCellStyle24
         Me.dgvFacturasCabecero.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvFacturasCabecero.Size = New System.Drawing.Size(789, 170)
         Me.dgvFacturasCabecero.TabIndex = 55
         '
+        'clmSerie
+        '
+        Me.clmSerie.DataPropertyName = "Serie"
+        Me.clmSerie.FillWeight = 20.30457!
+        Me.clmSerie.HeaderText = "Serie"
+        Me.clmSerie.Name = "clmSerie"
+        Me.clmSerie.ReadOnly = True
+        Me.clmSerie.Visible = False
+        '
         'clmNoFactura
         '
         Me.clmNoFactura.DataPropertyName = "FolFactura"
-        Me.clmNoFactura.FillWeight = 15.0!
+        Me.clmNoFactura.FillWeight = 26.95432!
         Me.clmNoFactura.HeaderText = "Factura"
         Me.clmNoFactura.Name = "clmNoFactura"
         Me.clmNoFactura.ReadOnly = True
@@ -347,9 +357,9 @@ Partial Class frmBusquedaNotas
         'clmFecha
         '
         Me.clmFecha.DataPropertyName = "FecFactura"
-        DataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm"
-        Me.clmFecha.DefaultCellStyle = DataGridViewCellStyle4
-        Me.clmFecha.FillWeight = 20.0!
+        DataGridViewCellStyle22.Format = "dd/MM/yyyy HH:mm"
+        Me.clmFecha.DefaultCellStyle = DataGridViewCellStyle22
+        Me.clmFecha.FillWeight = 35.93909!
         Me.clmFecha.HeaderText = "Fecha "
         Me.clmFecha.Name = "clmFecha"
         Me.clmFecha.ReadOnly = True
@@ -357,10 +367,10 @@ Partial Class frmBusquedaNotas
         'clmImporte
         '
         Me.clmImporte.DataPropertyName = "SubTotal"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle5
-        Me.clmImporte.FillWeight = 20.0!
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle23.Format = "N2"
+        Me.clmImporte.DefaultCellStyle = DataGridViewCellStyle23
+        Me.clmImporte.FillWeight = 35.93909!
         Me.clmImporte.HeaderText = "Importe"
         Me.clmImporte.Name = "clmImporte"
         Me.clmImporte.ReadOnly = True
@@ -368,8 +378,8 @@ Partial Class frmBusquedaNotas
         'clmCliente
         '
         Me.clmCliente.DataPropertyName = "NomCliente"
-        Me.clmCliente.FillWeight = 45.0!
-        Me.clmCliente.HeaderText = "cliente"
+        Me.clmCliente.FillWeight = 80.86295!
+        Me.clmCliente.HeaderText = "Cliente"
         Me.clmCliente.Name = "clmCliente"
         Me.clmCliente.ReadOnly = True
         '
@@ -463,10 +473,6 @@ Partial Class frmBusquedaNotas
     Friend WithEvents cmbClientes As System.Windows.Forms.ComboBox
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents btnAceptar As System.Windows.Forms.Button
-    Friend WithEvents clmNoFactura As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmFecha As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmCliente As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmTipoGanado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmCabezas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmKilos As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -475,4 +481,9 @@ Partial Class frmBusquedaNotas
     Friend WithEvents clmCantidad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmPrecioUnitario As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clmImporteDetalle As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmSerie As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmNoFactura As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmFecha As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmImporte As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clmCliente As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
